@@ -1,10 +1,19 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Model of a single tab apart of a [MyoroTabView].
 @immutable
 class MyoroTabViewTab {
+  /// Default constructor.
   const MyoroTabViewTab({this.icon, this.text, required this.content})
     : assert(icon != null || text != null, '[MyoroTabViewTab]: [icon] and/or [text] must be provided.');
+
+  /// Fake constructor.
+  MyoroTabViewTab.fake()
+    : icon = myoroNullableFake<IconData>(),
+      text = myoroNullableFake<String>(),
+      content = myoroFake<Widget>();
 
   /// [IconData] of the [MyoroTabViewTab].
   final IconData? icon;

@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart' hide Color;
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -26,6 +27,22 @@ class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThem
     this.textStyle,
     this.footerButtonsSpacing,
   });
+
+  /// Fake constructor.
+  MyoroDialogModalThemeExtension.fake()
+    : constraints = myoroNullableFake<BoxConstraints>(),
+      primaryColor = myoroNullableFake<Color>(),
+      borderRadius = myoroNullableFake<BorderRadius>(),
+      bottomSheetBorderRadius = myoroNullableFake<BorderRadius>(),
+      border = myoroNullableFake<Border>(),
+      bottomSheetBorder = myoroNullableFake<Border>(),
+      padding = myoroNullableFake<EdgeInsets>(),
+      closeButtonPadding = myoroNullableFake<EdgeInsets>(),
+      spacing = myoroNullableFake<double>(),
+      titleTextStyle = myoroNullableFake<TextStyle>(),
+      closeButtonIconConfiguration = faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null,
+      textStyle = myoroNullableFake<TextStyle>(),
+      footerButtonsSpacing = myoroNullableFake<double>();
 
   /// Builder constructor.
   MyoroDialogModalThemeExtension.builder(TextTheme textTheme)

@@ -6,8 +6,8 @@ part '../_widget/_menu.dart';
 
 /// Generic dropdown.
 class MyoroDropdown<T> extends StatelessWidget {
-  /// Default value of [menuStyle].
-  static const menuStyleDefaultValue = MyoroMenuStyle();
+  /// Default value of [style].
+  static const styleDefaultValue = MyoroDropdownStyle();
 
   /// Default value of [dropdownType].
   static const dropdownTypeDefaultValue = MyoroDropdownTypeEnum.expanding;
@@ -15,7 +15,7 @@ class MyoroDropdown<T> extends StatelessWidget {
   /// Default constructor.
   const MyoroDropdown({
     super.key,
-    this.menuStyle = menuStyleDefaultValue,
+    this.style = styleDefaultValue,
     required this.showingController,
     this.items,
     this.selectedItems = const {},
@@ -26,10 +26,8 @@ class MyoroDropdown<T> extends StatelessWidget {
     required this.child,
   });
 
-  /// [MyoroMenu] style.
-  ///
-  /// Only a [MyoroMenuStyle] is supported as there are no other visual effects.
-  final MyoroMenuStyle menuStyle;
+  /// Style.
+  final MyoroDropdownStyle style;
 
   /// Showing controller.
   final ValueNotifier<bool> showingController;
@@ -75,7 +73,7 @@ class MyoroDropdown<T> extends StatelessWidget {
     return MultiProvider(
       key: baseKey,
       providers: [
-        InheritedProvider.value(value: menuStyle),
+        InheritedProvider.value(value: style),
         InheritedProvider.value(value: viewModel),
       ],
       child: switch (dropdownType) {

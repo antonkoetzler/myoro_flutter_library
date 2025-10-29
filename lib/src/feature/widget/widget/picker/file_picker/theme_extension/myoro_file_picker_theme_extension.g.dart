@@ -13,10 +13,8 @@ part of 'myoro_file_picker_theme_extension.dart';
 /// ```dart
 /// class MyoroFilePickerThemeExtension with _$MyoroFilePickerThemeExtensionMixin {}
 /// ```
-mixin _$MyoroFilePickerThemeExtensionMixin
-    on ThemeExtension<MyoroFilePickerThemeExtension> {
-  MyoroFilePickerThemeExtension get self =>
-      this as MyoroFilePickerThemeExtension;
+mixin _$MyoroFilePickerThemeExtensionMixin on ThemeExtension<MyoroFilePickerThemeExtension> {
+  MyoroFilePickerThemeExtension get self => this as MyoroFilePickerThemeExtension;
 
   @override
   MyoroFilePickerThemeExtension copyWith({

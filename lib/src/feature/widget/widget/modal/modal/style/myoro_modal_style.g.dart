@@ -41,30 +41,18 @@ mixin _$MyoroModalStyleMixin {
     bool closeButtonIconConfigurationProvided = true,
   }) {
     return MyoroModalStyle(
-      constraints: constraintsProvided
-          ? (constraints ?? self.constraints)
-          : null,
-      primaryColor: primaryColorProvided
-          ? (primaryColor ?? self.primaryColor)
-          : null,
-      borderRadius: borderRadiusProvided
-          ? (borderRadius ?? self.borderRadius)
-          : null,
+      constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
+      primaryColor: primaryColorProvided ? (primaryColor ?? self.primaryColor) : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
       bottomSheetBorderRadius: bottomSheetBorderRadiusProvided
           ? (bottomSheetBorderRadius ?? self.bottomSheetBorderRadius)
           : null,
       border: borderProvided ? (border ?? self.border) : null,
-      bottomSheetBorder: bottomSheetBorderProvided
-          ? (bottomSheetBorder ?? self.bottomSheetBorder)
-          : null,
+      bottomSheetBorder: bottomSheetBorderProvided ? (bottomSheetBorder ?? self.bottomSheetBorder) : null,
       padding: paddingProvided ? (padding ?? self.padding) : null,
-      closeButtonPadding: closeButtonPaddingProvided
-          ? (closeButtonPadding ?? self.closeButtonPadding)
-          : null,
+      closeButtonPadding: closeButtonPaddingProvided ? (closeButtonPadding ?? self.closeButtonPadding) : null,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
-      titleTextStyle: titleTextStyleProvided
-          ? (titleTextStyle ?? self.titleTextStyle)
-          : null,
+      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
       closeButtonIconConfiguration: closeButtonIconConfigurationProvided
           ? (closeButtonIconConfiguration ?? self.closeButtonIconConfiguration)
           : null,

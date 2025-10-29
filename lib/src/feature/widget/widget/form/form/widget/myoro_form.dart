@@ -6,7 +6,7 @@ part '../_widget/_form.dart';
 
 /// Base form widget. Should always be used for any type of form content.
 class MyoroForm<T> extends StatelessWidget {
-  /// Internal constructor.
+  /// Default constructor.
   const MyoroForm({
     super.key,
     this.controller,

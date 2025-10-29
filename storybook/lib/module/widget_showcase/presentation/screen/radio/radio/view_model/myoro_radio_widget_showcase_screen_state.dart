@@ -3,15 +3,15 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// State of [MyoroRadioWidgetShowcaseScreenViewModel].
 final class MyoroRadioWidgetShowcaseScreenState extends ChangeNotifier {
-  /// [MyoroRadioConfiguration.label]
-  String _label = MyoroRadioConfiguration.labelDefaultValue;
+  /// [MyoroRadio.label]
+  String _label = MyoroRadio.labelDefaultValue;
   String get label => _label;
   set label(String label) {
     _label = label;
     notifyListeners();
   }
 
-  /// [MyoroRadioConfiguration.labelTextStyle]
+  /// [MyoroRadioStyle.labelTextStyle]
   TextStyle? _labelTextStyle;
   TextStyle? get labelTextStyle => _labelTextStyle;
   set labelTextStyle(TextStyle? labelTextStyle) {
@@ -19,7 +19,7 @@ final class MyoroRadioWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroRadioConfiguration.onChanged]
+  /// [MyoroRadio.onChanged]
   bool _onChangedEnabled = false;
   bool get onChangedEnabled => _onChangedEnabled;
   set onChangedEnabled(bool onChangedEnabled) {

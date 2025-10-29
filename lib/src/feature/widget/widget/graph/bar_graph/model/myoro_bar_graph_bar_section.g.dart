@@ -17,11 +17,7 @@ mixin _$MyoroBarGraphBarSectionMixin {
   MyoroBarGraphBarSection get self => this as MyoroBarGraphBarSection;
 
   MyoroBarGraphBarSection copyWith({double? fromY, double? toY, Color? color}) {
-    return MyoroBarGraphBarSection(
-      fromY: fromY ?? self.fromY,
-      toY: toY ?? self.toY,
-      color: color ?? self.color,
-    );
+    return MyoroBarGraphBarSection(fromY: fromY ?? self.fromY, toY: toY ?? self.toY, color: color ?? self.color);
   }
 
   @override

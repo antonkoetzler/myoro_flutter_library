@@ -13,27 +13,21 @@ final class ThemeModeWidgetShowcaseOption extends StatelessWidget {
   final String label;
 
   /// [MyoroSingleSelectionDropdownConfiguration.onChanged]
-  final MyoroSingleMenuOnChanged<ThemeMode> onChanged;
+  final void Function(ThemeMode?) onChanged;
 
   @override
   Widget build(_) {
     final themeModeController = KiwiContainer().resolve<ThemeModeController>();
 
     return MyoroSingleSelectionDropdown<ThemeMode>(
-      configuration: MyoroSingleSelectionDropdownConfiguration(
-        label: label,
-        onChanged: onChanged,
-        menuConfiguration: MyoroSingleMenuConfiguration(
-          request: ThemeMode.values.toSet,
-          selectedItem: themeModeController.themeMode,
-          itemBuilder: (themeMode) {
-            return MyoroMenuIconTextButtonItem(
-              textConfiguration: MyoroTextConfiguration(text: _formattedName(themeMode)),
-            );
-          },
-        ),
-        selectedItemBuilder: _formattedName,
-      ),
+      label: label,
+      onChanged: onChanged,
+      itemBuilder: (themeMode) {
+        return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: _formattedName(themeMode)));
+      },
+      items: ThemeMode.values.toSet(),
+      selectedItem: themeModeController.themeMode,
+      selectedItemBuilder: _formattedName,
     );
   }
 

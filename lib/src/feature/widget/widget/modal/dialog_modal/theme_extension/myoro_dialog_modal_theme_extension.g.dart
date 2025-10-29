@@ -13,10 +13,8 @@ part of 'myoro_dialog_modal_theme_extension.dart';
 /// ```dart
 /// class MyoroDialogModalThemeExtension with _$MyoroDialogModalThemeExtensionMixin {}
 /// ```
-mixin _$MyoroDialogModalThemeExtensionMixin
-    on ThemeExtension<MyoroDialogModalThemeExtension> {
-  MyoroDialogModalThemeExtension get self =>
-      this as MyoroDialogModalThemeExtension;
+mixin _$MyoroDialogModalThemeExtensionMixin on ThemeExtension<MyoroDialogModalThemeExtension> {
+  MyoroDialogModalThemeExtension get self => this as MyoroDialogModalThemeExtension;
 
   @override
   MyoroDialogModalThemeExtension copyWith({
@@ -48,37 +46,23 @@ mixin _$MyoroDialogModalThemeExtensionMixin
     bool footerButtonsSpacingProvided = true,
   }) {
     return MyoroDialogModalThemeExtension(
-      constraints: constraintsProvided
-          ? (constraints ?? self.constraints)
-          : null,
-      primaryColor: primaryColorProvided
-          ? (primaryColor ?? self.primaryColor)
-          : null,
-      borderRadius: borderRadiusProvided
-          ? (borderRadius ?? self.borderRadius)
-          : null,
+      constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
+      primaryColor: primaryColorProvided ? (primaryColor ?? self.primaryColor) : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
       bottomSheetBorderRadius: bottomSheetBorderRadiusProvided
           ? (bottomSheetBorderRadius ?? self.bottomSheetBorderRadius)
           : null,
       border: borderProvided ? (border ?? self.border) : null,
-      bottomSheetBorder: bottomSheetBorderProvided
-          ? (bottomSheetBorder ?? self.bottomSheetBorder)
-          : null,
+      bottomSheetBorder: bottomSheetBorderProvided ? (bottomSheetBorder ?? self.bottomSheetBorder) : null,
       padding: paddingProvided ? (padding ?? self.padding) : null,
-      closeButtonPadding: closeButtonPaddingProvided
-          ? (closeButtonPadding ?? self.closeButtonPadding)
-          : null,
+      closeButtonPadding: closeButtonPaddingProvided ? (closeButtonPadding ?? self.closeButtonPadding) : null,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
-      titleTextStyle: titleTextStyleProvided
-          ? (titleTextStyle ?? self.titleTextStyle)
-          : null,
+      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
       closeButtonIconConfiguration: closeButtonIconConfigurationProvided
           ? (closeButtonIconConfiguration ?? self.closeButtonIconConfiguration)
           : null,
       textStyle: textStyleProvided ? (textStyle ?? self.textStyle) : null,
-      footerButtonsSpacing: footerButtonsSpacingProvided
-          ? (footerButtonsSpacing ?? self.footerButtonsSpacing)
-          : null,
+      footerButtonsSpacing: footerButtonsSpacingProvided ? (footerButtonsSpacing ?? self.footerButtonsSpacing) : null,
     );
   }
 
@@ -96,8 +80,7 @@ mixin _$MyoroDialogModalThemeExtensionMixin
         other.closeButtonPadding == self.closeButtonPadding &&
         other.spacing == self.spacing &&
         other.titleTextStyle == self.titleTextStyle &&
-        other.closeButtonIconConfiguration ==
-            self.closeButtonIconConfiguration &&
+        other.closeButtonIconConfiguration == self.closeButtonIconConfiguration &&
         other.textStyle == self.textStyle &&
         other.footerButtonsSpacing == self.footerButtonsSpacing;
   }

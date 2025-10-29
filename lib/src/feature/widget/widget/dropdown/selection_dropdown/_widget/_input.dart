@@ -9,6 +9,7 @@ class _Input<T> extends StatelessWidget {
     final viewModel = context.read<MyoroSelectionDropdownViewModel<T>>();
     final state = viewModel.state;
     final inputKey = state.inputKey;
-    return MyoroInput(inputKey: inputKey, inputController: state.inputController);
+    final enabled = state.enabled;
+    return MyoroInput(inputKey: inputKey, inputController: state.inputController, enabled: enabled);
   }
 }

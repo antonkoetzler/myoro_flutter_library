@@ -16,9 +16,10 @@ final class _WidgetOptionsModal extends StatelessWidget {
     final screenWidth = screenSize.width;
     final screenHeight = screenSize.height;
 
-    await MyoroModal.showModal(
+    await MyoroModal.show(
       navigatorContext,
-      configuration: MyoroModalConfiguration(title: 'Options of $widgetName', useRootNavigator: false),
+      title: 'Options of $widgetName',
+      useRootNavigator: false,
       style: modalThemeExtension.copyWith(
         padding: EdgeInsets.zero,
         constraints: BoxConstraints(maxHeight: screenHeight * 0.9, maxWidth: screenWidth * 0.75),

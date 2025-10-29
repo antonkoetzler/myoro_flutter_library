@@ -9,6 +9,7 @@ part 'myoro_menu_style.g.dart';
 @immutable
 @myoroModel
 class MyoroMenuStyle with _$MyoroMenuStyleMixin {
+  /// Lerp function.
   static MyoroMenuStyle lerp(MyoroMenuStyle? a, MyoroMenuStyle? b, double t) {
     return MyoroMenuStyle(
       constraints: BoxConstraints.lerp(a?.constraints, b?.constraints, t),
@@ -24,6 +25,7 @@ class MyoroMenuStyle with _$MyoroMenuStyleMixin {
     );
   }
 
+  /// Default constructor.
   const MyoroMenuStyle({
     this.constraints,
     this.backgroundColor,
@@ -37,18 +39,19 @@ class MyoroMenuStyle with _$MyoroMenuStyleMixin {
     this.selectedItemColor,
   });
 
+  /// Fake constructor.
   factory MyoroMenuStyle.fake() {
     return MyoroMenuStyle(
-      constraints: faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
-      border: faker.randomGenerator.boolean() ? myoroFake<BoxBorder>() : null,
-      backgroundColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      borderRadius: faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      searchBarPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      constraints: myoroNullableFake<BoxConstraints>(),
+      border: myoroNullableFake<BoxBorder>(),
+      backgroundColor: myoroNullableFake<Color>(),
+      borderRadius: myoroNullableFake<BorderRadius>(),
+      searchBarPadding: myoroNullableFake<EdgeInsets>(),
       searchBarInputStyle: faker.randomGenerator.boolean() ? MyoroInputStyleEnum.fake() : null,
-      itemBorderRadius: faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      dialogTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      dialogTextLoaderPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      selectedItemColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      itemBorderRadius: myoroNullableFake<BorderRadius>(),
+      dialogTextStyle: myoroNullableFake<TextStyle>(),
+      dialogTextLoaderPadding: myoroNullableFake<EdgeInsets>(),
+      selectedItemColor: myoroNullableFake<Color>(),
     );
   }
 

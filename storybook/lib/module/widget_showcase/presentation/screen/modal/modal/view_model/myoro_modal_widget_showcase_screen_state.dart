@@ -7,7 +7,7 @@ final class MyoroModalWidgetShowcaseScreenState extends ChangeNotifier {
   final _navigatorKey = GlobalKey<NavigatorState>();
   GlobalKey<NavigatorState> get navigatorKey => _navigatorKey;
 
-  /// [MyoroModalConfiguration.isBottomSheet]
+  /// [MyoroModal.isBottomSheet]
   bool _isBottomSheet = false;
   bool get isBottomSheet => _isBottomSheet;
   set isBottomSheet(bool isBottomSheet) {
@@ -15,23 +15,23 @@ final class MyoroModalWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroModalConfiguration.barrierDismissable]
-  bool _barrierDismissable = MyoroModalConfiguration.barrierDismissableDefaultValue;
+  /// [MyoroModal.barrierDismissable]
+  bool _barrierDismissable = MyoroModal.barrierDismissableDefaultValue;
   bool get barrierDismissable => _barrierDismissable;
   set barrierDismissable(bool barrierDismissable) {
     _barrierDismissable = barrierDismissable;
     notifyListeners();
   }
 
-  /// [MyoroModalConfiguration.useRootNavigator]
-  bool _useRootNavigator = MyoroModalConfiguration.useRootNavigatorDefaultValue;
+  /// [MyoroModal.useRootNavigator]
+  bool _useRootNavigator = MyoroModal.useRootNavigatorDefaultValue;
   bool get useRootNavigator => _useRootNavigator;
   set useRootNavigator(bool useRootNavigator) {
     _useRootNavigator = useRootNavigator;
     notifyListeners();
   }
 
-  /// [MyoroModalConfiguration.constraints]
+  /// [MyoroModal.constraints]
   BoxConstraints? _constraints;
   BoxConstraints? get constraints => _constraints;
   set constraints(BoxConstraints? constraints) {
@@ -39,7 +39,7 @@ final class MyoroModalWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroModalConfiguration.onClosed]
+  /// [MyoroModal.onClosed]
   bool _onClosedEnabled = false;
   bool get onClosedEnabled => _onClosedEnabled;
   set onClosedEnabled(bool onClosedEnabled) {
@@ -47,23 +47,23 @@ final class MyoroModalWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroModalConfiguration.title]
-  String _title = MyoroModalConfiguration.titleDefaultValue;
+  /// [MyoroModal.title]
+  String _title = MyoroModal.titleDefaultValue;
   String get title => _title;
   set title(String title) {
     _title = title;
     notifyListeners();
   }
 
-  /// [MyoroModalConfiguration.showCloseButton]
-  bool _showCloseButton = MyoroModalConfiguration.showCloseButtonDefaultValue;
+  /// [MyoroModal.showCloseButton]
+  bool _showCloseButton = MyoroModal.showCloseButtonDefaultValue;
   bool get showCloseButton => _showCloseButton;
   set showCloseButton(bool showCloseButton) {
     _showCloseButton = showCloseButton;
     notifyListeners();
   }
 
-  /// [MyoroModalConfiguration.padding]
+  /// [MyoroModal.padding]
   EdgeInsets? _padding;
   EdgeInsets? get padding => _padding;
   set padding(EdgeInsets? padding) {
@@ -71,7 +71,7 @@ final class MyoroModalWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroModalConfiguration.closeButtonPadding]
+  /// [MyoroModal.closeButtonPadding]
   EdgeInsets? _closeButtonPadding;
   EdgeInsets? get closeButtonPadding => _closeButtonPadding;
   set closeButtonPadding(EdgeInsets? closeButtonPadding) {

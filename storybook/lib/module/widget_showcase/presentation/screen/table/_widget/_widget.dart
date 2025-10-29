@@ -7,6 +7,19 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroTableWidgetShowcaseScreenViewModel>();
-    return MyoroTable<String>(configuration: viewModel.buildConfiguration(context));
+    final request = List.generate(faker.randomGenerator.integer(50), (int index) => 'Item #$index').toSet;
+    final columns =
+        MyoroTableColumnWidthConfigurationEnum.values.map((value) {
+          return MyoroTableColumn(
+            widthConfiguration: MyoroTableColumnWidthConfiguration(typeEnum: value),
+            child: Text('${value.name.capitalized} Column'),
+          );
+        }).toList();
+
+    return MyoroTable<String>(
+      request: request,
+      columns: columns,
+      rowBuilder: (item) => viewModel.rowBuilder(context, item),
+    );
   }
 }

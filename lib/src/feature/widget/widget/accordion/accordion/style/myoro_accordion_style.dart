@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart' hide Color;
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -10,6 +11,7 @@ part 'myoro_accordion_style.g.dart';
 @immutable
 @myoroModel
 class MyoroAccordionStyle with _$MyoroAccordionStyleMixin {
+  /// Lerp function.
   static MyoroAccordionStyle lerp(MyoroAccordionStyle? a, MyoroAccordionStyle? b, double t) {
     return MyoroAccordionStyle(
       itemContentBackgroundColor: Color.lerp(a?.itemContentBackgroundColor, b?.itemContentBackgroundColor, t),
@@ -46,6 +48,7 @@ class MyoroAccordionStyle with _$MyoroAccordionStyleMixin {
     );
   }
 
+  /// Default constructor.
   const MyoroAccordionStyle({
     this.itemContentBackgroundColor,
     this.itemContentAnimationDuration,
@@ -59,6 +62,23 @@ class MyoroAccordionStyle with _$MyoroAccordionStyleMixin {
     this.itemTitleButtonArrowAnimationDuration,
     this.itemTitleButtonArrowAnimationCurve,
   });
+
+  /// Fake constructor.
+  factory MyoroAccordionStyle.fake() {
+    return MyoroAccordionStyle(
+      itemContentBackgroundColor: myoroNullableFake<Color>(),
+      itemContentAnimationDuration: myoroNullableFake<Duration>(),
+      itemContentAnimationCurve: myoroNullableFake<Curve>(),
+      itemTitleButtonContentPadding: myoroNullableFake<EdgeInsets>(),
+      itemTitleButtonSpacing: myoroNullableFake<double>(),
+      itemTitleButtonTitleTextStyle: myoroNullableFake<TextStyle>(),
+      itemTitleButtonArrowIcon: myoroNullableFake<IconData>(),
+      itemTitleButtonArrowIconColor: myoroNullableFake<Color>(),
+      itemTitleButtonArrowIconSize: myoroNullableFake<double>(),
+      itemTitleButtonArrowAnimationDuration: myoroNullableFake<Duration>(),
+      itemTitleButtonArrowAnimationCurve: myoroNullableFake<Curve>(),
+    );
+  }
 
   /// Backgorund [Color] of an item.
   final Color? itemContentBackgroundColor;

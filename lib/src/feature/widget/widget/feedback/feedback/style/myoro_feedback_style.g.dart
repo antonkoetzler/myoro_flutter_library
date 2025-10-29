@@ -29,12 +29,8 @@ mixin _$MyoroFeedbackStyleMixin {
     return MyoroFeedbackStyle(
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
       iconSize: iconSizeProvided ? (iconSize ?? self.iconSize) : null,
-      titleTextStyle: titleTextStyleProvided
-          ? (titleTextStyle ?? self.titleTextStyle)
-          : null,
-      subtitleTextStyle: subtitleTextStyleProvided
-          ? (subtitleTextStyle ?? self.subtitleTextStyle)
-          : null,
+      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
+      subtitleTextStyle: subtitleTextStyleProvided ? (subtitleTextStyle ?? self.subtitleTextStyle) : null,
     );
   }
 
@@ -50,12 +46,7 @@ mixin _$MyoroFeedbackStyleMixin {
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.spacing,
-      self.iconSize,
-      self.titleTextStyle,
-      self.subtitleTextStyle,
-    );
+    return Object.hash(self.spacing, self.iconSize, self.titleTextStyle, self.subtitleTextStyle);
   }
 
   @override

@@ -6,10 +6,6 @@ final class _ListScrollableSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroScrollablesWidgetShowcaseScreenViewModel>();
-    final listConfiguration = viewModel.listConfiguration;
-    final style = viewModel.style;
-
     final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
     final spacing = widgetShowcaseThemeExtension.spacing;
     final labelTextStyle = widgetShowcaseThemeExtension.labelTextStyle;
@@ -26,8 +22,6 @@ final class _ListScrollableSection extends StatelessWidget {
         ConstrainedBox(
           constraints: scrollableConstraints,
           child: MyoroListScrollable(
-            configuration: listConfiguration,
-            style: style,
             children: List.generate(
               20,
               (index) => Padding(padding: EdgeInsets.only(bottom: spacing), child: _Button('List Item $index')),

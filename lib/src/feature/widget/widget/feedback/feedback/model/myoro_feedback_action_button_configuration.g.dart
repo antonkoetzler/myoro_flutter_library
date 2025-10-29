@@ -14,8 +14,7 @@ part of 'myoro_feedback_action_button_configuration.dart';
 /// class MyoroFeedbackActionButtonConfiguration with _$MyoroFeedbackActionButtonConfigurationMixin {}
 /// ```
 mixin _$MyoroFeedbackActionButtonConfigurationMixin {
-  MyoroFeedbackActionButtonConfiguration get self =>
-      this as MyoroFeedbackActionButtonConfiguration;
+  MyoroFeedbackActionButtonConfiguration get self => this as MyoroFeedbackActionButtonConfiguration;
 
   MyoroFeedbackActionButtonConfiguration copyWith({
     MyoroIconTextButtonStyle? style,
@@ -41,12 +40,8 @@ mixin _$MyoroFeedbackActionButtonConfigurationMixin {
       onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,
       isLoading: isLoading ?? self.isLoading,
       invert: invert ?? self.invert,
-      iconConfiguration: iconConfigurationProvided
-          ? (iconConfiguration ?? self.iconConfiguration)
-          : null,
-      textConfiguration: textConfigurationProvided
-          ? (textConfiguration ?? self.textConfiguration)
-          : null,
+      iconConfiguration: iconConfigurationProvided ? (iconConfiguration ?? self.iconConfiguration) : null,
+      textConfiguration: textConfigurationProvided ? (textConfiguration ?? self.textConfiguration) : null,
     );
   }
 

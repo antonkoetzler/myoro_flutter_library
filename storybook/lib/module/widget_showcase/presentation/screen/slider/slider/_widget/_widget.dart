@@ -20,8 +20,20 @@ final class _Widget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           spacing: spacing,
           children: [
-            MyoroSlider(configuration: viewModel.sliderConfiguration, style: viewModel.buildStyle(context)),
-            MyoroRangeSlider(configuration: viewModel.rangeSliderConfiguration, style: viewModel.buildStyle(context)),
+            MyoroSlider(
+              label: state.label,
+              min: state.min,
+              max: state.max,
+              value: state.sliderValue,
+              onChanged: (value) => state.sliderValue = value,
+            ),
+            MyoroRangeSlider(
+              label: state.label,
+              min: state.min,
+              max: state.max,
+              values: state.rangeSliderValues,
+              onChanged: (values) => state.rangeSliderValues = values,
+            ),
           ],
         );
       },

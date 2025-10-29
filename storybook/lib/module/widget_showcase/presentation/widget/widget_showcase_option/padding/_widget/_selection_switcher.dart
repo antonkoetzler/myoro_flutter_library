@@ -15,18 +15,14 @@ final class _SelectionSwitcher extends StatelessWidget {
     }
 
     return MyoroSingleSelectionDropdown<PaddingWidgetShowcaseOptionEnum>(
-      configuration: MyoroSingleSelectionDropdownConfiguration(
-        label: 'Selection type',
-        onChanged: (value) => state.modeEnum = value!,
-        selectedItemBuilder: formattedName,
-        menuConfiguration: MyoroSingleMenuConfiguration(
-          request: PaddingWidgetShowcaseOptionEnum.values.toSet,
-          selectedItem: modeEnum,
-          itemBuilder: (value) {
-            return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: formattedName(value)));
-          },
-        ),
-      ),
+      label: 'Selection type',
+      onChanged: (value) => state.modeEnum = value!,
+      selectedItemBuilder: formattedName,
+      itemBuilder: (value) {
+        return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: formattedName(value)));
+      },
+      items: PaddingWidgetShowcaseOptionEnum.values.toSet(),
+      selectedItem: modeEnum,
     );
   }
 }

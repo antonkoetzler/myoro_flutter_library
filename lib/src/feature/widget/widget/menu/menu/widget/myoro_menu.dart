@@ -50,7 +50,7 @@ final class MyoroMenu<T> extends StatelessWidget {
           dispose: (_, v) => v.dispose(),
         ),
       ],
-      child: const _Base(),
+      child: _Base<T>(),
     );
   }
 }

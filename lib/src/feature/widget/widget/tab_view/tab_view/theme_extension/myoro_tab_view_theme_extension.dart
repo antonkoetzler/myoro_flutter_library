@@ -11,12 +11,14 @@ part 'myoro_tab_view_theme_extension.g.dart';
 class MyoroTabViewThemeExtension extends ThemeExtension<MyoroTabViewThemeExtension>
     with _$MyoroTabViewThemeExtensionMixin
     implements MyoroTabViewStyle {
+    /// Default constructor.
   const MyoroTabViewThemeExtension({this.tabButtonBorderRadius, this.tabButtonIconSize, this.tabButtonTextStyle});
 
+  /// Fake constructor.
   MyoroTabViewThemeExtension.fake()
-    : tabButtonBorderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      tabButtonIconSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
-      tabButtonTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null;
+    : tabButtonBorderRadius = myoroNullableFake<BorderRadius>(),
+      tabButtonIconSize = myoroNullableFake<double>(),
+      tabButtonTextStyle = myoroNullableFake<TextStyle>();
 
   MyoroTabViewThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : tabButtonBorderRadius = BorderRadius.zero,

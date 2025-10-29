@@ -16,30 +16,22 @@ final class _Widget extends StatelessWidget {
       children: [
         Flexible(
           child: MyoroSingleSelectionDropdown(
-            configuration: MyoroSingleSelectionDropdownConfiguration(
-              dropdownType: viewModel.state.singleDropdownType,
-              menuConfiguration: MyoroSingleMenuConfiguration(
-                request: () => {'Start'},
-                itemBuilder: (item) {
-                  return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: item));
-                },
-              ),
-              selectedItemBuilder: (item) => item,
-            ),
+            dropdownType: viewModel.state.singleDropdownType,
+            items: List.generate(faker.randomGenerator.integer(10), (i) => 'Item #$i').toSet(),
+            itemBuilder: (item) {
+              return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: item));
+            },
+            selectedItemBuilder: (item) => item,
           ),
         ),
         Flexible(
           child: MyoroMultiSelectionDropdown(
-            configuration: MyoroMultiSelectionDropdownConfiguration(
-              dropdownType: viewModel.state.multiDropdownType,
-              menuConfiguration: MyoroMultiMenuConfiguration(
-                request: () => {'Start'},
-                itemBuilder: (item) {
-                  return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: item));
-                },
-              ),
-              selectedItemBuilder: (item) => item,
-            ),
+            dropdownType: viewModel.state.multiDropdownType,
+            items: List.generate(faker.randomGenerator.integer(10), (i) => 'Item #$i').toSet(),
+            itemBuilder: (item) {
+              return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: item));
+            },
+            selectedItemBuilder: (item) => item,
           ),
         ),
       ],

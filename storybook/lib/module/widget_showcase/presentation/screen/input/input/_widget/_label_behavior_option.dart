@@ -15,26 +15,22 @@ final class _LabelBehaviorOption extends StatelessWidget {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
 
     return MyoroSingleSelectionDropdown<FloatingLabelBehavior>(
-      configuration: MyoroSingleSelectionDropdownConfiguration(
-        label: 'Label behavior',
-        selectedItemBuilder:
-            (behavior) =>
-                _behaviors.entries
-                    .firstWhere(
-                      (entry) => entry.value == behavior,
-                      orElse: () => const MapEntry('custom', FloatingLabelBehavior.auto),
-                    )
-                    .key,
-        onChanged: (behavior) => viewModel.state.labelBehavior = behavior,
-        menuConfiguration: MyoroSingleMenuConfiguration(
-          request: () => _behaviors.values.toSet(),
-          selectedItem: viewModel.state.labelBehavior,
-          itemBuilder: (behavior) {
-            final name = _behaviors.entries.firstWhere((entry) => entry.value == behavior).key;
-            return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: name));
-          },
-        ),
-      ),
+      label: 'Label behavior',
+      selectedItemBuilder:
+          (behavior) =>
+              _behaviors.entries
+                  .firstWhere(
+                    (entry) => entry.value == behavior,
+                    orElse: () => const MapEntry('custom', FloatingLabelBehavior.auto),
+                  )
+                  .key,
+      onChanged: (behavior) => viewModel.state.labelBehavior = behavior,
+      items: _behaviors.values.toSet(),
+      selectedItem: viewModel.state.labelBehavior,
+      itemBuilder: (behavior) {
+        final name = _behaviors.entries.firstWhere((entry) => entry.value == behavior).key;
+        return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: name));
+      },
     );
   }
 }

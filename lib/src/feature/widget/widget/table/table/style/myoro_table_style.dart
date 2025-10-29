@@ -11,6 +11,7 @@ part 'myoro_table_style.g.dart';
 @immutable
 @myoroModel
 class MyoroTableStyle with _$MyoroTableStyleMixin {
+  /// Lerp function.
   static MyoroTableStyle lerp(MyoroTableStyle? a, MyoroTableStyle? b, double t) {
     return MyoroTableStyle(
       backgroundColor: Color.lerp(a?.backgroundColor, b?.backgroundColor, t),
@@ -27,6 +28,7 @@ class MyoroTableStyle with _$MyoroTableStyleMixin {
     );
   }
 
+  /// Default constructor.
   const MyoroTableStyle({
     this.backgroundColor,
     this.columnTextStyle,
@@ -37,15 +39,16 @@ class MyoroTableStyle with _$MyoroTableStyleMixin {
     this.errorMessageTextStyle,
   });
 
+  /// Fake constructor.
   factory MyoroTableStyle.fake() {
     return MyoroTableStyle(
-      backgroundColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      columnTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      columnSpacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
-      rowTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      loaderEmptyMessageErrorMessagePadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      emptyMessageTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      errorMessageTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      backgroundColor: myoroNullableFake<Color>(),
+      columnTextStyle: myoroNullableFake<TextStyle>(),
+      columnSpacing: myoroNullableFake<double>(),
+      rowTextStyle: myoroNullableFake<TextStyle>(),
+      loaderEmptyMessageErrorMessagePadding: myoroNullableFake<EdgeInsets>(),
+      emptyMessageTextStyle: myoroNullableFake<TextStyle>(),
+      errorMessageTextStyle: myoroNullableFake<TextStyle>(),
     );
   }
 

@@ -11,6 +11,7 @@ part 'myoro_currency_input_theme_extension.g.dart';
 class MyoroCurrencyInputThemeExtension extends ThemeExtension<MyoroCurrencyInputThemeExtension>
     with _$MyoroCurrencyInputThemeExtensionMixin
     implements MyoroCurrencyInputStyle {
+    /// Default constructor.
   const MyoroCurrencyInputThemeExtension({
     this.border,
     this.underlinedBorder,
@@ -38,31 +39,32 @@ class MyoroCurrencyInputThemeExtension extends ThemeExtension<MyoroCurrencyInput
     this.currencyPrefixPadding,
   });
 
+  /// Fake constructor.
   MyoroCurrencyInputThemeExtension.fake()
-    : border = faker.randomGenerator.boolean() ? myoroFake<InputBorder>() : null,
-      underlinedBorder = faker.randomGenerator.boolean() ? myoroFake<UnderlineInputBorder>() : null,
-      outlinedBorder = faker.randomGenerator.boolean() ? myoroFake<OutlineInputBorder>() : null,
-      noneBorder = faker.randomGenerator.boolean() ? myoroFake<InputBorder>() : null,
-      primaryColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      errorBorderColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      cursorHeight = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      contentPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      disabledOpacity = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      inputTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      labelTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      labelBehavior = faker.randomGenerator.boolean() ? myoroFake<FloatingLabelBehavior>() : null,
-      suffixButtonMargin = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+    : border = myoroNullableFake<InputBorder>(),
+      underlinedBorder = myoroNullableFake<UnderlineInputBorder>(),
+      outlinedBorder = myoroNullableFake<OutlineInputBorder>(),
+      noneBorder = myoroNullableFake<InputBorder>(),
+      primaryColor = myoroNullableFake<Color>(),
+      errorBorderColor = myoroNullableFake<Color>(),
+      cursorHeight = myoroNullableFake<double>(),
+      contentPadding = myoroNullableFake<EdgeInsets>(),
+      disabledOpacity = myoroNullableFake<double>(),
+      inputTextStyle = myoroNullableFake<TextStyle>(),
+      spacing = myoroNullableFake<double>(),
+      labelTextStyle = myoroNullableFake<TextStyle>(),
+      labelBehavior = myoroNullableFake<FloatingLabelBehavior>(),
+      suffixButtonMargin = myoroNullableFake<EdgeInsets>(),
       suffixButtonIconSize = faker.randomGenerator.boolean()
           ? faker.randomGenerator.decimal(scale: 200, min: 20)
           : null,
-      clearTextButtonIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
-      obscureTextButtonEnabledIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
-      obscureTextButtonDisabledIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
-      suffixIconConstraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
-      prefixIconConstraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
-      suffixButtonStyle = faker.randomGenerator.boolean() ? myoroFake<MyoroIconTextButtonStyle>() : null,
-      currencySymbolTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      clearTextButtonIcon = myoroNullableFake<IconData>(),
+      obscureTextButtonEnabledIcon = myoroNullableFake<IconData>(),
+      obscureTextButtonDisabledIcon = myoroNullableFake<IconData>(),
+      suffixIconConstraints = myoroNullableFake<BoxConstraints>(),
+      prefixIconConstraints = myoroNullableFake<BoxConstraints>(),
+      suffixButtonStyle = myoroNullableFake<MyoroIconTextButtonStyle>(),
+      currencySymbolTextStyle = myoroNullableFake<TextStyle>(),
       currencySymbolButtonStyle = MyoroIconTextButtonStyle.fake(),
       currencyPrefixPadding = myoroFake<EdgeInsets>();
 

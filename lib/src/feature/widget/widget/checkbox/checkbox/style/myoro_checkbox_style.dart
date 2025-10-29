@@ -11,6 +11,7 @@ part 'myoro_checkbox_style.g.dart';
 @immutable
 @myoroModel
 class MyoroCheckboxStyle with _$MyoroCheckboxStyleMixin {
+  /// Lerp function.
   static MyoroCheckboxStyle lerp(MyoroCheckboxStyle? a, MyoroCheckboxStyle? b, double t) {
     return MyoroCheckboxStyle(
       checkboxActiveColor: Color.lerp(a?.checkboxActiveColor, b?.checkboxActiveColor, t),
@@ -24,6 +25,7 @@ class MyoroCheckboxStyle with _$MyoroCheckboxStyleMixin {
     );
   }
 
+  /// Default constructor.
   const MyoroCheckboxStyle({
     this.checkboxActiveColor,
     this.checkboxCheckColor,
@@ -35,15 +37,16 @@ class MyoroCheckboxStyle with _$MyoroCheckboxStyleMixin {
     this.spacing,
   });
 
+  /// Fake constructor.
   MyoroCheckboxStyle.fake()
-    : checkboxActiveColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      checkboxCheckColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      checkboxHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      checkboxFocusColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      checkboxSplashRadius = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
-      labelTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      labelMaxLines = faker.randomGenerator.boolean() ? faker.randomGenerator.integer(10) : null,
-      spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null;
+    : checkboxActiveColor = myoroNullableFake<Color>(),
+      checkboxCheckColor = myoroNullableFake<Color>(),
+      checkboxHoverColor = myoroNullableFake<Color>(),
+      checkboxFocusColor = myoroNullableFake<Color>(),
+      checkboxSplashRadius = myoroNullableFake<double>(),
+      labelTextStyle = myoroNullableFake<TextStyle>(),
+      labelMaxLines = myoroNullableFake<int>(),
+      spacing = myoroNullableFake<double>();
 
   /// Background color of the checkbox when selected.
   final Color? checkboxActiveColor;

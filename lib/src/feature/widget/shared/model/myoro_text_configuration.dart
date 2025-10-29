@@ -13,6 +13,7 @@ class MyoroTextConfiguration with _$MyoroTextConfigurationMixin {
   static const overflowDefaultValue = TextOverflow.ellipsis;
   static const alignmentDefaultValue = TextAlign.center;
 
+  /// Lerp function.
   static MyoroTextConfiguration? lerp(MyoroTextConfiguration? primary, MyoroTextConfiguration? other, double t) {
     final text = myoroFallbackLerp(primary?.text, other?.text, t);
     final maxLines = IntTween(begin: primary?.maxLines, end: other?.maxLines).lerp(t);
@@ -31,6 +32,7 @@ class MyoroTextConfiguration with _$MyoroTextConfigurationMixin {
         : null;
   }
 
+  /// Default constructor.
   const MyoroTextConfiguration({
     required this.text,
     this.maxLines = maxLinesDefaultValue,
@@ -44,7 +46,7 @@ class MyoroTextConfiguration with _$MyoroTextConfigurationMixin {
       maxLines = faker.randomGenerator.integer(10, min: 1),
       overflow = myoroFake<TextOverflow>(),
       alignment = myoroFake<TextAlign>(),
-      style = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null;
+      style = myoroNullableFake<TextStyle>();
 
   /// [Text.data]
   final String text;

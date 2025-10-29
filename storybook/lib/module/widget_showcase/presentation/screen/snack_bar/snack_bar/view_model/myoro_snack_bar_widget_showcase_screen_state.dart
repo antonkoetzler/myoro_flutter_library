@@ -4,7 +4,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// State of [MyoroSnackBarWidgetShowcaseScreen].
 final class MyoroSnackBarWidgetShowcaseScreenState extends ChangeNotifier {
   /// [MyoroSnackBarConfiguration.snackBarType]
-  MyoroSnackBarTypeEnum _snackBarType = MyoroSnackBarConfiguration.snackBarTypeDefaultValue;
+  MyoroSnackBarTypeEnum _snackBarType = MyoroSnackBarTypeEnum.success;
   MyoroSnackBarTypeEnum get snackBarType => _snackBarType;
   set snackBarType(MyoroSnackBarTypeEnum snackBarType) {
     _snackBarType = snackBarType;
@@ -12,7 +12,7 @@ final class MyoroSnackBarWidgetShowcaseScreenState extends ChangeNotifier {
   }
 
   /// [MyoroSnackBarConfiguration.showCloseButton]
-  bool _showCloseButton = MyoroSnackBarConfiguration.showCloseButtonDefaultValue;
+  bool _showCloseButton = true;
   bool get showCloseButton => _showCloseButton;
   set showCloseButton(bool showCloseButton) {
     _showCloseButton = showCloseButton;
@@ -20,7 +20,7 @@ final class MyoroSnackBarWidgetShowcaseScreenState extends ChangeNotifier {
   }
 
   /// [MyoroSnackBarConfiguration.message]
-  String _message = MyoroSnackBarConfiguration.messageDefaultValue;
+  String _message = 'Snack bar message';
   String get message => _message;
   set message(String message) {
     _message = message;

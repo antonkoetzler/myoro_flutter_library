@@ -7,6 +7,11 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroGroupRadioWidgetShowcaseScreenViewModel>();
-    return MyoroGroupRadio(configuration: viewModel.buildConfiguration(context));
+    final state = viewModel.state;
+    return MyoroGroupRadio(
+      direction: state.direction,
+      onChanged: state.onChangedEnabled ? (key, radios) => viewModel.onChanged(context, key, radios) : null,
+      radios: viewModel.radios,
+    );
   }
 }

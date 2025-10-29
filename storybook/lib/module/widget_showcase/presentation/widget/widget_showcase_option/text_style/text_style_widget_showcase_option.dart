@@ -19,27 +19,23 @@ final class TextStyleWidgetShowcaseOption extends StatelessWidget {
   final TextStyle? selectedItem;
 
   /// [MyoroSingleSelectionDropdownConfiguration.onChanged]
-  final MyoroSingleMenuOnChanged<TextStyle> onChanged;
+  final void Function(TextStyle?) onChanged;
 
   @override
   Widget build(context) {
     final typography = MyoroTypography(context.isDarkMode);
 
     return MyoroSingleSelectionDropdown<TextStyle>(
-      configuration: MyoroSingleSelectionDropdownConfiguration(
-        label: label,
-        onChanged: onChanged,
-        selectedItemBuilder: typography.getTextStyleName,
-        menuConfiguration: MyoroSingleMenuConfiguration(
-          request: typography.allTextStyles.toSet,
-          selectedItem: selectedItem,
-          itemBuilder: (value) {
-            return MyoroMenuIconTextButtonItem(
-              textConfiguration: MyoroTextConfiguration(text: typography.getTextStyleName(value)),
-            );
-          },
-        ),
-      ),
+      label: label,
+      onChanged: onChanged,
+      selectedItemBuilder: typography.getTextStyleName,
+      itemBuilder: (value) {
+        return MyoroMenuIconTextButtonItem(
+          textConfiguration: MyoroTextConfiguration(text: typography.getTextStyleName(value)),
+        );
+      },
+      items: typography.allTextStyles.toSet(),
+      selectedItem: selectedItem,
     );
   }
 }

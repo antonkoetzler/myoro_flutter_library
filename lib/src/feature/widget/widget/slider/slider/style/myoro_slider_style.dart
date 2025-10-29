@@ -9,6 +9,7 @@ part 'myoro_slider_style.g.dart';
 @immutable
 @myoroModel
 class MyoroSliderStyle with _$MyoroSliderStyleMixin {
+  /// Lerp function.
   static MyoroSliderStyle lerp(MyoroSliderStyle? a, MyoroSliderStyle? b, double t) {
     return MyoroSliderStyle(
       indicatorTextStyle: TextStyle.lerp(a?.indicatorTextStyle, b?.indicatorTextStyle, t),
@@ -16,12 +17,14 @@ class MyoroSliderStyle with _$MyoroSliderStyleMixin {
     );
   }
 
+  /// Default constructor.
   const MyoroSliderStyle({this.indicatorTextStyle, this.indicatorTextAlignment});
 
+  /// Fake constructor.
   factory MyoroSliderStyle.fake() {
     return MyoroSliderStyle(
-      indicatorTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      indicatorTextAlignment: faker.randomGenerator.boolean() ? myoroFake<TextAlign>() : null,
+      indicatorTextStyle: myoroNullableFake<TextStyle>(),
+      indicatorTextAlignment: myoroNullableFake<TextAlign>(),
     );
   }
 

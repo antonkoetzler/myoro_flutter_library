@@ -33,22 +33,12 @@ mixin _$MyoroTableStyleMixin {
     bool errorMessageTextStyleProvided = true,
   }) {
     return MyoroTableStyle(
-      backgroundColor: backgroundColorProvided
-          ? (backgroundColor ?? self.backgroundColor)
-          : null,
-      columnTextStyle: columnTextStyleProvided
-          ? (columnTextStyle ?? self.columnTextStyle)
-          : null,
-      columnSpacing: columnSpacingProvided
-          ? (columnSpacing ?? self.columnSpacing)
-          : null,
-      rowTextStyle: rowTextStyleProvided
-          ? (rowTextStyle ?? self.rowTextStyle)
-          : null,
-      loaderEmptyMessageErrorMessagePadding:
-          loaderEmptyMessageErrorMessagePaddingProvided
-          ? (loaderEmptyMessageErrorMessagePadding ??
-                self.loaderEmptyMessageErrorMessagePadding)
+      backgroundColor: backgroundColorProvided ? (backgroundColor ?? self.backgroundColor) : null,
+      columnTextStyle: columnTextStyleProvided ? (columnTextStyle ?? self.columnTextStyle) : null,
+      columnSpacing: columnSpacingProvided ? (columnSpacing ?? self.columnSpacing) : null,
+      rowTextStyle: rowTextStyleProvided ? (rowTextStyle ?? self.rowTextStyle) : null,
+      loaderEmptyMessageErrorMessagePadding: loaderEmptyMessageErrorMessagePaddingProvided
+          ? (loaderEmptyMessageErrorMessagePadding ?? self.loaderEmptyMessageErrorMessagePadding)
           : null,
       emptyMessageTextStyle: emptyMessageTextStyleProvided
           ? (emptyMessageTextStyle ?? self.emptyMessageTextStyle)
@@ -67,8 +57,7 @@ mixin _$MyoroTableStyleMixin {
         other.columnTextStyle == self.columnTextStyle &&
         other.columnSpacing == self.columnSpacing &&
         other.rowTextStyle == self.rowTextStyle &&
-        other.loaderEmptyMessageErrorMessagePadding ==
-            self.loaderEmptyMessageErrorMessagePadding &&
+        other.loaderEmptyMessageErrorMessagePadding == self.loaderEmptyMessageErrorMessagePadding &&
         other.emptyMessageTextStyle == self.emptyMessageTextStyle &&
         other.errorMessageTextStyle == self.errorMessageTextStyle;
   }

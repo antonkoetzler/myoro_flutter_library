@@ -18,26 +18,22 @@ final class _IndicatorTextAlignmentOption extends StatelessWidget {
     final viewModel = context.read<MyoroSlidersWidgetShowcaseScreenViewModel>();
 
     return MyoroSingleSelectionDropdown<TextAlign>(
-      configuration: MyoroSingleSelectionDropdownConfiguration(
-        label: 'Indicator text alignment',
-        selectedItemBuilder:
-            (alignment) =>
-                _alignments.entries
-                    .firstWhere(
-                      (entry) => entry.value == alignment,
-                      orElse: () => const MapEntry('custom', TextAlign.center),
-                    )
-                    .key,
-        onChanged: (alignment) => viewModel.state.indicatorTextAlignment = alignment,
-        menuConfiguration: MyoroSingleMenuConfiguration(
-          request: () => _alignments.values.toSet(),
-          selectedItem: viewModel.state.indicatorTextAlignment,
-          itemBuilder: (alignment) {
-            final name = _alignments.entries.firstWhere((entry) => entry.value == alignment).key;
-            return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: name));
-          },
-        ),
-      ),
+      label: 'Indicator text alignment',
+      selectedItemBuilder:
+          (alignment) =>
+              _alignments.entries
+                  .firstWhere(
+                    (entry) => entry.value == alignment,
+                    orElse: () => const MapEntry('custom', TextAlign.center),
+                  )
+                  .key,
+      onChanged: (alignment) => viewModel.state.indicatorTextAlignment = alignment,
+      itemBuilder: (alignment) {
+        final name = _alignments.entries.firstWhere((entry) => entry.value == alignment).key;
+        return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: name));
+      },
+      items: _alignments.values.toSet(),
+      selectedItem: viewModel.state.indicatorTextAlignment,
     );
   }
 }

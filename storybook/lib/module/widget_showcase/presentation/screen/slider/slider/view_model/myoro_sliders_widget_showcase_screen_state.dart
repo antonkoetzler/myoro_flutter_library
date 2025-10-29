@@ -12,10 +12,7 @@ final class MyoroSlidersWidgetShowcaseScreenState extends ChangeNotifier {
   }
 
   /// [MyoroRangeSliderConfiguration.value]
-  RangeValues _rangeSliderValues = const RangeValues(
-    MyoroSliderBaseConfiguration.minDefaultValue,
-    MyoroSliderBaseConfiguration.maxDefaultValue,
-  );
+  RangeValues _rangeSliderValues = const RangeValues(0.0, 100.0);
   RangeValues get rangeSliderValues => _rangeSliderValues;
   set rangeSliderValues(RangeValues rangeSliderValues) {
     if (_rangeSliderValues == rangeSliderValues) return;
@@ -24,7 +21,7 @@ final class MyoroSlidersWidgetShowcaseScreenState extends ChangeNotifier {
   }
 
   /// [MyoroSliderConfiguration.label]
-  String _label = MyoroSliderBaseConfiguration.labelDefaultValue;
+  String _label = 'Slider';
   String get label => _label;
   set label(String label) {
     if (_label == label) return;
@@ -33,7 +30,7 @@ final class MyoroSlidersWidgetShowcaseScreenState extends ChangeNotifier {
   }
 
   /// [MyoroSliderConfiguration.min]
-  double _min = MyoroSliderBaseConfiguration.minDefaultValue;
+  double _min = 0.0;
   double get min => _min;
   set min(double min) {
     if (_min == min) return;
@@ -42,7 +39,7 @@ final class MyoroSlidersWidgetShowcaseScreenState extends ChangeNotifier {
   }
 
   /// [MyoroSliderConfiguration.max]
-  double _max = MyoroSliderBaseConfiguration.maxDefaultValue;
+  double _max = 100.0;
   double get max => _max;
   set max(double max) {
     if (_max == max) return;

@@ -13,10 +13,8 @@ part of 'myoro_group_checkbox_theme_extension.dart';
 /// ```dart
 /// class MyoroGroupCheckboxThemeExtension with _$MyoroGroupCheckboxThemeExtensionMixin {}
 /// ```
-mixin _$MyoroGroupCheckboxThemeExtensionMixin
-    on ThemeExtension<MyoroGroupCheckboxThemeExtension> {
-  MyoroGroupCheckboxThemeExtension get self =>
-      this as MyoroGroupCheckboxThemeExtension;
+mixin _$MyoroGroupCheckboxThemeExtensionMixin on ThemeExtension<MyoroGroupCheckboxThemeExtension> {
+  MyoroGroupCheckboxThemeExtension get self => this as MyoroGroupCheckboxThemeExtension;
 
   @override
   MyoroGroupCheckboxThemeExtension copyWith({
@@ -40,27 +38,13 @@ mixin _$MyoroGroupCheckboxThemeExtensionMixin
     bool runSpacingProvided = true,
   }) {
     return MyoroGroupCheckboxThemeExtension(
-      checkboxActiveColor: checkboxActiveColorProvided
-          ? (checkboxActiveColor ?? self.checkboxActiveColor)
-          : null,
-      checkboxCheckColor: checkboxCheckColorProvided
-          ? (checkboxCheckColor ?? self.checkboxCheckColor)
-          : null,
-      checkboxHoverColor: checkboxHoverColorProvided
-          ? (checkboxHoverColor ?? self.checkboxHoverColor)
-          : null,
-      checkboxFocusColor: checkboxFocusColorProvided
-          ? (checkboxFocusColor ?? self.checkboxFocusColor)
-          : null,
-      checkboxSplashRadius: checkboxSplashRadiusProvided
-          ? (checkboxSplashRadius ?? self.checkboxSplashRadius)
-          : null,
-      labelTextStyle: labelTextStyleProvided
-          ? (labelTextStyle ?? self.labelTextStyle)
-          : null,
-      labelMaxLines: labelMaxLinesProvided
-          ? (labelMaxLines ?? self.labelMaxLines)
-          : null,
+      checkboxActiveColor: checkboxActiveColorProvided ? (checkboxActiveColor ?? self.checkboxActiveColor) : null,
+      checkboxCheckColor: checkboxCheckColorProvided ? (checkboxCheckColor ?? self.checkboxCheckColor) : null,
+      checkboxHoverColor: checkboxHoverColorProvided ? (checkboxHoverColor ?? self.checkboxHoverColor) : null,
+      checkboxFocusColor: checkboxFocusColorProvided ? (checkboxFocusColor ?? self.checkboxFocusColor) : null,
+      checkboxSplashRadius: checkboxSplashRadiusProvided ? (checkboxSplashRadius ?? self.checkboxSplashRadius) : null,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
+      labelMaxLines: labelMaxLinesProvided ? (labelMaxLines ?? self.labelMaxLines) : null,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
       runSpacing: runSpacingProvided ? (runSpacing ?? self.runSpacing) : null,
     );

@@ -4,6 +4,8 @@ part of 'myoro_selection_dropdown_view_model.dart';
 class MyoroMultiSelectionDropdownState<T> extends MyoroSelectionDropdownState<T> {
   /// Default constructor.
   MyoroMultiSelectionDropdownState(
+    super.label,
+    super.enabled,
     super.dropdownType,
     super.items,
     super.itemBuilder,

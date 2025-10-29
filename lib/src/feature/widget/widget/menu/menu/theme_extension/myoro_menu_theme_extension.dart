@@ -11,6 +11,7 @@ part 'myoro_menu_theme_extension.g.dart';
 class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
     with _$MyoroMenuThemeExtensionMixin
     implements MyoroMenuStyle {
+    /// Default constructor.
   const MyoroMenuThemeExtension({
     this.constraints,
     this.backgroundColor,
@@ -24,17 +25,18 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
     this.selectedItemColor,
   });
 
+  /// Fake constructor.
   MyoroMenuThemeExtension.fake()
-    : constraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
-      border = faker.randomGenerator.boolean() ? myoroFake<BoxBorder>() : null,
-      backgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      searchBarPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+    : constraints = myoroNullableFake<BoxConstraints>(),
+      border = myoroNullableFake<BoxBorder>(),
+      backgroundColor = myoroNullableFake<Color>(),
+      borderRadius = myoroNullableFake<BorderRadius>(),
+      searchBarPadding = myoroNullableFake<EdgeInsets>(),
       searchBarInputStyle = faker.randomGenerator.boolean() ? MyoroInputStyleEnum.fake() : null,
-      itemBorderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      dialogTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      dialogTextLoaderPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      selectedItemColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null;
+      itemBorderRadius = myoroNullableFake<BorderRadius>(),
+      dialogTextStyle = myoroNullableFake<TextStyle>(),
+      dialogTextLoaderPadding = myoroNullableFake<EdgeInsets>(),
+      selectedItemColor = myoroNullableFake<Color>();
 
   MyoroMenuThemeExtension.builder(
     bool isDarkMode,

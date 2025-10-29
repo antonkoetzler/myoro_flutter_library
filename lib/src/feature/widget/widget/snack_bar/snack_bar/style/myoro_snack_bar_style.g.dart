@@ -41,32 +41,16 @@ mixin _$MyoroSnackBarStyleMixin {
     bool closeButtonIconConfigurationProvided = true,
   }) {
     return MyoroSnackBarStyle(
-      primaryColor: primaryColorProvided
-          ? (primaryColor ?? self.primaryColor)
-          : null,
-      standardBorderColor: standardBorderColorProvided
-          ? (standardBorderColor ?? self.standardBorderColor)
-          : null,
-      attentionBorderColor: attentionBorderColorProvided
-          ? (attentionBorderColor ?? self.attentionBorderColor)
-          : null,
-      successBorderColor: successBorderColorProvided
-          ? (successBorderColor ?? self.successBorderColor)
-          : null,
-      errorBorderColor: errorBorderColorProvided
-          ? (errorBorderColor ?? self.errorBorderColor)
-          : null,
-      borderWidth: borderWidthProvided
-          ? (borderWidth ?? self.borderWidth)
-          : null,
-      borderRadius: borderRadiusProvided
-          ? (borderRadius ?? self.borderRadius)
-          : null,
+      primaryColor: primaryColorProvided ? (primaryColor ?? self.primaryColor) : null,
+      standardBorderColor: standardBorderColorProvided ? (standardBorderColor ?? self.standardBorderColor) : null,
+      attentionBorderColor: attentionBorderColorProvided ? (attentionBorderColor ?? self.attentionBorderColor) : null,
+      successBorderColor: successBorderColorProvided ? (successBorderColor ?? self.successBorderColor) : null,
+      errorBorderColor: errorBorderColorProvided ? (errorBorderColor ?? self.errorBorderColor) : null,
+      borderWidth: borderWidthProvided ? (borderWidth ?? self.borderWidth) : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
       padding: paddingProvided ? (padding ?? self.padding) : null,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
-      messageTextStyle: messageTextStyleProvided
-          ? (messageTextStyle ?? self.messageTextStyle)
-          : null,
+      messageTextStyle: messageTextStyleProvided ? (messageTextStyle ?? self.messageTextStyle) : null,
       closeButtonIconConfiguration: closeButtonIconConfigurationProvided
           ? (closeButtonIconConfiguration ?? self.closeButtonIconConfiguration)
           : null,

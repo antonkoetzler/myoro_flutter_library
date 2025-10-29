@@ -11,6 +11,7 @@ part 'myoro_snack_bar_style.g.dart';
 @immutable
 @myoroModel
 class MyoroSnackBarStyle with _$MyoroSnackBarStyleMixin {
+  /// Lerp function.
   static MyoroSnackBarStyle lerp(MyoroSnackBarStyle? a, MyoroSnackBarStyle? b, double t) {
     return MyoroSnackBarStyle(
       primaryColor: Color.lerp(a?.primaryColor, b?.primaryColor, t),
@@ -31,6 +32,7 @@ class MyoroSnackBarStyle with _$MyoroSnackBarStyleMixin {
     );
   }
 
+  /// Default constructor.
   const MyoroSnackBarStyle({
     this.primaryColor,
     this.standardBorderColor,
@@ -45,18 +47,19 @@ class MyoroSnackBarStyle with _$MyoroSnackBarStyleMixin {
     this.closeButtonIconConfiguration,
   });
 
+  /// Fake constructor.
   factory MyoroSnackBarStyle.fake() {
     return MyoroSnackBarStyle(
-      primaryColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      standardBorderColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      attentionBorderColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      successBorderColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      errorBorderColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      borderWidth: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      borderRadius: faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      padding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      messageTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      primaryColor: myoroNullableFake<Color>(),
+      standardBorderColor: myoroNullableFake<Color>(),
+      attentionBorderColor: myoroNullableFake<Color>(),
+      successBorderColor: myoroNullableFake<Color>(),
+      errorBorderColor: myoroNullableFake<Color>(),
+      borderWidth: myoroNullableFake<double>(),
+      borderRadius: myoroNullableFake<BorderRadius>(),
+      padding: myoroNullableFake<EdgeInsets>(),
+      spacing: myoroNullableFake<double>(),
+      messageTextStyle: myoroNullableFake<TextStyle>(),
       closeButtonIconConfiguration: faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null,
     );
   }

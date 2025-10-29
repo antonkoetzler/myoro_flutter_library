@@ -11,6 +11,7 @@ part 'myoro_card_theme_extension.g.dart';
 class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension>
     with _$MyoroCardThemeExtensionMixin
     implements MyoroCardStyle {
+    /// Default constructor.
   const MyoroCardThemeExtension({
     this.backgroundColor,
     this.border,
@@ -21,14 +22,15 @@ class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension>
     this.constraints,
   });
 
+  /// Fake constructor.
   MyoroCardThemeExtension.fake()
-    : backgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      border = faker.randomGenerator.boolean() ? myoroFake<Border>() : null,
-      borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      titleCardSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      titleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      constraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null;
+    : backgroundColor = myoroNullableFake<Color>(),
+      border = myoroNullableFake<Border>(),
+      borderRadius = myoroNullableFake<BorderRadius>(),
+      padding = myoroNullableFake<EdgeInsets>(),
+      titleCardSpacing = myoroNullableFake<double>(),
+      titleTextStyle = myoroNullableFake<TextStyle>(),
+      constraints = myoroNullableFake<BoxConstraints>();
 
   MyoroCardThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : backgroundColor = colorScheme.onPrimary.withValues(alpha: 0.1),

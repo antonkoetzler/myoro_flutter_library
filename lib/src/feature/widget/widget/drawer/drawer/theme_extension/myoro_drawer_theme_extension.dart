@@ -24,13 +24,13 @@ class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension
 
   /// Fake constructor.
   MyoroDrawerThemeExtension.fake()
-    : drawerPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      drawerContentPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      drawerShape = faker.randomGenerator.boolean() ? myoroFake<RoundedRectangleBorder>() : null,
-      titleContentDividerPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      titleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      closeButtonContentPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      closeButtonIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null;
+    : drawerPadding = myoroNullableFake<EdgeInsets>(),
+      drawerContentPadding = myoroNullableFake<EdgeInsets>(),
+      drawerShape = myoroNullableFake<RoundedRectangleBorder>(),
+      titleContentDividerPadding = myoroNullableFake<EdgeInsets>(),
+      titleTextStyle = myoroNullableFake<TextStyle>(),
+      closeButtonContentPadding = myoroNullableFake<EdgeInsets>(),
+      closeButtonIcon = myoroNullableFake<IconData>();
 
   /// Builder constructor.
   MyoroDrawerThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)

@@ -11,6 +11,7 @@ part 'myoro_group_checkbox_style.g.dart';
 @immutable
 @myoroModel
 class MyoroGroupCheckboxStyle extends MyoroCheckboxStyle with _$MyoroGroupCheckboxStyleMixin {
+  /// Lerp function.
   static MyoroGroupCheckboxStyle lerp(MyoroGroupCheckboxStyle? a, MyoroGroupCheckboxStyle? b, double t) {
     return MyoroGroupCheckboxStyle(
       checkboxActiveColor: Color.lerp(a?.checkboxActiveColor, b?.checkboxActiveColor, t),
@@ -25,6 +26,7 @@ class MyoroGroupCheckboxStyle extends MyoroCheckboxStyle with _$MyoroGroupCheckb
     );
   }
 
+  /// Default constructor.
   const MyoroGroupCheckboxStyle({
     super.checkboxActiveColor,
     super.checkboxCheckColor,
@@ -37,16 +39,17 @@ class MyoroGroupCheckboxStyle extends MyoroCheckboxStyle with _$MyoroGroupCheckb
     this.runSpacing,
   });
 
+  /// Fake constructor.
   factory MyoroGroupCheckboxStyle.fake() {
     return MyoroGroupCheckboxStyle(
-      checkboxActiveColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      checkboxCheckColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      checkboxHoverColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      checkboxFocusColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      checkboxSplashRadius: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
-      labelTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      labelMaxLines: faker.randomGenerator.boolean() ? faker.randomGenerator.integer(10) : null,
-      spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
+      checkboxActiveColor: myoroNullableFake<Color>(),
+      checkboxCheckColor: myoroNullableFake<Color>(),
+      checkboxHoverColor: myoroNullableFake<Color>(),
+      checkboxFocusColor: myoroNullableFake<Color>(),
+      checkboxSplashRadius: myoroNullableFake<double>(),
+      labelTextStyle: myoroNullableFake<TextStyle>(),
+      labelMaxLines: myoroNullableFake<int>(),
+      spacing: myoroNullableFake<double>(),
     );
   }
 

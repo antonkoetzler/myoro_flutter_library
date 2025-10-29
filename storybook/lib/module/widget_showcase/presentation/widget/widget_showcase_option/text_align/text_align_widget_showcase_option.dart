@@ -19,23 +19,19 @@ final class TextAlignWidgetShowcaseOption extends StatelessWidget {
   final TextAlign? selectedValue;
 
   /// [MyoroSingleSelectionDropdownConfiguration.onChanged]
-  final MyoroSingleMenuOnChanged<TextAlign> onChanged;
+  final void Function(TextAlign?) onChanged;
 
   @override
   Widget build(context) {
-    return MyoroSingleSelectionDropdown(
-      configuration: MyoroSingleSelectionDropdownConfiguration(
-        label: label,
-        onChanged: onChanged,
-        selectedItemBuilder: (value) => value.toString(),
-        menuConfiguration: MyoroSingleMenuConfiguration(
-          request: TextAlign.values.toSet,
-          selectedItem: selectedValue,
-          itemBuilder: (value) {
-            return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: value.toString()));
-          },
-        ),
-      ),
+    return MyoroSingleSelectionDropdown<TextAlign>(
+      label: label,
+      onChanged: onChanged,
+      selectedItemBuilder: (value) => value.toString(),
+      itemBuilder: (value) {
+        return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: value.toString()));
+      },
+      items: TextAlign.values.toSet(),
+      selectedItem: selectedValue,
     );
   }
 }

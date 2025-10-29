@@ -9,6 +9,7 @@ part 'myoro_app_bar_style.g.dart';
 @immutable
 @myoroModel
 class MyoroAppBarStyle with _$MyoroAppBarStyleMixin {
+  /// Lerp function.
   static MyoroAppBarStyle lerp(MyoroAppBarStyle? a, MyoroAppBarStyle? b, double t) {
     return MyoroAppBarStyle(
       backgroundColor: Color.lerp(a?.backgroundColor, b?.backgroundColor, t),
@@ -16,11 +17,13 @@ class MyoroAppBarStyle with _$MyoroAppBarStyleMixin {
     );
   }
 
+  /// Default constructor.
   const MyoroAppBarStyle({this.backgroundColor, this.contentPadding});
 
+  /// Fake constructor.
   MyoroAppBarStyle.fake()
-    : backgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      contentPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;
+    : backgroundColor = myoroNullableFake<Color>(),
+      contentPadding = myoroNullableFake<EdgeInsets>();
 
   /// Background [Color].
   final Color? backgroundColor;

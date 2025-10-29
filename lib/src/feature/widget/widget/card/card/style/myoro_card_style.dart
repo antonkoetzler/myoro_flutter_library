@@ -11,6 +11,7 @@ part 'myoro_card_style.g.dart';
 @immutable
 @myoroModel
 class MyoroCardStyle with _$MyoroCardStyleMixin {
+  /// Lerp function.
   static MyoroCardStyle lerp(MyoroCardStyle? a, MyoroCardStyle? b, double t) {
     return MyoroCardStyle(
       backgroundColor: Color.lerp(a?.backgroundColor, b?.backgroundColor, t),
@@ -23,6 +24,7 @@ class MyoroCardStyle with _$MyoroCardStyleMixin {
     );
   }
 
+  /// Default constructor.
   const MyoroCardStyle({
     this.backgroundColor,
     this.border,
@@ -33,14 +35,15 @@ class MyoroCardStyle with _$MyoroCardStyleMixin {
     this.constraints,
   });
 
+  /// Fake constructor.
   MyoroCardStyle.fake()
-    : backgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      border = faker.randomGenerator.boolean() ? myoroFake<Border>() : null,
-      borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      titleCardSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
-      titleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      constraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null;
+    : backgroundColor = myoroNullableFake<Color>(),
+      border = myoroNullableFake<Border>(),
+      borderRadius = myoroNullableFake<BorderRadius>(),
+      padding = myoroNullableFake<EdgeInsets>(),
+      titleCardSpacing = myoroNullableFake<double>(),
+      titleTextStyle = myoroNullableFake<TextStyle>(),
+      constraints = myoroNullableFake<BoxConstraints>();
 
   /// Background color of the card.
   final Color? backgroundColor;

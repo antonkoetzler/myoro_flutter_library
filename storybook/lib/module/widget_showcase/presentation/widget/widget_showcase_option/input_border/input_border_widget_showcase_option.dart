@@ -24,26 +24,21 @@ final class InputBorderWidgetShowcaseOption extends StatelessWidget {
   final InputBorder? selectedBorder;
 
   /// [MyoroSingleSelectionDropdownConfiguration.onChanged]
-  final MyoroSingleMenuOnChanged<InputBorder> onChanged;
+  final void Function(InputBorder?) onChanged;
 
   @override
   Widget build(_) {
     return MyoroSingleSelectionDropdown<InputBorder>(
-      configuration: MyoroSingleSelectionDropdownConfiguration(
-        label: label,
-        selectedItemBuilder: _getInputBorderName,
-        onChanged: onChanged,
-        menuConfiguration: MyoroSingleMenuConfiguration(
-          request: _getTestInputBorders().toSet,
-          selectedItem: selectedBorder,
-          itemBuilder: (border) {
-            return MyoroMenuIconTextButtonItem(
-              textConfiguration: MyoroTextConfiguration(text: _getInputBorderName(border)),
-            );
-          },
-        ),
-        enabled: enabled,
-      ),
+      label: label,
+      selectedItemBuilder: _getInputBorderName,
+      onChanged: onChanged,
+      itemBuilder: (border) {
+        return MyoroMenuIconTextButtonItem(
+          textConfiguration: MyoroTextConfiguration(text: _getInputBorderName(border)),
+        );
+      },
+      items: _getTestInputBorders().toSet(),
+      selectedItem: selectedBorder,
     );
   }
 

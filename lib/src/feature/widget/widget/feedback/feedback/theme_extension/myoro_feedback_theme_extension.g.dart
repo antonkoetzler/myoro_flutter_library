@@ -13,8 +13,7 @@ part of 'myoro_feedback_theme_extension.dart';
 /// ```dart
 /// class MyoroFeedbackThemeExtension with _$MyoroFeedbackThemeExtensionMixin {}
 /// ```
-mixin _$MyoroFeedbackThemeExtensionMixin
-    on ThemeExtension<MyoroFeedbackThemeExtension> {
+mixin _$MyoroFeedbackThemeExtensionMixin on ThemeExtension<MyoroFeedbackThemeExtension> {
   MyoroFeedbackThemeExtension get self => this as MyoroFeedbackThemeExtension;
 
   @override
@@ -31,12 +30,8 @@ mixin _$MyoroFeedbackThemeExtensionMixin
     return MyoroFeedbackThemeExtension(
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
       iconSize: iconSizeProvided ? (iconSize ?? self.iconSize) : null,
-      titleTextStyle: titleTextStyleProvided
-          ? (titleTextStyle ?? self.titleTextStyle)
-          : null,
-      subtitleTextStyle: subtitleTextStyleProvided
-          ? (subtitleTextStyle ?? self.subtitleTextStyle)
-          : null,
+      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
+      subtitleTextStyle: subtitleTextStyleProvided ? (subtitleTextStyle ?? self.subtitleTextStyle) : null,
     );
   }
 
@@ -52,12 +47,7 @@ mixin _$MyoroFeedbackThemeExtensionMixin
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.spacing,
-      self.iconSize,
-      self.titleTextStyle,
-      self.subtitleTextStyle,
-    );
+    return Object.hash(self.spacing, self.iconSize, self.titleTextStyle, self.subtitleTextStyle);
   }
 
   @override

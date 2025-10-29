@@ -9,10 +9,6 @@ final class _Widget extends StatelessWidget {
     final viewModel = context.read<MyoroImagePickerWidgetShowcaseScreenViewModel>();
     final onChangedSnackBar = viewModel.onChangedSnackBar;
 
-    return MyoroImagePicker(
-      configuration: MyoroImagePickerConfiguration(
-        onChanged: (selectedImage) => onChangedSnackBar(context, selectedImage),
-      ),
-    );
+    return MyoroImagePicker(onChanged: (selectedImage) => onChangedSnackBar(context, selectedImage));
   }
 }

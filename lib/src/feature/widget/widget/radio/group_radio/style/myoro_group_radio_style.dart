@@ -11,6 +11,7 @@ part 'myoro_group_radio_style.g.dart';
 @immutable
 @myoroModel
 class MyoroGroupRadioStyle with _$MyoroGroupRadioStyleMixin {
+  /// Lerp function.
   static MyoroGroupRadioStyle lerp(MyoroGroupRadioStyle? a, MyoroGroupRadioStyle? b, double t) {
     return MyoroGroupRadioStyle(
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
@@ -18,13 +19,12 @@ class MyoroGroupRadioStyle with _$MyoroGroupRadioStyleMixin {
     );
   }
 
+  /// Default constructor.
   const MyoroGroupRadioStyle({this.spacing, this.runSpacing});
 
+  /// Fake constructor.
   factory MyoroGroupRadioStyle.fake() {
-    return MyoroGroupRadioStyle(
-      spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      runSpacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-    );
+    return MyoroGroupRadioStyle(spacing: myoroNullableFake<double>(), runSpacing: myoroNullableFake<double>());
   }
 
   /// Main axis spacing in between each radio.

@@ -11,11 +11,13 @@ part 'myoro_file_picker_theme_extension.g.dart';
 final class MyoroFilePickerThemeExtension extends ThemeExtension<MyoroFilePickerThemeExtension>
     with _$MyoroFilePickerThemeExtensionMixin
     implements MyoroFilePickerStyle {
+  /// Default constructor.
   const MyoroFilePickerThemeExtension({this.spacing, this.textStyle});
 
+  /// Fake constructor.
   MyoroFilePickerThemeExtension.fake()
-    : spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
-      textStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null;
+    : spacing = myoroNullableFake<double>(),
+      textStyle = myoroNullableFake<TextStyle>();
 
   MyoroFilePickerThemeExtension.builder(TextTheme textTheme)
     : spacing = kMyoroMultiplier * 2,

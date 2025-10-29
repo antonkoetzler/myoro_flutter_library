@@ -11,6 +11,7 @@ part 'myoro_resize_divider_theme_extension.g.dart';
 final class MyoroResizeDividerThemeExtension extends ThemeExtension<MyoroResizeDividerThemeExtension>
     with _$MyoroResizeDividerThemeExtensionMixin
     implements MyoroResizeDividerStyle {
+  /// Default constructor.
   const MyoroResizeDividerThemeExtension({
     this.color,
     this.shortValue,
@@ -21,18 +22,20 @@ final class MyoroResizeDividerThemeExtension extends ThemeExtension<MyoroResizeD
     this.resizeButtonLongValue,
   });
 
+  /// Fake constructor.
   factory MyoroResizeDividerThemeExtension.fake() {
     return MyoroResizeDividerThemeExtension(
-      color: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      shortValue: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50) : null,
-      longValue: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50) : null,
-      resizeButtonBorderRadius: faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      resizeButtonColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      resizeButtonShortValue: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50) : null,
-      resizeButtonLongValue: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50) : null,
+      color: myoroNullableFake<Color>(),
+      shortValue: myoroNullableFake<double>(),
+      longValue: myoroNullableFake<double>(),
+      resizeButtonBorderRadius: myoroNullableFake<BorderRadius>(),
+      resizeButtonColor: myoroNullableFake<Color>(),
+      resizeButtonShortValue: myoroNullableFake<double>(),
+      resizeButtonLongValue: myoroNullableFake<double>(),
     );
   }
 
+  /// Builder constructor.
   factory MyoroResizeDividerThemeExtension.builder(
     MyoroBasicDividerThemeExtension themeExtension,
     ColorScheme colorScheme,

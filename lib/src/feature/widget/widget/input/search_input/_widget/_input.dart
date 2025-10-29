@@ -8,7 +8,7 @@ final class _Input extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroSearchInputViewModel>();
     final state = viewModel.state;
-    final searchController = state.searchController;
-    return MyoroInput(inputController: searchController, suffix: const _SearchButton());
+    final inputController = state.inputController;
+    return MyoroInput(inputController: inputController, suffix: const _SearchButton());
   }
 }

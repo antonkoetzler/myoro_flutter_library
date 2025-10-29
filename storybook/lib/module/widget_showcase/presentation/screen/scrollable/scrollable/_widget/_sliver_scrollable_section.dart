@@ -6,10 +6,6 @@ final class _SliverScrollableSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroScrollablesWidgetShowcaseScreenViewModel>();
-    final sliverConfiguration = viewModel.sliverConfiguration;
-    final style = viewModel.style;
-
     final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
     final spacing = widgetShowcaseThemeExtension.spacing;
     final labelTextStyle = widgetShowcaseThemeExtension.labelTextStyle;
@@ -26,8 +22,6 @@ final class _SliverScrollableSection extends StatelessWidget {
         ConstrainedBox(
           constraints: scrollableConstraints,
           child: MyoroSliverScrollable(
-            configuration: sliverConfiguration,
-            style: style,
             slivers: [
               const SliverToBoxAdapter(child: MyoroAppBar(child: Text('Sliver App Bar'))),
               SliverList(

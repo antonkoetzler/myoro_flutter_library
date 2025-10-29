@@ -11,6 +11,7 @@ part 'myoro_group_checkbox_theme_extension.g.dart';
 class MyoroGroupCheckboxThemeExtension extends ThemeExtension<MyoroGroupCheckboxThemeExtension>
     with _$MyoroGroupCheckboxThemeExtensionMixin
     implements MyoroGroupCheckboxStyle {
+    /// Default constructor.
   const MyoroGroupCheckboxThemeExtension({
     this.checkboxActiveColor,
     this.checkboxCheckColor,
@@ -23,17 +24,18 @@ class MyoroGroupCheckboxThemeExtension extends ThemeExtension<MyoroGroupCheckbox
     this.runSpacing,
   });
 
+  /// Fake constructor.
   factory MyoroGroupCheckboxThemeExtension.fake() {
     return MyoroGroupCheckboxThemeExtension(
-      checkboxActiveColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      checkboxCheckColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      checkboxHoverColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      checkboxFocusColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      checkboxSplashRadius: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      labelTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      labelMaxLines: faker.randomGenerator.boolean() ? faker.randomGenerator.integer(5) : null,
-      spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      runSpacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
+      checkboxActiveColor: myoroNullableFake<Color>(),
+      checkboxCheckColor: myoroNullableFake<Color>(),
+      checkboxHoverColor: myoroNullableFake<Color>(),
+      checkboxFocusColor: myoroNullableFake<Color>(),
+      checkboxSplashRadius: myoroNullableFake<double>(),
+      labelTextStyle: myoroNullableFake<TextStyle>(),
+      labelMaxLines: myoroNullableFake<int>(),
+      spacing: myoroNullableFake<double>(),
+      runSpacing: myoroNullableFake<double>(),
     );
   }
 

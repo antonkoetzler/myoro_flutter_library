@@ -6,10 +6,6 @@ final class _GridScrollableSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroScrollablesWidgetShowcaseScreenViewModel>();
-    final gridConfiguration = viewModel.gridConfiguration;
-    final style = viewModel.style;
-
     final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
     final spacing = widgetShowcaseThemeExtension.spacing;
     final labelTextStyle = widgetShowcaseThemeExtension.labelTextStyle;
@@ -26,8 +22,6 @@ final class _GridScrollableSection extends StatelessWidget {
         ConstrainedBox(
           constraints: scrollableConstraints,
           child: MyoroGridScrollable(
-            configuration: gridConfiguration,
-            style: style,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               childAspectRatio: 1.5,

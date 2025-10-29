@@ -17,6 +17,7 @@ final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecoration
   static const secondaryBackgroundHoverColorFactor = 0.2;
   static const secondaryBackgroundTapColorFactor = 0.4;
 
+  /// Default constructor.
   const MyoroDecorationThemeExtension({
     this.primaryBackgroundIdleColor,
     this.primaryBackgroundHoverColor,
@@ -32,19 +33,20 @@ final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecoration
     this.borderRadius,
   });
 
+  /// Fake constructor.
   MyoroDecorationThemeExtension.fake()
-    : primaryBackgroundIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      primaryBackgroundHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      primaryBackgroundTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      secondaryBackgroundIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      secondaryBackgroundHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      secondaryBackgroundTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      disabledBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      primaryContentColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      secondaryContentColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      borderWidth = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
-      borderColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null;
+    : primaryBackgroundIdleColor = myoroNullableFake<Color>(),
+      primaryBackgroundHoverColor = myoroNullableFake<Color>(),
+      primaryBackgroundTapColor = myoroNullableFake<Color>(),
+      secondaryBackgroundIdleColor = myoroNullableFake<Color>(),
+      secondaryBackgroundHoverColor = myoroNullableFake<Color>(),
+      secondaryBackgroundTapColor = myoroNullableFake<Color>(),
+      disabledBackgroundColor = myoroNullableFake<Color>(),
+      primaryContentColor = myoroNullableFake<Color>(),
+      secondaryContentColor = myoroNullableFake<Color>(),
+      borderWidth = myoroNullableFake<double>(),
+      borderColor = myoroNullableFake<Color>(),
+      borderRadius = myoroNullableFake<BorderRadius>();
 
   MyoroDecorationThemeExtension.builder(bool isDarkMode, ColorScheme colorScheme)
     : primaryBackgroundIdleColor = colorScheme.primary,

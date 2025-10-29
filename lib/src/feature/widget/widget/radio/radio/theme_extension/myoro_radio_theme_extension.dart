@@ -11,6 +11,7 @@ part 'myoro_radio_theme_extension.g.dart';
 class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension>
     with _$MyoroRadioThemeExtensionMixin
     implements MyoroRadioStyle {
+    /// Default constructor.
   const MyoroRadioThemeExtension({
     this.activeColor,
     this.hoverColor,
@@ -19,12 +20,13 @@ class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension>
     this.splashRadius,
   });
 
+  /// Fake constructor.
   MyoroRadioThemeExtension.fake()
-    : activeColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      hoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      labelTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      splashRadius = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
+    : activeColor = myoroNullableFake<Color>(),
+      hoverColor = myoroNullableFake<Color>(),
+      labelTextStyle = myoroNullableFake<TextStyle>(),
+      spacing = myoroNullableFake<double>(),
+      splashRadius = myoroNullableFake<double>();
 
   MyoroRadioThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : activeColor = colorScheme.onPrimary,

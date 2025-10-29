@@ -3,7 +3,13 @@ part of '../bundle/myoro_selection_dropdown_bundle.dart';
 /// Selection dropdown.
 abstract class _SelectionDropdown<T> extends StatelessWidget {
   /// Default value of [style].
-  static const styleDefaultValue = MyoroMenuStyle();
+  static const styleDefaultValue = MyoroDropdownStyle();
+
+  /// Default value of [label].
+  static const labelDefaultValue = kMyoroEmptyString;
+
+  /// Default value of [enabled].
+  static const enabledDefaultValue = true;
 
   /// Default value of [dropdownType].
   static const dropdownTypeDefaultValue = MyoroDropdownTypeEnum.expanding;
@@ -12,6 +18,8 @@ abstract class _SelectionDropdown<T> extends StatelessWidget {
   const _SelectionDropdown({
     super.key,
     this.style = styleDefaultValue,
+    this.label = labelDefaultValue,
+    this.enabled = enabledDefaultValue,
     this.dropdownType = dropdownTypeDefaultValue,
     this.items,
     this.showingController,
@@ -20,7 +28,13 @@ abstract class _SelectionDropdown<T> extends StatelessWidget {
   });
 
   /// Style.
-  final MyoroMenuStyle style;
+  final MyoroDropdownStyle style;
+
+  /// Label of the selection dropdown.
+  final String label;
+
+  /// If the dropdown is enabled.
+  final bool enabled;
 
   /// Dropdown type.
   final MyoroDropdownTypeEnum dropdownType;

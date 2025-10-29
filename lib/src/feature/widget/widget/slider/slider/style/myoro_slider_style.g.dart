@@ -23,9 +23,7 @@ mixin _$MyoroSliderStyleMixin {
     bool indicatorTextAlignmentProvided = true,
   }) {
     return MyoroSliderStyle(
-      indicatorTextStyle: indicatorTextStyleProvided
-          ? (indicatorTextStyle ?? self.indicatorTextStyle)
-          : null,
+      indicatorTextStyle: indicatorTextStyleProvided ? (indicatorTextStyle ?? self.indicatorTextStyle) : null,
       indicatorTextAlignment: indicatorTextAlignmentProvided
           ? (indicatorTextAlignment ?? self.indicatorTextAlignment)
           : null,

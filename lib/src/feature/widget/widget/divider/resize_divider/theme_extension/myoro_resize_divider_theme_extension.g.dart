@@ -13,10 +13,8 @@ part of 'myoro_resize_divider_theme_extension.dart';
 /// ```dart
 /// class MyoroResizeDividerThemeExtension with _$MyoroResizeDividerThemeExtensionMixin {}
 /// ```
-mixin _$MyoroResizeDividerThemeExtensionMixin
-    on ThemeExtension<MyoroResizeDividerThemeExtension> {
-  MyoroResizeDividerThemeExtension get self =>
-      this as MyoroResizeDividerThemeExtension;
+mixin _$MyoroResizeDividerThemeExtensionMixin on ThemeExtension<MyoroResizeDividerThemeExtension> {
+  MyoroResizeDividerThemeExtension get self => this as MyoroResizeDividerThemeExtension;
 
   @override
   MyoroResizeDividerThemeExtension copyWith({
@@ -42,9 +40,7 @@ mixin _$MyoroResizeDividerThemeExtensionMixin
       resizeButtonBorderRadius: resizeButtonBorderRadiusProvided
           ? (resizeButtonBorderRadius ?? self.resizeButtonBorderRadius)
           : null,
-      resizeButtonColor: resizeButtonColorProvided
-          ? (resizeButtonColor ?? self.resizeButtonColor)
-          : null,
+      resizeButtonColor: resizeButtonColorProvided ? (resizeButtonColor ?? self.resizeButtonColor) : null,
       resizeButtonShortValue: resizeButtonShortValueProvided
           ? (resizeButtonShortValue ?? self.resizeButtonShortValue)
           : null,

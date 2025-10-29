@@ -29,17 +29,11 @@ mixin _$MyoroRadioStyleMixin {
     bool splashRadiusProvided = true,
   }) {
     return MyoroRadioStyle(
-      activeColor: activeColorProvided
-          ? (activeColor ?? self.activeColor)
-          : null,
+      activeColor: activeColorProvided ? (activeColor ?? self.activeColor) : null,
       hoverColor: hoverColorProvided ? (hoverColor ?? self.hoverColor) : null,
-      labelTextStyle: labelTextStyleProvided
-          ? (labelTextStyle ?? self.labelTextStyle)
-          : null,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
-      splashRadius: splashRadiusProvided
-          ? (splashRadius ?? self.splashRadius)
-          : null,
+      splashRadius: splashRadiusProvided ? (splashRadius ?? self.splashRadius) : null,
     );
   }
 
@@ -56,13 +50,7 @@ mixin _$MyoroRadioStyleMixin {
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.activeColor,
-      self.hoverColor,
-      self.labelTextStyle,
-      self.spacing,
-      self.splashRadius,
-    );
+    return Object.hash(self.activeColor, self.hoverColor, self.labelTextStyle, self.spacing, self.splashRadius);
   }
 
   @override

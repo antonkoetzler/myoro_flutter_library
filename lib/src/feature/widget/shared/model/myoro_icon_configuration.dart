@@ -11,6 +11,7 @@ part 'myoro_icon_configuration.g.dart';
 @immutable
 @myoroModel
 class MyoroIconConfiguration with _$MyoroIconConfigurationMixin {
+  /// Lerp function.
   static MyoroIconConfiguration? lerp(MyoroIconConfiguration? primary, MyoroIconConfiguration? other, double t) {
     final icon = myoroFallbackLerp(primary?.icon, other?.icon, t);
     // Handle null sizes by treating them as 0 for lerping
@@ -21,11 +22,11 @@ class MyoroIconConfiguration with _$MyoroIconConfigurationMixin {
     return icon != null ? MyoroIconConfiguration(icon: icon, size: size) : null;
   }
 
+  /// Default constructor.
   const MyoroIconConfiguration({required this.icon, this.size});
 
-  MyoroIconConfiguration.fake()
-    : icon = myoroFake<IconData>(),
-      size = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 100) : null;
+  /// Fake constructor.
+  MyoroIconConfiguration.fake() : icon = myoroFake<IconData>(), size = myoroNullableFake<double>();
 
   /// [Icon.icon]
   final IconData icon;

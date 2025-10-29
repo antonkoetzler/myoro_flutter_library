@@ -13,8 +13,7 @@ part of 'myoro_slider_theme_extension.dart';
 /// ```dart
 /// class MyoroSliderThemeExtension with _$MyoroSliderThemeExtensionMixin {}
 /// ```
-mixin _$MyoroSliderThemeExtensionMixin
-    on ThemeExtension<MyoroSliderThemeExtension> {
+mixin _$MyoroSliderThemeExtensionMixin on ThemeExtension<MyoroSliderThemeExtension> {
   MyoroSliderThemeExtension get self => this as MyoroSliderThemeExtension;
 
   @override
@@ -25,9 +24,7 @@ mixin _$MyoroSliderThemeExtensionMixin
     bool indicatorTextAlignmentProvided = true,
   }) {
     return MyoroSliderThemeExtension(
-      indicatorTextStyle: indicatorTextStyleProvided
-          ? (indicatorTextStyle ?? self.indicatorTextStyle)
-          : null,
+      indicatorTextStyle: indicatorTextStyleProvided ? (indicatorTextStyle ?? self.indicatorTextStyle) : null,
       indicatorTextAlignment: indicatorTextAlignmentProvided
           ? (indicatorTextAlignment ?? self.indicatorTextAlignment)
           : null,

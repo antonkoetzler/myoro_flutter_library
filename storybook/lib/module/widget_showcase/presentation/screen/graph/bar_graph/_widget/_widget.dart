@@ -7,10 +7,15 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroBarGraphWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
 
     return ListenableBuilder(
-      listenable: viewModel.state,
-      builder: (_, __) => MyoroBarGraph(configuration: viewModel.configuration),
+      listenable: state,
+      builder: (_, __) {
+        final sorted = state.sorted;
+        final items = state.items;
+        return MyoroBarGraph(sorted: sorted, items: items);
+      },
     );
   }
 }

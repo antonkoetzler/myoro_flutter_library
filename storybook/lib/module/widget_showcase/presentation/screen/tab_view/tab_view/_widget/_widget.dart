@@ -7,11 +7,7 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(_) {
     return Center(
-      child: MyoroTabView(
-        configuration: MyoroTabViewConfiguration(
-          tabs: List.generate(faker.randomGenerator.integer(5, min: 2), (_) => MyoroTabViewTab.fake()),
-        ),
-      ),
+      child: MyoroTabView(tabs: List.generate(faker.randomGenerator.integer(5, min: 2), (_) => MyoroTabViewTab.fake())),
     );
   }
 }

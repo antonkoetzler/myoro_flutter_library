@@ -9,18 +9,14 @@ final class _SingleDropdownTypeOption extends StatelessWidget {
     final viewModel = context.read<MyoroSelectionDropdownsWidgetShowcaseScreenViewModel>();
 
     return MyoroSingleSelectionDropdown<MyoroDropdownTypeEnum>(
-      configuration: MyoroSingleSelectionDropdownConfiguration(
-        label: 'Single dropdown type',
-        selectedItemBuilder: (type) => type.name.capitalized,
-        onChanged: (type) => viewModel.state.singleDropdownType = type!,
-        menuConfiguration: MyoroSingleMenuConfiguration(
-          request: MyoroDropdownTypeEnum.values.toSet,
-          selectedItem: viewModel.state.singleDropdownType,
-          itemBuilder: (type) {
-            return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: type.name.capitalized));
-          },
-        ),
-      ),
+      label: 'Single dropdown type',
+      selectedItemBuilder: (type) => type.name.capitalized,
+      onChanged: (type) => viewModel.state.singleDropdownType = type!,
+      items: MyoroDropdownTypeEnum.values.toSet(),
+      selectedItem: viewModel.state.singleDropdownType,
+      itemBuilder: (type) {
+        return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: type.name.capitalized));
+      },
     );
   }
 }

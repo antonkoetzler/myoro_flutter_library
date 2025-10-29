@@ -17,16 +17,12 @@ final class MyoroInputStyleEnumWidgetShowcaseOption extends StatelessWidget {
     final viewModel = MyoroInputStyleEnumWidgetShowcaseOptionViewModel();
 
     return MyoroSingleSelectionDropdown<MyoroInputStyleEnum>(
-      configuration: MyoroSingleSelectionDropdownConfiguration(
-        label: 'MyoroInputStyleEnum',
-        onChanged: (item) => onChanged(item!),
-        selectedItemBuilder: viewModel.selectedItemBuilder,
-        menuConfiguration: MyoroSingleMenuConfiguration(
-          request: MyoroInputStyleEnum.values.toSet,
-          selectedItem: selectedStyle,
-          itemBuilder: viewModel.itemBuilder,
-        ),
-      ),
+      label: 'MyoroInputStyleEnum',
+      onChanged: (item) => onChanged(item!),
+      selectedItemBuilder: viewModel.selectedItemBuilder,
+      itemBuilder: viewModel.itemBuilder,
+      items: MyoroInputStyleEnum.values.toSet(),
+      selectedItem: selectedStyle,
     );
   }
 }

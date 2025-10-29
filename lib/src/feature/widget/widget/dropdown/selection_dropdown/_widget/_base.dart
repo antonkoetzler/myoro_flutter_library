@@ -4,7 +4,7 @@ part of '../bundle/myoro_selection_dropdown_bundle.dart';
 final class _Base<T> extends StatelessWidget {
   const _Base(this._style, this._state);
 
-  final MyoroMenuStyle _style;
+  final MyoroDropdownStyle _style;
   final MyoroSelectionDropdownState<T> _state;
 
   @override
@@ -29,7 +29,7 @@ final class _Base<T> extends StatelessWidget {
           final itemBuilder = state.itemBuilder;
 
           return MyoroDropdown(
-            menuStyle: _style,
+            style: _style,
             showingController: showingController,
             selectedItems: selectedItems,
             dropdownType: dropdownType,

@@ -11,6 +11,7 @@ part 'myoro_radio_style.g.dart';
 @immutable
 @myoroModel
 class MyoroRadioStyle with _$MyoroRadioStyleMixin {
+  /// Lerp function.
   static MyoroRadioStyle lerp(MyoroRadioStyle? a, MyoroRadioStyle? b, double t) {
     return MyoroRadioStyle(
       activeColor: Color.lerp(a?.activeColor, b?.activeColor, t),
@@ -21,15 +22,17 @@ class MyoroRadioStyle with _$MyoroRadioStyleMixin {
     );
   }
 
+  /// Default constructor.
   const MyoroRadioStyle({this.activeColor, this.hoverColor, this.labelTextStyle, this.spacing, this.splashRadius});
 
+  /// Fake constructor.
   factory MyoroRadioStyle.fake() {
     return MyoroRadioStyle(
-      activeColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      hoverColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      labelTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      splashRadius: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
+      activeColor: myoroNullableFake<Color>(),
+      hoverColor: myoroNullableFake<Color>(),
+      labelTextStyle: myoroNullableFake<TextStyle>(),
+      spacing: myoroNullableFake<double>(),
+      splashRadius: myoroNullableFake<double>(),
     );
   }
 

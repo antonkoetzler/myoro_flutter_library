@@ -11,6 +11,7 @@ part 'myoro_button_theme_extension.g.dart';
 class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension>
     with _$MyoroButtonThemeExtensionMixin
     implements MyoroButtonStyle {
+    /// Default constructor.
   const MyoroButtonThemeExtension({
     this.backgroundIdleColor,
     this.backgroundHoverColor,
@@ -26,19 +27,20 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
     this.borderTapColor,
   });
 
+  /// Fake constructor.
   MyoroButtonThemeExtension.fake()
-    : backgroundIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      backgroundHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      backgroundTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      disabledBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      contentIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      contentHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      contentTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      borderWidth = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
-      borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      borderIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      borderHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      borderTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null;
+    : backgroundIdleColor = myoroNullableFake<Color>(),
+      backgroundHoverColor = myoroNullableFake<Color>(),
+      backgroundTapColor = myoroNullableFake<Color>(),
+      disabledBackgroundColor = myoroNullableFake<Color>(),
+      contentIdleColor = myoroNullableFake<Color>(),
+      contentHoverColor = myoroNullableFake<Color>(),
+      contentTapColor = myoroNullableFake<Color>(),
+      borderWidth = myoroNullableFake<double>(),
+      borderRadius = myoroNullableFake<BorderRadius>(),
+      borderIdleColor = myoroNullableFake<Color>(),
+      borderHoverColor = myoroNullableFake<Color>(),
+      borderTapColor = myoroNullableFake<Color>();
 
   MyoroButtonThemeExtension.builder(MyoroDecorationThemeExtension decorationThemeExtension)
     : backgroundIdleColor = decorationThemeExtension.primaryBackgroundIdleColor,

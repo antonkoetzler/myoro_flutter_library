@@ -11,6 +11,7 @@ part 'myoro_basic_divider_style.g.dart';
 @immutable
 @myoroModel
 class MyoroBasicDividerStyle with _$MyoroBasicDividerStyleMixin {
+  /// Lerp function.
   static MyoroBasicDividerStyle lerp(MyoroBasicDividerStyle? a, MyoroBasicDividerStyle? b, double t) {
     return MyoroBasicDividerStyle(
       color: Color.lerp(a?.color, b?.color, t),
@@ -19,8 +20,10 @@ class MyoroBasicDividerStyle with _$MyoroBasicDividerStyleMixin {
     );
   }
 
+  /// Default constructor.
   const MyoroBasicDividerStyle({this.color, this.shortValue, this.longValue});
 
+  /// Fake constructor.
   factory MyoroBasicDividerStyle.fake() {
     return MyoroBasicDividerStyle(
       color: myoroFake<Color>(),

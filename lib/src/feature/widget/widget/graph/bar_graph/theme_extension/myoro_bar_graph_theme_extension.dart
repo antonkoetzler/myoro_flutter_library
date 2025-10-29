@@ -11,6 +11,7 @@ part 'myoro_bar_graph_theme_extension.g.dart';
 class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThemeExtension>
     with _$MyoroBarGraphThemeExtensionMixin
     implements MyoroBarGraphStyle {
+    /// Default constructor.
   const MyoroBarGraphThemeExtension({
     this.border,
     this.barColor,
@@ -21,14 +22,15 @@ class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThemeExten
     this.horizontalSideTitleReversedSize,
   });
 
+  /// Fake constructor.
   MyoroBarGraphThemeExtension.fake()
-    : border = faker.randomGenerator.boolean() ? myoroFake<Border>() : null,
-      barColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      barBorderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      sideTitleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      sideTitleInterval = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      verticalSideTitleReversedSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      horizontalSideTitleReversedSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
+    : border = myoroNullableFake<Border>(),
+      barColor = myoroNullableFake<Color>(),
+      barBorderRadius = myoroNullableFake<BorderRadius>(),
+      sideTitleTextStyle = myoroNullableFake<TextStyle>(),
+      sideTitleInterval = myoroNullableFake<double>(),
+      verticalSideTitleReversedSize = myoroNullableFake<double>(),
+      horizontalSideTitleReversedSize = myoroNullableFake<double>();
 
   MyoroBarGraphThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : border = Border.all(width: kMyoroBorderWidth * 2, color: colorScheme.onPrimary),

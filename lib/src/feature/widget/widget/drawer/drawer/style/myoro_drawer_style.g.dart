@@ -33,27 +33,17 @@ mixin _$MyoroDrawerStyleMixin {
     bool closeButtonIconProvided = true,
   }) {
     return MyoroDrawerStyle(
-      drawerPadding: drawerPaddingProvided
-          ? (drawerPadding ?? self.drawerPadding)
-          : null,
-      drawerContentPadding: drawerContentPaddingProvided
-          ? (drawerContentPadding ?? self.drawerContentPadding)
-          : null,
-      drawerShape: drawerShapeProvided
-          ? (drawerShape ?? self.drawerShape)
-          : null,
+      drawerPadding: drawerPaddingProvided ? (drawerPadding ?? self.drawerPadding) : null,
+      drawerContentPadding: drawerContentPaddingProvided ? (drawerContentPadding ?? self.drawerContentPadding) : null,
+      drawerShape: drawerShapeProvided ? (drawerShape ?? self.drawerShape) : null,
       titleContentDividerPadding: titleContentDividerPaddingProvided
           ? (titleContentDividerPadding ?? self.titleContentDividerPadding)
           : null,
-      titleTextStyle: titleTextStyleProvided
-          ? (titleTextStyle ?? self.titleTextStyle)
-          : null,
+      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
       closeButtonContentPadding: closeButtonContentPaddingProvided
           ? (closeButtonContentPadding ?? self.closeButtonContentPadding)
           : null,
-      closeButtonIcon: closeButtonIconProvided
-          ? (closeButtonIcon ?? self.closeButtonIcon)
-          : null,
+      closeButtonIcon: closeButtonIconProvided ? (closeButtonIcon ?? self.closeButtonIcon) : null,
     );
   }
 

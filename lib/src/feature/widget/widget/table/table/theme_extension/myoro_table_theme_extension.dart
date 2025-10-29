@@ -11,6 +11,7 @@ part 'myoro_table_theme_extension.g.dart';
 class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension>
     with _$MyoroTableThemeExtensionMixin
     implements MyoroTableStyle {
+    /// Default constructor.
   const MyoroTableThemeExtension({
     this.backgroundColor,
     this.columnTextStyle,
@@ -21,14 +22,15 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension>
     this.errorMessageTextStyle,
   });
 
+  /// Fake constructor.
   MyoroTableThemeExtension.fake()
-    : backgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      columnTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      columnSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
-      rowTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      loaderEmptyMessageErrorMessagePadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      emptyMessageTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      errorMessageTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null;
+    : backgroundColor = myoroNullableFake<Color>(),
+      columnTextStyle = myoroNullableFake<TextStyle>(),
+      columnSpacing = myoroNullableFake<double>(),
+      rowTextStyle = myoroNullableFake<TextStyle>(),
+      loaderEmptyMessageErrorMessagePadding = myoroNullableFake<EdgeInsets>(),
+      emptyMessageTextStyle = myoroNullableFake<TextStyle>(),
+      errorMessageTextStyle = myoroNullableFake<TextStyle>();
 
   MyoroTableThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : backgroundColor = colorScheme.primary,

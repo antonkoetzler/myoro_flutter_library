@@ -16,13 +16,7 @@ final class _Selector extends StatelessWidget {
       children: [
         MyoroCheckbox(label: _label, onChanged: (enabled) => _controller.enabled = enabled),
         Expanded(
-          child: MyoroSlider(
-            configuration: MyoroSliderConfiguration(
-              label: _label,
-              value: _controller.value,
-              onChanged: (value) => _controller.value = value,
-            ),
-          ),
+          child: MyoroSlider(label: _label, value: _controller.value, onChanged: (value) => _controller.value = value),
         ),
       ],
     );

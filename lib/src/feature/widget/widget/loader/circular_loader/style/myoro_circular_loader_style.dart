@@ -11,17 +11,17 @@ part 'myoro_circular_loader_style.g.dart';
 @immutable
 @myoroModel
 class MyoroCircularLoaderStyle with _$MyoroCircularLoaderStyleMixin {
+  /// Lerp function.
   static MyoroCircularLoaderStyle lerp(MyoroCircularLoaderStyle? a, MyoroCircularLoaderStyle? b, double t) {
     return MyoroCircularLoaderStyle(color: Color.lerp(a?.color, b?.color, t), size: lerpDouble(a?.size, b?.size, t));
   }
 
+  /// Default constructor.
   const MyoroCircularLoaderStyle({this.color, this.size});
 
+  /// Fake constructor.
   factory MyoroCircularLoaderStyle.fake() {
-    return MyoroCircularLoaderStyle(
-      color: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      size: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-    );
+    return MyoroCircularLoaderStyle(color: myoroNullableFake<Color>(), size: myoroNullableFake<double>());
   }
 
   /// Color of the [MyoroCircularLoader].

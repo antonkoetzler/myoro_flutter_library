@@ -11,6 +11,7 @@ part 'myoro_file_picker_style.g.dart';
 @immutable
 @myoroModel
 class MyoroFilePickerStyle with _$MyoroFilePickerStyleMixin {
+  /// Lerp function.
   static MyoroFilePickerStyle lerp(MyoroFilePickerStyle? a, MyoroFilePickerStyle? b, double t) {
     return MyoroFilePickerStyle(
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
@@ -18,13 +19,12 @@ class MyoroFilePickerStyle with _$MyoroFilePickerStyleMixin {
     );
   }
 
+  /// Default constructor.
   const MyoroFilePickerStyle({this.spacing, this.textStyle});
 
+  /// Fake constructor.
   factory MyoroFilePickerStyle.fake() {
-    return MyoroFilePickerStyle(
-      spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
-      textStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-    );
+    return MyoroFilePickerStyle(spacing: myoroNullableFake<double>(), textStyle: myoroNullableFake<TextStyle>());
   }
 
   /// Spacing between the selected file section text and the selection button.

@@ -1,5 +1,3 @@
-import 'package:faker/faker.dart';
-import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storybook/storybook.dart';
 
@@ -12,15 +10,6 @@ final class MyoroPieGraphWidgetShowcaseScreenViewModel {
   /// Dispose function.
   void dispose() {
     _state.dispose();
-  }
-
-  /// [MyoroPieGraphConfiguration] of the [MyoroPieGraph].
-  MyoroPieGraphConfiguration buildConfiguration(Widget centerWidget) {
-    return MyoroPieGraphConfiguration(
-      typeEnum: _state.typeEnum,
-      centerWidget: _state.centerWidgetEnabled ? centerWidget : null,
-      items: List.generate(faker.randomGenerator.integer(5), (_) => MyoroPieGraphItem.fake()),
-    );
   }
 
   /// [MyoroSingleDropdownConfiguration.selectedItemBuilder] of [_TypeEnumOption].

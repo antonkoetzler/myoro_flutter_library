@@ -11,6 +11,7 @@ part 'myoro_feedback_style.g.dart';
 @immutable
 @myoroModel
 class MyoroFeedbackStyle with _$MyoroFeedbackStyleMixin {
+  /// Lerp function.
   static MyoroFeedbackStyle lerp(MyoroFeedbackStyle? a, MyoroFeedbackStyle? b, double t) {
     return MyoroFeedbackStyle(
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
@@ -20,14 +21,16 @@ class MyoroFeedbackStyle with _$MyoroFeedbackStyleMixin {
     );
   }
 
+  /// Default constructor.
   const MyoroFeedbackStyle({this.spacing, this.iconSize, this.titleTextStyle, this.subtitleTextStyle});
 
+  /// Fake constructor.
   factory MyoroFeedbackStyle.fake() {
     return MyoroFeedbackStyle(
-      spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
-      iconSize: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
-      titleTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      subtitleTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      spacing: myoroNullableFake<double>(),
+      iconSize: myoroNullableFake<double>(),
+      titleTextStyle: myoroNullableFake<TextStyle>(),
+      subtitleTextStyle: myoroNullableFake<TextStyle>(),
     );
   }
 

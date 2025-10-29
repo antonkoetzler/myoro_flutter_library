@@ -11,6 +11,7 @@ part 'myoro_accordion_theme_extension.g.dart';
 class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExtension>
     with _$MyoroAccordionThemeExtensionMixin
     implements MyoroAccordionStyle {
+    /// Default constructor.
   const MyoroAccordionThemeExtension({
     this.itemContentBackgroundColor,
     this.itemContentAnimationDuration,
@@ -25,20 +26,21 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
     this.itemTitleButtonArrowAnimationCurve,
   });
 
+  /// Fake constructor.
   MyoroAccordionThemeExtension.fake()
-    : itemContentBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      itemContentAnimationDuration = faker.randomGenerator.boolean() ? myoroFake<Duration>() : null,
-      itemContentAnimationCurve = faker.randomGenerator.boolean() ? myoroFake<Curve>() : null,
-      itemTitleButtonContentPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      itemTitleButtonSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50) : null,
-      itemTitleButtonTitleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      itemTitleButtonArrowIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
-      itemTitleButtonArrowIconColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+    : itemContentBackgroundColor = myoroNullableFake<Color>(),
+      itemContentAnimationDuration = myoroNullableFake<Duration>(),
+      itemContentAnimationCurve = myoroNullableFake<Curve>(),
+      itemTitleButtonContentPadding = myoroNullableFake<EdgeInsets>(),
+      itemTitleButtonSpacing = myoroNullableFake<double>(),
+      itemTitleButtonTitleTextStyle = myoroNullableFake<TextStyle>(),
+      itemTitleButtonArrowIcon = myoroNullableFake<IconData>(),
+      itemTitleButtonArrowIconColor = myoroNullableFake<Color>(),
       itemTitleButtonArrowIconSize = faker.randomGenerator.boolean()
           ? faker.randomGenerator.decimal(scale: 50, min: 10)
           : null,
-      itemTitleButtonArrowAnimationDuration = faker.randomGenerator.boolean() ? myoroFake<Duration>() : null,
-      itemTitleButtonArrowAnimationCurve = faker.randomGenerator.boolean() ? myoroFake<Curve>() : null;
+      itemTitleButtonArrowAnimationDuration = myoroNullableFake<Duration>(),
+      itemTitleButtonArrowAnimationCurve = myoroNullableFake<Curve>();
 
   MyoroAccordionThemeExtension.builder(bool isDarkMode, ColorScheme colorScheme, TextTheme textTheme)
     : itemContentBackgroundColor = colorScheme.primary,

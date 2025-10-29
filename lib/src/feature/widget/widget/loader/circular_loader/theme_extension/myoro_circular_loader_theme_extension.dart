@@ -11,11 +11,13 @@ part 'myoro_circular_loader_theme_extension.g.dart';
 class MyoroCircularLoaderThemeExtension extends ThemeExtension<MyoroCircularLoaderThemeExtension>
     with _$MyoroCircularLoaderThemeExtensionMixin
     implements MyoroCircularLoaderStyle {
+    /// Default constructor.
   const MyoroCircularLoaderThemeExtension({this.color, this.size});
 
+  /// Fake constructor.
   MyoroCircularLoaderThemeExtension.fake()
-    : color = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      size = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
+    : color = myoroNullableFake<Color>(),
+      size = myoroNullableFake<double>();
 
   MyoroCircularLoaderThemeExtension.builder(ColorScheme colorScheme)
     : color = colorScheme.onPrimary,

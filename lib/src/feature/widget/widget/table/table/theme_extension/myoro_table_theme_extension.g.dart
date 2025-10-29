@@ -13,8 +13,7 @@ part of 'myoro_table_theme_extension.dart';
 /// ```dart
 /// class MyoroTableThemeExtension with _$MyoroTableThemeExtensionMixin {}
 /// ```
-mixin _$MyoroTableThemeExtensionMixin
-    on ThemeExtension<MyoroTableThemeExtension> {
+mixin _$MyoroTableThemeExtensionMixin on ThemeExtension<MyoroTableThemeExtension> {
   MyoroTableThemeExtension get self => this as MyoroTableThemeExtension;
 
   @override
@@ -35,22 +34,12 @@ mixin _$MyoroTableThemeExtensionMixin
     bool errorMessageTextStyleProvided = true,
   }) {
     return MyoroTableThemeExtension(
-      backgroundColor: backgroundColorProvided
-          ? (backgroundColor ?? self.backgroundColor)
-          : null,
-      columnTextStyle: columnTextStyleProvided
-          ? (columnTextStyle ?? self.columnTextStyle)
-          : null,
-      columnSpacing: columnSpacingProvided
-          ? (columnSpacing ?? self.columnSpacing)
-          : null,
-      rowTextStyle: rowTextStyleProvided
-          ? (rowTextStyle ?? self.rowTextStyle)
-          : null,
-      loaderEmptyMessageErrorMessagePadding:
-          loaderEmptyMessageErrorMessagePaddingProvided
-          ? (loaderEmptyMessageErrorMessagePadding ??
-                self.loaderEmptyMessageErrorMessagePadding)
+      backgroundColor: backgroundColorProvided ? (backgroundColor ?? self.backgroundColor) : null,
+      columnTextStyle: columnTextStyleProvided ? (columnTextStyle ?? self.columnTextStyle) : null,
+      columnSpacing: columnSpacingProvided ? (columnSpacing ?? self.columnSpacing) : null,
+      rowTextStyle: rowTextStyleProvided ? (rowTextStyle ?? self.rowTextStyle) : null,
+      loaderEmptyMessageErrorMessagePadding: loaderEmptyMessageErrorMessagePaddingProvided
+          ? (loaderEmptyMessageErrorMessagePadding ?? self.loaderEmptyMessageErrorMessagePadding)
           : null,
       emptyMessageTextStyle: emptyMessageTextStyleProvided
           ? (emptyMessageTextStyle ?? self.emptyMessageTextStyle)
@@ -69,8 +58,7 @@ mixin _$MyoroTableThemeExtensionMixin
         other.columnTextStyle == self.columnTextStyle &&
         other.columnSpacing == self.columnSpacing &&
         other.rowTextStyle == self.rowTextStyle &&
-        other.loaderEmptyMessageErrorMessagePadding ==
-            self.loaderEmptyMessageErrorMessagePadding &&
+        other.loaderEmptyMessageErrorMessagePadding == self.loaderEmptyMessageErrorMessagePadding &&
         other.emptyMessageTextStyle == self.emptyMessageTextStyle &&
         other.errorMessageTextStyle == self.errorMessageTextStyle;
   }

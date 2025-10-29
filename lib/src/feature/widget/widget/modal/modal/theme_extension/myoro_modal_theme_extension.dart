@@ -11,6 +11,7 @@ part 'myoro_modal_theme_extension.g.dart';
 class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension>
     with _$MyoroModalThemeExtensionMixin
     implements MyoroModalStyle {
+  /// Default constructor.
   const MyoroModalThemeExtension({
     this.constraints,
     this.primaryColor,
@@ -25,17 +26,18 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension>
     this.closeButtonIconConfiguration,
   });
 
+  /// Fake constructor.
   MyoroModalThemeExtension.fake()
-    : constraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
-      primaryColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      bottomSheetBorderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      border = faker.randomGenerator.boolean() ? myoroFake<Border>() : null,
-      bottomSheetBorder = faker.randomGenerator.boolean() ? myoroFake<Border>() : null,
-      padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      closeButtonPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      titleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+    : constraints = myoroNullableFake<BoxConstraints>(),
+      primaryColor = myoroNullableFake<Color>(),
+      borderRadius = myoroNullableFake<BorderRadius>(),
+      bottomSheetBorderRadius = myoroNullableFake<BorderRadius>(),
+      border = myoroNullableFake<Border>(),
+      bottomSheetBorder = myoroNullableFake<Border>(),
+      padding = myoroNullableFake<EdgeInsets>(),
+      closeButtonPadding = myoroNullableFake<EdgeInsets>(),
+      spacing = myoroNullableFake<double>(),
+      titleTextStyle = myoroNullableFake<TextStyle>(),
       closeButtonIconConfiguration = faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null;
 
   MyoroModalThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)

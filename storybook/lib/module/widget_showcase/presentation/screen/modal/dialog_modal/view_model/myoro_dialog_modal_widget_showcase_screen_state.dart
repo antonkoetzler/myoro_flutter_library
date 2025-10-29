@@ -10,31 +10,31 @@ final class MyoroDialogModalWidgetShowcaseScreenState extends ChangeNotifier {
   final _modalViewModel = MyoroModalWidgetShowcaseScreenViewModel();
   MyoroModalWidgetShowcaseScreenViewModel get modalViewModel => _modalViewModel;
 
-  /// [MyoroDialogModalConfiguration.invertButtons]
-  bool _invertButtons = MyoroDialogModalConfiguration.invertButtonsDefaultValue;
+  /// [MyoroDialogModal.invertButtons]
+  bool _invertButtons = false;
   bool get invertButtons => _invertButtons;
   set invertButtons(bool invertButtons) {
     _invertButtons = invertButtons;
     notifyListeners();
   }
 
-  /// [MyoroDialogModalConfiguration.confirmButtonText]
-  String _confirmButtonText = MyoroDialogModalConfiguration.confirmButtonTextDefaultValue;
+  /// [MyoroDialogModal.confirmButtonText]
+  String _confirmButtonText = kMyoroEmptyString;
   String get confirmButtonText => _confirmButtonText;
   set confirmButtonText(String confirmButtonText) {
     _confirmButtonText = confirmButtonText;
     notifyListeners();
   }
 
-  /// [MyoroDialogModalConfiguration.cancelButtonText]
-  String _cancelButtonText = MyoroDialogModalConfiguration.cancelButtonTextDefaultValue;
+  /// [MyoroDialogModal.cancelButtonText]
+  String _cancelButtonText = kMyoroEmptyString;
   String get cancelButtonText => _cancelButtonText;
   set cancelButtonText(String cancelButtonText) {
     _cancelButtonText = cancelButtonText;
     notifyListeners();
   }
 
-  /// [MyoroDialogModalConfiguration.onConfirm]
+  /// [MyoroDialogModal.onConfirm]
   bool _onConfirmEnabled = false;
   bool get onConfirmEnabled => _onConfirmEnabled;
   set onConfirmEnabled(bool onConfirmEnabled) {
@@ -42,7 +42,7 @@ final class MyoroDialogModalWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroDialogModalConfiguration.onCancel]
+  /// [MyoroDialogModal.onCancel]
   bool _onCancelEnabled = false;
   bool get onCancelEnabled => _onCancelEnabled;
   set onCancelEnabled(bool onCancelEnabled) {
@@ -50,7 +50,7 @@ final class MyoroDialogModalWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroDialogModalConfiguration.text]
+  /// [MyoroDialogModal.text]
   String _text = _textDefaultValue;
   String get text => _text;
   set text(String text) {
@@ -58,7 +58,7 @@ final class MyoroDialogModalWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroDialogModalConfiguration.textStyle]
+  /// [MyoroDialogModal.textStyle]
   TextStyle? _textStyle;
   TextStyle? get textStyle => _textStyle;
   set textStyle(TextStyle? textStyle) {
@@ -66,7 +66,7 @@ final class MyoroDialogModalWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroDialogModalConfiguration.child]
+  /// [MyoroDialogModal.child]
   Widget? _child;
   Widget? get child => _child;
   set child(Widget? child) {

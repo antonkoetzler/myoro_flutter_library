@@ -185,8 +185,8 @@ enum MyoroWidgetListEnum {
       myoroDrawerTitle => const MyoroDrawerWidgetShowcaseScreen(),
 
       // Dropdowns
-      myoroDropdownsTitle => const MyoroDropdownsWidgetShowcaseScreen(),
-      myoroInputDropdownTitle => const MyoroInputDropdownsWidgetShowcaseScreen(),
+      myoroDropdownsTitle => const MyoroDropdownWidgetShowcaseScreen(),
+      myoroInputDropdownTitle => const MyoroSelectionDropdownsWidgetShowcaseScreen(),
       myoroSelectionDropdownsTitle => const MyoroSelectionDropdownsWidgetShowcaseScreen(),
 
       // Feedbacks
@@ -216,7 +216,7 @@ enum MyoroWidgetListEnum {
       myoroCircularLoaderTitle => const MyoroCircularLoaderWidgetShowcaseScreen(),
 
       // Menus
-      myoroMenusTitle => const MyoroMenusWidgetShowcaseScreen(),
+      myoroMenusTitle => const MyoroMenuWidgetShowcaseScreen(),
 
       // Modals
       myoroDialogModalTitle => const MyoroDialogModalWidgetShowcaseScreen(),

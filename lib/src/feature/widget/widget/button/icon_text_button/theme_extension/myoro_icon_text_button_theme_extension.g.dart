@@ -13,10 +13,8 @@ part of 'myoro_icon_text_button_theme_extension.dart';
 /// ```dart
 /// class MyoroIconTextButtonThemeExtension with _$MyoroIconTextButtonThemeExtensionMixin {}
 /// ```
-mixin _$MyoroIconTextButtonThemeExtensionMixin
-    on ThemeExtension<MyoroIconTextButtonThemeExtension> {
-  MyoroIconTextButtonThemeExtension get self =>
-      this as MyoroIconTextButtonThemeExtension;
+mixin _$MyoroIconTextButtonThemeExtensionMixin on ThemeExtension<MyoroIconTextButtonThemeExtension> {
+  MyoroIconTextButtonThemeExtension get self => this as MyoroIconTextButtonThemeExtension;
 
   @override
   MyoroIconTextButtonThemeExtension copyWith({
@@ -52,45 +50,21 @@ mixin _$MyoroIconTextButtonThemeExtensionMixin
     bool textStyleProvided = true,
   }) {
     return MyoroIconTextButtonThemeExtension(
-      backgroundIdleColor: backgroundIdleColorProvided
-          ? (backgroundIdleColor ?? self.backgroundIdleColor)
-          : null,
-      backgroundHoverColor: backgroundHoverColorProvided
-          ? (backgroundHoverColor ?? self.backgroundHoverColor)
-          : null,
-      backgroundTapColor: backgroundTapColorProvided
-          ? (backgroundTapColor ?? self.backgroundTapColor)
-          : null,
+      backgroundIdleColor: backgroundIdleColorProvided ? (backgroundIdleColor ?? self.backgroundIdleColor) : null,
+      backgroundHoverColor: backgroundHoverColorProvided ? (backgroundHoverColor ?? self.backgroundHoverColor) : null,
+      backgroundTapColor: backgroundTapColorProvided ? (backgroundTapColor ?? self.backgroundTapColor) : null,
       disabledBackgroundColor: disabledBackgroundColorProvided
           ? (disabledBackgroundColor ?? self.disabledBackgroundColor)
           : null,
-      contentIdleColor: contentIdleColorProvided
-          ? (contentIdleColor ?? self.contentIdleColor)
-          : null,
-      contentHoverColor: contentHoverColorProvided
-          ? (contentHoverColor ?? self.contentHoverColor)
-          : null,
-      contentTapColor: contentTapColorProvided
-          ? (contentTapColor ?? self.contentTapColor)
-          : null,
-      borderWidth: borderWidthProvided
-          ? (borderWidth ?? self.borderWidth)
-          : null,
-      borderRadius: borderRadiusProvided
-          ? (borderRadius ?? self.borderRadius)
-          : null,
-      borderIdleColor: borderIdleColorProvided
-          ? (borderIdleColor ?? self.borderIdleColor)
-          : null,
-      borderHoverColor: borderHoverColorProvided
-          ? (borderHoverColor ?? self.borderHoverColor)
-          : null,
-      borderTapColor: borderTapColorProvided
-          ? (borderTapColor ?? self.borderTapColor)
-          : null,
-      contentPadding: contentPaddingProvided
-          ? (contentPadding ?? self.contentPadding)
-          : null,
+      contentIdleColor: contentIdleColorProvided ? (contentIdleColor ?? self.contentIdleColor) : null,
+      contentHoverColor: contentHoverColorProvided ? (contentHoverColor ?? self.contentHoverColor) : null,
+      contentTapColor: contentTapColorProvided ? (contentTapColor ?? self.contentTapColor) : null,
+      borderWidth: borderWidthProvided ? (borderWidth ?? self.borderWidth) : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
+      borderIdleColor: borderIdleColorProvided ? (borderIdleColor ?? self.borderIdleColor) : null,
+      borderHoverColor: borderHoverColorProvided ? (borderHoverColor ?? self.borderHoverColor) : null,
+      borderTapColor: borderTapColorProvided ? (borderTapColor ?? self.borderTapColor) : null,
+      contentPadding: contentPaddingProvided ? (contentPadding ?? self.contentPadding) : null,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
       textStyle: textStyleProvided ? (textStyle ?? self.textStyle) : null,
     );

@@ -11,6 +11,7 @@ part 'myoro_snack_bar_theme_extension.g.dart';
 class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExtension>
     with _$MyoroSnackBarThemeExtensionMixin
     implements MyoroSnackBarStyle {
+  /// Default constructor.
   const MyoroSnackBarThemeExtension({
     this.primaryColor,
     this.standardBorderColor,
@@ -25,19 +26,21 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
     this.closeButtonIconConfiguration,
   });
 
+  /// Fake constructor.
   MyoroSnackBarThemeExtension.fake()
-    : primaryColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      standardBorderColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      attentionBorderColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      successBorderColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      errorBorderColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      borderWidth = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      messageTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+    : primaryColor = myoroNullableFake<Color>(),
+      standardBorderColor = myoroNullableFake<Color>(),
+      attentionBorderColor = myoroNullableFake<Color>(),
+      successBorderColor = myoroNullableFake<Color>(),
+      errorBorderColor = myoroNullableFake<Color>(),
+      borderWidth = myoroNullableFake<double>(),
+      borderRadius = myoroNullableFake<BorderRadius>(),
+      padding = myoroNullableFake<EdgeInsets>(),
+      spacing = myoroNullableFake<double>(),
+      messageTextStyle = myoroNullableFake<TextStyle>(),
       closeButtonIconConfiguration = faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null;
 
+  /// Builder constructor.
   MyoroSnackBarThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : primaryColor = colorScheme.primary,
       standardBorderColor = colorScheme.onPrimary,

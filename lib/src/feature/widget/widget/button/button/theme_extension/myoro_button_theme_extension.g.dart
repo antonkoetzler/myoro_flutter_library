@@ -13,8 +13,7 @@ part of 'myoro_button_theme_extension.dart';
 /// ```dart
 /// class MyoroButtonThemeExtension with _$MyoroButtonThemeExtensionMixin {}
 /// ```
-mixin _$MyoroButtonThemeExtensionMixin
-    on ThemeExtension<MyoroButtonThemeExtension> {
+mixin _$MyoroButtonThemeExtensionMixin on ThemeExtension<MyoroButtonThemeExtension> {
   MyoroButtonThemeExtension get self => this as MyoroButtonThemeExtension;
 
   @override
@@ -45,42 +44,20 @@ mixin _$MyoroButtonThemeExtensionMixin
     bool borderTapColorProvided = true,
   }) {
     return MyoroButtonThemeExtension(
-      backgroundIdleColor: backgroundIdleColorProvided
-          ? (backgroundIdleColor ?? self.backgroundIdleColor)
-          : null,
-      backgroundHoverColor: backgroundHoverColorProvided
-          ? (backgroundHoverColor ?? self.backgroundHoverColor)
-          : null,
-      backgroundTapColor: backgroundTapColorProvided
-          ? (backgroundTapColor ?? self.backgroundTapColor)
-          : null,
+      backgroundIdleColor: backgroundIdleColorProvided ? (backgroundIdleColor ?? self.backgroundIdleColor) : null,
+      backgroundHoverColor: backgroundHoverColorProvided ? (backgroundHoverColor ?? self.backgroundHoverColor) : null,
+      backgroundTapColor: backgroundTapColorProvided ? (backgroundTapColor ?? self.backgroundTapColor) : null,
       disabledBackgroundColor: disabledBackgroundColorProvided
           ? (disabledBackgroundColor ?? self.disabledBackgroundColor)
           : null,
-      contentIdleColor: contentIdleColorProvided
-          ? (contentIdleColor ?? self.contentIdleColor)
-          : null,
-      contentHoverColor: contentHoverColorProvided
-          ? (contentHoverColor ?? self.contentHoverColor)
-          : null,
-      contentTapColor: contentTapColorProvided
-          ? (contentTapColor ?? self.contentTapColor)
-          : null,
-      borderWidth: borderWidthProvided
-          ? (borderWidth ?? self.borderWidth)
-          : null,
-      borderRadius: borderRadiusProvided
-          ? (borderRadius ?? self.borderRadius)
-          : null,
-      borderIdleColor: borderIdleColorProvided
-          ? (borderIdleColor ?? self.borderIdleColor)
-          : null,
-      borderHoverColor: borderHoverColorProvided
-          ? (borderHoverColor ?? self.borderHoverColor)
-          : null,
-      borderTapColor: borderTapColorProvided
-          ? (borderTapColor ?? self.borderTapColor)
-          : null,
+      contentIdleColor: contentIdleColorProvided ? (contentIdleColor ?? self.contentIdleColor) : null,
+      contentHoverColor: contentHoverColorProvided ? (contentHoverColor ?? self.contentHoverColor) : null,
+      contentTapColor: contentTapColorProvided ? (contentTapColor ?? self.contentTapColor) : null,
+      borderWidth: borderWidthProvided ? (borderWidth ?? self.borderWidth) : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
+      borderIdleColor: borderIdleColorProvided ? (borderIdleColor ?? self.borderIdleColor) : null,
+      borderHoverColor: borderHoverColorProvided ? (borderHoverColor ?? self.borderHoverColor) : null,
+      borderTapColor: borderTapColorProvided ? (borderTapColor ?? self.borderTapColor) : null,
     );
   }
 

@@ -11,11 +11,13 @@ part 'myoro_slider_theme_extension.g.dart';
 class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExtension>
     with _$MyoroSliderThemeExtensionMixin
     implements MyoroSliderStyle {
+    /// Default constructor.
   const MyoroSliderThemeExtension({this.indicatorTextStyle, this.indicatorTextAlignment});
 
+  /// Fake constructor.
   MyoroSliderThemeExtension.fake()
-    : indicatorTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      indicatorTextAlignment = faker.randomGenerator.boolean() ? myoroFake<TextAlign>() : null;
+    : indicatorTextStyle = myoroNullableFake<TextStyle>(),
+      indicatorTextAlignment = myoroNullableFake<TextAlign>();
 
   MyoroSliderThemeExtension.builder(TextTheme textTheme)
     : indicatorTextStyle = textTheme.bodySmall!,

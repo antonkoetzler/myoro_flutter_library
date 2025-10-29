@@ -16,22 +16,18 @@ final class MyoroSnackBarTypeWidgetShowcaseOption extends StatelessWidget {
   final MyoroSnackBarTypeEnum selectedItem;
 
   /// [MyoroSingleSelectionDropdownConfiguration.onChanged]
-  final MyoroSingleMenuOnChanged<MyoroSnackBarTypeEnum> onChanged;
+  final void Function(MyoroSnackBarTypeEnum?) onChanged;
 
   @override
   Widget build(_) {
     final viewModel = MyoroSnackBarTypeWidgetShowcaseOptionViewModel();
 
     return MyoroSingleSelectionDropdown<MyoroSnackBarTypeEnum>(
-      configuration: MyoroSingleSelectionDropdownConfiguration(
-        onChanged: onChanged,
-        selectedItemBuilder: viewModel.selectedItemBuilder,
-        menuConfiguration: MyoroSingleMenuConfiguration(
-          request: MyoroSnackBarTypeEnum.values.toSet,
-          selectedItem: selectedItem,
-          itemBuilder: viewModel.itemBuilder,
-        ),
-      ),
+      onChanged: onChanged,
+      selectedItemBuilder: viewModel.selectedItemBuilder,
+      itemBuilder: viewModel.itemBuilder,
+      items: MyoroSnackBarTypeEnum.values.toSet(),
+      selectedItem: selectedItem,
     );
   }
 }

@@ -6,7 +6,7 @@ final class _Menu<T> extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final menuStyle = context.watch<MyoroMenuStyle>();
+    final style = context.watch<MyoroDropdownStyle>();
     final viewModel = context.read<MyoroDropdownViewModel<T>>();
     final state = viewModel.state;
     final items = state.items;
@@ -14,7 +14,7 @@ final class _Menu<T> extends StatelessWidget {
     final selectedItems = state.selectedItems;
     final searchCallback = state.searchCallback;
     return MyoroMenu(
-      style: menuStyle,
+      style: style,
       items: items,
       selectedItems: selectedItems,
       itemBuilder: itemBuilder,

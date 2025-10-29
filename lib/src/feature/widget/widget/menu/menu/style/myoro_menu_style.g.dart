@@ -39,34 +39,18 @@ mixin _$MyoroMenuStyleMixin {
     bool selectedItemColorProvided = true,
   }) {
     return MyoroMenuStyle(
-      constraints: constraintsProvided
-          ? (constraints ?? self.constraints)
-          : null,
-      backgroundColor: backgroundColorProvided
-          ? (backgroundColor ?? self.backgroundColor)
-          : null,
+      constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
+      backgroundColor: backgroundColorProvided ? (backgroundColor ?? self.backgroundColor) : null,
       border: borderProvided ? (border ?? self.border) : null,
-      borderRadius: borderRadiusProvided
-          ? (borderRadius ?? self.borderRadius)
-          : null,
-      searchBarPadding: searchBarPaddingProvided
-          ? (searchBarPadding ?? self.searchBarPadding)
-          : null,
-      searchBarInputStyle: searchBarInputStyleProvided
-          ? (searchBarInputStyle ?? self.searchBarInputStyle)
-          : null,
-      itemBorderRadius: itemBorderRadiusProvided
-          ? (itemBorderRadius ?? self.itemBorderRadius)
-          : null,
-      dialogTextStyle: dialogTextStyleProvided
-          ? (dialogTextStyle ?? self.dialogTextStyle)
-          : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
+      searchBarPadding: searchBarPaddingProvided ? (searchBarPadding ?? self.searchBarPadding) : null,
+      searchBarInputStyle: searchBarInputStyleProvided ? (searchBarInputStyle ?? self.searchBarInputStyle) : null,
+      itemBorderRadius: itemBorderRadiusProvided ? (itemBorderRadius ?? self.itemBorderRadius) : null,
+      dialogTextStyle: dialogTextStyleProvided ? (dialogTextStyle ?? self.dialogTextStyle) : null,
       dialogTextLoaderPadding: dialogTextLoaderPaddingProvided
           ? (dialogTextLoaderPadding ?? self.dialogTextLoaderPadding)
           : null,
-      selectedItemColor: selectedItemColorProvided
-          ? (selectedItemColor ?? self.selectedItemColor)
-          : null,
+      selectedItemColor: selectedItemColorProvided ? (selectedItemColor ?? self.selectedItemColor) : null,
     );
   }
 

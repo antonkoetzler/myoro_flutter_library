@@ -21,19 +21,6 @@ final class SliderWidgetShowcaseOptionState {
   /// Getter of [_sliderValueController]'s value.
   double get sliderValue => _sliderValueController.value;
 
-  /// [MyoroSliderConfiguration] getter.
-  MyoroSliderConfiguration get sliderConfiguration {
-    return MyoroSliderConfiguration(
-      min: 0,
-      max: 50,
-      value: sliderValue,
-      onChanged: (v) {
-        configuration.sliderOnChanged(v);
-        sliderValue = v;
-      },
-    );
-  }
-
   /// [_configuration] setter.
   set configuration(SliderWidgetShowcaseOptionConfiguration configuration) {
     if (_configuration == configuration) return;

@@ -10,11 +10,9 @@ final class _Widget extends StatelessWidget {
     final onChanged = viewModel.onChanged;
 
     return MyoroFilePicker(
-      configuration: MyoroFilePickerConfiguration(
-        title: 'I\'m a silly snake >w<',
-        fileType: MyoroFilePickerFileTypeEnum.any,
-        onChanged: (f) => onChanged(context, f),
-      ),
+      title: 'I\'m a silly snake >w<',
+      fileType: MyoroFilePickerFileTypeEnum.any,
+      onChanged: (f) => onChanged(context, f),
     );
   }
 }

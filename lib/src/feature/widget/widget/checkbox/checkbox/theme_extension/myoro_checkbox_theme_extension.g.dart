@@ -13,8 +13,7 @@ part of 'myoro_checkbox_theme_extension.dart';
 /// ```dart
 /// class MyoroCheckboxThemeExtension with _$MyoroCheckboxThemeExtensionMixin {}
 /// ```
-mixin _$MyoroCheckboxThemeExtensionMixin
-    on ThemeExtension<MyoroCheckboxThemeExtension> {
+mixin _$MyoroCheckboxThemeExtensionMixin on ThemeExtension<MyoroCheckboxThemeExtension> {
   MyoroCheckboxThemeExtension get self => this as MyoroCheckboxThemeExtension;
 
   @override
@@ -37,27 +36,13 @@ mixin _$MyoroCheckboxThemeExtensionMixin
     bool spacingProvided = true,
   }) {
     return MyoroCheckboxThemeExtension(
-      checkboxActiveColor: checkboxActiveColorProvided
-          ? (checkboxActiveColor ?? self.checkboxActiveColor)
-          : null,
-      checkboxCheckColor: checkboxCheckColorProvided
-          ? (checkboxCheckColor ?? self.checkboxCheckColor)
-          : null,
-      checkboxHoverColor: checkboxHoverColorProvided
-          ? (checkboxHoverColor ?? self.checkboxHoverColor)
-          : null,
-      checkboxFocusColor: checkboxFocusColorProvided
-          ? (checkboxFocusColor ?? self.checkboxFocusColor)
-          : null,
-      checkboxSplashRadius: checkboxSplashRadiusProvided
-          ? (checkboxSplashRadius ?? self.checkboxSplashRadius)
-          : null,
-      labelTextStyle: labelTextStyleProvided
-          ? (labelTextStyle ?? self.labelTextStyle)
-          : null,
-      labelMaxLines: labelMaxLinesProvided
-          ? (labelMaxLines ?? self.labelMaxLines)
-          : null,
+      checkboxActiveColor: checkboxActiveColorProvided ? (checkboxActiveColor ?? self.checkboxActiveColor) : null,
+      checkboxCheckColor: checkboxCheckColorProvided ? (checkboxCheckColor ?? self.checkboxCheckColor) : null,
+      checkboxHoverColor: checkboxHoverColorProvided ? (checkboxHoverColor ?? self.checkboxHoverColor) : null,
+      checkboxFocusColor: checkboxFocusColorProvided ? (checkboxFocusColor ?? self.checkboxFocusColor) : null,
+      checkboxSplashRadius: checkboxSplashRadiusProvided ? (checkboxSplashRadius ?? self.checkboxSplashRadius) : null,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
+      labelMaxLines: labelMaxLinesProvided ? (labelMaxLines ?? self.labelMaxLines) : null,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
     );
   }

@@ -26,9 +26,9 @@ final class MyoroIndexedStackThemeExtension extends ThemeExtension<MyoroIndexedS
     : indexedStackIndicatorSpacing = faker.randomGenerator.decimal(scale: 20),
       indicatorSpacing = faker.randomGenerator.decimal(scale: 20),
       indicatorItemHeight = faker.randomGenerator.decimal(scale: 20),
-      indicatorItemBorderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      indicatorItemSelectedColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      indicatorItemUnselectedColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null;
+      indicatorItemBorderRadius = myoroNullableFake<BorderRadius>(),
+      indicatorItemSelectedColor = myoroNullableFake<Color>(),
+      indicatorItemUnselectedColor = myoroNullableFake<Color>();
 
   /// Builder constructor.
   MyoroIndexedStackThemeExtension.builder(ColorScheme colorScheme)

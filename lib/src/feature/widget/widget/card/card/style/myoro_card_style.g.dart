@@ -33,23 +33,13 @@ mixin _$MyoroCardStyleMixin {
     bool constraintsProvided = true,
   }) {
     return MyoroCardStyle(
-      backgroundColor: backgroundColorProvided
-          ? (backgroundColor ?? self.backgroundColor)
-          : null,
+      backgroundColor: backgroundColorProvided ? (backgroundColor ?? self.backgroundColor) : null,
       border: borderProvided ? (border ?? self.border) : null,
-      borderRadius: borderRadiusProvided
-          ? (borderRadius ?? self.borderRadius)
-          : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
       padding: paddingProvided ? (padding ?? self.padding) : null,
-      titleCardSpacing: titleCardSpacingProvided
-          ? (titleCardSpacing ?? self.titleCardSpacing)
-          : null,
-      titleTextStyle: titleTextStyleProvided
-          ? (titleTextStyle ?? self.titleTextStyle)
-          : null,
-      constraints: constraintsProvided
-          ? (constraints ?? self.constraints)
-          : null,
+      titleCardSpacing: titleCardSpacingProvided ? (titleCardSpacing ?? self.titleCardSpacing) : null,
+      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
+      constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
     );
   }
 

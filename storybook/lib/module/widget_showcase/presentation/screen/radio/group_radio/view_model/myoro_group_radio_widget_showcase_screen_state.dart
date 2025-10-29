@@ -8,15 +8,15 @@ final class MyoroGroupRadioWidgetShowcaseScreenState extends ChangeNotifier {
   final _radioViewModel = MyoroRadioWidgetShowcaseScreenViewModel();
   MyoroRadioWidgetShowcaseScreenViewModel get radioViewModel => _radioViewModel;
 
-  /// [MyoroGroupRadioConfiguration.direction]
-  Axis _direction = MyoroGroupRadioConfiguration.directionDefaultValue;
+  /// [MyoroGroupRadio.direction]
+  Axis _direction = MyoroGroupRadio.directionDefaultValue;
   Axis get direction => _direction;
   set direction(Axis direction) {
     _direction = direction;
     notifyListeners();
   }
 
-  /// [MyoroGroupRadioConfiguration.spacing]
+  /// [MyoroGroupRadio.spacing]
   double? _spacing;
   double? get spacing => _spacing;
   set spacing(double? spacing) {
@@ -24,7 +24,7 @@ final class MyoroGroupRadioWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroGroupRadioConfiguration.runSpacing]
+  /// [MyoroGroupRadio.runSpacing]
   double? _runSpacing;
   double? get runSpacing => _runSpacing;
   set runSpacing(double? runSpacing) {
@@ -32,7 +32,7 @@ final class MyoroGroupRadioWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroGroupRadioConfiguration.onChanged]
+  /// [MyoroGroupRadio.onChanged]
   bool _onChangedEnabled = false;
   bool get onChangedEnabled => _onChangedEnabled;
   set onChangedEnabled(bool onChangedEnabled) {

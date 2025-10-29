@@ -21,6 +21,7 @@ class MyoroDrawer extends StatelessWidget {
   /// Default value of [barrierDismissable].
   static const barrierDismissableDefaultValue = true;
 
+  /// Default constructor.
   const MyoroDrawer({
     super.key,
     this.style = styleDefaultValue,

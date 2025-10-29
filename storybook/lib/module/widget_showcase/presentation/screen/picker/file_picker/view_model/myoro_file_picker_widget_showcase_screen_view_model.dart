@@ -7,11 +7,7 @@ final class MyoroFilePickerWidgetShowcaseScreenViewModel {
   /// Displays a snack bar when the file is changed.
   void onChanged(BuildContext context, MyoroFilePickerPlatformFile? selectedFile) {
     context.showSnackBar(
-      snackBar: MyoroSnackBar(
-        configuration: MyoroSnackBarConfiguration(
-          message: selectedFile != null ? '${selectedFile.name} selected!' : 'No file selected.',
-        ),
-      ),
+      snackBar: MyoroSnackBar(message: selectedFile != null ? '${selectedFile.name} selected!' : 'No file selected.'),
     );
   }
 }

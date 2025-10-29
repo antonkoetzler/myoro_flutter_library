@@ -47,6 +47,7 @@ class MyoroInput extends StatelessWidget {
   /// Default value for [showObscureTextButton].
   static const showObscureTextButtonDefaultValue = false;
 
+  /// Default constructor.
   const MyoroInput({
     super.key,
     this.style = const MyoroInputStyle(),

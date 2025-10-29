@@ -31,19 +31,11 @@ final class MyoroFormWidgetShowcaseScreenViewModel {
   void onSuccess(BuildContext context, String? result) {
     assert(result != null, '[MyoroFormWidgetShowcaseScreenViewModel.formOnSuccess]: [result] cannot be null.');
 
-    context.showSnackBar(
-      snackBar: MyoroSnackBar(
-        configuration: MyoroSnackBarConfiguration(snackBarType: MyoroSnackBarTypeEnum.success, message: result!),
-      ),
-    );
+    context.showSnackBar(snackBar: MyoroSnackBar(snackBarType: MyoroSnackBarTypeEnum.success, message: result!));
   }
 
   /// [MyoroFormConfiguration.onError] of [_Widget].
   void onError(BuildContext context, String errorMessage) {
-    context.showSnackBar(
-      snackBar: MyoroSnackBar(
-        configuration: MyoroSnackBarConfiguration(snackBarType: MyoroSnackBarTypeEnum.error, message: errorMessage),
-      ),
-    );
+    context.showSnackBar(snackBar: MyoroSnackBar(snackBarType: MyoroSnackBarTypeEnum.error, message: errorMessage));
   }
 }

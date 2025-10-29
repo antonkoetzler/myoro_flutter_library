@@ -11,11 +11,13 @@ part 'myoro_group_radio_theme_extension.g.dart';
 class MyoroGroupRadioThemeExtension extends ThemeExtension<MyoroGroupRadioThemeExtension>
     with _$MyoroGroupRadioThemeExtensionMixin
     implements MyoroGroupRadioStyle {
+    /// Default constructor.
   const MyoroGroupRadioThemeExtension({this.spacing, this.runSpacing});
 
+  /// Fake constructor.
   MyoroGroupRadioThemeExtension.fake()
-    : spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      runSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
+    : spacing = myoroNullableFake<double>(),
+      runSpacing = myoroNullableFake<double>();
 
   const MyoroGroupRadioThemeExtension.builder() : spacing = kMyoroMultiplier, runSpacing = kMyoroMultiplier;
 

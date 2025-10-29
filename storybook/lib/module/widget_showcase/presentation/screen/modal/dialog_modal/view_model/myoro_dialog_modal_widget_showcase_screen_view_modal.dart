@@ -10,19 +10,15 @@ final class MyoroDialogModalWidgetShowcaseScreenViewModel {
 
   /// Function that displays the [MyoroDialogModal].
   void showModal(BuildContext context) {
-    MyoroDialogModal.show(context, configuration: buildConfiguration(context));
-  }
+    final modalState = _state.modalViewModel.state;
 
-  /// [MyoroDialogModalConfiguration] of the [MyoroDialogModal].
-  MyoroDialogModalConfiguration buildConfiguration(BuildContext context) {
-    final modalConfiguration = _state.modalViewModel.buildConfiguration(context);
-
-    return MyoroDialogModalConfiguration(
-      barrierDismissable: modalConfiguration.barrierDismissable,
-      useRootNavigator: modalConfiguration.useRootNavigator,
-      onClosed: modalConfiguration.onClosed,
-      title: modalConfiguration.title,
-      showCloseButton: modalConfiguration.showCloseButton,
+    MyoroDialogModal.show(
+      context,
+      isBottomSheet: modalState.isBottomSheet,
+      barrierDismissable: modalState.barrierDismissable,
+      useRootNavigator: modalState.useRootNavigator,
+      title: modalState.title,
+      showCloseButton: modalState.showCloseButton,
       invertButtons: state.invertButtons,
       confirmButtonText: state.confirmButtonText,
       cancelButtonText: state.cancelButtonText,
@@ -45,6 +41,6 @@ final class MyoroDialogModalWidgetShowcaseScreenViewModel {
 
   /// Generic function to show a snackbar.
   void _showSnackBar(BuildContext context, String message) {
-    context.showSnackBar(snackBar: MyoroSnackBar(configuration: MyoroSnackBarConfiguration(message: message)));
+    context.showSnackBar(snackBar: MyoroSnackBar(message: message));
   }
 }

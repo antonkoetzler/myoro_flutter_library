@@ -6,21 +6,23 @@ class MyoroSingleSelectionDropdown<T> extends _SelectionDropdown<T> {
   const MyoroSingleSelectionDropdown({
     super.key,
     super.style,
+    super.label,
+    super.enabled,
     super.dropdownType,
     super.items,
     super.showingController,
     required super.itemBuilder,
     required super.selectedItemBuilder,
-    this.initiallySelectedItem,
+    this.selectedItem,
     this.selectedItemController,
     this.onChanged,
   }) : assert(
-         !(initiallySelectedItem != null && selectedItemController != null),
-         '[MyoroSingleSelectionDropdown<$T>]: [initiallySelectedItem] and [selectedItemController] cannot be provided together.',
+         !(selectedItem != null && selectedItemController != null),
+         '[MyoroSingleSelectionDropdown<$T>]: [selectedItem] and [selectedItemController] cannot be provided together.',
        );
 
   /// Initially selected item.
-  final T? initiallySelectedItem;
+  final T? selectedItem;
 
   /// [ValueNotifier] of the selected item.
   final ValueNotifier<T?>? selectedItemController;
@@ -33,10 +35,12 @@ class MyoroSingleSelectionDropdown<T> extends _SelectionDropdown<T> {
     return _Base(
       style,
       MyoroSingleSelectionDropdownState(
+        label,
+        enabled,
         dropdownType,
         items,
         showingController,
-        initiallySelectedItem,
+        selectedItem,
         selectedItemController,
         itemBuilder,
         selectedItemBuilder,

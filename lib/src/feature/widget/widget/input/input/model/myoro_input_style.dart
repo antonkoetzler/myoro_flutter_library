@@ -11,6 +11,7 @@ part 'myoro_input_style.g.dart';
 @immutable
 @myoroModel
 class MyoroInputStyle with _$MyoroInputStyleMixin {
+  /// Lerp function.
   static MyoroInputStyle lerp(MyoroInputStyle? a, MyoroInputStyle? b, double t) {
     return MyoroInputStyle(
       border: myoroFallbackLerp(a?.border, b?.border, t),
@@ -45,6 +46,7 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
     );
   }
 
+  /// Default constructor.
   const MyoroInputStyle({
     this.border,
     this.underlinedBorder,
@@ -69,28 +71,29 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
     this.suffixButtonStyle,
   });
 
+  /// Fake constructor.
   factory MyoroInputStyle.fake() {
     return MyoroInputStyle(
-      border: faker.randomGenerator.boolean() ? myoroFake<InputBorder>() : null,
-      underlinedBorder: faker.randomGenerator.boolean() ? myoroFake<UnderlineInputBorder>() : null,
-      outlinedBorder: faker.randomGenerator.boolean() ? myoroFake<OutlineInputBorder>() : null,
-      noneBorder: faker.randomGenerator.boolean() ? myoroFake<InputBorder>() : null,
-      primaryColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      errorBorderColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      cursorHeight: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      contentPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      disabledOpacity: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      inputTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      labelTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      labelBehavior: faker.randomGenerator.boolean() ? myoroFake<FloatingLabelBehavior>() : null,
-      suffixButtonMargin: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      suffixButtonIconSize: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 200, min: 20) : null,
-      clearTextButtonIcon: faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
-      obscureTextButtonEnabledIcon: faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
-      obscureTextButtonDisabledIcon: faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
-      suffixIconConstraints: faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
-      suffixButtonStyle: faker.randomGenerator.boolean() ? myoroFake<MyoroIconTextButtonStyle>() : null,
+      border: myoroNullableFake<InputBorder>(),
+      underlinedBorder: myoroNullableFake<UnderlineInputBorder>(),
+      outlinedBorder: myoroNullableFake<OutlineInputBorder>(),
+      noneBorder: myoroNullableFake<InputBorder>(),
+      primaryColor: myoroNullableFake<Color>(),
+      errorBorderColor: myoroNullableFake<Color>(),
+      cursorHeight: myoroNullableFake<double>(),
+      contentPadding: myoroNullableFake<EdgeInsets>(),
+      disabledOpacity: myoroNullableFake<double>(),
+      inputTextStyle: myoroNullableFake<TextStyle>(),
+      spacing: myoroNullableFake<double>(),
+      labelTextStyle: myoroNullableFake<TextStyle>(),
+      labelBehavior: myoroNullableFake<FloatingLabelBehavior>(),
+      suffixButtonMargin: myoroNullableFake<EdgeInsets>(),
+      suffixButtonIconSize: myoroNullableFake<double>(),
+      clearTextButtonIcon: myoroNullableFake<IconData>(),
+      obscureTextButtonEnabledIcon: myoroNullableFake<IconData>(),
+      obscureTextButtonDisabledIcon: myoroNullableFake<IconData>(),
+      suffixIconConstraints: myoroNullableFake<BoxConstraints>(),
+      suffixButtonStyle: myoroNullableFake<MyoroIconTextButtonStyle>(),
     );
   }
 

@@ -41,7 +41,7 @@ final class WidgetShowcaseScreenConfiguration with _$WidgetShowcaseScreenConfigu
       widget = Text(faker.lorem.word()),
       configurationOptions = List.generate(faker.randomGenerator.integer(5), (_) => Text(faker.lorem.word())),
       stylingOptions = List.generate(faker.randomGenerator.integer(5), (_) => Text(faker.lorem.word())),
-      padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;
+      padding = myoroNullableFake<EdgeInsets>();
 
   /// Legacy support - combines both option lists for backwards compatibility
   List<Widget> get widgetOptions => [...configurationOptions, ...stylingOptions];

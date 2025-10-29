@@ -42,10 +42,10 @@ class MyoroModal extends StatelessWidget {
   /// Function that opens a normal modal.
   static Future<T?> show<T>(
     BuildContext context, {
+    MyoroModalStyle style = styleDefaultValue,
     bool isBottomSheet = bottomSheetDefaultValue,
     bool useRootNavigator = useRootNavigatorDefaultValue,
     bool barrierDismissable = barrierDismissableDefaultValue,
-    MyoroModalStyle style = styleDefaultValue,
     String title = titleDefaultValue,
     bool showCloseButton = showCloseButtonDefaultValue,
     required Widget child,

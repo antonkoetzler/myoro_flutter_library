@@ -6,21 +6,6 @@ import 'package:storybook/storybook.dart';
 final class IconWidgetShowcaseOptionViewModel {
   IconWidgetShowcaseOptionViewModel(this._configuration) {
     _enabledController = ValueNotifier(_configuration.enabled ?? true)..addListener(_enabledControllerListener);
-    _iconController = MyoroSingleSelectionDropdownController(
-      configuration: MyoroSingleSelectionDropdownConfiguration(
-        label: 'Icon',
-        selectedItemBuilder: (icon) => icon.name!.capitalized,
-        onChanged: _configuration.iconOnChanged,
-        menuConfiguration: MyoroSingleMenuConfiguration(
-          request: kMyoroTestIcons.toSet,
-          selectedItem: _configuration.selectedIcon,
-          itemBuilder: (icon) {
-            return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: icon.name!.capitalized));
-          },
-        ),
-        enabled: _configuration.enableOptionCheckboxOnChanged != null ? enabled : true,
-      ),
-    );
     _iconSize = _configuration.selectedIconSize;
   }
 
@@ -43,15 +28,9 @@ final class IconWidgetShowcaseOptionViewModel {
     _configuration.iconSizeOnChanged?.call(_iconSize);
   }
 
-  /// [MyoroSingleSelectionDropdownController] of the [IconData] selector.
-  late final MyoroSingleSelectionDropdownController<IconData> _iconController;
-  MyoroSingleSelectionDropdownController<IconData> get iconController => _iconController;
-  IconData? get icon => _iconController.selectedItem;
-
   /// Dispose function.
   void dispose() {
     _enabledController.dispose();
-    _iconController.dispose();
   }
 
   /// [MyoroInputConfiguration.checkboxOnChanged] of the icon size selector.
@@ -65,7 +44,6 @@ final class IconWidgetShowcaseOptionViewModel {
 
   /// Listener of [_enabledController].
   void _enabledControllerListener() {
-    _configuration.enableOptionCheckboxOnChanged?.call(enabled, icon, iconSize);
-    _iconController.toggleEnabled(enabled);
+    _configuration.enableOptionCheckboxOnChanged?.call(enabled, configuration.selectedIcon, iconSize);
   }
 }

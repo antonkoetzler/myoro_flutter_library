@@ -19,23 +19,19 @@ final class MouseCursorWidgetShowcaseOption extends StatelessWidget {
   final MouseCursor? selectedCursor;
 
   /// [MyoroSingleSelectionDropdownConfiguration.onChanged]
-  final MyoroSingleMenuOnChanged<MouseCursor> onChanged;
+  final void Function(MouseCursor?) onChanged;
 
   @override
   Widget build(_) {
     return MyoroSingleSelectionDropdown<MouseCursor>(
-      configuration: MyoroSingleSelectionDropdownConfiguration(
-        label: label,
-        selectedItemBuilder: _getCursorName,
-        onChanged: onChanged,
-        menuConfiguration: MyoroSingleMenuConfiguration(
-          request: kMyoroTestCursors.toSet,
-          selectedItem: selectedCursor,
-          itemBuilder: (cursor) {
-            return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: _getCursorName(cursor)));
-          },
-        ),
-      ),
+      label: label,
+      selectedItemBuilder: _getCursorName,
+      onChanged: onChanged,
+      itemBuilder: (cursor) {
+        return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: _getCursorName(cursor)));
+      },
+      items: kMyoroTestCursors.toSet(),
+      selectedItem: selectedCursor,
     );
   }
 

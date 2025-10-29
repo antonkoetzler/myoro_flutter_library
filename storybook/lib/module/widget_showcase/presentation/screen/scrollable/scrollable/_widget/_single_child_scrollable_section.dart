@@ -6,10 +6,6 @@ final class _SingleChildScrollableSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroScrollablesWidgetShowcaseScreenViewModel>();
-    final singleChildConfiguration = viewModel.singleChildConfiguration;
-    final style = viewModel.style;
-
     final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
     final spacing = widgetShowcaseThemeExtension.spacing;
     final labelTextStyle = widgetShowcaseThemeExtension.labelTextStyle;
@@ -26,8 +22,6 @@ final class _SingleChildScrollableSection extends StatelessWidget {
         ConstrainedBox(
           constraints: scrollableConstraints,
           child: MyoroSingleChildScrollable(
-            configuration: singleChildConfiguration,
-            style: style,
             child: Column(
               spacing: spacing,
               children: List.generate(20, (index) => _Button('Single Child Item $index')),

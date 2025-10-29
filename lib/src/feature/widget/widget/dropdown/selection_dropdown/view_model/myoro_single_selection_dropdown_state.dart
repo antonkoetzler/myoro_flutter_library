@@ -4,18 +4,19 @@ part of 'myoro_selection_dropdown_view_model.dart';
 class MyoroSingleSelectionDropdownState<T> extends MyoroSelectionDropdownState<T> {
   /// Default constructor.
   MyoroSingleSelectionDropdownState(
+    super.label,
+    super.enabled,
     super.dropdownType,
     super.items,
     super.showingController,
-    T? initiallySelectedItem,
+    T? selectedItem,
     ValueNotifier<T?>? selectedItemController,
     super.itemBuilder,
     super.selectedItemBuilder,
     this.onChanged,
   ) {
-    _selectedItemController =
-        (selectedItemController ?? (_localSelectedItemController ??= ValueNotifier(initiallySelectedItem)))
-          ..addListener(_selectedItemControllerListener);
+    _selectedItemController = (selectedItemController ?? (_localSelectedItemController ??= ValueNotifier(selectedItem)))
+      ..addListener(_selectedItemControllerListener);
   }
 
   /// Local selected items [ValueNotifier].

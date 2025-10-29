@@ -11,11 +11,13 @@ part 'myoro_carousel_theme_extension.g.dart';
 class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThemeExtension>
     with _$MyoroCarouselThemeExtensionMixin
     implements MyoroCarouselStyle {
+    /// Default constructor.
   const MyoroCarouselThemeExtension({this.previousItemButtonIcon, this.nextItemButtonIcon});
 
+  /// Fake constructor.
   MyoroCarouselThemeExtension.fake()
-    : previousItemButtonIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
-      nextItemButtonIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null;
+    : previousItemButtonIcon = myoroNullableFake<IconData>(),
+      nextItemButtonIcon = myoroNullableFake<IconData>();
 
   const MyoroCarouselThemeExtension.builder()
     : previousItemButtonIcon = Icons.keyboard_arrow_left,

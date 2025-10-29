@@ -51,14 +51,7 @@ mixin _$MyoroMenuButtonItemMixin {
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.builder,
-      self.cursor,
-      self.tooltipText,
-      self.onTapDown,
-      self.onTapUp,
-      self.isLoading,
-    );
+    return Object.hash(self.builder, self.cursor, self.tooltipText, self.onTapDown, self.onTapUp, self.isLoading);
   }
 
   @override
@@ -100,12 +93,8 @@ mixin _$MyoroMenuIconTextButtonItemMixin {
   }) {
     return MyoroMenuIconTextButtonItem(
       invert: invert ?? self.invert,
-      iconConfiguration: iconConfigurationProvided
-          ? (iconConfiguration ?? self.iconConfiguration)
-          : null,
-      textConfiguration: textConfigurationProvided
-          ? (textConfiguration ?? self.textConfiguration)
-          : null,
+      iconConfiguration: iconConfigurationProvided ? (iconConfiguration ?? self.iconConfiguration) : null,
+      textConfiguration: textConfigurationProvided ? (textConfiguration ?? self.textConfiguration) : null,
       cursor: cursorProvided ? (cursor ?? self.cursor) : null,
       tooltipText: tooltipText ?? self.tooltipText,
       onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,

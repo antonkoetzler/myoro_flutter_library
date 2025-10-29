@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart' hide Color;
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -12,6 +13,7 @@ part 'myoro_scrollable_theme_extension.g.dart';
 class MyoroScrollableThemeExtension extends ThemeExtension<MyoroScrollableThemeExtension>
     with _$MyoroScrollableThemeExtensionMixin
     implements MyoroScrollableStyle {
+    /// Default constructor.
   const MyoroScrollableThemeExtension({
     this.gradientTopColor,
     this.gradientBottomColor,
@@ -20,6 +22,15 @@ class MyoroScrollableThemeExtension extends ThemeExtension<MyoroScrollableThemeE
     this.gradientSize,
     this.gradientColor,
   });
+
+  /// Fake constructor.
+  MyoroScrollableThemeExtension.fake()
+    : gradientTopColor = myoroNullableFake<Color>(),
+      gradientBottomColor = myoroNullableFake<Color>(),
+      gradientLeftColor = myoroNullableFake<Color>(),
+      gradientRightColor = myoroNullableFake<Color>(),
+      gradientSize = myoroNullableFake<double>(),
+      gradientColor = myoroNullableFake<Color>();
 
   MyoroScrollableThemeExtension.builder(ColorScheme colorScheme)
     : gradientTopColor = colorScheme.surface,

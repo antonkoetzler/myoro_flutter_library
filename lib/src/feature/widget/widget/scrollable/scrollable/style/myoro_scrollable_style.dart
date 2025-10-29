@@ -11,6 +11,7 @@ part 'myoro_scrollable_style.g.dart';
 @immutable
 @myoroModel
 class MyoroScrollableStyle with _$MyoroScrollableStyleMixin {
+  /// Lerp function.
   static MyoroScrollableStyle lerp(MyoroScrollableStyle? a, MyoroScrollableStyle? b, double t) {
     return MyoroScrollableStyle(
       gradientTopColor: Color.lerp(a?.gradientTopColor, b?.gradientTopColor, t),
@@ -22,6 +23,7 @@ class MyoroScrollableStyle with _$MyoroScrollableStyleMixin {
     );
   }
 
+  /// Default constructor.
   const MyoroScrollableStyle({
     this.gradientTopColor,
     this.gradientBottomColor,
@@ -31,13 +33,14 @@ class MyoroScrollableStyle with _$MyoroScrollableStyleMixin {
     this.gradientColor = Colors.white,
   });
 
+  /// Fake constructor.
   MyoroScrollableStyle.fake()
-    : gradientTopColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      gradientBottomColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      gradientLeftColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      gradientRightColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      gradientSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50) : null,
-      gradientColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null;
+    : gradientTopColor = myoroNullableFake<Color>(),
+      gradientBottomColor = myoroNullableFake<Color>(),
+      gradientLeftColor = myoroNullableFake<Color>(),
+      gradientRightColor = myoroNullableFake<Color>(),
+      gradientSize = myoroNullableFake<double>(),
+      gradientColor = myoroNullableFake<Color>();
 
   /// Color for the top gradient overlay (when scrolling vertically).
   final Color? gradientTopColor;

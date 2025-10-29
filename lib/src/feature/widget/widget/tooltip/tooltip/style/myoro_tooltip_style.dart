@@ -9,14 +9,17 @@ part 'myoro_tooltip_style.g.dart';
 @immutable
 @myoroModel
 class MyoroTooltipStyle with _$MyoroTooltipStyleMixin {
+  /// Lerp function.
   static MyoroTooltipStyle lerp(MyoroTooltipStyle? a, MyoroTooltipStyle? b, double t) {
     return MyoroTooltipStyle(margin: EdgeInsets.lerp(a?.margin, b?.margin, t));
   }
 
+  /// Default constructor.
   const MyoroTooltipStyle({this.margin});
 
+  /// Fake constructor.
   factory MyoroTooltipStyle.fake() {
-    return MyoroTooltipStyle(margin: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null);
+    return MyoroTooltipStyle(margin: myoroNullableFake<EdgeInsets>());
   }
 
   /// [Tooltip.margin].

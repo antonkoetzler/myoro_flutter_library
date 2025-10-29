@@ -16,17 +16,13 @@ final class MyoroDropdownMenuTypeEnumWidgetShowcaseOption extends StatelessWidge
   Widget build(_) {
     final viewModel = MyoroDropdownMenuTypeEnumWidgetShowcaseOptiomViewModel();
 
-    return MyoroSingleSelectionDropdown(
-      configuration: MyoroSingleSelectionDropdownConfiguration(
-        label: 'Menu render type.',
-        selectedItemBuilder: viewModel.selectedItemBuilder,
-        onChanged: (item) => onChanged(item!),
-        menuConfiguration: MyoroSingleMenuConfiguration(
-          request: MyoroDropdownTypeEnum.values.toSet,
-          selectedItem: selectedItem,
-          itemBuilder: viewModel.itemBuilder,
-        ),
-      ),
+    return MyoroSingleSelectionDropdown<MyoroDropdownTypeEnum>(
+      label: 'Menu render type.',
+      selectedItemBuilder: viewModel.selectedItemBuilder,
+      onChanged: (item) => onChanged(item!),
+      itemBuilder: viewModel.itemBuilder,
+      items: MyoroDropdownTypeEnum.values.toSet(),
+      selectedItem: selectedItem,
     );
   }
 }

@@ -13,8 +13,7 @@ part of 'myoro_radio_theme_extension.dart';
 /// ```dart
 /// class MyoroRadioThemeExtension with _$MyoroRadioThemeExtensionMixin {}
 /// ```
-mixin _$MyoroRadioThemeExtensionMixin
-    on ThemeExtension<MyoroRadioThemeExtension> {
+mixin _$MyoroRadioThemeExtensionMixin on ThemeExtension<MyoroRadioThemeExtension> {
   MyoroRadioThemeExtension get self => this as MyoroRadioThemeExtension;
 
   @override
@@ -31,17 +30,11 @@ mixin _$MyoroRadioThemeExtensionMixin
     bool splashRadiusProvided = true,
   }) {
     return MyoroRadioThemeExtension(
-      activeColor: activeColorProvided
-          ? (activeColor ?? self.activeColor)
-          : null,
+      activeColor: activeColorProvided ? (activeColor ?? self.activeColor) : null,
       hoverColor: hoverColorProvided ? (hoverColor ?? self.hoverColor) : null,
-      labelTextStyle: labelTextStyleProvided
-          ? (labelTextStyle ?? self.labelTextStyle)
-          : null,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
-      splashRadius: splashRadiusProvided
-          ? (splashRadius ?? self.splashRadius)
-          : null,
+      splashRadius: splashRadiusProvided ? (splashRadius ?? self.splashRadius) : null,
     );
   }
 
@@ -58,13 +51,7 @@ mixin _$MyoroRadioThemeExtensionMixin
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.activeColor,
-      self.hoverColor,
-      self.labelTextStyle,
-      self.spacing,
-      self.splashRadius,
-    );
+    return Object.hash(self.activeColor, self.hoverColor, self.labelTextStyle, self.spacing, self.splashRadius);
   }
 
   @override

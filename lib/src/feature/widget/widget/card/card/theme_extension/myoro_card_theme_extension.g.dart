@@ -13,8 +13,7 @@ part of 'myoro_card_theme_extension.dart';
 /// ```dart
 /// class MyoroCardThemeExtension with _$MyoroCardThemeExtensionMixin {}
 /// ```
-mixin _$MyoroCardThemeExtensionMixin
-    on ThemeExtension<MyoroCardThemeExtension> {
+mixin _$MyoroCardThemeExtensionMixin on ThemeExtension<MyoroCardThemeExtension> {
   MyoroCardThemeExtension get self => this as MyoroCardThemeExtension;
 
   @override
@@ -35,23 +34,13 @@ mixin _$MyoroCardThemeExtensionMixin
     bool constraintsProvided = true,
   }) {
     return MyoroCardThemeExtension(
-      backgroundColor: backgroundColorProvided
-          ? (backgroundColor ?? self.backgroundColor)
-          : null,
+      backgroundColor: backgroundColorProvided ? (backgroundColor ?? self.backgroundColor) : null,
       border: borderProvided ? (border ?? self.border) : null,
-      borderRadius: borderRadiusProvided
-          ? (borderRadius ?? self.borderRadius)
-          : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
       padding: paddingProvided ? (padding ?? self.padding) : null,
-      titleCardSpacing: titleCardSpacingProvided
-          ? (titleCardSpacing ?? self.titleCardSpacing)
-          : null,
-      titleTextStyle: titleTextStyleProvided
-          ? (titleTextStyle ?? self.titleTextStyle)
-          : null,
-      constraints: constraintsProvided
-          ? (constraints ?? self.constraints)
-          : null,
+      titleCardSpacing: titleCardSpacingProvided ? (titleCardSpacing ?? self.titleCardSpacing) : null,
+      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
+      constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
     );
   }
 

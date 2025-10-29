@@ -25,7 +25,7 @@ final class CurveWidgetShowcaseOption extends StatelessWidget {
   final Curve? selectedCurve;
 
   /// [MyoroSingleSelectionDropdownConfiguration.onChanged]
-  final MyoroSingleMenuOnChanged<Curve> onChanged;
+  final void Function(Curve?) onChanged;
 
   /// [MyoroSingleSelectionDropdownConfiguration.checkboxOnChanged].
   final MyoroInputCheckboxOnChanged? checkboxOnChanged;
@@ -46,25 +46,19 @@ final class CurveWidgetShowcaseOption extends StatelessWidget {
   @override
   Widget build(context) {
     return MyoroSingleSelectionDropdown<Curve>(
-      configuration: MyoroSingleSelectionDropdownConfiguration(
-        label: label,
-        selectedItemBuilder:
-            (c) =>
-                _curves.entries
-                    .firstWhere((entry) => entry.value == c, orElse: () => const MapEntry('custom', Curves.linear))
-                    .key,
-        onChanged: onChanged,
-        checkboxOnChanged: checkboxOnChanged,
-        enabled: enabled,
-        menuConfiguration: MyoroSingleMenuConfiguration(
-          request: _curves.values.toSet,
-          selectedItem: selectedCurve,
-          itemBuilder: (curve) {
-            final name = _curves.entries.firstWhere((entry) => entry.value == curve).key;
-            return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: name));
-          },
-        ),
-      ),
+      label: label,
+      selectedItemBuilder:
+          (c) =>
+              _curves.entries
+                  .firstWhere((entry) => entry.value == c, orElse: () => const MapEntry('custom', Curves.linear))
+                  .key,
+      onChanged: onChanged,
+      itemBuilder: (curve) {
+        final name = _curves.entries.firstWhere((entry) => entry.value == curve).key;
+        return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: name));
+      },
+      items: _curves.values.toSet(),
+      selectedItem: selectedCurve,
     );
   }
 }

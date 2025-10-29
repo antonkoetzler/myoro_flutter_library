@@ -4,6 +4,8 @@ part of 'myoro_selection_dropdown_view_model.dart';
 sealed class MyoroSelectionDropdownState<T> {
   /// Default constructor.
   MyoroSelectionDropdownState(
+    this.label,
+    this.enabled,
     this.dropdownType,
     this.items,
     ValueNotifier<bool>? showingController,
@@ -12,6 +14,12 @@ sealed class MyoroSelectionDropdownState<T> {
   ) {
     _showingController = showingController ?? (_localShowingController ??= ValueNotifier(false));
   }
+
+  /// Label of the dropdown.
+  final String label;
+
+  /// If the dropdown is enabled.
+  final bool enabled;
 
   /// [GlobalKey] of the selection dropdown's input.
   final _inputKey = GlobalKey();

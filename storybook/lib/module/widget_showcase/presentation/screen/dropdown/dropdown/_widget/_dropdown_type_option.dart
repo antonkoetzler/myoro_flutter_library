@@ -1,23 +1,21 @@
-part of '../myoro_dropdowns_widget_showcase_screen.dart';
+part of '../myoro_dropdown_widget_showcase_screen.dart';
 
-/// [MyoroDropdown.dropdownType] of [MyoroDropdownWidgetShowcaseScreen].
+/// [MyoroDropdownConfiguration.dropdownType] option of [MyoroDropdownWidgetShowcaseScreen].
 final class _DropdownTypeOption extends StatelessWidget {
   const _DropdownTypeOption();
 
   @override
   Widget build(context) {
-    final viewModel = context.read<MyoroDropdownsWidgetShowcaseScreenViewModel>();
+    final viewModel = context.read<MyoroDropdownWidgetShowcaseScreenViewModel>();
     final state = viewModel.state;
-    final dropdownType = state.dropdownType;
-    final dropdownTypeOptionItemBuilder = viewModel.dropdownTypeOptionItemBuilder;
-    final dropdownTypeOptionSelectedItemBuilder = viewModel.dropdownTypeOptionSelectedItemBuilder;
 
     return MyoroSingleSelectionDropdown<MyoroDropdownTypeEnum>(
+      label: 'Dropdown Type',
       items: MyoroDropdownTypeEnum.values.toSet(),
-      itemBuilder: dropdownTypeOptionItemBuilder,
-      initiallySelectedItem: dropdownType,
-      onChanged: (v) => state.dropdownType = v!,
-      selectedItemBuilder: dropdownTypeOptionSelectedItemBuilder,
+      selectedItem: state.dropdownType,
+      itemBuilder: (type) => MyoroMenuButtonItem(builder: (context, tapStatusEnum) => Text(type.name)),
+      selectedItemBuilder: (type) => type.name,
+      onChanged: (type) => state.dropdownType = type!,
     );
   }
 }

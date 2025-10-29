@@ -7,11 +7,7 @@ final class MyoroImagePickerWidgetShowcaseScreenViewModel {
   /// Snack bar displayed when an image is selected.
   void onChangedSnackBar(BuildContext context, String? selectedImage) {
     context.showSnackBar(
-      snackBar: MyoroSnackBar(
-        configuration: MyoroSnackBarConfiguration(
-          message: selectedImage != null ? '$selectedImage selected!' : 'Image deselected.',
-        ),
-      ),
+      snackBar: MyoroSnackBar(message: selectedImage != null ? '$selectedImage selected!' : 'Image deselected.'),
     );
   }
 }

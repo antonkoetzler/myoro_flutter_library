@@ -12,6 +12,7 @@ part 'myoro_snack_bar_container_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSnackBarContainerThemeExtension>
     with _$MyoroSnackBarContainerThemeExtensionMixin {
+    /// Default constructor.
   const MyoroSnackBarContainerThemeExtension({
     this.primaryColor,
     this.behavior,
@@ -21,13 +22,14 @@ class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSnackBarC
     this.dismissDirection,
   });
 
+  /// Fake constructor.
   MyoroSnackBarContainerThemeExtension.fake()
-    : primaryColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      behavior = faker.randomGenerator.boolean() ? myoroFake<SnackBarBehavior>() : null,
-      margin = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      elevation = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      dismissDirection = faker.randomGenerator.boolean() ? myoroFake<DismissDirection>() : null;
+    : primaryColor = myoroNullableFake<Color>(),
+      behavior = myoroNullableFake<SnackBarBehavior>(),
+      margin = myoroNullableFake<EdgeInsets>(),
+      padding = myoroNullableFake<EdgeInsets>(),
+      elevation = myoroNullableFake<double>(),
+      dismissDirection = myoroNullableFake<DismissDirection>();
 
   MyoroSnackBarContainerThemeExtension.builder()
     : primaryColor = MyoroColors.transparent,

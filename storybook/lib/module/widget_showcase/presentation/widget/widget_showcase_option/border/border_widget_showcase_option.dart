@@ -24,24 +24,19 @@ final class BorderWidgetShowcaseOption extends StatelessWidget {
   final Border? selectedBorder;
 
   /// [MyoroSingleSelectionDropdownConfiguration.onChanged]
-  final MyoroSingleMenuOnChanged<Border> onChanged;
+  final void Function(Border?) onChanged;
 
   @override
   Widget build(_) {
     return MyoroSingleSelectionDropdown<Border>(
-      configuration: MyoroSingleSelectionDropdownConfiguration(
-        label: label,
-        selectedItemBuilder: _getBorderName,
-        onChanged: onChanged,
-        menuConfiguration: MyoroSingleMenuConfiguration(
-          request: _getTestBorders().toSet,
-          selectedItem: selectedBorder,
-          itemBuilder: (border) {
-            return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: _getBorderName(border)));
-          },
-        ),
-        enabled: enabled,
-      ),
+      label: label,
+      selectedItemBuilder: _getBorderName,
+      onChanged: onChanged,
+      itemBuilder: (border) {
+        return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: _getBorderName(border)));
+      },
+      items: _getTestBorders().toSet(),
+      selectedItem: selectedBorder,
     );
   }
 

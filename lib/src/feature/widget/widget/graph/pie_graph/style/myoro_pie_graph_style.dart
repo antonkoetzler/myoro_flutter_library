@@ -11,6 +11,7 @@ part 'myoro_pie_graph_style.g.dart';
 @immutable
 @myoroModel
 class MyoroPieGraphStyle with _$MyoroPieGraphStyleMixin {
+  /// Lerp function.
   static MyoroPieGraphStyle lerp(MyoroPieGraphStyle? a, MyoroPieGraphStyle? b, double t) {
     return MyoroPieGraphStyle(
       itemColor: Color.lerp(a?.itemColor, b?.itemColor, t),
@@ -18,13 +19,12 @@ class MyoroPieGraphStyle with _$MyoroPieGraphStyleMixin {
     );
   }
 
+  /// Default constructor.
   const MyoroPieGraphStyle({this.itemColor, this.itemRadius});
 
+  /// Fake constructor.
   factory MyoroPieGraphStyle.fake() {
-    return MyoroPieGraphStyle(
-      itemColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      itemRadius: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-    );
+    return MyoroPieGraphStyle(itemColor: myoroNullableFake<Color>(), itemRadius: myoroNullableFake<double>());
   }
 
   /// Default color of an item.

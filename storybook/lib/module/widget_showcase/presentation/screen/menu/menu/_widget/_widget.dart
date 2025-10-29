@@ -1,27 +1,25 @@
-part of '../myoro_menus_widget_showcase_screen.dart';
+part of '../myoro_menu_widget_showcase_screen.dart';
 
-/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroMenusWidgetShowcaseScreen].
+/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroMenuWidgetShowcaseScreen].
 final class _Widget extends StatelessWidget {
   const _Widget();
 
   @override
   Widget build(context) {
-    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
-    final spacing = widgetShowcaseThemeExtension.spacing;
-
-    final viewModel = context.read<MyoroMenusWidgetShowcaseScreenViewModel>();
+    final viewModel = context.read<MyoroMenuWidgetShowcaseScreenViewModel>();
     final state = viewModel.state;
 
-    return ListenableBuilder(
-      listenable: state,
-      builder: (_, _) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          spacing: spacing,
-          children: const [_SingleMenu(), _MultiMenu()],
-        );
-      },
+    return Container(
+      height: 300,
+      width: 200,
+      decoration: BoxDecoration(border: Border.all(color: Colors.grey), borderRadius: BorderRadius.circular(8)),
+      child: MyoroMenu<String>(
+        style: state.menuStyle,
+        searchCallback: state.searchCallbackEnabled ? state.searchCallback : null,
+        items: state.items,
+        selectedItems: state.selectedItems,
+        itemBuilder: state.itemBuilder,
+      ),
     );
   }
 }

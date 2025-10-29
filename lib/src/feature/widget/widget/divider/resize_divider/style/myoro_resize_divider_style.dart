@@ -11,6 +11,7 @@ part 'myoro_resize_divider_style.g.dart';
 @immutable
 @myoroModel
 class MyoroResizeDividerStyle extends MyoroBasicDividerStyle with _$MyoroResizeDividerStyleMixin {
+  /// Lerp function.
   static MyoroResizeDividerStyle lerp(MyoroResizeDividerStyle? a, MyoroResizeDividerStyle? b, double t) {
     return MyoroResizeDividerStyle(
       color: Color.lerp(a?.color, b?.color, t),
@@ -23,6 +24,7 @@ class MyoroResizeDividerStyle extends MyoroBasicDividerStyle with _$MyoroResizeD
     );
   }
 
+  /// Default constructor.
   const MyoroResizeDividerStyle({
     super.color,
     super.shortValue,
@@ -33,15 +35,16 @@ class MyoroResizeDividerStyle extends MyoroBasicDividerStyle with _$MyoroResizeD
     this.resizeButtonLongValue,
   });
 
+  /// Fake constructor.
   factory MyoroResizeDividerStyle.fake() {
     return MyoroResizeDividerStyle(
-      color: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      shortValue: faker.randomGenerator.boolean() ? myoroFake<double>() : null,
-      longValue: faker.randomGenerator.boolean() ? myoroFake<double>() : null,
-      resizeButtonBorderRadius: faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      resizeButtonColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      resizeButtonShortValue: faker.randomGenerator.boolean() ? myoroFake<double>() : null,
-      resizeButtonLongValue: faker.randomGenerator.boolean() ? myoroFake<double>() : null,
+      color: myoroNullableFake<Color>(),
+      shortValue: myoroNullableFake<double>(),
+      longValue: myoroNullableFake<double>(),
+      resizeButtonBorderRadius: myoroNullableFake<BorderRadius>(),
+      resizeButtonColor: myoroNullableFake<Color>(),
+      resizeButtonShortValue: myoroNullableFake<double>(),
+      resizeButtonLongValue: myoroNullableFake<double>(),
     );
   }
 

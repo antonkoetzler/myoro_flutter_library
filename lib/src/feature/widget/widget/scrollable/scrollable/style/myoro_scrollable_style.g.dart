@@ -31,24 +31,12 @@ mixin _$MyoroScrollableStyleMixin {
     bool gradientColorProvided = true,
   }) {
     return MyoroScrollableStyle(
-      gradientTopColor: gradientTopColorProvided
-          ? (gradientTopColor ?? self.gradientTopColor)
-          : null,
-      gradientBottomColor: gradientBottomColorProvided
-          ? (gradientBottomColor ?? self.gradientBottomColor)
-          : null,
-      gradientLeftColor: gradientLeftColorProvided
-          ? (gradientLeftColor ?? self.gradientLeftColor)
-          : null,
-      gradientRightColor: gradientRightColorProvided
-          ? (gradientRightColor ?? self.gradientRightColor)
-          : null,
-      gradientSize: gradientSizeProvided
-          ? (gradientSize ?? self.gradientSize)
-          : null,
-      gradientColor: gradientColorProvided
-          ? (gradientColor ?? self.gradientColor)
-          : null,
+      gradientTopColor: gradientTopColorProvided ? (gradientTopColor ?? self.gradientTopColor) : null,
+      gradientBottomColor: gradientBottomColorProvided ? (gradientBottomColor ?? self.gradientBottomColor) : null,
+      gradientLeftColor: gradientLeftColorProvided ? (gradientLeftColor ?? self.gradientLeftColor) : null,
+      gradientRightColor: gradientRightColorProvided ? (gradientRightColor ?? self.gradientRightColor) : null,
+      gradientSize: gradientSizeProvided ? (gradientSize ?? self.gradientSize) : null,
+      gradientColor: gradientColorProvided ? (gradientColor ?? self.gradientColor) : null,
     );
   }
 

@@ -13,19 +13,17 @@ final class _ItemsSection<T> extends StatelessWidget {
     final scrollController = state.scrollController;
 
     return items!.isNotEmpty
-        ? Flexible(
-            child: Scrollbar(
+        ? Scrollbar(
+            controller: scrollController,
+            thumbVisibility: true,
+            child: ListView.builder(
               controller: scrollController,
-              thumbVisibility: true,
-              child: ListView.builder(
-                controller: scrollController,
-                shrinkWrap: true,
-                itemCount: items.length,
-                itemBuilder: (_, index) {
-                  final item = items.elementAt(index);
-                  return _Item<T>(item, itemBuilder(item));
-                },
-              ),
+              shrinkWrap: true,
+              itemCount: items.length,
+              itemBuilder: (_, index) {
+                final item = items.elementAt(index);
+                return _Item<T>(item, itemBuilder(item));
+              },
             ),
           )
         : const Flexible(child: _DialogText('No items to display.'));

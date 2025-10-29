@@ -11,6 +11,7 @@ part 'myoro_icon_text_button_style.g.dart';
 @immutable
 @myoroModel
 class MyoroIconTextButtonStyle extends MyoroButtonStyle with _$MyoroIconTextButtonStyleMixin {
+  /// Lerp function.
   static MyoroIconTextButtonStyle lerp(MyoroIconTextButtonStyle? a, MyoroIconTextButtonStyle? b, double t) {
     return MyoroIconTextButtonStyle(
       backgroundIdleColor: Color.lerp(a?.backgroundIdleColor, b?.backgroundIdleColor, t),
@@ -30,6 +31,7 @@ class MyoroIconTextButtonStyle extends MyoroButtonStyle with _$MyoroIconTextButt
     );
   }
 
+  /// Default constructor.
   const MyoroIconTextButtonStyle({
     super.backgroundIdleColor,
     super.backgroundHoverColor,
@@ -47,22 +49,23 @@ class MyoroIconTextButtonStyle extends MyoroButtonStyle with _$MyoroIconTextButt
     this.textStyle,
   });
 
+  /// Fake constructor.
   factory MyoroIconTextButtonStyle.fake() {
     return MyoroIconTextButtonStyle(
-      backgroundIdleColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      backgroundHoverColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      backgroundTapColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      contentIdleColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      contentHoverColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      contentTapColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      borderWidth: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
-      borderRadius: faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      borderIdleColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      borderHoverColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      borderTapColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      contentPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
-      textStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      backgroundIdleColor: myoroNullableFake<Color>(),
+      backgroundHoverColor: myoroNullableFake<Color>(),
+      backgroundTapColor: myoroNullableFake<Color>(),
+      contentIdleColor: myoroNullableFake<Color>(),
+      contentHoverColor: myoroNullableFake<Color>(),
+      contentTapColor: myoroNullableFake<Color>(),
+      borderWidth: myoroNullableFake<double>(),
+      borderRadius: myoroNullableFake<BorderRadius>(),
+      borderIdleColor: myoroNullableFake<Color>(),
+      borderHoverColor: myoroNullableFake<Color>(),
+      borderTapColor: myoroNullableFake<Color>(),
+      contentPadding: myoroNullableFake<EdgeInsets>(),
+      spacing: myoroNullableFake<double>(),
+      textStyle: myoroNullableFake<TextStyle>(),
     );
   }
 

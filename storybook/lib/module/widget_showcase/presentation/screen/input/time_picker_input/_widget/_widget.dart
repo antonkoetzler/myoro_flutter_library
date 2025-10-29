@@ -7,10 +7,7 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(context) {
     return MyoroTimePickerInput(
-      onChanged:
-          (t) => context.showSnackBar(
-            snackBar: MyoroSnackBar(configuration: MyoroSnackBarConfiguration(message: 'Time changed: $t')),
-          ),
+      onChanged: (t) => context.showSnackBar(snackBar: MyoroSnackBar(message: 'Time changed: $t')),
     );
   }
 }

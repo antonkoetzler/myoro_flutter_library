@@ -13,8 +13,7 @@ part of 'myoro_snack_bar_theme_extension.dart';
 /// ```dart
 /// class MyoroSnackBarThemeExtension with _$MyoroSnackBarThemeExtensionMixin {}
 /// ```
-mixin _$MyoroSnackBarThemeExtensionMixin
-    on ThemeExtension<MyoroSnackBarThemeExtension> {
+mixin _$MyoroSnackBarThemeExtensionMixin on ThemeExtension<MyoroSnackBarThemeExtension> {
   MyoroSnackBarThemeExtension get self => this as MyoroSnackBarThemeExtension;
 
   @override
@@ -43,32 +42,16 @@ mixin _$MyoroSnackBarThemeExtensionMixin
     bool closeButtonIconConfigurationProvided = true,
   }) {
     return MyoroSnackBarThemeExtension(
-      primaryColor: primaryColorProvided
-          ? (primaryColor ?? self.primaryColor)
-          : null,
-      standardBorderColor: standardBorderColorProvided
-          ? (standardBorderColor ?? self.standardBorderColor)
-          : null,
-      attentionBorderColor: attentionBorderColorProvided
-          ? (attentionBorderColor ?? self.attentionBorderColor)
-          : null,
-      successBorderColor: successBorderColorProvided
-          ? (successBorderColor ?? self.successBorderColor)
-          : null,
-      errorBorderColor: errorBorderColorProvided
-          ? (errorBorderColor ?? self.errorBorderColor)
-          : null,
-      borderWidth: borderWidthProvided
-          ? (borderWidth ?? self.borderWidth)
-          : null,
-      borderRadius: borderRadiusProvided
-          ? (borderRadius ?? self.borderRadius)
-          : null,
+      primaryColor: primaryColorProvided ? (primaryColor ?? self.primaryColor) : null,
+      standardBorderColor: standardBorderColorProvided ? (standardBorderColor ?? self.standardBorderColor) : null,
+      attentionBorderColor: attentionBorderColorProvided ? (attentionBorderColor ?? self.attentionBorderColor) : null,
+      successBorderColor: successBorderColorProvided ? (successBorderColor ?? self.successBorderColor) : null,
+      errorBorderColor: errorBorderColorProvided ? (errorBorderColor ?? self.errorBorderColor) : null,
+      borderWidth: borderWidthProvided ? (borderWidth ?? self.borderWidth) : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
       padding: paddingProvided ? (padding ?? self.padding) : null,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
-      messageTextStyle: messageTextStyleProvided
-          ? (messageTextStyle ?? self.messageTextStyle)
-          : null,
+      messageTextStyle: messageTextStyleProvided ? (messageTextStyle ?? self.messageTextStyle) : null,
       closeButtonIconConfiguration: closeButtonIconConfigurationProvided
           ? (closeButtonIconConfiguration ?? self.closeButtonIconConfiguration)
           : null,

@@ -12,6 +12,7 @@ part 'myoro_image_picker_theme_extension.g.dart';
 final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePickerThemeExtension>
     with _$MyoroImagePickerThemeExtensionMixin
     implements MyoroImagePickerStyle {
+    /// Default constructor.
   const MyoroImagePickerThemeExtension({
     this.size,
     this.borderRadius,
@@ -26,20 +27,21 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
     this.selectionTypeModalButtonGalleryIcon,
   });
 
+  /// Fake constructor.
   MyoroImagePickerThemeExtension.fake()
-    : size = faker.randomGenerator.boolean() ? myoroFake<Size>() : null,
-      borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      overlayCursor = faker.randomGenerator.boolean() ? myoroFake<MouseCursor>() : null,
-      overlayBackgroundIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      overlayBackgroundHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      overlayBackgroundTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+    : size = myoroNullableFake<Size>(),
+      borderRadius = myoroNullableFake<BorderRadius>(),
+      overlayCursor = myoroNullableFake<MouseCursor>(),
+      overlayBackgroundIdleColor = myoroNullableFake<Color>(),
+      overlayBackgroundHoverColor = myoroNullableFake<Color>(),
+      overlayBackgroundTapColor = myoroNullableFake<Color>(),
       overlayUnselectedImageStateIconConfiguration = faker.randomGenerator.boolean()
           ? MyoroIconConfiguration.fake()
           : null,
-      selectionTypeModalConstraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
-      selectionTypeModalSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
-      selectionTypeModalButtonCameraIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
-      selectionTypeModalButtonGalleryIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null;
+      selectionTypeModalConstraints = myoroNullableFake<BoxConstraints>(),
+      selectionTypeModalSpacing = myoroNullableFake<double>(),
+      selectionTypeModalButtonCameraIcon = myoroNullableFake<IconData>(),
+      selectionTypeModalButtonGalleryIcon = myoroNullableFake<IconData>();
 
   MyoroImagePickerThemeExtension.builder(ColorScheme colorScheme)
     : size = null,

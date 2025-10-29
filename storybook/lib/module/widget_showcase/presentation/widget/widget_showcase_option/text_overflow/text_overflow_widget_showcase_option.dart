@@ -19,23 +19,19 @@ final class TextOverflowWidgetShowcaseOption extends StatelessWidget {
   final TextOverflow? selectedItem;
 
   /// [MyoroSingleSelectionDropdownConfiguration.onChanged]
-  final MyoroSingleMenuOnChanged<TextOverflow> onChanged;
+  final void Function(TextOverflow?) onChanged;
 
   @override
   Widget build(_) {
     return MyoroSingleSelectionDropdown<TextOverflow>(
-      configuration: MyoroSingleSelectionDropdownConfiguration(
-        label: label,
-        onChanged: onChanged,
-        selectedItemBuilder: (value) => value.toString(),
-        menuConfiguration: MyoroSingleMenuConfiguration(
-          request: TextOverflow.values.toSet,
-          selectedItem: selectedItem,
-          itemBuilder: (value) {
-            return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: value.toString()));
-          },
-        ),
-      ),
+      label: label,
+      onChanged: onChanged,
+      selectedItemBuilder: (value) => value.toString(),
+      itemBuilder: (value) {
+        return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: value.toString()));
+      },
+      items: TextOverflow.values.toSet(),
+      selectedItem: selectedItem,
     );
   }
 }

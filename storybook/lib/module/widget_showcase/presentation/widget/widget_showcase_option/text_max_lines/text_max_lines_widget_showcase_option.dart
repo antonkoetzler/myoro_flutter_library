@@ -20,23 +20,19 @@ final class TextMaxLinesWidgetShowcaseOption extends StatelessWidget {
   final int selectedItem;
 
   /// [MyoroSingleSelectionDropdownConfiguration.onChanged]
-  final MyoroSingleMenuOnChanged<int> onChanged;
+  final void Function(int?) onChanged;
 
   @override
   Widget build(context) {
     return MyoroSingleSelectionDropdown<int>(
-      configuration: MyoroSingleSelectionDropdownConfiguration(
-        label: label,
-        onChanged: onChanged,
-        selectedItemBuilder: (value) => value.toString(),
-        menuConfiguration: MyoroSingleMenuConfiguration(
-          request: () => List.generate(10, (int index) => index + 1).toSet(),
-          selectedItem: selectedItem,
-          itemBuilder: (value) {
-            return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: value.toString()));
-          },
-        ),
-      ),
+      label: label,
+      onChanged: onChanged,
+      selectedItemBuilder: (value) => value.toString(),
+      itemBuilder: (value) {
+        return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: value.toString()));
+      },
+      items: List.generate(10, (int index) => index + 1).toSet(),
+      selectedItem: selectedItem,
     );
   }
 }

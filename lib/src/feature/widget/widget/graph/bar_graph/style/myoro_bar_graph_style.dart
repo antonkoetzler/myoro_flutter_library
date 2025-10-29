@@ -11,6 +11,7 @@ part 'myoro_bar_graph_style.g.dart';
 @immutable
 @myoroModel
 class MyoroBarGraphStyle with _$MyoroBarGraphStyleMixin {
+  /// Lerp function.
   static MyoroBarGraphStyle lerp(MyoroBarGraphStyle? a, MyoroBarGraphStyle? b, double t) {
     return MyoroBarGraphStyle(
       border: Border.lerp(a?.border, b?.border, t),
@@ -27,6 +28,7 @@ class MyoroBarGraphStyle with _$MyoroBarGraphStyleMixin {
     );
   }
 
+  /// Default constructor.
   const MyoroBarGraphStyle({
     this.border,
     this.barColor,
@@ -37,15 +39,16 @@ class MyoroBarGraphStyle with _$MyoroBarGraphStyleMixin {
     this.horizontalSideTitleReversedSize,
   });
 
+  /// Fake constructor.
   factory MyoroBarGraphStyle.fake() {
     return MyoroBarGraphStyle(
-      border: faker.randomGenerator.boolean() ? myoroFake<Border>() : null,
-      barColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      barBorderRadius: faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      sideTitleTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      sideTitleInterval: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      verticalSideTitleReversedSize: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      horizontalSideTitleReversedSize: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
+      border: myoroNullableFake<Border>(),
+      barColor: myoroNullableFake<Color>(),
+      barBorderRadius: myoroNullableFake<BorderRadius>(),
+      sideTitleTextStyle: myoroNullableFake<TextStyle>(),
+      sideTitleInterval: myoroNullableFake<double>(),
+      verticalSideTitleReversedSize: myoroNullableFake<double>(),
+      horizontalSideTitleReversedSize: myoroNullableFake<double>(),
     );
   }
 

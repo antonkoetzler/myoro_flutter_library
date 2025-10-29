@@ -11,10 +11,13 @@ part 'myoro_tooltip_theme_extension.g.dart';
 class MyoroTooltipThemeExtension extends ThemeExtension<MyoroTooltipThemeExtension>
     with _$MyoroTooltipThemeExtensionMixin
     implements MyoroTooltipStyle {
+  /// Default constructor.
   const MyoroTooltipThemeExtension({this.margin});
 
-  MyoroTooltipThemeExtension.fake() : margin = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;
+  /// Fake constructor.
+  MyoroTooltipThemeExtension.fake() : margin = myoroNullableFake<EdgeInsets>();
 
+  /// Builder constructor.
   const MyoroTooltipThemeExtension.builder() : margin = EdgeInsets.zero;
 
   /// [Tooltip.margin].

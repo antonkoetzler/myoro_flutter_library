@@ -7,6 +7,12 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroScreenWidgetShowcaseScreenViewModel>();
-    return MyoroScreen(configuration: viewModel.buildConfiguration(const _AppBar(), const _Body()));
+    final state = viewModel.state;
+    return MyoroScreen(
+      appBar: state.appBarEnabled ? const _AppBar() : null,
+      drawerEnableOpenDragGesture: state.drawerEnableOpenDragGesture,
+      endDrawerEnableOpenDragGesture: state.endDrawerEnableOpenDragGesture,
+      body: const _Body(),
+    );
   }
 }

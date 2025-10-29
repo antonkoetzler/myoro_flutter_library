@@ -36,13 +36,13 @@ class MyoroDrawerStyle with _$MyoroDrawerStyleMixin {
   /// Fake constructor.
   factory MyoroDrawerStyle.fake() {
     return MyoroDrawerStyle(
-      drawerPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      drawerContentPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      drawerShape: faker.randomGenerator.boolean() ? myoroFake<ShapeBorder>() : null,
-      titleContentDividerPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      titleTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      closeButtonContentPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      closeButtonIcon: faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
+      drawerPadding: myoroNullableFake<EdgeInsets>(),
+      drawerContentPadding: myoroNullableFake<EdgeInsets>(),
+      drawerShape: myoroNullableFake<ShapeBorder>(),
+      titleContentDividerPadding: myoroNullableFake<EdgeInsets>(),
+      titleTextStyle: myoroNullableFake<TextStyle>(),
+      closeButtonContentPadding: myoroNullableFake<EdgeInsets>(),
+      closeButtonIcon: myoroNullableFake<IconData>(),
     );
   }
 

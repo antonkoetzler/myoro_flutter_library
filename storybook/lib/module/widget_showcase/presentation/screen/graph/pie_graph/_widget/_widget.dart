@@ -7,10 +7,20 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroPieGraphWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
 
     return ListenableBuilder(
-      listenable: viewModel.state,
-      builder: (_, __) => MyoroPieGraph(configuration: viewModel.buildConfiguration(const _CenterWidget())),
+      listenable: state,
+      builder: (_, __) {
+        final typeEnum = state.typeEnum;
+        final centerWidgetEnabled = state.centerWidgetEnabled;
+
+        return MyoroPieGraph(
+          typeEnum: typeEnum,
+          centerWidget: centerWidgetEnabled ? const _CenterWidget() : null,
+          items: List.generate(faker.randomGenerator.integer(5), (_) => MyoroPieGraphItem.fake()),
+        );
+      },
     );
   }
 }

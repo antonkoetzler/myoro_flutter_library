@@ -16,22 +16,6 @@ final class MyoroFeedbackWidgetShowcaseScreenViewModel {
     _state.dispose();
   }
 
-  /// Creates the [MyoroFeedbackConfiguration].
-  MyoroFeedbackConfiguration get configuration {
-    return MyoroFeedbackConfiguration(
-      iconConfiguration: _state.iconConfiguration,
-      titleConfiguration: _state.titleConfiguration,
-      subtitleConfiguration: _state.subtitleConfiguration,
-      actionButtonConfiguration:
-          _state.actionButtonConfigurationEnabled
-              ? MyoroFeedbackActionButtonConfiguration(
-                textConfiguration: const MyoroTextConfiguration(text: 'Action button'),
-                onTapUp: (_) {},
-              )
-              : null,
-    );
-  }
-
   /// [IconWidgetShowcaseOptionConfiguration.iconOnChanged]
   /// of [MyoroFeedbackWidgetShowcaseScreenState.iconConfiguration].
   void iconConfigurationIconOnChanged(IconData? icon) {

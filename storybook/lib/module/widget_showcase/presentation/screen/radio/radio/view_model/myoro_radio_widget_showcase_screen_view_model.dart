@@ -6,22 +6,14 @@ import 'package:storybook/storybook.dart';
 final class MyoroRadioWidgetShowcaseScreenViewModel {
   /// State.
   final _state = MyoroRadioWidgetShowcaseScreenState();
-  MyoroRadioWidgetShowcaseScreenState get state => _state;
-
-  /// [MyoroRadioConfiguration] of the [MyoroRadio].
-  MyoroRadioConfiguration buildConfiguration(BuildContext context) {
-    return MyoroRadioConfiguration(
-      label: state.label,
-      onChanged: state.onChangedEnabled ? (enabled) => _onChanged(context, enabled) : null,
-    );
-  }
 
   /// [MyoroRadioConfiguration.onChanged]
-  void _onChanged(BuildContext context, bool enabled) {
-    context.showSnackBar(
-      snackBar: MyoroSnackBar(
-        configuration: MyoroSnackBarConfiguration(message: 'Radio ${enabled ? 'enabled' : 'disabled'}.'),
-      ),
-    );
+  void onChanged(BuildContext context, bool enabled) {
+    context.showSnackBar(snackBar: MyoroSnackBar(message: 'Radio ${enabled ? 'enabled' : 'disabled'}.'));
+  }
+
+  /// [_state] getter.
+  MyoroRadioWidgetShowcaseScreenState get state {
+    return _state;
   }
 }

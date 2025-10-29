@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart' hide Color;
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -88,4 +89,34 @@ class MyoroCurrencyInputStyle extends MyoroInputStyle with _$MyoroCurrencyInputS
 
   /// [EdgeInsets] padding for the currency prefix [Widget].
   final EdgeInsets? currencyPrefixPadding;
+
+  /// Fake constructor.
+  factory MyoroCurrencyInputStyle.fake() {
+    return MyoroCurrencyInputStyle(
+      border: myoroNullableFake<InputBorder>(),
+      underlinedBorder: myoroNullableFake<UnderlineInputBorder>(),
+      outlinedBorder: myoroNullableFake<OutlineInputBorder>(),
+      noneBorder: myoroNullableFake<InputBorder>(),
+      primaryColor: myoroNullableFake<Color>(),
+      errorBorderColor: myoroNullableFake<Color>(),
+      cursorHeight: myoroNullableFake<double>(),
+      contentPadding: myoroNullableFake<EdgeInsets>(),
+      disabledOpacity: myoroNullableFake<double>(),
+      inputTextStyle: myoroNullableFake<TextStyle>(),
+      spacing: myoroNullableFake<double>(),
+      labelTextStyle: myoroNullableFake<TextStyle>(),
+      labelBehavior: myoroNullableFake<FloatingLabelBehavior>(),
+      suffixButtonMargin: myoroNullableFake<EdgeInsets>(),
+      suffixButtonIconSize: myoroNullableFake<double>(),
+      clearTextButtonIcon: myoroNullableFake<IconData>(),
+      obscureTextButtonEnabledIcon: myoroNullableFake<IconData>(),
+      obscureTextButtonDisabledIcon: myoroNullableFake<IconData>(),
+      suffixIconConstraints: myoroNullableFake<BoxConstraints>(),
+      prefixIconConstraints: myoroNullableFake<BoxConstraints>(),
+      suffixButtonStyle: myoroNullableFake<MyoroIconTextButtonStyle>(),
+      currencySymbolTextStyle: myoroNullableFake<TextStyle>(),
+      currencySymbolButtonStyle: myoroNullableFake<MyoroIconTextButtonStyle>(),
+      currencyPrefixPadding: myoroFake<EdgeInsets>(),
+    );
+  }
 }

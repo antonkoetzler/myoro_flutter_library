@@ -13,8 +13,7 @@ part of 'myoro_input_theme_extension.dart';
 /// ```dart
 /// class MyoroInputThemeExtension with _$MyoroInputThemeExtensionMixin {}
 /// ```
-mixin _$MyoroInputThemeExtensionMixin
-    on ThemeExtension<MyoroInputThemeExtension> {
+mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension> {
   MyoroInputThemeExtension get self => this as MyoroInputThemeExtension;
 
   @override
@@ -64,53 +63,26 @@ mixin _$MyoroInputThemeExtensionMixin
   }) {
     return MyoroInputThemeExtension(
       border: borderProvided ? (border ?? self.border) : null,
-      underlinedBorder: underlinedBorderProvided
-          ? (underlinedBorder ?? self.underlinedBorder)
-          : null,
-      outlinedBorder: outlinedBorderProvided
-          ? (outlinedBorder ?? self.outlinedBorder)
-          : null,
+      underlinedBorder: underlinedBorderProvided ? (underlinedBorder ?? self.underlinedBorder) : null,
+      outlinedBorder: outlinedBorderProvided ? (outlinedBorder ?? self.outlinedBorder) : null,
       noneBorder: noneBorderProvided ? (noneBorder ?? self.noneBorder) : null,
-      primaryColor: primaryColorProvided
-          ? (primaryColor ?? self.primaryColor)
-          : null,
-      errorBorderColor: errorBorderColorProvided
-          ? (errorBorderColor ?? self.errorBorderColor)
-          : null,
-      cursorHeight: cursorHeightProvided
-          ? (cursorHeight ?? self.cursorHeight)
-          : null,
-      contentPadding: contentPaddingProvided
-          ? (contentPadding ?? self.contentPadding)
-          : null,
-      disabledOpacity: disabledOpacityProvided
-          ? (disabledOpacity ?? self.disabledOpacity)
-          : null,
-      inputTextStyle: inputTextStyleProvided
-          ? (inputTextStyle ?? self.inputTextStyle)
-          : null,
+      primaryColor: primaryColorProvided ? (primaryColor ?? self.primaryColor) : null,
+      errorBorderColor: errorBorderColorProvided ? (errorBorderColor ?? self.errorBorderColor) : null,
+      cursorHeight: cursorHeightProvided ? (cursorHeight ?? self.cursorHeight) : null,
+      contentPadding: contentPaddingProvided ? (contentPadding ?? self.contentPadding) : null,
+      disabledOpacity: disabledOpacityProvided ? (disabledOpacity ?? self.disabledOpacity) : null,
+      inputTextStyle: inputTextStyleProvided ? (inputTextStyle ?? self.inputTextStyle) : null,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
-      labelTextStyle: labelTextStyleProvided
-          ? (labelTextStyle ?? self.labelTextStyle)
-          : null,
-      labelBehavior: labelBehaviorProvided
-          ? (labelBehavior ?? self.labelBehavior)
-          : null,
-      suffixButtonMargin: suffixButtonMarginProvided
-          ? (suffixButtonMargin ?? self.suffixButtonMargin)
-          : null,
-      clearTextButtonIcon: clearTextButtonIconProvided
-          ? (clearTextButtonIcon ?? self.clearTextButtonIcon)
-          : null,
-      suffixButtonIconSize: suffixButtonIconSizeProvided
-          ? (suffixButtonIconSize ?? self.suffixButtonIconSize)
-          : null,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
+      labelBehavior: labelBehaviorProvided ? (labelBehavior ?? self.labelBehavior) : null,
+      suffixButtonMargin: suffixButtonMarginProvided ? (suffixButtonMargin ?? self.suffixButtonMargin) : null,
+      clearTextButtonIcon: clearTextButtonIconProvided ? (clearTextButtonIcon ?? self.clearTextButtonIcon) : null,
+      suffixButtonIconSize: suffixButtonIconSizeProvided ? (suffixButtonIconSize ?? self.suffixButtonIconSize) : null,
       obscureTextButtonEnabledIcon: obscureTextButtonEnabledIconProvided
           ? (obscureTextButtonEnabledIcon ?? self.obscureTextButtonEnabledIcon)
           : null,
       obscureTextButtonDisabledIcon: obscureTextButtonDisabledIconProvided
-          ? (obscureTextButtonDisabledIcon ??
-                self.obscureTextButtonDisabledIcon)
+          ? (obscureTextButtonDisabledIcon ?? self.obscureTextButtonDisabledIcon)
           : null,
       suffixIconConstraints: suffixIconConstraintsProvided
           ? (suffixIconConstraints ?? self.suffixIconConstraints)
@@ -118,9 +90,7 @@ mixin _$MyoroInputThemeExtensionMixin
       prefixIconConstraints: prefixIconConstraintsProvided
           ? (prefixIconConstraints ?? self.prefixIconConstraints)
           : null,
-      suffixButtonStyle: suffixButtonStyleProvided
-          ? (suffixButtonStyle ?? self.suffixButtonStyle)
-          : null,
+      suffixButtonStyle: suffixButtonStyleProvided ? (suffixButtonStyle ?? self.suffixButtonStyle) : null,
     );
   }
 
@@ -144,10 +114,8 @@ mixin _$MyoroInputThemeExtensionMixin
         other.suffixButtonMargin == self.suffixButtonMargin &&
         other.clearTextButtonIcon == self.clearTextButtonIcon &&
         other.suffixButtonIconSize == self.suffixButtonIconSize &&
-        other.obscureTextButtonEnabledIcon ==
-            self.obscureTextButtonEnabledIcon &&
-        other.obscureTextButtonDisabledIcon ==
-            self.obscureTextButtonDisabledIcon &&
+        other.obscureTextButtonEnabledIcon == self.obscureTextButtonEnabledIcon &&
+        other.obscureTextButtonDisabledIcon == self.obscureTextButtonDisabledIcon &&
         other.suffixIconConstraints == self.suffixIconConstraints &&
         other.prefixIconConstraints == self.prefixIconConstraints &&
         other.suffixButtonStyle == self.suffixButtonStyle;

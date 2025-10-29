@@ -67,11 +67,7 @@ class MyoroInputWidgetShowcaseScreenViewModel {
 
   /// Generic function to display a snack bar.
   void _showSnackBar(BuildContext context, String message) {
-    context.showSnackBar(
-      snackBar: MyoroSnackBar(
-        configuration: MyoroSnackBarConfiguration(snackBarType: MyoroSnackBarTypeEnum.attention, message: message),
-      ),
-    );
+    context.showSnackBar(snackBar: MyoroSnackBar(snackBarType: MyoroSnackBarTypeEnum.attention, message: message));
   }
 
   /// [_state] getter.

@@ -17,16 +17,12 @@ mixin _$MyoroTooltipStyleMixin {
   MyoroTooltipStyle get self => this as MyoroTooltipStyle;
 
   MyoroTooltipStyle copyWith({EdgeInsets? margin, bool marginProvided = true}) {
-    return MyoroTooltipStyle(
-      margin: marginProvided ? (margin ?? self.margin) : null,
-    );
+    return MyoroTooltipStyle(margin: marginProvided ? (margin ?? self.margin) : null);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroTooltipStyle &&
-        other.runtimeType == runtimeType &&
-        other.margin == self.margin;
+    return other is MyoroTooltipStyle && other.runtimeType == runtimeType && other.margin == self.margin;
   }
 
   @override

@@ -13,8 +13,7 @@ part of 'myoro_tab_view_theme_extension.dart';
 /// ```dart
 /// class MyoroTabViewThemeExtension with _$MyoroTabViewThemeExtensionMixin {}
 /// ```
-mixin _$MyoroTabViewThemeExtensionMixin
-    on ThemeExtension<MyoroTabViewThemeExtension> {
+mixin _$MyoroTabViewThemeExtensionMixin on ThemeExtension<MyoroTabViewThemeExtension> {
   MyoroTabViewThemeExtension get self => this as MyoroTabViewThemeExtension;
 
   @override
@@ -30,12 +29,8 @@ mixin _$MyoroTabViewThemeExtensionMixin
       tabButtonBorderRadius: tabButtonBorderRadiusProvided
           ? (tabButtonBorderRadius ?? self.tabButtonBorderRadius)
           : null,
-      tabButtonIconSize: tabButtonIconSizeProvided
-          ? (tabButtonIconSize ?? self.tabButtonIconSize)
-          : null,
-      tabButtonTextStyle: tabButtonTextStyleProvided
-          ? (tabButtonTextStyle ?? self.tabButtonTextStyle)
-          : null,
+      tabButtonIconSize: tabButtonIconSizeProvided ? (tabButtonIconSize ?? self.tabButtonIconSize) : null,
+      tabButtonTextStyle: tabButtonTextStyleProvided ? (tabButtonTextStyle ?? self.tabButtonTextStyle) : null,
     );
   }
 
@@ -50,11 +45,7 @@ mixin _$MyoroTabViewThemeExtensionMixin
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.tabButtonBorderRadius,
-      self.tabButtonIconSize,
-      self.tabButtonTextStyle,
-    );
+    return Object.hash(self.tabButtonBorderRadius, self.tabButtonIconSize, self.tabButtonTextStyle);
   }
 
   @override

@@ -6,21 +6,22 @@ class MyoroMultiSelectionDropdown<T> extends _SelectionDropdown<T> {
   const MyoroMultiSelectionDropdown({
     super.key,
     super.style,
+    super.label,
     super.dropdownType,
     super.items,
     super.showingController,
     required super.itemBuilder,
     required super.selectedItemBuilder,
-    this.initiallySelectedItems,
+    this.selectedItems,
     this.selectedItemsController,
     this.onChanged,
   }) : assert(
-         !(initiallySelectedItems != null && selectedItemsController != null),
-         '[MyoroMultiSelectionDropdown<$T>]: [initiallySelectedItems] and [selectedItemsController] cannot be provided together.',
+         !(selectedItems != null && selectedItemsController != null),
+         '[MyoroMultiSelectionDropdown<$T>]: [selectedItems] and [selectedItemsController] cannot be provided together.',
        );
 
   /// Initially selected item.
-  final Set<T>? initiallySelectedItems;
+  final Set<T>? selectedItems;
 
   /// [ValueNotifier] of the selected item.
   final ValueNotifier<Set<T>>? selectedItemsController;
@@ -33,12 +34,14 @@ class MyoroMultiSelectionDropdown<T> extends _SelectionDropdown<T> {
     return _Base(
       style,
       MyoroMultiSelectionDropdownState(
+        label,
+        enabled,
         dropdownType,
         items,
         showingController,
         itemBuilder,
         selectedItemBuilder,
-        initiallySelectedItems,
+        selectedItems,
         selectedItemsController,
         onChanged,
       ),

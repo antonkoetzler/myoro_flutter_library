@@ -11,11 +11,13 @@ part 'myoro_app_bar_theme_extension.g.dart';
 class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExtension>
     with _$MyoroAppBarThemeExtensionMixin
     implements MyoroAppBarStyle {
+    /// Default constructor.
   const MyoroAppBarThemeExtension({this.backgroundColor, this.contentPadding});
 
+  /// Fake constructor.
   MyoroAppBarThemeExtension.fake()
-    : backgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      contentPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;
+    : backgroundColor = myoroNullableFake<Color>(),
+      contentPadding = myoroNullableFake<EdgeInsets>();
 
   MyoroAppBarThemeExtension.builder(ColorScheme colorScheme)
     : backgroundColor = colorScheme.primary,

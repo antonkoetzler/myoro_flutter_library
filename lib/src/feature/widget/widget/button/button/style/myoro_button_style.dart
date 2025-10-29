@@ -11,6 +11,7 @@ part 'myoro_button_style.g.dart';
 @immutable
 @myoroModel
 class MyoroButtonStyle with _$MyoroButtonStyleMixin {
+  /// Lerp function.
   static MyoroButtonStyle lerp(MyoroButtonStyle? a, MyoroButtonStyle? b, double t) {
     return MyoroButtonStyle(
       backgroundIdleColor: Color.lerp(a?.backgroundIdleColor, b?.backgroundIdleColor, t),
@@ -28,6 +29,7 @@ class MyoroButtonStyle with _$MyoroButtonStyleMixin {
     );
   }
 
+  /// Default constructor.
   const MyoroButtonStyle({
     this.backgroundIdleColor,
     this.backgroundHoverColor,
@@ -43,19 +45,20 @@ class MyoroButtonStyle with _$MyoroButtonStyleMixin {
     this.borderTapColor,
   });
 
+  /// Fake constructor.
   MyoroButtonStyle.fake()
-    : backgroundIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      backgroundHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      backgroundTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      disabledBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      contentIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      contentHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      contentTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      borderWidth = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
-      borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      borderIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      borderHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      borderTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null;
+    : backgroundIdleColor = myoroNullableFake<Color>(),
+      backgroundHoverColor = myoroNullableFake<Color>(),
+      backgroundTapColor = myoroNullableFake<Color>(),
+      disabledBackgroundColor = myoroNullableFake<Color>(),
+      contentIdleColor = myoroNullableFake<Color>(),
+      contentHoverColor = myoroNullableFake<Color>(),
+      contentTapColor = myoroNullableFake<Color>(),
+      borderWidth = myoroNullableFake<double>(),
+      borderRadius = myoroNullableFake<BorderRadius>(),
+      borderIdleColor = myoroNullableFake<Color>(),
+      borderHoverColor = myoroNullableFake<Color>(),
+      borderTapColor = myoroNullableFake<Color>();
 
   /// [MyoroTapStatusEnum.idle]'s background [Color].
   final Color? backgroundIdleColor;

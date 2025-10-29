@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart' hide Color;
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -10,6 +11,7 @@ part 'myoro_modal_style.g.dart';
 @immutable
 @myoroModel
 class MyoroModalStyle with _$MyoroModalStyleMixin {
+  /// Lerp function.
   static MyoroModalStyle lerp(MyoroModalStyle? a, MyoroModalStyle? b, double t) {
     return MyoroModalStyle(
       constraints: BoxConstraints.lerp(a?.constraints, b?.constraints, t),
@@ -44,6 +46,23 @@ class MyoroModalStyle with _$MyoroModalStyleMixin {
     this.titleTextStyle,
     this.closeButtonIconConfiguration,
   });
+
+  /// Fake constructor.
+  factory MyoroModalStyle.fake() {
+    return MyoroModalStyle(
+      constraints: myoroNullableFake<BoxConstraints>(),
+      primaryColor: myoroNullableFake<Color>(),
+      borderRadius: myoroNullableFake<BorderRadius>(),
+      bottomSheetBorderRadius: myoroNullableFake<BorderRadius>(),
+      border: myoroNullableFake<Border>(),
+      bottomSheetBorder: myoroNullableFake<Border>(),
+      padding: myoroNullableFake<EdgeInsets>(),
+      closeButtonPadding: myoroNullableFake<EdgeInsets>(),
+      spacing: myoroNullableFake<double>(),
+      titleTextStyle: myoroNullableFake<TextStyle>(),
+      closeButtonIconConfiguration: faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null,
+    );
+  }
 
   /// Constraints of the modal.
   final BoxConstraints? constraints;

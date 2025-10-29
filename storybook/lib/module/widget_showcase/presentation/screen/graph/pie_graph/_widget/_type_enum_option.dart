@@ -9,13 +9,9 @@ final class _TypeEnumOption extends StatelessWidget {
     final viewModel = context.read<MyoroPieGraphWidgetShowcaseScreenViewModel>();
 
     return MyoroSingleSelectionDropdown<MyoroPieGraphEnum>(
-      configuration: MyoroSingleSelectionDropdownConfiguration(
-        selectedItemBuilder: viewModel.typeEnumOptionSelectedItemBuilder,
-        menuConfiguration: MyoroSingleMenuConfiguration(
-          request: MyoroPieGraphEnum.values.toSet,
-          itemBuilder: viewModel.typeEnumOptionItemBuilder,
-        ),
-      ),
+      selectedItemBuilder: viewModel.typeEnumOptionSelectedItemBuilder,
+      items: MyoroPieGraphEnum.values.toSet(),
+      itemBuilder: viewModel.typeEnumOptionItemBuilder,
     );
   }
 }

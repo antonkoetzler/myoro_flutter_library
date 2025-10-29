@@ -11,11 +11,13 @@ part 'myoro_pie_graph_theme_extension.g.dart';
 class MyoroPieGraphThemeExtension extends ThemeExtension<MyoroPieGraphThemeExtension>
     with _$MyoroPieGraphThemeExtensionMixin
     implements MyoroPieGraphStyle {
+    /// Default constructor.
   const MyoroPieGraphThemeExtension({this.itemColor, this.itemRadius});
 
+  /// Fake constructor.
   MyoroPieGraphThemeExtension.fake()
-    : itemColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      itemRadius = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
+    : itemColor = myoroNullableFake<Color>(),
+      itemRadius = myoroNullableFake<double>();
 
   MyoroPieGraphThemeExtension.builder(ColorScheme colorScheme) : itemColor = colorScheme.onPrimary, itemRadius = 200;
 

@@ -11,6 +11,7 @@ part 'myoro_tab_view_style.g.dart';
 @immutable
 @myoroModel
 class MyoroTabViewStyle with _$MyoroTabViewStyleMixin {
+  /// Lerp function.
   static MyoroTabViewStyle lerp(MyoroTabViewStyle? a, MyoroTabViewStyle? b, double t) {
     return MyoroTabViewStyle(
       tabButtonBorderRadius: BorderRadius.lerp(a?.tabButtonBorderRadius, b?.tabButtonBorderRadius, t),
@@ -19,13 +20,15 @@ class MyoroTabViewStyle with _$MyoroTabViewStyleMixin {
     );
   }
 
+  /// Default constructor.
   const MyoroTabViewStyle({this.tabButtonBorderRadius, this.tabButtonIconSize, this.tabButtonTextStyle});
 
+  /// Fake constructor.
   factory MyoroTabViewStyle.fake() {
     return MyoroTabViewStyle(
-      tabButtonBorderRadius: faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      tabButtonIconSize: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
-      tabButtonTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      tabButtonBorderRadius: myoroNullableFake<BorderRadius>(),
+      tabButtonIconSize: myoroNullableFake<double>(),
+      tabButtonTextStyle: myoroNullableFake<TextStyle>(),
     );
   }
 

@@ -11,8 +11,10 @@ part 'myoro_basic_divider_theme_extension.g.dart';
 final class MyoroBasicDividerThemeExtension extends ThemeExtension<MyoroBasicDividerThemeExtension>
     with _$MyoroBasicDividerThemeExtensionMixin
     implements MyoroBasicDividerStyle {
+  /// Default constructor.
   const MyoroBasicDividerThemeExtension({this.color, this.shortValue, this.longValue});
 
+  /// Fake constructor.
   factory MyoroBasicDividerThemeExtension.fake() {
     return MyoroBasicDividerThemeExtension(
       color: myoroFake<Color>(),
@@ -30,6 +32,7 @@ final class MyoroBasicDividerThemeExtension extends ThemeExtension<MyoroBasicDiv
   @override
   final double? longValue;
 
+  /// Builder constructor.
   factory MyoroBasicDividerThemeExtension.builder(ColorScheme colorScheme) {
     return MyoroBasicDividerThemeExtension(
       color: colorScheme.onPrimary,

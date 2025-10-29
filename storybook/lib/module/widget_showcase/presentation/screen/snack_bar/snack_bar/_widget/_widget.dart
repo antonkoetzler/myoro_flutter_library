@@ -7,6 +7,13 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroSnackBarWidgetShowcaseScreenViewModel>();
-    return MyoroSnackBar(configuration: viewModel.buildConfiguration(const _Child()));
+    final state = viewModel.state;
+
+    return MyoroSnackBar(
+      snackBarType: state.snackBarType,
+      showCloseButton: state.showCloseButton,
+      message: state.message,
+      child: state.childEnabled ? const _Child() : null,
+    );
   }
 }

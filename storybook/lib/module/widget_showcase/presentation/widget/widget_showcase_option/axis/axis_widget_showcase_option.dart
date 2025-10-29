@@ -24,23 +24,19 @@ final class AxisWidgetShowcaseOption extends StatelessWidget {
   final Axis initialDirection;
 
   /// [MyoroSingleSelectionDropdownConfiguration.onChanged]
-  final MyoroSingleMenuOnChanged<Axis> onChanged;
+  final void Function(Axis?) onChanged;
 
   @override
   Widget build(_) {
     return MyoroSingleSelectionDropdown<Axis>(
-      configuration: MyoroSingleSelectionDropdownConfiguration(
-        label: label,
-        selectedItemBuilder: _axisName,
-        menuConfiguration: MyoroSingleMenuConfiguration(
-          request: Axis.values.toSet,
-          selectedItem: initialDirection,
-          itemBuilder: (axis) {
-            return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: _axisName(axis)));
-          },
-        ),
-        enabled: enabled,
-      ),
+      label: label,
+      selectedItemBuilder: _axisName,
+      onChanged: onChanged,
+      itemBuilder: (axis) {
+        return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: _axisName(axis)));
+      },
+      items: Axis.values.toSet(),
+      selectedItem: initialDirection,
     );
   }
 

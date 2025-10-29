@@ -14,9 +14,6 @@ final class MyoroSnackBarContainerWidgetShowcaseScreenViewModel extends ChangeNo
 
   /// Shows the [MyoroSnackBar].
   void showSnackBar(BuildContext context) {
-    context.showSnackBar(
-      duration: _duration,
-      snackBar: const MyoroSnackBar(configuration: MyoroSnackBarConfiguration(message: 'Snack bars!')),
-    );
+    context.showSnackBar(duration: _duration, snackBar: const MyoroSnackBar(message: 'Snack bars!'));
   }
 }

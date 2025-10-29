@@ -30,10 +30,10 @@ class MyoroDialogModal extends StatelessWidget {
   static Future<void> show(
     BuildContext context, {
 
+    MyoroDialogModalStyle style = styleDefaultValue,
     bool isBottomSheet = isBottomSheetDefaultValue,
     bool useRootNavigator = useRootNavigatorDefaultValue,
     bool barrierDismissable = barrierDismissableDefaultValue,
-    MyoroDialogModalStyle style = styleDefaultValue,
     String title = titleDefaultValue,
     bool showCloseButton = showCloseButtonDefaultValue,
 

@@ -28,12 +28,8 @@ mixin _$MyoroTabViewStyleMixin {
       tabButtonBorderRadius: tabButtonBorderRadiusProvided
           ? (tabButtonBorderRadius ?? self.tabButtonBorderRadius)
           : null,
-      tabButtonIconSize: tabButtonIconSizeProvided
-          ? (tabButtonIconSize ?? self.tabButtonIconSize)
-          : null,
-      tabButtonTextStyle: tabButtonTextStyleProvided
-          ? (tabButtonTextStyle ?? self.tabButtonTextStyle)
-          : null,
+      tabButtonIconSize: tabButtonIconSizeProvided ? (tabButtonIconSize ?? self.tabButtonIconSize) : null,
+      tabButtonTextStyle: tabButtonTextStyleProvided ? (tabButtonTextStyle ?? self.tabButtonTextStyle) : null,
     );
   }
 
@@ -48,11 +44,7 @@ mixin _$MyoroTabViewStyleMixin {
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.tabButtonBorderRadius,
-      self.tabButtonIconSize,
-      self.tabButtonTextStyle,
-    );
+    return Object.hash(self.tabButtonBorderRadius, self.tabButtonIconSize, self.tabButtonTextStyle);
   }
 
   @override

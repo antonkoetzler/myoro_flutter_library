@@ -1,6 +1,7 @@
 # STAGELOG
 
 - feature: `MyoroCurrencyInput`
+- feature: `myoroNullableFake`
 - (**IN PROGRESS**) feature: Full documentation of the project via Notion, not markdown
   - Use Notion MCP to do this quicker
 - fix: Date picker not opening in `MyoroDatePickerInput`

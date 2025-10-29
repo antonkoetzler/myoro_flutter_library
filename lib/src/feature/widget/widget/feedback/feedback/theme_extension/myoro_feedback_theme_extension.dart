@@ -11,13 +11,15 @@ part 'myoro_feedback_theme_extension.g.dart';
 class MyoroFeedbackThemeExtension extends ThemeExtension<MyoroFeedbackThemeExtension>
     with _$MyoroFeedbackThemeExtensionMixin
     implements MyoroFeedbackStyle {
+    /// Default constructor.
   const MyoroFeedbackThemeExtension({this.spacing, this.iconSize, this.titleTextStyle, this.subtitleTextStyle});
 
+  /// Fake constructor.
   MyoroFeedbackThemeExtension.fake()
-    : spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
-      iconSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
-      titleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      subtitleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null;
+    : spacing = myoroNullableFake<double>(),
+      iconSize = myoroNullableFake<double>(),
+      titleTextStyle = myoroNullableFake<TextStyle>(),
+      subtitleTextStyle = myoroNullableFake<TextStyle>();
 
   MyoroFeedbackThemeExtension.builder(TextTheme textTheme)
     : spacing = kMyoroMultiplier * 2,
