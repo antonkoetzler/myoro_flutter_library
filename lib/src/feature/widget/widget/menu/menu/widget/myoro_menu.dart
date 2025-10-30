@@ -9,9 +9,10 @@ part '../_widget/_items_section.dart';
 part '../_widget/_loader.dart';
 part '../_widget/_search_bar.dart';
 part '../_widget/_success_content.dart';
+part '../_widget/_myoro_menu_state.dart';
 
 /// Menu [Widget].
-final class MyoroMenu<T> extends StatelessWidget {
+final class MyoroMenu<T> extends StatefulWidget {
   /// Default constructor.
   const MyoroMenu({
     super.key,
@@ -39,18 +40,7 @@ final class MyoroMenu<T> extends StatelessWidget {
   /// Menu item builder.
   final MyoroMenuItemBuilder<T> itemBuilder;
 
-  /// Build function.
+  /// Create state function.
   @override
-  Widget build(_) {
-    return MultiProvider(
-      providers: [
-        InheritedProvider.value(value: style),
-        InheritedProvider(
-          create: (_) => MyoroMenuViewModel<T>(searchCallback, items, selectedItems, itemBuilder),
-          dispose: (_, v) => v.dispose(),
-        ),
-      ],
-      child: _Base<T>(),
-    );
-  }
+  State<MyoroMenu<T>> createState() => _MyoroMenuState<T>();
 }

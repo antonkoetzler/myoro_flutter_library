@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 
+part '../_widget/_myoro_group_checkbox_state.dart';
+
 /// A group of [MyoroCheckbox]s.
-class MyoroGroupCheckbox extends StatelessWidget {
+class MyoroGroupCheckbox extends StatefulWidget {
   /// Default value of [style].
   static const styleDefaultValue = MyoroGroupCheckboxStyle();
 
@@ -37,37 +39,7 @@ class MyoroGroupCheckbox extends StatelessWidget {
   /// Function executed when any of the checkbox's values are changed.
   final MyoroGroupCheckboxOnChanged? onChanged;
 
+  /// Create state function.
   @override
-  Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<MyoroGroupCheckboxThemeExtension>();
-    final spacing = style.spacing ?? themeExtension.spacing ?? 0;
-    final runSpacing = style.runSpacing ?? themeExtension.runSpacing ?? 0;
-
-    return InheritedProvider(
-      create: (_) => controller ?? MyoroGroupCheckboxController(checkboxes: checkboxes!),
-      dispose: (_, c) => controller != null ? c.dispose() : null,
-      child: Consumer<MyoroGroupCheckboxController>(
-        builder: (_, controller, _) {
-          final checkboxes = controller.checkboxes;
-
-          return Wrap(
-            direction: direction,
-            spacing: spacing,
-            runSpacing: runSpacing,
-            children: checkboxes.entries.map<Widget>((entry) {
-              return MyoroCheckbox(
-                style: style,
-                label: entry.key,
-                value: entry.value,
-                onChanged: (bool value) {
-                  controller.toggle(entry.key, value);
-                  onChanged?.call(entry.key, checkboxes);
-                },
-              );
-            }).toList(),
-          );
-        },
-      ),
-    );
-  }
+  State<MyoroGroupCheckbox> createState() => _MyoroGroupCheckboxState();
 }

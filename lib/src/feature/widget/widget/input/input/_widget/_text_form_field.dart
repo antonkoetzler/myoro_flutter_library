@@ -1,4 +1,4 @@
-part of '../myoro_input.dart';
+part of '../widget/myoro_input.dart';
 
 /// Core input of [MyoroInput].
 final class _TextFormField extends StatelessWidget {
@@ -43,6 +43,7 @@ final class _TextFormField extends StatelessWidget {
     final inputKey = state.inputKey;
     final showObscureTextButton = state.showObscureTextButton;
     final inputStyle = state.inputStyle;
+    final enableInteractiveSelection = state.enableInteractiveSelection;
 
     final border = style.border ?? themeExtension.border ?? inputStyle.getBorder(context);
 
@@ -67,6 +68,7 @@ final class _TextFormField extends StatelessWidget {
                     enabled: _enabled,
                     readOnly: readOnly,
                     autofocus: autofocus,
+                    enableInteractiveSelection: enableInteractiveSelection,
                     obscureText: obscureText,
                     style: textStyle?.withColor(
                       textStyle.color!.withValues(

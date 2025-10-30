@@ -9,10 +9,33 @@ sealed class MyoroSelectionDropdownState<T> {
     this.dropdownType,
     this.items,
     ValueNotifier<bool>? showingController,
-    this._itemBuilder,
+    MyoroMenuItemBuilder<T> itemBuilder,
     this.selectedItemBuilder,
   ) {
     _showingController = showingController ?? (_localShowingController ??= ValueNotifier(false));
+
+    this.itemBuilder = (item) {
+      final menuItem = itemBuilder(item);
+      return menuItem.copyWith(
+        onTapUp: (details) {
+          menuItem.onTapUp?.call(details);
+
+          switch (this) {
+            case final MyoroMultiSelectionDropdownState<T> state:
+              final selectedItems = Set<T>.from(state.selectedItems);
+              state.selectedItems = selectedItems.contains(item)
+                  ? (selectedItems..remove(item))
+                  : (selectedItems..add(item));
+              break;
+            case final MyoroSingleSelectionDropdownState<T> state:
+              final selectedItem = state.selectedItem;
+              state.selectedItem = item == selectedItem ? null : item;
+              if (state.selectedItem != null) state.showing = false;
+              break;
+          }
+        },
+      );
+    };
   }
 
   /// Label of the dropdown.
@@ -28,13 +51,13 @@ sealed class MyoroSelectionDropdownState<T> {
   final _inputController = TextEditingController();
 
   /// Dropdown type.
-  final MyoroDropdownTypeEnum dropdownType;
+  final MyoroDropdownTypeEnum? dropdownType;
 
   /// Items.
   final Set<T>? items;
 
   /// Item builder.
-  final MyoroMenuItemBuilder<T> _itemBuilder;
+  late final MyoroMenuItemBuilder<T> itemBuilder;
 
   /// Selected item builder.
   final MyoroSelectionDropdownSelectedItemBuilder<T> selectedItemBuilder;
@@ -70,32 +93,6 @@ sealed class MyoroSelectionDropdownState<T> {
   /// Getter of [showingController]'s value.
   bool get showing {
     return showingController.value;
-  }
-
-  /// [_itemBuilder] getter.
-  MyoroMenuItemBuilder<T> get itemBuilder {
-    return (item) {
-      final menuItem = _itemBuilder(item);
-      menuItem.copyWith(
-        onTapUp: (details) {
-          menuItem.onTapUp?.call(details);
-
-          switch (this) {
-            case final MyoroMultiSelectionDropdownState<T> state:
-              final selectedItems = Set<T>.from(state.selectedItems);
-              state.selectedItems = selectedItems.contains(item)
-                  ? (selectedItems..remove(item))
-                  : (selectedItems..add(item));
-              break;
-            case final MyoroSingleSelectionDropdownState<T> state:
-              final selectedItem = state.selectedItem;
-              state.selectedItem = item == selectedItem ? null : null;
-              break;
-          }
-        },
-      );
-      return menuItem;
-    };
   }
 
   /// Setter of [showingController]'s value.

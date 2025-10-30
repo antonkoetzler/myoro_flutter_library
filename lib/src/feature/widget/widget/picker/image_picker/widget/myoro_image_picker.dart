@@ -9,9 +9,10 @@ part '../_widget/_content.dart';
 part '../_widget/_overlay.dart';
 part '../_widget/_selection_type_modal.dart';
 part '../_widget/_selection_type_modal_button.dart';
+part '../_widget/_myoro_image_picker_state.dart';
 
 /// Image picker of MFL.
-final class MyoroImagePicker extends StatelessWidget {
+final class MyoroImagePicker extends StatefulWidget {
   /// Default value of [style].
   static const styleDefaultValue = MyoroImagePickerStyle();
 
@@ -28,16 +29,5 @@ final class MyoroImagePicker extends StatelessWidget {
   final MyoroImagePickerOnChanged onChanged;
 
   @override
-  Widget build(context) {
-    return MultiProvider(
-      providers: [
-        InheritedProvider.value(value: style),
-        InheritedProvider(
-          create: (_) => MyoroImagePickerViewModel(selectedImage, onChanged),
-          dispose: (_, v) => v.dispose(),
-        ),
-      ],
-      child: const _Content(),
-    );
-  }
+  State<MyoroImagePicker> createState() => _MyoroImagePickerState();
 }

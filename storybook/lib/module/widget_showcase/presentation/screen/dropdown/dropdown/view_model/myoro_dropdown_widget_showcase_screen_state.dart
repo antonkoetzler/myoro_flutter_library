@@ -4,82 +4,135 @@ part of '../myoro_dropdown_widget_showcase_screen.dart';
 final class MyoroDropdownWidgetShowcaseScreenState extends ChangeNotifier {
   /// [MyoroDropdown.style]
   MyoroDropdownStyle _style = const MyoroDropdownStyle();
-  MyoroDropdownStyle get style => _style;
+
+  /// [MyoroDropdown.showingController]
+  final ValueNotifier<bool> _showingController = ValueNotifier<bool>(false);
+
+  /// [MyoroDropdown.items]
+  Set<String>? _items = {'Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'};
+
+  /// [MyoroDropdown.selectedItems]
+  final _selectedItemsController = ValueNotifier(<String>{});
+
+  /// [MyoroDropdown.searchCallback]
+  MyoroMenuSearchCallback<String>? _searchCallback = (query) {
+    // Simple search implementation
+    if (kDebugMode) {
+      print('Searching for: $query');
+    }
+  };
+
+  /// Whether search callback is enabled
+  bool _searchCallbackEnabled = false;
+
+  /// [MyoroDropdown.dropdownType]
+  MyoroDropdownTypeEnum _dropdownType = MyoroDropdownTypeEnum.expanding;
+
+  /// [MyoroDropdown.targetKey]
+  GlobalKey? _targetKey;
+
+  @override
+  void dispose() {
+    _showingController.dispose();
+    _selectedItemsController.dispose();
+    super.dispose();
+  }
+
+  /// [_dropdownType] getter.
+  MyoroDropdownTypeEnum get dropdownType {
+    return _dropdownType;
+  }
+
+  /// [_style] getter.
+  MyoroDropdownStyle get style {
+    return _style;
+  }
+
+  /// [_showingController] getter.
+  ValueNotifier<bool> get showingController {
+    return _showingController;
+  }
+
+  /// Getter of [_showingController]'s value.
+  bool get showing {
+    return _showingController.value;
+  }
+
+  /// [_items] getter.
+  Set<String>? get items {
+    return _items;
+  }
+
+  /// [_selectedItemsController] getter.
+  ValueNotifier<Set<String>> get selectedItemsController {
+    return _selectedItemsController;
+  }
+
+  /// Getter of [_selectedItemsController]'s value.
+  Set<String> get selectedItems {
+    return _selectedItemsController.value;
+  }
+
+  /// [_targetKey] getter.
+  GlobalKey? get targetKey {
+    return _targetKey;
+  }
+
+  /// [_searchCallback] getter.
+  MyoroMenuSearchCallback<String>? get searchCallback {
+    return _searchCallback;
+  }
+
+  /// [_searchCallbackEnabled] getter.
+  bool get searchCallbackEnabled {
+    return _searchCallbackEnabled;
+  }
+
+  /// [_style] setter.
   set style(MyoroDropdownStyle style) {
     _style = style;
     notifyListeners();
   }
 
-  /// [MyoroDropdown.showingController]
-  final ValueNotifier<bool> _showingController = ValueNotifier<bool>(false);
-  ValueNotifier<bool> get showingController => _showingController;
+  /// [_showingController] setter.
+  set showing(bool showing) {
+    _showingController.value = showing;
+    notifyListeners();
+  }
 
-  /// [MyoroDropdown.items]
-  Set<String>? _items = {'Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'};
-  Set<String>? get items => _items;
+  /// [_items] setter.
   set items(Set<String>? items) {
     _items = items;
     notifyListeners();
   }
 
-  /// [MyoroDropdown.selectedItems]
-  Set<String> _selectedItems = {'Option 1'};
-  Set<String> get selectedItems => _selectedItems;
+  /// [_selectedItemsController] setter.
   set selectedItems(Set<String> selectedItems) {
-    _selectedItems = selectedItems;
+    _selectedItemsController.value = selectedItems;
     notifyListeners();
   }
 
-  /// [MyoroDropdown.searchCallback]
-  MyoroMenuSearchCallback<String>? _searchCallback = (query) {
-    // Simple search implementation
-    print('Searching for: $query');
-  };
-  MyoroMenuSearchCallback<String>? get searchCallback => _searchCallback;
+  /// [_searchCallback] setter.
   set searchCallback(MyoroMenuSearchCallback<String>? searchCallback) {
     _searchCallback = searchCallback;
     notifyListeners();
   }
 
-  /// Whether search callback is enabled
-  bool _searchCallbackEnabled = false;
-  bool get searchCallbackEnabled => _searchCallbackEnabled;
+  /// [_searchCallbackEnabled] setter.
   set searchCallbackEnabled(bool searchCallbackEnabled) {
     _searchCallbackEnabled = searchCallbackEnabled;
     notifyListeners();
   }
 
-  /// [MyoroDropdown.dropdownType]
-  MyoroDropdownTypeEnum _dropdownType = MyoroDropdownTypeEnum.expanding;
-  MyoroDropdownTypeEnum get dropdownType => _dropdownType;
+  /// [_dropdownType] setter.
   set dropdownType(MyoroDropdownTypeEnum dropdownType) {
     _dropdownType = dropdownType;
     notifyListeners();
   }
 
-  /// [MyoroDropdown.targetKey]
-  GlobalKey? _targetKey;
-  GlobalKey? get targetKey => _targetKey;
+  /// [_targetKey] setter.
   set targetKey(GlobalKey? targetKey) {
     _targetKey = targetKey;
     notifyListeners();
-  }
-
-  /// [MyoroDropdown.itemBuilder]
-  MyoroMenuItemBuilder<String> _itemBuilder =
-      (item) => MyoroMenuButtonItem(
-        builder: (context, tapStatusEnum) => Text(item),
-        onTapDown: (_) => print('Selected: $item'),
-      );
-  MyoroMenuItemBuilder<String> get itemBuilder => _itemBuilder;
-  set itemBuilder(MyoroMenuItemBuilder<String> itemBuilder) {
-    _itemBuilder = itemBuilder;
-    notifyListeners();
-  }
-
-  @override
-  void dispose() {
-    _showingController.dispose();
-    super.dispose();
   }
 }

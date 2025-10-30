@@ -11,7 +11,7 @@ part 'myoro_currency_input_theme_extension.g.dart';
 class MyoroCurrencyInputThemeExtension extends ThemeExtension<MyoroCurrencyInputThemeExtension>
     with _$MyoroCurrencyInputThemeExtensionMixin
     implements MyoroCurrencyInputStyle {
-    /// Default constructor.
+  /// Default constructor.
   const MyoroCurrencyInputThemeExtension({
     this.border,
     this.underlinedBorder,

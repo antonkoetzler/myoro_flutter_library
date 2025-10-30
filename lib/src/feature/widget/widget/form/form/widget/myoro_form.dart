@@ -3,9 +3,10 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 
 part '../_widget/_form.dart';
+part '../_widget/_myoro_form_state.dart';
 
 /// Base form widget. Should always be used for any type of form content.
-class MyoroForm<T> extends StatelessWidget {
+class MyoroForm<T> extends StatefulWidget {
   /// Default constructor.
   const MyoroForm({
     super.key,
@@ -41,14 +42,7 @@ class MyoroForm<T> extends StatelessWidget {
   /// Builder of the content within the form.
   final MyoroFormBuilder<T> builder;
 
+  /// Create state function.
   @override
-  Widget build(context) {
-    return InheritedProvider(
-      create: (_) =>
-          controller ??
-          MyoroFormController(validation: validation, request: request, onSuccess: onSuccess, onError: onError),
-      dispose: (_, c) => controller != null ? c.dispose() : null,
-      child: Consumer<MyoroFormController<T>>(builder: (_, c, _) => _Form(builder)),
-    );
-  }
+  State<MyoroForm<T>> createState() => _MyoroFormState<T>();
 }

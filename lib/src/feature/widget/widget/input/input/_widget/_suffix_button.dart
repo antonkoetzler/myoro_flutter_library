@@ -1,4 +1,4 @@
-part of '../myoro_input.dart';
+part of '../widget/myoro_input.dart';
 
 /// [InputDecoration.suffixIcon] of [MyoroInput].
 final class _SuffixButton extends StatelessWidget {

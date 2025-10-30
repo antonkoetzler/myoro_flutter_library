@@ -1,4 +1,3 @@
-import 'package:faker/faker.dart' hide Color;
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -11,7 +10,7 @@ part 'myoro_carousel_theme_extension.g.dart';
 class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThemeExtension>
     with _$MyoroCarouselThemeExtensionMixin
     implements MyoroCarouselStyle {
-    /// Default constructor.
+  /// Default constructor.
   const MyoroCarouselThemeExtension({this.previousItemButtonIcon, this.nextItemButtonIcon});
 
   /// Fake constructor.

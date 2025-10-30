@@ -3,6 +3,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 
 part '../widget/myoro_single_accordion.dart';
+part '../_widget/_base_state.dart';
 part '../widget/myoro_multi_accordion.dart';
 part '../_widget/_base.dart';
 part '../_widget/_item.dart';

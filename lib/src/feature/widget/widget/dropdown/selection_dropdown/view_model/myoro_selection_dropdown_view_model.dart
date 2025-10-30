@@ -11,10 +11,10 @@ class MyoroSelectionDropdownViewModel<T> {
   MyoroSelectionDropdownViewModel(this.state) {
     switch (state) {
       case final MyoroMultiSelectionDropdownState<T> state:
-        state.selectedItemsController.addListener(() => _selectedItemsControllerListener(state));
+        state.selectedItemsController.addListener(_listener);
         break;
       case final MyoroSingleSelectionDropdownState<T> state:
-        state.selectedItemController.addListener(() => _selectedItemControllerListener(state));
+        state.selectedItemController.addListener(_listener);
         break;
     }
   }
@@ -24,20 +24,42 @@ class MyoroSelectionDropdownViewModel<T> {
 
   /// Dispose function.
   void dispose() {
+    switch (state) {
+      case final MyoroMultiSelectionDropdownState<T> state:
+        state.selectedItemsController.removeListener(_listener);
+        break;
+      case final MyoroSingleSelectionDropdownState<T> state:
+        state.selectedItemController.removeListener(_listener);
+        break;
+    }
+
     state.dispose();
   }
 
-  /// Listener for [MyoroMultiSelectionDropdownState.selectedItemsController].
-  void _selectedItemsControllerListener(MyoroMultiSelectionDropdownState<T> state) {
-    final selectedItems = state.selectedItems;
-    final selectedItemBuilder = state.selectedItemBuilder;
-    state.inputController.text = selectedItems.map((v) => selectedItemBuilder(v)).join(', ');
+  /// On tap function.
+  void onTap() {
+    state.showing = !state.showing;
   }
 
-  /// Listener for [MyoroSingleSelectionDropdownState.selectedItemController].
-  void _selectedItemControllerListener(MyoroSingleSelectionDropdownState<T> state) {
-    final selectedItem = state.selectedItem;
+  /// Listener for [MyoroMultiSelectionDropdownState.selectedItemsController].
+  void _listener() {
+    final inputController = state.inputController;
     final selectedItemBuilder = state.selectedItemBuilder;
-    state.inputController.text = selectedItem != null ? selectedItemBuilder(selectedItem) : kMyoroEmptyString;
+
+    switch (state) {
+      case final MyoroMultiSelectionDropdownState<T> state:
+        final selectedItems = state.selectedItems;
+        final onChanged = state.onChanged;
+        onChanged?.call(selectedItems);
+        inputController.text = selectedItems.map((v) => selectedItemBuilder(v)).join(', ');
+        state.onChanged?.call(state.selectedItems);
+        break;
+      case final MyoroSingleSelectionDropdownState<T> state:
+        final selectedItem = state.selectedItem;
+        final onChanged = state.onChanged;
+        inputController.text = selectedItem != null ? selectedItemBuilder(selectedItem) : kMyoroEmptyString;
+        onChanged?.call(selectedItem);
+        break;
+    }
   }
 }

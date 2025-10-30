@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 
+part '../_widget/_myoro_group_radio_state.dart';
+
 /// A group of [MyoroRadio]s.
-class MyoroGroupRadio extends StatelessWidget {
+class MyoroGroupRadio extends StatefulWidget {
   /// Default value of [style].
   static const styleDefaultValue = MyoroGroupRadioStyle();
 
@@ -46,41 +48,7 @@ class MyoroGroupRadio extends StatelessWidget {
   /// or empty. The [Map]'s value is the initial value of the checkbox.
   final MyoroGroupRadioItems? radios;
 
+  /// Create state function.
   @override
-  Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<MyoroGroupRadioThemeExtension>();
-    final spacing = style.spacing ?? themeExtension.spacing ?? 0;
-    final runSpacing = style.runSpacing ?? themeExtension.runSpacing ?? 0;
-
-    return MultiProvider(
-      providers: [
-        InheritedProvider.value(value: style),
-        InheritedProvider(
-          create: (_) => controller ?? MyoroGroupRadioController(radios!),
-          dispose: (_, c) => controller == null ? c.dispose() : null,
-        ),
-      ],
-      child: Consumer<MyoroGroupRadioController>(
-        builder: (_, controller, _) {
-          final radios = controller.radios;
-
-          return Wrap(
-            direction: direction,
-            spacing: spacing,
-            runSpacing: runSpacing,
-            children: radios.entries.map<Widget>((MapEntry<String, bool> entry) {
-              return MyoroRadio(
-                label: entry.key,
-                initialValue: entry.value,
-                onChanged: (_) {
-                  controller.enable(entry.key);
-                  onChanged?.call(entry.key, controller.radios);
-                },
-              );
-            }).toList(),
-          );
-        },
-      ),
-    );
-  }
+  State<MyoroGroupRadio> createState() => _MyoroGroupRadioState();
 }

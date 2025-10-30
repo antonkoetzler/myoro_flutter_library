@@ -11,7 +11,7 @@ class MyoroAccordionViewModel<T> {
   MyoroAccordionViewModel(this.state);
 
   /// State
-  final MyoroAccordionState<T> state;
+  MyoroAccordionState<T> state;
 
   /// Dispose function.
   void dispose() {

@@ -4,9 +4,10 @@ import 'package:provider/provider.dart';
 
 part '../_widget/_picker_button.dart';
 part '../_widget/_selected_file.dart';
+part '../_widget/_myoro_file_picker_state.dart';
 
 /// File picker of MFL.
-final class MyoroFilePicker extends StatelessWidget {
+final class MyoroFilePicker extends StatefulWidget {
   /// Default value of [style].
   static const styleDefaultValue = MyoroFilePickerStyle();
 
@@ -38,27 +39,7 @@ final class MyoroFilePicker extends StatelessWidget {
   /// Callback executed when the selected file changes
   final MyoroFilePickerOnChanged onChanged;
 
+  /// Create state function.
   @override
-  Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroFilePickerThemeExtension>();
-    final spacing = style.spacing ?? themeExtension.spacing ?? 0;
-
-    return MultiProvider(
-      providers: [
-        InheritedProvider.value(value: style),
-        InheritedProvider(
-          create: (_) => MyoroFilePickerViewModel(title, fileType, allowedExtensions, onChanged),
-          dispose: (_, v) => v.dispose(),
-        ),
-      ],
-      child: Row(
-        spacing: spacing,
-        mainAxisSize: MainAxisSize.min,
-        children: const [
-          Flexible(child: _SelectedFile()),
-          _PickerButton(),
-        ],
-      ),
-    );
-  }
+  State<MyoroFilePicker> createState() => _MyoroFilePickerState();
 }

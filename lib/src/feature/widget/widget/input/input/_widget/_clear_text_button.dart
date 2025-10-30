@@ -1,4 +1,4 @@
-part of '../myoro_input.dart';
+part of '../widget/myoro_input.dart';
 
 /// Button that clears all text of the [MyoroInput].
 final class _ClearTextButton extends StatelessWidget {

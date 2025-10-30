@@ -15,6 +15,7 @@ class MyoroInputState {
     bool enabled,
     this.readOnly,
     this.autofocus,
+    this.enableInteractiveSelection,
     bool showClearTextButton,
     this.showObscureTextButton,
     this.checkboxOnChanged,
@@ -27,17 +28,20 @@ class MyoroInputState {
     this.focusNode,
     TextEditingController? inputController,
     bool obscureText,
-  ) : _inputController = inputController ?? TextEditingController(text: text),
-      _showClearTextButtonController = ValueNotifier(
+  ) : _showClearTextButtonController = ValueNotifier(
         inputController != null ? inputController.text.isNotEmpty : text.isNotEmpty,
       ),
       _enabledController = ValueNotifier(enabled),
       _obscureTextController = ValueNotifier(obscureText) {
+    _inputController = inputController ?? (_localInputController ??= TextEditingController(text: text));
     if (formatter != null && text.isNotEmpty) _inputController.text = formatter!.initialText;
   }
 
   /// Local [TextEditingController].
-  final TextEditingController _inputController;
+  TextEditingController? _localInputController;
+
+  /// [TextEditingController].
+  late final TextEditingController _inputController;
 
   /// [bool] to keep track of whether the input is
   /// enabled or not if the checkbox is enabled.
@@ -77,6 +81,9 @@ class MyoroInputState {
   /// [MyoroInput.autofocus]
   final bool autofocus;
 
+  /// [MyoroInput.enableInteractiveSelection]
+  final bool enableInteractiveSelection;
+
   /// [MyoroInput.showObscureTextButton]
   final bool showObscureTextButton;
 
@@ -106,7 +113,7 @@ class MyoroInputState {
 
   /// Dispose function.
   void dispose() {
-    _inputController.dispose();
+    _localInputController?.dispose();
     _enabledController.dispose();
     _showClearTextButtonController.dispose();
     _obscureTextController.dispose();

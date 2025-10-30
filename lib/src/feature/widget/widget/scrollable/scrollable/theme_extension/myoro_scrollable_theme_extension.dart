@@ -1,9 +1,6 @@
-import 'package:faker/faker.dart' hide Color;
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-
-import '../style/myoro_scrollable_style.dart';
 
 part 'myoro_scrollable_theme_extension.g.dart';
 
@@ -13,7 +10,7 @@ part 'myoro_scrollable_theme_extension.g.dart';
 class MyoroScrollableThemeExtension extends ThemeExtension<MyoroScrollableThemeExtension>
     with _$MyoroScrollableThemeExtensionMixin
     implements MyoroScrollableStyle {
-    /// Default constructor.
+  /// Default constructor.
   const MyoroScrollableThemeExtension({
     this.gradientTopColor,
     this.gradientBottomColor,

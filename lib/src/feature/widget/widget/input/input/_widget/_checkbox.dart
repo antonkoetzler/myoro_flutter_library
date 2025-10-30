@@ -1,4 +1,4 @@
-part of '../myoro_input.dart';
+part of '../widget/myoro_input.dart';
 
 /// Checkbox option when [MyoroInputConfiguration.checkboxOnChanged] is provided.
 final class _Checkbox extends StatelessWidget {

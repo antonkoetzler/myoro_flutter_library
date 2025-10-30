@@ -1,4 +1,4 @@
-part of '../myoro_input.dart';
+part of '../widget/myoro_input.dart';
 
 /// Label [Widget] of [MyoroInput].
 final class _Label extends StatelessWidget {

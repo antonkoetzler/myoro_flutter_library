@@ -15,8 +15,8 @@ class MyoroSingleSelectionDropdownState<T> extends MyoroSelectionDropdownState<T
     super.selectedItemBuilder,
     this.onChanged,
   ) {
-    _selectedItemController = (selectedItemController ?? (_localSelectedItemController ??= ValueNotifier(selectedItem)))
-      ..addListener(_selectedItemControllerListener);
+    _selectedItemController =
+        (selectedItemController ?? (_localSelectedItemController ??= ValueNotifier(selectedItem)));
   }
 
   /// Local selected items [ValueNotifier].
@@ -31,15 +31,8 @@ class MyoroSingleSelectionDropdownState<T> extends MyoroSelectionDropdownState<T
   /// Dispose function.
   @override
   void dispose() {
-    _localSelectedItemController != null
-        ? _localSelectedItemController!.dispose()
-        : _selectedItemController.removeListener(_selectedItemControllerListener);
+    _localSelectedItemController?.dispose();
     super.dispose();
-  }
-
-  /// Listener for [_selectedItemController].
-  void _selectedItemControllerListener() {
-    onChanged?.call(selectedItem);
   }
 
   /// [_selectedItemController] getter.

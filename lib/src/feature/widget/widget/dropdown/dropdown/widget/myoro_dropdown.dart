@@ -5,12 +5,9 @@ import 'package:provider/provider.dart';
 part '../_widget/_menu.dart';
 
 /// Generic dropdown.
-class MyoroDropdown<T> extends StatelessWidget {
+class MyoroDropdown<T> extends StatefulWidget {
   /// Default value of [style].
   static const styleDefaultValue = MyoroDropdownStyle();
-
-  /// Default value of [dropdownType].
-  static const dropdownTypeDefaultValue = MyoroDropdownTypeEnum.expanding;
 
   /// Default constructor.
   const MyoroDropdown({
@@ -20,7 +17,7 @@ class MyoroDropdown<T> extends StatelessWidget {
     this.items,
     this.selectedItems = const {},
     this.searchCallback,
-    this.dropdownType = dropdownTypeDefaultValue,
+    this.dropdownType,
     this.targetKey,
     required this.itemBuilder,
     required this.child,
@@ -42,7 +39,9 @@ class MyoroDropdown<T> extends StatelessWidget {
   final MyoroMenuSearchCallback<T>? searchCallback;
 
   /// Dropdown type.
-  final MyoroDropdownTypeEnum dropdownType;
+  ///
+  /// Default is [MyoroDropdownTypeEnum.bottomSheet] on mobile and [MyoroDropdownTypeEnum.expanding] on other platforms.
+  final MyoroDropdownTypeEnum? dropdownType;
 
   /// Target key.
   final GlobalKey? targetKey;
@@ -53,28 +52,56 @@ class MyoroDropdown<T> extends StatelessWidget {
   /// Child.
   final Widget child;
 
+  /// Create state function.
   @override
-  Widget build(_) {
-    final viewModel = MyoroDropdownViewModel<T>(
-      this.showingController,
-      items,
-      selectedItems,
-      searchCallback,
-      dropdownType,
-      targetKey,
-      itemBuilder,
+  State<MyoroDropdown<T>> createState() => _MyoroDropdownState<T>();
+}
+
+/// [State] of [MyoroDropdown].
+final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
+  /// View model.
+  late final MyoroDropdownViewModel<T> _viewModel;
+
+  /// Init function.
+  @override
+  void initState() {
+    super.initState();
+    _viewModel = MyoroDropdownViewModel<T>(
+      widget.showingController,
+      widget.items,
+      widget.selectedItems,
+      widget.searchCallback,
+      widget.dropdownType,
+      widget.targetKey,
+      widget.itemBuilder,
     );
-    final state = viewModel.state;
+  }
+
+  /// Dispose function.
+  @override
+  void dispose() {
+    _viewModel.dispose();
+    super.dispose();
+  }
+
+  /// Build function.
+  @override
+  Widget build(context) {
+    final state = _viewModel.state;
     final baseKey = state.baseKey;
-    final disableDropdown = viewModel.disableDropdown;
     final link = state.link;
     final showingController = state.showingController;
+    final disableDropdown = _viewModel.disableDropdown;
+    final dropdownType = state.dropdownType;
+
+    final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
+    final expandingAndOverlaySpacing = themeExtension.expandingAndOverlaySpacing ?? 0;
 
     return MultiProvider(
       key: baseKey,
       providers: [
-        InheritedProvider.value(value: style),
-        InheritedProvider.value(value: viewModel),
+        InheritedProvider.value(value: widget.style),
+        InheritedProvider.value(value: _viewModel),
       ],
       child: switch (dropdownType) {
         MyoroDropdownTypeEnum.overlay => OverlayPortal(
@@ -83,7 +110,7 @@ class MyoroDropdown<T> extends StatelessWidget {
             width: state.targetKeySize?.width,
             child: CompositedTransformFollower(
               link: link,
-              offset: Offset(0, state.targetKeySize?.height ?? 0),
+              offset: Offset(0, (state.targetKeySize?.height ?? 0) + expandingAndOverlaySpacing),
               child: TapRegion(
                 groupId: state.tapRegionGroupId,
                 onTapOutside: (_) => disableDropdown(),
@@ -93,7 +120,7 @@ class MyoroDropdown<T> extends StatelessWidget {
           ),
           child: TapRegion(
             groupId: state.tapRegionGroupId,
-            child: CompositedTransformTarget(link: link, child: child),
+            child: CompositedTransformTarget(link: link, child: widget.child),
           ),
         ),
         MyoroDropdownTypeEnum.expanding => ValueListenableBuilder(
@@ -105,9 +132,10 @@ class MyoroDropdown<T> extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: expandingAndOverlaySpacing,
                 children: [
                   Flexible(
-                    child: TapRegion(groupId: state.tapRegionGroupId, child: child),
+                    child: TapRegion(groupId: state.tapRegionGroupId, child: widget.child),
                   ),
                   if (isShowing)
                     Flexible(
@@ -121,8 +149,8 @@ class MyoroDropdown<T> extends StatelessWidget {
             );
           },
         ),
-        MyoroDropdownTypeEnum.modal => child,
-        MyoroDropdownTypeEnum.bottomSheet => child,
+        MyoroDropdownTypeEnum.modal => widget.child,
+        MyoroDropdownTypeEnum.bottomSheet => widget.child,
       },
     );
   }

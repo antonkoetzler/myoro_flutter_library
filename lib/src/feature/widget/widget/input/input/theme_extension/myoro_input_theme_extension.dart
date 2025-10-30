@@ -11,7 +11,7 @@ part 'myoro_input_theme_extension.g.dart';
 class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
     with _$MyoroInputThemeExtensionMixin
     implements MyoroInputStyle {
-    /// Default constructor.
+  /// Default constructor.
   const MyoroInputThemeExtension({
     this.border,
     this.underlinedBorder,

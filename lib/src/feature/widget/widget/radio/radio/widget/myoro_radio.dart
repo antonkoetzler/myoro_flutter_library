@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 
+part '../_widget/_myoro_radio_state.dart';
+
 /// Single radio(box) [Widget].
-class MyoroRadio extends StatelessWidget {
+class MyoroRadio extends StatefulWidget {
   /// Default value of [label].
   static const labelDefaultValue = kMyoroEmptyString;
 
@@ -40,47 +42,7 @@ class MyoroRadio extends StatelessWidget {
   /// Function executed when the [MyoroRadio] is clicked.
   final MyoroRadioOnChanged? onChanged;
 
+  /// Create state function.
   @override
-  Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<MyoroRadioThemeExtension>();
-    final spacing = style.spacing ?? themeExtension.spacing ?? 0;
-    final labelTextStyle = style.labelTextStyle ?? themeExtension.labelTextStyle;
-    final activeColor = style.activeColor ?? themeExtension.activeColor;
-    final hoverColor = style.hoverColor ?? themeExtension.hoverColor;
-    final splashRadius = style.splashRadius ?? themeExtension.splashRadius;
-
-    return MultiProvider(
-      providers: [
-        InheritedProvider.value(value: style),
-        InheritedProvider(
-          create: (_) => controller ?? ValueNotifier(initialValue ?? false),
-          dispose: (_, c) => controller == null ? c.dispose() : null,
-        ),
-      ],
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        spacing: spacing,
-        children: [
-          Consumer<ValueNotifier<bool>>(
-            builder: (_, controller, _) {
-              final enabled = controller.value;
-              return Radio(
-                value: true,
-                groupValue: controller.value,
-                toggleable: true,
-                activeColor: activeColor,
-                hoverColor: hoverColor,
-                splashRadius: splashRadius,
-                onChanged: (_) {
-                  controller.value = !enabled;
-                  onChanged?.call(controller.value);
-                },
-              );
-            },
-          ),
-          if (label.isNotEmpty) Flexible(child: Text(label, style: labelTextStyle)),
-        ],
-      ),
-    );
-  }
+  State<MyoroRadio> createState() => _MyoroRadioState();
 }

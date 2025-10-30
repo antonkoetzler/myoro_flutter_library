@@ -17,8 +17,8 @@ final class _Menu<T> extends StatelessWidget {
       style: style,
       items: items,
       selectedItems: selectedItems,
-      itemBuilder: itemBuilder,
       searchCallback: searchCallback,
+      itemBuilder: itemBuilder,
     );
   }
 }

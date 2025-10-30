@@ -12,7 +12,7 @@ part 'myoro_image_picker_theme_extension.g.dart';
 final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePickerThemeExtension>
     with _$MyoroImagePickerThemeExtensionMixin
     implements MyoroImagePickerStyle {
-    /// Default constructor.
+  /// Default constructor.
   const MyoroImagePickerThemeExtension({
     this.size,
     this.borderRadius,

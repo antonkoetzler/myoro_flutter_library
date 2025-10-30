@@ -3,12 +3,13 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 
 part '../_widget/_button.dart';
+part '../_widget/_myoro_button_state.dart';
 
 /// Generic button of MFL.
 ///
 /// Used when a very custom button is needed, otherwise MFL
 /// provides other buttons that are built with [MyoroButton].
-class MyoroButton extends StatelessWidget {
+class MyoroButton extends StatefulWidget {
   /// Default value of [style].
   static const styleDefaultValue = MyoroButtonStyle();
 
@@ -51,51 +52,7 @@ class MyoroButton extends StatelessWidget {
   /// [Widget] builder of the [MyoroButton].
   final MyoroButtonBuilder builder;
 
+  /// Create state function.
   @override
-  Widget build(context) {
-    return MultiProvider(
-      providers: [
-        InheritedProvider.value(value: style),
-        InheritedProvider(
-          create: (_) => MyoroButtonViewModel(tooltipText, onTapDown, onTapUp, isLoading),
-          dispose: (_, v) => v.dispose(),
-        ),
-      ],
-      child: Builder(
-        builder: (context) {
-          final viewModel = context.read<MyoroButtonViewModel>();
-          final onEnter = viewModel.onEnter;
-          final onExit = viewModel.onExit;
-          final onTapCancel = viewModel.onTapCancel;
-          final onTapDown = viewModel.onTapDown;
-          final onTapUp = viewModel.onTapUp;
-          final state = viewModel.state;
-          final isLoadingController = state.isLoadingController;
-          final onTapProvided = state.onTapProvided;
-          final tapStatusController = state.tapStatusController;
-          final effectiveCursor = cursor ?? (onTapProvided ? SystemMouseCursors.click : SystemMouseCursors.basic);
-
-          return MouseRegion(
-            cursor: effectiveCursor,
-            onEnter: onEnter,
-            onExit: onExit,
-            child: ValueListenableBuilder(
-              valueListenable: isLoadingController,
-              builder: (_, isLoading, _) => isLoading
-                  ? const MyoroCircularLoader()
-                  : GestureDetector(
-                      onTapDown: onTapDown,
-                      onTapUp: onTapUp,
-                      onTapCancel: onTapCancel,
-                      child: ValueListenableBuilder(
-                        valueListenable: tapStatusController,
-                        builder: (_, tapStatusEnum, _) => _Button(tapStatusEnum, builder),
-                      ),
-                    ),
-            ),
-          );
-        },
-      ),
-    );
-  }
+  State<MyoroButton> createState() => _MyoroButtonState();
 }

@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
-part '_widget/_checkbox.dart';
-part '_widget/_clear_text_button.dart';
-part '_widget/_label.dart';
-part '_widget/_suffix_button.dart';
-part '_widget/_text_form_field.dart';
-part '_widget/_obscure_text_button.dart';
+part '../_widget/_checkbox.dart';
+part '../_widget/_clear_text_button.dart';
+part '../_widget/_label.dart';
+part '../_widget/_suffix_button.dart';
+part '../_widget/_text_form_field.dart';
+part '../_widget/_obscure_text_button.dart';
+part '../_widget/_myoro_input_state.dart';
 
-/// Generic input _
-///
-/// [MyoroInput] also serves as a base input for creating other inputs in the commons folder.
-/// A [MyoroInputConfiguration] is passed to every other input [Widget] in the commons folder.
-/// This means that [MyoroInput] should always be completely compatible with the other inputs.
-class MyoroInput extends StatelessWidget {
+/// Generic input.
+class MyoroInput extends StatefulWidget {
   /// Default value for [inputStyle].
   static const inputStyleDefaultValue = MyoroInputStyleEnum.outlined;
 
@@ -37,6 +34,9 @@ class MyoroInput extends StatelessWidget {
 
   /// Default value for [autofocus].
   static const autofocusDefaultValue = false;
+
+  /// Default value for [enableInteractiveSelection].
+  static const enableInteractiveSelectionDefaultValue = true;
 
   /// Default value for [showClearTextButton].
   static const showClearTextButtonDefaultValue = true;
@@ -62,6 +62,7 @@ class MyoroInput extends StatelessWidget {
     this.enabled = enabledDefaultValue,
     this.readOnly = readOnlyDefaultValue,
     this.autofocus = autofocusDefaultValue,
+    this.enableInteractiveSelection = enableInteractiveSelectionDefaultValue,
     this.showClearTextButton = showClearTextButtonDefaultValue,
     this.checkboxOnChanged,
     this.validation,
@@ -117,6 +118,9 @@ class MyoroInput extends StatelessWidget {
   /// Whether the input should focus when it is inserted into the widget tree.
   final bool autofocus;
 
+  /// Whether the input can be interacted with.
+  final bool enableInteractiveSelection;
+
   /// Whether to show [_ClearTextButton] or not.
   final bool showClearTextButton;
 
@@ -159,64 +163,7 @@ class MyoroInput extends StatelessWidget {
   /// Whether the input should be obscured.
   final bool obscureText;
 
+  /// Create state function.
   @override
-  Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
-    final spacing = style.spacing ?? themeExtension.spacing ?? 0;
-
-    return MultiProvider(
-      providers: [
-        Provider.value(value: style),
-        Provider(
-          create: (_) => MyoroInputViewModel(
-            formatter,
-            inputStyle,
-            textAlign,
-            label,
-            text,
-            placeholder,
-            prefix,
-            suffix,
-            enabled,
-            readOnly,
-            autofocus,
-            showClearTextButton,
-            showObscureTextButton,
-            checkboxOnChanged,
-            validation,
-            onFieldSubmitted,
-            onChanged,
-            onCleared,
-            inputKey,
-            onTap,
-            focusNode,
-            inputController,
-            obscureText,
-          ),
-          dispose: (_, v) => v.dispose(),
-        ),
-      ],
-      child: Builder(
-        builder: (context) {
-          final viewModel = context.read<MyoroInputViewModel>();
-          final state = viewModel.state;
-          final enabledController = state.enabledController;
-
-          return ValueListenableBuilder(
-            valueListenable: enabledController,
-            builder: (_, enabled, _) {
-              return Row(
-                spacing: spacing,
-                children: [
-                  if (checkboxOnChanged != null) _Checkbox(enabled),
-                  Expanded(child: _TextFormField(enabled)),
-                  if (suffix != null) suffix!,
-                ],
-              );
-            },
-          );
-        },
-      ),
-    );
-  }
+  State<MyoroInput> createState() => _MyoroInputState();
 }

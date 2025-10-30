@@ -11,7 +11,7 @@ part 'myoro_accordion_theme_extension.g.dart';
 class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExtension>
     with _$MyoroAccordionThemeExtensionMixin
     implements MyoroAccordionStyle {
-    /// Default constructor.
+  /// Default constructor.
   const MyoroAccordionThemeExtension({
     this.itemContentBackgroundColor,
     this.itemContentAnimationDuration,

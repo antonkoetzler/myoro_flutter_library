@@ -1,7 +1,7 @@
 part of '../bundle/myoro_accordion_bundle.dart';
 
 /// Base accordion [Widget].
-final class _Base<T> extends StatelessWidget {
+final class _Base<T> extends StatefulWidget {
   const _Base(this._style, this._state);
 
   /// Style.
@@ -10,30 +10,7 @@ final class _Base<T> extends StatelessWidget {
   /// State.
   final MyoroAccordionState<T> _state;
 
+  /// Create state function.
   @override
-  Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        InheritedProvider(create: (_) => MyoroAccordionViewModel<T>(_state), dispose: (_, v) => v.dispose()),
-        InheritedProvider.value(value: _style),
-      ],
-      child: Builder(
-        builder: (context) {
-          final viewModel = context.read<MyoroAccordionViewModel<T>>();
-          final state = viewModel.state;
-
-          return switch (state) {
-            MyoroMultiAccordionState<T>() => ValueListenableBuilder(
-              valueListenable: state.selectedItemsController,
-              builder: (_, selectedItems, _) => _Accordion<T>(selectedItems),
-            ),
-            MyoroSingleAccordionState<T>() => ValueListenableBuilder(
-              valueListenable: state.selectedItemController,
-              builder: (_, selectedItem, _) => _Accordion<T>({?selectedItem}),
-            ),
-          };
-        },
-      ),
-    );
-  }
+  State<_Base<T>> createState() => _BaseState<T>();
 }

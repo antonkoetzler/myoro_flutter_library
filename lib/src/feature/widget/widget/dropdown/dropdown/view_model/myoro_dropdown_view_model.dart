@@ -11,7 +11,7 @@ class MyoroDropdownViewModel<T> {
     Set<T>? items,
     Set<T> selectedItems,
     MyoroMenuSearchCallback<T>? searchCallback,
-    MyoroDropdownTypeEnum dropdownType,
+    MyoroDropdownTypeEnum? dropdownType,
     GlobalKey? targetKey,
     MyoroMenuItemBuilder<T> itemBuilder,
   ) : _state = MyoroDropdownState(
@@ -19,40 +19,44 @@ class MyoroDropdownViewModel<T> {
         items,
         selectedItems,
         searchCallback,
-        dropdownType,
+        dropdownType ??
+            (MyoroPlatformHelper.isMobile ? MyoroDropdownTypeEnum.bottomSheet : MyoroDropdownTypeEnum.expanding),
         targetKey,
         itemBuilder,
       ) {
     final dropdownType = state.dropdownType;
     final isOverlay = dropdownType.isOverlay;
     if (isOverlay) state.overlayPortalController = OverlayPortalController();
+    _state.showingController.addListener(_showingControllerListener);
   }
 
   /// State.
   final MyoroDropdownState<T> _state;
 
-  /// Enables the dropdown.
-  void enableDropdown() {
-    final dropdownType = state.dropdownType;
-    final isOverlay = dropdownType.isOverlay;
-    final showing = state.showing;
-    final targetKey = state.targetKey;
-    if (showing) return;
-    final targetKeyRenderBox = targetKey?.currentContext?.findRenderObject() as RenderBox?;
-    state.targetKeySize = targetKeyRenderBox?.size;
-    if (isOverlay) state.overlayPortalController.show();
-    state.showing = true;
+  /// Dispose function.
+  void dispose() {
+    state.showingController.removeListener(_showingControllerListener);
   }
 
   /// Disables the dropdown.
   void disableDropdown() {
+    state.showing = false;
+  }
+
+  /// Listener for [MyoroDropdownState.showingController].
+  void _showingControllerListener() {
     final dropdownType = state.dropdownType;
     final isOverlay = dropdownType.isOverlay;
     final showing = state.showing;
-    if (!showing) return;
-    if (isOverlay) state.overlayPortalController.hide();
-    state.targetKeySize = null;
-    state.showing = false;
+    final targetKey = state.targetKey;
+    if (showing) {
+      final targetKeyRenderBox = targetKey?.currentContext?.findRenderObject() as RenderBox?;
+      state.targetKeySize = targetKeyRenderBox?.size;
+      if (isOverlay) state.overlayPortalController.show();
+    } else {
+      if (isOverlay) state.overlayPortalController.hide();
+      state.targetKeySize = null;
+    }
   }
 
   /// [_state] getter.

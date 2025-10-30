@@ -1,4 +1,3 @@
-import 'package:faker/faker.dart' hide Color;
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -11,7 +10,7 @@ part 'myoro_feedback_theme_extension.g.dart';
 class MyoroFeedbackThemeExtension extends ThemeExtension<MyoroFeedbackThemeExtension>
     with _$MyoroFeedbackThemeExtensionMixin
     implements MyoroFeedbackStyle {
-    /// Default constructor.
+  /// Default constructor.
   const MyoroFeedbackThemeExtension({this.spacing, this.iconSize, this.titleTextStyle, this.subtitleTextStyle});
 
   /// Fake constructor.

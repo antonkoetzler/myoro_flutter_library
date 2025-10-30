@@ -27,7 +27,7 @@ final class _Item<T> extends StatelessWidget {
         cursor: _menuItem.cursor,
         tooltipText: _menuItem.tooltipText,
         onTapDown: _menuItem.onTapDown,
-        onTapUp: (details) => _menuItem.onTapUp?.call(details),
+        onTapUp: _menuItem.onTapUp,
         isLoading: _menuItem.isLoading,
         builder: _menuItem.builder,
       ),

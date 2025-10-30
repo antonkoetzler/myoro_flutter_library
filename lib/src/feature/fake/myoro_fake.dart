@@ -2,8 +2,6 @@ import 'package:faker/faker.dart' hide Color;
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-import 'myoro_nullable_fake.dart';
-
 /// Function which generates a fake object of the type provided.
 ///
 /// Used for types MFL cannot create factories in.

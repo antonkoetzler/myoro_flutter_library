@@ -1,4 +1,4 @@
-part of '../myoro_input.dart';
+part of '../widget/myoro_input.dart';
 
 /// Toggle hidden button of [MyoroInput] for when [MyoroInputConfiguration.obscureText] is true.
 final class _ObscureTextButton extends StatelessWidget {

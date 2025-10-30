@@ -1,4 +1,3 @@
-import 'package:faker/faker.dart' hide Color;
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -11,7 +10,7 @@ part 'myoro_group_radio_theme_extension.g.dart';
 class MyoroGroupRadioThemeExtension extends ThemeExtension<MyoroGroupRadioThemeExtension>
     with _$MyoroGroupRadioThemeExtensionMixin
     implements MyoroGroupRadioStyle {
-    /// Default constructor.
+  /// Default constructor.
   const MyoroGroupRadioThemeExtension({this.spacing, this.runSpacing});
 
   /// Fake constructor.

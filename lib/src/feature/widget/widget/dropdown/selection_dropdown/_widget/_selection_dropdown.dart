@@ -11,16 +11,13 @@ abstract class _SelectionDropdown<T> extends StatelessWidget {
   /// Default value of [enabled].
   static const enabledDefaultValue = true;
 
-  /// Default value of [dropdownType].
-  static const dropdownTypeDefaultValue = MyoroDropdownTypeEnum.expanding;
-
   /// Default constructor.
   const _SelectionDropdown({
     super.key,
     this.style = styleDefaultValue,
     this.label = labelDefaultValue,
     this.enabled = enabledDefaultValue,
-    this.dropdownType = dropdownTypeDefaultValue,
+    this.dropdownType,
     this.items,
     this.showingController,
     required this.itemBuilder,
@@ -37,7 +34,7 @@ abstract class _SelectionDropdown<T> extends StatelessWidget {
   final bool enabled;
 
   /// Dropdown type.
-  final MyoroDropdownTypeEnum dropdownType;
+  final MyoroDropdownTypeEnum? dropdownType;
 
   /// Items.
   final Set<T>? items;

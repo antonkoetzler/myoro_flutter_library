@@ -11,7 +11,7 @@ part 'myoro_menu_theme_extension.g.dart';
 class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
     with _$MyoroMenuThemeExtensionMixin
     implements MyoroMenuStyle {
-    /// Default constructor.
+  /// Default constructor.
   const MyoroMenuThemeExtension({
     this.constraints,
     this.backgroundColor,
