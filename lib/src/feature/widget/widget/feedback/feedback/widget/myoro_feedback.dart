@@ -8,7 +8,7 @@ part '../_widget/_subtitle.dart';
 part '../_widget/_title.dart';
 
 /// An a generic feedback [Widget].
-final class MyoroFeedback extends StatelessWidget {
+class MyoroFeedback extends StatelessWidget {
   /// Default value of [style].
   static const styleDefaultValue = MyoroFeedbackStyle();
 
