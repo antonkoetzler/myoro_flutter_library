@@ -2,6 +2,9 @@ part of '../bundle/myoro_selection_dropdown_bundle.dart';
 
 /// Single selection dropdown.
 class MyoroSingleSelectionDropdown<T> extends _SelectionDropdown<T> {
+  /// Default value for [allowDeselection].
+  static const allowDeselectionDefaultValue = true;
+
   /// Default constructor.
   const MyoroSingleSelectionDropdown({
     super.key,
@@ -14,6 +17,7 @@ class MyoroSingleSelectionDropdown<T> extends _SelectionDropdown<T> {
     required super.itemBuilder,
     required super.selectedItemBuilder,
     this.selectedItem,
+    this.allowDeselection = allowDeselectionDefaultValue,
     this.selectedItemController,
     this.onChanged,
   }) : assert(
@@ -23,6 +27,9 @@ class MyoroSingleSelectionDropdown<T> extends _SelectionDropdown<T> {
 
   /// Initially selected item.
   final T? selectedItem;
+
+  /// If the selected item can be deselected.
+  final bool allowDeselection;
 
   /// [ValueNotifier] of the selected item.
   final ValueNotifier<T?>? selectedItemController;
@@ -42,6 +49,7 @@ class MyoroSingleSelectionDropdown<T> extends _SelectionDropdown<T> {
         showingController,
         selectedItem,
         selectedItemController,
+        allowDeselection,
         itemBuilder,
         selectedItemBuilder,
         onChanged,

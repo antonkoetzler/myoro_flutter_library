@@ -42,8 +42,8 @@ final class MyoroInputWidgetShowcaseScreenState extends ChangeNotifier {
   /// [MyoroInput.readOnly]
   bool _readOnly = MyoroInput.readOnlyDefaultValue;
 
-  /// [MyoroInput.showClearTextButton]
-  bool _showClearTextButton = MyoroInput.showClearTextButtonDefaultValue;
+  /// [MyoroInput.canShowClearTextButton]
+  bool _canShowClearTextButton = MyoroInput.canShowClearTextButtonDefaultValue;
 
   /// [MyoroInput.obscureText]
   bool _obscureText = MyoroInput.obscureTextDefaultValue;
@@ -177,9 +177,9 @@ final class MyoroInputWidgetShowcaseScreenState extends ChangeNotifier {
     return _readOnly;
   }
 
-  /// [_showClearTextButton] getter.
-  bool get showClearTextButton {
-    return _showClearTextButton;
+  /// [_canShowClearTextButton] getter.
+  bool get canShowClearTextButton {
+    return _canShowClearTextButton;
   }
 
   /// [_obscureText] getter.
@@ -370,9 +370,9 @@ final class MyoroInputWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [_showClearTextButton] setter.
-  set showClearTextButton(bool showClearTextButton) {
-    _showClearTextButton = showClearTextButton;
+  /// [_canShowClearTextButton] setter.
+  set canShowClearTextButton(bool canShowClearTextButton) {
+    _canShowClearTextButton = canShowClearTextButton;
     notifyListeners();
   }
 

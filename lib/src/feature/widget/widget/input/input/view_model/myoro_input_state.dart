@@ -1,6 +1,6 @@
 part of 'myoro_input_view_model.dart';
 
-/// State of [MyoroInputController].
+/// State of [MyoroInputViewModel].
 class MyoroInputState {
   /// Creates a new instance of [MyoroInputState].
   MyoroInputState(
@@ -16,7 +16,7 @@ class MyoroInputState {
     this.readOnly,
     this.autofocus,
     this.enableInteractiveSelection,
-    bool showClearTextButton,
+    this.canShowClearTextButton,
     this.showObscureTextButton,
     this.checkboxOnChanged,
     this.validation,
@@ -26,22 +26,26 @@ class MyoroInputState {
     this.inputKey,
     this.onTap,
     this.focusNode,
-    TextEditingController? inputController,
+    TextEditingController? controller,
     bool obscureText,
   ) : _showClearTextButtonController = ValueNotifier(
-        inputController != null ? inputController.text.isNotEmpty : text.isNotEmpty,
+        canShowClearTextButton
+            ? controller != null
+                  ? controller.text.isNotEmpty
+                  : text.isNotEmpty
+            : false,
       ),
       _enabledController = ValueNotifier(enabled),
       _obscureTextController = ValueNotifier(obscureText) {
-    _inputController = inputController ?? (_localInputController ??= TextEditingController(text: text));
-    if (formatter != null && text.isNotEmpty) _inputController.text = formatter!.initialText;
+    _controller = controller ?? (_localInputController ??= TextEditingController(text: text));
+    if (formatter != null && text.isNotEmpty) _controller.text = formatter!.initialText;
   }
 
   /// Local [TextEditingController].
   TextEditingController? _localInputController;
 
   /// [TextEditingController].
-  late final TextEditingController _inputController;
+  late TextEditingController _controller;
 
   /// [bool] to keep track of whether the input is
   /// enabled or not if the checkbox is enabled.
@@ -55,61 +59,64 @@ class MyoroInputState {
   final ValueNotifier<bool> _obscureTextController;
 
   /// [MyoroInput.formatter]
-  final MyoroInputFormatter? formatter;
+  MyoroInputFormatter? formatter;
 
   /// [MyoroInput.inputStyle]
-  final MyoroInputStyleEnum inputStyle;
+  MyoroInputStyleEnum inputStyle;
 
   /// [MyoroInput.textAlign]
-  final TextAlign textAlign;
+  TextAlign textAlign;
 
   /// [MyoroInput.label]
-  final String label;
+  String label;
 
   /// [MyoroInput.placeholder]
-  final String placeholder;
+  String placeholder;
 
   /// [MyoroInput.prefix]
-  final Widget? prefix;
+  Widget? prefix;
 
   /// [MyoroInput.suffix]
-  final Widget? suffix;
+  Widget? suffix;
 
   /// [MyoroInput.readOnly]
-  final bool readOnly;
+  bool readOnly;
 
   /// [MyoroInput.autofocus]
-  final bool autofocus;
+  bool autofocus;
 
   /// [MyoroInput.enableInteractiveSelection]
-  final bool enableInteractiveSelection;
+  bool enableInteractiveSelection;
+
+  /// [MyoroInput.canShowClearTextButton]
+  bool canShowClearTextButton;
 
   /// [MyoroInput.showObscureTextButton]
-  final bool showObscureTextButton;
+  bool showObscureTextButton;
 
   /// [MyoroInput.checkboxOnChanged]
-  final MyoroInputCheckboxOnChanged? checkboxOnChanged;
+  MyoroInputCheckboxOnChanged? checkboxOnChanged;
 
   /// [MyoroInput.validation]
-  final MyoroInputValidation? validation;
+  MyoroInputValidation? validation;
 
   /// [MyoroInput.onFieldSubmitted]
-  final MyoroInputOnFieldSubmitted? onFieldSubmitted;
+  MyoroInputOnFieldSubmitted? onFieldSubmitted;
 
   /// [MyoroInput.onChanged]
-  final MyoroInputOnChanged? onChanged;
+  MyoroInputOnChanged? onChanged;
 
   /// [MyoroInput.onCleared]
-  final VoidCallback? onCleared;
+  VoidCallback? onCleared;
 
   /// [MyoroInput.inputKey]
-  final Key? inputKey;
+  Key? inputKey;
 
   /// [MyoroInput.onTap]
-  final VoidCallback? onTap;
+  VoidCallback? onTap;
 
   /// [MyoroInput.focusNode]
-  final FocusNode? focusNode;
+  FocusNode? focusNode;
 
   /// Dispose function.
   void dispose() {
@@ -119,9 +126,9 @@ class MyoroInputState {
     _obscureTextController.dispose();
   }
 
-  /// [_inputController] getter.
-  TextEditingController get inputController {
-    return _inputController;
+  /// [_controller] getter.
+  TextEditingController get controller {
+    return _controller;
   }
 
   /// [_enabledController] getter.
@@ -152,6 +159,12 @@ class MyoroInputState {
   /// Getter of [_obscureTextController]'s value.
   bool get obscureText {
     return _obscureTextController.value;
+  }
+
+  /// [_controller] setter.
+  set controller(TextEditingController? controller) {
+    if (controller != null) _localInputController?.dispose();
+    _controller = controller!;
   }
 
   /// [_enabledController] setter.

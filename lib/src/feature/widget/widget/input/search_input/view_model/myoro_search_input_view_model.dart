@@ -6,10 +6,8 @@ part 'myoro_search_input_state.dart';
 /// View model of [MyoroSearchInput].
 class MyoroSearchInputViewModel<T> {
   /// Default constructor.
-  MyoroSearchInputViewModel(
-    MyoroSearchInputSelectedItemBuilder<T> selectedItemBuilder,
-    MyoroSearchInputRequest<T> request,
-  ) : _state = MyoroSearchInputState(selectedItemBuilder, request) {
+  MyoroSearchInputViewModel(String label, MyoroSearchInputSelectedItemBuilder<T> selectedItemBuilder, MyoroSearchInputRequest<T> request)
+    : _state = MyoroSearchInputState(label, selectedItemBuilder, request) {
     _state.selectedItemController.addListener(_selectedItemControllerListener);
   }
 

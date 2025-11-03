@@ -22,7 +22,7 @@ final class _MyoroInputState extends State<MyoroInput> {
       widget.readOnly,
       widget.autofocus,
       widget.enableInteractiveSelection,
-      widget.showClearTextButton,
+      widget.canShowClearTextButton,
       widget.showObscureTextButton,
       widget.checkboxOnChanged,
       widget.validation,
@@ -32,9 +32,40 @@ final class _MyoroInputState extends State<MyoroInput> {
       widget.inputKey,
       widget.onTap,
       widget.focusNode,
-      widget.inputController,
+      widget.controller,
       widget.obscureText,
     );
+  }
+
+  /// Did update function.
+  @override
+  void didUpdateWidget(MyoroInput oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    final state = _viewModel.state;
+    state.formatter = widget.formatter;
+    state.inputStyle = widget.inputStyle;
+    state.textAlign = widget.textAlign;
+    state.label = widget.label;
+    if (widget.text.isNotEmpty) state.controller.text = widget.text;
+    state.placeholder = widget.placeholder;
+    state.prefix = widget.prefix;
+    state.suffix = widget.suffix;
+    state.enabled = widget.enabled;
+    state.readOnly = widget.readOnly;
+    state.autofocus = widget.autofocus;
+    state.enableInteractiveSelection = widget.enableInteractiveSelection;
+    state.canShowClearTextButton = widget.canShowClearTextButton;
+    state.showObscureTextButton = widget.showObscureTextButton;
+    state.checkboxOnChanged = widget.checkboxOnChanged;
+    state.validation = widget.validation;
+    state.onFieldSubmitted = widget.onFieldSubmitted;
+    state.onChanged = widget.onChanged;
+    state.onCleared = widget.onCleared;
+    state.inputKey = widget.inputKey;
+    state.onTap = widget.onTap;
+    state.focusNode = widget.focusNode;
+    state.controller = widget.controller;
+    state.obscureText = widget.obscureText;
   }
 
   /// Dispose function.

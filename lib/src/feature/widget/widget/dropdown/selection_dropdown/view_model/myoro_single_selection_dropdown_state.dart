@@ -11,13 +11,16 @@ class MyoroSingleSelectionDropdownState<T> extends MyoroSelectionDropdownState<T
     super.showingController,
     T? selectedItem,
     ValueNotifier<T?>? selectedItemController,
+    this.allowDeselection,
     super.itemBuilder,
     super.selectedItemBuilder,
     this.onChanged,
   ) {
-    _selectedItemController =
-        (selectedItemController ?? (_localSelectedItemController ??= ValueNotifier(selectedItem)));
+    _selectedItemController = (selectedItemController ?? (_localSelectedItemController ??= ValueNotifier(selectedItem)));
   }
+
+  /// If the selected item can be deselected.
+  final bool allowDeselection;
 
   /// Local selected items [ValueNotifier].
   ValueNotifier<T?>? _localSelectedItemController;

@@ -38,8 +38,8 @@ class MyoroInput extends StatefulWidget {
   /// Default value for [enableInteractiveSelection].
   static const enableInteractiveSelectionDefaultValue = true;
 
-  /// Default value for [showClearTextButton].
-  static const showClearTextButtonDefaultValue = true;
+  /// Default value for [canShowClearTextButton].
+  static const canShowClearTextButtonDefaultValue = true;
 
   /// Default value for [obscureText].
   static const obscureTextDefaultValue = false;
@@ -63,7 +63,7 @@ class MyoroInput extends StatefulWidget {
     this.readOnly = readOnlyDefaultValue,
     this.autofocus = autofocusDefaultValue,
     this.enableInteractiveSelection = enableInteractiveSelectionDefaultValue,
-    this.showClearTextButton = showClearTextButtonDefaultValue,
+    this.canShowClearTextButton = canShowClearTextButtonDefaultValue,
     this.checkboxOnChanged,
     this.validation,
     this.onFieldSubmitted,
@@ -72,13 +72,10 @@ class MyoroInput extends StatefulWidget {
     this.inputKey,
     this.onTap,
     this.focusNode,
-    this.inputController,
+    this.controller,
     this.obscureText = obscureTextDefaultValue,
     this.showObscureTextButton = showObscureTextButtonDefaultValue,
-  }) : assert(
-         !(text.length > 0 && inputController != null),
-         '[MyoroInput]: [text] and [controller] cannot be provided together.',
-       );
+  }) : assert(!(text.length > 0 && controller != null), '[MyoroInput]: [text] and [controller] cannot be provided together.');
 
   /// Style.
   final MyoroInputStyle style;
@@ -115,14 +112,14 @@ class MyoroInput extends StatefulWidget {
   /// Whether the input can be editted by the user.
   final bool readOnly;
 
-  /// Whether the input should focus when it is inserted into the widget tree.
+  /// Whether the input should focus when it is inserted into the tree.
   final bool autofocus;
 
   /// Whether the input can be interacted with.
   final bool enableInteractiveSelection;
 
   /// Whether to show [_ClearTextButton] or not.
-  final bool showClearTextButton;
+  final bool canShowClearTextButton;
 
   /// Whether to show [_ToggleHiddenButton] or not.
   final bool showObscureTextButton;
@@ -158,7 +155,7 @@ class MyoroInput extends StatefulWidget {
   final FocusNode? focusNode;
 
   /// Controller of the input.
-  final TextEditingController? inputController;
+  final TextEditingController? controller;
 
   /// Whether the input should be obscured.
   final bool obscureText;

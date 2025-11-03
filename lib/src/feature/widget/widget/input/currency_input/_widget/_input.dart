@@ -10,6 +10,6 @@ final class _Input extends StatelessWidget {
     final state = viewModel.state;
     final inputController = state.inputController;
 
-    return MyoroInput(inputController: inputController, prefix: const _Prefix());
+    return MyoroInput(controller: inputController, prefix: const _Prefix());
   }
 }

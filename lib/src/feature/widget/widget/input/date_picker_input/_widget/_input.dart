@@ -10,6 +10,6 @@ final class _Input extends StatelessWidget {
     final state = viewModel.state;
     final inputController = state.inputController;
     final onTap = viewModel.onTap;
-    return MyoroInput(inputController: inputController, onTap: () => onTap(context, (child) => _DatePicker(child!)));
+    return MyoroInput(controller: inputController, onTap: () => onTap(context, (child) => _DatePicker(child!)));
   }
 }

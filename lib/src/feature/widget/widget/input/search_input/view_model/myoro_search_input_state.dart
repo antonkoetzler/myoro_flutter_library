@@ -3,9 +3,12 @@ part of 'myoro_search_input_view_model.dart';
 /// State of [MyoroSearchInputViewModel].
 class MyoroSearchInputState<T> {
   /// Default constructor.
-  MyoroSearchInputState(this.selectedItemBuilder, MyoroSearchInputRequest<T> request) {
+  MyoroSearchInputState(this.label, this.selectedItemBuilder, MyoroSearchInputRequest<T> request) {
     _requestController = MyoroRequestController(requestCallback: () => request(_inputController.text));
   }
+
+  /// [MyoroSearchInput.label].
+  final String label;
 
   /// [MyoroSearchInput.selectedItemBuilder].
   final MyoroSearchInputSelectedItemBuilder<T> selectedItemBuilder;

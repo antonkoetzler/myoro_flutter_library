@@ -9,7 +9,7 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
   @override
   void initState() {
     super.initState();
-    _viewModel = MyoroSearchInputViewModel(widget.selectedItemBuilder, widget.request);
+    _viewModel = MyoroSearchInputViewModel(widget.label, widget.selectedItemBuilder, widget.request);
   }
 
   /// Dispose function.

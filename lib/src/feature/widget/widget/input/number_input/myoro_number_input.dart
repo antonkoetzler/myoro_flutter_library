@@ -45,7 +45,7 @@ class MyoroNumberInput extends StatelessWidget {
     this.readOnly = readOnlyDefaultValue,
     this.prefix,
     this.onTap,
-    this.inputController,
+    this.controller,
     this.onFieldSubmitted,
     this.suffix,
     this.checkboxOnChanged,
@@ -91,8 +91,8 @@ class MyoroNumberInput extends StatelessWidget {
   /// [MyoroInput.onTap]
   final VoidCallback? onTap;
 
-  /// [MyoroInput.inputController]
-  final TextEditingController? inputController;
+  /// [MyoroInput.controller]
+  final TextEditingController? controller;
 
   /// [MyoroInput.onFieldSubmitted]
   final MyoroInputOnFieldSubmitted? onFieldSubmitted;
@@ -111,12 +111,7 @@ class MyoroNumberInput extends StatelessWidget {
     return MyoroInput(
       key: key,
       style: style,
-      formatter: MyoroNumberInputFormatter(
-        min: min,
-        max: max,
-        decimalPlaces: decimalPlaces,
-        decimalSeparator: decimalSeparator,
-      ),
+      formatter: MyoroNumberInputFormatter(min: min, max: max, decimalPlaces: decimalPlaces, decimalSeparator: decimalSeparator),
       label: label,
       text: text,
       placeholder: placeholder,
@@ -126,7 +121,7 @@ class MyoroNumberInput extends StatelessWidget {
       readOnly: readOnly,
       prefix: prefix,
       onTap: onTap,
-      inputController: inputController,
+      controller: controller,
       onFieldSubmitted: onFieldSubmitted,
       suffix: suffix,
       checkboxOnChanged: checkboxOnChanged,

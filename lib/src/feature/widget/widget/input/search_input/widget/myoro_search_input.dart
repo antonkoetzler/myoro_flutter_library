@@ -8,13 +8,14 @@ part '../_widget/_myoro_search_input_state.dart';
 
 /// Search input.
 class MyoroSearchInput<T> extends StatefulWidget {
+  /// Default value for [label].
+  static const labelDefaultValue = kMyoroEmptyString;
+
   /// Default constructor.
-  const MyoroSearchInput({
-    super.key,
-    required this.itemBuilder,
-    required this.selectedItemBuilder,
-    required this.request,
-  });
+  const MyoroSearchInput({super.key, this.label = labelDefaultValue, required this.itemBuilder, required this.selectedItemBuilder, required this.request});
+
+  /// Label.
+  final String label;
 
   /// Item builder.
   final MyoroMenuItemBuilder<T> itemBuilder;

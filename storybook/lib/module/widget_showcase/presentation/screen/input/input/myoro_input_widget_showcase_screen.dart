@@ -17,7 +17,7 @@ part '_widget/_on_cleared_option.dart';
 part '_widget/_on_field_submitted_option.dart';
 part '_widget/_placeholder_option.dart';
 part '_widget/_read_only_option.dart';
-part '_widget/_show_clear_text_button_option.dart';
+part '_widget/_can_show_clear_text_button_option.dart';
 part '_widget/_submit_button.dart';
 part '_widget/_suffix.dart';
 part '_widget/_suffix_option.dart';
@@ -82,7 +82,7 @@ final class MyoroInputWidgetShowcaseScreen extends StatelessWidget {
     _PlaceholderOption(),
     _EnabledOption(),
     _ReadOnlyOption(),
-    _ShowClearTextButtonOption(),
+    _CanShowClearTextButtonOption(),
     _CheckboxOnChangedOption(),
     _ValidationOption(),
     _OnFieldSubmittedOption(),
