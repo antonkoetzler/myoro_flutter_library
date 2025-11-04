@@ -23,7 +23,9 @@ sealed class MyoroSelectionDropdownState<T> {
           switch (this) {
             case final MyoroMultiSelectionDropdownState<T> state:
               final selectedItems = Set<T>.from(state.selectedItems);
-              state.selectedItems = selectedItems.contains(item) ? (selectedItems..remove(item)) : (selectedItems..add(item));
+              state.selectedItems = selectedItems.contains(item)
+                  ? (selectedItems..remove(item))
+                  : (selectedItems..add(item));
               break;
             case final MyoroSingleSelectionDropdownState<T> state:
               final selectedItem = state.selectedItem;

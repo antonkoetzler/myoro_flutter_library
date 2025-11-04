@@ -12,6 +12,17 @@ final class _MyoroButtonState extends State<MyoroButton> {
     _viewModel = MyoroButtonViewModel(widget.tooltipText, widget.onTapDown, widget.onTapUp, widget.isLoading);
   }
 
+  /// Did update function.
+  @override
+  void didUpdateWidget(MyoroButton oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    final state = _viewModel.state;
+    state.tooltipText = widget.tooltipText;
+    state.onTapDown = widget.onTapDown;
+    state.onTapUp = widget.onTapUp;
+    state.isLoading = widget.isLoading;
+  }
+
   /// Dispose function.
   @override
   void dispose() {
@@ -50,10 +61,7 @@ final class _MyoroButtonState extends State<MyoroButton> {
                   onTapDown: onTapDown,
                   onTapUp: onTapUp,
                   onTapCancel: onTapCancel,
-                  child: ValueListenableBuilder(
-                    valueListenable: tapStatusController,
-                    builder: (_, tapStatusEnum, _) => _Button(tapStatusEnum, widget.builder),
-                  ),
+                  child: ValueListenableBuilder(valueListenable: tapStatusController, builder: (_, tapStatusEnum, _) => _Button(tapStatusEnum, widget.builder)),
                 ),
         ),
       ),

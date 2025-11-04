@@ -14,8 +14,14 @@ final class _TextFormField extends StatelessWidget {
     final textStyle = style.inputTextStyle ?? themeExtension.inputTextStyle;
     final contentPadding = style.contentPadding ?? themeExtension.contentPadding;
     final primaryColor = style.primaryColor ?? themeExtension.primaryColor ?? MyoroColors.transparent;
-    final suffixIconConstraints = style.suffixIconConstraints ?? themeExtension.suffixIconConstraints ?? const BoxConstraints(minWidth: 0, minHeight: 0);
-    final prefixIconConstraints = style.prefixIconConstraints ?? themeExtension.prefixIconConstraints ?? const BoxConstraints(minWidth: 0, minHeight: 0);
+    final suffixIconConstraints =
+        style.suffixIconConstraints ??
+        themeExtension.suffixIconConstraints ??
+        const BoxConstraints(minWidth: 0, minHeight: 0);
+    final prefixIconConstraints =
+        style.prefixIconConstraints ??
+        themeExtension.prefixIconConstraints ??
+        const BoxConstraints(minWidth: 0, minHeight: 0);
 
     final viewModel = context.watch<MyoroInputViewModel>();
     final state = viewModel.state;
@@ -64,20 +70,32 @@ final class _TextFormField extends StatelessWidget {
                     autofocus: autofocus,
                     enableInteractiveSelection: enableInteractiveSelection,
                     obscureText: obscureText,
-                    style: textStyle?.withColor(textStyle.color!.withValues(alpha: _enabled ? 1 : (style.disabledOpacity ?? themeExtension.disabledOpacity))),
+                    style: textStyle?.withColor(
+                      textStyle.color!.withValues(
+                        alpha: _enabled ? 1 : (style.disabledOpacity ?? themeExtension.disabledOpacity),
+                      ),
+                    ),
                     onTap: onTap,
                     mouseCursor: onTap != null ? SystemMouseCursors.click : null,
                     decoration: InputDecoration(
                       floatingLabelBehavior: style.labelBehavior ?? themeExtension.labelBehavior,
                       label: label.isNotEmpty ? const _Label() : null,
                       hintText: placeholder.isNotEmpty ? placeholder : null,
-                      hintStyle: textStyle?.withColor(textStyle.color!.withValues(alpha: style.disabledOpacity ?? themeExtension.disabledOpacity)),
+                      hintStyle: textStyle?.withColor(
+                        textStyle.color!.withValues(alpha: style.disabledOpacity ?? themeExtension.disabledOpacity),
+                      ),
                       enabledBorder: border,
                       focusedBorder: border,
-                      errorBorder: border?.copyWith(borderSide: border.borderSide.copyWith(color: style.errorBorderColor ?? themeExtension.errorBorderColor)),
+                      errorBorder: border?.copyWith(
+                        borderSide: border.borderSide.copyWith(
+                          color: style.errorBorderColor ?? themeExtension.errorBorderColor,
+                        ),
+                      ),
                       disabledBorder: border?.copyWith(
                         borderSide: border.borderSide.copyWith(
-                          color: border.borderSide.color.withValues(alpha: style.disabledOpacity ?? themeExtension.disabledOpacity),
+                          color: border.borderSide.color.withValues(
+                            alpha: style.disabledOpacity ?? themeExtension.disabledOpacity,
+                          ),
                         ),
                       ),
                       isDense: true,

@@ -12,7 +12,13 @@ class MyoroSearchInput<T> extends StatefulWidget {
   static const labelDefaultValue = kMyoroEmptyString;
 
   /// Default constructor.
-  const MyoroSearchInput({super.key, this.label = labelDefaultValue, required this.itemBuilder, required this.selectedItemBuilder, required this.request});
+  const MyoroSearchInput({
+    super.key,
+    this.label = labelDefaultValue,
+    required this.itemBuilder,
+    required this.selectedItemBuilder,
+    required this.request,
+  });
 
   /// Label.
   final String label;

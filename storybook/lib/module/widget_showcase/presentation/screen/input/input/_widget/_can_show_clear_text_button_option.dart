@@ -8,6 +8,9 @@ final class _CanShowClearTextButtonOption extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
     final state = viewModel.state;
-    return MyoroCheckbox(label: 'Can show clear text button?', onChanged: (value) => state.canShowClearTextButton = value);
+    return MyoroCheckbox(
+      label: 'Can show clear text button?',
+      onChanged: (value) => state.canShowClearTextButton = value,
+    );
   }
 }

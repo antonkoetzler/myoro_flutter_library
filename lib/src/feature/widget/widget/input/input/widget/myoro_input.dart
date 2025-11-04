@@ -75,7 +75,10 @@ class MyoroInput extends StatefulWidget {
     this.controller,
     this.obscureText = obscureTextDefaultValue,
     this.showObscureTextButton = showObscureTextButtonDefaultValue,
-  }) : assert(!(text.length > 0 && controller != null), '[MyoroInput]: [text] and [controller] cannot be provided together.');
+  }) : assert(
+         !(text.length > 0 && controller != null),
+         '[MyoroInput]: [text] and [controller] cannot be provided together.',
+       );
 
   /// Style.
   final MyoroInputStyle style;

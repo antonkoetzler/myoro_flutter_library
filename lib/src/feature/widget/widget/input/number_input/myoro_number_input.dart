@@ -111,7 +111,12 @@ class MyoroNumberInput extends StatelessWidget {
     return MyoroInput(
       key: key,
       style: style,
-      formatter: MyoroNumberInputFormatter(min: min, max: max, decimalPlaces: decimalPlaces, decimalSeparator: decimalSeparator),
+      formatter: MyoroNumberInputFormatter(
+        min: min,
+        max: max,
+        decimalPlaces: decimalPlaces,
+        decimalSeparator: decimalSeparator,
+      ),
       label: label,
       text: text,
       placeholder: placeholder,
