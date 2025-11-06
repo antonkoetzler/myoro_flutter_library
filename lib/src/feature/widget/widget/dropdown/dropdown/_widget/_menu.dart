@@ -13,8 +13,14 @@ final class _Menu<T> extends StatelessWidget {
     final itemBuilder = state.itemBuilder;
     final selectedItems = state.selectedItems;
     final searchCallback = state.searchCallback;
+    final dropdownType = state.dropdownType;
+    final isModal = dropdownType.isModal;
+    final isBottomSheet = dropdownType.isBottomSheet;
     return MyoroMenu(
-      style: style,
+      style: style.copyWith(
+        border: isModal || isBottomSheet ? Border.all(width: 0) : null,
+        borderProvided: isModal || isBottomSheet,
+      ),
       items: items,
       selectedItems: selectedItems,
       searchCallback: searchCallback,

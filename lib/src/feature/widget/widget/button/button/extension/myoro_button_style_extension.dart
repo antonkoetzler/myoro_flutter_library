@@ -95,6 +95,13 @@ extension MyoroButtonStyleExtension<T extends MyoroButtonStyle> on T {
           contentHoverColorProvided: secondaryContentColor != null,
           contentTapColor: secondaryContentColor,
           contentTapColorProvided: secondaryContentColor != null,
+          borderIdleColor: secondaryBackgroundIdleColor,
+          borderIdleColorProvided: secondaryBackgroundIdleColor != null,
+          borderHoverColor: secondaryBackgroundHoverColor,
+          borderHoverColorProvided: secondaryBackgroundHoverColor != null,
+          borderTapColor: secondaryBackgroundTapColor,
+          borderTapColorProvided: secondaryBackgroundTapColor != null,
+          borderWidth: decorationThemeExtension.borderWidth,
         )
         as T;
   }

@@ -51,6 +51,10 @@ class MyoroDrawer extends StatelessWidget {
     final controller = context.read<MyoroDrawerController>();
     final isEndDrawerController = controller.isEndDrawerController;
 
+    final themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
+    final padding = style.padding ?? themeExtension.padding ?? EdgeInsets.zero;
+    final spacing = style.spacing ?? themeExtension.spacing ?? 0;
+
     return InheritedProvider.value(
       value: style,
       child: Stack(
@@ -59,13 +63,16 @@ class MyoroDrawer extends StatelessWidget {
           ValueListenableBuilder(
             valueListenable: isEndDrawerController,
             builder: (_, isEndDrawer, _) {
-              return Row(
-                mainAxisAlignment: !isEndDrawer ? MainAxisAlignment.start : MainAxisAlignment.end,
-                children: [
-                  if (showCloseButton && isEndDrawer) const _CloseButton(),
-                  _Drawer(title, child),
-                  if (showCloseButton && !isEndDrawer) const _CloseButton(),
-                ],
+              return Padding(
+                padding: padding,
+                child: Row(
+                  spacing: spacing,
+                  children: [
+                    if (showCloseButton && isEndDrawer) const _CloseButton(),
+                    Expanded(child: _Drawer(title, child)),
+                    if (showCloseButton && !isEndDrawer) const _CloseButton(),
+                  ],
+                ),
               );
             },
           ),

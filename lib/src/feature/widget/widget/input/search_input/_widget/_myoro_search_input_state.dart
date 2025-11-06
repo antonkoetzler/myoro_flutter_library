@@ -46,7 +46,7 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
               MyoroRequestEnum.success => request.data!,
               MyoroRequestEnum.error => null,
             },
-            child: const _Input(),
+            child: _Input<T>(),
           );
         },
       ),

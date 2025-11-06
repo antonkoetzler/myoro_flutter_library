@@ -9,7 +9,19 @@ final class _MyoroCurrencyInputState extends State<MyoroCurrencyInput> {
   @override
   void initState() {
     super.initState();
-    _viewModel = MyoroCurrencyInputViewModel(widget.currency);
+    _viewModel = MyoroCurrencyInputViewModel(widget.min, widget.max, widget.decimalPlaces, widget.currency, widget.onChanged);
+  }
+
+  /// Did update function.
+  @override
+  void didUpdateWidget(MyoroCurrencyInput oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    final state = _viewModel.state;
+    state
+      ..min = widget.min
+      ..max = widget.max
+      ..decimalPlaces = widget.decimalPlaces
+      ..onChanged = widget.onChanged;
   }
 
   /// Dispose function.
@@ -31,12 +43,7 @@ final class _MyoroCurrencyInputState extends State<MyoroCurrencyInput> {
         InheritedProvider.value(value: widget.style),
         InheritedProvider.value(value: _viewModel),
       ],
-      child: MyoroDropdown(
-        showingController: showingController,
-        items: MyoroCurrencyEnum.values.toSet(),
-        itemBuilder: itemBuilder,
-        child: const _Input(),
-      ),
+      child: MyoroDropdown(showingController: showingController, items: MyoroCurrencyEnum.values.toSet(), itemBuilder: itemBuilder, child: const _Input()),
     );
   }
 }

@@ -11,8 +11,8 @@ class MyoroDrawerStyle with _$MyoroDrawerStyleMixin {
   /// Lerp function.
   static MyoroDrawerStyle lerp(MyoroDrawerStyle? a, MyoroDrawerStyle? b, double t) {
     return MyoroDrawerStyle(
-      drawerPadding: EdgeInsets.lerp(a?.drawerPadding, b?.drawerPadding, t),
-      drawerContentPadding: EdgeInsets.lerp(a?.drawerContentPadding, b?.drawerContentPadding, t),
+      padding: EdgeInsets.lerp(a?.padding, b?.padding, t),
+      spacing: myoroFallbackLerp(a?.spacing, b?.spacing, t),
       drawerShape: myoroFallbackLerp(a?.drawerShape, b?.drawerShape, t),
       titleContentDividerPadding: EdgeInsets.lerp(a?.titleContentDividerPadding, b?.titleContentDividerPadding, t),
       titleTextStyle: TextStyle.lerp(a?.titleTextStyle, b?.titleTextStyle, t),
@@ -23,8 +23,8 @@ class MyoroDrawerStyle with _$MyoroDrawerStyleMixin {
 
   /// Default constructor.
   const MyoroDrawerStyle({
-    this.drawerPadding,
-    this.drawerContentPadding,
+    this.padding,
+    this.spacing,
     this.drawerShape,
     this.titleContentDividerPadding,
     this.titleTextStyle,
@@ -35,8 +35,7 @@ class MyoroDrawerStyle with _$MyoroDrawerStyleMixin {
   /// Fake constructor.
   factory MyoroDrawerStyle.fake() {
     return MyoroDrawerStyle(
-      drawerPadding: myoroNullableFake<EdgeInsets>(),
-      drawerContentPadding: myoroNullableFake<EdgeInsets>(),
+      padding: myoroNullableFake<EdgeInsets>(),
       drawerShape: myoroNullableFake<ShapeBorder>(),
       titleContentDividerPadding: myoroNullableFake<EdgeInsets>(),
       titleTextStyle: myoroNullableFake<TextStyle>(),
@@ -46,10 +45,10 @@ class MyoroDrawerStyle with _$MyoroDrawerStyleMixin {
   }
 
   /// Padding of [_Drawer].
-  final EdgeInsets? drawerPadding;
+  final EdgeInsets? padding;
 
-  /// Padding of the content in [_Drawer].
-  final EdgeInsets? drawerContentPadding;
+  /// Spacing between the close button and the content.
+  final double? spacing;
 
   /// [Drawer.shape] of the drawer.
   final ShapeBorder? drawerShape;

@@ -16,14 +16,13 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension>
     this.constraints,
     this.primaryColor,
     this.borderRadius,
-    this.bottomSheetBorderRadius,
     this.border,
-    this.bottomSheetBorder,
-    this.padding,
+    this.contentPadding,
     this.closeButtonPadding,
     this.spacing,
     this.titleTextStyle,
     this.closeButtonIconConfiguration,
+    this.margin,
   });
 
   /// Fake constructor.
@@ -31,34 +30,26 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension>
     : constraints = myoroNullableFake<BoxConstraints>(),
       primaryColor = myoroNullableFake<Color>(),
       borderRadius = myoroNullableFake<BorderRadius>(),
-      bottomSheetBorderRadius = myoroNullableFake<BorderRadius>(),
       border = myoroNullableFake<Border>(),
-      bottomSheetBorder = myoroNullableFake<Border>(),
-      padding = myoroNullableFake<EdgeInsets>(),
+      contentPadding = myoroNullableFake<EdgeInsets>(),
       closeButtonPadding = myoroNullableFake<EdgeInsets>(),
       spacing = myoroNullableFake<double>(),
       titleTextStyle = myoroNullableFake<TextStyle>(),
-      closeButtonIconConfiguration = faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null;
+      closeButtonIconConfiguration = faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null,
+      margin = myoroNullableFake<EdgeInsets>();
 
+  /// Builder constructor.
   MyoroModalThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : constraints = null,
       primaryColor = colorScheme.primary,
       borderRadius = BorderRadius.circular(kMyoroBorderRadius),
-      bottomSheetBorderRadius = const BorderRadius.only(
-        topLeft: Radius.circular(kMyoroBorderRadius),
-        topRight: Radius.circular(kMyoroBorderRadius),
-      ),
       border = Border.all(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
-      bottomSheetBorder = Border(
-        top: BorderSide(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
-        left: BorderSide(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
-        right: BorderSide(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
-      ),
-      padding = const EdgeInsets.all(kMyoroMultiplier),
+      contentPadding = const EdgeInsets.all(kMyoroMultiplier * 2),
       closeButtonPadding = null,
       spacing = 10,
       titleTextStyle = textTheme.titleSmall!,
-      closeButtonIconConfiguration = const MyoroIconConfiguration(icon: Icons.close, size: kMyoroMultiplier * 5);
+      closeButtonIconConfiguration = const MyoroIconConfiguration(icon: Icons.close, size: kMyoroMultiplier * 5),
+      margin = const EdgeInsets.all(kMyoroMultiplier * 3);
 
   /// Constraints of the modal.
   @override
@@ -72,21 +63,13 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension>
   @override
   final BorderRadius? borderRadius;
 
-  /// [BorderRadius] of the bottom sheet modal.
-  @override
-  final BorderRadius? bottomSheetBorderRadius;
-
   /// [Border] of the modal.
   @override
   final Border? border;
 
-  /// [Border] of the bottom sheet modal.
-  @override
-  final Border? bottomSheetBorder;
-
   /// Padding of everything in the modal.
   @override
-  final EdgeInsets? padding;
+  final EdgeInsets? contentPadding;
 
   /// Padding of the close button.
   @override
@@ -104,6 +87,10 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension>
   @override
   final MyoroIconConfiguration? closeButtonIconConfiguration;
 
+  /// Margin of the modal.
+  @override
+  final EdgeInsets? margin;
+
   @override
   MyoroModalThemeExtension lerp(covariant MyoroModalThemeExtension? other, double t) {
     if (other is! MyoroModalThemeExtension) return this;
@@ -112,14 +99,13 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension>
       constraints: style.constraints,
       primaryColor: style.primaryColor,
       borderRadius: style.borderRadius,
-      bottomSheetBorderRadius: style.bottomSheetBorderRadius,
       border: style.border,
-      bottomSheetBorder: style.bottomSheetBorder,
-      padding: style.padding,
+      contentPadding: style.contentPadding,
       closeButtonPadding: style.closeButtonPadding,
       spacing: style.spacing,
       titleTextStyle: style.titleTextStyle,
       closeButtonIconConfiguration: style.closeButtonIconConfiguration,
+      margin: style.margin,
     );
   }
 

@@ -37,7 +37,7 @@ class MyoroModal extends StatelessWidget {
   static const titleDefaultValue = kMyoroEmptyString;
 
   /// Default value of [_showCloseButton].
-  static const showCloseButtonDefaultValue = true;
+  static const showCloseButtonDefaultValue = false;
 
   /// Function that opens a normal modal.
   static Future<T?> show<T>(
@@ -52,6 +52,7 @@ class MyoroModal extends StatelessWidget {
   }) async {
     return isBottomSheet
         ? await showModalBottomSheet(
+            backgroundColor: MyoroColors.transparent,
             context: context,
             builder: (_) => MyoroModal._(style, true, title, showCloseButton, child),
           )
@@ -85,36 +86,41 @@ class MyoroModal extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
     final primaryColor = _style.primaryColor ?? themeExtension.primaryColor;
-    final borderRadius = !_isBottomSheet
-        ? (_style.borderRadius ?? themeExtension.borderRadius)
-        : (_style.bottomSheetBorderRadius ?? themeExtension.bottomSheetBorderRadius);
+    final borderRadius = _style.borderRadius ?? themeExtension.borderRadius;
     final constraints =
         _style.constraints ?? themeExtension.constraints ?? themeExtension.getDefaultConstraints(context);
-    final padding = _style.padding ?? themeExtension.padding;
-    final border = !_isBottomSheet
-        ? (_style.border ?? themeExtension.border)
-        : (_style.bottomSheetBorder ?? themeExtension.bottomSheetBorder);
+    final contentPadding = _style.contentPadding ?? themeExtension.contentPadding;
+    final border = _style.border ?? themeExtension.border;
     final spacing = _style.spacing ?? themeExtension.spacing ?? 0;
+    final margin = _style.margin ?? themeExtension.margin ?? EdgeInsets.zero;
 
-    final content = Material(
-      color: primaryColor,
-      borderRadius: borderRadius,
-      child: Container(
-        constraints: constraints,
-        padding: padding,
-        decoration: BoxDecoration(borderRadius: borderRadius, border: border),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          spacing: spacing,
-          children: [
-            if (_title.isNotEmpty || _showCloseButton) _Header(_title, _showCloseButton),
-            Flexible(child: _child),
-          ],
+    final content = Padding(
+      padding: margin,
+      child: SizedBox(
+        width: double.infinity,
+        child: Material(
+          color: primaryColor,
+          borderRadius: borderRadius,
+          child: Container(
+            constraints: constraints,
+            padding: contentPadding,
+            decoration: BoxDecoration(borderRadius: borderRadius, border: border),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              spacing: spacing,
+              children: [
+                if (_title.isNotEmpty || _showCloseButton) _Header(_title, _showCloseButton),
+                Flexible(child: _child),
+              ],
+            ),
+          ),
         ),
       ),
     );
 
-    final wrappedContent = !_isBottomSheet ? Center(child: content) : content;
+    final wrappedContent = !_isBottomSheet
+        ? Center(child: content)
+        : SafeArea(top: false, bottom: true, child: content);
 
     return Provider.value(value: _style, child: wrappedContent);
   }

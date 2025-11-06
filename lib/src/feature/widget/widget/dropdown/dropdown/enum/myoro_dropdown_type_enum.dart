@@ -14,6 +14,7 @@ enum MyoroDropdownTypeEnum {
   /// Displays a bottom sheet.
   bottomSheet;
 
+  /// Fake constructor.
   factory MyoroDropdownTypeEnum.fake() {
     return values[faker.randomGenerator.integer(values.length)];
   }

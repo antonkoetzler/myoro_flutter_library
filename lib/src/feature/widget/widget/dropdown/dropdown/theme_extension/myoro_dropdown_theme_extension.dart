@@ -23,6 +23,7 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
     this.dialogTextLoaderPadding,
     this.selectedItemColor,
     this.expandingAndOverlaySpacing,
+    this.itemsSectionSpacing,
   });
 
   /// Fake constructor.
@@ -37,7 +38,8 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
       dialogTextStyle = myoroNullableFake<TextStyle>(),
       dialogTextLoaderPadding = myoroNullableFake<EdgeInsets>(),
       selectedItemColor = myoroNullableFake<Color>(),
-      expandingAndOverlaySpacing = myoroNullableFake<double>();
+      expandingAndOverlaySpacing = myoroNullableFake<double>(),
+      itemsSectionSpacing = myoroNullableFake<double>();
 
   /// Builder constructor.
   MyoroDropdownThemeExtension.builder()
@@ -51,7 +53,8 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
       dialogTextStyle = null,
       dialogTextLoaderPadding = null,
       selectedItemColor = null,
-      expandingAndOverlaySpacing = kMyoroMultiplier * 1.5;
+      expandingAndOverlaySpacing = kMyoroMultiplier * 1.5,
+      itemsSectionSpacing = kMyoroMultiplier;
 
   /// Constraints of the menu.
   @override
@@ -97,6 +100,10 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
   @override
   final double? expandingAndOverlaySpacing;
 
+  /// Items section spacing.
+  @override
+  final double? itemsSectionSpacing;
+
   /// Lerp function.
   @override
   MyoroDropdownThemeExtension lerp(covariant MyoroDropdownThemeExtension? other, double t) {
@@ -113,6 +120,7 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
     final dialogTextLoaderPadding = style.dialogTextLoaderPadding;
     final selectedItemColor = style.selectedItemColor;
     final expandingAndOverlaySpacing = style.expandingAndOverlaySpacing;
+    final itemsSectionSpacing = style.itemsSectionSpacing;
 
     return MyoroDropdownThemeExtension(
       constraints: constraints,
@@ -126,6 +134,7 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
       dialogTextLoaderPadding: dialogTextLoaderPadding,
       selectedItemColor: selectedItemColor,
       expandingAndOverlaySpacing: expandingAndOverlaySpacing,
+      itemsSectionSpacing: itemsSectionSpacing,
     );
   }
 }

@@ -40,6 +40,8 @@ mixin _$MyoroDropdownThemeExtensionMixin on ThemeExtension<MyoroDropdownThemeExt
     bool selectedItemColorProvided = true,
     double? expandingAndOverlaySpacing,
     bool expandingAndOverlaySpacingProvided = true,
+    double? itemsSectionSpacing,
+    bool itemsSectionSpacingProvided = true,
   }) {
     return MyoroDropdownThemeExtension(
       constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
@@ -57,6 +59,7 @@ mixin _$MyoroDropdownThemeExtensionMixin on ThemeExtension<MyoroDropdownThemeExt
       expandingAndOverlaySpacing: expandingAndOverlaySpacingProvided
           ? (expandingAndOverlaySpacing ?? self.expandingAndOverlaySpacing)
           : null,
+      itemsSectionSpacing: itemsSectionSpacingProvided ? (itemsSectionSpacing ?? self.itemsSectionSpacing) : null,
     );
   }
 
@@ -74,7 +77,8 @@ mixin _$MyoroDropdownThemeExtensionMixin on ThemeExtension<MyoroDropdownThemeExt
         other.dialogTextStyle == self.dialogTextStyle &&
         other.dialogTextLoaderPadding == self.dialogTextLoaderPadding &&
         other.selectedItemColor == self.selectedItemColor &&
-        other.expandingAndOverlaySpacing == self.expandingAndOverlaySpacing;
+        other.expandingAndOverlaySpacing == self.expandingAndOverlaySpacing &&
+        other.itemsSectionSpacing == self.itemsSectionSpacing;
   }
 
   @override
@@ -91,6 +95,7 @@ mixin _$MyoroDropdownThemeExtensionMixin on ThemeExtension<MyoroDropdownThemeExt
       self.dialogTextLoaderPadding,
       self.selectedItemColor,
       self.expandingAndOverlaySpacing,
+      self.itemsSectionSpacing,
     );
   }
 
@@ -108,5 +113,6 @@ mixin _$MyoroDropdownThemeExtensionMixin on ThemeExtension<MyoroDropdownThemeExt
       '  dialogTextLoaderPadding: ${self.dialogTextLoaderPadding},\n'
       '  selectedItemColor: ${self.selectedItemColor},\n'
       '  expandingAndOverlaySpacing: ${self.expandingAndOverlaySpacing},\n'
+      '  itemsSectionSpacing: ${self.itemsSectionSpacing},\n'
       ');';
 }

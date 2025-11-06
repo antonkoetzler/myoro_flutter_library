@@ -17,10 +17,8 @@ class MyoroModalStyle with _$MyoroModalStyleMixin {
       constraints: BoxConstraints.lerp(a?.constraints, b?.constraints, t),
       primaryColor: Color.lerp(a?.primaryColor, b?.primaryColor, t),
       borderRadius: BorderRadius.lerp(a?.borderRadius, b?.borderRadius, t),
-      bottomSheetBorderRadius: BorderRadius.lerp(a?.bottomSheetBorderRadius, b?.bottomSheetBorderRadius, t),
       border: Border.lerp(a?.border, b?.border, t),
-      bottomSheetBorder: Border.lerp(a?.bottomSheetBorder, b?.bottomSheetBorder, t),
-      padding: EdgeInsets.lerp(a?.padding, b?.padding, t),
+      contentPadding: EdgeInsets.lerp(a?.contentPadding, b?.contentPadding, t),
       closeButtonPadding: EdgeInsets.lerp(a?.closeButtonPadding, b?.closeButtonPadding, t),
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
       titleTextStyle: TextStyle.lerp(a?.titleTextStyle, b?.titleTextStyle, t),
@@ -29,6 +27,7 @@ class MyoroModalStyle with _$MyoroModalStyleMixin {
         b?.closeButtonIconConfiguration,
         t,
       ),
+      margin: EdgeInsets.lerp(a?.margin, b?.margin, t),
     );
   }
 
@@ -37,14 +36,13 @@ class MyoroModalStyle with _$MyoroModalStyleMixin {
     this.constraints,
     this.primaryColor,
     this.borderRadius,
-    this.bottomSheetBorderRadius,
     this.border,
-    this.bottomSheetBorder,
-    this.padding,
+    this.contentPadding,
     this.closeButtonPadding,
     this.spacing,
     this.titleTextStyle,
     this.closeButtonIconConfiguration,
+    this.margin,
   });
 
   /// Fake constructor.
@@ -53,14 +51,13 @@ class MyoroModalStyle with _$MyoroModalStyleMixin {
       constraints: myoroNullableFake<BoxConstraints>(),
       primaryColor: myoroNullableFake<Color>(),
       borderRadius: myoroNullableFake<BorderRadius>(),
-      bottomSheetBorderRadius: myoroNullableFake<BorderRadius>(),
       border: myoroNullableFake<Border>(),
-      bottomSheetBorder: myoroNullableFake<Border>(),
-      padding: myoroNullableFake<EdgeInsets>(),
+      contentPadding: myoroNullableFake<EdgeInsets>(),
       closeButtonPadding: myoroNullableFake<EdgeInsets>(),
       spacing: myoroNullableFake<double>(),
       titleTextStyle: myoroNullableFake<TextStyle>(),
       closeButtonIconConfiguration: faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null,
+      margin: myoroNullableFake<EdgeInsets>(),
     );
   }
 
@@ -73,17 +70,11 @@ class MyoroModalStyle with _$MyoroModalStyleMixin {
   /// [BorderRadius] of the modal.
   final BorderRadius? borderRadius;
 
-  /// [BorderRadius] of the bottom sheet modal.
-  final BorderRadius? bottomSheetBorderRadius;
-
   /// [Border] of the modal.
   final Border? border;
 
-  /// [Border] of the bottom sheet modal.
-  final Border? bottomSheetBorder;
-
   /// Padding of everything in the modal.
-  final EdgeInsets? padding;
+  final EdgeInsets? contentPadding;
 
   /// Padding of the close button.
   final EdgeInsets? closeButtonPadding;
@@ -96,4 +87,7 @@ class MyoroModalStyle with _$MyoroModalStyleMixin {
 
   /// [MyoroIconConfiguration] of [_CloseButton].
   final MyoroIconConfiguration? closeButtonIconConfiguration;
+
+  /// Margin of the modal.
+  final EdgeInsets? margin;
 }

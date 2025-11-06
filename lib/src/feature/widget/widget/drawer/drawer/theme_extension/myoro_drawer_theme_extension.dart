@@ -12,29 +12,28 @@ class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension
     implements MyoroDrawerStyle {
   /// Default constructor.
   const MyoroDrawerThemeExtension({
-    this.drawerContentPadding,
-    this.drawerPadding,
+    this.padding,
     this.drawerShape,
     this.titleContentDividerPadding,
     this.titleTextStyle,
     this.closeButtonContentPadding,
     this.closeButtonIcon,
+    this.spacing,
   });
 
   /// Fake constructor.
   MyoroDrawerThemeExtension.fake()
-    : drawerPadding = myoroNullableFake<EdgeInsets>(),
-      drawerContentPadding = myoroNullableFake<EdgeInsets>(),
+    : padding = myoroNullableFake<EdgeInsets>(),
       drawerShape = myoroNullableFake<RoundedRectangleBorder>(),
       titleContentDividerPadding = myoroNullableFake<EdgeInsets>(),
       titleTextStyle = myoroNullableFake<TextStyle>(),
       closeButtonContentPadding = myoroNullableFake<EdgeInsets>(),
-      closeButtonIcon = myoroNullableFake<IconData>();
+      closeButtonIcon = myoroNullableFake<IconData>(),
+      spacing = myoroNullableFake<double>();
 
   /// Builder constructor.
   MyoroDrawerThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
-    : drawerPadding = const EdgeInsets.all(kMyoroMultiplier * 5),
-      drawerContentPadding = const EdgeInsets.all(kMyoroMultiplier * 2.5),
+    : padding = const EdgeInsets.all(kMyoroMultiplier * 3),
       drawerShape = RoundedRectangleBorder(
         side: BorderSide(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
         borderRadius: BorderRadius.circular(kMyoroBorderRadius),
@@ -42,15 +41,12 @@ class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension
       titleContentDividerPadding = const EdgeInsets.only(top: 4, bottom: 10),
       titleTextStyle = textTheme.titleLarge!,
       closeButtonContentPadding = const EdgeInsets.all(kMyoroMultiplier),
-      closeButtonIcon = Icons.close;
+      closeButtonIcon = Icons.close,
+      spacing = kMyoroMultiplier * 3;
 
-  /// Padding of [_Drawer].
+  /// Padding of the content.
   @override
-  final EdgeInsets? drawerPadding;
-
-  /// Padding of the content in [_Drawer].
-  @override
-  final EdgeInsets? drawerContentPadding;
+  final EdgeInsets? padding;
 
   /// [Drawer.shape] of the drawer.
   @override
@@ -72,18 +68,22 @@ class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension
   @override
   final IconData? closeButtonIcon;
 
+  /// Spacing between the close button and the content.
+  @override
+  final double? spacing;
+
   @override
   MyoroDrawerThemeExtension lerp(covariant MyoroDrawerThemeExtension? other, double t) {
     if (other is! MyoroDrawerThemeExtension) return this;
     final style = MyoroDrawerStyle.lerp(this, other, t);
     return MyoroDrawerThemeExtension(
-      drawerPadding: style.drawerPadding,
-      drawerContentPadding: style.drawerContentPadding,
+      padding: style.padding,
       drawerShape: style.drawerShape,
       titleContentDividerPadding: style.titleContentDividerPadding,
       titleTextStyle: style.titleTextStyle,
       closeButtonContentPadding: style.closeButtonContentPadding,
       closeButtonIcon: style.closeButtonIcon,
+      spacing: style.spacing,
     );
   }
 }

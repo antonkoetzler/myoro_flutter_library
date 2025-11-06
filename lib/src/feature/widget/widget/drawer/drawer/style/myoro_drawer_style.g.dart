@@ -17,10 +17,10 @@ mixin _$MyoroDrawerStyleMixin {
   MyoroDrawerStyle get self => this as MyoroDrawerStyle;
 
   MyoroDrawerStyle copyWith({
-    EdgeInsets? drawerPadding,
-    bool drawerPaddingProvided = true,
-    EdgeInsets? drawerContentPadding,
-    bool drawerContentPaddingProvided = true,
+    EdgeInsets? padding,
+    bool paddingProvided = true,
+    double? spacing,
+    bool spacingProvided = true,
     ShapeBorder? drawerShape,
     bool drawerShapeProvided = true,
     EdgeInsets? titleContentDividerPadding,
@@ -33,8 +33,8 @@ mixin _$MyoroDrawerStyleMixin {
     bool closeButtonIconProvided = true,
   }) {
     return MyoroDrawerStyle(
-      drawerPadding: drawerPaddingProvided ? (drawerPadding ?? self.drawerPadding) : null,
-      drawerContentPadding: drawerContentPaddingProvided ? (drawerContentPadding ?? self.drawerContentPadding) : null,
+      padding: paddingProvided ? (padding ?? self.padding) : null,
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
       drawerShape: drawerShapeProvided ? (drawerShape ?? self.drawerShape) : null,
       titleContentDividerPadding: titleContentDividerPaddingProvided
           ? (titleContentDividerPadding ?? self.titleContentDividerPadding)
@@ -51,8 +51,8 @@ mixin _$MyoroDrawerStyleMixin {
   bool operator ==(Object other) {
     return other is MyoroDrawerStyle &&
         other.runtimeType == runtimeType &&
-        other.drawerPadding == self.drawerPadding &&
-        other.drawerContentPadding == self.drawerContentPadding &&
+        other.padding == self.padding &&
+        other.spacing == self.spacing &&
         other.drawerShape == self.drawerShape &&
         other.titleContentDividerPadding == self.titleContentDividerPadding &&
         other.titleTextStyle == self.titleTextStyle &&
@@ -63,8 +63,8 @@ mixin _$MyoroDrawerStyleMixin {
   @override
   int get hashCode {
     return Object.hash(
-      self.drawerPadding,
-      self.drawerContentPadding,
+      self.padding,
+      self.spacing,
       self.drawerShape,
       self.titleContentDividerPadding,
       self.titleTextStyle,
@@ -76,8 +76,8 @@ mixin _$MyoroDrawerStyleMixin {
   @override
   String toString() =>
       'MyoroDrawerStyle(\n'
-      '  drawerPadding: ${self.drawerPadding},\n'
-      '  drawerContentPadding: ${self.drawerContentPadding},\n'
+      '  padding: ${self.padding},\n'
+      '  spacing: ${self.spacing},\n'
       '  drawerShape: ${self.drawerShape},\n'
       '  titleContentDividerPadding: ${self.titleContentDividerPadding},\n'
       '  titleTextStyle: ${self.titleTextStyle},\n'

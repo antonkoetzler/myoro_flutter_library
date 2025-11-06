@@ -61,7 +61,10 @@ final class _MyoroButtonState extends State<MyoroButton> {
                   onTapDown: onTapDown,
                   onTapUp: onTapUp,
                   onTapCancel: onTapCancel,
-                  child: ValueListenableBuilder(valueListenable: tapStatusController, builder: (_, tapStatusEnum, _) => _Button(tapStatusEnum, widget.builder)),
+                  child: ValueListenableBuilder(
+                    valueListenable: tapStatusController,
+                    builder: (_, tapStatusEnum, _) => _Button(tapStatusEnum, widget.builder),
+                  ),
                 ),
         ),
       ),

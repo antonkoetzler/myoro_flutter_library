@@ -3,7 +3,20 @@ part of 'myoro_currency_input_view_model.dart';
 /// State of [MyoroCurrencyInputViewModel].
 class MyoroCurrencyInputState {
   /// Default constructor.
-  MyoroCurrencyInputState(MyoroCurrencyEnum currency) : _selectedCurrencyController = ValueNotifier(currency);
+  MyoroCurrencyInputState(this.min, this.max, this.decimalPlaces, MyoroCurrencyEnum currency, this.onChanged)
+    : _selectedCurrencyController = ValueNotifier(currency);
+
+  /// Min value.
+  double min;
+
+  /// Max value.
+  double? max;
+
+  /// Decimal places.
+  int decimalPlaces;
+
+  /// On changed.
+  MyoroCurrencyInputOnChanged onChanged;
 
   /// [ValueNotifier] of the selected [MyoroCurrencyEnum].
   final ValueNotifier<MyoroCurrencyEnum> _selectedCurrencyController;
@@ -11,14 +24,10 @@ class MyoroCurrencyInputState {
   /// [MyoroDropdown.showingController]
   final _showingController = ValueNotifier(false);
 
-  /// [TextEditingController] of the input.
-  final _inputController = TextEditingController();
-
   /// Dispose function.
   void dispose() {
     _selectedCurrencyController.dispose();
     _showingController.dispose();
-    _inputController.dispose();
   }
 
   /// [_selectedCurrencyController] getter.
@@ -39,11 +48,6 @@ class MyoroCurrencyInputState {
   /// Getter of [_showingController]'s value.
   bool get showing {
     return _showingController.value;
-  }
-
-  /// [_inputController] getter.
-  TextEditingController get inputController {
-    return _inputController;
   }
 
   /// [_selectedCurrencyController] setter.

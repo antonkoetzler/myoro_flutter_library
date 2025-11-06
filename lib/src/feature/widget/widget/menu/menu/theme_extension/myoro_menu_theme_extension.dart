@@ -23,6 +23,7 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
     this.dialogTextStyle,
     this.dialogTextLoaderPadding,
     this.selectedItemColor,
+    this.itemsSectionSpacing,
   });
 
   /// Fake constructor.
@@ -36,7 +37,8 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
       itemBorderRadius = myoroNullableFake<BorderRadius>(),
       dialogTextStyle = myoroNullableFake<TextStyle>(),
       dialogTextLoaderPadding = myoroNullableFake<EdgeInsets>(),
-      selectedItemColor = myoroNullableFake<Color>();
+      selectedItemColor = myoroNullableFake<Color>(),
+      itemsSectionSpacing = myoroNullableFake<double>();
 
   MyoroMenuThemeExtension.builder(
     bool isDarkMode,
@@ -54,7 +56,8 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
       dialogTextLoaderPadding = const EdgeInsets.all(kMyoroMultiplier * 3.75),
       selectedItemColor = isDarkMode
           ? decorationThemeExtension.primaryBackgroundTapColor?.darken(0.15)
-          : decorationThemeExtension.primaryBackgroundTapColor?.brighten(0.15);
+          : decorationThemeExtension.primaryBackgroundTapColor?.brighten(0.15),
+      itemsSectionSpacing = kMyoroMultiplier;
 
   /// Constraints of the menu.
   @override
@@ -96,6 +99,10 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
   @override
   final Color? selectedItemColor;
 
+  /// Items section spacing.
+  @override
+  final double? itemsSectionSpacing;
+
   @override
   MyoroMenuThemeExtension lerp(covariant MyoroMenuThemeExtension? other, double t) {
     if (other is! MyoroMenuThemeExtension) return this;
@@ -111,6 +118,7 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
       dialogTextStyle: style.dialogTextStyle,
       dialogTextLoaderPadding: style.dialogTextLoaderPadding,
       selectedItemColor: style.selectedItemColor,
+      itemsSectionSpacing: style.itemsSectionSpacing,
     );
   }
 

@@ -3,7 +3,8 @@ part of 'myoro_button_view_model.dart';
 /// State of [MyoroButtonController].
 class MyoroButtonState {
   /// Creates a new instance of [MyoroButtonState].
-  MyoroButtonState(this.tooltipText, this.onTapDown, this.onTapUp, bool isLoading) : _isLoadingController = ValueNotifier(isLoading);
+  MyoroButtonState(this.tooltipText, this.onTapDown, this.onTapUp, bool isLoading)
+    : _isLoadingController = ValueNotifier(isLoading);
 
   /// [MyoroTooltip.text]
   String tooltipText;

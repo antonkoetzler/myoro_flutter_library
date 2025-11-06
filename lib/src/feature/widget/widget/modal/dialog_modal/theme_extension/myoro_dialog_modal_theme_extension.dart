@@ -16,16 +16,15 @@ class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThem
     this.constraints,
     this.primaryColor,
     this.borderRadius,
-    this.bottomSheetBorderRadius,
     this.border,
-    this.bottomSheetBorder,
-    this.padding,
+    this.contentPadding,
     this.closeButtonPadding,
     this.spacing,
     this.titleTextStyle,
     this.closeButtonIconConfiguration,
     this.textStyle,
     this.footerButtonsSpacing,
+    this.margin,
   });
 
   /// Fake constructor.
@@ -33,32 +32,30 @@ class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThem
     : constraints = myoroNullableFake<BoxConstraints>(),
       primaryColor = myoroNullableFake<Color>(),
       borderRadius = myoroNullableFake<BorderRadius>(),
-      bottomSheetBorderRadius = myoroNullableFake<BorderRadius>(),
       border = myoroNullableFake<Border>(),
-      bottomSheetBorder = myoroNullableFake<Border>(),
-      padding = myoroNullableFake<EdgeInsets>(),
+      contentPadding = myoroNullableFake<EdgeInsets>(),
       closeButtonPadding = myoroNullableFake<EdgeInsets>(),
       spacing = myoroNullableFake<double>(),
       titleTextStyle = myoroNullableFake<TextStyle>(),
       closeButtonIconConfiguration = faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null,
       textStyle = myoroNullableFake<TextStyle>(),
-      footerButtonsSpacing = myoroNullableFake<double>();
+      footerButtonsSpacing = myoroNullableFake<double>(),
+      margin = myoroNullableFake<EdgeInsets>();
 
   /// Builder constructor.
   MyoroDialogModalThemeExtension.builder(TextTheme textTheme)
     : constraints = null,
       primaryColor = null,
       borderRadius = null,
-      bottomSheetBorderRadius = null,
       border = null,
-      bottomSheetBorder = null,
-      padding = null,
+      contentPadding = null,
       closeButtonPadding = null,
       spacing = null,
       titleTextStyle = null,
       closeButtonIconConfiguration = null,
       textStyle = textTheme.bodyMedium!,
-      footerButtonsSpacing = 10;
+      footerButtonsSpacing = 10,
+      margin = const EdgeInsets.all(kMyoroMultiplier * 3);
 
   /// Constraints of the modal.
   @override
@@ -72,21 +69,13 @@ class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThem
   @override
   final BorderRadius? borderRadius;
 
-  /// [BorderRadius] of the bottom sheet modal.
-  @override
-  final BorderRadius? bottomSheetBorderRadius;
-
   /// [Border] of the modal.
   @override
   final Border? border;
 
-  /// [Border] of the bottom sheet modal.
-  @override
-  final Border? bottomSheetBorder;
-
   /// Padding of everything in the modal.
   @override
-  final EdgeInsets? padding;
+  final EdgeInsets? contentPadding;
 
   /// Padding of the close button.
   @override
@@ -112,6 +101,10 @@ class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThem
   @override
   final double? footerButtonsSpacing;
 
+  /// Margin of the modal.
+  @override
+  final EdgeInsets? margin;
+
   @override
   MyoroDialogModalThemeExtension lerp(covariant MyoroDialogModalThemeExtension? other, double t) {
     if (other is! MyoroDialogModalThemeExtension) return this;
@@ -120,16 +113,15 @@ class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThem
       constraints: style.constraints,
       primaryColor: style.primaryColor,
       borderRadius: style.borderRadius,
-      bottomSheetBorderRadius: style.bottomSheetBorderRadius,
       border: style.border,
-      bottomSheetBorder: style.bottomSheetBorder,
-      padding: style.padding,
+      contentPadding: style.contentPadding,
       closeButtonPadding: style.closeButtonPadding,
       spacing: style.spacing,
       titleTextStyle: style.titleTextStyle,
       closeButtonIconConfiguration: style.closeButtonIconConfiguration,
       textStyle: style.textStyle,
       footerButtonsSpacing: style.footerButtonsSpacing,
+      margin: style.margin,
     );
   }
 }

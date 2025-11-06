@@ -121,6 +121,7 @@ class MyoroInputState {
   /// Dispose function.
   void dispose() {
     _localInputController?.dispose();
+    _localInputController = null;
     _enabledController.dispose();
     _showClearTextButtonController.dispose();
     _obscureTextController.dispose();
@@ -163,8 +164,9 @@ class MyoroInputState {
 
   /// [_controller] setter.
   set controller(TextEditingController? controller) {
-    if (controller != null) _localInputController?.dispose();
-    _controller = controller!;
+    _localInputController?.dispose();
+    _localInputController = null;
+    _controller = controller ?? (_localInputController ??= TextEditingController());
   }
 
   /// [_enabledController] setter.

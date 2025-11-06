@@ -8,10 +8,17 @@ part '_widget/_myoro_time_picker_input_state.dart';
 
 /// Time picker input (click time, no typy typy).
 class MyoroTimePickerInput extends StatefulWidget {
-  const MyoroTimePickerInput({super.key, this.style = const MyoroInputStyle(), required this.onChanged});
+  /// Default label value.
+  static const String labelDefaultValue = 'Time';
+
+  /// Default constructor.
+  const MyoroTimePickerInput({super.key, this.style = const MyoroInputStyle(), this.label = labelDefaultValue, required this.onChanged});
 
   /// Style.
   final MyoroInputStyle style;
+
+  /// Label.
+  final String label;
 
   /// Callback executed when the time changed.
   final MyoroTimePickerInputOnChanged onChanged;

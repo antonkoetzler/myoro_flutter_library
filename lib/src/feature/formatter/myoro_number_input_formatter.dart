@@ -3,13 +3,22 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [TextInputFormatter] to only accept numbers (integer/double) and only allow a range of numbers.
 final class MyoroNumberInputFormatter extends TextInputFormatter implements MyoroInputFormatter {
-  final double min;
-  final double? max;
-  final int decimalPlaces;
-  final String decimalSeparator;
-
+  /// Default constructor.
   const MyoroNumberInputFormatter({this.min = 0, this.max, this.decimalPlaces = 0, this.decimalSeparator = '.'});
 
+  /// Min value.
+  final double min;
+
+  /// Max value.
+  final double? max;
+
+  /// Decimal places.
+  final int decimalPlaces;
+
+  /// Decimal separator (i.e. '0,00' or '0.00').
+  final String decimalSeparator;
+
+  /// [TextInputFormatter.formatEditUpdate]
   @override
   TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
     final decimalPlacesNotZero = decimalPlaces > 0;

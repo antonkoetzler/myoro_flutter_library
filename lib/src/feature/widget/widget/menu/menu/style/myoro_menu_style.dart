@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:faker/faker.dart' hide Color;
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
@@ -22,6 +24,7 @@ class MyoroMenuStyle with _$MyoroMenuStyleMixin {
       dialogTextStyle: TextStyle.lerp(a?.dialogTextStyle, b?.dialogTextStyle, t),
       dialogTextLoaderPadding: EdgeInsets.lerp(a?.dialogTextLoaderPadding, b?.dialogTextLoaderPadding, t),
       selectedItemColor: Color.lerp(a?.selectedItemColor, b?.selectedItemColor, t),
+      itemsSectionSpacing: lerpDouble(a?.itemsSectionSpacing, b?.itemsSectionSpacing, t),
     );
   }
 
@@ -37,6 +40,7 @@ class MyoroMenuStyle with _$MyoroMenuStyleMixin {
     this.dialogTextStyle,
     this.dialogTextLoaderPadding,
     this.selectedItemColor,
+    this.itemsSectionSpacing,
   });
 
   /// Fake constructor.
@@ -52,6 +56,7 @@ class MyoroMenuStyle with _$MyoroMenuStyleMixin {
       dialogTextStyle: myoroNullableFake<TextStyle>(),
       dialogTextLoaderPadding: myoroNullableFake<EdgeInsets>(),
       selectedItemColor: myoroNullableFake<Color>(),
+      itemsSectionSpacing: myoroNullableFake<double>(),
     );
   }
 
@@ -84,4 +89,7 @@ class MyoroMenuStyle with _$MyoroMenuStyleMixin {
 
   /// [Color] of a selected item.
   final Color? selectedItemColor;
+
+  /// Items section spacing.
+  final double? itemsSectionSpacing;
 }

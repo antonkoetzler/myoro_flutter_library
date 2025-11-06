@@ -12,6 +12,9 @@ final class _ItemsSection<T> extends StatelessWidget {
     final itemBuilder = state.itemBuilder;
     final scrollController = state.scrollController;
 
+    final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
+    final itemsSectionSpacing = themeExtension.itemsSectionSpacing ?? 0;
+
     return items!.isNotEmpty
         ? Scrollbar(
             controller: scrollController,
@@ -22,7 +25,11 @@ final class _ItemsSection<T> extends StatelessWidget {
               itemCount: items.length,
               itemBuilder: (_, index) {
                 final item = items.elementAt(index);
-                return _Item<T>(item, itemBuilder(item));
+                final isLast = index == items.length - 1;
+                return Padding(
+                  padding: EdgeInsets.only(bottom: isLast ? 0 : itemsSectionSpacing),
+                  child: _Item<T>(item, itemBuilder(item)),
+                );
               },
             ),
           )

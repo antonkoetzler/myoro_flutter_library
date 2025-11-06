@@ -10,8 +10,10 @@ class _Input<T> extends StatelessWidget {
     final state = viewModel.state;
     final inputKey = state.inputKey;
     final enabled = state.enabled;
+    final label = state.label;
     final onTap = viewModel.onTap;
     return MyoroInput(
+      label: label,
       inputKey: inputKey,
       controller: state.inputController,
       enabled: enabled,

@@ -8,8 +8,21 @@ final class _Input extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroCurrencyInputViewModel>();
     final state = viewModel.state;
-    final inputController = state.inputController;
+    final min = state.min;
+    final max = state.max;
+    final decimalPlaces = state.decimalPlaces;
+    final selectedCurrencyController = state.selectedCurrencyController;
+    final onChanged = state.onChanged;
 
-    return MyoroInput(controller: inputController, prefix: const _Prefix());
+    return ValueListenableBuilder(
+      valueListenable: selectedCurrencyController,
+      builder: (_, selectedCurrency, _) {
+        return MyoroInput(
+          formatter: MyoroNumberInputFormatter(min: min, max: max, decimalPlaces: decimalPlaces, decimalSeparator: selectedCurrency.decimalSeparator),
+          prefix: _Prefix(selectedCurrency),
+          onChanged: (t) => onChanged(double.tryParse(t) ?? 0),
+        );
+      },
+    );
   }
 }

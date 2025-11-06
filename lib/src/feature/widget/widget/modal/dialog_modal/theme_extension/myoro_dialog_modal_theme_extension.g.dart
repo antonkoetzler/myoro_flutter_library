@@ -24,14 +24,10 @@ mixin _$MyoroDialogModalThemeExtensionMixin on ThemeExtension<MyoroDialogModalTh
     bool primaryColorProvided = true,
     BorderRadius? borderRadius,
     bool borderRadiusProvided = true,
-    BorderRadius? bottomSheetBorderRadius,
-    bool bottomSheetBorderRadiusProvided = true,
     Border? border,
     bool borderProvided = true,
-    Border? bottomSheetBorder,
-    bool bottomSheetBorderProvided = true,
-    EdgeInsets? padding,
-    bool paddingProvided = true,
+    EdgeInsets? contentPadding,
+    bool contentPaddingProvided = true,
     EdgeInsets? closeButtonPadding,
     bool closeButtonPaddingProvided = true,
     double? spacing,
@@ -44,17 +40,15 @@ mixin _$MyoroDialogModalThemeExtensionMixin on ThemeExtension<MyoroDialogModalTh
     bool textStyleProvided = true,
     double? footerButtonsSpacing,
     bool footerButtonsSpacingProvided = true,
+    EdgeInsets? margin,
+    bool marginProvided = true,
   }) {
     return MyoroDialogModalThemeExtension(
       constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
       primaryColor: primaryColorProvided ? (primaryColor ?? self.primaryColor) : null,
       borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
-      bottomSheetBorderRadius: bottomSheetBorderRadiusProvided
-          ? (bottomSheetBorderRadius ?? self.bottomSheetBorderRadius)
-          : null,
       border: borderProvided ? (border ?? self.border) : null,
-      bottomSheetBorder: bottomSheetBorderProvided ? (bottomSheetBorder ?? self.bottomSheetBorder) : null,
-      padding: paddingProvided ? (padding ?? self.padding) : null,
+      contentPadding: contentPaddingProvided ? (contentPadding ?? self.contentPadding) : null,
       closeButtonPadding: closeButtonPaddingProvided ? (closeButtonPadding ?? self.closeButtonPadding) : null,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
       titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
@@ -63,6 +57,7 @@ mixin _$MyoroDialogModalThemeExtensionMixin on ThemeExtension<MyoroDialogModalTh
           : null,
       textStyle: textStyleProvided ? (textStyle ?? self.textStyle) : null,
       footerButtonsSpacing: footerButtonsSpacingProvided ? (footerButtonsSpacing ?? self.footerButtonsSpacing) : null,
+      margin: marginProvided ? (margin ?? self.margin) : null,
     );
   }
 
@@ -73,16 +68,15 @@ mixin _$MyoroDialogModalThemeExtensionMixin on ThemeExtension<MyoroDialogModalTh
         other.constraints == self.constraints &&
         other.primaryColor == self.primaryColor &&
         other.borderRadius == self.borderRadius &&
-        other.bottomSheetBorderRadius == self.bottomSheetBorderRadius &&
         other.border == self.border &&
-        other.bottomSheetBorder == self.bottomSheetBorder &&
-        other.padding == self.padding &&
+        other.contentPadding == self.contentPadding &&
         other.closeButtonPadding == self.closeButtonPadding &&
         other.spacing == self.spacing &&
         other.titleTextStyle == self.titleTextStyle &&
         other.closeButtonIconConfiguration == self.closeButtonIconConfiguration &&
         other.textStyle == self.textStyle &&
-        other.footerButtonsSpacing == self.footerButtonsSpacing;
+        other.footerButtonsSpacing == self.footerButtonsSpacing &&
+        other.margin == self.margin;
   }
 
   @override
@@ -91,16 +85,15 @@ mixin _$MyoroDialogModalThemeExtensionMixin on ThemeExtension<MyoroDialogModalTh
       self.constraints,
       self.primaryColor,
       self.borderRadius,
-      self.bottomSheetBorderRadius,
       self.border,
-      self.bottomSheetBorder,
-      self.padding,
+      self.contentPadding,
       self.closeButtonPadding,
       self.spacing,
       self.titleTextStyle,
       self.closeButtonIconConfiguration,
       self.textStyle,
       self.footerButtonsSpacing,
+      self.margin,
     );
   }
 
@@ -110,15 +103,14 @@ mixin _$MyoroDialogModalThemeExtensionMixin on ThemeExtension<MyoroDialogModalTh
       '  constraints: ${self.constraints},\n'
       '  primaryColor: ${self.primaryColor},\n'
       '  borderRadius: ${self.borderRadius},\n'
-      '  bottomSheetBorderRadius: ${self.bottomSheetBorderRadius},\n'
       '  border: ${self.border},\n'
-      '  bottomSheetBorder: ${self.bottomSheetBorder},\n'
-      '  padding: ${self.padding},\n'
+      '  contentPadding: ${self.contentPadding},\n'
       '  closeButtonPadding: ${self.closeButtonPadding},\n'
       '  spacing: ${self.spacing},\n'
       '  titleTextStyle: ${self.titleTextStyle},\n'
       '  closeButtonIconConfiguration: ${self.closeButtonIconConfiguration},\n'
       '  textStyle: ${self.textStyle},\n'
       '  footerButtonsSpacing: ${self.footerButtonsSpacing},\n'
+      '  margin: ${self.margin},\n'
       ');';
 }

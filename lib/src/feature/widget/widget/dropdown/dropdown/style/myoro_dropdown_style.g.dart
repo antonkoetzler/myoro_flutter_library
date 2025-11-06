@@ -39,6 +39,8 @@ mixin _$MyoroDropdownStyleMixin {
     bool dialogTextLoaderPaddingProvided = true,
     Color? selectedItemColor,
     bool selectedItemColorProvided = true,
+    double? itemsSectionSpacing,
+    bool itemsSectionSpacingProvided = true,
   }) {
     return MyoroDropdownStyle(
       expandingAndOverlaySpacing: expandingAndOverlaySpacingProvided
@@ -73,7 +75,8 @@ mixin _$MyoroDropdownStyleMixin {
         other.itemBorderRadius == self.itemBorderRadius &&
         other.dialogTextStyle == self.dialogTextStyle &&
         other.dialogTextLoaderPadding == self.dialogTextLoaderPadding &&
-        other.selectedItemColor == self.selectedItemColor;
+        other.selectedItemColor == self.selectedItemColor &&
+        other.itemsSectionSpacing == self.itemsSectionSpacing;
   }
 
   @override
@@ -90,6 +93,7 @@ mixin _$MyoroDropdownStyleMixin {
       self.dialogTextStyle,
       self.dialogTextLoaderPadding,
       self.selectedItemColor,
+      self.itemsSectionSpacing,
     );
   }
 
@@ -107,5 +111,6 @@ mixin _$MyoroDropdownStyleMixin {
       '  dialogTextStyle: ${self.dialogTextStyle},\n'
       '  dialogTextLoaderPadding: ${self.dialogTextLoaderPadding},\n'
       '  selectedItemColor: ${self.selectedItemColor},\n'
+      '  itemsSectionSpacing: ${self.itemsSectionSpacing},\n'
       ');';
 }

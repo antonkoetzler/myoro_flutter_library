@@ -37,6 +37,8 @@ mixin _$MyoroMenuStyleMixin {
     bool dialogTextLoaderPaddingProvided = true,
     Color? selectedItemColor,
     bool selectedItemColorProvided = true,
+    double? itemsSectionSpacing,
+    bool itemsSectionSpacingProvided = true,
   }) {
     return MyoroMenuStyle(
       constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
@@ -51,6 +53,7 @@ mixin _$MyoroMenuStyleMixin {
           ? (dialogTextLoaderPadding ?? self.dialogTextLoaderPadding)
           : null,
       selectedItemColor: selectedItemColorProvided ? (selectedItemColor ?? self.selectedItemColor) : null,
+      itemsSectionSpacing: itemsSectionSpacingProvided ? (itemsSectionSpacing ?? self.itemsSectionSpacing) : null,
     );
   }
 
@@ -67,7 +70,8 @@ mixin _$MyoroMenuStyleMixin {
         other.itemBorderRadius == self.itemBorderRadius &&
         other.dialogTextStyle == self.dialogTextStyle &&
         other.dialogTextLoaderPadding == self.dialogTextLoaderPadding &&
-        other.selectedItemColor == self.selectedItemColor;
+        other.selectedItemColor == self.selectedItemColor &&
+        other.itemsSectionSpacing == self.itemsSectionSpacing;
   }
 
   @override
@@ -83,6 +87,7 @@ mixin _$MyoroMenuStyleMixin {
       self.dialogTextStyle,
       self.dialogTextLoaderPadding,
       self.selectedItemColor,
+      self.itemsSectionSpacing,
     );
   }
 
@@ -99,5 +104,6 @@ mixin _$MyoroMenuStyleMixin {
       '  dialogTextStyle: ${self.dialogTextStyle},\n'
       '  dialogTextLoaderPadding: ${self.dialogTextLoaderPadding},\n'
       '  selectedItemColor: ${self.selectedItemColor},\n'
+      '  itemsSectionSpacing: ${self.itemsSectionSpacing},\n'
       ');';
 }

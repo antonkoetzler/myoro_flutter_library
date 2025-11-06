@@ -28,6 +28,7 @@ class MyoroCurrencyInput extends StatefulWidget {
     this.min = minDefaultValue,
     this.max,
     this.decimalPlaces = decimalPlacesDefaultValue,
+    required this.onChanged,
   });
 
   /// Style.
@@ -44,6 +45,9 @@ class MyoroCurrencyInput extends StatefulWidget {
 
   /// Decimal places.
   final int decimalPlaces;
+
+  /// On changed.
+  final MyoroCurrencyInputOnChanged onChanged;
 
   @override
   State<MyoroCurrencyInput> createState() => _MyoroCurrencyInputState();
