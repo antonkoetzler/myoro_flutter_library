@@ -42,30 +42,31 @@ final class _MyoroInputState extends State<MyoroInput> {
   void didUpdateWidget(MyoroInput oldWidget) {
     super.didUpdateWidget(oldWidget);
     final state = _viewModel.state;
-    state.formatter = widget.formatter;
-    state.inputStyle = widget.inputStyle;
-    state.textAlign = widget.textAlign;
-    state.label = widget.label;
+    state
+      ..formatter = widget.formatter
+      ..inputStyle = widget.inputStyle
+      ..textAlign = widget.textAlign
+      ..label = widget.label
+      ..placeholder = widget.placeholder
+      ..prefix = widget.prefix
+      ..suffix = widget.suffix
+      ..enabled = widget.enabled
+      ..readOnly = widget.readOnly
+      ..autofocus = widget.autofocus
+      ..enableInteractiveSelection = widget.enableInteractiveSelection
+      ..canShowClearTextButton = widget.canShowClearTextButton
+      ..showObscureTextButton = widget.showObscureTextButton
+      ..checkboxOnChanged = widget.checkboxOnChanged
+      ..validation = widget.validation
+      ..onFieldSubmitted = widget.onFieldSubmitted
+      ..onChanged = widget.onChanged
+      ..onCleared = widget.onCleared
+      ..inputKey = widget.inputKey
+      ..onTap = widget.onTap
+      ..focusNode = widget.focusNode
+      ..controller = widget.controller
+      ..obscureText = widget.obscureText;
     if (widget.text.isNotEmpty) state.controller.text = widget.text;
-    state.placeholder = widget.placeholder;
-    state.prefix = widget.prefix;
-    state.suffix = widget.suffix;
-    state.enabled = widget.enabled;
-    state.readOnly = widget.readOnly;
-    state.autofocus = widget.autofocus;
-    state.enableInteractiveSelection = widget.enableInteractiveSelection;
-    state.canShowClearTextButton = widget.canShowClearTextButton;
-    state.showObscureTextButton = widget.showObscureTextButton;
-    state.checkboxOnChanged = widget.checkboxOnChanged;
-    state.validation = widget.validation;
-    state.onFieldSubmitted = widget.onFieldSubmitted;
-    state.onChanged = widget.onChanged;
-    state.onCleared = widget.onCleared;
-    state.inputKey = widget.inputKey;
-    state.onTap = widget.onTap;
-    state.focusNode = widget.focusNode;
-    state.controller = widget.controller;
-    state.obscureText = widget.obscureText;
   }
 
   /// Dispose function.
@@ -97,7 +98,6 @@ final class _MyoroInputState extends State<MyoroInput> {
             children: [
               if (widget.checkboxOnChanged != null) _Checkbox(enabled),
               Expanded(child: _TextFormField(enabled)),
-              if (widget.suffix != null) widget.suffix!,
             ],
           );
         },

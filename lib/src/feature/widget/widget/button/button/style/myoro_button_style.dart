@@ -25,6 +25,7 @@ class MyoroButtonStyle with _$MyoroButtonStyleMixin {
       borderIdleColor: Color.lerp(a?.borderIdleColor, b?.borderIdleColor, t),
       borderHoverColor: Color.lerp(a?.borderHoverColor, b?.borderHoverColor, t),
       borderTapColor: Color.lerp(a?.borderTapColor, b?.borderTapColor, t),
+      contentPadding: EdgeInsets.lerp(a?.contentPadding, b?.contentPadding, t),
     );
   }
 
@@ -42,6 +43,7 @@ class MyoroButtonStyle with _$MyoroButtonStyleMixin {
     this.borderIdleColor,
     this.borderHoverColor,
     this.borderTapColor,
+    this.contentPadding,
   });
 
   /// Fake constructor.
@@ -57,7 +59,8 @@ class MyoroButtonStyle with _$MyoroButtonStyleMixin {
       borderRadius = myoroNullableFake<BorderRadius>(),
       borderIdleColor = myoroNullableFake<Color>(),
       borderHoverColor = myoroNullableFake<Color>(),
-      borderTapColor = myoroNullableFake<Color>();
+      borderTapColor = myoroNullableFake<Color>(),
+      contentPadding = myoroNullableFake<EdgeInsets>();
 
   /// [MyoroTapStatusEnum.idle]'s background [Color].
   final Color? backgroundIdleColor;
@@ -94,4 +97,7 @@ class MyoroButtonStyle with _$MyoroButtonStyleMixin {
 
   /// Border radius.
   final BorderRadius? borderRadius;
+
+  /// Content padding.
+  final EdgeInsets? contentPadding;
 }

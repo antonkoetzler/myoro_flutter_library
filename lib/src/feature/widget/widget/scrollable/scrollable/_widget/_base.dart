@@ -30,41 +30,33 @@ final class _Base extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<MyoroScrollableThemeExtension>();
+    final gradientTopColor = style.gradientTopColor ?? themeExtension.gradientTopColor;
+    final gradientBottomColor = style.gradientBottomColor ?? themeExtension.gradientBottomColor;
+    final gradientLeftColor = style.gradientLeftColor ?? themeExtension.gradientLeftColor;
+    final gradientRightColor = style.gradientRightColor ?? themeExtension.gradientRightColor;
+    final gradientSize = style.gradientSize ?? themeExtension.gradientSize;
+    final gradientColor = style.gradientColor ?? themeExtension.gradientColor;
+
+    // Create effective style for gradient overlay
+    final effectiveStyle = MyoroScrollableStyle(
+      gradientTopColor: gradientTopColor,
+      gradientBottomColor: gradientBottomColor,
+      gradientLeftColor: gradientLeftColor,
+      gradientRightColor: gradientRightColor,
+      gradientSize: gradientSize,
+      gradientColor: gradientColor,
+    );
+
     return InheritedProvider.value(
       value: style,
-      child: Builder(
-        builder: (context) {
-          final themeExtension = context.resolveThemeExtension<MyoroScrollableThemeExtension>();
-          final style = context.watch<MyoroScrollableStyle>();
-
-          // Get effective gradient style values
-          final gradientTopColor = style.gradientTopColor ?? themeExtension.gradientTopColor;
-          final gradientBottomColor = style.gradientBottomColor ?? themeExtension.gradientBottomColor;
-          final gradientLeftColor = style.gradientLeftColor ?? themeExtension.gradientLeftColor;
-          final gradientRightColor = style.gradientRightColor ?? themeExtension.gradientRightColor;
-          final gradientSize = style.gradientSize ?? themeExtension.gradientSize;
-          final gradientColor = style.gradientColor ?? themeExtension.gradientColor;
-
-          // Create effective style for gradient overlay
-          final effectiveStyle = MyoroScrollableStyle(
-            gradientTopColor: gradientTopColor,
-            gradientBottomColor: gradientBottomColor,
-            gradientLeftColor: gradientLeftColor,
-            gradientRightColor: gradientRightColor,
-            gradientSize: gradientSize,
-            gradientColor: gradientColor,
-          );
-
-          // Always apply gradient overlays (gradient is always enabled by default)
-          return _GradientOverlay(
-            scrollDirection: scrollDirection,
-            style: effectiveStyle,
-            gradientEnabled: gradientEnabled,
-            gradientBegin: gradientBegin,
-            gradientEnd: gradientEnd,
-            child: child,
-          );
-        },
+      child: _GradientOverlay(
+        scrollDirection: scrollDirection,
+        style: effectiveStyle,
+        gradientEnabled: gradientEnabled,
+        gradientBegin: gradientBegin,
+        gradientEnd: gradientEnd,
+        child: child,
       ),
     );
   }

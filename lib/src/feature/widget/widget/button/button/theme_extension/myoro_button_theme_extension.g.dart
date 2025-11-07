@@ -42,6 +42,8 @@ mixin _$MyoroButtonThemeExtensionMixin on ThemeExtension<MyoroButtonThemeExtensi
     bool borderHoverColorProvided = true,
     Color? borderTapColor,
     bool borderTapColorProvided = true,
+    EdgeInsets? contentPadding,
+    bool contentPaddingProvided = true,
   }) {
     return MyoroButtonThemeExtension(
       backgroundIdleColor: backgroundIdleColorProvided ? (backgroundIdleColor ?? self.backgroundIdleColor) : null,
@@ -58,6 +60,7 @@ mixin _$MyoroButtonThemeExtensionMixin on ThemeExtension<MyoroButtonThemeExtensi
       borderIdleColor: borderIdleColorProvided ? (borderIdleColor ?? self.borderIdleColor) : null,
       borderHoverColor: borderHoverColorProvided ? (borderHoverColor ?? self.borderHoverColor) : null,
       borderTapColor: borderTapColorProvided ? (borderTapColor ?? self.borderTapColor) : null,
+      contentPadding: contentPaddingProvided ? (contentPadding ?? self.contentPadding) : null,
     );
   }
 
@@ -76,7 +79,8 @@ mixin _$MyoroButtonThemeExtensionMixin on ThemeExtension<MyoroButtonThemeExtensi
         other.borderRadius == self.borderRadius &&
         other.borderIdleColor == self.borderIdleColor &&
         other.borderHoverColor == self.borderHoverColor &&
-        other.borderTapColor == self.borderTapColor;
+        other.borderTapColor == self.borderTapColor &&
+        other.contentPadding == self.contentPadding;
   }
 
   @override
@@ -94,6 +98,7 @@ mixin _$MyoroButtonThemeExtensionMixin on ThemeExtension<MyoroButtonThemeExtensi
       self.borderIdleColor,
       self.borderHoverColor,
       self.borderTapColor,
+      self.contentPadding,
     );
   }
 
@@ -112,5 +117,6 @@ mixin _$MyoroButtonThemeExtensionMixin on ThemeExtension<MyoroButtonThemeExtensi
       '  borderIdleColor: ${self.borderIdleColor},\n'
       '  borderHoverColor: ${self.borderHoverColor},\n'
       '  borderTapColor: ${self.borderTapColor},\n'
+      '  contentPadding: ${self.contentPadding},\n'
       ');';
 }

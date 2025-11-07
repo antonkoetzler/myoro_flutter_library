@@ -6,9 +6,19 @@ final class _SearchButton<T> extends StatelessWidget {
 
   @override
   Widget build(context) {
+    final themeExtension = context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
+    final style = context.read<MyoroSearchInputStyle>();
+    final searchButtonIconConfiguration =
+        style.searchButtonIconConfiguration ?? themeExtension.searchButtonIconConfiguration;
+
+    final viewModel = context.read<MyoroSearchInputViewModel<T>>();
+    final state = viewModel.state;
+    final requestController = state.requestController;
+    final fetch = requestController.fetch;
+
     return MyoroIconTextButton(
-      onTapUp: (_) => throw UnimplementedError('Easter egg fuck flutter'),
-      iconConfiguration: const MyoroIconConfiguration(icon: Icons.search),
+      onTapUp: (_) => fetch(),
+      iconConfiguration: searchButtonIconConfiguration,
       style: const MyoroIconTextButtonStyle().bordered(context),
     );
   }

@@ -13,7 +13,6 @@ final class _Button extends StatelessWidget {
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
     final style = context.watch<MyoroIconTextButtonStyle>();
-    final contentPadding = style.contentPadding ?? themeExtension.contentPadding ?? EdgeInsets.zero;
     final spacing = style.spacing ?? themeExtension.spacing ?? 0;
 
     final iconConfigurationNotNull = _iconConfiguration != null;
@@ -23,16 +22,13 @@ final class _Button extends StatelessWidget {
     final iconWidget = iconConfigurationNotNull ? _Icon(_tapStatusEnum, _iconConfiguration) : null;
     final textWidget = textConfigurationNotNull ? _Text(_tapStatusEnum, _textConfiguration) : null;
 
-    return Padding(
-      padding: contentPadding,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        spacing: spacing,
-        children: iconConfigurationAndTextConfigurationNotNull
-            ? [!_invert ? iconWidget! : textWidget!, !_invert ? textWidget! : iconWidget!]
-            : [if (iconConfigurationNotNull) iconWidget!, if (textConfigurationNotNull) textWidget!],
-      ),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      spacing: spacing,
+      children: iconConfigurationAndTextConfigurationNotNull
+          ? [!_invert ? iconWidget! : textWidget!, !_invert ? textWidget! : iconWidget!]
+          : [if (iconConfigurationNotNull) iconWidget!, if (textConfigurationNotNull) textWidget!],
     );
   }
 }

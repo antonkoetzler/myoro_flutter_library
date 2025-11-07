@@ -8,10 +8,13 @@ class MyoroSearchInputViewModel<T> {
   /// Default constructor.
   MyoroSearchInputViewModel(
     String label,
+    MyoroSearchInputDropdownTypeEnum dropdownType,
     MyoroSearchInputSelectedItemBuilder<T> selectedItemBuilder,
     MyoroSearchInputRequest<T> request,
-  ) : _state = MyoroSearchInputState(label, selectedItemBuilder, request) {
-    _state.selectedItemController.addListener(_selectedItemControllerListener);
+  ) : _state = MyoroSearchInputState(label, dropdownType, selectedItemBuilder, request) {
+    _state
+      ..selectedItemController.addListener(_selectedItemControllerListener)
+      ..inputController.addListener(_inputControllerListener);
   }
 
   /// State.
@@ -26,6 +29,20 @@ class MyoroSearchInputViewModel<T> {
   void _selectedItemControllerListener() {
     final selectedItem = _state.selectedItem;
     _state.inputController.text = selectedItem != null ? _state.selectedItemBuilder(selectedItem) : kMyoroEmptyString;
+  }
+
+  /// Listener of [MyoroSearchInputState.inputController].
+  void _inputControllerListener() {
+    final selectedItem = _state.selectedItem;
+    final inputControllerText = _state.inputController.text;
+    final selectedItemBuilder = _state.selectedItemBuilder;
+    final requestController = _state.requestController;
+    if (inputControllerText.isEmpty ||
+        selectedItem != null && selectedItemBuilder(selectedItem) == inputControllerText) {
+      return;
+    }
+    requestController.fetch();
+    _state.showing = true;
   }
 
   /// [_state] getter.

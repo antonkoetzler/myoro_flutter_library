@@ -6,8 +6,13 @@ part 'myoro_currency_input_state.dart';
 /// View model of [MyoroCurrencyInput].
 class MyoroCurrencyInputViewModel {
   /// Default constructor.
-  MyoroCurrencyInputViewModel(double min, double? max, int decimalPlaces, MyoroCurrencyEnum currency, MyoroCurrencyInputOnChanged onChanged)
-    : _state = MyoroCurrencyInputState(min, max, decimalPlaces, currency, onChanged);
+  MyoroCurrencyInputViewModel(
+    double min,
+    double? max,
+    int decimalPlaces,
+    MyoroCurrencyEnum currency,
+    MyoroCurrencyInputOnChanged onChanged,
+  ) : _state = MyoroCurrencyInputState(min, max, decimalPlaces, currency, onChanged);
 
   /// State.
   final MyoroCurrencyInputState _state;

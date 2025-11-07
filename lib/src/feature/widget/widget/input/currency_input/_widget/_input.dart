@@ -18,7 +18,12 @@ final class _Input extends StatelessWidget {
       valueListenable: selectedCurrencyController,
       builder: (_, selectedCurrency, _) {
         return MyoroInput(
-          formatter: MyoroNumberInputFormatter(min: min, max: max, decimalPlaces: decimalPlaces, decimalSeparator: selectedCurrency.decimalSeparator),
+          formatter: MyoroNumberInputFormatter(
+            min: min,
+            max: max,
+            decimalPlaces: decimalPlaces,
+            decimalSeparator: selectedCurrency.decimalSeparator,
+          ),
           prefix: _Prefix(selectedCurrency),
           onChanged: (t) => onChanged(double.tryParse(t) ?? 0),
         );

@@ -5,17 +5,17 @@ class MyoroMenuState<T> {
   /// Default constructor.
   MyoroMenuState(this.searchCallback, this.items, this.selectedItems, this.itemBuilder);
 
-  /// Search callback.
-  final MyoroMenuSearchCallback<T>? searchCallback;
+  /// [MyoroMenu.searchCallback].
+  MyoroMenuSearchCallback<T>? searchCallback;
 
-  /// Items.
-  final Set<T>? items;
+  /// [MyoroMenu.items].
+  Set<T>? items;
 
-  /// Selected items.
-  final Set<T> selectedItems;
+  /// [MyoroMenu.selectedItems].
+  Set<T> selectedItems;
 
-  /// Item builder.
-  final MyoroMenuItemBuilder<T> itemBuilder;
+  /// [MyoroMenu.itemBuilder].
+  MyoroMenuItemBuilder<T> itemBuilder;
 
   /// [ScrollController] of the item listing.
   final _scrollController = ScrollController();

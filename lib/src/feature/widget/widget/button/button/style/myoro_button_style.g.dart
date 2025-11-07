@@ -41,6 +41,8 @@ mixin _$MyoroButtonStyleMixin {
     bool borderTapColorProvided = true,
     BorderRadius? borderRadius,
     bool borderRadiusProvided = true,
+    EdgeInsets? contentPadding,
+    bool contentPaddingProvided = true,
   }) {
     return MyoroButtonStyle(
       backgroundIdleColor: backgroundIdleColorProvided ? (backgroundIdleColor ?? self.backgroundIdleColor) : null,
@@ -57,6 +59,7 @@ mixin _$MyoroButtonStyleMixin {
       borderHoverColor: borderHoverColorProvided ? (borderHoverColor ?? self.borderHoverColor) : null,
       borderTapColor: borderTapColorProvided ? (borderTapColor ?? self.borderTapColor) : null,
       borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
+      contentPadding: contentPaddingProvided ? (contentPadding ?? self.contentPadding) : null,
     );
   }
 
@@ -75,7 +78,8 @@ mixin _$MyoroButtonStyleMixin {
         other.borderIdleColor == self.borderIdleColor &&
         other.borderHoverColor == self.borderHoverColor &&
         other.borderTapColor == self.borderTapColor &&
-        other.borderRadius == self.borderRadius;
+        other.borderRadius == self.borderRadius &&
+        other.contentPadding == self.contentPadding;
   }
 
   @override
@@ -93,6 +97,7 @@ mixin _$MyoroButtonStyleMixin {
       self.borderHoverColor,
       self.borderTapColor,
       self.borderRadius,
+      self.contentPadding,
     );
   }
 
@@ -111,5 +116,6 @@ mixin _$MyoroButtonStyleMixin {
       '  borderHoverColor: ${self.borderHoverColor},\n'
       '  borderTapColor: ${self.borderTapColor},\n'
       '  borderRadius: ${self.borderRadius},\n'
+      '  contentPadding: ${self.contentPadding},\n'
       ');';
 }

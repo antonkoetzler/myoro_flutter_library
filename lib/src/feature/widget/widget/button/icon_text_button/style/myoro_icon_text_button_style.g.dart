@@ -17,8 +17,6 @@ mixin _$MyoroIconTextButtonStyleMixin {
   MyoroIconTextButtonStyle get self => this as MyoroIconTextButtonStyle;
 
   MyoroIconTextButtonStyle copyWith({
-    EdgeInsets? contentPadding,
-    bool contentPaddingProvided = true,
     double? spacing,
     bool spacingProvided = true,
     TextStyle? textStyle,
@@ -47,9 +45,10 @@ mixin _$MyoroIconTextButtonStyleMixin {
     bool borderTapColorProvided = true,
     BorderRadius? borderRadius,
     bool borderRadiusProvided = true,
+    EdgeInsets? contentPadding,
+    bool contentPaddingProvided = true,
   }) {
     return MyoroIconTextButtonStyle(
-      contentPadding: contentPaddingProvided ? (contentPadding ?? self.contentPadding) : null,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
       textStyle: textStyleProvided ? (textStyle ?? self.textStyle) : null,
       backgroundIdleColor: backgroundIdleColorProvided ? (backgroundIdleColor ?? self.backgroundIdleColor) : null,
@@ -63,6 +62,7 @@ mixin _$MyoroIconTextButtonStyleMixin {
       borderHoverColor: borderHoverColorProvided ? (borderHoverColor ?? self.borderHoverColor) : null,
       borderTapColor: borderTapColorProvided ? (borderTapColor ?? self.borderTapColor) : null,
       borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
+      contentPadding: contentPaddingProvided ? (contentPadding ?? self.contentPadding) : null,
     );
   }
 
@@ -70,7 +70,6 @@ mixin _$MyoroIconTextButtonStyleMixin {
   bool operator ==(Object other) {
     return other is MyoroIconTextButtonStyle &&
         other.runtimeType == runtimeType &&
-        other.contentPadding == self.contentPadding &&
         other.spacing == self.spacing &&
         other.textStyle == self.textStyle &&
         other.backgroundIdleColor == self.backgroundIdleColor &&
@@ -84,13 +83,13 @@ mixin _$MyoroIconTextButtonStyleMixin {
         other.borderIdleColor == self.borderIdleColor &&
         other.borderHoverColor == self.borderHoverColor &&
         other.borderTapColor == self.borderTapColor &&
-        other.borderRadius == self.borderRadius;
+        other.borderRadius == self.borderRadius &&
+        other.contentPadding == self.contentPadding;
   }
 
   @override
   int get hashCode {
     return Object.hash(
-      self.contentPadding,
       self.spacing,
       self.textStyle,
       self.backgroundIdleColor,
@@ -105,13 +104,13 @@ mixin _$MyoroIconTextButtonStyleMixin {
       self.borderHoverColor,
       self.borderTapColor,
       self.borderRadius,
+      self.contentPadding,
     );
   }
 
   @override
   String toString() =>
       'MyoroIconTextButtonStyle(\n'
-      '  contentPadding: ${self.contentPadding},\n'
       '  spacing: ${self.spacing},\n'
       '  textStyle: ${self.textStyle},\n'
       '  backgroundIdleColor: ${self.backgroundIdleColor},\n'
@@ -126,5 +125,6 @@ mixin _$MyoroIconTextButtonStyleMixin {
       '  borderHoverColor: ${self.borderHoverColor},\n'
       '  borderTapColor: ${self.borderTapColor},\n'
       '  borderRadius: ${self.borderRadius},\n'
+      '  contentPadding: ${self.contentPadding},\n'
       ');';
 }

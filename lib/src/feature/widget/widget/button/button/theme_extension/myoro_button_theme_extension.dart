@@ -24,6 +24,7 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
     this.borderIdleColor,
     this.borderHoverColor,
     this.borderTapColor,
+    this.contentPadding,
   });
 
   /// Fake constructor.
@@ -39,7 +40,8 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
       borderRadius = myoroNullableFake<BorderRadius>(),
       borderIdleColor = myoroNullableFake<Color>(),
       borderHoverColor = myoroNullableFake<Color>(),
-      borderTapColor = myoroNullableFake<Color>();
+      borderTapColor = myoroNullableFake<Color>(),
+      contentPadding = myoroNullableFake<EdgeInsets>();
 
   MyoroButtonThemeExtension.builder(MyoroDecorationThemeExtension decorationThemeExtension)
     : backgroundIdleColor = decorationThemeExtension.primaryBackgroundIdleColor,
@@ -53,7 +55,8 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
       borderRadius = decorationThemeExtension.borderRadius,
       borderIdleColor = null,
       borderHoverColor = null,
-      borderTapColor = null;
+      borderTapColor = null,
+      contentPadding = const EdgeInsets.all(kMyoroMultiplier);
 
   @override
   final Color? backgroundIdleColor;
@@ -92,6 +95,9 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
   final Color? borderTapColor;
 
   @override
+  final EdgeInsets? contentPadding;
+
+  @override
   MyoroButtonThemeExtension lerp(covariant MyoroButtonThemeExtension? other, double t) {
     if (other is! MyoroButtonThemeExtension) return this;
     final style = MyoroButtonStyle.lerp(this, other, t);
@@ -108,6 +114,7 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
       borderIdleColor: style.borderIdleColor,
       borderHoverColor: style.borderHoverColor,
       borderTapColor: style.borderTapColor,
+      contentPadding: style.contentPadding,
     );
   }
 }

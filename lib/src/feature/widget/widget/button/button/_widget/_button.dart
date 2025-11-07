@@ -17,13 +17,15 @@ final class _Button extends StatelessWidget {
     final backgroundColor =
         style.backgroundColorBuilder(_tapStatusEnum) ?? themeExtension.backgroundColorBuilder(_tapStatusEnum);
     final borderWidth = style.borderWidth ?? themeExtension.borderWidth;
+    final contentPadding = style.contentPadding ?? themeExtension.contentPadding;
 
     final viewModel = context.read<MyoroButtonViewModel>();
     final state = viewModel.state;
     final onTapProvided = state.onTapProvided;
     final tooltipText = state.tooltipText;
 
-    final child = DecoratedBox(
+    final child = Container(
+      padding: contentPadding,
       decoration: BoxDecoration(
         color: onTapProvided ? backgroundColor : disabledBackgroundColor,
         border: border,

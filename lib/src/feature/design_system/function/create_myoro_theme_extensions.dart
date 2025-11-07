@@ -107,6 +107,7 @@ List<ThemeExtension> _createInputThemeExtensions(
   return [
     MyoroCurrencyInputThemeExtension.builder(isDarkMode, colorScheme, textTheme, decorationThemeExtension),
     MyoroInputThemeExtension.builder(colorScheme, textTheme),
+    const MyoroSearchInputThemeExtension.builder(),
   ];
 }
 

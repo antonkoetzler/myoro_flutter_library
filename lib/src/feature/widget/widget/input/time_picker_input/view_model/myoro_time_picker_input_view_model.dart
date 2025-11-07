@@ -7,7 +7,8 @@ part 'myoro_time_picker_input_state.dart';
 /// View model of [MyoroTimePickerInput].
 class MyoroTimePickerInputViewModel {
   /// Default constructor.
-  MyoroTimePickerInputViewModel(String label, MyoroTimePickerInputOnChanged onChanged) : _state = MyoroTimePickerInputState(label, onChanged);
+  MyoroTimePickerInputViewModel(String label, MyoroTimePickerInputOnChanged onChanged)
+    : _state = MyoroTimePickerInputState(label, onChanged);
 
   /// State.
   final MyoroTimePickerInputState _state;
@@ -19,7 +20,11 @@ class MyoroTimePickerInputViewModel {
 
   /// Opens the time picker [Widget].
   void openTimePicker(BuildContext context, Widget Function(Widget? child) builder) async {
-    final TimeOfDay? time = await showTimePicker(context: context, initialTime: TimeOfDay.now(), builder: (_, child) => builder(child));
+    final TimeOfDay? time = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+      builder: (_, child) => builder(child),
+    );
     if (time == null) return;
     final now = DateTime.now();
     final date = now.copyWith(hour: time.hour, minute: time.minute);

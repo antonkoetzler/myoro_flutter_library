@@ -12,6 +12,18 @@ final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
     _viewModel = MyoroMenuViewModel<T>(widget.searchCallback, widget.items, widget.selectedItems, widget.itemBuilder);
   }
 
+  /// Did update function.
+  @override
+  void didUpdateWidget(MyoroMenu<T> oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    final state = _viewModel.state;
+    state
+      ..searchCallback = widget.searchCallback
+      ..items = widget.items
+      ..selectedItems = widget.selectedItems
+      ..itemBuilder = widget.itemBuilder;
+  }
+
   /// Dispose function.
   @override
   void dispose() {

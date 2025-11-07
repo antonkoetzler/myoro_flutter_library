@@ -13,26 +13,26 @@ class MyoroDropdownState<T> {
     this.itemBuilder,
   );
 
-  /// Effective showing controller.
-  final ValueNotifier<bool> showingController;
+  /// [MyoroDropdown.showingController].
+  ValueNotifier<bool> showingController;
 
-  /// Items.
-  final Set<T>? items;
+  /// [MyoroDropdown.items].
+  Set<T>? items;
 
-  /// Selected items controller.
-  final Set<T> selectedItems;
+  /// [MyoroDropdown.selectedItems].
+  Set<T> selectedItems;
 
-  /// Search callback.
-  final MyoroMenuSearchCallback<T>? searchCallback;
+  /// [MyoroDropdown.searchCallback].
+  MyoroMenuSearchCallback<T>? searchCallback;
 
-  /// Dropdown type.
-  final MyoroDropdownTypeEnum dropdownType;
+  /// [MyoroDropdown.dropdownType].
+  MyoroDropdownTypeEnum dropdownType;
 
-  /// Target key.
-  final GlobalKey? targetKey;
+  /// [MyoroDropdown.targetKey].
+  GlobalKey? targetKey;
 
-  /// Menu's item builder.
-  final MyoroMenuItemBuilder<T> itemBuilder;
+  /// [MyoroDropdown.itemBuilder].
+  MyoroMenuItemBuilder<T> itemBuilder;
 
   /// [OverlayPortalController] of [MyoroDropdown] when [MyoroDropdown.dropdownType] is [MyoroDropdownTypeEnum.overlay].
   OverlayPortalController? _overlayPortalController;

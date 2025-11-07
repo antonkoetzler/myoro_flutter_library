@@ -8,20 +8,34 @@ part '../_widget/_myoro_search_input_state.dart';
 
 /// Search input.
 class MyoroSearchInput<T> extends StatefulWidget {
+  /// Default value for [style].
+  static const styleDefaultValue = MyoroSearchInputStyle();
+
   /// Default value for [label].
   static const labelDefaultValue = kMyoroEmptyString;
+
+  /// Default value for [dropdownType].
+  static const dropdownTypeDefaultValue = MyoroSearchInputDropdownTypeEnum.expanding;
 
   /// Default constructor.
   const MyoroSearchInput({
     super.key,
+    this.style = styleDefaultValue,
     this.label = labelDefaultValue,
+    this.dropdownType = dropdownTypeDefaultValue,
     required this.itemBuilder,
     required this.selectedItemBuilder,
     required this.request,
   });
 
+  /// Style.
+  final MyoroSearchInputStyle style;
+
   /// Label.
   final String label;
+
+  /// Dropdown type.
+  final MyoroSearchInputDropdownTypeEnum dropdownType;
 
   /// Item builder.
   final MyoroMenuItemBuilder<T> itemBuilder;

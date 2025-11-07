@@ -31,6 +31,8 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
   void didUpdateWidget(MyoroDropdown<T> oldWidget) {
     super.didUpdateWidget(oldWidget);
     final state = _viewModel.state;
+
+    // Listen to [MyoroDropdownState.showingController] if [MyoroDropdown.dropdownType] is modal or bottom sheet.
     final dropdownType = state.dropdownType;
     final isModal = dropdownType.isModal;
     final isBottomSheet = dropdownType.isBottomSheet;
@@ -40,6 +42,18 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
         ..removeListener(_showingControllerListener)
         ..addListener(_showingControllerListener);
     }
+
+    // Update [MyoroDropdown] fields.
+    state
+      ..showingController = widget.showingController
+      ..items = widget.items
+      ..selectedItems = widget.selectedItems
+      ..searchCallback = widget.searchCallback
+      ..dropdownType =
+          widget.dropdownType ??
+          (MyoroPlatformHelper.isMobile ? MyoroDropdownTypeEnum.bottomSheet : MyoroDropdownTypeEnum.expanding)
+      ..targetKey = widget.targetKey
+      ..itemBuilder = widget.itemBuilder;
   }
 
   /// Dispose function.

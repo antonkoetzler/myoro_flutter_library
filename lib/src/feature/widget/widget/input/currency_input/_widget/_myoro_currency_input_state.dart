@@ -9,7 +9,13 @@ final class _MyoroCurrencyInputState extends State<MyoroCurrencyInput> {
   @override
   void initState() {
     super.initState();
-    _viewModel = MyoroCurrencyInputViewModel(widget.min, widget.max, widget.decimalPlaces, widget.currency, widget.onChanged);
+    _viewModel = MyoroCurrencyInputViewModel(
+      widget.min,
+      widget.max,
+      widget.decimalPlaces,
+      widget.currency,
+      widget.onChanged,
+    );
   }
 
   /// Did update function.
@@ -43,7 +49,12 @@ final class _MyoroCurrencyInputState extends State<MyoroCurrencyInput> {
         InheritedProvider.value(value: widget.style),
         InheritedProvider.value(value: _viewModel),
       ],
-      child: MyoroDropdown(showingController: showingController, items: MyoroCurrencyEnum.values.toSet(), itemBuilder: itemBuilder, child: const _Input()),
+      child: MyoroDropdown(
+        showingController: showingController,
+        items: MyoroCurrencyEnum.values.toSet(),
+        itemBuilder: itemBuilder,
+        child: const _Input(),
+      ),
     );
   }
 }

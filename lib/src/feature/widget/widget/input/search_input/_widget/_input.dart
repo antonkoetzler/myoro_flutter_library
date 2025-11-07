@@ -10,6 +10,21 @@ final class _Input<T> extends StatelessWidget {
     final state = viewModel.state;
     final label = state.label;
     final inputController = state.inputController;
-    return MyoroInput(controller: inputController, label: label, suffix: const _SearchButton());
+    final inputKey = state.inputKey;
+    final requestController = state.requestController;
+    final fetch = requestController.fetch;
+
+    final themeExtension = context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
+    final style = context.read<MyoroSearchInputStyle>();
+    final searchButtonIconConfiguration =
+        style.searchButtonIconConfiguration ?? themeExtension.searchButtonIconConfiguration;
+
+    return MyoroInput(
+      inputKey: inputKey,
+      controller: inputController,
+      label: label,
+      onFieldSubmitted: (_) => fetch(),
+      suffix: searchButtonIconConfiguration != null ? _SearchButton<T>() : null,
+    );
   }
 }

@@ -13,11 +13,17 @@ final class _Prefix extends StatelessWidget {
     final themeExtension = context.resolveThemeExtension<MyoroCurrencyInputThemeExtension>();
     final style = context.watch<MyoroCurrencyInputStyle>();
     final currencySymbolTextStyle = style.currencySymbolTextStyle ?? themeExtension.currencySymbolTextStyle;
-    final currencySymbolButtonStyle = style.currencySymbolButtonStyle ?? themeExtension.currencySymbolButtonStyle ?? const MyoroIconTextButtonStyle();
+    final currencySymbolButtonStyle =
+        style.currencySymbolButtonStyle ?? themeExtension.currencySymbolButtonStyle ?? const MyoroIconTextButtonStyle();
     final currencyPrefixPadding =
         style.currencyPrefixPadding ??
         themeExtension.currencyPrefixPadding ??
-        const EdgeInsets.only(top: kMyoroBorderWidth, bottom: kMyoroBorderWidth, left: kMyoroBorderWidth, right: kMyoroMultiplier);
+        const EdgeInsets.only(
+          top: kMyoroBorderWidth,
+          bottom: kMyoroBorderWidth,
+          left: kMyoroBorderWidth,
+          right: kMyoroMultiplier,
+        );
 
     final viewModel = context.read<MyoroCurrencyInputViewModel>();
     final disableDropdown = viewModel.disableDropdown;

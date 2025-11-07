@@ -7,6 +7,9 @@ final class _Menu<T> extends StatelessWidget {
   @override
   Widget build(context) {
     final style = context.watch<MyoroDropdownStyle>();
+    final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
+    final constraints = style.constraints ?? themeExtension.constraints;
+
     final viewModel = context.read<MyoroDropdownViewModel<T>>();
     final state = viewModel.state;
     final items = state.items;
@@ -16,10 +19,12 @@ final class _Menu<T> extends StatelessWidget {
     final dropdownType = state.dropdownType;
     final isModal = dropdownType.isModal;
     final isBottomSheet = dropdownType.isBottomSheet;
+
     return MyoroMenu(
       style: style.copyWith(
         border: isModal || isBottomSheet ? Border.all(width: 0) : null,
         borderProvided: isModal || isBottomSheet,
+        constraints: constraints,
       ),
       items: items,
       selectedItems: selectedItems,

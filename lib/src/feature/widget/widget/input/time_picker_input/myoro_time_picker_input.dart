@@ -12,7 +12,12 @@ class MyoroTimePickerInput extends StatefulWidget {
   static const String labelDefaultValue = 'Time';
 
   /// Default constructor.
-  const MyoroTimePickerInput({super.key, this.style = const MyoroInputStyle(), this.label = labelDefaultValue, required this.onChanged});
+  const MyoroTimePickerInput({
+    super.key,
+    this.style = const MyoroInputStyle(),
+    this.label = labelDefaultValue,
+    required this.onChanged,
+  });
 
   /// Style.
   final MyoroInputStyle style;

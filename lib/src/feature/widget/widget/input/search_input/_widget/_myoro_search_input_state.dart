@@ -9,7 +9,12 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
   @override
   void initState() {
     super.initState();
-    _viewModel = MyoroSearchInputViewModel(widget.label, widget.selectedItemBuilder, widget.request);
+    _viewModel = MyoroSearchInputViewModel(
+      widget.label,
+      widget.dropdownType,
+      widget.selectedItemBuilder,
+      widget.request,
+    );
   }
 
   /// Dispose function.
@@ -20,14 +25,22 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
   }
 
   @override
-  Widget build(_) {
+  Widget build(context) {
+    final themeExtension = context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
+    final dropdownConstraints = widget.style.dropdownConstraints ?? themeExtension.dropdownConstraints;
+
     final state = _viewModel.state;
     final showingController = state.showingController;
     final requestController = state.requestController;
     final selectedItemController = state.selectedItemController;
+    final dropdownType = state.dropdownType;
+    final inputKey = state.inputKey;
 
-    return InheritedProvider.value(
-      value: _viewModel,
+    return MultiProvider(
+      providers: [
+        InheritedProvider.value(value: widget.style),
+        InheritedProvider.value(value: _viewModel),
+      ],
       child: ListenableBuilder(
         listenable: Listenable.merge([requestController, selectedItemController]),
         builder: (_, _) {
@@ -37,9 +50,15 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
           final status = request.status;
 
           return MyoroDropdown<T>(
+            style: MyoroDropdownStyle(constraints: dropdownConstraints),
+            dropdownType: switch (dropdownType) {
+              MyoroSearchInputDropdownTypeEnum.overlay => MyoroDropdownTypeEnum.overlay,
+              MyoroSearchInputDropdownTypeEnum.expanding => MyoroDropdownTypeEnum.expanding,
+            },
             showingController: showingController,
             itemBuilder: widget.itemBuilder,
             selectedItems: {?selectedItem},
+            targetKey: inputKey,
             items: switch (status) {
               MyoroRequestEnum.idle => null,
               MyoroRequestEnum.loading => null,

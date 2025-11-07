@@ -3,15 +3,21 @@ part of 'myoro_search_input_view_model.dart';
 /// State of [MyoroSearchInputViewModel].
 class MyoroSearchInputState<T> {
   /// Default constructor.
-  MyoroSearchInputState(this.label, this.selectedItemBuilder, MyoroSearchInputRequest<T> request) {
+  MyoroSearchInputState(this.label, this.dropdownType, this.selectedItemBuilder, MyoroSearchInputRequest<T> request) {
     _requestController = MyoroRequestController(requestCallback: () => request(_inputController.text));
   }
 
   /// [MyoroSearchInput.label].
   final String label;
 
+  /// [MyoroSearchInput.dropdownType].
+  final MyoroSearchInputDropdownTypeEnum dropdownType;
+
   /// [MyoroSearchInput.selectedItemBuilder].
   final MyoroSearchInputSelectedItemBuilder<T> selectedItemBuilder;
+
+  /// [MyoroSearchInput.inputKey].
+  final _inputKey = GlobalKey();
 
   /// Showing controller.
   final _showingController = ValueNotifier(false);
@@ -61,6 +67,11 @@ class MyoroSearchInputState<T> {
   /// Getter of [_selectedItemController]'s value.
   T? get selectedItem {
     return _selectedItemController.value;
+  }
+
+  /// [_inputKey] getter.
+  GlobalKey get inputKey {
+    return _inputKey;
   }
 
   /// [_showingController] setter.

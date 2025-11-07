@@ -43,7 +43,7 @@ class MyoroIconTextButtonStyle extends MyoroButtonStyle with _$MyoroIconTextButt
     super.borderIdleColor,
     super.borderHoverColor,
     super.borderTapColor,
-    this.contentPadding,
+    super.contentPadding,
     this.spacing,
     this.textStyle,
   });
@@ -67,9 +67,6 @@ class MyoroIconTextButtonStyle extends MyoroButtonStyle with _$MyoroIconTextButt
       textStyle: myoroNullableFake<TextStyle>(),
     );
   }
-
-  /// [EdgeInsets] of the button.
-  final EdgeInsets? contentPadding;
 
   /// Spacing between the icon and text.
   final double? spacing;
