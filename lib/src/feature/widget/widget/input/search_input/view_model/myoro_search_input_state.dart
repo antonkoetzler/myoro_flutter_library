@@ -3,18 +3,43 @@ part of 'myoro_search_input_view_model.dart';
 /// State of [MyoroSearchInputViewModel].
 class MyoroSearchInputState<T> {
   /// Default constructor.
-  MyoroSearchInputState(this.label, this.dropdownType, this.selectedItemBuilder, MyoroSearchInputRequest<T> request) {
-    _requestController = MyoroRequestController(requestCallback: () => request(_inputController.text));
+  MyoroSearchInputState(
+    this.label,
+    this.dropdownType,
+    this._itemBuilder,
+    this.selectedItemBuilder,
+    MyoroSearchInputRequest<T> requestCallback,
+    this.onChanged,
+    this.onFieldSubmitted,
+    this.validation,
+    this.focusNode,
+  ) {
+    _requestController = MyoroRequestController(requestCallback: () => requestCallback(_inputController.text));
   }
 
   /// [MyoroSearchInput.label].
-  final String label;
+  String label;
 
   /// [MyoroSearchInput.dropdownType].
-  final MyoroSearchInputDropdownTypeEnum dropdownType;
+  MyoroSearchInputDropdownTypeEnum dropdownType;
+
+  /// [MyoroSearchInput.itemBuilder].
+  MyoroMenuItemBuilder<T> _itemBuilder;
 
   /// [MyoroSearchInput.selectedItemBuilder].
-  final MyoroSearchInputSelectedItemBuilder<T> selectedItemBuilder;
+  MyoroSearchInputSelectedItemBuilder<T> selectedItemBuilder;
+
+  /// [MyoroSearchInput.onChanged].
+  MyoroSearchInputOnChanged<T>? onChanged;
+
+  /// [MyoroSearchInput.onFieldSubmitted].
+  MyoroSearchInputOnFieldSubmitted<T>? onFieldSubmitted;
+
+  /// [MyoroSearchInput.validation].
+  MyoroSearchInputValidation<T>? validation;
+
+  /// [MyoroSearchInput.focusNode].
+  FocusNode? focusNode;
 
   /// [MyoroSearchInput.inputKey].
   final _inputKey = GlobalKey();
@@ -37,6 +62,19 @@ class MyoroSearchInputState<T> {
     _inputController.dispose();
     _requestController.dispose();
     _selectedItemController.dispose();
+  }
+
+  /// [_itemBuilder] getter.
+  MyoroMenuItemBuilder<T> get itemBuilder {
+    return (item) {
+      final menuItem = _itemBuilder(item);
+      return menuItem.copyWith(
+        onTapUp: (context) {
+          selectedItem = item;
+          showing = false;
+        },
+      );
+    };
   }
 
   /// [_showingController] getter.
@@ -74,6 +112,11 @@ class MyoroSearchInputState<T> {
     return _inputKey;
   }
 
+  /// [_itemBuilder] setter.
+  set itemBuilder(MyoroMenuItemBuilder<T> itemBuilder) {
+    _itemBuilder = itemBuilder;
+  }
+
   /// [_showingController] setter.
   set showing(bool value) {
     _showingController.value = value;
@@ -82,6 +125,11 @@ class MyoroSearchInputState<T> {
   /// [_requestController] setter.
   set request(MyoroRequest<Set<T>> request) {
     _requestController.value = request;
+  }
+
+  /// [MyoroRequestController.requestCallback] setter.
+  set requestCallback(MyoroSearchInputRequest<T> requestCallback) {
+    _requestController.requestCallback = () => requestCallback(_inputController.text);
   }
 
   /// [_selectedItemController] setter.

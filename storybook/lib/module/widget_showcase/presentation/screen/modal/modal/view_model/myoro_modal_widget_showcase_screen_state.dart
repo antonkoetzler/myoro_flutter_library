@@ -63,14 +63,6 @@ final class MyoroModalWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroModal.padding]
-  EdgeInsets? _padding;
-  EdgeInsets? get padding => _padding;
-  set padding(EdgeInsets? padding) {
-    _padding = padding;
-    notifyListeners();
-  }
-
   /// [MyoroModal.closeButtonPadding]
   EdgeInsets? _closeButtonPadding;
   EdgeInsets? get closeButtonPadding => _closeButtonPadding;
@@ -97,27 +89,11 @@ final class MyoroModalWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroModalThemeExtension.bottomSheetBorderRadius]
-  BorderRadius? _bottomSheetBorderRadius;
-  BorderRadius? get bottomSheetBorderRadius => _bottomSheetBorderRadius;
-  set bottomSheetBorderRadius(BorderRadius? bottomSheetBorderRadius) {
-    _bottomSheetBorderRadius = bottomSheetBorderRadius;
-    notifyListeners();
-  }
-
   /// [MyoroModalThemeExtension.border]
   Border? _border;
   Border? get border => _border;
   set border(Border? border) {
     _border = border;
-    notifyListeners();
-  }
-
-  /// [MyoroModalThemeExtension.bottomSheetBorder]
-  Border? _bottomSheetBorder;
-  Border? get bottomSheetBorder => _bottomSheetBorder;
-  set bottomSheetBorder(Border? bottomSheetBorder) {
-    _bottomSheetBorder = bottomSheetBorder;
     notifyListeners();
   }
 

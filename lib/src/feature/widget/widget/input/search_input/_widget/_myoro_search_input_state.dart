@@ -12,9 +12,30 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
     _viewModel = MyoroSearchInputViewModel(
       widget.label,
       widget.dropdownType,
+      widget.itemBuilder,
       widget.selectedItemBuilder,
-      widget.request,
+      widget.requestCallback,
+      widget.onChanged,
+      widget.onFieldSubmitted,
+      widget.validation,
+      widget.focusNode,
     );
+  }
+
+  /// Did update widget function.
+  @override
+  void didUpdateWidget(MyoroSearchInput<T> oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _viewModel.state
+      ..label = widget.label
+      ..dropdownType = widget.dropdownType
+      ..itemBuilder = widget.itemBuilder
+      ..selectedItemBuilder = widget.selectedItemBuilder
+      ..requestCallback = widget.requestCallback
+      ..onChanged = widget.onChanged
+      ..onFieldSubmitted = widget.onFieldSubmitted
+      ..validation = widget.validation
+      ..focusNode = widget.focusNode;
   }
 
   /// Dispose function.
@@ -35,6 +56,7 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
     final selectedItemController = state.selectedItemController;
     final dropdownType = state.dropdownType;
     final inputKey = state.inputKey;
+    final itemBuilder = state.itemBuilder;
 
     return MultiProvider(
       providers: [
@@ -56,7 +78,7 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
               MyoroSearchInputDropdownTypeEnum.expanding => MyoroDropdownTypeEnum.expanding,
             },
             showingController: showingController,
-            itemBuilder: widget.itemBuilder,
+            itemBuilder: itemBuilder,
             selectedItems: {?selectedItem},
             targetKey: inputKey,
             items: switch (status) {

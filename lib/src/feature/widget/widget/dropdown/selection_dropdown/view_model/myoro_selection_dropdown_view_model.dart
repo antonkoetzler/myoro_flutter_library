@@ -9,27 +9,28 @@ part 'myoro_single_selection_dropdown_state.dart';
 class MyoroSelectionDropdownViewModel<T> {
   /// Default constructor.
   MyoroSelectionDropdownViewModel(this.state) {
+    _formatItems();
     switch (state) {
       case final MyoroMultiSelectionDropdownState<T> state:
-        state.selectedItemsController.addListener(_listener);
+        state.selectedItemsController.addListener(_formatItems);
         break;
       case final MyoroSingleSelectionDropdownState<T> state:
-        state.selectedItemController.addListener(_listener);
+        state.selectedItemController.addListener(_formatItems);
         break;
     }
   }
 
   /// State.
-  final MyoroSelectionDropdownState<T> state;
+  MyoroSelectionDropdownState<T> state;
 
   /// Dispose function.
   void dispose() {
     switch (state) {
       case final MyoroMultiSelectionDropdownState<T> state:
-        state.selectedItemsController.removeListener(_listener);
+        state.selectedItemsController.removeListener(_formatItems);
         break;
       case final MyoroSingleSelectionDropdownState<T> state:
-        state.selectedItemController.removeListener(_listener);
+        state.selectedItemController.removeListener(_formatItems);
         break;
     }
 
@@ -42,7 +43,7 @@ class MyoroSelectionDropdownViewModel<T> {
   }
 
   /// Listener for [MyoroMultiSelectionDropdownState.selectedItemsController].
-  void _listener() {
+  void _formatItems() {
     final inputController = state.inputController;
     final selectedItemBuilder = state.selectedItemBuilder;
 

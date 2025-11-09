@@ -25,7 +25,11 @@ class MyoroSearchInput<T> extends StatefulWidget {
     this.dropdownType = dropdownTypeDefaultValue,
     required this.itemBuilder,
     required this.selectedItemBuilder,
-    required this.request,
+    required this.requestCallback,
+    this.onChanged,
+    this.onFieldSubmitted,
+    this.validation,
+    this.focusNode,
   });
 
   /// Style.
@@ -44,7 +48,19 @@ class MyoroSearchInput<T> extends StatefulWidget {
   final MyoroSearchInputSelectedItemBuilder<T> selectedItemBuilder;
 
   /// Items builder.
-  final MyoroSearchInputRequest<T> request;
+  final MyoroSearchInputRequest<T> requestCallback;
+
+  /// On changed.
+  final MyoroSearchInputOnChanged<T>? onChanged;
+
+  /// On field submitted.
+  final MyoroSearchInputOnFieldSubmitted<T>? onFieldSubmitted;
+
+  /// Validation.
+  final MyoroSearchInputValidation<T>? validation;
+
+  /// Focus node.
+  final FocusNode? focusNode;
 
   /// Create state function.
   @override

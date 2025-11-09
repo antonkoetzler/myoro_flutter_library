@@ -2,9 +2,7 @@ part of '../widget/myoro_image_picker.dart';
 
 /// Tappable overlay on top of the selected image region in [MyoroImagePicker].
 final class _Overlay extends StatelessWidget {
-  const _Overlay(this._selectedImageIsNotNull);
-
-  final bool _selectedImageIsNotNull;
+  const _Overlay();
 
   @override
   Widget build(context) {
@@ -20,9 +18,12 @@ final class _Overlay extends StatelessWidget {
         style.overlayBackgroundHoverColor ?? imagePickerThemeExtension.overlayBackgroundHoverColor;
     final overlayBackgroundTapColor =
         style.overlayBackgroundTapColor ?? imagePickerThemeExtension.overlayBackgroundTapColor;
+    final labelTextStyle = style.labelTextStyle ?? imagePickerThemeExtension.labelTextStyle;
 
     final viewModel = context.read<MyoroImagePickerViewModel>();
     final openPickerAndUpdateSelectedImage = viewModel.openPickerAndUpdateSelectedImage;
+    final state = viewModel.state;
+    final label = state.label;
 
     return MyoroButton(
       style: const MyoroButtonStyle().copyWith(
@@ -34,12 +35,17 @@ final class _Overlay extends StatelessWidget {
       onTapUp: (_) => MyoroPlatformHelper.isMobile
           ? _SelectionTypeModal.show(context, style, viewModel)
           : openPickerAndUpdateSelectedImage(),
-      builder: (_, _) => _selectedImageIsNotNull
-          ? const SizedBox.shrink()
-          : Icon(
-              overlayUnselectedImageStateIconConfiguration?.icon ?? Icons.upload,
-              size: overlayUnselectedImageStateIconConfiguration?.size ?? kMyoroMultiplier * 20,
-            ),
+      builder: (_, _) => Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            overlayUnselectedImageStateIconConfiguration?.icon ?? Icons.upload,
+            size: overlayUnselectedImageStateIconConfiguration?.size ?? kMyoroMultiplier * 20,
+          ),
+          if (label.isNotEmpty) Text(label, style: labelTextStyle),
+        ],
+      ),
     );
   }
 }

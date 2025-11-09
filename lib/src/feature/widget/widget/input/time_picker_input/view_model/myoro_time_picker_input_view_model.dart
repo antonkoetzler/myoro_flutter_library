@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 part 'myoro_time_picker_input_state.dart';
@@ -7,8 +6,13 @@ part 'myoro_time_picker_input_state.dart';
 /// View model of [MyoroTimePickerInput].
 class MyoroTimePickerInputViewModel {
   /// Default constructor.
-  MyoroTimePickerInputViewModel(String label, MyoroTimePickerInputOnChanged onChanged)
-    : _state = MyoroTimePickerInputState(label, onChanged);
+  MyoroTimePickerInputViewModel(
+    String label,
+    MyoroTimePickerInputValidation? validation,
+    MyoroTimePickerInputOnChanged onChanged,
+  ) : _state = MyoroTimePickerInputState(label, validation, onChanged) {
+    _state.timeController.addListener(_timeControllerListener);
+  }
 
   /// State.
   final MyoroTimePickerInputState _state;
@@ -26,10 +30,21 @@ class MyoroTimePickerInputViewModel {
       builder: (_, child) => builder(child),
     );
     if (time == null) return;
-    final now = DateTime.now();
-    final date = now.copyWith(hour: time.hour, minute: time.minute);
-    _state.inputController.text = DateFormat.Hm().format(date);
-    _state.onChanged(date);
+    _state.time = time;
+  }
+
+  /// Listener of [MyoroTimePickerInputState.timeController].
+  void _timeControllerListener() {
+    final time = _state.time;
+    if (time == null) {
+      _state
+        ..inputController.text = kMyoroEmptyString
+        ..onChanged(time);
+    } else {
+      _state
+        ..inputController.text = '${time.hour}:${time.minute}'
+        ..onChanged(time);
+    }
   }
 
   /// [_state] getter.

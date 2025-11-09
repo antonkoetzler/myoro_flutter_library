@@ -9,9 +9,24 @@ class MyoroSearchInputViewModel<T> {
   MyoroSearchInputViewModel(
     String label,
     MyoroSearchInputDropdownTypeEnum dropdownType,
+    MyoroMenuItemBuilder<T> itemBuilder,
     MyoroSearchInputSelectedItemBuilder<T> selectedItemBuilder,
     MyoroSearchInputRequest<T> request,
-  ) : _state = MyoroSearchInputState(label, dropdownType, selectedItemBuilder, request) {
+    MyoroSearchInputOnChanged<T>? onChanged,
+    MyoroSearchInputOnFieldSubmitted<T>? onFieldSubmitted,
+    MyoroSearchInputValidation<T>? validation,
+    FocusNode? focusNode,
+  ) : _state = MyoroSearchInputState(
+        label,
+        dropdownType,
+        itemBuilder,
+        selectedItemBuilder,
+        request,
+        onChanged,
+        onFieldSubmitted,
+        validation,
+        focusNode,
+      ) {
     _state
       ..selectedItemController.addListener(_selectedItemControllerListener)
       ..inputController.addListener(_inputControllerListener);
@@ -29,6 +44,7 @@ class MyoroSearchInputViewModel<T> {
   void _selectedItemControllerListener() {
     final selectedItem = _state.selectedItem;
     _state.inputController.text = selectedItem != null ? _state.selectedItemBuilder(selectedItem) : kMyoroEmptyString;
+    _state.onChanged?.call(selectedItem);
   }
 
   /// Listener of [MyoroSearchInputState.inputController].

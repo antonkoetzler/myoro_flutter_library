@@ -12,6 +12,10 @@ class _Input<T> extends StatelessWidget {
     final enabled = state.enabled;
     final label = state.label;
     final onTap = viewModel.onTap;
+    final canShowClearTextButton = switch (state) {
+      MyoroMultiSelectionDropdownState<T>() => true,
+      MyoroSingleSelectionDropdownState<T>() => state.allowDeselection,
+    };
     return MyoroInput(
       label: label,
       inputKey: inputKey,
@@ -20,6 +24,7 @@ class _Input<T> extends StatelessWidget {
       enableInteractiveSelection: false,
       readOnly: true,
       onTap: onTap,
+      canShowClearTextButton: canShowClearTextButton,
     );
   }
 }

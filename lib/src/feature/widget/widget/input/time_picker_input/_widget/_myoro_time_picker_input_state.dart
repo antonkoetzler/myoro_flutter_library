@@ -9,7 +9,7 @@ final class _MyoroTimePickerInputState extends State<MyoroTimePickerInput> {
   @override
   void initState() {
     super.initState();
-    _viewModel = MyoroTimePickerInputViewModel(widget.label, widget.onChanged);
+    _viewModel = MyoroTimePickerInputViewModel(widget.label, widget.validation, widget.onChanged);
   }
 
   /// Dispose function.

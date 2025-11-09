@@ -7,8 +7,8 @@ class _Base<T> extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final localizations = context.localizations;
-    final myoroMenuErrorGettingItemsText = localizations.myoroMenuErrorGettingItemsText;
+    final localization = context.localization;
+    final myoroMenuErrorGettingItemsText = localization.myoroMenuErrorGettingItemsText;
 
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
     final style = context.watch<MyoroMenuStyle>();

@@ -11,12 +11,14 @@ final class _Input extends StatelessWidget {
     final onTap = viewModel.openTimePicker;
     final state = viewModel.state;
     final inputController = state.inputController;
+    final validation = state.validation;
     final label = state.label;
     return MyoroInput(
       label: label,
       controller: inputController,
       onTap: () => onTap(context, (child) => _TimePicker(child!)),
       style: style,
+      validation: validation != null ? (d) => validation.call(state.time) : null,
     );
   }
 }

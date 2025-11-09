@@ -40,6 +40,8 @@ mixin _$MyoroImagePickerThemeExtensionMixin on ThemeExtension<MyoroImagePickerTh
     bool selectionTypeModalButtonCameraIconProvided = true,
     IconData? selectionTypeModalButtonGalleryIcon,
     bool selectionTypeModalButtonGalleryIconProvided = true,
+    TextStyle? labelTextStyle,
+    bool labelTextStyleProvided = true,
   }) {
     return MyoroImagePickerThemeExtension(
       size: sizeProvided ? (size ?? self.size) : null,
@@ -69,6 +71,7 @@ mixin _$MyoroImagePickerThemeExtensionMixin on ThemeExtension<MyoroImagePickerTh
       selectionTypeModalButtonGalleryIcon: selectionTypeModalButtonGalleryIconProvided
           ? (selectionTypeModalButtonGalleryIcon ?? self.selectionTypeModalButtonGalleryIcon)
           : null,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
     );
   }
 
@@ -86,7 +89,8 @@ mixin _$MyoroImagePickerThemeExtensionMixin on ThemeExtension<MyoroImagePickerTh
         other.selectionTypeModalConstraints == self.selectionTypeModalConstraints &&
         other.selectionTypeModalSpacing == self.selectionTypeModalSpacing &&
         other.selectionTypeModalButtonCameraIcon == self.selectionTypeModalButtonCameraIcon &&
-        other.selectionTypeModalButtonGalleryIcon == self.selectionTypeModalButtonGalleryIcon;
+        other.selectionTypeModalButtonGalleryIcon == self.selectionTypeModalButtonGalleryIcon &&
+        other.labelTextStyle == self.labelTextStyle;
   }
 
   @override
@@ -103,6 +107,7 @@ mixin _$MyoroImagePickerThemeExtensionMixin on ThemeExtension<MyoroImagePickerTh
       self.selectionTypeModalSpacing,
       self.selectionTypeModalButtonCameraIcon,
       self.selectionTypeModalButtonGalleryIcon,
+      self.labelTextStyle,
     );
   }
 
@@ -120,5 +125,6 @@ mixin _$MyoroImagePickerThemeExtensionMixin on ThemeExtension<MyoroImagePickerTh
       '  selectionTypeModalSpacing: ${self.selectionTypeModalSpacing},\n'
       '  selectionTypeModalButtonCameraIcon: ${self.selectionTypeModalButtonCameraIcon},\n'
       '  selectionTypeModalButtonGalleryIcon: ${self.selectionTypeModalButtonGalleryIcon},\n'
+      '  labelTextStyle: ${self.labelTextStyle},\n'
       ');';
 }

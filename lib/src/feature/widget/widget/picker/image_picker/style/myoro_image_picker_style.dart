@@ -41,6 +41,7 @@ class MyoroImagePickerStyle with _$MyoroImagePickerStyleMixin {
         b?.selectionTypeModalButtonGalleryIcon,
         t,
       ),
+      labelTextStyle: TextStyle.lerp(a?.labelTextStyle, b?.labelTextStyle, t),
     );
   }
 
@@ -57,6 +58,7 @@ class MyoroImagePickerStyle with _$MyoroImagePickerStyleMixin {
     this.selectionTypeModalSpacing,
     this.selectionTypeModalButtonCameraIcon,
     this.selectionTypeModalButtonGalleryIcon,
+    this.labelTextStyle,
   });
 
   /// Fake constructor.
@@ -75,6 +77,7 @@ class MyoroImagePickerStyle with _$MyoroImagePickerStyleMixin {
       selectionTypeModalSpacing: myoroNullableFake<double>(),
       selectionTypeModalButtonCameraIcon: myoroNullableFake<IconData>(),
       selectionTypeModalButtonGalleryIcon: myoroNullableFake<IconData>(),
+      labelTextStyle: myoroNullableFake<TextStyle>(),
     );
   }
 
@@ -110,4 +113,7 @@ class MyoroImagePickerStyle with _$MyoroImagePickerStyleMixin {
 
   /// Gallery icon of the selection type modal button.
   final IconData? selectionTypeModalButtonGalleryIcon;
+
+  /// Spacing of the icon and label in the overlay.
+  final TextStyle? labelTextStyle;
 }

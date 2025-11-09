@@ -22,6 +22,7 @@ final class _TextFormField extends StatelessWidget {
         style.prefixIconConstraints ??
         themeExtension.prefixIconConstraints ??
         const BoxConstraints(minWidth: 0, minHeight: 0);
+    final labelTextStyle = style.labelTextStyle ?? themeExtension.labelTextStyle;
 
     final viewModel = context.watch<MyoroInputViewModel>();
     final state = viewModel.state;
@@ -79,7 +80,8 @@ final class _TextFormField extends StatelessWidget {
                     mouseCursor: onTap != null ? SystemMouseCursors.click : null,
                     decoration: InputDecoration(
                       floatingLabelBehavior: style.labelBehavior ?? themeExtension.labelBehavior,
-                      label: label.isNotEmpty ? const _Label() : null,
+                      labelText: label.isNotEmpty ? label : null,
+                      floatingLabelStyle: labelTextStyle,
                       hintText: placeholder.isNotEmpty ? placeholder : null,
                       hintStyle: textStyle?.withColor(
                         textStyle.color!.withValues(alpha: style.disabledOpacity ?? themeExtension.disabledOpacity),
@@ -87,6 +89,11 @@ final class _TextFormField extends StatelessWidget {
                       enabledBorder: border,
                       focusedBorder: border,
                       errorBorder: border?.copyWith(
+                        borderSide: border.borderSide.copyWith(
+                          color: style.errorBorderColor ?? themeExtension.errorBorderColor,
+                        ),
+                      ),
+                      focusedErrorBorder: border?.copyWith(
                         borderSide: border.borderSide.copyWith(
                           color: style.errorBorderColor ?? themeExtension.errorBorderColor,
                         ),

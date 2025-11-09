@@ -14,7 +14,12 @@ final class _MyoroCurrencyInputState extends State<MyoroCurrencyInput> {
       widget.max,
       widget.decimalPlaces,
       widget.currency,
+      widget.canChangeCurrency,
+      widget.autofocus,
       widget.onChanged,
+      widget.focusNode,
+      widget.controller,
+      widget.onFieldSubmitted,
     );
   }
 
@@ -27,7 +32,13 @@ final class _MyoroCurrencyInputState extends State<MyoroCurrencyInput> {
       ..min = widget.min
       ..max = widget.max
       ..decimalPlaces = widget.decimalPlaces
-      ..onChanged = widget.onChanged;
+      ..selectedCurrency = widget.currency
+      ..canChangeCurrency = widget.canChangeCurrency
+      ..autofocus = widget.autofocus
+      ..onChanged = widget.onChanged
+      ..focusNode = widget.focusNode
+      ..controller = widget.controller
+      ..onFieldSubmitted = widget.onFieldSubmitted;
   }
 
   /// Dispose function.
@@ -43,17 +54,24 @@ final class _MyoroCurrencyInputState extends State<MyoroCurrencyInput> {
     final state = _viewModel.state;
     final showingController = state.showingController;
     final itemBuilder = _viewModel.itemBuilder;
+    final selectedCurrencyController = state.selectedCurrencyController;
 
     return MultiProvider(
       providers: [
         InheritedProvider.value(value: widget.style),
         InheritedProvider.value(value: _viewModel),
       ],
-      child: MyoroDropdown(
-        showingController: showingController,
-        items: MyoroCurrencyEnum.values.toSet(),
-        itemBuilder: itemBuilder,
-        child: const _Input(),
+      child: ValueListenableBuilder(
+        valueListenable: selectedCurrencyController,
+        builder: (_, selectedCurrency, _) {
+          return MyoroDropdown(
+            showingController: showingController,
+            items: MyoroCurrencyEnum.values.toSet(),
+            itemBuilder: itemBuilder,
+            selectedItems: {selectedCurrency},
+            child: const _Input(),
+          );
+        },
       ),
     );
   }

@@ -7,7 +7,7 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(context) {
     return MyoroSearchInput(
-      request: (_) async {
+      requestCallback: (_) async {
         await Future.delayed(const Duration(seconds: 1));
         return {'Start', 'End'};
       },

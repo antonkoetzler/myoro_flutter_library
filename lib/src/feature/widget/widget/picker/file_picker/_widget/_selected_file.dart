@@ -17,7 +17,7 @@ final class _SelectedFile extends StatelessWidget {
     return ValueListenableBuilder(
       valueListenable: selectedFileNotifier,
       builder: (_, selectedFile, _) =>
-          Text(selectedFile?.name ?? context.localizations.myoroFilePickerSelectedFileUnselectedText, style: textStyle),
+          Text(selectedFile?.name ?? context.localization.myoroFilePickerSelectedFileUnselectedText, style: textStyle),
     );
   }
 }

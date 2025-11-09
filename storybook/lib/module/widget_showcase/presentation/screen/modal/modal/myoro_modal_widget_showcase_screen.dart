@@ -6,14 +6,11 @@ import 'package:storybook/storybook.dart';
 part '_widget/_barrier_dismissable_option.dart';
 part '_widget/_border_option.dart';
 part '_widget/_border_radius_option.dart';
-part '_widget/_bottom_sheet_border_option.dart';
-part '_widget/_bottom_sheet_border_radius_option.dart';
 part '_widget/_close_button_icon_configuration_option.dart';
 part '_widget/_close_button_padding_option.dart';
 part '_widget/_constraints_option.dart';
 part '_widget/_is_bottom_sheet_option.dart';
 part '_widget/_on_closed_option.dart';
-part '_widget/_padding_option.dart';
 part '_widget/_primary_color_option.dart';
 part '_widget/_show_close_button_option.dart';
 part '_widget/_spacing_option.dart';
@@ -39,10 +36,7 @@ final class MyoroModalWidgetShowcaseScreen extends StatelessWidget {
     _ConstraintsOption(),
     _PrimaryColorOption(),
     _BorderRadiusOption(),
-    _BottomSheetBorderRadiusOption(),
     _BorderOption(),
-    _BottomSheetBorderOption(),
-    _PaddingOption(),
     _CloseButtonPaddingOption(),
     _SpacingOption(),
     _TitleTextStyleOption(),

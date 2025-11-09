@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 /// Extension for [BuildContext].
 extension MyoroBuildContextExtension on BuildContext {
   /// Returns the MFL localization.
-  AppLocalizations get localizations => AppLocalizations.of(this)!;
+  AppLocalizations get localization => AppLocalizations.of(this)!;
 
   /// Returns if the application is using [ThemeMode.dark]
   /// (dark mode) or [ThemeMode.light] (light mode).

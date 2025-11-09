@@ -6,4 +6,10 @@ extension MyoroStringExtension on String {
     final words = split(' ');
     return words.map((word) => '${word[0].toUpperCase()}${word.substring(1)}').join(' ');
   }
+
+  /// Decapitalizes a [String].
+  String get decapitalized {
+    if (isEmpty) return this;
+    return '${this[0].toLowerCase()}${substring(1)}';
+  }
 }

@@ -21,6 +21,7 @@ final class _Widget extends StatelessWidget {
               min: state.min,
               max: state.max,
               decimalPlaces: state.decimalPlaces,
+              onChanged: (_) {},
             );
           },
         );

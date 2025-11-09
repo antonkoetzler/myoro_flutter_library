@@ -129,7 +129,10 @@ List<ThemeExtension> _createModalThemeExtensions(ColorScheme colorScheme, TextTh
 }
 
 List<ThemeExtension> _createPickerThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
-  return [MyoroFilePickerThemeExtension.builder(textTheme), MyoroImagePickerThemeExtension.builder(colorScheme)];
+  return [
+    MyoroFilePickerThemeExtension.builder(textTheme),
+    MyoroImagePickerThemeExtension.builder(colorScheme, textTheme),
+  ];
 }
 
 List<ThemeExtension> _createRadioThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {

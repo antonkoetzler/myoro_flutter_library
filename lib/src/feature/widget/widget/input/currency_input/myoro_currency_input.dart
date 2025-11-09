@@ -20,6 +20,12 @@ class MyoroCurrencyInput extends StatefulWidget {
   /// Default value for [decimalPlaces].
   static const decimalPlacesDefaultValue = 0;
 
+  /// Default value for [canChangeCurrency].
+  static const canChangeCurrencyDefaultValue = true;
+
+  /// Default value for [autofocus].
+  static const autofocusDefaultValue = false;
+
   /// Default constructor.
   const MyoroCurrencyInput({
     super.key,
@@ -28,7 +34,12 @@ class MyoroCurrencyInput extends StatefulWidget {
     this.min = minDefaultValue,
     this.max,
     this.decimalPlaces = decimalPlacesDefaultValue,
+    this.canChangeCurrency = canChangeCurrencyDefaultValue,
+    this.autofocus = autofocusDefaultValue,
     required this.onChanged,
+    this.focusNode,
+    this.controller,
+    this.onFieldSubmitted,
   });
 
   /// Style.
@@ -46,8 +57,23 @@ class MyoroCurrencyInput extends StatefulWidget {
   /// Decimal places.
   final int decimalPlaces;
 
+  /// If the user can select another currency.
+  final bool canChangeCurrency;
+
+  /// Whether the input should autofocus.
+  final bool autofocus;
+
   /// On changed.
   final MyoroCurrencyInputOnChanged onChanged;
+
+  /// [FocusNode].
+  final FocusNode? focusNode;
+
+  /// [TextEditingController].
+  final TextEditingController? controller;
+
+  /// On field submitted.
+  final MyoroCurrencyInputOnFieldSubmitted? onFieldSubmitted;
 
   @override
   State<MyoroCurrencyInput> createState() => _MyoroCurrencyInputState();

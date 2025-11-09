@@ -26,7 +26,7 @@ final class _Prefix extends StatelessWidget {
         );
 
     final viewModel = context.read<MyoroCurrencyInputViewModel>();
-    final disableDropdown = viewModel.disableDropdown;
+    final toggleDropdown = viewModel.toggleDropdown;
 
     return Padding(
       padding: currencyPrefixPadding,
@@ -34,7 +34,7 @@ final class _Prefix extends StatelessWidget {
         child: MyoroIconTextButton(
           style: currencySymbolButtonStyle,
           textConfiguration: MyoroTextConfiguration(text: _selectedCurrency.longSymbol, style: currencySymbolTextStyle),
-          onTapUp: (_) => disableDropdown(),
+          onTapUp: viewModel.state.canChangeCurrency ? (_) => toggleDropdown() : null,
         ),
       ),
     );

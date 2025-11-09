@@ -39,6 +39,8 @@ mixin _$MyoroImagePickerStyleMixin {
     bool selectionTypeModalButtonCameraIconProvided = true,
     IconData? selectionTypeModalButtonGalleryIcon,
     bool selectionTypeModalButtonGalleryIconProvided = true,
+    TextStyle? labelTextStyle,
+    bool labelTextStyleProvided = true,
   }) {
     return MyoroImagePickerStyle(
       size: sizeProvided ? (size ?? self.size) : null,
@@ -68,6 +70,7 @@ mixin _$MyoroImagePickerStyleMixin {
       selectionTypeModalButtonGalleryIcon: selectionTypeModalButtonGalleryIconProvided
           ? (selectionTypeModalButtonGalleryIcon ?? self.selectionTypeModalButtonGalleryIcon)
           : null,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
     );
   }
 
@@ -85,7 +88,8 @@ mixin _$MyoroImagePickerStyleMixin {
         other.selectionTypeModalConstraints == self.selectionTypeModalConstraints &&
         other.selectionTypeModalSpacing == self.selectionTypeModalSpacing &&
         other.selectionTypeModalButtonCameraIcon == self.selectionTypeModalButtonCameraIcon &&
-        other.selectionTypeModalButtonGalleryIcon == self.selectionTypeModalButtonGalleryIcon;
+        other.selectionTypeModalButtonGalleryIcon == self.selectionTypeModalButtonGalleryIcon &&
+        other.labelTextStyle == self.labelTextStyle;
   }
 
   @override
@@ -102,6 +106,7 @@ mixin _$MyoroImagePickerStyleMixin {
       self.selectionTypeModalSpacing,
       self.selectionTypeModalButtonCameraIcon,
       self.selectionTypeModalButtonGalleryIcon,
+      self.labelTextStyle,
     );
   }
 
@@ -119,5 +124,6 @@ mixin _$MyoroImagePickerStyleMixin {
       '  selectionTypeModalSpacing: ${self.selectionTypeModalSpacing},\n'
       '  selectionTypeModalButtonCameraIcon: ${self.selectionTypeModalButtonCameraIcon},\n'
       '  selectionTypeModalButtonGalleryIcon: ${self.selectionTypeModalButtonGalleryIcon},\n'
+      '  labelTextStyle: ${self.labelTextStyle},\n'
       ');';
 }

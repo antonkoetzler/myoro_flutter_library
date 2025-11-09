@@ -25,6 +25,7 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
     this.selectionTypeModalSpacing,
     this.selectionTypeModalButtonCameraIcon,
     this.selectionTypeModalButtonGalleryIcon,
+    this.labelTextStyle,
   });
 
   /// Fake constructor.
@@ -41,10 +42,12 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
       selectionTypeModalConstraints = myoroNullableFake<BoxConstraints>(),
       selectionTypeModalSpacing = myoroNullableFake<double>(),
       selectionTypeModalButtonCameraIcon = myoroNullableFake<IconData>(),
-      selectionTypeModalButtonGalleryIcon = myoroNullableFake<IconData>();
+      selectionTypeModalButtonGalleryIcon = myoroNullableFake<IconData>(),
+      labelTextStyle = myoroNullableFake<TextStyle>();
 
-  MyoroImagePickerThemeExtension.builder(ColorScheme colorScheme)
-    : size = null,
+  /// Builder constructor.
+  MyoroImagePickerThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
+    : size = const Size(double.infinity, kMyoroMultiplier * 30),
       borderRadius = BorderRadius.circular(kMyoroBorderRadius),
       overlayCursor = SystemMouseCursors.click,
       overlayBackgroundIdleColor = colorScheme.onPrimary.withValues(alpha: kMyoroMultiplier * 2 / 100),
@@ -59,7 +62,8 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
           : null,
       selectionTypeModalSpacing = kMyoroMultiplier * 2,
       selectionTypeModalButtonCameraIcon = Icons.camera,
-      selectionTypeModalButtonGalleryIcon = Icons.browse_gallery;
+      selectionTypeModalButtonGalleryIcon = Icons.browse_gallery,
+      labelTextStyle = textTheme.bodyMedium;
 
   /// Size of the [MyoroImagePicker].
   @override
@@ -105,6 +109,10 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
   @override
   final IconData? selectionTypeModalButtonGalleryIcon;
 
+  /// Spacing of the icon and label in the overlay.
+  @override
+  final TextStyle? labelTextStyle;
+
   @override
   MyoroImagePickerThemeExtension lerp(covariant MyoroImagePickerThemeExtension? other, double t) {
     if (other is! MyoroImagePickerThemeExtension) return this;
@@ -121,6 +129,7 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
       selectionTypeModalSpacing: style.selectionTypeModalSpacing,
       selectionTypeModalButtonCameraIcon: style.selectionTypeModalButtonCameraIcon,
       selectionTypeModalButtonGalleryIcon: style.selectionTypeModalButtonGalleryIcon,
+      labelTextStyle: style.labelTextStyle,
     );
   }
 }

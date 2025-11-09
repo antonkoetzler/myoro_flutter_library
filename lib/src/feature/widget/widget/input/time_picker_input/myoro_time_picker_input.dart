@@ -16,6 +16,7 @@ class MyoroTimePickerInput extends StatefulWidget {
     super.key,
     this.style = const MyoroInputStyle(),
     this.label = labelDefaultValue,
+    this.validation,
     required this.onChanged,
   });
 
@@ -24,6 +25,9 @@ class MyoroTimePickerInput extends StatefulWidget {
 
   /// Label.
   final String label;
+
+  /// Validation.
+  final MyoroTimePickerInputValidation? validation;
 
   /// Callback executed when the time changed.
   final MyoroTimePickerInputOnChanged onChanged;

@@ -44,7 +44,7 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension>
       primaryColor = colorScheme.primary,
       borderRadius = BorderRadius.circular(kMyoroBorderRadius),
       border = Border.all(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
-      contentPadding = const EdgeInsets.all(kMyoroMultiplier * 2),
+      contentPadding = null,
       closeButtonPadding = null,
       spacing = 10,
       titleTextStyle = textTheme.titleSmall!,

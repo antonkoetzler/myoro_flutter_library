@@ -16,11 +16,23 @@ final class MyoroImagePicker extends StatefulWidget {
   /// Default value of [style].
   static const styleDefaultValue = MyoroImagePickerStyle();
 
+  /// Default value of [label].
+  static const labelDefaultValue = kMyoroEmptyString;
+
   /// Default constructor.
-  const MyoroImagePicker({super.key, this.style = styleDefaultValue, this.selectedImage, required this.onChanged});
+  const MyoroImagePicker({
+    super.key,
+    this.style = styleDefaultValue,
+    this.label = labelDefaultValue,
+    this.selectedImage,
+    required this.onChanged,
+  });
 
   /// Style.
   final MyoroImagePickerStyle style;
+
+  /// Label.
+  final String label;
 
   /// Selected image.
   final String? selectedImage;
@@ -28,6 +40,7 @@ final class MyoroImagePicker extends StatefulWidget {
   /// Callback executed when an image is selected or unselected.
   final MyoroImagePickerOnChanged onChanged;
 
+  /// Create state function.
   @override
   State<MyoroImagePicker> createState() => _MyoroImagePickerState();
 }

@@ -6,8 +6,8 @@ part 'myoro_image_picker_state.dart';
 
 /// View model of [MyoroImagePicker].
 final class MyoroImagePickerViewModel {
-  MyoroImagePickerViewModel(String? selectedImage, MyoroImagePickerOnChanged onChanged)
-    : _state = MyoroImagePickerState(selectedImage, onChanged) {
+  MyoroImagePickerViewModel(String label, String? selectedImage, MyoroImagePickerOnChanged onChanged)
+    : _state = MyoroImagePickerState(label, selectedImage, onChanged) {
     _state.selectedImageNotifier.addListener(() => onChanged(_state.selectedImage));
   }
 

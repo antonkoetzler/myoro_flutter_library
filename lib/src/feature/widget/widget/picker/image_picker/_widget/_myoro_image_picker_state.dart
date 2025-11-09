@@ -9,7 +9,7 @@ final class _MyoroImagePickerState extends State<MyoroImagePicker> {
   @override
   void initState() {
     super.initState();
-    _viewModel = MyoroImagePickerViewModel(widget.selectedImage, widget.onChanged);
+    _viewModel = MyoroImagePickerViewModel(widget.label, widget.selectedImage, widget.onChanged);
   }
 
   /// Dispose function.

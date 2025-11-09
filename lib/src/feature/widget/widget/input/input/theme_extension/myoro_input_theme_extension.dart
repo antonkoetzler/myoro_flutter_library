@@ -83,7 +83,10 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
       ),
       disabledOpacity = 0.5,
       inputTextStyle = textTheme.bodyMedium!,
-      labelTextStyle = textTheme.headlineMedium!,
+      labelTextStyle = WidgetStateTextStyle.resolveWith((Set<WidgetState> states) {
+        final color = states.contains(WidgetState.error) ? colorScheme.error : colorScheme.onPrimary;
+        return textTheme.headlineMedium!.withColor(color);
+      }),
       labelBehavior = FloatingLabelBehavior.always,
       spacing = kMyoroMultiplier * 2.5,
       suffixButtonMargin = const EdgeInsets.fromLTRB(

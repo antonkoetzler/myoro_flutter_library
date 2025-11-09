@@ -116,26 +116,15 @@ class MyoroCurrencyInputThemeExtension extends ThemeExtension<MyoroCurrencyInput
           right: kMyoroMultiplier * 1.2,
         ),
       ),
-      currencySymbolTextStyle = textTheme.bodyMedium!,
+      currencySymbolTextStyle = textTheme.bodySmall!,
       currencySymbolButtonStyle = MyoroIconTextButtonStyle(
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(kMyoroBorderRadius - 2),
-          bottomLeft: Radius.circular(kMyoroBorderRadius - 2),
-        ),
-        contentPadding: const EdgeInsets.only(
-          top: kMyoroMultiplier * 2,
-          bottom: kMyoroMultiplier * 2 + 2,
-          left: kMyoroMultiplier * 2,
-          right: kMyoroMultiplier * 2,
-        ),
+        borderRadius: BorderRadius.circular(kMyoroBorderRadius),
         backgroundIdleColor: isDarkMode
             ? decorationThemeExtension.primaryBackgroundHoverColor?.darken(0.25)
             : decorationThemeExtension.primaryBackgroundHoverColor?.brighten(0.25),
       ),
       currencyPrefixPadding = const EdgeInsets.only(
-        top: kMyoroBorderWidth + 0.1,
-        bottom: kMyoroBorderWidth + 0.1,
-        left: kMyoroBorderWidth,
+        left: kMyoroBorderWidth + kMyoroMultiplier * 1.5,
         right: kMyoroMultiplier,
       );
 

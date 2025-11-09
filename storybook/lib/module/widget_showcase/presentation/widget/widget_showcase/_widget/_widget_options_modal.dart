@@ -21,7 +21,6 @@ final class _WidgetOptionsModal extends StatelessWidget {
       title: 'Options of $widgetName',
       useRootNavigator: false,
       style: modalThemeExtension.copyWith(
-        padding: EdgeInsets.zero,
         constraints: BoxConstraints(maxHeight: screenHeight * 0.9, maxWidth: screenWidth * 0.75),
         titleTextStyle: widgetShowcaseScreenThemeExtension.widgetOptionsModalTitleTextStyle,
       ),

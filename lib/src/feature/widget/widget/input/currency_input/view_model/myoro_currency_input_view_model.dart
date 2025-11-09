@@ -11,8 +11,24 @@ class MyoroCurrencyInputViewModel {
     double? max,
     int decimalPlaces,
     MyoroCurrencyEnum currency,
+    bool canChangeCurrency,
+    bool autofocus,
     MyoroCurrencyInputOnChanged onChanged,
-  ) : _state = MyoroCurrencyInputState(min, max, decimalPlaces, currency, onChanged);
+    FocusNode? focusNode,
+    TextEditingController? controller,
+    MyoroCurrencyInputOnFieldSubmitted? onFieldSubmitted,
+  ) : _state = MyoroCurrencyInputState(
+        min,
+        max,
+        decimalPlaces,
+        currency,
+        canChangeCurrency,
+        autofocus,
+        onChanged,
+        focusNode,
+        controller,
+        onFieldSubmitted,
+      );
 
   /// State.
   final MyoroCurrencyInputState _state;
@@ -22,14 +38,21 @@ class MyoroCurrencyInputViewModel {
     _state.dispose();
   }
 
-  /// Disables the dropdown.
-  void disableDropdown() {
-    state.showing = false;
+  /// Toggles the dropdown.
+  void toggleDropdown() {
+    state.showing = !state.showing;
   }
 
   /// [MyoroDropdown.itemBuilder]
   MyoroMenuItem itemBuilder(MyoroCurrencyEnum currency) {
-    return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: currency.longSymbol));
+    return MyoroMenuIconTextButtonItem(
+      textConfiguration: MyoroTextConfiguration(text: currency.longSymbol),
+      onTapUp: (_) {
+        state
+          ..selectedCurrency = currency
+          ..showing = false;
+      },
+    );
   }
 
   /// [_state] getter.

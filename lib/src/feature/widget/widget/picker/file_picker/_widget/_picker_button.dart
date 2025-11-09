@@ -17,7 +17,7 @@ final class _PickerButton extends StatelessWidget {
       child: MyoroIconTextButton(
         style: const MyoroIconTextButtonStyle().bordered(context),
         textConfiguration: MyoroTextConfiguration(
-          text: context.localizations.myoroFilePickerPickerButtonText,
+          text: context.localization.myoroFilePickerPickerButtonText,
           style: textStyle,
         ),
 
