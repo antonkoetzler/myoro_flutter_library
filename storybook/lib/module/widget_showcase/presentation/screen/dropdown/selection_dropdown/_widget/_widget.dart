@@ -18,7 +18,7 @@ final class _Widget extends StatelessWidget {
           child: MyoroSingleSelectionDropdown(
             dropdownType: viewModel.state.singleDropdownType,
             items: List.generate(faker.randomGenerator.integer(10), (i) => 'Item #$i').toSet(),
-            itemBuilder: (item) {
+            itemBuilder: (item, _) {
               return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: item));
             },
             selectedItemBuilder: (item) => item,
@@ -28,7 +28,7 @@ final class _Widget extends StatelessWidget {
           child: MyoroMultiSelectionDropdown(
             dropdownType: viewModel.state.multiDropdownType,
             items: List.generate(faker.randomGenerator.integer(10), (i) => 'Item #$i').toSet(),
-            itemBuilder: (item) {
+            itemBuilder: (item, _) {
               return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: item));
             },
             selectedItemBuilder: (item) => item,

@@ -14,8 +14,8 @@ sealed class MyoroSelectionDropdownState<T> {
   ) {
     _showingController = showingController ?? (_localShowingController ??= ValueNotifier(false));
 
-    this.itemBuilder = (item) {
-      final menuItem = itemBuilder(item);
+    this.itemBuilder = (item, isLast) {
+      final menuItem = itemBuilder(item, isLast);
       return menuItem.copyWith(
         onTapUp: (details) {
           menuItem.onTapUp?.call(details);

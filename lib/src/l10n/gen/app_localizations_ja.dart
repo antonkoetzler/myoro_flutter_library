@@ -906,8 +906,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get myoroCountryEnumSaintLuciaLabel => 'セントルシア';
 
   @override
-  String get myoroCountryEnumSaintVincentAndTheGrenadinesLabel =>
-      'セントビンセント・グレナディーン';
+  String get myoroCountryEnumSaintVincentAndTheGrenadinesLabel => 'セントビンセント・グレナディーン';
 
   @override
   String get myoroCountryEnumSamoaLabel => 'サモア';

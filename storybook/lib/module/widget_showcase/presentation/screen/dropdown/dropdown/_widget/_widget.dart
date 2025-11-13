@@ -26,7 +26,7 @@ final class _Widget extends StatelessWidget {
           searchCallback: searchCallback,
           dropdownType: dropdownType,
           targetKey: targetKey,
-          itemBuilder: (item) {
+          itemBuilder: (item, _) {
             return MyoroMenuButtonItem(
               builder: (context, tapStatusEnum) => Text(item),
               onTapUp: (_) => state.selectedItems = {if (!state.selectedItems.contains(item)) item},

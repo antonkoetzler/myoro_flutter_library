@@ -14,7 +14,7 @@ final class _SingleDropdownTypeOption extends StatelessWidget {
       onChanged: (type) => viewModel.state.singleDropdownType = type!,
       items: MyoroDropdownTypeEnum.values.toSet(),
       selectedItem: viewModel.state.singleDropdownType,
-      itemBuilder: (type) {
+      itemBuilder: (type, _) {
         return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: type.name.capitalized));
       },
     );

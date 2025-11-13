@@ -18,7 +18,7 @@ final class _SelectionSwitcher extends StatelessWidget {
       label: 'Selection type',
       onChanged: (value) => state.modeEnum = value!,
       selectedItemBuilder: formattedName,
-      itemBuilder: (value) {
+      itemBuilder: (value, _) {
         return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: formattedName(value)));
       },
       items: PaddingWidgetShowcaseOptionEnum.values.toSet(),

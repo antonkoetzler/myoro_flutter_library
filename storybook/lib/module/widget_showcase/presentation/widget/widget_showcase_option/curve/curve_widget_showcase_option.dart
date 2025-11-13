@@ -53,7 +53,7 @@ final class CurveWidgetShowcaseOption extends StatelessWidget {
                   .firstWhere((entry) => entry.value == c, orElse: () => const MapEntry('custom', Curves.linear))
                   .key,
       onChanged: onChanged,
-      itemBuilder: (curve) {
+      itemBuilder: (curve, _) {
         final name = _curves.entries.firstWhere((entry) => entry.value == curve).key;
         return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: name));
       },

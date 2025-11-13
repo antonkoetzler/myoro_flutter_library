@@ -27,7 +27,7 @@ final class MouseCursorWidgetShowcaseOption extends StatelessWidget {
       label: label,
       selectedItemBuilder: _getCursorName,
       onChanged: onChanged,
-      itemBuilder: (cursor) {
+      itemBuilder: (cursor, _) {
         return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: _getCursorName(cursor)));
       },
       items: kMyoroTestCursors.toSet(),

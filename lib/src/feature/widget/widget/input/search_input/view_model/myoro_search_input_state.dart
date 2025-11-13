@@ -66,8 +66,8 @@ class MyoroSearchInputState<T> {
 
   /// [_itemBuilder] getter.
   MyoroMenuItemBuilder<T> get itemBuilder {
-    return (item) {
-      final menuItem = _itemBuilder(item);
+    return (item, isLast) {
+      final menuItem = _itemBuilder(item, isLast);
       return menuItem.copyWith(
         onTapUp: (context) {
           selectedItem = item;

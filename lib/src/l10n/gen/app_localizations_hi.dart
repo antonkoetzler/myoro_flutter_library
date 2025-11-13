@@ -12,8 +12,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get myoroFilePickerPickerButtonText => 'ब्राउज़ करें';
 
   @override
-  String get myoroFilePickerSelectedFileUnselectedText =>
-      'कोई फ़ाइल चयनित नहीं है।';
+  String get myoroFilePickerSelectedFileUnselectedText => 'कोई फ़ाइल चयनित नहीं है।';
 
   @override
   String get myoroFilePickerDefaultDialogTitle => 'फ़ाइल चुनें';
@@ -22,12 +21,10 @@ class AppLocalizationsHi extends AppLocalizations {
   String get myoroImagePickerSelectionTypeModalText => 'छवि स्रोत चुनें';
 
   @override
-  String get myoroImagePickerSelectionTypeModalButtonCameraText =>
-      'कैमरा खोलें';
+  String get myoroImagePickerSelectionTypeModalButtonCameraText => 'कैमरा खोलें';
 
   @override
-  String get myoroImagePickerSelectionTypeModalButtonGalleryText =>
-      'गैलरी ब्राउज़ करें';
+  String get myoroImagePickerSelectionTypeModalButtonGalleryText => 'गैलरी ब्राउज़ करें';
 
   @override
   String get myoroMenuErrorGettingItemsText => 'आइटम प्राप्त करने में त्रुटि।';
@@ -102,8 +99,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get myoroCurrencyEnumAllFormalName => 'अल्बानियाई लेक';
 
   @override
-  String get myoroCurrencyEnumBamFormalName =>
-      'बोस्निया और हर्ज़ेगोविना परिवर्तनीय मार्क';
+  String get myoroCurrencyEnumBamFormalName => 'बोस्निया और हर्ज़ेगोविना परिवर्तनीय मार्क';
 
   @override
   String get myoroCurrencyEnumMxnFormalName => 'मैक्सिकन पेसो';
@@ -532,8 +528,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get myoroCountryEnumBoliviaLabel => 'बोलीविया';
 
   @override
-  String get myoroCountryEnumBosniaAndHerzegovinaLabel =>
-      'बोस्निया और हर्ज़ेगोविना';
+  String get myoroCountryEnumBosniaAndHerzegovinaLabel => 'बोस्निया और हर्ज़ेगोविना';
 
   @override
   String get myoroCountryEnumBotswanaLabel => 'बोत्सवाना';
@@ -566,8 +561,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get myoroCountryEnumCapeVerdeLabel => 'केप वर्ड';
 
   @override
-  String get myoroCountryEnumCentralAfricanRepublicLabel =>
-      'मध्य अफ़्रीकी गणराज्य';
+  String get myoroCountryEnumCentralAfricanRepublicLabel => 'मध्य अफ़्रीकी गणराज्य';
 
   @override
   String get myoroCountryEnumChadLabel => 'चाड';
@@ -912,8 +906,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get myoroCountryEnumSaintLuciaLabel => 'सेंट लूसिया';
 
   @override
-  String get myoroCountryEnumSaintVincentAndTheGrenadinesLabel =>
-      'सेंट विंसेंट और ग्रेनाडाइंस';
+  String get myoroCountryEnumSaintVincentAndTheGrenadinesLabel => 'सेंट विंसेंट और ग्रेनाडाइंस';
 
   @override
   String get myoroCountryEnumSamoaLabel => 'समोआ';

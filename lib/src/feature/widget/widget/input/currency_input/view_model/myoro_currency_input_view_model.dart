@@ -44,7 +44,7 @@ class MyoroCurrencyInputViewModel {
   }
 
   /// [MyoroDropdown.itemBuilder]
-  MyoroMenuItem itemBuilder(MyoroCurrencyEnum currency) {
+  MyoroMenuItem itemBuilder(MyoroCurrencyEnum currency, _) {
     return MyoroMenuIconTextButtonItem(
       textConfiguration: MyoroTextConfiguration(text: currency.longSymbol),
       onTapUp: (_) {

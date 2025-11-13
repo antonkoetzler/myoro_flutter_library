@@ -34,7 +34,7 @@ final class ColorWidgetShowcaseOption extends StatelessWidget {
       selectedItem: selectedColor,
       onChanged: onChanged,
       selectedItemBuilder: (color) => color.hexadecimalFormat,
-      itemBuilder: (color) {
+      itemBuilder: (color, _) {
         return MyoroMenuButtonItem(
           builder: (_, _) {
             return Padding(

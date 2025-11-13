@@ -11,7 +11,7 @@ final class _Widget extends StatelessWidget {
         await Future.delayed(const Duration(seconds: 1));
         return {'Start', 'End'};
       },
-      itemBuilder: (item) {
+      itemBuilder: (item, _) {
         return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: item));
       },
       selectedItemBuilder: (item) {

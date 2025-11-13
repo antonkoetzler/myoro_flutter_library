@@ -28,7 +28,7 @@ final class _ItemsSection<T> extends StatelessWidget {
                 final isLast = index == items.length - 1;
                 return Padding(
                   padding: EdgeInsets.only(bottom: isLast ? 0 : itemsSectionSpacing),
-                  child: _Item<T>(item, itemBuilder(item)),
+                  child: _Item<T>(item, itemBuilder(item, isLast)),
                 );
               },
             ),

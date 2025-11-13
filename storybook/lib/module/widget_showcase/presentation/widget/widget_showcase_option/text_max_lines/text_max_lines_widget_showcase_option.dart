@@ -28,7 +28,7 @@ final class TextMaxLinesWidgetShowcaseOption extends StatelessWidget {
       label: label,
       onChanged: onChanged,
       selectedItemBuilder: (value) => value.toString(),
-      itemBuilder: (value) {
+      itemBuilder: (value, _) {
         return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: value.toString()));
       },
       items: List.generate(10, (int index) => index + 1).toSet(),

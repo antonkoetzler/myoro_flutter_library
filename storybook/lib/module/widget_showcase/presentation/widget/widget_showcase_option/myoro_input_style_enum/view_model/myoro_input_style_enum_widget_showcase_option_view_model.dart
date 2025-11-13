@@ -9,7 +9,7 @@ final class MyoroInputStyleEnumWidgetShowcaseOptionViewModel {
   }
 
   /// [MyoroMenuConfiguration.itemBuilder]
-  MyoroMenuItem itemBuilder(MyoroInputStyleEnum item) {
+  MyoroMenuItem itemBuilder(MyoroInputStyleEnum item, _) {
     return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: item.name.capitalized));
   }
 }
