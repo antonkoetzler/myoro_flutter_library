@@ -1,27 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Enum encapsulating the days of the week.
+@JsonEnum()
 enum MyoroDayEnum {
   /// Monday.
+  @JsonValue('MONDAY')
   monday,
 
   /// Tuesday.
+  @JsonValue('TUESDAY')
   tuesday,
 
   /// Wednesday.
+  @JsonValue('WEDNESDAY')
   wednesday,
 
   /// Thursday.
+  @JsonValue('THURSDAY')
   thursday,
 
   /// Friday.
+  @JsonValue('FRIDAY')
   friday,
 
   /// Saturday.
+  @JsonValue('SATURDAY')
   saturday,
 
   /// Sunday.
+  @JsonValue('SUNDAY')
   sunday;
 
   /// Label.

@@ -38,6 +38,7 @@ dependencies:
   file_picker: ^10.2.4
   mocktail: ^1.0.4
   collection: ^1.19.1
+  json_annotation: ^4.9.0
 
 dev_dependencies:
   flutter_test:

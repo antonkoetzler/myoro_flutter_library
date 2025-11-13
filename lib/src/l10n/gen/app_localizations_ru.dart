@@ -18,16 +18,20 @@ class AppLocalizationsRu extends AppLocalizations {
   String get myoroFilePickerDefaultDialogTitle => 'Выбрать файл';
 
   @override
-  String get myoroImagePickerSelectionTypeModalText => 'Выбрать источник изображения';
+  String get myoroImagePickerSelectionTypeModalText =>
+      'Выбрать источник изображения';
 
   @override
-  String get myoroImagePickerSelectionTypeModalButtonCameraText => 'Открыть камеру';
+  String get myoroImagePickerSelectionTypeModalButtonCameraText =>
+      'Открыть камеру';
 
   @override
-  String get myoroImagePickerSelectionTypeModalButtonGalleryText => 'Просмотреть галерею';
+  String get myoroImagePickerSelectionTypeModalButtonGalleryText =>
+      'Просмотреть галерею';
 
   @override
-  String get myoroMenuErrorGettingItemsText => 'Ошибка при получении элементов.';
+  String get myoroMenuErrorGettingItemsText =>
+      'Ошибка при получении элементов.';
 
   @override
   String get myoroCurrencyEnumUsdFormalName => 'Доллар США';
@@ -99,7 +103,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get myoroCurrencyEnumAllFormalName => 'Албанский лек';
 
   @override
-  String get myoroCurrencyEnumBamFormalName => 'Конвертируемая марка Боснии и Герцеговины';
+  String get myoroCurrencyEnumBamFormalName =>
+      'Конвертируемая марка Боснии и Герцеговины';
 
   @override
   String get myoroCurrencyEnumMxnFormalName => 'Мексиканское песо';
@@ -351,7 +356,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get myoroCurrencyEnumCdfFormalName => 'Конголезский франк';
 
   @override
-  String get myoroCurrencyEnumXafFormalName => 'Центральноафриканский франк КФА';
+  String get myoroCurrencyEnumXafFormalName =>
+      'Центральноафриканский франк КФА';
 
   @override
   String get myoroCurrencyEnumXofFormalName => 'Западноафриканский франк КФА';
@@ -528,7 +534,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get myoroCountryEnumBoliviaLabel => 'Боливия';
 
   @override
-  String get myoroCountryEnumBosniaAndHerzegovinaLabel => 'Босния и Герцеговина';
+  String get myoroCountryEnumBosniaAndHerzegovinaLabel =>
+      'Босния и Герцеговина';
 
   @override
   String get myoroCountryEnumBotswanaLabel => 'Ботсвана';
@@ -561,7 +568,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get myoroCountryEnumCapeVerdeLabel => 'Кабо-Верде';
 
   @override
-  String get myoroCountryEnumCentralAfricanRepublicLabel => 'Центральноафриканская Республика';
+  String get myoroCountryEnumCentralAfricanRepublicLabel =>
+      'Центральноафриканская Республика';
 
   @override
   String get myoroCountryEnumChadLabel => 'Чад';
@@ -606,7 +614,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get myoroCountryEnumDominicaLabel => 'Доминика';
 
   @override
-  String get myoroCountryEnumDominicanRepublicLabel => 'Доминиканская Республика';
+  String get myoroCountryEnumDominicanRepublicLabel =>
+      'Доминиканская Республика';
 
   @override
   String get myoroCountryEnumDrCongoLabel => 'ДР Конго';
@@ -906,7 +915,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get myoroCountryEnumSaintLuciaLabel => 'Сент-Люсия';
 
   @override
-  String get myoroCountryEnumSaintVincentAndTheGrenadinesLabel => 'Сент-Винсент и Гренадины';
+  String get myoroCountryEnumSaintVincentAndTheGrenadinesLabel =>
+      'Сент-Винсент и Гренадины';
 
   @override
   String get myoroCountryEnumSamoaLabel => 'Самоа';

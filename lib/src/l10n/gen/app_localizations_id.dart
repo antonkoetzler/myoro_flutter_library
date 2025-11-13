@@ -12,7 +12,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get myoroFilePickerPickerButtonText => 'Jelajahi';
 
   @override
-  String get myoroFilePickerSelectedFileUnselectedText => 'Tidak ada file yang dipilih.';
+  String get myoroFilePickerSelectedFileUnselectedText =>
+      'Tidak ada file yang dipilih.';
 
   @override
   String get myoroFilePickerDefaultDialogTitle => 'Pilih File';
@@ -21,10 +22,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get myoroImagePickerSelectionTypeModalText => 'Pilih sumber gambar';
 
   @override
-  String get myoroImagePickerSelectionTypeModalButtonCameraText => 'Buka kamera';
+  String get myoroImagePickerSelectionTypeModalButtonCameraText =>
+      'Buka kamera';
 
   @override
-  String get myoroImagePickerSelectionTypeModalButtonGalleryText => 'Jelajahi galeri';
+  String get myoroImagePickerSelectionTypeModalButtonGalleryText =>
+      'Jelajahi galeri';
 
   @override
   String get myoroMenuErrorGettingItemsText => 'Kesalahan saat mengambil item.';
@@ -99,7 +102,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get myoroCurrencyEnumAllFormalName => 'Lek Albania';
 
   @override
-  String get myoroCurrencyEnumBamFormalName => 'Mark Konvertibel Bosnia dan Herzegovina';
+  String get myoroCurrencyEnumBamFormalName =>
+      'Mark Konvertibel Bosnia dan Herzegovina';
 
   @override
   String get myoroCurrencyEnumMxnFormalName => 'Peso Meksiko';
@@ -528,7 +532,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get myoroCountryEnumBoliviaLabel => 'Bolivia';
 
   @override
-  String get myoroCountryEnumBosniaAndHerzegovinaLabel => 'Bosnia dan Herzegovina';
+  String get myoroCountryEnumBosniaAndHerzegovinaLabel =>
+      'Bosnia dan Herzegovina';
 
   @override
   String get myoroCountryEnumBotswanaLabel => 'Botswana';
@@ -561,7 +566,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get myoroCountryEnumCapeVerdeLabel => 'Tanjung Verde';
 
   @override
-  String get myoroCountryEnumCentralAfricanRepublicLabel => 'Republik Afrika Tengah';
+  String get myoroCountryEnumCentralAfricanRepublicLabel =>
+      'Republik Afrika Tengah';
 
   @override
   String get myoroCountryEnumChadLabel => 'Chad';
@@ -906,7 +912,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get myoroCountryEnumSaintLuciaLabel => 'Saint Lucia';
 
   @override
-  String get myoroCountryEnumSaintVincentAndTheGrenadinesLabel => 'Saint Vincent dan Grenadines';
+  String get myoroCountryEnumSaintVincentAndTheGrenadinesLabel =>
+      'Saint Vincent dan Grenadines';
 
   @override
   String get myoroCountryEnumSamoaLabel => 'Samoa';
