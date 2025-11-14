@@ -21,13 +21,16 @@ class AppLocalizationsPl extends AppLocalizations {
   String get myoroImagePickerSelectionTypeModalText => 'Wybierz źródło obrazu';
 
   @override
-  String get myoroImagePickerSelectionTypeModalButtonCameraText => 'Otwórz aparat';
+  String get myoroImagePickerSelectionTypeModalButtonCameraText =>
+      'Otwórz aparat';
 
   @override
-  String get myoroImagePickerSelectionTypeModalButtonGalleryText => 'Przeglądaj galerię';
+  String get myoroImagePickerSelectionTypeModalButtonGalleryText =>
+      'Przeglądaj galerię';
 
   @override
-  String get myoroMenuErrorGettingItemsText => 'Błąd podczas pobierania elementów.';
+  String get myoroMenuErrorGettingItemsText =>
+      'Błąd podczas pobierania elementów.';
 
   @override
   String get myoroCurrencyEnumUsdFormalName => 'Dolar amerykański';
@@ -99,7 +102,8 @@ class AppLocalizationsPl extends AppLocalizations {
   String get myoroCurrencyEnumAllFormalName => 'Lek albański';
 
   @override
-  String get myoroCurrencyEnumBamFormalName => 'Marka zamienna Bośni i Hercegowiny';
+  String get myoroCurrencyEnumBamFormalName =>
+      'Marka zamienna Bośni i Hercegowiny';
 
   @override
   String get myoroCurrencyEnumMxnFormalName => 'Peso meksykańskie';
@@ -195,7 +199,8 @@ class AppLocalizationsPl extends AppLocalizations {
   String get myoroCurrencyEnumSarFormalName => 'Rial saudyjski';
 
   @override
-  String get myoroCurrencyEnumAedFormalName => 'Dirham Zjednoczonych Emiratów Arabskich';
+  String get myoroCurrencyEnumAedFormalName =>
+      'Dirham Zjednoczonych Emiratów Arabskich';
 
   @override
   String get myoroCurrencyEnumQarFormalName => 'Rial katarski';
@@ -459,7 +464,8 @@ class AppLocalizationsPl extends AppLocalizations {
   String get myoroCurrencyEnumIskFormalName => 'Korona islandzka';
 
   @override
-  String get myoroCurrencyEnumStnFormalName => 'Dobra Wysp Świętego Tomasza i Książęcej';
+  String get myoroCurrencyEnumStnFormalName =>
+      'Dobra Wysp Świętego Tomasza i Książęcej';
 
   @override
   String get myoroCurrencyEnumTwdFormalName => 'Nowy dolar tajwański';
@@ -528,7 +534,8 @@ class AppLocalizationsPl extends AppLocalizations {
   String get myoroCountryEnumBoliviaLabel => 'Boliwia';
 
   @override
-  String get myoroCountryEnumBosniaAndHerzegovinaLabel => 'Bośnia i Hercegowina';
+  String get myoroCountryEnumBosniaAndHerzegovinaLabel =>
+      'Bośnia i Hercegowina';
 
   @override
   String get myoroCountryEnumBotswanaLabel => 'Botswana';
@@ -561,7 +568,8 @@ class AppLocalizationsPl extends AppLocalizations {
   String get myoroCountryEnumCapeVerdeLabel => 'Republika Zielonego Przylądka';
 
   @override
-  String get myoroCountryEnumCentralAfricanRepublicLabel => 'Republika Środkowoafrykańska';
+  String get myoroCountryEnumCentralAfricanRepublicLabel =>
+      'Republika Środkowoafrykańska';
 
   @override
   String get myoroCountryEnumChadLabel => 'Czad';
@@ -906,7 +914,8 @@ class AppLocalizationsPl extends AppLocalizations {
   String get myoroCountryEnumSaintLuciaLabel => 'Saint Lucia';
 
   @override
-  String get myoroCountryEnumSaintVincentAndTheGrenadinesLabel => 'Saint Vincent i Grenadyny';
+  String get myoroCountryEnumSaintVincentAndTheGrenadinesLabel =>
+      'Saint Vincent i Grenadyny';
 
   @override
   String get myoroCountryEnumSamoaLabel => 'Samoa';
@@ -915,7 +924,8 @@ class AppLocalizationsPl extends AppLocalizations {
   String get myoroCountryEnumSanMarinoLabel => 'San Marino';
 
   @override
-  String get myoroCountryEnumSaoTomeAndPrincipeLabel => 'Wyspy Świętego Tomasza i Książęca';
+  String get myoroCountryEnumSaoTomeAndPrincipeLabel =>
+      'Wyspy Świętego Tomasza i Książęca';
 
   @override
   String get myoroCountryEnumSaudiArabiaLabel => 'Arabia Saudyjska';
@@ -1020,7 +1030,8 @@ class AppLocalizationsPl extends AppLocalizations {
   String get myoroCountryEnumUkraineLabel => 'Ukraina';
 
   @override
-  String get myoroCountryEnumUnitedArabEmiratesLabel => 'Zjednoczone Emiraty Arabskie';
+  String get myoroCountryEnumUnitedArabEmiratesLabel =>
+      'Zjednoczone Emiraty Arabskie';
 
   @override
   String get myoroCountryEnumUnitedKingdomLabel => 'Wielka Brytania';

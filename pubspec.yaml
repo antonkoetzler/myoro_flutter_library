@@ -39,6 +39,7 @@ dependencies:
   mocktail: ^1.0.4
   collection: ^1.19.1
   json_annotation: ^4.9.0
+  flutter_svg: ^2.2.2
 
 dev_dependencies:
   flutter_test:

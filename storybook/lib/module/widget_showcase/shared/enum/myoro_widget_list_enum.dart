@@ -20,14 +20,9 @@ enum MyoroWidgetListEnum {
   feedbacks('Feedbacks', {myoroFeedbackTitle}),
   forms('Forms', {myoroFormTitle}),
   graphs('Graphs', {myoroBarGraphTitle, myoroPieGraphTitle}),
+  images('Images', {myoroImageTitle}),
   indexedStacks('Indexed Stacks', {myoroIndexedStackTitle}),
-  inputs('Inputs', {
-    myoroCurrencyInputTitle,
-    myoroDatePickerInputTitle,
-    myoroInputTitle,
-    myoroSearchInputTitle,
-    myoroTimePickerInputTitle,
-  }),
+  inputs('Inputs', {myoroCurrencyInputTitle, myoroDatePickerInputTitle, myoroInputTitle, myoroSearchInputTitle, myoroTimePickerInputTitle}),
   layoutBuilders('Layout Builders', {myoroLayoutBuilderTitle}),
   loaders('Loaders', {myoroCircularLoaderTitle}),
   menus('Menus', {myoroMenusTitle}),
@@ -97,6 +92,9 @@ enum MyoroWidgetListEnum {
   // Graphs
   static const myoroBarGraphTitle = 'MyoroBarGraph';
   static const myoroPieGraphTitle = 'MyoroPieGraph';
+
+  // Images
+  static const myoroImageTitle = 'MyoroImage';
 
   // Indexed stacks
   static const myoroIndexedStackTitle = 'MyoroIndexedStack';
@@ -196,6 +194,9 @@ enum MyoroWidgetListEnum {
       // Graphs
       myoroBarGraphTitle => const MyoroBarGraphWidgetShowcaseScreen(),
       myoroPieGraphTitle => const MyoroPieGraphWidgetShowcaseScreen(),
+
+      // Images
+      myoroImageTitle => const MyoroImageWidgetShowcaseScreen(),
 
       // Indexed stacks
       myoroIndexedStackTitle => const MyoroIndexedStackWidgetShowcaseScreen(),

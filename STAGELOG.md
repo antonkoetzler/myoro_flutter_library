@@ -2,6 +2,7 @@
 
 - feature: `MyoroCurrencyInput`
 - feature: `myoroNullableFake`
+- feature: `MyoroImage`
 - (**IN PROGRESS**) feature: Full documentation of the project via Notion, not markdown
 - feature: `MyoroCountryEnum`
 - feature: Adding all languages, countries, localizations, and currencies

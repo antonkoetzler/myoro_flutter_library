@@ -21,10 +21,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get myoroImagePickerSelectionTypeModalText => 'اختر مصدر الصورة';
 
   @override
-  String get myoroImagePickerSelectionTypeModalButtonCameraText => 'فتح الكاميرا';
+  String get myoroImagePickerSelectionTypeModalButtonCameraText =>
+      'فتح الكاميرا';
 
   @override
-  String get myoroImagePickerSelectionTypeModalButtonGalleryText => 'تصفح المعرض';
+  String get myoroImagePickerSelectionTypeModalButtonGalleryText =>
+      'تصفح المعرض';
 
   @override
   String get myoroMenuErrorGettingItemsText => 'خطأ في الحصول على العناصر.';
@@ -99,7 +101,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get myoroCurrencyEnumAllFormalName => 'الليك الألباني';
 
   @override
-  String get myoroCurrencyEnumBamFormalName => 'المارك القابل للتحويل في البوسنة والهرسك';
+  String get myoroCurrencyEnumBamFormalName =>
+      'المارك القابل للتحويل في البوسنة والهرسك';
 
   @override
   String get myoroCurrencyEnumMxnFormalName => 'البيزو المكسيكي';
@@ -561,7 +564,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get myoroCountryEnumCapeVerdeLabel => 'الرأس الأخضر';
 
   @override
-  String get myoroCountryEnumCentralAfricanRepublicLabel => 'جمهورية أفريقيا الوسطى';
+  String get myoroCountryEnumCentralAfricanRepublicLabel =>
+      'جمهورية أفريقيا الوسطى';
 
   @override
   String get myoroCountryEnumChadLabel => 'تشاد';
@@ -906,7 +910,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get myoroCountryEnumSaintLuciaLabel => 'سانت لوسيا';
 
   @override
-  String get myoroCountryEnumSaintVincentAndTheGrenadinesLabel => 'سانت فنسنت والغرينادين';
+  String get myoroCountryEnumSaintVincentAndTheGrenadinesLabel =>
+      'سانت فنسنت والغرينادين';
 
   @override
   String get myoroCountryEnumSamoaLabel => 'ساموا';
@@ -1020,7 +1025,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get myoroCountryEnumUkraineLabel => 'أوكرانيا';
 
   @override
-  String get myoroCountryEnumUnitedArabEmiratesLabel => 'الإمارات العربية المتحدة';
+  String get myoroCountryEnumUnitedArabEmiratesLabel =>
+      'الإمارات العربية المتحدة';
 
   @override
   String get myoroCountryEnumUnitedKingdomLabel => 'المملكة المتحدة';

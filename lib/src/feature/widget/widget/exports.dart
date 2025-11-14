@@ -11,6 +11,7 @@ export 'dropdown/exports.dart';
 export 'feedback/exports.dart';
 export 'form/exports.dart';
 export 'graph/exports.dart';
+export 'image/exports.dart';
 export 'indexed_stack/exports.dart';
 export 'input/exports.dart';
 export 'layout_builder/exports.dart';
