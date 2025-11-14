@@ -10,7 +10,7 @@ final class _CloseButtonIconConfigurationOption extends StatelessWidget {
 
     return IconWidgetShowcaseOption(
       configuration: IconWidgetShowcaseOptionConfiguration(
-        label: 'Close button icon',
+        label: localization.storybookWidgetShowcaseOptionCloseButtonIconLabel,
         selectedIcon: viewModel.state.closeButtonIconConfiguration?.icon,
         iconOnChanged: (icon) {
           final currentConfig = viewModel.state.closeButtonIconConfiguration;

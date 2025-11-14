@@ -8,6 +8,9 @@ final class _ConfirmButtonTextOption extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroDialogModalWidgetShowcaseScreenViewModel>();
 
-    return MyoroInput(label: 'Confirm button text', onChanged: (text) => viewModel.state.confirmButtonText = text);
+    return MyoroInput(
+      label: localization.storybookWidgetShowcaseOptionConfirmButtonTextLabel,
+      onChanged: (text) => viewModel.state.confirmButtonText = text,
+    );
   }
 }

@@ -15,11 +15,11 @@ final class _SelectionSwitcher extends StatelessWidget {
     }
 
     return MyoroSingleSelectionDropdown<PaddingWidgetShowcaseOptionEnum>(
-      label: 'Selection type',
+      label: localization.storybookWidgetShowcaseOptionSelectionTypeLabel,
       onChanged: (value) => state.modeEnum = value!,
       selectedItemBuilder: formattedName,
       itemBuilder: (value, _) {
-        return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: formattedName(value)));
+        return MyoroMenuIconTextButtonItem(text: formattedName(value));
       },
       items: PaddingWidgetShowcaseOptionEnum.values.toSet(),
       selectedItem: modeEnum,

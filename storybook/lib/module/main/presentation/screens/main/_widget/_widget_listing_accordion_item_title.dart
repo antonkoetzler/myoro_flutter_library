@@ -8,6 +8,6 @@ final class _WidgetListingAccordionItemTitle extends StatelessWidget {
 
   @override
   Widget build(_) {
-    return Text(_widgetCategory.categoryName);
+    return Text(_widgetCategory.getLocalizedCategoryName(localization));
   }
 }

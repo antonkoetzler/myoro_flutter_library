@@ -24,11 +24,16 @@ class AppLocalizationsTh extends AppLocalizations {
   String get myoroImagePickerSelectionTypeModalButtonCameraText => 'เปิดกล้อง';
 
   @override
-  String get myoroImagePickerSelectionTypeModalButtonGalleryText =>
-      'เรียกดูแกลเลอรี';
+  String get myoroImagePickerSelectionTypeModalButtonGalleryText => 'เรียกดูแกลเลอรี';
 
   @override
   String get myoroMenuErrorGettingItemsText => 'เกิดข้อผิดพลาดในการดึงรายการ';
+
+  @override
+  String get myoroDialogModalCancelButtonText => 'ยกเลิก';
+
+  @override
+  String get myoroDialogModalConfirmButtonText => 'ยืนยัน';
 
   @override
   String get myoroCurrencyEnumUsdFormalName => 'ดอลลาร์สหรัฐ';
@@ -100,8 +105,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get myoroCurrencyEnumAllFormalName => 'เลกแอลเบเนีย';
 
   @override
-  String get myoroCurrencyEnumBamFormalName =>
-      'มาร์กแปลงสภาพบอสเนียและเฮอร์เซโกวีนา';
+  String get myoroCurrencyEnumBamFormalName => 'มาร์กแปลงสภาพบอสเนียและเฮอร์เซโกวีนา';
 
   @override
   String get myoroCurrencyEnumMxnFormalName => 'เปโซเม็กซิโก';
@@ -530,8 +534,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get myoroCountryEnumBoliviaLabel => 'โบลิเวีย';
 
   @override
-  String get myoroCountryEnumBosniaAndHerzegovinaLabel =>
-      'บอสเนียและเฮอร์เซโกวีนา';
+  String get myoroCountryEnumBosniaAndHerzegovinaLabel => 'บอสเนียและเฮอร์เซโกวีนา';
 
   @override
   String get myoroCountryEnumBotswanaLabel => 'บอตสวานา';
@@ -564,8 +567,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get myoroCountryEnumCapeVerdeLabel => 'เคปเวิร์ด';
 
   @override
-  String get myoroCountryEnumCentralAfricanRepublicLabel =>
-      'สาธารณรัฐแอฟริกากลาง';
+  String get myoroCountryEnumCentralAfricanRepublicLabel => 'สาธารณรัฐแอฟริกากลาง';
 
   @override
   String get myoroCountryEnumChadLabel => 'ชาด';
@@ -910,8 +912,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get myoroCountryEnumSaintLuciaLabel => 'เซนต์ลูเซีย';
 
   @override
-  String get myoroCountryEnumSaintVincentAndTheGrenadinesLabel =>
-      'เซนต์วินเซนต์และเกรนาดีนส์';
+  String get myoroCountryEnumSaintVincentAndTheGrenadinesLabel => 'เซนต์วินเซนต์และเกรนาดีนส์';
 
   @override
   String get myoroCountryEnumSamoaLabel => 'ซามัว';

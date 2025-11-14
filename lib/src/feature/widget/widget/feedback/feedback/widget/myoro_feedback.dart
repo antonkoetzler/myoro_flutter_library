@@ -12,12 +12,24 @@ class MyoroFeedback extends StatelessWidget {
   /// Default value of [style].
   static const styleDefaultValue = MyoroFeedbackStyle();
 
+  /// Default value of [title].
+  static const titleDefaultValue = kMyoroEmptyString;
+
+  /// Default value of [subtitle].
+  static const subtitleDefaultValue = kMyoroEmptyString;
+
+  /// Default value of [actionButtonText].
+  static const actionButtonTextDefaultValue = kMyoroEmptyString;
+
   const MyoroFeedback({
     super.key,
     this.style = styleDefaultValue,
     required this.iconConfiguration,
-    required this.titleConfiguration,
+    this.title = titleDefaultValue,
+    this.titleConfiguration,
+    this.subtitle = subtitleDefaultValue,
     this.subtitleConfiguration,
+    this.actionButtonText = actionButtonTextDefaultValue,
     this.actionButtonConfiguration,
   });
 
@@ -28,10 +40,19 @@ class MyoroFeedback extends StatelessWidget {
   final MyoroIconConfiguration iconConfiguration;
 
   /// Title of the [MyoroFeedback].
-  final MyoroTextConfiguration titleConfiguration;
+  final String title;
+
+  /// Title of the [MyoroFeedback].
+  final MyoroTextConfiguration? titleConfiguration;
+
+  /// Subtitle of the [MyoroFeedback].
+  final String subtitle;
 
   /// Subtitle of the [MyoroFeedback].
   final MyoroTextConfiguration? subtitleConfiguration;
+
+  /// Action button text.
+  final String actionButtonText;
 
   /// Action button configuration.
   final MyoroFeedbackActionButtonConfiguration? actionButtonConfiguration;
@@ -56,12 +77,12 @@ class MyoroFeedback extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       _Icon(iconConfiguration),
-                      _Title(titleConfiguration),
-                      if (subtitleConfiguration != null) _Subtitle(subtitleConfiguration!),
+                      _Title(title, titleConfiguration),
+                      if (subtitleConfiguration != null) _Subtitle(subtitle, subtitleConfiguration!),
                     ],
                   ),
                 ),
-                if (actionButtonConfiguration != null) _ActionButton(actionButtonConfiguration!),
+                if (actionButtonText.isNotEmpty) _ActionButton(actionButtonText, actionButtonConfiguration),
               ],
             ),
           ),

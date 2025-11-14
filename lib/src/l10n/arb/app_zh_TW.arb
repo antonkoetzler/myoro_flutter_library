@@ -9,6 +9,9 @@
 
   "myoroMenuErrorGettingItemsText": "取得項目時發生錯誤。",
 
+  "myoroDialogModalCancelButtonText": "取消",
+  "myoroDialogModalConfirmButtonText": "確認",
+
   "myoroCurrencyEnumUsdFormalName": "美元",
   "myoroCurrencyEnumCadFormalName": "加拿大元",
   "myoroCurrencyEnumBrlFormalName": "巴西里爾",

@@ -9,6 +9,9 @@
 
   "myoroMenuErrorGettingItemsText": "เกิดข้อผิดพลาดในการดึงรายการ",
 
+  "myoroDialogModalCancelButtonText": "ยกเลิก",
+  "myoroDialogModalConfirmButtonText": "ยืนยัน",
+
   "myoroCurrencyEnumUsdFormalName": "ดอลลาร์สหรัฐ",
   "myoroCurrencyEnumCadFormalName": "ดอลลาร์แคนาดา",
   "myoroCurrencyEnumBrlFormalName": "เรียลบราซิล",

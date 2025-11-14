@@ -12,7 +12,7 @@ final class _WidgetListingAccordionItemContentButton extends StatelessWidget {
 
     return MyoroIconTextButton(
       onTapUp: (_) => viewModel.widgetListingAccordionItemContentButtonOnTapUp(context, _widgetName),
-      textConfiguration: MyoroTextConfiguration(text: _widgetName),
+      text: _widgetName,
       style: const MyoroIconTextButtonStyle().copyWith(borderRadius: BorderRadius.zero),
     );
   }

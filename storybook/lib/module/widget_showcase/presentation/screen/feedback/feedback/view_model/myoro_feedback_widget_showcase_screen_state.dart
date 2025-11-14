@@ -10,16 +10,32 @@ final class MyoroFeedbackWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// [MyoroFeedback.title]
+  var _title = faker.lorem.word();
+  String get title => _title;
+  set title(String title) {
+    _title = title;
+    notifyListeners();
+  }
+
   /// [MyoroFeedbackConfiguration.titleConfiguration]
-  var _titleConfiguration = MyoroTextConfiguration(text: faker.lorem.word());
+  var _titleConfiguration = const MyoroTextConfiguration();
   MyoroTextConfiguration get titleConfiguration => _titleConfiguration;
   set titleConfiguration(MyoroTextConfiguration titleConfiguration) {
     _titleConfiguration = titleConfiguration;
     notifyListeners();
   }
 
+  /// [MyoroFeedback.subtitle]
+  var _subtitle = faker.lorem.sentence();
+  String get subtitle => _subtitle;
+  set subtitle(String subtitle) {
+    _subtitle = subtitle;
+    notifyListeners();
+  }
+
   /// [MyoroFeedbackConfiguration subtitleConfiguration]
-  MyoroTextConfiguration? _subtitleConfiguration = MyoroTextConfiguration(text: faker.lorem.sentence());
+  MyoroTextConfiguration? _subtitleConfiguration = const MyoroTextConfiguration();
   MyoroTextConfiguration? get subtitleConfiguration => _subtitleConfiguration;
   set subtitleConfiguration(MyoroTextConfiguration? subtitleConfiguration) {
     _subtitleConfiguration = subtitleConfiguration;

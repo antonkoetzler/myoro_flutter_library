@@ -1,5 +1,6 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:storybook/src/l10n/gen/app_localizations.dart';
 import 'package:storybook/storybook.dart';
 
 // Import all widget showcase screens
@@ -18,11 +19,18 @@ enum MyoroWidgetListEnum {
   drawers('Drawers', {myoroDrawerTitle}),
   dropdowns('Dropdowns', {myoroDropdownsTitle, myoroSelectionDropdownsTitle}),
   feedbacks('Feedbacks', {myoroFeedbackTitle}),
+  fields('Fields', {myoroFieldTitle}),
   forms('Forms', {myoroFormTitle}),
   graphs('Graphs', {myoroBarGraphTitle, myoroPieGraphTitle}),
   images('Images', {myoroImageTitle}),
   indexedStacks('Indexed Stacks', {myoroIndexedStackTitle}),
-  inputs('Inputs', {myoroCurrencyInputTitle, myoroDatePickerInputTitle, myoroInputTitle, myoroSearchInputTitle, myoroTimePickerInputTitle}),
+  inputs('Inputs', {
+    myoroCurrencyInputTitle,
+    myoroDatePickerInputTitle,
+    myoroInputTitle,
+    myoroSearchInputTitle,
+    myoroTimePickerInputTitle,
+  }),
   layoutBuilders('Layout Builders', {myoroLayoutBuilderTitle}),
   loaders('Loaders', {myoroCircularLoaderTitle}),
   menus('Menus', {myoroMenusTitle}),
@@ -44,6 +52,42 @@ enum MyoroWidgetListEnum {
 
   /// Names of each [Widget] in the category.
   final Set<String> widgetNames;
+
+  /// Localized name of the category of [Widget].
+  String getLocalizedCategoryName(AppLocalizations localization) {
+    return switch (this) {
+      MyoroWidgetListEnum.accordions => localization.storybookWidgetListEnumAccordionsCategoryName,
+      MyoroWidgetListEnum.appBars => localization.storybookWidgetListEnumAppBarsCategoryName,
+      MyoroWidgetListEnum.apps => localization.storybookWidgetListEnumAppsCategoryName,
+      MyoroWidgetListEnum.buttons => localization.storybookWidgetListEnumButtonsCategoryName,
+      MyoroWidgetListEnum.cards => localization.storybookWidgetListEnumCardsCategoryName,
+      MyoroWidgetListEnum.carousels => localization.storybookWidgetListEnumCarouselsCategoryName,
+      MyoroWidgetListEnum.checkboxes => localization.storybookWidgetListEnumCheckboxesCategoryName,
+      MyoroWidgetListEnum.dividers => localization.storybookWidgetListEnumDividersCategoryName,
+      MyoroWidgetListEnum.drawers => localization.storybookWidgetListEnumDrawersCategoryName,
+      MyoroWidgetListEnum.dropdowns => localization.storybookWidgetListEnumDropdownsCategoryName,
+      MyoroWidgetListEnum.feedbacks => localization.storybookWidgetListEnumFeedbacksCategoryName,
+      MyoroWidgetListEnum.fields => localization.storybookWidgetListEnumFieldsCategoryName,
+      MyoroWidgetListEnum.forms => localization.storybookWidgetListEnumFormsCategoryName,
+      MyoroWidgetListEnum.graphs => localization.storybookWidgetListEnumGraphsCategoryName,
+      MyoroWidgetListEnum.images => localization.storybookWidgetListEnumImagesCategoryName,
+      MyoroWidgetListEnum.indexedStacks => localization.storybookWidgetListEnumIndexedStacksCategoryName,
+      MyoroWidgetListEnum.inputs => localization.storybookWidgetListEnumInputsCategoryName,
+      MyoroWidgetListEnum.layoutBuilders => localization.storybookWidgetListEnumLayoutBuildersCategoryName,
+      MyoroWidgetListEnum.loaders => localization.storybookWidgetListEnumLoadersCategoryName,
+      MyoroWidgetListEnum.menus => localization.storybookWidgetListEnumMenusCategoryName,
+      MyoroWidgetListEnum.modals => localization.storybookWidgetListEnumModalsCategoryName,
+      MyoroWidgetListEnum.pickers => localization.storybookWidgetListEnumPickersCategoryName,
+      MyoroWidgetListEnum.radios => localization.storybookWidgetListEnumRadiosCategoryName,
+      MyoroWidgetListEnum.screens => localization.storybookWidgetListEnumScreensCategoryName,
+      MyoroWidgetListEnum.scrollables => localization.storybookWidgetListEnumScrollablesCategoryName,
+      MyoroWidgetListEnum.sliders => localization.storybookWidgetListEnumSlidersCategoryName,
+      MyoroWidgetListEnum.snackBars => localization.storybookWidgetListEnumSnackBarsCategoryName,
+      MyoroWidgetListEnum.tabView => localization.storybookWidgetListEnumTabViewCategoryName,
+      MyoroWidgetListEnum.tables => localization.storybookWidgetListEnumTablesCategoryName,
+      MyoroWidgetListEnum.tooltips => localization.storybookWidgetListEnumTooltipsCategoryName,
+    };
+  }
 
   factory MyoroWidgetListEnum.fake() {
     return values[faker.randomGenerator.integer(values.length)];
@@ -85,6 +129,9 @@ enum MyoroWidgetListEnum {
 
   // Feedbacks
   static const myoroFeedbackTitle = 'MyoroFeedback';
+
+  // Fields
+  static const myoroFieldTitle = 'MyoroField';
 
   // Forms
   static const myoroFormTitle = 'MyoroForm';
@@ -187,6 +234,9 @@ enum MyoroWidgetListEnum {
 
       // Feedbacks
       myoroFeedbackTitle => const MyoroFeedbackWidgetShowcaseScreen(),
+
+      // Fields
+      myoroFieldTitle => const MyoroFieldWidgetShowcaseScreen(),
 
       // Forms
       myoroFormTitle => const MyoroFormWidgetShowcaseScreen(),

@@ -8,11 +8,12 @@ final class _TitleConfigurationOption extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroFeedbackWidgetShowcaseScreenViewModel>();
     final state = viewModel.state;
+    final title = state.title;
     final titleConfiguration = state.titleConfiguration;
 
     return TextWidgetShowcaseOption(
       configuration: TextWidgetShowcaseOptionConfiguration(
-        textInitialValue: titleConfiguration.text,
+        textInitialValue: title,
         textOnChanged: viewModel.titleConfigurationTextOnChanged,
         maxLinesInitialValue: titleConfiguration.maxLines,
         maxLinesOnChanged: viewModel.titleConfigurationMaxLinesOnChanged,

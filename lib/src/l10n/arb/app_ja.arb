@@ -9,6 +9,9 @@
 
   "myoroMenuErrorGettingItemsText": "アイテムの取得中にエラーが発生しました。",
 
+  "myoroDialogModalCancelButtonText": "キャンセル",
+  "myoroDialogModalConfirmButtonText": "確認",
+
   "myoroCurrencyEnumUsdFormalName": "米ドル",
   "myoroCurrencyEnumCadFormalName": "カナダドル",
   "myoroCurrencyEnumBrlFormalName": "ブラジルレアル",

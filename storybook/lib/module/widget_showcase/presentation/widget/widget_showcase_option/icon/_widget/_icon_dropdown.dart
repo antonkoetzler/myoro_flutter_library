@@ -17,7 +17,7 @@ final class _IconDropdown extends StatelessWidget {
     if (icon == Icons.crop_free) return 'Crop Free';
     if (icon == Icons.adb_sharp) return 'ADB Sharp';
     if (icon == Icons.youtube_searched_for) return 'YouTube Searched';
-    return 'Unknown Icon';
+    return localization.storybookWidgetShowcaseOptionIconUnknownIconLabel;
   }
 
   @override
@@ -26,13 +26,13 @@ final class _IconDropdown extends StatelessWidget {
     final configuration = viewModel.configuration;
 
     return MyoroSingleSelectionDropdown<IconData>(
-      label: 'Icon',
+      label: localization.storybookWidgetShowcaseOptionIconLabel,
       enabled: configuration.enabled ?? true,
       selectedItem: configuration.selectedIcon,
       onChanged: configuration.iconOnChanged,
       selectedItemBuilder: _getIconName,
       itemBuilder: (icon, _) {
-        return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: _getIconName(icon)));
+        return MyoroMenuIconTextButtonItem(text: _getIconName(icon));
       },
       items: kMyoroTestIcons.toSet(),
     );

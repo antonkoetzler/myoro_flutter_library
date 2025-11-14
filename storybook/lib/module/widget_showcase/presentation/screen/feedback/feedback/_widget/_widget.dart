@@ -14,21 +14,21 @@ final class _Widget extends StatelessWidget {
         listenable: state,
         builder: (_, _) {
           final iconConfiguration = state.iconConfiguration;
+          final title = state.title;
+          final subtitle = state.subtitle;
           final titleConfiguration = state.titleConfiguration;
           final subtitleConfiguration = state.subtitleConfiguration;
           final actionButtonConfigurationEnabled = state.actionButtonConfigurationEnabled;
 
           return MyoroFeedback(
             iconConfiguration: iconConfiguration,
+            title: title,
+            subtitle: subtitle,
             titleConfiguration: titleConfiguration,
             subtitleConfiguration: subtitleConfiguration,
+            actionButtonText: localization.storybookFeedbackActionButtonText,
             actionButtonConfiguration:
-                actionButtonConfigurationEnabled
-                    ? MyoroFeedbackActionButtonConfiguration(
-                      textConfiguration: const MyoroTextConfiguration(text: 'Action button'),
-                      onTapUp: (_) {},
-                    )
-                    : null,
+                actionButtonConfigurationEnabled ? MyoroFeedbackActionButtonConfiguration(onTapUp: (_) {}) : null,
           );
         },
       ),

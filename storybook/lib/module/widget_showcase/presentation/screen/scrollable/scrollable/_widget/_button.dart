@@ -10,7 +10,7 @@ final class _Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyoroIconTextButton(
       iconConfiguration: MyoroIconConfiguration(icon: myoroFake<IconData>()),
-      textConfiguration: MyoroTextConfiguration(text: _text),
+      text: _text,
       onTapUp: (_) {},
       style: const MyoroIconTextButtonStyle().bordered(context),
     );

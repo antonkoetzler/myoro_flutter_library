@@ -17,6 +17,7 @@ List<ThemeExtension> createMyoroThemeExtensions(bool isDarkMode, ColorScheme col
     ..._createDrawerThemeExtensions(colorScheme, textTheme),
     ..._createDropdownThemeExtensions(),
     ..._createFeedbackThemeExtensions(textTheme),
+    ..._createFieldThemeExtensions(textTheme),
     ..._createGraphThemeExtensions(colorScheme, textTheme),
     ..._createIndexedStackThemeExtensions(colorScheme),
     ..._createInputThemeExtensions(isDarkMode, colorScheme, textTheme, decorationThemeExtension),
@@ -85,6 +86,10 @@ List<ThemeExtension> _createDropdownThemeExtensions() {
 
 List<ThemeExtension> _createFeedbackThemeExtensions(TextTheme textTheme) {
   return [MyoroFeedbackThemeExtension.builder(textTheme)];
+}
+
+List<ThemeExtension> _createFieldThemeExtensions(TextTheme textTheme) {
+  return [MyoroFieldThemeExtension.builder(textTheme)];
 }
 
 List<ThemeExtension> _createGraphThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {

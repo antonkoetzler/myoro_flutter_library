@@ -9,14 +9,12 @@ final class _MultiDropdownTypeOption extends StatelessWidget {
     final viewModel = context.read<MyoroSelectionDropdownsWidgetShowcaseScreenViewModel>();
 
     return MyoroSingleSelectionDropdown<MyoroDropdownTypeEnum>(
-      label: 'Multi dropdown type',
+      label: localization.storybookWidgetShowcaseOptionMultiDropdownTypeLabel,
       selectedItemBuilder: (type) => type.name.capitalized,
       onChanged: (type) => viewModel.state.multiDropdownType = type!,
       items: MyoroDropdownTypeEnum.values.toSet(),
       selectedItem: viewModel.state.multiDropdownType,
-      itemBuilder: (type, _) {
-        return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: type.name.capitalized));
-      },
+      itemBuilder: (type, _) => MyoroMenuIconTextButtonItem(text: type.name.capitalized),
     );
   }
 }

@@ -9,7 +9,7 @@ final class _NoneBorderOption extends StatelessWidget {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
 
     return InputBorderWidgetShowcaseOption(
-      label: 'None border',
+      label: localization.storybookWidgetShowcaseOptionNoneBorderLabel,
       selectedBorder: viewModel.state.noneBorder,
       onChanged: (border) => viewModel.state.noneBorder = border,
     );

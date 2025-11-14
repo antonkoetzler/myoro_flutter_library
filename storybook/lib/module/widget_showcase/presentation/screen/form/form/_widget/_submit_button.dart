@@ -12,7 +12,7 @@ final class _SubmitButton extends StatelessWidget {
       child: MyoroIconTextButton(
         style: const MyoroIconTextButtonStyle().bordered(context),
         onTapUp: (_) => _formController.fetch(),
-        textConfiguration: const MyoroTextConfiguration(text: 'Submit'),
+        text: localization.storybookFormSubmitButtonText,
       ),
     );
   }

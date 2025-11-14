@@ -8,6 +8,9 @@ final class _CancelButtonTextOption extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroDialogModalWidgetShowcaseScreenViewModel>();
 
-    return MyoroInput(label: 'Cancel button text.', onChanged: (text) => viewModel.state.cancelButtonText = text);
+    return MyoroInput(
+      label: localization.storybookWidgetShowcaseOptionCancelButtonTextLabel,
+      onChanged: (text) => viewModel.state.cancelButtonText = text,
+    );
   }
 }

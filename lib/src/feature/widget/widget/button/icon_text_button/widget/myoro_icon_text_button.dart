@@ -20,6 +20,9 @@ class MyoroIconTextButton extends StatelessWidget {
   /// Default value of [invert].
   static const invertDefaultValue = false;
 
+  /// Default value of [text].
+  static const textDefaultValue = kMyoroEmptyString;
+
   /// Default constructor.
   const MyoroIconTextButton({
     super.key,
@@ -31,11 +34,11 @@ class MyoroIconTextButton extends StatelessWidget {
     this.isLoading = isLoadingDefaultValue,
     this.invert = invertDefaultValue,
     this.iconConfiguration,
+    this.text = textDefaultValue,
     this.textConfiguration,
   }) : assert(
-         !(iconConfiguration == null && textConfiguration == null),
-         '[MyoroIconTextButtonConfiguration]: [iconConfiguration] '
-         'and/or [textConfiguration] must be provided.',
+         !(iconConfiguration == null && text.length == 0),
+         '[MyoroIconTextButtonConfiguration]: [iconConfiguration] and/or [text] must be provided.',
        );
 
   /// Style.
@@ -64,6 +67,9 @@ class MyoroIconTextButton extends StatelessWidget {
   /// Icon configuration of the [MyoroIconTextButton].
   final MyoroIconConfiguration? iconConfiguration;
 
+  /// Text of the [MyoroIconTextButton].
+  final String text;
+
   /// Text configuration of the [MyoroIconTextButton].
   final MyoroTextConfiguration? textConfiguration;
 
@@ -78,7 +84,7 @@ class MyoroIconTextButton extends StatelessWidget {
         onTapDown: onTapDown,
         onTapUp: onTapUp,
         isLoading: isLoading,
-        builder: (_, tapStatusEnum) => _Button(tapStatusEnum, invert, iconConfiguration, textConfiguration),
+        builder: (_, tapStatusEnum) => _Button(tapStatusEnum, invert, iconConfiguration, text, textConfiguration),
       ),
     );
   }

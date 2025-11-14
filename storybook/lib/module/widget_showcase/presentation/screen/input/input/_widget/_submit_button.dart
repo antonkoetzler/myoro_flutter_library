@@ -11,7 +11,7 @@ final class _SubmitButton extends StatelessWidget {
 
     return MyoroIconTextButton(
       onTapUp: (_) => formController.fetch(),
-      textConfiguration: const MyoroTextConfiguration(text: 'Submit'),
+      text: localization.storybookInputSubmitButtonText,
     );
   }
 }

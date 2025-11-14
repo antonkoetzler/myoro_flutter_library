@@ -15,7 +15,7 @@ final class _LabelBehaviorOption extends StatelessWidget {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
 
     return MyoroSingleSelectionDropdown<FloatingLabelBehavior>(
-      label: 'Label behavior',
+      label: localization.storybookWidgetShowcaseOptionLabelBehaviorLabel,
       selectedItemBuilder:
           (behavior) =>
               _behaviors.entries
@@ -29,7 +29,7 @@ final class _LabelBehaviorOption extends StatelessWidget {
       selectedItem: viewModel.state.labelBehavior,
       itemBuilder: (behavior, _) {
         final name = _behaviors.entries.firstWhere((entry) => entry.value == behavior).key;
-        return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: name));
+        return MyoroMenuIconTextButtonItem(text: name);
       },
     );
   }

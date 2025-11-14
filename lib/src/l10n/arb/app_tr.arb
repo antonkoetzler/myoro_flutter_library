@@ -9,6 +9,9 @@
 
   "myoroMenuErrorGettingItemsText": "Öğeler alınırken hata oluştu.",
 
+  "myoroDialogModalCancelButtonText": "İptal",
+  "myoroDialogModalConfirmButtonText": "Onayla",
+
   "myoroCurrencyEnumUsdFormalName": "ABD Doları",
   "myoroCurrencyEnumCadFormalName": "Kanada Doları",
   "myoroCurrencyEnumBrlFormalName": "Brezilya Reali",

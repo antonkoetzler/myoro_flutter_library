@@ -11,7 +11,7 @@ final class _Button extends StatelessWidget {
   Widget build(context) {
     return IntrinsicWidth(
       child: MyoroIconTextButton(
-        textConfiguration: MyoroTextConfiguration(text: _text),
+        text: _text,
         onTapUp: _onTapUp != null ? (_) => _onTapUp() : null,
         style: const MyoroIconTextButtonStyle().bordered(context),
       ),

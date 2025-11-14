@@ -80,6 +80,7 @@ mixin _$MyoroMenuIconTextButtonItemMixin {
     bool? invert,
     MyoroIconConfiguration? iconConfiguration,
     bool iconConfigurationProvided = true,
+    String? text,
     MyoroTextConfiguration? textConfiguration,
     bool textConfigurationProvided = true,
     MouseCursor? cursor,
@@ -94,6 +95,7 @@ mixin _$MyoroMenuIconTextButtonItemMixin {
     return MyoroMenuIconTextButtonItem(
       invert: invert ?? self.invert,
       iconConfiguration: iconConfigurationProvided ? (iconConfiguration ?? self.iconConfiguration) : null,
+      text: text ?? self.text,
       textConfiguration: textConfigurationProvided ? (textConfiguration ?? self.textConfiguration) : null,
       cursor: cursorProvided ? (cursor ?? self.cursor) : null,
       tooltipText: tooltipText ?? self.tooltipText,
@@ -109,6 +111,7 @@ mixin _$MyoroMenuIconTextButtonItemMixin {
         other.runtimeType == runtimeType &&
         other.invert == self.invert &&
         other.iconConfiguration == self.iconConfiguration &&
+        other.text == self.text &&
         other.textConfiguration == self.textConfiguration &&
         other.cursor == self.cursor &&
         other.tooltipText == self.tooltipText &&
@@ -122,6 +125,7 @@ mixin _$MyoroMenuIconTextButtonItemMixin {
     return Object.hash(
       self.invert,
       self.iconConfiguration,
+      self.text,
       self.textConfiguration,
       self.cursor,
       self.tooltipText,
@@ -136,6 +140,7 @@ mixin _$MyoroMenuIconTextButtonItemMixin {
       'MyoroMenuIconTextButtonItem(\n'
       '  invert: ${self.invert},\n'
       '  iconConfiguration: ${self.iconConfiguration},\n'
+      '  text: ${self.text},\n'
       '  textConfiguration: ${self.textConfiguration},\n'
       '  cursor: ${self.cursor},\n'
       '  tooltipText: ${self.tooltipText},\n'

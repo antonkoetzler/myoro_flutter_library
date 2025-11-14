@@ -10,7 +10,7 @@ final class _NextItemButtonIconOption extends StatelessWidget {
 
     return IconWidgetShowcaseOption(
       configuration: IconWidgetShowcaseOptionConfiguration(
-        label: 'Next item button icon',
+        label: localization.storybookWidgetShowcaseOptionNextItemButtonIconLabel,
         selectedIcon: viewModel.state.nextItemButtonIcon,
         iconOnChanged: (icon) => viewModel.state.nextItemButtonIcon = icon,
       ),

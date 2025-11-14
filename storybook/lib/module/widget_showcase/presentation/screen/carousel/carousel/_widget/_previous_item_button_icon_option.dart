@@ -10,7 +10,7 @@ final class _PreviousItemButtonIconOption extends StatelessWidget {
 
     return IconWidgetShowcaseOption(
       configuration: IconWidgetShowcaseOptionConfiguration(
-        label: 'Previous item button icon',
+        label: localization.storybookWidgetShowcaseOptionPreviousItemButtonIconLabel,
         selectedIcon: viewModel.state.previousItemButtonIcon,
         iconOnChanged: (icon) => viewModel.state.previousItemButtonIcon = icon,
       ),

@@ -9,6 +9,9 @@
 
   "myoroMenuErrorGettingItemsText": "Error al obtener elementos.",
 
+  "myoroDialogModalCancelButtonText": "Cancelar",
+  "myoroDialogModalConfirmButtonText": "Confirmar",
+
   "myoroCurrencyEnumUsdFormalName": "Dólar Estadounidense",
   "myoroCurrencyEnumCadFormalName": "Dólar Canadiense",
   "myoroCurrencyEnumBrlFormalName": "Real Brasileño",

@@ -6,6 +6,9 @@ final class _PickerButton extends StatelessWidget {
 
   @override
   Widget build(context) {
+    final localization = context.localization;
+    final myoroFilePickerPickerButtonText = localization.myoroFilePickerPickerButtonText;
+
     final filePickerThemeExtension = context.resolveThemeExtension<MyoroFilePickerThemeExtension>();
     final style = context.watch<MyoroFilePickerStyle>();
     final textStyle = style.textStyle ?? filePickerThemeExtension.textStyle;
@@ -16,11 +19,8 @@ final class _PickerButton extends StatelessWidget {
     return IntrinsicWidth(
       child: MyoroIconTextButton(
         style: const MyoroIconTextButtonStyle().bordered(context),
-        textConfiguration: MyoroTextConfiguration(
-          text: context.localization.myoroFilePickerPickerButtonText,
-          style: textStyle,
-        ),
-
+        text: myoroFilePickerPickerButtonText,
+        textConfiguration: MyoroTextConfiguration(style: textStyle),
         onTapUp: (_) => openPicker(),
       ),
     );

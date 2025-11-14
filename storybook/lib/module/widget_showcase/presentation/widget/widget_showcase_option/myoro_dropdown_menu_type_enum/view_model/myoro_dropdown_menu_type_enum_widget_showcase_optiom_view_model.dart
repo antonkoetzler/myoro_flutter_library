@@ -8,6 +8,6 @@ final class MyoroDropdownMenuTypeEnumWidgetShowcaseOptiomViewModel {
   }
 
   MyoroMenuItem itemBuilder(MyoroDropdownTypeEnum item, _) {
-    return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: item.name.capitalized));
+    return MyoroMenuIconTextButtonItem(text: item.name.capitalized);
   }
 }

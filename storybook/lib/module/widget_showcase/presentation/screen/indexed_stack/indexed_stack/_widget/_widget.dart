@@ -19,13 +19,16 @@ final class _Widget extends StatelessWidget {
             Positioned(
               top: 0,
               left: 0,
-              child: _Button('Previous index', index != 0 ? () => indexController.value = index - 1 : null),
+              child: _Button(
+                localization.storybookIndexedStackPreviousIndexButtonText,
+                index != 0 ? () => indexController.value = index - 1 : null,
+              ),
             ),
             Positioned(
               top: 0,
               right: 0,
               child: _Button(
-                'Next index',
+                localization.storybookIndexedStackNextIndexButtonText,
                 index != children.length - 1 ? () => indexController.value = index + 1 : null,
               ),
             ),

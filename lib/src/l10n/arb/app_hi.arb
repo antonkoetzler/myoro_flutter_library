@@ -9,6 +9,9 @@
 
   "myoroMenuErrorGettingItemsText": "आइटम प्राप्त करने में त्रुटि।",
 
+  "myoroDialogModalCancelButtonText": "रद्द करें",
+  "myoroDialogModalConfirmButtonText": "पुष्टि करें",
+
   "myoroCurrencyEnumUsdFormalName": "अमेरिकी डॉलर",
   "myoroCurrencyEnumCadFormalName": "कनाडाई डॉलर",
   "myoroCurrencyEnumBrlFormalName": "ब्राज़ीलियाई रियल",

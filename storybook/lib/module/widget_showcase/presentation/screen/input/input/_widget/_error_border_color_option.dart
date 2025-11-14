@@ -9,7 +9,7 @@ final class _ErrorBorderColorOption extends StatelessWidget {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
 
     return ColorWidgetShowcaseOption(
-      label: 'Error border color',
+      label: localization.storybookWidgetShowcaseOptionErrorBorderColorLabel,
       selectedColor: viewModel.state.errorBorderColor,
       onChanged: (color) => viewModel.state.errorBorderColor = color,
     );

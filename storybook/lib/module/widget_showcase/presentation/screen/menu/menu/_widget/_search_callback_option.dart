@@ -12,7 +12,7 @@ final class _SearchCallbackOption extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Search Callback:', style: Theme.of(context).textTheme.titleSmall),
+        Text(localization.storybookMenuSearchCallbackLabel, style: Theme.of(context).textTheme.titleSmall),
         const SizedBox(height: 8),
         Row(
           children: [
@@ -20,10 +20,10 @@ final class _SearchCallbackOption extends StatelessWidget {
               value: state.searchCallbackEnabled,
               onChanged: (value) => state.searchCallbackEnabled = value ?? false,
             ),
-            const Text('Enable Search Callback'),
+            Text(localization.storybookMenuEnableSearchCallbackCheckboxLabel),
           ],
         ),
-        if (state.searchCallbackEnabled) const Text('Search callback is enabled - check console for search queries'),
+        if (state.searchCallbackEnabled) Text(localization.storybookMenuSearchCallbackEnabledMessage),
       ],
     );
   }

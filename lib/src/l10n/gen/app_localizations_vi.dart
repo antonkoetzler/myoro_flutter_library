@@ -24,11 +24,16 @@ class AppLocalizationsVi extends AppLocalizations {
   String get myoroImagePickerSelectionTypeModalButtonCameraText => 'Mở camera';
 
   @override
-  String get myoroImagePickerSelectionTypeModalButtonGalleryText =>
-      'Duyệt thư viện';
+  String get myoroImagePickerSelectionTypeModalButtonGalleryText => 'Duyệt thư viện';
 
   @override
   String get myoroMenuErrorGettingItemsText => 'Lỗi khi lấy mục.';
+
+  @override
+  String get myoroDialogModalCancelButtonText => 'Hủy';
+
+  @override
+  String get myoroDialogModalConfirmButtonText => 'Xác nhận';
 
   @override
   String get myoroCurrencyEnumUsdFormalName => 'Đô la Mỹ';
@@ -100,8 +105,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get myoroCurrencyEnumAllFormalName => 'Lek Albania';
 
   @override
-  String get myoroCurrencyEnumBamFormalName =>
-      'Mark có thể chuyển đổi Bosnia và Herzegovina';
+  String get myoroCurrencyEnumBamFormalName => 'Mark có thể chuyển đổi Bosnia và Herzegovina';
 
   @override
   String get myoroCurrencyEnumMxnFormalName => 'Peso Mexico';
@@ -197,8 +201,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get myoroCurrencyEnumSarFormalName => 'Riyal Ả Rập Saudi';
 
   @override
-  String get myoroCurrencyEnumAedFormalName =>
-      'Dirham Các Tiểu vương quốc Ả Rập Thống nhất';
+  String get myoroCurrencyEnumAedFormalName => 'Dirham Các Tiểu vương quốc Ả Rập Thống nhất';
 
   @override
   String get myoroCurrencyEnumQarFormalName => 'Riyal Qatar';
@@ -531,8 +534,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get myoroCountryEnumBoliviaLabel => 'Bolivia';
 
   @override
-  String get myoroCountryEnumBosniaAndHerzegovinaLabel =>
-      'Bosnia và Herzegovina';
+  String get myoroCountryEnumBosniaAndHerzegovinaLabel => 'Bosnia và Herzegovina';
 
   @override
   String get myoroCountryEnumBotswanaLabel => 'Botswana';
@@ -565,8 +567,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get myoroCountryEnumCapeVerdeLabel => 'Cape Verde';
 
   @override
-  String get myoroCountryEnumCentralAfricanRepublicLabel =>
-      'Cộng hòa Trung Phi';
+  String get myoroCountryEnumCentralAfricanRepublicLabel => 'Cộng hòa Trung Phi';
 
   @override
   String get myoroCountryEnumChadLabel => 'Chad';
@@ -911,8 +912,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get myoroCountryEnumSaintLuciaLabel => 'Saint Lucia';
 
   @override
-  String get myoroCountryEnumSaintVincentAndTheGrenadinesLabel =>
-      'Saint Vincent và Grenadines';
+  String get myoroCountryEnumSaintVincentAndTheGrenadinesLabel => 'Saint Vincent và Grenadines';
 
   @override
   String get myoroCountryEnumSamoaLabel => 'Samoa';
@@ -1026,8 +1026,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get myoroCountryEnumUkraineLabel => 'Ukraine';
 
   @override
-  String get myoroCountryEnumUnitedArabEmiratesLabel =>
-      'Các Tiểu vương quốc Ả Rập Thống nhất';
+  String get myoroCountryEnumUnitedArabEmiratesLabel => 'Các Tiểu vương quốc Ả Rập Thống nhất';
 
   @override
   String get myoroCountryEnumUnitedKingdomLabel => 'Vương quốc Anh';

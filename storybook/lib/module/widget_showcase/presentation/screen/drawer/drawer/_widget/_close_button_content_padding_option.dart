@@ -10,7 +10,7 @@ final class _CloseButtonContentPaddingOption extends StatelessWidget {
 
     return PaddingWidgetShowcaseOption(
       configuration: PaddingWidgetShowcaseOptionConfiguration(
-        label: 'Close button content padding',
+        label: localization.storybookWidgetShowcaseOptionCloseButtonContentPaddingLabel,
         paddingOnChanged: (padding) => viewModel.closeButtonContentPadding = padding,
       ),
     );

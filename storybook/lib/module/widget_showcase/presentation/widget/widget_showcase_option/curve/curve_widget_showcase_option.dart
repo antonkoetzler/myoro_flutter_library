@@ -55,7 +55,7 @@ final class CurveWidgetShowcaseOption extends StatelessWidget {
       onChanged: onChanged,
       itemBuilder: (curve, _) {
         final name = _curves.entries.firstWhere((entry) => entry.value == curve).key;
-        return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: name));
+        return MyoroMenuIconTextButtonItem(text: name);
       },
       items: _curves.values.toSet(),
       selectedItem: selectedCurve,

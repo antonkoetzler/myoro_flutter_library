@@ -9,6 +9,9 @@
 
   "myoroMenuErrorGettingItemsText": "خطأ في الحصول على العناصر.",
 
+  "myoroDialogModalCancelButtonText": "إلغاء",
+  "myoroDialogModalConfirmButtonText": "تأكيد",
+
   "myoroCurrencyEnumUsdFormalName": "الدولار الأمريكي",
   "myoroCurrencyEnumCadFormalName": "الدولار الكندي",
   "myoroCurrencyEnumBrlFormalName": "الريال البرازيلي",

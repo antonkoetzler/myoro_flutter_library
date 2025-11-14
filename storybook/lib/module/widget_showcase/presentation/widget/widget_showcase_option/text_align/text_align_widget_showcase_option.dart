@@ -28,7 +28,7 @@ final class TextAlignWidgetShowcaseOption extends StatelessWidget {
       onChanged: onChanged,
       selectedItemBuilder: (value) => value.toString(),
       itemBuilder: (value, _) {
-        return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: value.toString()));
+        return MyoroMenuIconTextButtonItem(text: value.toString());
       },
       items: TextAlign.values.toSet(),
       selectedItem: selectedValue,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:storybook/src/l10n/localization.dart';
 import 'package:storybook/storybook.dart';
 
 /// View model of [MyoroDialogModalWidgetShowcaseScreen].
@@ -31,12 +32,12 @@ final class MyoroDialogModalWidgetShowcaseScreenViewModel {
 
   /// [MyoroDialogModalConfiguration.onConfirm]
   void _onConfirm(BuildContext context) {
-    _showSnackBar(context, 'Confirm button tapped!');
+    _showSnackBar(context, localization.storybookDialogModalConfirmButtonTappedMessage);
   }
 
   /// [MyoroDialogModalConfiguration.onCancel]
   void _onCancel(BuildContext context) {
-    _showSnackBar(context, 'Cancel button tapped!');
+    _showSnackBar(context, localization.storybookDialogModalCancelButtonTappedMessage);
   }
 
   /// Generic function to show a snackbar.

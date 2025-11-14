@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:storybook/src/l10n/localization.dart';
 
 /// Widget showcase option for a [MyoroSingleSelectionDropdown]'s [MouseCursor].
 final class MouseCursorWidgetShowcaseOption extends StatelessWidget {
@@ -28,7 +29,7 @@ final class MouseCursorWidgetShowcaseOption extends StatelessWidget {
       selectedItemBuilder: _getCursorName,
       onChanged: onChanged,
       itemBuilder: (cursor, _) {
-        return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: _getCursorName(cursor)));
+        return MyoroMenuIconTextButtonItem(text: _getCursorName(cursor));
       },
       items: kMyoroTestCursors.toSet(),
       selectedItem: selectedCursor,
@@ -36,13 +37,13 @@ final class MouseCursorWidgetShowcaseOption extends StatelessWidget {
   }
 
   String _getCursorName(MouseCursor cursor) {
-    if (cursor == SystemMouseCursors.basic) return 'Basic';
-    if (cursor == SystemMouseCursors.click) return 'Click';
-    if (cursor == SystemMouseCursors.help) return 'Help';
+    if (cursor == SystemMouseCursors.basic) return localization.storybookWidgetShowcaseOptionMouseCursorBasicLabel;
+    if (cursor == SystemMouseCursors.click) return localization.storybookWidgetShowcaseOptionMouseCursorClickLabel;
+    if (cursor == SystemMouseCursors.help) return localization.storybookWidgetShowcaseOptionMouseCursorHelpLabel;
     if (cursor == SystemMouseCursors.resizeRow) return 'Resize (Row)';
     if (cursor == SystemMouseCursors.resizeColumn) return 'Resize (Column)';
-    if (cursor == SystemMouseCursors.zoomIn) return 'Zoom In';
-    if (cursor == SystemMouseCursors.zoomOut) return 'Zoom Out';
+    if (cursor == SystemMouseCursors.zoomIn) return localization.storybookWidgetShowcaseOptionMouseCursorZoomInLabel;
+    if (cursor == SystemMouseCursors.zoomOut) return localization.storybookWidgetShowcaseOptionMouseCursorZoomOutLabel;
     throw AssertionError('[MouseCursorWidgetShowcaseOption._getCursorName]: Unknown [SystemMouseCursors].');
   }
 }

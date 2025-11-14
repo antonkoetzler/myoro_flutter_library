@@ -9,14 +9,10 @@ final class _Widget extends StatelessWidget {
     return MyoroSearchInput(
       requestCallback: (_) async {
         await Future.delayed(const Duration(seconds: 1));
-        return {'Start', 'End'};
+        return {localization.storybookSearchInputStartItemText, localization.storybookSearchInputEndItemText};
       },
-      itemBuilder: (item, _) {
-        return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: item));
-      },
-      selectedItemBuilder: (item) {
-        return item;
-      },
+      itemBuilder: (item, _) => MyoroMenuIconTextButtonItem(text: item),
+      selectedItemBuilder: (item) => item,
     );
   }
 }

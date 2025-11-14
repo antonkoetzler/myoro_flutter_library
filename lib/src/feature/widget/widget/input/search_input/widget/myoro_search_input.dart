@@ -64,5 +64,7 @@ class MyoroSearchInput<T> extends StatefulWidget {
 
   /// Create state function.
   @override
-  State<MyoroSearchInput<T>> createState() => _MyoroSearchInputState<T>();
+  State<MyoroSearchInput<T>> createState() {
+    return _MyoroSearchInputState<T>();
+  }
 }

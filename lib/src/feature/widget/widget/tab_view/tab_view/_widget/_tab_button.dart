@@ -29,7 +29,8 @@ final class _TabButton extends StatelessWidget {
         backgroundIdleColor: isSelected ? primaryBackgroundHoverColor : null,
       ),
       iconConfiguration: _tab.icon != null ? MyoroIconConfiguration(icon: _tab.icon!, size: tabButtonIconSize) : null,
-      textConfiguration: _tab.text != null ? MyoroTextConfiguration(text: _tab.text!, style: tabButtonTextStyle) : null,
+      text: _tab.text,
+      textConfiguration: MyoroTextConfiguration(style: tabButtonTextStyle),
       onTapUp: (_) => selectTab(_tab),
     );
   }

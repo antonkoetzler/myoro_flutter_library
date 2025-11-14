@@ -9,6 +9,9 @@
 
   "myoroMenuErrorGettingItemsText": "Ошибка при получении элементов.",
 
+  "myoroDialogModalCancelButtonText": "Отмена",
+  "myoroDialogModalConfirmButtonText": "Подтвердить",
+
   "myoroCurrencyEnumUsdFormalName": "Доллар США",
   "myoroCurrencyEnumCadFormalName": "Канадский доллар",
   "myoroCurrencyEnumBrlFormalName": "Бразильский реал",

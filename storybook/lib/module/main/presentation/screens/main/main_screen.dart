@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
+import 'package:storybook/src/l10n/localization.dart';
 import 'package:storybook/storybook.dart';
 
 part '_widget/_widget_listing_accordion.dart';
@@ -17,7 +18,7 @@ final class MainScreen extends StatelessWidget {
   Widget build(_) {
     return StorybookScreen(
       configuration: StorybookScreenConfiguration(
-        title: 'MFL Storybook',
+        title: localization.storybookMainScreenTitle,
         body: Provider(
           create: (_) => MainScreenViewModel(),
           child: const Column(

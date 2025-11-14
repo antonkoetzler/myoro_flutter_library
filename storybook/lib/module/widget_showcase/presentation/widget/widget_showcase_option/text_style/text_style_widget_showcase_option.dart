@@ -30,9 +30,7 @@ final class TextStyleWidgetShowcaseOption extends StatelessWidget {
       onChanged: onChanged,
       selectedItemBuilder: typography.getTextStyleName,
       itemBuilder: (value, _) {
-        return MyoroMenuIconTextButtonItem(
-          textConfiguration: MyoroTextConfiguration(text: typography.getTextStyleName(value)),
-        );
+        return MyoroMenuIconTextButtonItem(text: typography.getTextStyleName(value));
       },
       items: typography.allTextStyles.toSet(),
       selectedItem: selectedItem,

@@ -17,4 +17,3 @@ final class _Widget extends StatelessWidget {
     );
   }
 }
-

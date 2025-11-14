@@ -30,6 +30,12 @@ class AppLocalizationsKo extends AppLocalizations {
   String get myoroMenuErrorGettingItemsText => '항목을 가져오는 중 오류가 발생했습니다.';
 
   @override
+  String get myoroDialogModalCancelButtonText => '취소';
+
+  @override
+  String get myoroDialogModalConfirmButtonText => '확인';
+
+  @override
   String get myoroCurrencyEnumUsdFormalName => '미국 달러';
 
   @override

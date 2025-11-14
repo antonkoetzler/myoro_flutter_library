@@ -9,6 +9,9 @@
 
   "myoroMenuErrorGettingItemsText": "Fout bij het ophalen van items.",
 
+  "myoroDialogModalCancelButtonText": "Annuleren",
+  "myoroDialogModalConfirmButtonText": "Bevestigen",
+
   "myoroCurrencyEnumUsdFormalName": "Amerikaanse dollar",
   "myoroCurrencyEnumCadFormalName": "Canadese dollar",
   "myoroCurrencyEnumBrlFormalName": "Braziliaanse real",

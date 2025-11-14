@@ -6,7 +6,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 ///
 /// Supposed to be used with asset images.
 class MyoroImage extends StatelessWidget {
-  const MyoroImage({super.key, required this.path, this.width, this.height, this.fit}) : assert(path.length > 0, '[MyoroImage]: [path] cannot be empty.');
+  const MyoroImage({super.key, required this.path, this.width, this.height, this.fit})
+    : assert(path.length > 0, '[MyoroImage]: [path] cannot be empty.');
 
   /// Path to the image.
   final String path;

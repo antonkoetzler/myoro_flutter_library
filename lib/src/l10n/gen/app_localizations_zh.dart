@@ -30,6 +30,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get myoroMenuErrorGettingItemsText => '获取项目时出错。';
 
   @override
+  String get myoroDialogModalCancelButtonText => '取消';
+
+  @override
+  String get myoroDialogModalConfirmButtonText => '确认';
+
+  @override
   String get myoroCurrencyEnumUsdFormalName => '美元';
 
   @override
@@ -1158,6 +1164,12 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get myoroMenuErrorGettingItemsText => '取得項目時發生錯誤。';
+
+  @override
+  String get myoroDialogModalCancelButtonText => '取消';
+
+  @override
+  String get myoroDialogModalConfirmButtonText => '確認';
 
   @override
   String get myoroCurrencyEnumUsdFormalName => '美元';

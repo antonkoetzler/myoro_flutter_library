@@ -41,10 +41,10 @@ final class _Widget extends StatelessWidget {
                 isLoading: isLoading,
                 invert: invert,
                 iconConfiguration: icon != null ? MyoroIconConfiguration(icon: icon, size: iconSize) : null,
+                text: text,
                 textConfiguration:
                     text.isNotEmpty
                         ? MyoroTextConfiguration(
-                          text: text,
                           maxLines: maxLines,
                           overflow: overflow,
                           alignment: alignment,

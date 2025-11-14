@@ -15,41 +15,32 @@ class MyoroTextConfiguration with _$MyoroTextConfigurationMixin {
 
   /// Lerp function.
   static MyoroTextConfiguration? lerp(MyoroTextConfiguration? primary, MyoroTextConfiguration? other, double t) {
-    final text = myoroFallbackLerp(primary?.text, other?.text, t);
     final maxLines = IntTween(begin: primary?.maxLines, end: other?.maxLines).lerp(t);
     final overflow = myoroFallbackLerp(primary?.overflow, other?.overflow, t);
     final alignment = myoroFallbackLerp(primary?.alignment, other?.alignment, t);
     final style = TextStyle.lerp(primary?.style, other?.style, t);
 
-    return text != null
-        ? MyoroTextConfiguration(
-            text: text,
-            maxLines: maxLines,
-            overflow: overflow ?? overflowDefaultValue,
-            alignment: alignment ?? alignmentDefaultValue,
-            style: style,
-          )
-        : null;
+    return MyoroTextConfiguration(
+      maxLines: maxLines,
+      overflow: overflow ?? overflowDefaultValue,
+      alignment: alignment ?? alignmentDefaultValue,
+      style: style,
+    );
   }
 
   /// Default constructor.
   const MyoroTextConfiguration({
-    required this.text,
     this.maxLines = maxLinesDefaultValue,
     this.overflow = overflowDefaultValue,
     this.alignment = alignmentDefaultValue,
     this.style,
-  }) : assert(text.length != 0, '[MyoroTextConfiguration]: [text] cannot be empty.');
+  });
 
   MyoroTextConfiguration.fake()
-    : text = faker.lorem.word(),
-      maxLines = faker.randomGenerator.integer(10, min: 1),
+    : maxLines = faker.randomGenerator.integer(10, min: 1),
       overflow = myoroFake<TextOverflow>(),
       alignment = myoroFake<TextAlign>(),
       style = myoroNullableFake<TextStyle>();
-
-  /// [Text.data]
-  final String text;
 
   /// [Text.maxLines]
   final int maxLines;

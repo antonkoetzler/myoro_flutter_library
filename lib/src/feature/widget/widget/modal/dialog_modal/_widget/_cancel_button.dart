@@ -9,9 +9,10 @@ final class _CancelButton extends StatelessWidget {
 
   @override
   Widget build(context) {
+    final localization = context.localization;
     return MyoroIconTextButton(
       onTapUp: (_) => _onTapUp(context),
-      textConfiguration: MyoroTextConfiguration(text: _cancelButtonText.isNotEmpty ? _cancelButtonText : 'Cancel'),
+      text: _cancelButtonText.isNotEmpty ? _cancelButtonText : localization.myoroDialogModalCancelButtonText,
     );
   }
 

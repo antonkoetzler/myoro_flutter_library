@@ -28,7 +28,7 @@ final class TextOverflowWidgetShowcaseOption extends StatelessWidget {
       onChanged: onChanged,
       selectedItemBuilder: (value) => value.toString(),
       itemBuilder: (value, _) {
-        return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: value.toString()));
+        return MyoroMenuIconTextButtonItem(text: value.toString());
       },
       items: TextOverflow.values.toSet(),
       selectedItem: selectedItem,

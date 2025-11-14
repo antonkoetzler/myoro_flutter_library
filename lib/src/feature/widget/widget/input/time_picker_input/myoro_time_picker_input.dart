@@ -34,5 +34,7 @@ class MyoroTimePickerInput extends StatefulWidget {
 
   /// Create state function.
   @override
-  State<MyoroTimePickerInput> createState() => _MyoroTimePickerInputState();
+  State<MyoroTimePickerInput> createState() {
+    return _MyoroTimePickerInputState();
+  }
 }

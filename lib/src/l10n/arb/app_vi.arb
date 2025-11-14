@@ -9,6 +9,9 @@
 
   "myoroMenuErrorGettingItemsText": "Lỗi khi lấy mục.",
 
+  "myoroDialogModalCancelButtonText": "Hủy",
+  "myoroDialogModalConfirmButtonText": "Xác nhận",
+
   "myoroCurrencyEnumUsdFormalName": "Đô la Mỹ",
   "myoroCurrencyEnumCadFormalName": "Đô la Canada",
   "myoroCurrencyEnumBrlFormalName": "Real Brazil",

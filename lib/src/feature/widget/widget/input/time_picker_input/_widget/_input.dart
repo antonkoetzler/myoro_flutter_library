@@ -17,6 +17,7 @@ final class _Input extends StatelessWidget {
       label: label,
       controller: inputController,
       onTap: () => onTap(context, (child) => _TimePicker(child!)),
+      readOnly: true,
       style: style,
       validation: validation != null ? (d) => validation.call(state.time) : null,
     );

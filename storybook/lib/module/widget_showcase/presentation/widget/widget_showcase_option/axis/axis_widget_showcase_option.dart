@@ -33,7 +33,7 @@ final class AxisWidgetShowcaseOption extends StatelessWidget {
       selectedItemBuilder: _axisName,
       onChanged: onChanged,
       itemBuilder: (axis, _) {
-        return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: _axisName(axis)));
+        return MyoroMenuIconTextButtonItem(text: _axisName(axis));
       },
       items: Axis.values.toSet(),
       selectedItem: initialDirection,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:storybook/src/l10n/localization.dart';
 
 /// Widget showcase option to choose an [InputBorder] from a [MyoroSingleSelectionDropdown].
 final class InputBorderWidgetShowcaseOption extends StatelessWidget {
@@ -33,9 +34,7 @@ final class InputBorderWidgetShowcaseOption extends StatelessWidget {
       selectedItemBuilder: _getInputBorderName,
       onChanged: onChanged,
       itemBuilder: (border, _) {
-        return MyoroMenuIconTextButtonItem(
-          textConfiguration: MyoroTextConfiguration(text: _getInputBorderName(border)),
-        );
+        return MyoroMenuIconTextButtonItem(text: _getInputBorderName(border));
       },
       items: _getTestInputBorders().toSet(),
       selectedItem: selectedBorder,
@@ -48,9 +47,9 @@ final class InputBorderWidgetShowcaseOption extends StatelessWidget {
     } else if (border is UnderlineInputBorder) {
       return 'Underlined (${border.borderSide.width.toStringAsFixed(1)}px)';
     } else if (border == InputBorder.none) {
-      return 'None';
+      return localization.storybookWidgetShowcaseOptionInputBorderNoneLabel;
     }
-    return 'Custom';
+    return localization.storybookWidgetShowcaseOptionInputBorderCustomLabel;
   }
 
   List<InputBorder> _getTestInputBorders() {

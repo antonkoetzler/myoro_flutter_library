@@ -9,6 +9,9 @@
 
   "myoroMenuErrorGettingItemsText": "항목을 가져오는 중 오류가 발생했습니다.",
 
+  "myoroDialogModalCancelButtonText": "취소",
+  "myoroDialogModalConfirmButtonText": "확인",
+
   "myoroCurrencyEnumUsdFormalName": "미국 달러",
   "myoroCurrencyEnumCadFormalName": "캐나다 달러",
   "myoroCurrencyEnumBrlFormalName": "브라질 레알",

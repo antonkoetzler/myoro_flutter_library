@@ -9,6 +9,9 @@
 
   "myoroMenuErrorGettingItemsText": "Kesalahan saat mengambil item.",
 
+  "myoroDialogModalCancelButtonText": "Batal",
+  "myoroDialogModalConfirmButtonText": "Konfirmasi",
+
   "myoroCurrencyEnumUsdFormalName": "Dolar Amerika Serikat",
   "myoroCurrencyEnumCadFormalName": "Dolar Kanada",
   "myoroCurrencyEnumBrlFormalName": "Real Brasil",

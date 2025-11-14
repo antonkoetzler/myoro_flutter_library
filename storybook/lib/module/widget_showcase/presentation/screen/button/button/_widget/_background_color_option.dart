@@ -9,7 +9,7 @@ final class _BackgroundColorOption extends StatelessWidget {
     final viewModel = context.read<MyoroButtonWidgetShowcaseScreenViewModel>();
 
     return ColorWidgetShowcaseOption(
-      label: 'Background color',
+      label: localization.storybookWidgetShowcaseOptionBackgroundColorLabel,
       selectedColor: viewModel.state.backgroundColor,
       onChanged: (color) => viewModel.state.backgroundColor = color,
     );

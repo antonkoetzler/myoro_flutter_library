@@ -9,6 +9,9 @@ class MyoroMenuIconTextButtonItem extends MyoroMenuItem with _$MyoroMenuIconText
   /// Default value of [invert].
   static const invertDefaultValue = MyoroIconTextButton.invertDefaultValue;
 
+  /// Default value of [text].
+  static const textDefaultValue = kMyoroEmptyString;
+
   /// Default constructor.
   const MyoroMenuIconTextButtonItem({
     super.cursor,
@@ -18,6 +21,7 @@ class MyoroMenuIconTextButtonItem extends MyoroMenuItem with _$MyoroMenuIconText
     super.isLoading = isLoadingDefaultValue,
     this.invert = invertDefaultValue,
     this.iconConfiguration,
+    this.text = textDefaultValue,
     this.textConfiguration,
   });
 
@@ -28,6 +32,9 @@ class MyoroMenuIconTextButtonItem extends MyoroMenuItem with _$MyoroMenuIconText
 
   /// Icon configuration of the [MyoroIconTextButton].
   final MyoroIconConfiguration? iconConfiguration;
+
+  /// Text of the [MyoroIconTextButton].
+  final String text;
 
   /// Text configuration of the [MyoroIconTextButton].
   final MyoroTextConfiguration? textConfiguration;

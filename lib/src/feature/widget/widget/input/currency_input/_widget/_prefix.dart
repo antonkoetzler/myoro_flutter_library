@@ -33,7 +33,8 @@ final class _Prefix extends StatelessWidget {
       child: IntrinsicWidth(
         child: MyoroIconTextButton(
           style: currencySymbolButtonStyle,
-          textConfiguration: MyoroTextConfiguration(text: _selectedCurrency.longSymbol, style: currencySymbolTextStyle),
+          text: _selectedCurrency.longSymbol,
+          textConfiguration: MyoroTextConfiguration(style: currencySymbolTextStyle),
           onTapUp: viewModel.state.canChangeCurrency ? (_) => toggleDropdown() : null,
         ),
       ),

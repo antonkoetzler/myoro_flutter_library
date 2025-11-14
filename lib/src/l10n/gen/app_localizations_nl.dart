@@ -12,27 +12,28 @@ class AppLocalizationsNl extends AppLocalizations {
   String get myoroFilePickerPickerButtonText => 'Bladeren';
 
   @override
-  String get myoroFilePickerSelectedFileUnselectedText =>
-      'Geen bestand geselecteerd.';
+  String get myoroFilePickerSelectedFileUnselectedText => 'Geen bestand geselecteerd.';
 
   @override
   String get myoroFilePickerDefaultDialogTitle => 'Bestand selecteren';
 
   @override
-  String get myoroImagePickerSelectionTypeModalText =>
-      'Afbeeldingsbron selecteren';
+  String get myoroImagePickerSelectionTypeModalText => 'Afbeeldingsbron selecteren';
 
   @override
-  String get myoroImagePickerSelectionTypeModalButtonCameraText =>
-      'Camera openen';
+  String get myoroImagePickerSelectionTypeModalButtonCameraText => 'Camera openen';
 
   @override
-  String get myoroImagePickerSelectionTypeModalButtonGalleryText =>
-      'Galerij bladeren';
+  String get myoroImagePickerSelectionTypeModalButtonGalleryText => 'Galerij bladeren';
 
   @override
-  String get myoroMenuErrorGettingItemsText =>
-      'Fout bij het ophalen van items.';
+  String get myoroMenuErrorGettingItemsText => 'Fout bij het ophalen van items.';
+
+  @override
+  String get myoroDialogModalCancelButtonText => 'Annuleren';
+
+  @override
+  String get myoroDialogModalConfirmButtonText => 'Bevestigen';
 
   @override
   String get myoroCurrencyEnumUsdFormalName => 'Amerikaanse dollar';
@@ -200,8 +201,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get myoroCurrencyEnumSarFormalName => 'Saoedi-Arabische riyal';
 
   @override
-  String get myoroCurrencyEnumAedFormalName =>
-      'Verenigde Arabische Emiraten dirham';
+  String get myoroCurrencyEnumAedFormalName => 'Verenigde Arabische Emiraten dirham';
 
   @override
   String get myoroCurrencyEnumQarFormalName => 'Qatarese riyal';
@@ -534,8 +534,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get myoroCountryEnumBoliviaLabel => 'Bolivia';
 
   @override
-  String get myoroCountryEnumBosniaAndHerzegovinaLabel =>
-      'Bosnië en Herzegovina';
+  String get myoroCountryEnumBosniaAndHerzegovinaLabel => 'Bosnië en Herzegovina';
 
   @override
   String get myoroCountryEnumBotswanaLabel => 'Botswana';
@@ -568,8 +567,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get myoroCountryEnumCapeVerdeLabel => 'Kaapverdië';
 
   @override
-  String get myoroCountryEnumCentralAfricanRepublicLabel =>
-      'Centraal-Afrikaanse Republiek';
+  String get myoroCountryEnumCentralAfricanRepublicLabel => 'Centraal-Afrikaanse Republiek';
 
   @override
   String get myoroCountryEnumChadLabel => 'Tsjaad';
@@ -914,8 +912,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get myoroCountryEnumSaintLuciaLabel => 'Saint Lucia';
 
   @override
-  String get myoroCountryEnumSaintVincentAndTheGrenadinesLabel =>
-      'Saint Vincent en de Grenadines';
+  String get myoroCountryEnumSaintVincentAndTheGrenadinesLabel => 'Saint Vincent en de Grenadines';
 
   @override
   String get myoroCountryEnumSamoaLabel => 'Samoa';
@@ -1029,8 +1026,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get myoroCountryEnumUkraineLabel => 'Oekraïne';
 
   @override
-  String get myoroCountryEnumUnitedArabEmiratesLabel =>
-      'Verenigde Arabische Emiraten';
+  String get myoroCountryEnumUnitedArabEmiratesLabel => 'Verenigde Arabische Emiraten';
 
   @override
   String get myoroCountryEnumUnitedKingdomLabel => 'Verenigd Koninkrijk';

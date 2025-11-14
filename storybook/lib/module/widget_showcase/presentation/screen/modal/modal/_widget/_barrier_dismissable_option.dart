@@ -9,7 +9,7 @@ final class _BarrierDismissableOption extends StatelessWidget {
     final viewModel = context.read<MyoroModalWidgetShowcaseScreenViewModel>();
     final state = viewModel.state;
     return MyoroCheckbox(
-      label: 'Close modal when backdrop is tapped?',
+      label: localization.storybookWidgetShowcaseOptionBarrierDismissableLabel,
       onChanged: (value) => state.barrierDismissable = value,
     );
   }

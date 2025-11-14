@@ -9,6 +9,7 @@ export 'divider/exports.dart';
 export 'drawer/exports.dart';
 export 'dropdown/exports.dart';
 export 'feedback/exports.dart';
+export 'field/exports.dart';
 export 'form/exports.dart';
 export 'graph/exports.dart';
 export 'image/exports.dart';

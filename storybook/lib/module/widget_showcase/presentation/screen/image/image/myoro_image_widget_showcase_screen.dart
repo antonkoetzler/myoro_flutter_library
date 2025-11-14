@@ -10,6 +10,11 @@ final class MyoroImageWidgetShowcaseScreen extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return const WidgetShowcaseScreen(configuration: WidgetShowcaseScreenConfiguration(widgetName: MyoroWidgetListEnum.myoroImageTitle, widget: _Widget()));
+    return const WidgetShowcaseScreen(
+      configuration: WidgetShowcaseScreenConfiguration(
+        widgetName: MyoroWidgetListEnum.myoroImageTitle,
+        widget: _Widget(),
+      ),
+    );
   }
 }
