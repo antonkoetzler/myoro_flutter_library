@@ -25,7 +25,7 @@ final class _ActionButton extends StatelessWidget {
 
     return IntrinsicWidth(
       child: MyoroIconTextButton(
-        style: style ?? MyoroIconTextButton.styleDefaultValue,
+        style: (style ?? MyoroIconTextButton.styleDefaultValue).bordered(context),
         cursor: cursor,
         tooltipText: tooltipText ?? MyoroIconTextButton.tooltipTextDefaultValue,
         onTapDown: onTapDown,

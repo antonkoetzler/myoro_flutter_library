@@ -42,6 +42,10 @@ mixin _$MyoroDropdownThemeExtensionMixin on ThemeExtension<MyoroDropdownThemeExt
     bool expandingAndOverlaySpacingProvided = true,
     double? itemsSectionSpacing,
     bool itemsSectionSpacingProvided = true,
+    TextAlign? textAlign,
+    bool textAlignProvided = true,
+    TextStyle? inputTextStyle,
+    bool inputTextStyleProvided = true,
   }) {
     return MyoroDropdownThemeExtension(
       constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
@@ -60,6 +64,8 @@ mixin _$MyoroDropdownThemeExtensionMixin on ThemeExtension<MyoroDropdownThemeExt
           ? (expandingAndOverlaySpacing ?? self.expandingAndOverlaySpacing)
           : null,
       itemsSectionSpacing: itemsSectionSpacingProvided ? (itemsSectionSpacing ?? self.itemsSectionSpacing) : null,
+      textAlign: textAlignProvided ? (textAlign ?? self.textAlign) : null,
+      inputTextStyle: inputTextStyleProvided ? (inputTextStyle ?? self.inputTextStyle) : null,
     );
   }
 
@@ -78,7 +84,9 @@ mixin _$MyoroDropdownThemeExtensionMixin on ThemeExtension<MyoroDropdownThemeExt
         other.dialogTextLoaderPadding == self.dialogTextLoaderPadding &&
         other.selectedItemColor == self.selectedItemColor &&
         other.expandingAndOverlaySpacing == self.expandingAndOverlaySpacing &&
-        other.itemsSectionSpacing == self.itemsSectionSpacing;
+        other.itemsSectionSpacing == self.itemsSectionSpacing &&
+        other.textAlign == self.textAlign &&
+        other.inputTextStyle == self.inputTextStyle;
   }
 
   @override
@@ -96,6 +104,8 @@ mixin _$MyoroDropdownThemeExtensionMixin on ThemeExtension<MyoroDropdownThemeExt
       self.selectedItemColor,
       self.expandingAndOverlaySpacing,
       self.itemsSectionSpacing,
+      self.textAlign,
+      self.inputTextStyle,
     );
   }
 
@@ -114,5 +124,7 @@ mixin _$MyoroDropdownThemeExtensionMixin on ThemeExtension<MyoroDropdownThemeExt
       '  selectedItemColor: ${self.selectedItemColor},\n'
       '  expandingAndOverlaySpacing: ${self.expandingAndOverlaySpacing},\n'
       '  itemsSectionSpacing: ${self.itemsSectionSpacing},\n'
+      '  textAlign: ${self.textAlign},\n'
+      '  inputTextStyle: ${self.inputTextStyle},\n'
       ');';
 }

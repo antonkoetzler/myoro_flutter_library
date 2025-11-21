@@ -9,6 +9,7 @@
 - feature: `MyoroCountryEnum`
 - feature: Adding all languages, countries, localizations, and currencies
 - feature: Add time based tools like `MyoroDayEnum` and `MyoroMonthEnum`
+- feature: `MyoroInput.minLines` & `MyoroInput.maxLines`
 - fix: Date picker not opening in `MyoroDatePickerInput`
 - Remove configuration model pattern
 - refactor: Remove `MyoroInput.number` create `MyoroNumberInput`

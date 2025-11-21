@@ -87,8 +87,7 @@ class MyoroModal extends StatelessWidget {
     final themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
     final primaryColor = _style.primaryColor ?? themeExtension.primaryColor;
     final borderRadius = _style.borderRadius ?? themeExtension.borderRadius;
-    final constraints =
-        _style.constraints ?? themeExtension.constraints ?? themeExtension.getDefaultConstraints(context);
+    final constraints = _style.constraints ?? themeExtension.constraints ?? themeExtension.getDefaultConstraints(context);
     final contentPadding = _style.contentPadding ?? themeExtension.contentPadding;
     final border = _style.border ?? themeExtension.border;
     final spacing = _style.spacing ?? themeExtension.spacing ?? 0;
@@ -118,9 +117,7 @@ class MyoroModal extends StatelessWidget {
       ),
     );
 
-    final wrappedContent = !_isBottomSheet
-        ? Center(child: content)
-        : SafeArea(top: false, bottom: true, child: content);
+    final wrappedContent = !_isBottomSheet ? Center(child: content) : SafeArea(top: false, bottom: true, child: content);
 
     return Provider.value(value: _style, child: wrappedContent);
   }

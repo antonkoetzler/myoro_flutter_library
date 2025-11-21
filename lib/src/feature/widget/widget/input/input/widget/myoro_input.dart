@@ -10,6 +10,9 @@ part '../_widget/_myoro_input_state.dart';
 
 /// Generic input.
 class MyoroInput extends StatefulWidget {
+  /// Default value for [style].
+  static const styleDefaultValue = MyoroInputStyle();
+
   /// Default value for [inputStyle].
   static const inputStyleDefaultValue = MyoroInputStyleEnum.outlined;
 
@@ -46,10 +49,16 @@ class MyoroInput extends StatefulWidget {
   /// Default value for [showObscureTextButton].
   static const showObscureTextButtonDefaultValue = false;
 
+  /// Default value for [minLines].
+  static const minLinesDefaultValue = 1;
+
+  /// Default value for [maxLines].
+  static const maxLinesDefaultValue = 1;
+
   /// Default constructor.
   const MyoroInput({
     super.key,
-    this.style = const MyoroInputStyle(),
+    this.style = styleDefaultValue,
     this.formatter,
     this.inputStyle = inputStyleDefaultValue,
     this.textAlign = textAlignDefaultValue,
@@ -74,10 +83,9 @@ class MyoroInput extends StatefulWidget {
     this.controller,
     this.obscureText = obscureTextDefaultValue,
     this.showObscureTextButton = showObscureTextButtonDefaultValue,
-  }) : assert(
-         !(text.length > 0 && controller != null),
-         '[MyoroInput]: [text] and [controller] cannot be provided together.',
-       );
+    this.minLines = minLinesDefaultValue,
+    this.maxLines = maxLinesDefaultValue,
+  }) : assert(!(text.length > 0 && controller != null), '[MyoroInput]: [text] and [controller] cannot be provided together.');
 
   /// Style.
   final MyoroInputStyle style;
@@ -125,6 +133,12 @@ class MyoroInput extends StatefulWidget {
 
   /// Whether to show [_ToggleHiddenButton] or not.
   final bool showObscureTextButton;
+
+  /// Min lines.
+  final int minLines;
+
+  /// Max lines.
+  final int maxLines;
 
   /// On changed when the checkbox next to the input is changed.
   ///

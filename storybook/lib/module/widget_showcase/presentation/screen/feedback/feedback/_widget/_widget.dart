@@ -28,7 +28,7 @@ final class _Widget extends StatelessWidget {
             subtitleConfiguration: subtitleConfiguration,
             actionButtonText: localization.storybookFeedbackActionButtonText,
             actionButtonConfiguration:
-                actionButtonConfigurationEnabled ? MyoroFeedbackActionButtonConfiguration(onTapUp: (_) {}) : null,
+                actionButtonConfigurationEnabled ? MyoroFeedbackActionButtonConfiguration(onTapUp: (_, _) {}) : null,
           );
         },
       ),

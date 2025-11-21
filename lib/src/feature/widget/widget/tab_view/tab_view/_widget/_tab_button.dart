@@ -31,7 +31,7 @@ final class _TabButton extends StatelessWidget {
       iconConfiguration: _tab.icon != null ? MyoroIconConfiguration(icon: _tab.icon!, size: tabButtonIconSize) : null,
       text: _tab.text,
       textConfiguration: MyoroTextConfiguration(style: tabButtonTextStyle),
-      onTapUp: (_) => selectTab(_tab),
+      onTapUp: (_, _) => selectTab(_tab),
     );
   }
 }

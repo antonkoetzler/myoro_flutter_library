@@ -47,7 +47,7 @@ class MyoroCurrencyInputViewModel {
   MyoroMenuItem itemBuilder(MyoroCurrencyEnum currency, _) {
     return MyoroMenuIconTextButtonItem(
       text: currency.longSymbol,
-      onTapUp: (_) {
+      onTapUp: (_, _) {
         state
           ..selectedCurrency = currency
           ..showing = false;

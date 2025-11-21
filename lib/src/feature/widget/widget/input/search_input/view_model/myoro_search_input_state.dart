@@ -5,6 +5,7 @@ class MyoroSearchInputState<T> {
   /// Default constructor.
   MyoroSearchInputState(
     this.label,
+    this.placeholder,
     this.dropdownType,
     this._itemBuilder,
     this.selectedItemBuilder,
@@ -19,6 +20,9 @@ class MyoroSearchInputState<T> {
 
   /// [MyoroSearchInput.label].
   String label;
+
+  /// [MyoroSearchInput.placeholder].
+  String placeholder;
 
   /// [MyoroSearchInput.dropdownType].
   MyoroSearchInputDropdownTypeEnum dropdownType;
@@ -69,7 +73,7 @@ class MyoroSearchInputState<T> {
     return (item, isLast) {
       final menuItem = _itemBuilder(item, isLast);
       return menuItem.copyWith(
-        onTapUp: (context) {
+        onTapUp: (_, _) {
           selectedItem = item;
           showing = false;
         },

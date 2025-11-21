@@ -37,7 +37,7 @@ final class MyoroFeedbackWidgetShowcaseScreenViewModel {
   /// [TextWidgetShowcaseOptionConfiguration.textOnChanged]
   /// of [MyoroFeedbackWidgetShowcaseScreenState.titleConfiguration].
   void titleConfigurationTextOnChanged(String text) {
-    _state.titleConfiguration = _state.titleConfiguration.copyWith(text: text);
+    _state.title = text;
   }
 
   /// [TextWidgetShowcaseOptionConfiguration.maxLinesOnChanged]
@@ -61,7 +61,7 @@ final class MyoroFeedbackWidgetShowcaseScreenViewModel {
   /// [TextWidgetShowcaseOptionConfiguration.textOnChanged]
   /// of [MyoroFeedbackWidgetShowcaseScreenState.subtitleConfiguration].
   void subtitleConfigurationTextOnChanged(String text) {
-    _state.subtitleConfiguration = _state.subtitleConfiguration?.copyWith(text: text);
+    _state.subtitle = text;
   }
 
   /// [TextWidgetShowcaseOptionConfiguration.maxLinesOnChanged]

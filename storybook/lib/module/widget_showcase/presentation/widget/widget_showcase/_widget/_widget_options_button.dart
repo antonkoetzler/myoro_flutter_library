@@ -10,7 +10,7 @@ final class _WidgetOptionsButton extends StatelessWidget {
     final themeExtension = context.resolveThemeExtension<WidgetShowcaseScreenThemeExtension>();
 
     return MyoroIconTextButton(
-      onTapUp: (_) {
+      onTapUp: (_, _) {
         _WidgetOptionsModal._show(
           context,
           viewModel.navigatorKey.currentContext!,

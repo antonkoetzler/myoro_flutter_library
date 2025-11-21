@@ -18,7 +18,7 @@ final class _Subtitle extends StatelessWidget {
     final style = context.watch<MyoroFeedbackStyle>();
     final maxLines = _subtitleConfiguration?.maxLines;
     final overflow = _subtitleConfiguration?.overflow;
-    final alignment = _subtitleConfiguration?.alignment;
+    final alignment = _subtitleConfiguration?.alignment ?? TextAlign.center;
     final subtitleTextStyle =
         _subtitleConfiguration?.style ?? style.subtitleTextStyle ?? themeExtension.subtitleTextStyle;
     return Text(_subtitle, maxLines: maxLines, overflow: overflow, textAlign: alignment, style: subtitleTextStyle);

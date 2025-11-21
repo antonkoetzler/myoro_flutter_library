@@ -35,7 +35,7 @@ final class _Prefix extends StatelessWidget {
           style: currencySymbolButtonStyle,
           text: _selectedCurrency.longSymbol,
           textConfiguration: MyoroTextConfiguration(style: currencySymbolTextStyle),
-          onTapUp: viewModel.state.canChangeCurrency ? (_) => toggleDropdown() : null,
+          onTapUp: viewModel.state.canChangeCurrency ? (_, _) => toggleDropdown() : null,
         ),
       ),
     );

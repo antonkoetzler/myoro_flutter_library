@@ -6,6 +6,7 @@ part '../_widget/_label.dart';
 part '../_widget/_data.dart';
 part '../_widget/_horizontal_layout.dart';
 part '../_widget/_vertical_layout.dart';
+part '../_widget/_layout.dart';
 
 /// Generic field [Widget] of MFL.
 class MyoroField extends StatelessWidget {
@@ -45,11 +46,14 @@ class MyoroField extends StatelessWidget {
   /// Build function.
   @override
   Widget build(context) {
-    return InheritedProvider.value(
-      value: style,
+    return MultiProvider(
+      providers: [
+        InheritedProvider.value(value: style),
+        Provider(create: (context) => MyoroFieldViewModel(label, labelConfiguration, data, dataConfiguration)),
+      ],
       child: switch (direction) {
-        Axis.horizontal => _HorizontalLayout(label, labelConfiguration, data, dataConfiguration),
-        Axis.vertical => _VerticalLayout(label, labelConfiguration, data, dataConfiguration),
+        Axis.horizontal => const _HorizontalLayout(),
+        Axis.vertical => const _VerticalLayout(),
       },
     );
   }

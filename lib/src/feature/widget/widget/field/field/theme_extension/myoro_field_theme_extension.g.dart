@@ -24,11 +24,17 @@ mixin _$MyoroFieldThemeExtensionMixin on ThemeExtension<MyoroFieldThemeExtension
     bool dataTextStyleProvided = true,
     double? spacing,
     bool spacingProvided = true,
+    BoxDecoration? decoration,
+    bool decorationProvided = true,
+    EdgeInsets? contentPadding,
+    bool contentPaddingProvided = true,
   }) {
     return MyoroFieldThemeExtension(
       labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
       dataTextStyle: dataTextStyleProvided ? (dataTextStyle ?? self.dataTextStyle) : null,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      decoration: decorationProvided ? (decoration ?? self.decoration) : null,
+      contentPadding: contentPaddingProvided ? (contentPadding ?? self.contentPadding) : null,
     );
   }
 
@@ -38,12 +44,14 @@ mixin _$MyoroFieldThemeExtensionMixin on ThemeExtension<MyoroFieldThemeExtension
         other.runtimeType == runtimeType &&
         other.labelTextStyle == self.labelTextStyle &&
         other.dataTextStyle == self.dataTextStyle &&
-        other.spacing == self.spacing;
+        other.spacing == self.spacing &&
+        other.decoration == self.decoration &&
+        other.contentPadding == self.contentPadding;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.labelTextStyle, self.dataTextStyle, self.spacing);
+    return Object.hash(self.labelTextStyle, self.dataTextStyle, self.spacing, self.decoration, self.contentPadding);
   }
 
   @override
@@ -52,5 +60,7 @@ mixin _$MyoroFieldThemeExtensionMixin on ThemeExtension<MyoroFieldThemeExtension
       '  labelTextStyle: ${self.labelTextStyle},\n'
       '  dataTextStyle: ${self.dataTextStyle},\n'
       '  spacing: ${self.spacing},\n'
+      '  decoration: ${self.decoration},\n'
+      '  contentPadding: ${self.contentPadding},\n'
       ');';
 }

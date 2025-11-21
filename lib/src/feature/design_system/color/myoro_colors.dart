@@ -18,4 +18,13 @@ final class MyoroColors {
 
   /// Blues
   static const blue1 = Colors.lightBlue;
+
+  /// Bronzes
+  static const bronze1 = Color(0xFFCD7F32);
+
+  /// Silvers
+  static const silver1 = Color(0xFFC0C0C0);
+
+  /// Golds
+  static const gold1 = Color(0xFFFFD700);
 }

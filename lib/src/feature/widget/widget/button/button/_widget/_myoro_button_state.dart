@@ -58,8 +58,8 @@ final class _MyoroButtonState extends State<MyoroButton> {
           builder: (_, isLoading, _) => isLoading
               ? const MyoroCircularLoader()
               : GestureDetector(
-                  onTapDown: onTapDown,
-                  onTapUp: onTapUp,
+                  onTapDown: (details) => onTapDown(context, details),
+                  onTapUp: (details) => onTapUp(context, details),
                   onTapCancel: onTapCancel,
                   child: ValueListenableBuilder(
                     valueListenable: tapStatusController,

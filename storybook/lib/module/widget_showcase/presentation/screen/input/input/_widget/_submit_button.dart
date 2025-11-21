@@ -10,7 +10,7 @@ final class _SubmitButton extends StatelessWidget {
     final formController = viewModel.state.formController;
 
     return MyoroIconTextButton(
-      onTapUp: (_) => formController.fetch(),
+      onTapUp: (_, _) => formController.fetch(),
       text: localization.storybookInputSubmitButtonText,
     );
   }

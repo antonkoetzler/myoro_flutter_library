@@ -18,15 +18,15 @@ final class _ItemsOption extends StatelessWidget {
           spacing: 8,
           children: [
             MyoroButton(
-              onTapDown: (_) => state.items = {'Item A', 'Item B', 'Item C'},
+              onTapDown: (_, _) => state.items = {'Item A', 'Item B', 'Item C'},
               builder: (context, tapStatusEnum) => const Text('Set 3 Items'),
             ),
             MyoroButton(
-              onTapDown: (_) => state.items = {'X', 'Y', 'Z', 'W', 'V', 'U'},
+              onTapDown: (_, _) => state.items = {'X', 'Y', 'Z', 'W', 'V', 'U'},
               builder: (context, tapStatusEnum) => const Text('Set 6 Items'),
             ),
             MyoroButton(
-              onTapDown: (_) => state.items = null,
+              onTapDown: (_, _) => state.items = null,
               builder: (context, tapStatusEnum) => const Text('Set Null (Loading)'),
             ),
           ],

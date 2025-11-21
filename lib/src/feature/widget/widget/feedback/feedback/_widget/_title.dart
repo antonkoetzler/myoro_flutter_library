@@ -18,7 +18,7 @@ final class _Title extends StatelessWidget {
     final style = context.watch<MyoroFeedbackStyle>();
     final maxLines = _titleConfiguration?.maxLines;
     final overflow = _titleConfiguration?.overflow;
-    final alignment = _titleConfiguration?.alignment;
+    final alignment = _titleConfiguration?.alignment ?? TextAlign.center;
     final titleTextStyle = _titleConfiguration?.style ?? style.titleTextStyle ?? themeExtension.titleTextStyle;
     return Text(_title, maxLines: maxLines, overflow: overflow, textAlign: alignment, style: titleTextStyle);
   }

@@ -13,8 +13,8 @@ final class _Widget extends StatelessWidget {
       listenable: iconTextButtonViewModel.state.buttonViewModel.state,
       builder: (_, _) {
         final buttonState = buttonViewModel.state;
-        final onTapDown = buttonState.onTapDownEnabled ? (_) => buttonViewModel.onTapDown(context) : null;
-        final onTapUp = buttonState.onTapUpEnabled ? (_) => buttonViewModel.onTapUp(context) : null;
+        final onTapDown = buttonState.onTapDownEnabled ? buttonViewModel.onTapDown : null;
+        final onTapUp = buttonState.onTapUpEnabled ? buttonViewModel.onTapUp : null;
         final tooltipText = buttonState.tooltipEnabled ? faker.lorem.word() : kMyoroEmptyString;
         final cursor = buttonState.cursor;
         final isLoading = buttonState.isLoading;

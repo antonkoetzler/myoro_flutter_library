@@ -36,10 +36,7 @@ class MyoroIconTextButton extends StatelessWidget {
     this.iconConfiguration,
     this.text = textDefaultValue,
     this.textConfiguration,
-  }) : assert(
-         !(iconConfiguration == null && text.length == 0),
-         '[MyoroIconTextButtonConfiguration]: [iconConfiguration] and/or [text] must be provided.',
-       );
+  }) : assert(!(iconConfiguration == null && text.length == 0), '[MyoroIconTextButton]: [iconConfiguration] and/or [text] must be provided.');
 
   /// Style.
   final MyoroIconTextButtonStyle style;

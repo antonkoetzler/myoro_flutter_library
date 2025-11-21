@@ -24,6 +24,8 @@ final class _MyoroInputState extends State<MyoroInput> {
       widget.enableInteractiveSelection,
       widget.canShowClearTextButton,
       widget.showObscureTextButton,
+      widget.minLines,
+      widget.maxLines,
       widget.checkboxOnChanged,
       widget.validation,
       widget.onFieldSubmitted,
@@ -56,6 +58,8 @@ final class _MyoroInputState extends State<MyoroInput> {
       ..enableInteractiveSelection = widget.enableInteractiveSelection
       ..canShowClearTextButton = widget.canShowClearTextButton
       ..showObscureTextButton = widget.showObscureTextButton
+      ..minLines = widget.minLines
+      ..maxLines = widget.maxLines
       ..checkboxOnChanged = widget.checkboxOnChanged
       ..validation = widget.validation
       ..onFieldSubmitted = widget.onFieldSubmitted

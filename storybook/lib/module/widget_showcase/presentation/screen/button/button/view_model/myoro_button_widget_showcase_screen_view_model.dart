@@ -15,14 +15,14 @@ final class MyoroButtonWidgetShowcaseScreenViewModel {
   }
 
   /// Callback executed when the [MyoroButton] is tapped down.
-  void onTapDown(BuildContext context) {
+  void onTapDown(BuildContext context, _) {
     context.showSnackBar(
       snackBar: const MyoroSnackBar(snackBarType: MyoroSnackBarTypeEnum.attention, message: 'Tap down activated.'),
     );
   }
 
   /// Callback executed when the [MyoroButton] is tapped up.
-  void onTapUp(BuildContext context) {
+  void onTapUp(BuildContext context, _) {
     context.showSnackBar(
       snackBar: const MyoroSnackBar(snackBarType: MyoroSnackBarTypeEnum.attention, message: 'Tap up activated.'),
     );

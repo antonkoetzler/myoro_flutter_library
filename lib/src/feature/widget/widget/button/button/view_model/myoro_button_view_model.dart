@@ -28,17 +28,17 @@ class MyoroButtonViewModel {
   }
 
   /// Callback executed when the [MyoroButton] is tapped.
-  void onTapDown(TapDownDetails details) {
+  void onTapDown(BuildContext context, TapDownDetails details) {
     _state.tapStatusController.value = MyoroTapStatusEnum.tap;
-    _state.onTapDown?.call(details);
+    _state.onTapDown?.call(context, details);
   }
 
   /// Callback executed when the [MyoroButton] is tapped then released.
-  void onTapUp(TapUpDetails details) {
+  void onTapUp(BuildContext context, TapUpDetails details) {
     _state.tapStatusController.value = MyoroPlatformHelper.isDesktop
         ? MyoroTapStatusEnum.hover
         : MyoroTapStatusEnum.idle;
-    _state.onTapUp?.call(details);
+    _state.onTapUp?.call(context, details);
   }
 
   /// Callback executed when a [MyoroButton] is tapped then cancelled.

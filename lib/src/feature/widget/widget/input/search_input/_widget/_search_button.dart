@@ -17,7 +17,7 @@ final class _SearchButton<T> extends StatelessWidget {
     final fetch = requestController.fetch;
 
     return MyoroIconTextButton(
-      onTapUp: (_) => fetch(),
+      onTapUp: (_, _) => fetch(),
       iconConfiguration: searchButtonIconConfiguration,
       style: const MyoroIconTextButtonStyle().bordered(context),
     );

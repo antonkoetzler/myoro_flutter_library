@@ -8,8 +8,8 @@ final class _Widget extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroButtonWidgetShowcaseScreenViewModel>();
     final state = viewModel.state;
-    final onTapDown = state.onTapDownEnabled ? (_) => viewModel.onTapDown(context) : null;
-    final onTapUp = state.onTapUpEnabled ? (_) => viewModel.onTapUp(context) : null;
+    final onTapDown = state.onTapDownEnabled ? viewModel.onTapDown : null;
+    final onTapUp = state.onTapUpEnabled ? viewModel.onTapUp : null;
     final tooltipText = state.tooltipEnabled ? faker.lorem.word() : kMyoroEmptyString;
     final cursor = state.cursor;
     final style = viewModel.style;

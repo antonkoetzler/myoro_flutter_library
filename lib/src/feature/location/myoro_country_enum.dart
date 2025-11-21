@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:myoro_flutter_library/src/exports.dart';
@@ -795,6 +796,11 @@ enum MyoroCountryEnum {
 
   /// Default constructor.
   const MyoroCountryEnum(this.emoji, this.currency);
+
+  /// Fake constructor.
+  factory MyoroCountryEnum.fake() {
+    return values[faker.randomGenerator.integer(values.length)];
+  }
 
   /// Flag emoji of the country.
   final String emoji;

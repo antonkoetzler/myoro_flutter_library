@@ -8,6 +8,7 @@ class MyoroSearchInputViewModel<T> {
   /// Default constructor.
   MyoroSearchInputViewModel(
     String label,
+    String placeholder,
     MyoroSearchInputDropdownTypeEnum dropdownType,
     MyoroMenuItemBuilder<T> itemBuilder,
     MyoroSearchInputSelectedItemBuilder<T> selectedItemBuilder,
@@ -18,6 +19,7 @@ class MyoroSearchInputViewModel<T> {
     FocusNode? focusNode,
   ) : _state = MyoroSearchInputState(
         label,
+        placeholder,
         dropdownType,
         itemBuilder,
         selectedItemBuilder,
@@ -53,8 +55,7 @@ class MyoroSearchInputViewModel<T> {
     final inputControllerText = _state.inputController.text;
     final selectedItemBuilder = _state.selectedItemBuilder;
     final requestController = _state.requestController;
-    if (inputControllerText.isEmpty ||
-        selectedItem != null && selectedItemBuilder(selectedItem) == inputControllerText) {
+    if (inputControllerText.isEmpty || selectedItem != null && selectedItemBuilder(selectedItem) == inputControllerText) {
       return;
     }
     requestController.fetch();

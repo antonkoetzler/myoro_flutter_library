@@ -35,8 +35,8 @@ final class _Row<T> extends StatelessWidget {
         backgroundTapColor: context.colorScheme.primary.withValues(alpha: 0.6),
         borderRadius: BorderRadius.zero,
       ),
-      onTapDown: (onTapDown != null) ? (_) => onTapDown(_item) : null,
-      onTapUp: (onTapUp != null) ? (_) => onTapUp(_item) : null,
+      onTapDown: (onTapDown != null) ? (_, _) => onTapDown(_item) : null,
+      onTapUp: (onTapUp != null) ? (_, _) => onTapUp(_item) : null,
       builder: (_, MyoroTapStatusEnum tapStatusEnum) {
         return Row(
           spacing: columnSpacing,

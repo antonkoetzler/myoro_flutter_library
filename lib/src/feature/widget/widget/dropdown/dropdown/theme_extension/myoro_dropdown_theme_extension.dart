@@ -24,6 +24,8 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
     this.selectedItemColor,
     this.expandingAndOverlaySpacing,
     this.itemsSectionSpacing,
+    this.textAlign,
+    this.inputTextStyle,
   });
 
   /// Fake constructor.
@@ -39,7 +41,9 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
       dialogTextLoaderPadding = myoroNullableFake<EdgeInsets>(),
       selectedItemColor = myoroNullableFake<Color>(),
       expandingAndOverlaySpacing = myoroNullableFake<double>(),
-      itemsSectionSpacing = myoroNullableFake<double>();
+      itemsSectionSpacing = myoroNullableFake<double>(),
+      textAlign = myoroNullableFake<TextAlign>(),
+      inputTextStyle = myoroNullableFake<TextStyle>();
 
   /// Builder constructor.
   MyoroDropdownThemeExtension.builder()
@@ -54,7 +58,9 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
       dialogTextLoaderPadding = null,
       selectedItemColor = null,
       expandingAndOverlaySpacing = kMyoroMultiplier * 1.5,
-      itemsSectionSpacing = kMyoroMultiplier;
+      itemsSectionSpacing = kMyoroMultiplier,
+      textAlign = null,
+      inputTextStyle = null;
 
   /// Constraints of the menu.
   @override
@@ -104,6 +110,14 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
   @override
   final double? itemsSectionSpacing;
 
+  /// Text alignment.
+  @override
+  final TextAlign? textAlign;
+
+  /// [MyoroInputStyle] of the input.
+  @override
+  final TextStyle? inputTextStyle;
+
   /// Lerp function.
   @override
   MyoroDropdownThemeExtension lerp(covariant MyoroDropdownThemeExtension? other, double t) {
@@ -121,6 +135,8 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
     final selectedItemColor = style.selectedItemColor;
     final expandingAndOverlaySpacing = style.expandingAndOverlaySpacing;
     final itemsSectionSpacing = style.itemsSectionSpacing;
+    final textAlign = style.textAlign;
+    final inputTextStyle = style.inputTextStyle;
 
     return MyoroDropdownThemeExtension(
       constraints: constraints,
@@ -135,6 +151,8 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
       selectedItemColor: selectedItemColor,
       expandingAndOverlaySpacing: expandingAndOverlaySpacing,
       itemsSectionSpacing: itemsSectionSpacing,
+      textAlign: textAlign,
+      inputTextStyle: inputTextStyle,
     );
   }
 }

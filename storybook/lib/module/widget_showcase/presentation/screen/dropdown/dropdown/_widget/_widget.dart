@@ -29,7 +29,7 @@ final class _Widget extends StatelessWidget {
           itemBuilder: (item, _) {
             return MyoroMenuButtonItem(
               builder: (context, tapStatusEnum) => Text(item),
-              onTapUp: (_) => state.selectedItems = {if (!state.selectedItems.contains(item)) item},
+              onTapUp: (_, _) => state.selectedItems = {if (!state.selectedItems.contains(item)) item},
             );
           },
           child: GestureDetector(

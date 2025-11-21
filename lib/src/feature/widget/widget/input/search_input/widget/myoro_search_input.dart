@@ -17,6 +17,9 @@ class MyoroSearchInput<T> extends StatefulWidget {
   /// Default value for [dropdownType].
   static const dropdownTypeDefaultValue = MyoroSearchInputDropdownTypeEnum.expanding;
 
+  /// Default value for [placeholder].
+  static const placeholderDefaultValue = kMyoroEmptyString;
+
   /// Default constructor.
   const MyoroSearchInput({
     super.key,
@@ -24,6 +27,7 @@ class MyoroSearchInput<T> extends StatefulWidget {
     this.label = labelDefaultValue,
     this.dropdownType = dropdownTypeDefaultValue,
     required this.itemBuilder,
+    this.placeholder = placeholderDefaultValue,
     required this.selectedItemBuilder,
     required this.requestCallback,
     this.onChanged,
@@ -37,6 +41,9 @@ class MyoroSearchInput<T> extends StatefulWidget {
 
   /// Label.
   final String label;
+
+  /// Placeholder.
+  final String placeholder;
 
   /// Dropdown type.
   final MyoroSearchInputDropdownTypeEnum dropdownType;

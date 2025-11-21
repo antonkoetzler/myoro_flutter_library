@@ -24,7 +24,7 @@ class MyoroFeedback extends StatelessWidget {
   const MyoroFeedback({
     super.key,
     this.style = styleDefaultValue,
-    required this.iconConfiguration,
+    this.iconConfiguration,
     this.title = titleDefaultValue,
     this.titleConfiguration,
     this.subtitle = subtitleDefaultValue,
@@ -37,7 +37,7 @@ class MyoroFeedback extends StatelessWidget {
   final MyoroFeedbackStyle style;
 
   /// [IconData] of the [MyoroFeedback].
-  final MyoroIconConfiguration iconConfiguration;
+  final MyoroIconConfiguration? iconConfiguration;
 
   /// Title of the [MyoroFeedback].
   final String title;
@@ -59,8 +59,8 @@ class MyoroFeedback extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final style = this.style;
-    final spacing = style.spacing ?? 0;
+    final themeExtension = context.resolveThemeExtension<MyoroFeedbackThemeExtension>();
+    final spacing = style.spacing ?? themeExtension.spacing ?? 0;
 
     return Provider.value(
       value: style,
@@ -76,7 +76,7 @@ class MyoroFeedback extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      _Icon(iconConfiguration),
+                      if (iconConfiguration != null) _Icon(iconConfiguration!),
                       _Title(title, titleConfiguration),
                       if (subtitleConfiguration != null) _Subtitle(subtitle, subtitleConfiguration!),
                     ],

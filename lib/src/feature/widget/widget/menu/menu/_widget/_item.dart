@@ -21,9 +21,7 @@ final class _Item<T> extends StatelessWidget {
 
     return switch (_menuItem) {
       MyoroMenuButtonItem() => MyoroButton(
-        style: const MyoroButtonStyle()
-            .copyWith(borderRadius: itemBorderRadius)
-            .singleBackgroundColor(selectedItemColor),
+        style: const MyoroButtonStyle().copyWith(borderRadius: itemBorderRadius).singleBackgroundColor(selectedItemColor),
         cursor: _menuItem.cursor,
         tooltipText: _menuItem.tooltipText,
         onTapDown: _menuItem.onTapDown,
@@ -32,16 +30,15 @@ final class _Item<T> extends StatelessWidget {
         builder: _menuItem.builder,
       ),
       MyoroMenuIconTextButtonItem() => MyoroIconTextButton(
-        style: const MyoroIconTextButtonStyle()
-            .copyWith(borderRadius: itemBorderRadius)
-            .singleBackgroundColor(selectedItemColor),
+        style: const MyoroIconTextButtonStyle().copyWith(borderRadius: itemBorderRadius).singleBackgroundColor(selectedItemColor),
         cursor: _menuItem.cursor,
         tooltipText: _menuItem.tooltipText,
         onTapDown: _menuItem.onTapDown,
-        onTapUp: (details) => _menuItem.onTapUp?.call(details),
+        onTapUp: _menuItem.onTapUp,
         isLoading: _menuItem.isLoading,
         invert: _menuItem.invert,
         iconConfiguration: _menuItem.iconConfiguration,
+        text: _menuItem.text,
         textConfiguration: _menuItem.textConfiguration,
       ),
     };

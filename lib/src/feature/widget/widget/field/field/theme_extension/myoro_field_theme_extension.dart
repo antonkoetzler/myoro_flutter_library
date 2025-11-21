@@ -11,19 +11,32 @@ class MyoroFieldThemeExtension extends ThemeExtension<MyoroFieldThemeExtension>
     with _$MyoroFieldThemeExtensionMixin
     implements MyoroFieldStyle {
   /// Default constructor.
-  const MyoroFieldThemeExtension({this.labelTextStyle, this.dataTextStyle, this.spacing});
+  const MyoroFieldThemeExtension({
+    this.labelTextStyle,
+    this.dataTextStyle,
+    this.spacing,
+    this.decoration,
+    this.contentPadding,
+  });
 
   /// Fake constructor.
   MyoroFieldThemeExtension.fake()
     : labelTextStyle = myoroNullableFake<TextStyle>(),
       dataTextStyle = myoroNullableFake<TextStyle>(),
-      spacing = myoroNullableFake<double>();
+      spacing = myoroNullableFake<double>(),
+      decoration = myoroNullableFake<BoxDecoration>(),
+      contentPadding = myoroNullableFake<EdgeInsets>();
 
   /// Builder constructor.
-  MyoroFieldThemeExtension.builder(TextTheme textTheme)
-    : labelTextStyle = textTheme.titleSmall,
-      dataTextStyle = textTheme.bodySmall,
-      spacing = kMyoroMultiplier;
+  MyoroFieldThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
+    : labelTextStyle = textTheme.titleSmall?.copyWith(fontSize: MyoroFontSizeEnum.tiny.size),
+      dataTextStyle = textTheme.bodySmall?.copyWith(fontSize: MyoroFontSizeEnum.tiny.size),
+      spacing = kMyoroMultiplier,
+      decoration = BoxDecoration(
+        color: colorScheme.onPrimary.withValues(alpha: 0.2),
+        borderRadius: BorderRadius.circular(kMyoroBorderRadius),
+      ),
+      contentPadding = const EdgeInsets.all(kMyoroMultiplier * 1.3);
 
   /// [TextStyle] of the label.
   @override
@@ -37,6 +50,14 @@ class MyoroFieldThemeExtension extends ThemeExtension<MyoroFieldThemeExtension>
   @override
   final double? spacing;
 
+  /// [BoxDecoration] of the field.
+  @override
+  final BoxDecoration? decoration;
+
+  /// Content padding.
+  @override
+  final EdgeInsets? contentPadding;
+
   @override
   MyoroFieldThemeExtension lerp(covariant MyoroFieldThemeExtension? other, double t) {
     if (other is! MyoroFieldThemeExtension) return this;
@@ -45,6 +66,8 @@ class MyoroFieldThemeExtension extends ThemeExtension<MyoroFieldThemeExtension>
       labelTextStyle: style.labelTextStyle,
       dataTextStyle: style.dataTextStyle,
       spacing: style.spacing,
+      decoration: style.decoration,
+      contentPadding: style.contentPadding,
     );
   }
 }

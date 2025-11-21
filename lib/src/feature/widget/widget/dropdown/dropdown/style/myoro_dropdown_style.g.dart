@@ -19,6 +19,10 @@ mixin _$MyoroDropdownStyleMixin {
   MyoroDropdownStyle copyWith({
     double? expandingAndOverlaySpacing,
     bool expandingAndOverlaySpacingProvided = true,
+    TextAlign? textAlign,
+    bool textAlignProvided = true,
+    TextStyle? inputTextStyle,
+    bool inputTextStyleProvided = true,
     BoxConstraints? constraints,
     bool constraintsProvided = true,
     Color? backgroundColor,
@@ -46,6 +50,8 @@ mixin _$MyoroDropdownStyleMixin {
       expandingAndOverlaySpacing: expandingAndOverlaySpacingProvided
           ? (expandingAndOverlaySpacing ?? self.expandingAndOverlaySpacing)
           : null,
+      textAlign: textAlignProvided ? (textAlign ?? self.textAlign) : null,
+      inputTextStyle: inputTextStyleProvided ? (inputTextStyle ?? self.inputTextStyle) : null,
       constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
       backgroundColor: backgroundColorProvided ? (backgroundColor ?? self.backgroundColor) : null,
       border: borderProvided ? (border ?? self.border) : null,
@@ -66,6 +72,8 @@ mixin _$MyoroDropdownStyleMixin {
     return other is MyoroDropdownStyle &&
         other.runtimeType == runtimeType &&
         other.expandingAndOverlaySpacing == self.expandingAndOverlaySpacing &&
+        other.textAlign == self.textAlign &&
+        other.inputTextStyle == self.inputTextStyle &&
         other.constraints == self.constraints &&
         other.backgroundColor == self.backgroundColor &&
         other.border == self.border &&
@@ -83,6 +91,8 @@ mixin _$MyoroDropdownStyleMixin {
   int get hashCode {
     return Object.hash(
       self.expandingAndOverlaySpacing,
+      self.textAlign,
+      self.inputTextStyle,
       self.constraints,
       self.backgroundColor,
       self.border,
@@ -101,6 +111,8 @@ mixin _$MyoroDropdownStyleMixin {
   String toString() =>
       'MyoroDropdownStyle(\n'
       '  expandingAndOverlaySpacing: ${self.expandingAndOverlaySpacing},\n'
+      '  textAlign: ${self.textAlign},\n'
+      '  inputTextStyle: ${self.inputTextStyle},\n'
       '  constraints: ${self.constraints},\n'
       '  backgroundColor: ${self.backgroundColor},\n'
       '  border: ${self.border},\n'

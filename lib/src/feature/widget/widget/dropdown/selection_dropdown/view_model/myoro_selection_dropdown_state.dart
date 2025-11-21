@@ -17,8 +17,8 @@ sealed class MyoroSelectionDropdownState<T> {
     this.itemBuilder = (item, isLast) {
       final menuItem = itemBuilder(item, isLast);
       return menuItem.copyWith(
-        onTapUp: (details) {
-          menuItem.onTapUp?.call(details);
+        onTapUp: (context, details) {
+          menuItem.onTapUp?.call(context, details);
 
           switch (this) {
             case final MyoroMultiSelectionDropdownState<T> state:

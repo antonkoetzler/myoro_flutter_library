@@ -21,7 +21,7 @@ final class _PickerButton extends StatelessWidget {
         style: const MyoroIconTextButtonStyle().bordered(context),
         text: myoroFilePickerPickerButtonText,
         textConfiguration: MyoroTextConfiguration(style: textStyle),
-        onTapUp: (_) => openPicker(),
+        onTapUp: (_, _) => openPicker(),
       ),
     );
   }

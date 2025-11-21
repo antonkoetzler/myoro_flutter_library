@@ -18,15 +18,15 @@ final class _SelectedItemsOption extends StatelessWidget {
           spacing: 8,
           children: [
             MyoroButton(
-              onTapDown: (_) => state.selectedItems = {'Menu Item 1'},
+              onTapDown: (_, _) => state.selectedItems = {'Menu Item 1'},
               builder: (context, tapStatusEnum) => Text(localization.storybookMenuSelectItem1ButtonText),
             ),
             MyoroButton(
-              onTapDown: (_) => state.selectedItems = {'Menu Item 2', 'Menu Item 3'},
+              onTapDown: (_, _) => state.selectedItems = {'Menu Item 2', 'Menu Item 3'},
               builder: (context, tapStatusEnum) => Text(localization.storybookMenuSelectMultipleButtonText),
             ),
             MyoroButton(
-              onTapDown: (_) => state.selectedItems = {},
+              onTapDown: (_, _) => state.selectedItems = {},
               builder: (context, tapStatusEnum) => Text(localization.storybookMenuClearSelectionButtonText),
             ),
           ],

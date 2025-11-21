@@ -18,6 +18,8 @@ class MyoroInputState {
     this.enableInteractiveSelection,
     this.canShowClearTextButton,
     this.showObscureTextButton,
+    this.minLines,
+    this.maxLines,
     this.checkboxOnChanged,
     this.validation,
     this.onFieldSubmitted,
@@ -93,6 +95,12 @@ class MyoroInputState {
 
   /// [MyoroInput.showObscureTextButton]
   bool showObscureTextButton;
+
+  /// [MyoroInput.minLines]
+  int minLines;
+
+  /// [MyoroInput.maxLines]
+  int maxLines;
 
   /// [MyoroInput.checkboxOnChanged]
   MyoroInputCheckboxOnChanged? checkboxOnChanged;

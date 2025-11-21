@@ -11,7 +11,7 @@ final class _WidgetListingAccordionItemContentButton extends StatelessWidget {
     final viewModel = context.read<MainScreenViewModel>();
 
     return MyoroIconTextButton(
-      onTapUp: (_) => viewModel.widgetListingAccordionItemContentButtonOnTapUp(context, _widgetName),
+      onTapUp: (_, _) => viewModel.widgetListingAccordionItemContentButtonOnTapUp(context, _widgetName),
       text: _widgetName,
       style: const MyoroIconTextButtonStyle().copyWith(borderRadius: BorderRadius.zero),
     );

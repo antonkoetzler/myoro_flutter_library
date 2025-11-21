@@ -11,7 +11,7 @@ final class _SubmitButton extends StatelessWidget {
     return IntrinsicWidth(
       child: MyoroIconTextButton(
         style: const MyoroIconTextButtonStyle().bordered(context),
-        onTapUp: (_) => _formController.fetch(),
+        onTapUp: (_, _) => _formController.fetch(),
         text: localization.storybookFormSubmitButtonText,
       ),
     );

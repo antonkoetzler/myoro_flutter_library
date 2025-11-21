@@ -32,7 +32,7 @@ final class _Overlay extends StatelessWidget {
         backgroundTapColor: overlayBackgroundTapColor,
       ),
       cursor: overlayCursor,
-      onTapUp: (_) => MyoroPlatformHelper.isMobile
+      onTapUp: (_, _) => MyoroPlatformHelper.isMobile
           ? _SelectionTypeModal.show(context, style, viewModel)
           : openPickerAndUpdateSelectedImage(),
       builder: (_, _) => Column(

@@ -171,6 +171,14 @@ T myoroFake<T>() {
     return kMyoroTestCursors[faker.randomGenerator.integer(kMyoroTestCursors.length)] as T;
   }
 
+  if (T == MyoroCardStyle) {
+    return MyoroCardStyle.fake() as T;
+  }
+
+  if (T == MyoroCountryEnum) {
+    return MyoroCountryEnum.fake() as T;
+  }
+
   if (T == MyoroInputStyleEnum) {
     return MyoroInputStyleEnum.fake() as T;
   }

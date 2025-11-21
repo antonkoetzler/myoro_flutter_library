@@ -11,6 +11,7 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
     super.initState();
     _viewModel = MyoroSearchInputViewModel(
       widget.label,
+      widget.placeholder,
       widget.dropdownType,
       widget.itemBuilder,
       widget.selectedItemBuilder,
@@ -28,6 +29,7 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
     super.didUpdateWidget(oldWidget);
     _viewModel.state
       ..label = widget.label
+      ..placeholder = widget.placeholder
       ..dropdownType = widget.dropdownType
       ..itemBuilder = widget.itemBuilder
       ..selectedItemBuilder = widget.selectedItemBuilder

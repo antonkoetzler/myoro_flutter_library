@@ -14,14 +14,8 @@ final class _TextFormField extends StatelessWidget {
     final textStyle = style.inputTextStyle ?? themeExtension.inputTextStyle;
     final contentPadding = style.contentPadding ?? themeExtension.contentPadding;
     final primaryColor = style.primaryColor ?? themeExtension.primaryColor ?? MyoroColors.transparent;
-    final suffixIconConstraints =
-        style.suffixIconConstraints ??
-        themeExtension.suffixIconConstraints ??
-        const BoxConstraints(minWidth: 0, minHeight: 0);
-    final prefixIconConstraints =
-        style.prefixIconConstraints ??
-        themeExtension.prefixIconConstraints ??
-        const BoxConstraints(minWidth: 0, minHeight: 0);
+    final suffixIconConstraints = style.suffixIconConstraints ?? themeExtension.suffixIconConstraints ?? const BoxConstraints(minWidth: 0, minHeight: 0);
+    final prefixIconConstraints = style.prefixIconConstraints ?? themeExtension.prefixIconConstraints ?? const BoxConstraints(minWidth: 0, minHeight: 0);
     final labelTextStyle = style.labelTextStyle ?? themeExtension.labelTextStyle;
 
     final viewModel = context.watch<MyoroInputViewModel>();
@@ -45,6 +39,8 @@ final class _TextFormField extends StatelessWidget {
     final showObscureTextButton = state.showObscureTextButton;
     final inputStyle = state.inputStyle;
     final enableInteractiveSelection = state.enableInteractiveSelection;
+    final minLines = state.minLines;
+    final maxLines = state.maxLines;
 
     final border = style.border ?? themeExtension.border ?? inputStyle.getBorder(context);
 
@@ -71,11 +67,9 @@ final class _TextFormField extends StatelessWidget {
                     autofocus: autofocus,
                     enableInteractiveSelection: enableInteractiveSelection,
                     obscureText: obscureText,
-                    style: textStyle?.withColor(
-                      textStyle.color!.withValues(
-                        alpha: _enabled ? 1 : (style.disabledOpacity ?? themeExtension.disabledOpacity),
-                      ),
-                    ),
+                    minLines: minLines,
+                    maxLines: maxLines,
+                    style: textStyle?.withColor(textStyle.color!.withValues(alpha: _enabled ? 1 : (style.disabledOpacity ?? themeExtension.disabledOpacity))),
                     onTap: onTap,
                     mouseCursor: onTap != null ? SystemMouseCursors.click : null,
                     decoration: InputDecoration(
@@ -83,26 +77,16 @@ final class _TextFormField extends StatelessWidget {
                       labelText: label.isNotEmpty ? label : null,
                       floatingLabelStyle: labelTextStyle,
                       hintText: placeholder.isNotEmpty ? placeholder : null,
-                      hintStyle: textStyle?.withColor(
-                        textStyle.color!.withValues(alpha: style.disabledOpacity ?? themeExtension.disabledOpacity),
-                      ),
+                      hintStyle: textStyle?.withColor(textStyle.color!.withValues(alpha: style.disabledOpacity ?? themeExtension.disabledOpacity)),
                       enabledBorder: border,
                       focusedBorder: border,
-                      errorBorder: border?.copyWith(
-                        borderSide: border.borderSide.copyWith(
-                          color: style.errorBorderColor ?? themeExtension.errorBorderColor,
-                        ),
-                      ),
+                      errorBorder: border?.copyWith(borderSide: border.borderSide.copyWith(color: style.errorBorderColor ?? themeExtension.errorBorderColor)),
                       focusedErrorBorder: border?.copyWith(
-                        borderSide: border.borderSide.copyWith(
-                          color: style.errorBorderColor ?? themeExtension.errorBorderColor,
-                        ),
+                        borderSide: border.borderSide.copyWith(color: style.errorBorderColor ?? themeExtension.errorBorderColor),
                       ),
                       disabledBorder: border?.copyWith(
                         borderSide: border.borderSide.copyWith(
-                          color: border.borderSide.color.withValues(
-                            alpha: style.disabledOpacity ?? themeExtension.disabledOpacity,
-                          ),
+                          color: border.borderSide.color.withValues(alpha: style.disabledOpacity ?? themeExtension.disabledOpacity),
                         ),
                       ),
                       isDense: true,

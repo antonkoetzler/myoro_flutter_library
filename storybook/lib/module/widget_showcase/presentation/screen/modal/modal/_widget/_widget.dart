@@ -13,7 +13,10 @@ final class _Widget extends StatelessWidget {
       onGenerateRoute: (_) {
         return MaterialPageRoute(
           builder: (_) {
-            return MyoroIconTextButton(onTapUp: (_) => viewModel.showModal(context), text: 'Click to show the modal!');
+            return MyoroIconTextButton(
+              onTapUp: (_, _) => viewModel.showModal(context),
+              text: 'Click to show the modal!',
+            );
           },
         );
       },

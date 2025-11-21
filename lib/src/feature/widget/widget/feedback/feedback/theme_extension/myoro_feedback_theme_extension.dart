@@ -23,7 +23,7 @@ class MyoroFeedbackThemeExtension extends ThemeExtension<MyoroFeedbackThemeExten
   MyoroFeedbackThemeExtension.builder(TextTheme textTheme)
     : spacing = kMyoroMultiplier * 2,
       iconSize = kMyoroMultiplier * 30,
-      titleTextStyle = textTheme.titleLarge,
+      titleTextStyle = textTheme.titleMedium,
       subtitleTextStyle = textTheme.bodyMedium;
 
   /// Spacing between the icon/title/subtitle and the action button.

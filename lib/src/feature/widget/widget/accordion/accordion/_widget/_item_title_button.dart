@@ -30,7 +30,7 @@ final class _ItemTitleButton<T> extends StatelessWidget {
     final title = titleBuilder(_item, _isSelected);
 
     return MyoroButton(
-      onTapUp: (_) => toggleItem(_item),
+      onTapUp: (_, _) => toggleItem(_item),
       style: buttonStyle,
       builder: (context, tapStatus) => Padding(
         padding: itemTitleButtonContentPadding,
