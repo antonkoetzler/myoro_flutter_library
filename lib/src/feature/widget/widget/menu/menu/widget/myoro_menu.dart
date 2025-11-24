@@ -21,6 +21,7 @@ final class MyoroMenu<T> extends StatefulWidget {
     this.items,
     this.selectedItems = const {},
     required this.itemBuilder,
+    this.footer,
   });
 
   /// Style.
@@ -40,7 +41,12 @@ final class MyoroMenu<T> extends StatefulWidget {
   /// Menu item builder.
   final MyoroMenuItemBuilder<T> itemBuilder;
 
+  /// Footer [Widget].
+  final Widget? footer;
+
   /// Create state function.
   @override
-  State<MyoroMenu<T>> createState() => _MyoroMenuState<T>();
+  State<MyoroMenu<T>> createState() {
+    return _MyoroMenuState<T>();
+  }
 }

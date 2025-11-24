@@ -24,13 +24,14 @@ final class _TabButton extends StatelessWidget {
     final selectTab = viewModel.selectTab;
 
     return MyoroIconTextButton(
-      style: const MyoroIconTextButtonStyle().copyWith(
+      style: MyoroIconTextButtonStyle(
         borderRadius: tabButtonBorderRadius,
         backgroundIdleColor: isSelected ? primaryBackgroundHoverColor : null,
+        iconSize: tabButtonIconSize,
+        textStyle: MyoroTextStyle(style: tabButtonTextStyle),
       ),
-      iconConfiguration: _tab.icon != null ? MyoroIconConfiguration(icon: _tab.icon!, size: tabButtonIconSize) : null,
+      icon: _tab.icon,
       text: _tab.text,
-      textConfiguration: MyoroTextConfiguration(style: tabButtonTextStyle),
       onTapUp: (_, _) => selectTab(_tab),
     );
   }

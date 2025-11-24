@@ -36,6 +36,12 @@ class AppLocalizationsVi extends AppLocalizations {
   String get myoroDialogModalConfirmButtonText => 'Xác nhận';
 
   @override
+  String get myoroFilterButtonClearButtonText => 'Xóa';
+
+  @override
+  String get myoroFilterButtonApplyButtonText => 'Áp dụng';
+
+  @override
   String get myoroCurrencyEnumUsdFormalName => 'Đô la Mỹ';
 
   @override
@@ -1138,4 +1144,10 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get myoroMonthEnumDecemberLabel => 'Tháng Mười Hai';
+
+  @override
+  String get myoroSearchBarInputLabel => 'Tìm kiếm';
+
+  @override
+  String get myoroSearchBarInputPlaceholder => 'Nhập gì đó...';
 }

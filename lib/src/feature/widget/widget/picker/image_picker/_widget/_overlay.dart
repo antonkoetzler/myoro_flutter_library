@@ -9,9 +9,6 @@ final class _Overlay extends StatelessWidget {
     final imagePickerThemeExtension = context.resolveThemeExtension<MyoroImagePickerThemeExtension>();
     final style = context.watch<MyoroImagePickerStyle>();
     final overlayCursor = style.overlayCursor ?? imagePickerThemeExtension.overlayCursor;
-    final overlayUnselectedImageStateIconConfiguration =
-        style.overlayUnselectedImageStateIconConfiguration ??
-        imagePickerThemeExtension.overlayUnselectedImageStateIconConfiguration;
     final overlayBackgroundIdleColor =
         style.overlayBackgroundIdleColor ?? imagePickerThemeExtension.overlayBackgroundIdleColor;
     final overlayBackgroundHoverColor =
@@ -19,6 +16,12 @@ final class _Overlay extends StatelessWidget {
     final overlayBackgroundTapColor =
         style.overlayBackgroundTapColor ?? imagePickerThemeExtension.overlayBackgroundTapColor;
     final labelTextStyle = style.labelTextStyle ?? imagePickerThemeExtension.labelTextStyle;
+    final overlayUnselectedImageStateIcon =
+        style.overlayUnselectedImageStateIcon ??
+        imagePickerThemeExtension.overlayUnselectedImageStateIcon ??
+        Icons.upload;
+    final overlayUnselectedImageStateIconStyle =
+        style.overlayUnselectedImageStateIconStyle ?? imagePickerThemeExtension.overlayUnselectedImageStateIconStyle;
 
     final viewModel = context.read<MyoroImagePickerViewModel>();
     final openPickerAndUpdateSelectedImage = viewModel.openPickerAndUpdateSelectedImage;
@@ -39,10 +42,7 @@ final class _Overlay extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            overlayUnselectedImageStateIconConfiguration?.icon ?? Icons.upload,
-            size: overlayUnselectedImageStateIconConfiguration?.size ?? kMyoroMultiplier * 20,
-          ),
+          MyoroIcon(overlayUnselectedImageStateIcon, style: overlayUnselectedImageStateIconStyle),
           if (label.isNotEmpty) Text(label, style: labelTextStyle),
         ],
       ),

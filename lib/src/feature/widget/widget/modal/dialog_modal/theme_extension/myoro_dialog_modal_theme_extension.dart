@@ -1,4 +1,3 @@
-import 'package:faker/faker.dart' hide Color;
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -21,7 +20,8 @@ class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThem
     this.closeButtonPadding,
     this.spacing,
     this.titleTextStyle,
-    this.closeButtonIconConfiguration,
+    this.closeButtonIcon,
+    this.closeButtonIconSize,
     this.textStyle,
     this.footerButtonsSpacing,
     this.margin,
@@ -37,7 +37,8 @@ class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThem
       closeButtonPadding = myoroNullableFake<EdgeInsets>(),
       spacing = myoroNullableFake<double>(),
       titleTextStyle = myoroNullableFake<TextStyle>(),
-      closeButtonIconConfiguration = faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null,
+      closeButtonIcon = myoroNullableFake<IconData>(),
+      closeButtonIconSize = myoroNullableFake<double>(),
       textStyle = myoroNullableFake<TextStyle>(),
       footerButtonsSpacing = myoroNullableFake<double>(),
       margin = myoroNullableFake<EdgeInsets>();
@@ -52,7 +53,8 @@ class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThem
       closeButtonPadding = null,
       spacing = null,
       titleTextStyle = null,
-      closeButtonIconConfiguration = null,
+      closeButtonIcon = Icons.close,
+      closeButtonIconSize = null,
       textStyle = textTheme.bodyMedium!,
       footerButtonsSpacing = 10,
       margin = const EdgeInsets.all(kMyoroMultiplier * 3);
@@ -81,23 +83,27 @@ class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThem
   @override
   final EdgeInsets? closeButtonPadding;
 
-  /// Spacing between the [_Header] and the contents of the modal.
+  /// Spacing between the header and the contents of the modal.
   @override
   final double? spacing;
 
-  /// Text style of [_Title].
+  /// Text style of the title.
   @override
   final TextStyle? titleTextStyle;
 
-  /// [MyoroIconConfiguration] of [_CloseButton].
+  /// [IconData] of the close button.
   @override
-  final MyoroIconConfiguration? closeButtonIconConfiguration;
+  final IconData? closeButtonIcon;
 
-  /// Text style of the simple text option in [_Message].
+  /// Icon size of the close button.
+  @override
+  final double? closeButtonIconSize;
+
+  /// Text style of the simple text option in the message.
   @override
   final TextStyle? textStyle;
 
-  /// Spacing in between the buttons in [_FooterButtons].
+  /// Spacing in between the buttons in the footer.
   @override
   final double? footerButtonsSpacing;
 
@@ -118,7 +124,8 @@ class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThem
       closeButtonPadding: style.closeButtonPadding,
       spacing: style.spacing,
       titleTextStyle: style.titleTextStyle,
-      closeButtonIconConfiguration: style.closeButtonIconConfiguration,
+      closeButtonIcon: style.closeButtonIcon,
+      closeButtonIconSize: style.closeButtonIconSize,
       textStyle: style.textStyle,
       footerButtonsSpacing: style.footerButtonsSpacing,
       margin: style.margin,

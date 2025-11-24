@@ -36,6 +36,12 @@ class AppLocalizationsHi extends AppLocalizations {
   String get myoroDialogModalConfirmButtonText => 'पुष्टि करें';
 
   @override
+  String get myoroFilterButtonClearButtonText => 'साफ करें';
+
+  @override
+  String get myoroFilterButtonApplyButtonText => 'लागू करें';
+
+  @override
   String get myoroCurrencyEnumUsdFormalName => 'अमेरिकी डॉलर';
 
   @override
@@ -1138,4 +1144,10 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get myoroMonthEnumDecemberLabel => 'दिसंबर';
+
+  @override
+  String get myoroSearchBarInputLabel => 'खोजें';
+
+  @override
+  String get myoroSearchBarInputPlaceholder => 'कुछ टाइप करें...';
 }

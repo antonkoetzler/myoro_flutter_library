@@ -46,7 +46,7 @@ final class MyoroIconTextButtonWidgetShowcaseScreenViewModel {
       borderTapColor: borderTapColor,
       contentPadding: _state.padding,
       spacing: _state.spacing,
-      textStyle: _state.style,
+      textStyle: MyoroTextStyle(style: _state.style),
     );
   }
 }

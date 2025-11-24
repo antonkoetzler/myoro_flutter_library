@@ -37,8 +37,10 @@ mixin _$MyoroDialogModalStyleMixin {
     bool spacingProvided = true,
     TextStyle? titleTextStyle,
     bool titleTextStyleProvided = true,
-    MyoroIconConfiguration? closeButtonIconConfiguration,
-    bool closeButtonIconConfigurationProvided = true,
+    IconData? closeButtonIcon,
+    bool closeButtonIconProvided = true,
+    double? closeButtonIconSize,
+    bool closeButtonIconSizeProvided = true,
     EdgeInsets? margin,
     bool marginProvided = true,
   }) {
@@ -53,9 +55,8 @@ mixin _$MyoroDialogModalStyleMixin {
       closeButtonPadding: closeButtonPaddingProvided ? (closeButtonPadding ?? self.closeButtonPadding) : null,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
       titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
-      closeButtonIconConfiguration: closeButtonIconConfigurationProvided
-          ? (closeButtonIconConfiguration ?? self.closeButtonIconConfiguration)
-          : null,
+      closeButtonIcon: closeButtonIconProvided ? (closeButtonIcon ?? self.closeButtonIcon) : null,
+      closeButtonIconSize: closeButtonIconSizeProvided ? (closeButtonIconSize ?? self.closeButtonIconSize) : null,
       margin: marginProvided ? (margin ?? self.margin) : null,
     );
   }
@@ -74,7 +75,8 @@ mixin _$MyoroDialogModalStyleMixin {
         other.closeButtonPadding == self.closeButtonPadding &&
         other.spacing == self.spacing &&
         other.titleTextStyle == self.titleTextStyle &&
-        other.closeButtonIconConfiguration == self.closeButtonIconConfiguration &&
+        other.closeButtonIcon == self.closeButtonIcon &&
+        other.closeButtonIconSize == self.closeButtonIconSize &&
         other.margin == self.margin;
   }
 
@@ -91,7 +93,8 @@ mixin _$MyoroDialogModalStyleMixin {
       self.closeButtonPadding,
       self.spacing,
       self.titleTextStyle,
-      self.closeButtonIconConfiguration,
+      self.closeButtonIcon,
+      self.closeButtonIconSize,
       self.margin,
     );
   }
@@ -109,7 +112,8 @@ mixin _$MyoroDialogModalStyleMixin {
       '  closeButtonPadding: ${self.closeButtonPadding},\n'
       '  spacing: ${self.spacing},\n'
       '  titleTextStyle: ${self.titleTextStyle},\n'
-      '  closeButtonIconConfiguration: ${self.closeButtonIconConfiguration},\n'
+      '  closeButtonIcon: ${self.closeButtonIcon},\n'
+      '  closeButtonIconSize: ${self.closeButtonIconSize},\n'
       '  margin: ${self.margin},\n'
       ');';
 }

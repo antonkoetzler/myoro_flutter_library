@@ -26,6 +26,7 @@ class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButt
     this.borderTapColor,
     this.contentPadding,
     this.spacing,
+    this.iconSize,
     this.textStyle,
   });
 
@@ -45,8 +46,10 @@ class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButt
       borderTapColor = myoroNullableFake<Color>(),
       contentPadding = myoroNullableFake<EdgeInsets>(),
       spacing = myoroNullableFake<double>(),
-      textStyle = myoroNullableFake<TextStyle>();
+      iconSize = myoroNullableFake<double>(),
+      textStyle = myoroNullableFake<MyoroTextStyle>();
 
+  /// Builder constructor.
   MyoroIconTextButtonThemeExtension.builder(TextTheme textTheme, MyoroDecorationThemeExtension decorationThemeExtension)
     : backgroundIdleColor = decorationThemeExtension.primaryBackgroundIdleColor,
       backgroundHoverColor = decorationThemeExtension.primaryBackgroundHoverColor,
@@ -62,53 +65,74 @@ class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButt
       borderTapColor = null,
       contentPadding = const EdgeInsets.all(kMyoroMultiplier * 2),
       spacing = kMyoroMultiplier,
-      textStyle = textTheme.bodySmall;
+      iconSize = kMyoroMultiplier * 5,
+      textStyle = MyoroTextStyle(style: textTheme.bodySmall);
 
+  /// Background [Color] of the [MyoroIconTextButton] when it is idle.
   @override
   final Color? backgroundIdleColor;
 
+  /// Background [Color] of the [MyoroIconTextButton] when it is hovered.
   @override
   final Color? backgroundHoverColor;
 
+  /// Background [Color] of the [MyoroIconTextButton] when it is tapped.
   @override
   final Color? backgroundTapColor;
 
+  /// Disabled background [Color] of the [MyoroIconTextButton].
   @override
   final Color? disabledBackgroundColor;
 
+  /// Content [Color] of the [MyoroIconTextButton] when it is idle.
   @override
   final Color? contentIdleColor;
 
+  /// Content [Color] of the [MyoroIconTextButton] when it is hovered.
   @override
   final Color? contentHoverColor;
 
+  /// Content [Color] of the [MyoroIconTextButton] when it is tapped.
   @override
   final Color? contentTapColor;
 
+  /// Border width.
   @override
   final double? borderWidth;
 
+  /// Border radius.
   @override
   final BorderRadius? borderRadius;
 
+  /// Border idle [Color].
   @override
   final Color? borderIdleColor;
 
+  /// Border hover [Color].
   @override
   final Color? borderHoverColor;
 
+  /// Border tap [Color].
   @override
   final Color? borderTapColor;
 
+  /// Content padding.
   @override
   final EdgeInsets? contentPadding;
 
+  /// Spacing between the icon and text.
   @override
   final double? spacing;
 
+  /// Icon style.
   @override
-  final TextStyle? textStyle;
+  final double? iconSize;
 
+  /// Text style.
+  @override
+  final MyoroTextStyle? textStyle;
+
+  /// Lerp function.
   @override
   MyoroIconTextButtonThemeExtension lerp(covariant MyoroIconTextButtonThemeExtension? other, double t) {
     if (other is! MyoroIconTextButtonThemeExtension) return this;
@@ -128,6 +152,7 @@ class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButt
       borderTapColor: style.borderTapColor,
       contentPadding: style.contentPadding,
       spacing: style.spacing,
+      iconSize: style.iconSize,
       textStyle: style.textStyle,
     );
   }

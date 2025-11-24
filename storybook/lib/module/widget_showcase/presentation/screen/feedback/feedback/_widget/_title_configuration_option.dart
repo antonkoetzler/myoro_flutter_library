@@ -9,18 +9,23 @@ final class _TitleConfigurationOption extends StatelessWidget {
     final viewModel = context.read<MyoroFeedbackWidgetShowcaseScreenViewModel>();
     final state = viewModel.state;
     final title = state.title;
-    final titleConfiguration = state.titleConfiguration;
+    final titleTextStyle = state.titleTextStyle;
 
     return TextWidgetShowcaseOption(
       configuration: TextWidgetShowcaseOptionConfiguration(
         textInitialValue: title,
-        textOnChanged: viewModel.titleConfigurationTextOnChanged,
-        maxLinesInitialValue: titleConfiguration.maxLines,
-        maxLinesOnChanged: viewModel.titleConfigurationMaxLinesOnChanged,
-        overflowInitialValue: titleConfiguration.overflow,
-        overflowOnChanged: viewModel.titleConfigurationOverflowOnChanged,
-        alignmentInitialValue: titleConfiguration.alignment,
-        alignmentOnChanged: viewModel.titleConfigurationAlignmentOnChanged,
+        textOnChanged: viewModel.titleTextStyleTextOnChanged,
+        maxLinesInitialValue: titleTextStyle?.maxLines ?? MyoroTextStyle.maxLinesDefaultValue,
+        maxLinesOnChanged: viewModel.titleTextStyleMaxLinesOnChanged,
+        overflowInitialValue: titleTextStyle?.overflow ?? MyoroTextStyle.overflowDefaultValue,
+        overflowOnChanged: viewModel.titleTextStyleOverflowOnChanged,
+        alignmentInitialValue: titleTextStyle?.alignment ?? MyoroTextStyle.alignmentDefaultValue,
+        alignmentOnChanged: viewModel.titleTextStyleAlignmentOnChanged,
+        styleInitialValue: titleTextStyle?.style,
+        styleOnChanged:
+            (textStyle) =>
+                state.titleTextStyle =
+                    state.titleTextStyle?.copyWith(style: textStyle) ?? MyoroTextStyle(style: textStyle),
       ),
     );
   }

@@ -78,11 +78,13 @@ mixin _$MyoroMenuIconTextButtonItemMixin {
 
   MyoroMenuIconTextButtonItem copyWith({
     bool? invert,
-    MyoroIconConfiguration? iconConfiguration,
-    bool iconConfigurationProvided = true,
+    IconData? icon,
+    bool iconProvided = true,
+    double? iconSize,
+    bool iconSizeProvided = true,
     String? text,
-    MyoroTextConfiguration? textConfiguration,
-    bool textConfigurationProvided = true,
+    MyoroTextStyle? textStyle,
+    bool textStyleProvided = true,
     MouseCursor? cursor,
     bool cursorProvided = true,
     String? tooltipText,
@@ -94,9 +96,10 @@ mixin _$MyoroMenuIconTextButtonItemMixin {
   }) {
     return MyoroMenuIconTextButtonItem(
       invert: invert ?? self.invert,
-      iconConfiguration: iconConfigurationProvided ? (iconConfiguration ?? self.iconConfiguration) : null,
+      icon: iconProvided ? (icon ?? self.icon) : null,
+      iconSize: iconSizeProvided ? (iconSize ?? self.iconSize) : null,
       text: text ?? self.text,
-      textConfiguration: textConfigurationProvided ? (textConfiguration ?? self.textConfiguration) : null,
+      textStyle: textStyleProvided ? (textStyle ?? self.textStyle) : null,
       cursor: cursorProvided ? (cursor ?? self.cursor) : null,
       tooltipText: tooltipText ?? self.tooltipText,
       onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
@@ -110,9 +113,10 @@ mixin _$MyoroMenuIconTextButtonItemMixin {
     return other is MyoroMenuIconTextButtonItem &&
         other.runtimeType == runtimeType &&
         other.invert == self.invert &&
-        other.iconConfiguration == self.iconConfiguration &&
+        other.icon == self.icon &&
+        other.iconSize == self.iconSize &&
         other.text == self.text &&
-        other.textConfiguration == self.textConfiguration &&
+        other.textStyle == self.textStyle &&
         other.cursor == self.cursor &&
         other.tooltipText == self.tooltipText &&
         other.onTapDown == self.onTapDown &&
@@ -124,9 +128,10 @@ mixin _$MyoroMenuIconTextButtonItemMixin {
   int get hashCode {
     return Object.hash(
       self.invert,
-      self.iconConfiguration,
+      self.icon,
+      self.iconSize,
       self.text,
-      self.textConfiguration,
+      self.textStyle,
       self.cursor,
       self.tooltipText,
       self.onTapDown,
@@ -139,9 +144,174 @@ mixin _$MyoroMenuIconTextButtonItemMixin {
   String toString() =>
       'MyoroMenuIconTextButtonItem(\n'
       '  invert: ${self.invert},\n'
-      '  iconConfiguration: ${self.iconConfiguration},\n'
+      '  icon: ${self.icon},\n'
+      '  iconSize: ${self.iconSize},\n'
       '  text: ${self.text},\n'
-      '  textConfiguration: ${self.textConfiguration},\n'
+      '  textStyle: ${self.textStyle},\n'
+      '  cursor: ${self.cursor},\n'
+      '  tooltipText: ${self.tooltipText},\n'
+      '  onTapDown: ${self.onTapDown},\n'
+      '  onTapUp: ${self.onTapUp},\n'
+      '  isLoading: ${self.isLoading},\n'
+      ');';
+}
+
+// coverage:ignore-file
+
+/// Apply this mixin to [MyoroMenuCheckboxItem] once the code is generated.
+///
+/// ```dart
+/// class MyoroMenuCheckboxItem with _$MyoroMenuCheckboxItemMixin {}
+/// ```
+mixin _$MyoroMenuCheckboxItemMixin {
+  MyoroMenuCheckboxItem get self => this as MyoroMenuCheckboxItem;
+
+  MyoroMenuCheckboxItem copyWith({
+    MyoroCheckboxStyle? style,
+    String? label,
+    bool? value,
+    MyoroCheckboxOnChanged? onChanged,
+    MouseCursor? cursor,
+    bool cursorProvided = true,
+    String? tooltipText,
+    MyoroButtonOnTapDown? onTapDown,
+    bool onTapDownProvided = true,
+    MyoroButtonOnTapUp? onTapUp,
+    bool onTapUpProvided = true,
+    bool? isLoading,
+  }) {
+    return MyoroMenuCheckboxItem(
+      style: style ?? self.style,
+      label: label ?? self.label,
+      value: value ?? self.value,
+      onChanged: onChanged ?? self.onChanged,
+      cursor: cursorProvided ? (cursor ?? self.cursor) : null,
+      tooltipText: tooltipText ?? self.tooltipText,
+      onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
+      onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,
+      isLoading: isLoading ?? self.isLoading,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroMenuCheckboxItem &&
+        other.runtimeType == runtimeType &&
+        other.style == self.style &&
+        other.label == self.label &&
+        other.value == self.value &&
+        other.onChanged == self.onChanged &&
+        other.cursor == self.cursor &&
+        other.tooltipText == self.tooltipText &&
+        other.onTapDown == self.onTapDown &&
+        other.onTapUp == self.onTapUp &&
+        other.isLoading == self.isLoading;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+      self.style,
+      self.label,
+      self.value,
+      self.onChanged,
+      self.cursor,
+      self.tooltipText,
+      self.onTapDown,
+      self.onTapUp,
+      self.isLoading,
+    );
+  }
+
+  @override
+  String toString() =>
+      'MyoroMenuCheckboxItem(\n'
+      '  style: ${self.style},\n'
+      '  label: ${self.label},\n'
+      '  value: ${self.value},\n'
+      '  onChanged: ${self.onChanged},\n'
+      '  cursor: ${self.cursor},\n'
+      '  tooltipText: ${self.tooltipText},\n'
+      '  onTapDown: ${self.onTapDown},\n'
+      '  onTapUp: ${self.onTapUp},\n'
+      '  isLoading: ${self.isLoading},\n'
+      ');';
+}
+
+// coverage:ignore-file
+
+/// Apply this mixin to [MyoroMenuRadioItem] once the code is generated.
+///
+/// ```dart
+/// class MyoroMenuRadioItem with _$MyoroMenuRadioItemMixin {}
+/// ```
+mixin _$MyoroMenuRadioItemMixin {
+  MyoroMenuRadioItem get self => this as MyoroMenuRadioItem;
+
+  MyoroMenuRadioItem copyWith({
+    MyoroRadioStyle? style,
+    String? label,
+    bool? value,
+    MyoroRadioOnChanged? onChanged,
+    MouseCursor? cursor,
+    bool cursorProvided = true,
+    String? tooltipText,
+    MyoroButtonOnTapDown? onTapDown,
+    bool onTapDownProvided = true,
+    MyoroButtonOnTapUp? onTapUp,
+    bool onTapUpProvided = true,
+    bool? isLoading,
+  }) {
+    return MyoroMenuRadioItem(
+      style: style ?? self.style,
+      label: label ?? self.label,
+      value: value ?? self.value,
+      onChanged: onChanged ?? self.onChanged,
+      cursor: cursorProvided ? (cursor ?? self.cursor) : null,
+      tooltipText: tooltipText ?? self.tooltipText,
+      onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
+      onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,
+      isLoading: isLoading ?? self.isLoading,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroMenuRadioItem &&
+        other.runtimeType == runtimeType &&
+        other.style == self.style &&
+        other.label == self.label &&
+        other.value == self.value &&
+        other.onChanged == self.onChanged &&
+        other.cursor == self.cursor &&
+        other.tooltipText == self.tooltipText &&
+        other.onTapDown == self.onTapDown &&
+        other.onTapUp == self.onTapUp &&
+        other.isLoading == self.isLoading;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+      self.style,
+      self.label,
+      self.value,
+      self.onChanged,
+      self.cursor,
+      self.tooltipText,
+      self.onTapDown,
+      self.onTapUp,
+      self.isLoading,
+    );
+  }
+
+  @override
+  String toString() =>
+      'MyoroMenuRadioItem(\n'
+      '  style: ${self.style},\n'
+      '  label: ${self.label},\n'
+      '  value: ${self.value},\n'
+      '  onChanged: ${self.onChanged},\n'
       '  cursor: ${self.cursor},\n'
       '  tooltipText: ${self.tooltipText},\n'
       '  onTapDown: ${self.onTapDown},\n'

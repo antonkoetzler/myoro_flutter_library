@@ -74,6 +74,7 @@ class MyoroListScrollable extends StatelessWidget {
         primary: primary,
         shrinkWrap: shrinkWrap,
         children: children,
+        spacing: style.spacing,
       ),
     );
   }

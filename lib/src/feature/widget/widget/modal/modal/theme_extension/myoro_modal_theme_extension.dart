@@ -1,4 +1,3 @@
-import 'package:faker/faker.dart' hide Color;
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -21,7 +20,8 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension>
     this.closeButtonPadding,
     this.spacing,
     this.titleTextStyle,
-    this.closeButtonIconConfiguration,
+    this.closeButtonIcon,
+    this.closeButtonIconSize,
     this.margin,
   });
 
@@ -35,7 +35,8 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension>
       closeButtonPadding = myoroNullableFake<EdgeInsets>(),
       spacing = myoroNullableFake<double>(),
       titleTextStyle = myoroNullableFake<TextStyle>(),
-      closeButtonIconConfiguration = faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null,
+      closeButtonIcon = myoroNullableFake<IconData>(),
+      closeButtonIconSize = myoroNullableFake<double>(),
       margin = myoroNullableFake<EdgeInsets>();
 
   /// Builder constructor.
@@ -48,7 +49,8 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension>
       closeButtonPadding = null,
       spacing = 10,
       titleTextStyle = textTheme.titleSmall!,
-      closeButtonIconConfiguration = const MyoroIconConfiguration(icon: Icons.close, size: kMyoroMultiplier * 5),
+      closeButtonIcon = Icons.close,
+      closeButtonIconSize = kMyoroMultiplier * 5,
       margin = const EdgeInsets.all(kMyoroMultiplier * 3);
 
   /// Constraints of the modal.
@@ -75,17 +77,21 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension>
   @override
   final EdgeInsets? closeButtonPadding;
 
-  /// Spacing between the [_Header] and the contents of the modal.
+  /// Spacing between the header and the contents of the modal.
   @override
   final double? spacing;
 
-  /// Text style of [_Title].
+  /// Text style of the title.
   @override
   final TextStyle? titleTextStyle;
 
-  /// [MyoroIconConfiguration] of [_CloseButton].
+  /// [IconData] of the close button.
   @override
-  final MyoroIconConfiguration? closeButtonIconConfiguration;
+  final IconData? closeButtonIcon;
+
+  /// Icon size of the close button.
+  @override
+  final double? closeButtonIconSize;
 
   /// Margin of the modal.
   @override
@@ -104,7 +110,8 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension>
       closeButtonPadding: style.closeButtonPadding,
       spacing: style.spacing,
       titleTextStyle: style.titleTextStyle,
-      closeButtonIconConfiguration: style.closeButtonIconConfiguration,
+      closeButtonIcon: style.closeButtonIcon,
+      closeButtonIconSize: style.closeButtonIconSize,
       margin: style.margin,
     );
   }

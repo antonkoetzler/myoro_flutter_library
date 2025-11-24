@@ -6,21 +6,19 @@ class MyoroDropdownState<T> {
   MyoroDropdownState(
     this.showingController,
     this.items,
-    this.selectedItems,
+    Set<T> selectedItems,
     this.searchCallback,
     this.dropdownType,
     this.targetKey,
     this.itemBuilder,
-  );
+    this.footer,
+  ) : _selectedItemsController = ValueNotifier(selectedItems);
 
   /// [MyoroDropdown.showingController].
   ValueNotifier<bool> showingController;
 
   /// [MyoroDropdown.items].
   Set<T>? items;
-
-  /// [MyoroDropdown.selectedItems].
-  Set<T> selectedItems;
 
   /// [MyoroDropdown.searchCallback].
   MyoroMenuSearchCallback<T>? searchCallback;
@@ -34,8 +32,21 @@ class MyoroDropdownState<T> {
   /// [MyoroDropdown.itemBuilder].
   MyoroMenuItemBuilder<T> itemBuilder;
 
+  /// [MyoroDropdown.footer].
+  Widget? footer;
+
+  /// Selected items controller.
+  final ValueNotifier<Set<T>> _selectedItemsController;
+
   /// [OverlayPortalController] of [MyoroDropdown] when [MyoroDropdown.dropdownType] is [MyoroDropdownTypeEnum.overlay].
   OverlayPortalController? _overlayPortalController;
+
+  /// Variable to use in _MyoroDropdownState's _showingControllerListener.
+  ///
+  /// Used in the case where we close the modal naturally, via barrier
+  /// and then we don't need to call context.navigator.pop(), as the
+  /// user has already done this for us. So this is a pseudo-workaround.
+  bool wasClosedNaturally = false;
 
   /// [LayerLink] of [CompositedTransformTarget] so we may position the overlay dropdown.
   final _link = LayerLink();
@@ -47,8 +58,23 @@ class MyoroDropdownState<T> {
   /// (which closes the dropdown) only activates when trigger area/dropdown is not pressed.
   late final _tapRegionGroupId = 'MyoroDropdown#$hashCode';
 
-  /// [Size] of [MyoroDropdownConfiguration.overlayTargetKey]'s [Widget] to apply the offset.
+  /// [Size] of the overlay target key's [Widget] to apply the offset.
   Size? targetKeySize;
+
+  /// Dispose function.
+  void dispose() {
+    _selectedItemsController.dispose();
+  }
+
+  /// [_selectedItemsController] getter.
+  ValueNotifier<Set<T>> get selectedItemsController {
+    return _selectedItemsController;
+  }
+
+  /// [_selectedItemsController] getter.
+  Set<T> get selectedItems {
+    return _selectedItemsController.value;
+  }
 
   /// Getter of [showingController]'s value.
   bool get showing {
@@ -78,6 +104,11 @@ class MyoroDropdownState<T> {
   /// [_tapRegionGroupId] getter.
   String get tapRegionGroupId {
     return _tapRegionGroupId;
+  }
+
+  /// [_selectedItemsController] setter.
+  set selectedItems(Set<T> selectedItems) {
+    _selectedItemsController.value = selectedItems;
   }
 
   /// [_showingController] setter.

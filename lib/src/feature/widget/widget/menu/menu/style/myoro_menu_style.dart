@@ -19,6 +19,7 @@ class MyoroMenuStyle with _$MyoroMenuStyleMixin {
       border: BoxBorder.lerp(a?.border, b?.border, t),
       borderRadius: BorderRadius.lerp(a?.borderRadius, b?.borderRadius, t),
       searchBarPadding: EdgeInsets.lerp(a?.searchBarPadding, b?.searchBarPadding, t),
+      footerPadding: EdgeInsets.lerp(a?.footerPadding, b?.footerPadding, t),
       searchBarInputStyle: myoroFallbackLerp(a?.searchBarInputStyle, b?.searchBarInputStyle, t),
       itemBorderRadius: BorderRadius.lerp(a?.itemBorderRadius, b?.itemBorderRadius, t),
       dialogTextStyle: TextStyle.lerp(a?.dialogTextStyle, b?.dialogTextStyle, t),
@@ -35,6 +36,7 @@ class MyoroMenuStyle with _$MyoroMenuStyleMixin {
     this.border,
     this.borderRadius,
     this.searchBarPadding,
+    this.footerPadding,
     this.searchBarInputStyle,
     this.itemBorderRadius,
     this.dialogTextStyle,
@@ -51,6 +53,7 @@ class MyoroMenuStyle with _$MyoroMenuStyleMixin {
       backgroundColor: myoroNullableFake<Color>(),
       borderRadius: myoroNullableFake<BorderRadius>(),
       searchBarPadding: myoroNullableFake<EdgeInsets>(),
+      footerPadding: myoroNullableFake<EdgeInsets>(),
       searchBarInputStyle: faker.randomGenerator.boolean() ? MyoroInputStyleEnum.fake() : null,
       itemBorderRadius: myoroNullableFake<BorderRadius>(),
       dialogTextStyle: myoroNullableFake<TextStyle>(),
@@ -72,19 +75,22 @@ class MyoroMenuStyle with _$MyoroMenuStyleMixin {
   /// Border radius of the menu.
   final BorderRadius? borderRadius;
 
-  /// Padding of [_SearchBar].
+  /// Padding of the search bar.
   final EdgeInsets? searchBarPadding;
 
-  /// [MyoroInputStyleEnum] of [_SearchBar].
+  /// Padding of the footer.
+  final EdgeInsets? footerPadding;
+
+  /// [MyoroInputStyleEnum] of the search bar.
   final MyoroInputStyleEnum? searchBarInputStyle;
 
-  /// [BorderRadius] of [_Item].
+  /// [BorderRadius] of menu items.
   final BorderRadius? itemBorderRadius;
 
-  /// Text style of [_EmptyMenuDialog].
+  /// Text style of the empty menu dialog text.
   final TextStyle? dialogTextStyle;
 
-  /// [EdgeInsets] of [_DialogText] & [_Loader].
+  /// [EdgeInsets] of the dialog text and loader.
   final EdgeInsets? dialogTextLoaderPadding;
 
   /// [Color] of a selected item.

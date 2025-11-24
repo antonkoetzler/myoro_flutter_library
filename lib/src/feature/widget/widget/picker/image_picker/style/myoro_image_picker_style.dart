@@ -20,9 +20,14 @@ class MyoroImagePickerStyle with _$MyoroImagePickerStyleMixin {
       overlayBackgroundIdleColor: Color.lerp(a?.overlayBackgroundIdleColor, b?.overlayBackgroundIdleColor, t),
       overlayBackgroundHoverColor: Color.lerp(a?.overlayBackgroundHoverColor, b?.overlayBackgroundHoverColor, t),
       overlayBackgroundTapColor: Color.lerp(a?.overlayBackgroundTapColor, b?.overlayBackgroundTapColor, t),
-      overlayUnselectedImageStateIconConfiguration: MyoroIconConfiguration.lerp(
-        a?.overlayUnselectedImageStateIconConfiguration,
-        b?.overlayUnselectedImageStateIconConfiguration,
+      overlayUnselectedImageStateIcon: myoroFallbackLerp(
+        a?.overlayUnselectedImageStateIcon,
+        b?.overlayUnselectedImageStateIcon,
+        t,
+      ),
+      overlayUnselectedImageStateIconStyle: MyoroIconStyle.lerp(
+        a?.overlayUnselectedImageStateIconStyle,
+        b?.overlayUnselectedImageStateIconStyle,
         t,
       ),
       selectionTypeModalConstraints: BoxConstraints.lerp(
@@ -53,7 +58,8 @@ class MyoroImagePickerStyle with _$MyoroImagePickerStyleMixin {
     this.overlayBackgroundIdleColor,
     this.overlayBackgroundHoverColor,
     this.overlayBackgroundTapColor,
-    this.overlayUnselectedImageStateIconConfiguration,
+    this.overlayUnselectedImageStateIcon,
+    this.overlayUnselectedImageStateIconStyle,
     this.selectionTypeModalConstraints,
     this.selectionTypeModalSpacing,
     this.selectionTypeModalButtonCameraIcon,
@@ -70,9 +76,8 @@ class MyoroImagePickerStyle with _$MyoroImagePickerStyleMixin {
       overlayBackgroundIdleColor: myoroNullableFake<Color>(),
       overlayBackgroundHoverColor: myoroNullableFake<Color>(),
       overlayBackgroundTapColor: myoroNullableFake<Color>(),
-      overlayUnselectedImageStateIconConfiguration: faker.randomGenerator.boolean()
-          ? myoroFake<MyoroIconConfiguration>()
-          : null,
+      overlayUnselectedImageStateIcon: myoroNullableFake<IconData>(),
+      overlayUnselectedImageStateIconStyle: faker.randomGenerator.boolean() ? myoroFake<MyoroIconStyle>() : null,
       selectionTypeModalConstraints: myoroNullableFake<BoxConstraints>(),
       selectionTypeModalSpacing: myoroNullableFake<double>(),
       selectionTypeModalButtonCameraIcon: myoroNullableFake<IconData>(),
@@ -99,8 +104,11 @@ class MyoroImagePickerStyle with _$MyoroImagePickerStyleMixin {
   /// Background color of the overlay when tapped.
   final Color? overlayBackgroundTapColor;
 
+  /// Icon of the overlay when no image is selected.
+  final IconData? overlayUnselectedImageStateIcon;
+
   /// Icon configuration of the overlay when no image is selected.
-  final MyoroIconConfiguration? overlayUnselectedImageStateIconConfiguration;
+  final MyoroIconStyle? overlayUnselectedImageStateIconStyle;
 
   /// Constraints of the selection type modal.
   final BoxConstraints? selectionTypeModalConstraints;

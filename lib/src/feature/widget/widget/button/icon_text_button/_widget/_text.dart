@@ -2,23 +2,26 @@ part of '../widget/myoro_icon_text_button.dart';
 
 /// Text of the [MyoroIconTextButton].
 final class _Text extends StatelessWidget {
-  const _Text(this._text, this._tapStatusEnum, this._textConfiguration);
+  /// Default constructor.
+  const _Text(this._text, this._tapStatusEnum);
 
+  /// Text.
   final String _text;
-  final MyoroTapStatusEnum _tapStatusEnum;
-  final MyoroTextConfiguration? _textConfiguration;
 
+  /// Tap status.
+  final MyoroTapStatusEnum _tapStatusEnum;
+
+  /// Build function.
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
     final style = context.watch<MyoroIconTextButtonStyle>();
     final contentColor =
         style.contentColorBuilder(_tapStatusEnum) ?? themeExtension.contentColorBuilder(_tapStatusEnum);
-
-    final maxLines = _textConfiguration?.maxLines;
-    final overflow = _textConfiguration?.overflow;
-    final alignment = _textConfiguration?.alignment;
-    final textStyle = _textConfiguration?.style ?? themeExtension.textStyle;
+    final maxLines = style.textStyle?.maxLines ?? themeExtension.textStyle?.maxLines;
+    final overflow = style.textStyle?.overflow ?? themeExtension.textStyle?.overflow;
+    final alignment = style.textStyle?.alignment ?? themeExtension.textStyle?.alignment;
+    final textStyle = style.textStyle?.style ?? themeExtension.textStyle?.style;
 
     return Expanded(
       child: IntrinsicHeight(

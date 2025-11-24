@@ -12,6 +12,9 @@
   "myoroDialogModalCancelButtonText": "रद्द करें",
   "myoroDialogModalConfirmButtonText": "पुष्टि करें",
 
+  "myoroFilterButtonClearButtonText": "साफ करें",
+  "myoroFilterButtonApplyButtonText": "लागू करें",
+
   "myoroCurrencyEnumUsdFormalName": "अमेरिकी डॉलर",
   "myoroCurrencyEnumCadFormalName": "कनाडाई डॉलर",
   "myoroCurrencyEnumBrlFormalName": "ब्राज़ीलियाई रियल",
@@ -382,6 +385,9 @@
   "myoroMonthEnumSeptemberLabel": "सितंबर",
   "myoroMonthEnumOctoberLabel": "अक्टूबर",
   "myoroMonthEnumNovemberLabel": "नवंबर",
-  "myoroMonthEnumDecemberLabel": "दिसंबर"
+  "myoroMonthEnumDecemberLabel": "दिसंबर",
+
+  "myoroSearchBarInputLabel": "खोजें",
+  "myoroSearchBarInputPlaceholder": "कुछ टाइप करें..."
 }
 

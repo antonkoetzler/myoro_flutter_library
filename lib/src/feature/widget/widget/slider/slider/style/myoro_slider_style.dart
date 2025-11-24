@@ -30,6 +30,6 @@ class MyoroSliderStyle with _$MyoroSliderStyleMixin {
   /// Text style of indicators on the left, right, & bottom of the slider (i.e. [MyoroSlider.footerIndicatorTextBuilder]) .
   final TextStyle? indicatorTextStyle;
 
-  /// [TextAlign] of [_IndicatorText].
+  /// [TextAlign] of the indicator text.
   final TextAlign? indicatorTextAlignment;
 }

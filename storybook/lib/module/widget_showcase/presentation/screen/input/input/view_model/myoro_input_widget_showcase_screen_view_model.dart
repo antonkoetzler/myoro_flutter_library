@@ -57,7 +57,6 @@ class MyoroInputWidgetShowcaseScreenViewModel {
       labelTextStyle: _state.labelTextStyle,
       labelBehavior: _state.labelBehavior,
       suffixButtonMargin: _state.suffixButtonMargin,
-      suffixButtonIconSize: _state.suffixButtonIconSize,
       clearTextButtonIcon: _state.clearTextButtonIcon,
       obscureTextButtonEnabledIcon: _state.obscureTextButtonEnabledIcon,
       obscureTextButtonDisabledIcon: _state.obscureTextButtonDisabledIcon,

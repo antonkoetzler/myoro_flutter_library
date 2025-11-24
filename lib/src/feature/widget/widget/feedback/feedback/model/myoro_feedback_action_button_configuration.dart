@@ -28,8 +28,8 @@ final class MyoroFeedbackActionButtonConfiguration with _$MyoroFeedbackActionBut
     this.onTapUp,
     this.isLoading = isLoadingDefaultValue,
     this.invert = invertDefaultValue,
-    this.iconConfiguration,
-    this.textConfiguration,
+    this.icon,
+    this.text,
   });
 
   /// Style.
@@ -56,8 +56,8 @@ final class MyoroFeedbackActionButtonConfiguration with _$MyoroFeedbackActionBut
   final bool invert;
 
   /// Icon configuration of the [MyoroIconTextButton].
-  final MyoroIconConfiguration? iconConfiguration;
+  final IconData? icon;
 
   /// Text configuration of the [MyoroIconTextButton].
-  final MyoroTextConfiguration? textConfiguration;
+  final String? text;
 }

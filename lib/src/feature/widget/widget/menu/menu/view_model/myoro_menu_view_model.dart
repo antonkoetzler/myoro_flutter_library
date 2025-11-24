@@ -11,7 +11,8 @@ class MyoroMenuViewModel<T> {
     Set<T>? items,
     Set<T> selectedItems,
     MyoroMenuItemBuilder<T> itemBuilder,
-  ) : _state = MyoroMenuState(searchCallback, items, selectedItems, itemBuilder);
+    Widget? footer,
+  ) : _state = MyoroMenuState(searchCallback, items, selectedItems, itemBuilder, footer);
 
   /// State.
   final MyoroMenuState<T> _state;

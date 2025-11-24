@@ -12,6 +12,9 @@
   "myoroDialogModalCancelButtonText": "キャンセル",
   "myoroDialogModalConfirmButtonText": "確認",
 
+  "myoroFilterButtonClearButtonText": "クリア",
+  "myoroFilterButtonApplyButtonText": "適用",
+
   "myoroCurrencyEnumUsdFormalName": "米ドル",
   "myoroCurrencyEnumCadFormalName": "カナダドル",
   "myoroCurrencyEnumBrlFormalName": "ブラジルレアル",
@@ -382,6 +385,9 @@
   "myoroMonthEnumSeptemberLabel": "9月",
   "myoroMonthEnumOctoberLabel": "10月",
   "myoroMonthEnumNovemberLabel": "11月",
-  "myoroMonthEnumDecemberLabel": "12月"
+  "myoroMonthEnumDecemberLabel": "12月",
+
+  "myoroSearchBarInputLabel": "検索",
+  "myoroSearchBarInputPlaceholder": "何か入力してください..."
 }
 

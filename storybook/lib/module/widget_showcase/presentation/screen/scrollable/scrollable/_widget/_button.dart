@@ -9,7 +9,7 @@ final class _Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroIconTextButton(
-      iconConfiguration: MyoroIconConfiguration(icon: myoroFake<IconData>()),
+      icon: myoroFake<IconData>(),
       text: _text,
       onTapUp: (_, _) {},
       style: const MyoroIconTextButtonStyle().bordered(context),

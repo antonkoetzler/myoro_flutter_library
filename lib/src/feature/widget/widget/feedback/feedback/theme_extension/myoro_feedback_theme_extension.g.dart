@@ -20,16 +20,16 @@ mixin _$MyoroFeedbackThemeExtensionMixin on ThemeExtension<MyoroFeedbackThemeExt
   MyoroFeedbackThemeExtension copyWith({
     double? spacing,
     bool spacingProvided = true,
-    double? iconSize,
-    bool iconSizeProvided = true,
-    TextStyle? titleTextStyle,
+    MyoroIconStyle? iconStyle,
+    bool iconStyleProvided = true,
+    MyoroTextStyle? titleTextStyle,
     bool titleTextStyleProvided = true,
-    TextStyle? subtitleTextStyle,
+    MyoroTextStyle? subtitleTextStyle,
     bool subtitleTextStyleProvided = true,
   }) {
     return MyoroFeedbackThemeExtension(
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
-      iconSize: iconSizeProvided ? (iconSize ?? self.iconSize) : null,
+      iconStyle: iconStyleProvided ? (iconStyle ?? self.iconStyle) : null,
       titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
       subtitleTextStyle: subtitleTextStyleProvided ? (subtitleTextStyle ?? self.subtitleTextStyle) : null,
     );
@@ -40,21 +40,21 @@ mixin _$MyoroFeedbackThemeExtensionMixin on ThemeExtension<MyoroFeedbackThemeExt
     return other is MyoroFeedbackThemeExtension &&
         other.runtimeType == runtimeType &&
         other.spacing == self.spacing &&
-        other.iconSize == self.iconSize &&
+        other.iconStyle == self.iconStyle &&
         other.titleTextStyle == self.titleTextStyle &&
         other.subtitleTextStyle == self.subtitleTextStyle;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.spacing, self.iconSize, self.titleTextStyle, self.subtitleTextStyle);
+    return Object.hash(self.spacing, self.iconStyle, self.titleTextStyle, self.subtitleTextStyle);
   }
 
   @override
   String toString() =>
       'MyoroFeedbackThemeExtension(\n'
       '  spacing: ${self.spacing},\n'
-      '  iconSize: ${self.iconSize},\n'
+      '  iconStyle: ${self.iconStyle},\n'
       '  titleTextStyle: ${self.titleTextStyle},\n'
       '  subtitleTextStyle: ${self.subtitleTextStyle},\n'
       ');';

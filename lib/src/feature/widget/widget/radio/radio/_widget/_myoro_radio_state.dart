@@ -7,7 +7,16 @@ final class _MyoroRadioState extends State<MyoroRadio> {
 
   /// Controller.
   ValueNotifier<bool> get _controller {
-    return widget.controller ?? (_localController ??= ValueNotifier(widget.initialValue ?? false));
+    return widget.controller ?? (_localController ??= ValueNotifier(widget.value ?? false));
+  }
+
+  /// Did update function.
+  @override
+  void didUpdateWidget(MyoroRadio oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.value != null) {
+      _controller.value = widget.value!;
+    }
   }
 
   /// Dispose function.

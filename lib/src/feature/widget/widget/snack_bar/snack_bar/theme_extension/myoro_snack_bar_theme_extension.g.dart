@@ -38,8 +38,10 @@ mixin _$MyoroSnackBarThemeExtensionMixin on ThemeExtension<MyoroSnackBarThemeExt
     bool spacingProvided = true,
     TextStyle? messageTextStyle,
     bool messageTextStyleProvided = true,
-    MyoroIconConfiguration? closeButtonIconConfiguration,
-    bool closeButtonIconConfigurationProvided = true,
+    IconData? closeButtonIcon,
+    bool closeButtonIconProvided = true,
+    double? closeButtonIconSize,
+    bool closeButtonIconSizeProvided = true,
   }) {
     return MyoroSnackBarThemeExtension(
       primaryColor: primaryColorProvided ? (primaryColor ?? self.primaryColor) : null,
@@ -52,9 +54,8 @@ mixin _$MyoroSnackBarThemeExtensionMixin on ThemeExtension<MyoroSnackBarThemeExt
       padding: paddingProvided ? (padding ?? self.padding) : null,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
       messageTextStyle: messageTextStyleProvided ? (messageTextStyle ?? self.messageTextStyle) : null,
-      closeButtonIconConfiguration: closeButtonIconConfigurationProvided
-          ? (closeButtonIconConfiguration ?? self.closeButtonIconConfiguration)
-          : null,
+      closeButtonIcon: closeButtonIconProvided ? (closeButtonIcon ?? self.closeButtonIcon) : null,
+      closeButtonIconSize: closeButtonIconSizeProvided ? (closeButtonIconSize ?? self.closeButtonIconSize) : null,
     );
   }
 
@@ -72,7 +73,8 @@ mixin _$MyoroSnackBarThemeExtensionMixin on ThemeExtension<MyoroSnackBarThemeExt
         other.padding == self.padding &&
         other.spacing == self.spacing &&
         other.messageTextStyle == self.messageTextStyle &&
-        other.closeButtonIconConfiguration == self.closeButtonIconConfiguration;
+        other.closeButtonIcon == self.closeButtonIcon &&
+        other.closeButtonIconSize == self.closeButtonIconSize;
   }
 
   @override
@@ -88,7 +90,8 @@ mixin _$MyoroSnackBarThemeExtensionMixin on ThemeExtension<MyoroSnackBarThemeExt
       self.padding,
       self.spacing,
       self.messageTextStyle,
-      self.closeButtonIconConfiguration,
+      self.closeButtonIcon,
+      self.closeButtonIconSize,
     );
   }
 
@@ -105,6 +108,7 @@ mixin _$MyoroSnackBarThemeExtensionMixin on ThemeExtension<MyoroSnackBarThemeExt
       '  padding: ${self.padding},\n'
       '  spacing: ${self.spacing},\n'
       '  messageTextStyle: ${self.messageTextStyle},\n'
-      '  closeButtonIconConfiguration: ${self.closeButtonIconConfiguration},\n'
+      '  closeButtonIcon: ${self.closeButtonIcon},\n'
+      '  closeButtonIconSize: ${self.closeButtonIconSize},\n'
       ');';
 }

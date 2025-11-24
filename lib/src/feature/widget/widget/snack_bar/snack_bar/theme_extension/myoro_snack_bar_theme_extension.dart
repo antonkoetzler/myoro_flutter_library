@@ -1,4 +1,3 @@
-import 'package:faker/faker.dart' hide Color;
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -23,7 +22,8 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
     this.padding,
     this.spacing,
     this.messageTextStyle,
-    this.closeButtonIconConfiguration,
+    this.closeButtonIcon,
+    this.closeButtonIconSize,
   });
 
   /// Fake constructor.
@@ -38,7 +38,8 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
       padding = myoroNullableFake<EdgeInsets>(),
       spacing = myoroNullableFake<double>(),
       messageTextStyle = myoroNullableFake<TextStyle>(),
-      closeButtonIconConfiguration = faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null;
+      closeButtonIcon = myoroNullableFake<IconData>(),
+      closeButtonIconSize = myoroNullableFake<double>();
 
   /// Builder constructor.
   MyoroSnackBarThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
@@ -52,41 +53,58 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
       padding = const EdgeInsets.all(kMyoroMultiplier * 2.5),
       spacing = kMyoroMultiplier * 2.5,
       messageTextStyle = textTheme.bodySmall!,
-      closeButtonIconConfiguration = const MyoroIconConfiguration(icon: Icons.close, size: kMyoroMultiplier * 3.75);
+      closeButtonIcon = Icons.close,
+      closeButtonIconSize = kMyoroMultiplier * 3.75;
 
+  /// Background color of the snack bar.
   @override
   final Color? primaryColor;
 
+  /// [MyoroSnackBarTypeEnum.standard].
   @override
   final Color? standardBorderColor;
 
+  /// [MyoroSnackBarTypeEnum.attention].
   @override
   final Color? attentionBorderColor;
 
+  /// [MyoroSnackBarTypeEnum.success].
   @override
   final Color? successBorderColor;
 
+  /// [MyoroSnackBarTypeEnum.error].
   @override
   final Color? errorBorderColor;
 
+  /// Border width of the snack bar.
   @override
   final double? borderWidth;
 
+  /// Border radius of the snack bar.
   @override
   final BorderRadius? borderRadius;
 
+  /// Padding of the content of the snack bar.
   @override
   final EdgeInsets? padding;
 
+  /// Spacing between the message/[MyoroSnackBar.child] and the close button.
   @override
   final double? spacing;
 
+  /// Text style of the message.
   @override
   final TextStyle? messageTextStyle;
 
+  /// [IconData] of the close button.
   @override
-  final MyoroIconConfiguration? closeButtonIconConfiguration;
+  final IconData? closeButtonIcon;
 
+  /// Icon size of the close button.
+  @override
+  final double? closeButtonIconSize;
+
+  /// Lerp function.
   @override
   MyoroSnackBarThemeExtension lerp(covariant MyoroSnackBarThemeExtension? other, double t) {
     if (other is! MyoroSnackBarThemeExtension) return this;
@@ -102,7 +120,8 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
       padding: style.padding,
       spacing: style.spacing,
       messageTextStyle: style.messageTextStyle,
-      closeButtonIconConfiguration: style.closeButtonIconConfiguration,
+      closeButtonIcon: style.closeButtonIcon,
+      closeButtonIconSize: style.closeButtonIconSize,
     );
   }
 }

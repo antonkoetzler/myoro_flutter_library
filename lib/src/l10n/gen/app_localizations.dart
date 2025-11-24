@@ -182,6 +182,18 @@ abstract class AppLocalizations {
   /// **'Confirm'**
   String get myoroDialogModalConfirmButtonText;
 
+  /// No description provided for @myoroFilterButtonClearButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get myoroFilterButtonClearButtonText;
+
+  /// No description provided for @myoroFilterButtonApplyButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get myoroFilterButtonApplyButtonText;
+
   /// No description provided for @myoroCurrencyEnumUsdFormalName.
   ///
   /// In en, this message translates to:
@@ -2389,6 +2401,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'December'**
   String get myoroMonthEnumDecemberLabel;
+
+  /// No description provided for @myoroSearchBarInputLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get myoroSearchBarInputLabel;
+
+  /// No description provided for @myoroSearchBarInputPlaceholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Type something...'**
+  String get myoroSearchBarInputPlaceholder;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

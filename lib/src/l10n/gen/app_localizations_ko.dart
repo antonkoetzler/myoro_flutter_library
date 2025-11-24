@@ -36,6 +36,12 @@ class AppLocalizationsKo extends AppLocalizations {
   String get myoroDialogModalConfirmButtonText => '확인';
 
   @override
+  String get myoroFilterButtonClearButtonText => '지우기';
+
+  @override
+  String get myoroFilterButtonApplyButtonText => '적용';
+
+  @override
   String get myoroCurrencyEnumUsdFormalName => '미국 달러';
 
   @override
@@ -1138,4 +1144,10 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get myoroMonthEnumDecemberLabel => '12월';
+
+  @override
+  String get myoroSearchBarInputLabel => '검색';
+
+  @override
+  String get myoroSearchBarInputPlaceholder => '무언가 입력하세요...';
 }

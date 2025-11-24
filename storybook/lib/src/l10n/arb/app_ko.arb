@@ -32,9 +32,13 @@
   "storybookWidgetListEnumScrollablesCategoryName": "Scrollables",
   "storybookWidgetListEnumSlidersCategoryName": "Sliders",
   "storybookWidgetListEnumSnackBarsCategoryName": "Snack Bars",
+  "storybookWidgetListEnumTagsCategoryName": "Tags",
   "storybookWidgetListEnumTabViewCategoryName": "Tab views",
   "storybookWidgetListEnumTablesCategoryName": "Tables",
+  "storybookWidgetListEnumTextsCategoryName": "Texts",
+  "storybookWidgetListEnumIconsCategoryName": "Icons",
   "storybookWidgetListEnumTooltipsCategoryName": "Tooltips",
+  "storybookWidgetListEnumFiltersCategoryName": "필터",
 
   "storybookWidgetShowcaseOptionSelectionTypeLabel": "Selection type",
   "storybookWidgetShowcaseOptionBackgroundColorLabel": "Background color",
@@ -52,6 +56,18 @@
   "storybookWidgetShowcaseOptionConfirmButtonTextLabel": "Confirm button text",
   "storybookWidgetShowcaseOptionBarrierDismissableLabel": "Close modal when backdrop is tapped?",
   "storybookWidgetShowcaseOptionIconLabel": "Icon",
+  "storybookWidgetShowcaseOptionIconColorLabel": "Icon color",
+  "storybookWidgetShowcaseOptionTextTextLabel": "Text",
+  "storybookWidgetShowcaseOptionTextMaxLinesLabel": "Max lines",
+  "storybookWidgetShowcaseOptionTextOverflowLabel": "Text overflow behavior",
+  "storybookWidgetShowcaseOptionTextAlignmentLabel": "Text alignment",
+  "storybookWidgetShowcaseOptionTextStyleLabel": "Text style",
+  "storybookWidgetShowcaseOptionTagTextLabel": "Text",
+  "storybookWidgetShowcaseOptionTagInvertLabel": "Invert",
+  "storybookWidgetShowcaseOptionTagBorderLabel": "Border",
+  "storybookWidgetShowcaseOptionTagBorderRadiusLabel": "Border radius",
+  "storybookWidgetShowcaseOptionTagSpacingLabel": "Spacing",
+  "storybookWidgetShowcaseOptionTagContentPaddingLabel": "Content padding",
 
   "storybookWidgetShowcaseOptionMouseCursorBasicLabel": "Basic",
   "storybookWidgetShowcaseOptionMouseCursorClickLabel": "Click",
@@ -100,5 +116,10 @@
   "storybookFeedbackActionButtonText": "Action button",
 
   "storybookSearchInputStartItemText": "Start",
-  "storybookSearchInputEndItemText": "End"
+  "storybookSearchInputEndItemText": "End",
+
+  "storybookFilterButtonClearButtonText": "지우기",
+  "storybookFilterButtonApplyButtonText": "적용",
+  "storybookCheckboxFilterButtonLabel": "체크박스 필터",
+  "storybookRadioFilterButtonLabel": "라디오 필터"
 }

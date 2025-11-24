@@ -12,6 +12,9 @@
   "myoroDialogModalCancelButtonText": "Hủy",
   "myoroDialogModalConfirmButtonText": "Xác nhận",
 
+  "myoroFilterButtonClearButtonText": "Xóa",
+  "myoroFilterButtonApplyButtonText": "Áp dụng",
+
   "myoroCurrencyEnumUsdFormalName": "Đô la Mỹ",
   "myoroCurrencyEnumCadFormalName": "Đô la Canada",
   "myoroCurrencyEnumBrlFormalName": "Real Brazil",
@@ -382,6 +385,9 @@
   "myoroMonthEnumSeptemberLabel": "Tháng Chín",
   "myoroMonthEnumOctoberLabel": "Tháng Mười",
   "myoroMonthEnumNovemberLabel": "Tháng Mười Một",
-  "myoroMonthEnumDecemberLabel": "Tháng Mười Hai"
+  "myoroMonthEnumDecemberLabel": "Tháng Mười Hai",
+
+  "myoroSearchBarInputLabel": "Tìm kiếm",
+  "myoroSearchBarInputPlaceholder": "Nhập gì đó..."
 }
 

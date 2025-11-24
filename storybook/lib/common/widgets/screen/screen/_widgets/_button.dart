@@ -11,11 +11,10 @@ final class _Button extends StatelessWidget {
   Widget build(context) {
     final screenThemeExtension = context.resolveThemeExtension<StorybookScreenThemeExtension>();
     final buttonPadding = screenThemeExtension.buttonPadding;
-
     return MyoroIconTextButton(
       style: const MyoroIconTextButtonStyle().copyWith(contentPadding: buttonPadding),
       onTapUp: (_, _) => _onTapUp(),
-      iconConfiguration: MyoroIconConfiguration(icon: _icon),
+      icon: _icon,
     );
   }
 }

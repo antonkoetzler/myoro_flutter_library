@@ -44,7 +44,7 @@ class MyoroDrawerStyle with _$MyoroDrawerStyleMixin {
     );
   }
 
-  /// Padding of [_Drawer].
+  /// Padding of the drawer.
   final EdgeInsets? padding;
 
   /// Spacing between the close button and the content.
@@ -53,10 +53,10 @@ class MyoroDrawerStyle with _$MyoroDrawerStyleMixin {
   /// [Drawer.shape] of the drawer.
   final ShapeBorder? drawerShape;
 
-  /// Padding of the [MyoroBasicDivider] in between [_Title] and [MyoroDrawer.child].
+  /// Padding of the [MyoroBasicDivider] in between the title and [MyoroDrawer.child].
   final EdgeInsets? titleContentDividerPadding;
 
-  /// Text style of text in [_Title].
+  /// Text style of text in the title.
   final TextStyle? titleTextStyle;
 
   /// [MyoroIconTextButtonStyle.contentPadding] of the close button.

@@ -9,7 +9,13 @@ final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
   @override
   void initState() {
     super.initState();
-    _viewModel = MyoroMenuViewModel<T>(widget.searchCallback, widget.items, widget.selectedItems, widget.itemBuilder);
+    _viewModel = MyoroMenuViewModel<T>(
+      widget.searchCallback,
+      widget.items,
+      widget.selectedItems,
+      widget.itemBuilder,
+      widget.footer,
+    );
   }
 
   /// Did update function.
@@ -21,7 +27,8 @@ final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
       ..searchCallback = widget.searchCallback
       ..items = widget.items
       ..selectedItems = widget.selectedItems
-      ..itemBuilder = widget.itemBuilder;
+      ..itemBuilder = widget.itemBuilder
+      ..footer = widget.footer;
   }
 
   /// Dispose function.

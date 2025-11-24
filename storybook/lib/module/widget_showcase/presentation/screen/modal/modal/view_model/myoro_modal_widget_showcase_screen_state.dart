@@ -113,11 +113,19 @@ final class MyoroModalWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroModalThemeExtension.closeButtonIconConfiguration]
-  MyoroIconConfiguration? _closeButtonIconConfiguration;
-  MyoroIconConfiguration? get closeButtonIconConfiguration => _closeButtonIconConfiguration;
-  set closeButtonIconConfiguration(MyoroIconConfiguration? closeButtonIconConfiguration) {
-    _closeButtonIconConfiguration = closeButtonIconConfiguration;
+  /// [MyoroModalThemeExtension.closeButtonIcon]
+  IconData? _closeButtonIcon;
+  IconData? get closeButtonIcon => _closeButtonIcon;
+  set closeButtonIcon(IconData? closeButtonIcon) {
+    _closeButtonIcon = closeButtonIcon;
+    notifyListeners();
+  }
+
+  /// [MyoroModalThemeExtension.closeButtonIconSize]
+  double? _closeButtonIconSize;
+  double? get closeButtonIconSize => _closeButtonIconSize;
+  set closeButtonIconSize(double? closeButtonIconSize) {
+    _closeButtonIconSize = closeButtonIconSize;
     notifyListeners();
   }
 }

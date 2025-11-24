@@ -1,4 +1,3 @@
-import 'package:faker/faker.dart' hide Color;
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -27,14 +26,12 @@ class MyoroCurrencyInputThemeExtension extends ThemeExtension<MyoroCurrencyInput
     this.labelTextStyle,
     this.labelBehavior,
     this.suffixButtonMargin,
-    this.suffixButtonIconSize,
     this.clearTextButtonIcon,
     this.obscureTextButtonEnabledIcon,
     this.obscureTextButtonDisabledIcon,
     this.suffixIconConstraints,
     this.prefixIconConstraints,
     this.suffixButtonStyle,
-    this.currencySymbolTextStyle,
     this.currencySymbolButtonStyle,
     this.currencyPrefixPadding,
   });
@@ -55,16 +52,12 @@ class MyoroCurrencyInputThemeExtension extends ThemeExtension<MyoroCurrencyInput
       labelTextStyle = myoroNullableFake<TextStyle>(),
       labelBehavior = myoroNullableFake<FloatingLabelBehavior>(),
       suffixButtonMargin = myoroNullableFake<EdgeInsets>(),
-      suffixButtonIconSize = faker.randomGenerator.boolean()
-          ? faker.randomGenerator.decimal(scale: 200, min: 20)
-          : null,
       clearTextButtonIcon = myoroNullableFake<IconData>(),
       obscureTextButtonEnabledIcon = myoroNullableFake<IconData>(),
       obscureTextButtonDisabledIcon = myoroNullableFake<IconData>(),
       suffixIconConstraints = myoroNullableFake<BoxConstraints>(),
       prefixIconConstraints = myoroNullableFake<BoxConstraints>(),
       suffixButtonStyle = myoroNullableFake<MyoroIconTextButtonStyle>(),
-      currencySymbolTextStyle = myoroNullableFake<TextStyle>(),
       currencySymbolButtonStyle = MyoroIconTextButtonStyle.fake(),
       currencyPrefixPadding = myoroFake<EdgeInsets>();
 
@@ -102,7 +95,6 @@ class MyoroCurrencyInputThemeExtension extends ThemeExtension<MyoroCurrencyInput
         kMyoroMultiplier * 1.5,
         kMyoroMultiplier,
       ),
-      suffixButtonIconSize = kMyoroMultiplier * 3,
       clearTextButtonIcon = Icons.close,
       obscureTextButtonEnabledIcon = Icons.visibility,
       obscureTextButtonDisabledIcon = Icons.visibility_off,
@@ -116,8 +108,8 @@ class MyoroCurrencyInputThemeExtension extends ThemeExtension<MyoroCurrencyInput
           right: kMyoroMultiplier * 1.2,
         ),
       ),
-      currencySymbolTextStyle = textTheme.bodySmall!,
       currencySymbolButtonStyle = MyoroIconTextButtonStyle(
+        textStyle: MyoroTextStyle(style: textTheme.bodySmall!),
         borderRadius: BorderRadius.circular(kMyoroBorderRadius),
         backgroundIdleColor: isDarkMode
             ? decorationThemeExtension.primaryBackgroundHoverColor?.darken(0.25)
@@ -172,7 +164,7 @@ class MyoroCurrencyInputThemeExtension extends ThemeExtension<MyoroCurrencyInput
   @override
   final double? spacing;
 
-  /// Text style of [_Label].
+  /// Text style of the label.
   @override
   final TextStyle? labelTextStyle;
 
@@ -183,10 +175,6 @@ class MyoroCurrencyInputThemeExtension extends ThemeExtension<MyoroCurrencyInput
   /// Margin of the suffix button.
   @override
   final EdgeInsets? suffixButtonMargin;
-
-  /// Size of [suffixButtonIcon].
-  @override
-  final double? suffixButtonIconSize;
 
   /// [IconData] of the clear text button.
   @override
@@ -211,10 +199,6 @@ class MyoroCurrencyInputThemeExtension extends ThemeExtension<MyoroCurrencyInput
   /// [MyoroIconTextButtonStyle] of the suffix button.
   @override
   final MyoroIconTextButtonStyle? suffixButtonStyle;
-
-  /// [TextStyle] of the currency prefix [Widget].
-  @override
-  final TextStyle? currencySymbolTextStyle;
 
   /// [MyoroIconTextButtonStyle] of the currency prefix [Widget].
   @override
@@ -243,14 +227,12 @@ class MyoroCurrencyInputThemeExtension extends ThemeExtension<MyoroCurrencyInput
       labelTextStyle: style.labelTextStyle,
       labelBehavior: style.labelBehavior,
       suffixButtonMargin: style.suffixButtonMargin,
-      suffixButtonIconSize: style.suffixButtonIconSize,
       clearTextButtonIcon: style.clearTextButtonIcon,
       obscureTextButtonEnabledIcon: style.obscureTextButtonEnabledIcon,
       obscureTextButtonDisabledIcon: style.obscureTextButtonDisabledIcon,
       suffixIconConstraints: style.suffixIconConstraints,
       prefixIconConstraints: style.prefixIconConstraints,
       suffixButtonStyle: style.suffixButtonStyle,
-      currencySymbolTextStyle: style.currencySymbolTextStyle,
       currencySymbolButtonStyle: style.currencySymbolButtonStyle,
       currencyPrefixPadding: style.currencyPrefixPadding,
     );

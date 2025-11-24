@@ -28,6 +28,8 @@ mixin _$MyoroDropdownThemeExtensionMixin on ThemeExtension<MyoroDropdownThemeExt
     bool borderRadiusProvided = true,
     EdgeInsets? searchBarPadding,
     bool searchBarPaddingProvided = true,
+    EdgeInsets? footerPadding,
+    bool footerPaddingProvided = true,
     MyoroInputStyleEnum? searchBarInputStyle,
     bool searchBarInputStyleProvided = true,
     BorderRadius? itemBorderRadius,
@@ -53,6 +55,7 @@ mixin _$MyoroDropdownThemeExtensionMixin on ThemeExtension<MyoroDropdownThemeExt
       border: borderProvided ? (border ?? self.border) : null,
       borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
       searchBarPadding: searchBarPaddingProvided ? (searchBarPadding ?? self.searchBarPadding) : null,
+      footerPadding: footerPaddingProvided ? (footerPadding ?? self.footerPadding) : null,
       searchBarInputStyle: searchBarInputStyleProvided ? (searchBarInputStyle ?? self.searchBarInputStyle) : null,
       itemBorderRadius: itemBorderRadiusProvided ? (itemBorderRadius ?? self.itemBorderRadius) : null,
       dialogTextStyle: dialogTextStyleProvided ? (dialogTextStyle ?? self.dialogTextStyle) : null,
@@ -78,6 +81,7 @@ mixin _$MyoroDropdownThemeExtensionMixin on ThemeExtension<MyoroDropdownThemeExt
         other.border == self.border &&
         other.borderRadius == self.borderRadius &&
         other.searchBarPadding == self.searchBarPadding &&
+        other.footerPadding == self.footerPadding &&
         other.searchBarInputStyle == self.searchBarInputStyle &&
         other.itemBorderRadius == self.itemBorderRadius &&
         other.dialogTextStyle == self.dialogTextStyle &&
@@ -97,6 +101,7 @@ mixin _$MyoroDropdownThemeExtensionMixin on ThemeExtension<MyoroDropdownThemeExt
       self.border,
       self.borderRadius,
       self.searchBarPadding,
+      self.footerPadding,
       self.searchBarInputStyle,
       self.itemBorderRadius,
       self.dialogTextStyle,
@@ -117,6 +122,7 @@ mixin _$MyoroDropdownThemeExtensionMixin on ThemeExtension<MyoroDropdownThemeExt
       '  border: ${self.border},\n'
       '  borderRadius: ${self.borderRadius},\n'
       '  searchBarPadding: ${self.searchBarPadding},\n'
+      '  footerPadding: ${self.footerPadding},\n'
       '  searchBarInputStyle: ${self.searchBarInputStyle},\n'
       '  itemBorderRadius: ${self.itemBorderRadius},\n'
       '  dialogTextStyle: ${self.dialogTextStyle},\n'

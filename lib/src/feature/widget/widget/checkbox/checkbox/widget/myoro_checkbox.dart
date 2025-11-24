@@ -23,7 +23,7 @@ class MyoroCheckbox extends StatefulWidget {
     this.label = labelDefaultValue,
     this.value = valueDefaultValue,
     this.onChanged,
-  });
+  }) : assert(label.length > 0, '[MyoroCheckbox]: [label] must be provided.');
 
   /// Theme extension.
   final MyoroCheckboxStyle style;

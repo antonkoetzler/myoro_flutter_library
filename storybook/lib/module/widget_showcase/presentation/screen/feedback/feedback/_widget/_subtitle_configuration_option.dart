@@ -9,18 +9,23 @@ final class _SubtitleConfigurationOption extends StatelessWidget {
     final viewModel = context.read<MyoroFeedbackWidgetShowcaseScreenViewModel>();
     final state = viewModel.state;
     final subtitle = state.subtitle;
-    final subtitleConfiguration = state.subtitleConfiguration;
+    final subtitleTextStyle = state.subtitleTextStyle;
 
     return TextWidgetShowcaseOption(
       configuration: TextWidgetShowcaseOptionConfiguration(
         textInitialValue: subtitle,
-        textOnChanged: viewModel.subtitleConfigurationTextOnChanged,
-        maxLinesInitialValue: subtitleConfiguration?.maxLines ?? 1,
-        maxLinesOnChanged: viewModel.subtitleConfigurationMaxLinesOnChanged,
-        overflowInitialValue: subtitleConfiguration?.overflow ?? TextOverflow.ellipsis,
-        overflowOnChanged: viewModel.subtitleConfigurationOverflowOnChanged,
-        alignmentInitialValue: subtitleConfiguration?.alignment ?? TextAlign.center,
-        alignmentOnChanged: viewModel.subtitleConfigurationAlignmentOnChanged,
+        textOnChanged: viewModel.subtitleTextStyleTextOnChanged,
+        maxLinesInitialValue: subtitleTextStyle?.maxLines ?? MyoroTextStyle.maxLinesDefaultValue,
+        maxLinesOnChanged: viewModel.subtitleTextStyleMaxLinesOnChanged,
+        overflowInitialValue: subtitleTextStyle?.overflow ?? MyoroTextStyle.overflowDefaultValue,
+        overflowOnChanged: viewModel.subtitleTextStyleOverflowOnChanged,
+        alignmentInitialValue: subtitleTextStyle?.alignment ?? MyoroTextStyle.alignmentDefaultValue,
+        alignmentOnChanged: viewModel.subtitleTextStyleAlignmentOnChanged,
+        styleInitialValue: subtitleTextStyle?.style,
+        styleOnChanged:
+            (textStyle) =>
+                state.subtitleTextStyle =
+                    state.subtitleTextStyle?.copyWith(style: textStyle) ?? MyoroTextStyle(style: textStyle),
       ),
     );
   }

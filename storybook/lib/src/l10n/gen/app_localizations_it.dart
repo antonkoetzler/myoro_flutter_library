@@ -96,13 +96,25 @@ class AppLocalizationsIt extends AppLocalizations {
   String get storybookWidgetListEnumSnackBarsCategoryName => 'Snack Bars';
 
   @override
+  String get storybookWidgetListEnumTagsCategoryName => 'Tags';
+
+  @override
   String get storybookWidgetListEnumTabViewCategoryName => 'Tab views';
 
   @override
   String get storybookWidgetListEnumTablesCategoryName => 'Tables';
 
   @override
+  String get storybookWidgetListEnumTextsCategoryName => 'Texts';
+
+  @override
+  String get storybookWidgetListEnumIconsCategoryName => 'Icons';
+
+  @override
   String get storybookWidgetListEnumTooltipsCategoryName => 'Tooltips';
+
+  @override
+  String get storybookWidgetListEnumFiltersCategoryName => 'Filtri';
 
   @override
   String get storybookWidgetShowcaseOptionSelectionTypeLabel => 'Selection type';
@@ -151,6 +163,42 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get storybookWidgetShowcaseOptionIconLabel => 'Icon';
+
+  @override
+  String get storybookWidgetShowcaseOptionIconColorLabel => 'Icon color';
+
+  @override
+  String get storybookWidgetShowcaseOptionTextTextLabel => 'Text';
+
+  @override
+  String get storybookWidgetShowcaseOptionTextMaxLinesLabel => 'Max lines';
+
+  @override
+  String get storybookWidgetShowcaseOptionTextOverflowLabel => 'Text overflow behavior';
+
+  @override
+  String get storybookWidgetShowcaseOptionTextAlignmentLabel => 'Text alignment';
+
+  @override
+  String get storybookWidgetShowcaseOptionTextStyleLabel => 'Text style';
+
+  @override
+  String get storybookWidgetShowcaseOptionTagTextLabel => 'Text';
+
+  @override
+  String get storybookWidgetShowcaseOptionTagInvertLabel => 'Invert';
+
+  @override
+  String get storybookWidgetShowcaseOptionTagBorderLabel => 'Border';
+
+  @override
+  String get storybookWidgetShowcaseOptionTagBorderRadiusLabel => 'Border radius';
+
+  @override
+  String get storybookWidgetShowcaseOptionTagSpacingLabel => 'Spacing';
+
+  @override
+  String get storybookWidgetShowcaseOptionTagContentPaddingLabel => 'Content padding';
 
   @override
   String get storybookWidgetShowcaseOptionMouseCursorBasicLabel => 'Basic';
@@ -251,4 +299,16 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get storybookSearchInputEndItemText => 'End';
+
+  @override
+  String get storybookFilterButtonClearButtonText => 'Cancella';
+
+  @override
+  String get storybookFilterButtonApplyButtonText => 'Applica';
+
+  @override
+  String get storybookCheckboxFilterButtonLabel => 'Filtro casella';
+
+  @override
+  String get storybookRadioFilterButtonLabel => 'Filtro radio';
 }

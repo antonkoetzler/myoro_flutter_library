@@ -52,11 +52,11 @@ class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension
   @override
   final ShapeBorder? drawerShape;
 
-  /// Padding of the [MyoroBasicDivider] in between [_Title] and [MyoroDrawer.child].
+  /// Padding of the [MyoroBasicDivider] in between the title and [MyoroDrawer.child].
   @override
   final EdgeInsets? titleContentDividerPadding;
 
-  /// Text style of text in [_Title].
+  /// Text style of text in the title.
   @override
   final TextStyle? titleTextStyle;
 

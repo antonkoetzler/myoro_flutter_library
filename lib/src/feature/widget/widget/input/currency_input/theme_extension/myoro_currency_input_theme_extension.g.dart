@@ -46,8 +46,6 @@ mixin _$MyoroCurrencyInputThemeExtensionMixin on ThemeExtension<MyoroCurrencyInp
     bool labelBehaviorProvided = true,
     EdgeInsets? suffixButtonMargin,
     bool suffixButtonMarginProvided = true,
-    double? suffixButtonIconSize,
-    bool suffixButtonIconSizeProvided = true,
     IconData? clearTextButtonIcon,
     bool clearTextButtonIconProvided = true,
     IconData? obscureTextButtonEnabledIcon,
@@ -60,8 +58,6 @@ mixin _$MyoroCurrencyInputThemeExtensionMixin on ThemeExtension<MyoroCurrencyInp
     bool prefixIconConstraintsProvided = true,
     MyoroIconTextButtonStyle? suffixButtonStyle,
     bool suffixButtonStyleProvided = true,
-    TextStyle? currencySymbolTextStyle,
-    bool currencySymbolTextStyleProvided = true,
     MyoroIconTextButtonStyle? currencySymbolButtonStyle,
     bool currencySymbolButtonStyleProvided = true,
     EdgeInsets? currencyPrefixPadding,
@@ -82,7 +78,6 @@ mixin _$MyoroCurrencyInputThemeExtensionMixin on ThemeExtension<MyoroCurrencyInp
       labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
       labelBehavior: labelBehaviorProvided ? (labelBehavior ?? self.labelBehavior) : null,
       suffixButtonMargin: suffixButtonMarginProvided ? (suffixButtonMargin ?? self.suffixButtonMargin) : null,
-      suffixButtonIconSize: suffixButtonIconSizeProvided ? (suffixButtonIconSize ?? self.suffixButtonIconSize) : null,
       clearTextButtonIcon: clearTextButtonIconProvided ? (clearTextButtonIcon ?? self.clearTextButtonIcon) : null,
       obscureTextButtonEnabledIcon: obscureTextButtonEnabledIconProvided
           ? (obscureTextButtonEnabledIcon ?? self.obscureTextButtonEnabledIcon)
@@ -97,9 +92,6 @@ mixin _$MyoroCurrencyInputThemeExtensionMixin on ThemeExtension<MyoroCurrencyInp
           ? (prefixIconConstraints ?? self.prefixIconConstraints)
           : null,
       suffixButtonStyle: suffixButtonStyleProvided ? (suffixButtonStyle ?? self.suffixButtonStyle) : null,
-      currencySymbolTextStyle: currencySymbolTextStyleProvided
-          ? (currencySymbolTextStyle ?? self.currencySymbolTextStyle)
-          : null,
       currencySymbolButtonStyle: currencySymbolButtonStyleProvided
           ? (currencySymbolButtonStyle ?? self.currencySymbolButtonStyle)
           : null,
@@ -127,14 +119,12 @@ mixin _$MyoroCurrencyInputThemeExtensionMixin on ThemeExtension<MyoroCurrencyInp
         other.labelTextStyle == self.labelTextStyle &&
         other.labelBehavior == self.labelBehavior &&
         other.suffixButtonMargin == self.suffixButtonMargin &&
-        other.suffixButtonIconSize == self.suffixButtonIconSize &&
         other.clearTextButtonIcon == self.clearTextButtonIcon &&
         other.obscureTextButtonEnabledIcon == self.obscureTextButtonEnabledIcon &&
         other.obscureTextButtonDisabledIcon == self.obscureTextButtonDisabledIcon &&
         other.suffixIconConstraints == self.suffixIconConstraints &&
         other.prefixIconConstraints == self.prefixIconConstraints &&
         other.suffixButtonStyle == self.suffixButtonStyle &&
-        other.currencySymbolTextStyle == self.currencySymbolTextStyle &&
         other.currencySymbolButtonStyle == self.currencySymbolButtonStyle &&
         other.currencyPrefixPadding == self.currencyPrefixPadding;
   }
@@ -156,14 +146,12 @@ mixin _$MyoroCurrencyInputThemeExtensionMixin on ThemeExtension<MyoroCurrencyInp
       self.labelTextStyle,
       self.labelBehavior,
       self.suffixButtonMargin,
-      self.suffixButtonIconSize,
       self.clearTextButtonIcon,
       self.obscureTextButtonEnabledIcon,
       self.obscureTextButtonDisabledIcon,
       self.suffixIconConstraints,
       self.prefixIconConstraints,
       self.suffixButtonStyle,
-      self.currencySymbolTextStyle,
       self.currencySymbolButtonStyle,
       self.currencyPrefixPadding,
     ]);
@@ -186,14 +174,12 @@ mixin _$MyoroCurrencyInputThemeExtensionMixin on ThemeExtension<MyoroCurrencyInp
       '  labelTextStyle: ${self.labelTextStyle},\n'
       '  labelBehavior: ${self.labelBehavior},\n'
       '  suffixButtonMargin: ${self.suffixButtonMargin},\n'
-      '  suffixButtonIconSize: ${self.suffixButtonIconSize},\n'
       '  clearTextButtonIcon: ${self.clearTextButtonIcon},\n'
       '  obscureTextButtonEnabledIcon: ${self.obscureTextButtonEnabledIcon},\n'
       '  obscureTextButtonDisabledIcon: ${self.obscureTextButtonDisabledIcon},\n'
       '  suffixIconConstraints: ${self.suffixIconConstraints},\n'
       '  prefixIconConstraints: ${self.prefixIconConstraints},\n'
       '  suffixButtonStyle: ${self.suffixButtonStyle},\n'
-      '  currencySymbolTextStyle: ${self.currencySymbolTextStyle},\n'
       '  currencySymbolButtonStyle: ${self.currencySymbolButtonStyle},\n'
       '  currencyPrefixPadding: ${self.currencyPrefixPadding},\n'
       ');';

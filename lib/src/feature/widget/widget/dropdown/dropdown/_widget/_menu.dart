@@ -14,22 +14,29 @@ final class _Menu<T> extends StatelessWidget {
     final state = viewModel.state;
     final items = state.items;
     final itemBuilder = state.itemBuilder;
-    final selectedItems = state.selectedItems;
     final searchCallback = state.searchCallback;
     final dropdownType = state.dropdownType;
     final isModal = dropdownType.isModal;
     final isBottomSheet = dropdownType.isBottomSheet;
+    final footer = state.footer;
+    final selectedItemsController = state.selectedItemsController;
 
-    return MyoroMenu(
-      style: style.copyWith(
-        border: isModal || isBottomSheet ? Border.all(width: 0) : null,
-        borderProvided: isModal || isBottomSheet,
-        constraints: constraints,
-      ),
-      items: items,
-      selectedItems: selectedItems,
-      searchCallback: searchCallback,
-      itemBuilder: itemBuilder,
+    return ValueListenableBuilder(
+      valueListenable: selectedItemsController,
+      builder: (_, selectedItems, _) {
+        return MyoroMenu(
+          style: style.copyWith(
+            border: isModal || isBottomSheet ? Border.all(width: 0) : null,
+            borderProvided: isModal || isBottomSheet,
+            constraints: constraints,
+          ),
+          items: items,
+          selectedItems: selectedItems,
+          searchCallback: searchCallback,
+          itemBuilder: itemBuilder,
+          footer: footer,
+        );
+      },
     );
   }
 }

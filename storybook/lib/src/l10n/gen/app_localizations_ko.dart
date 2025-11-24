@@ -96,13 +96,25 @@ class AppLocalizationsKo extends AppLocalizations {
   String get storybookWidgetListEnumSnackBarsCategoryName => 'Snack Bars';
 
   @override
+  String get storybookWidgetListEnumTagsCategoryName => 'Tags';
+
+  @override
   String get storybookWidgetListEnumTabViewCategoryName => 'Tab views';
 
   @override
   String get storybookWidgetListEnumTablesCategoryName => 'Tables';
 
   @override
+  String get storybookWidgetListEnumTextsCategoryName => 'Texts';
+
+  @override
+  String get storybookWidgetListEnumIconsCategoryName => 'Icons';
+
+  @override
   String get storybookWidgetListEnumTooltipsCategoryName => 'Tooltips';
+
+  @override
+  String get storybookWidgetListEnumFiltersCategoryName => '필터';
 
   @override
   String get storybookWidgetShowcaseOptionSelectionTypeLabel => 'Selection type';
@@ -151,6 +163,42 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get storybookWidgetShowcaseOptionIconLabel => 'Icon';
+
+  @override
+  String get storybookWidgetShowcaseOptionIconColorLabel => 'Icon color';
+
+  @override
+  String get storybookWidgetShowcaseOptionTextTextLabel => 'Text';
+
+  @override
+  String get storybookWidgetShowcaseOptionTextMaxLinesLabel => 'Max lines';
+
+  @override
+  String get storybookWidgetShowcaseOptionTextOverflowLabel => 'Text overflow behavior';
+
+  @override
+  String get storybookWidgetShowcaseOptionTextAlignmentLabel => 'Text alignment';
+
+  @override
+  String get storybookWidgetShowcaseOptionTextStyleLabel => 'Text style';
+
+  @override
+  String get storybookWidgetShowcaseOptionTagTextLabel => 'Text';
+
+  @override
+  String get storybookWidgetShowcaseOptionTagInvertLabel => 'Invert';
+
+  @override
+  String get storybookWidgetShowcaseOptionTagBorderLabel => 'Border';
+
+  @override
+  String get storybookWidgetShowcaseOptionTagBorderRadiusLabel => 'Border radius';
+
+  @override
+  String get storybookWidgetShowcaseOptionTagSpacingLabel => 'Spacing';
+
+  @override
+  String get storybookWidgetShowcaseOptionTagContentPaddingLabel => 'Content padding';
 
   @override
   String get storybookWidgetShowcaseOptionMouseCursorBasicLabel => 'Basic';
@@ -251,4 +299,16 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get storybookSearchInputEndItemText => 'End';
+
+  @override
+  String get storybookFilterButtonClearButtonText => '지우기';
+
+  @override
+  String get storybookFilterButtonApplyButtonText => '적용';
+
+  @override
+  String get storybookCheckboxFilterButtonLabel => '체크박스 필터';
+
+  @override
+  String get storybookRadioFilterButtonLabel => '라디오 필터';
 }

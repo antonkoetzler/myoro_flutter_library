@@ -35,19 +35,19 @@ final class MyoroIconTextButtonWidgetShowcaseScreenState extends ChangeNotifier 
   /// [MyoroIconTextButtonIconConfiguration.size]
   double? _iconSize;
 
-  /// [MyoroTextConfiguration.text]
+  /// [MyoroTextStyle.text]
   String _text = faker.lorem.word();
 
-  /// [MyoroTextConfiguration.maxLines]
-  int _maxLines = MyoroTextConfiguration.maxLinesDefaultValue;
+  /// [MyoroTextStyle.maxLines]
+  int _maxLines = MyoroTextStyle.maxLinesDefaultValue;
 
-  /// [MyoroTextConfiguration.overflow]
-  TextOverflow _overflow = MyoroTextConfiguration.overflowDefaultValue;
+  /// [MyoroTextStyle.overflow]
+  TextOverflow _overflow = MyoroTextStyle.overflowDefaultValue;
 
-  /// [MyoroTextConfiguration.alignment]
-  TextAlign _alignment = MyoroTextConfiguration.alignmentDefaultValue;
+  /// [MyoroTextStyle.alignment]
+  TextAlign _alignment = MyoroTextStyle.alignmentDefaultValue;
 
-  /// [MyoroTextConfiguration.style]
+  /// [MyoroTextStyle.style]
   TextStyle? _style;
 
   /// Dispose function.

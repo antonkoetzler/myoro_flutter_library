@@ -302,6 +302,12 @@ abstract class AppLocalizations {
   /// **'Snack Bars'**
   String get storybookWidgetListEnumSnackBarsCategoryName;
 
+  /// No description provided for @storybookWidgetListEnumTagsCategoryName.
+  ///
+  /// In en, this message translates to:
+  /// **'Tags'**
+  String get storybookWidgetListEnumTagsCategoryName;
+
   /// No description provided for @storybookWidgetListEnumTabViewCategoryName.
   ///
   /// In en, this message translates to:
@@ -314,11 +320,29 @@ abstract class AppLocalizations {
   /// **'Tables'**
   String get storybookWidgetListEnumTablesCategoryName;
 
+  /// No description provided for @storybookWidgetListEnumTextsCategoryName.
+  ///
+  /// In en, this message translates to:
+  /// **'Texts'**
+  String get storybookWidgetListEnumTextsCategoryName;
+
+  /// No description provided for @storybookWidgetListEnumIconsCategoryName.
+  ///
+  /// In en, this message translates to:
+  /// **'Icons'**
+  String get storybookWidgetListEnumIconsCategoryName;
+
   /// No description provided for @storybookWidgetListEnumTooltipsCategoryName.
   ///
   /// In en, this message translates to:
   /// **'Tooltips'**
   String get storybookWidgetListEnumTooltipsCategoryName;
+
+  /// No description provided for @storybookWidgetListEnumFiltersCategoryName.
+  ///
+  /// In en, this message translates to:
+  /// **'Filters'**
+  String get storybookWidgetListEnumFiltersCategoryName;
 
   /// No description provided for @storybookWidgetShowcaseOptionSelectionTypeLabel.
   ///
@@ -415,6 +439,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Icon'**
   String get storybookWidgetShowcaseOptionIconLabel;
+
+  /// No description provided for @storybookWidgetShowcaseOptionIconColorLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Icon color'**
+  String get storybookWidgetShowcaseOptionIconColorLabel;
+
+  /// No description provided for @storybookWidgetShowcaseOptionTextTextLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Text'**
+  String get storybookWidgetShowcaseOptionTextTextLabel;
+
+  /// No description provided for @storybookWidgetShowcaseOptionTextMaxLinesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Max lines'**
+  String get storybookWidgetShowcaseOptionTextMaxLinesLabel;
+
+  /// No description provided for @storybookWidgetShowcaseOptionTextOverflowLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Text overflow behavior'**
+  String get storybookWidgetShowcaseOptionTextOverflowLabel;
+
+  /// No description provided for @storybookWidgetShowcaseOptionTextAlignmentLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Text alignment'**
+  String get storybookWidgetShowcaseOptionTextAlignmentLabel;
+
+  /// No description provided for @storybookWidgetShowcaseOptionTextStyleLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Text style'**
+  String get storybookWidgetShowcaseOptionTextStyleLabel;
+
+  /// No description provided for @storybookWidgetShowcaseOptionTagTextLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Text'**
+  String get storybookWidgetShowcaseOptionTagTextLabel;
+
+  /// No description provided for @storybookWidgetShowcaseOptionTagInvertLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Invert'**
+  String get storybookWidgetShowcaseOptionTagInvertLabel;
+
+  /// No description provided for @storybookWidgetShowcaseOptionTagBorderLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Border'**
+  String get storybookWidgetShowcaseOptionTagBorderLabel;
+
+  /// No description provided for @storybookWidgetShowcaseOptionTagBorderRadiusLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Border radius'**
+  String get storybookWidgetShowcaseOptionTagBorderRadiusLabel;
+
+  /// No description provided for @storybookWidgetShowcaseOptionTagSpacingLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Spacing'**
+  String get storybookWidgetShowcaseOptionTagSpacingLabel;
+
+  /// No description provided for @storybookWidgetShowcaseOptionTagContentPaddingLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Content padding'**
+  String get storybookWidgetShowcaseOptionTagContentPaddingLabel;
 
   /// No description provided for @storybookWidgetShowcaseOptionMouseCursorBasicLabel.
   ///
@@ -607,6 +703,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'End'**
   String get storybookSearchInputEndItemText;
+
+  /// No description provided for @storybookFilterButtonClearButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get storybookFilterButtonClearButtonText;
+
+  /// No description provided for @storybookFilterButtonApplyButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get storybookFilterButtonApplyButtonText;
+
+  /// No description provided for @storybookCheckboxFilterButtonLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Checkbox Filter'**
+  String get storybookCheckboxFilterButtonLabel;
+
+  /// No description provided for @storybookRadioFilterButtonLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Radio Filter'**
+  String get storybookRadioFilterButtonLabel;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -20,7 +20,8 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
     this.overlayBackgroundIdleColor,
     this.overlayBackgroundHoverColor,
     this.overlayBackgroundTapColor,
-    this.overlayUnselectedImageStateIconConfiguration,
+    this.overlayUnselectedImageStateIcon,
+    this.overlayUnselectedImageStateIconStyle,
     this.selectionTypeModalConstraints,
     this.selectionTypeModalSpacing,
     this.selectionTypeModalButtonCameraIcon,
@@ -36,9 +37,8 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
       overlayBackgroundIdleColor = myoroNullableFake<Color>(),
       overlayBackgroundHoverColor = myoroNullableFake<Color>(),
       overlayBackgroundTapColor = myoroNullableFake<Color>(),
-      overlayUnselectedImageStateIconConfiguration = faker.randomGenerator.boolean()
-          ? MyoroIconConfiguration.fake()
-          : null,
+      overlayUnselectedImageStateIcon = myoroNullableFake<IconData>(),
+      overlayUnselectedImageStateIconStyle = faker.randomGenerator.boolean() ? MyoroIconStyle.fake() : null,
       selectionTypeModalConstraints = myoroNullableFake<BoxConstraints>(),
       selectionTypeModalSpacing = myoroNullableFake<double>(),
       selectionTypeModalButtonCameraIcon = myoroNullableFake<IconData>(),
@@ -53,10 +53,8 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
       overlayBackgroundIdleColor = colorScheme.onPrimary.withValues(alpha: kMyoroMultiplier * 2 / 100),
       overlayBackgroundHoverColor = colorScheme.onPrimary.withValues(alpha: kMyoroMultiplier * 4 / 100),
       overlayBackgroundTapColor = colorScheme.onPrimary.withValues(alpha: kMyoroMultiplier * 6 / 100),
-      overlayUnselectedImageStateIconConfiguration = const MyoroIconConfiguration(
-        icon: Icons.upload,
-        size: kMyoroMultiplier * 20,
-      ),
+      overlayUnselectedImageStateIcon = null,
+      overlayUnselectedImageStateIconStyle = const MyoroIconStyle(size: kMyoroMultiplier * 20),
       selectionTypeModalConstraints = MyoroPlatformHelper.isDesktop
           ? const BoxConstraints(maxWidth: kMyoroMultiplier * 58, maxHeight: kMyoroMultiplier * 50)
           : null,
@@ -89,9 +87,13 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
   @override
   final Color? overlayBackgroundTapColor;
 
-  /// [MyoroIconConfiguration] of the icon shown when there is no image selected.
+  /// Icon of the overlay when no image is selected.
   @override
-  final MyoroIconConfiguration? overlayUnselectedImageStateIconConfiguration;
+  final IconData? overlayUnselectedImageStateIcon;
+
+  /// [MyoroIconStyle] of the icon shown when there is no image selected.
+  @override
+  final MyoroIconStyle? overlayUnselectedImageStateIconStyle;
 
   /// Constraints of the selection modal.
   @override
@@ -124,7 +126,8 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
       overlayBackgroundIdleColor: style.overlayBackgroundIdleColor,
       overlayBackgroundHoverColor: style.overlayBackgroundHoverColor,
       overlayBackgroundTapColor: style.overlayBackgroundTapColor,
-      overlayUnselectedImageStateIconConfiguration: style.overlayUnselectedImageStateIconConfiguration,
+      overlayUnselectedImageStateIcon: style.overlayUnselectedImageStateIcon,
+      overlayUnselectedImageStateIconStyle: style.overlayUnselectedImageStateIconStyle,
       selectionTypeModalConstraints: style.selectionTypeModalConstraints,
       selectionTypeModalSpacing: style.selectionTypeModalSpacing,
       selectionTypeModalButtonCameraIcon: style.selectionTypeModalButtonCameraIcon,

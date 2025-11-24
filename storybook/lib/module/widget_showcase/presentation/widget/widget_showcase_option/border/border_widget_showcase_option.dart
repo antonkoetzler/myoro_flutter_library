@@ -32,7 +32,7 @@ final class BorderWidgetShowcaseOption extends StatelessWidget {
       label: label,
       selectedItemBuilder: _getBorderName,
       onChanged: onChanged,
-      itemBuilder: (border, _) {
+      itemBuilder: (_, border) {
         return MyoroMenuIconTextButtonItem(text: _getBorderName(border));
       },
       items: _getTestBorders().toSet(),

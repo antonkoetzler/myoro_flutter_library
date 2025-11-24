@@ -50,7 +50,7 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
         children: [
           const Text('Example'),
           MyoroIconTextButton(
-            iconConfiguration: const MyoroIconConfiguration(icon: Icons.sunny),
+            icon: Icons.sunny,
             onTapUp: (_, _) => _themeModeController.value = _themeModeController.value == ThemeMode.dark
                 ? ThemeMode.light
                 : ThemeMode.dark,

@@ -13,8 +13,8 @@ class MyoroFieldStyle with _$MyoroFieldStyleMixin {
   /// Lerp function.
   static MyoroFieldStyle lerp(MyoroFieldStyle? a, MyoroFieldStyle? b, double t) {
     return MyoroFieldStyle(
-      labelTextStyle: TextStyle.lerp(a?.labelTextStyle, b?.labelTextStyle, t),
-      dataTextStyle: TextStyle.lerp(a?.dataTextStyle, b?.dataTextStyle, t),
+      labelTextStyle: MyoroTextStyle.lerp(a?.labelTextStyle, b?.labelTextStyle, t),
+      dataTextStyle: MyoroTextStyle.lerp(a?.dataTextStyle, b?.dataTextStyle, t),
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
       decoration: BoxDecoration.lerp(a?.decoration, b?.decoration, t),
       contentPadding: EdgeInsets.lerp(a?.contentPadding, b?.contentPadding, t),
@@ -24,12 +24,6 @@ class MyoroFieldStyle with _$MyoroFieldStyleMixin {
   /// Default constructor.
   const MyoroFieldStyle({this.labelTextStyle, this.dataTextStyle, this.spacing, this.decoration, this.contentPadding});
 
-  /// [TextStyle] of the label.
-  final TextStyle? labelTextStyle;
-
-  /// [TextStyle] of the data.
-  final TextStyle? dataTextStyle;
-
   /// Spacing in between the label and the data.
   final double? spacing;
 
@@ -38,4 +32,10 @@ class MyoroFieldStyle with _$MyoroFieldStyleMixin {
 
   /// Content padding.
   final EdgeInsets? contentPadding;
+
+  /// [MyoroTextStyle] of the label.
+  final MyoroTextStyle? labelTextStyle;
+
+  /// [MyoroTextStyle] of the data.
+  final MyoroTextStyle? dataTextStyle;
 }

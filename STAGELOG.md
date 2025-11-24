@@ -5,13 +5,21 @@
 - feature: `MyoroImage`
 - feature: `MyoroField`
 - feature: `MyoroStringExtension`
+- feature: `MyoroTag`
+- feature: `MyoroCheckboxFilter`
+- feature: `MyoroRadioFilter`
+- feature: `MyoroFilterPanel`
+- feature: `MyoroSearchBarInput`
 - (**IN PROGRESS**) feature: Full documentation of the project via Notion, not markdown
 - feature: `MyoroCountryEnum`
 - feature: Adding all languages, countries, localizations, and currencies
 - feature: Add time based tools like `MyoroDayEnum` and `MyoroMonthEnum`
 - feature: `MyoroInput.minLines` & `MyoroInput.maxLines`
 - fix: Date picker not opening in `MyoroDatePickerInput`
-- Remove configuration model pattern
+- refactor: Remove configuration model pattern
 - refactor: Remove `MyoroInput.number` create `MyoroNumberInput`
+- refactor: Scale `MyoroTextConfiguration` by making `MyoroText`
+- refactor: Scale `MyoroIconConfiguration` by making `MyoroIcon`
+- refactor: Rename `MyoroSearchInput` to `MyoroSearchDropdown`
 - improvement: Add public `Widget`s in a `widget` folder
 - refactor: Massive simplification and optimization of `Widget` states

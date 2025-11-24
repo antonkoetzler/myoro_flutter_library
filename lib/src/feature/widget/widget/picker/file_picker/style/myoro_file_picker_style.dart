@@ -14,7 +14,7 @@ class MyoroFilePickerStyle with _$MyoroFilePickerStyleMixin {
   static MyoroFilePickerStyle lerp(MyoroFilePickerStyle? a, MyoroFilePickerStyle? b, double t) {
     return MyoroFilePickerStyle(
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
-      textStyle: TextStyle.lerp(a?.textStyle, b?.textStyle, t),
+      textStyle: MyoroTextStyle.lerp(a?.textStyle, b?.textStyle, t),
     );
   }
 
@@ -23,12 +23,12 @@ class MyoroFilePickerStyle with _$MyoroFilePickerStyleMixin {
 
   /// Fake constructor.
   factory MyoroFilePickerStyle.fake() {
-    return MyoroFilePickerStyle(spacing: myoroNullableFake<double>(), textStyle: myoroNullableFake<TextStyle>());
+    return MyoroFilePickerStyle(spacing: myoroNullableFake<double>(), textStyle: myoroNullableFake<MyoroTextStyle>());
   }
 
   /// Spacing between the selected file section text and the selection button.
   final double? spacing;
 
   /// [TextStyle] of the text of the [MyoroFilePicker].
-  final TextStyle? textStyle;
+  final MyoroTextStyle? textStyle;
 }

@@ -36,6 +36,12 @@ class AppLocalizationsTr extends AppLocalizations {
   String get myoroDialogModalConfirmButtonText => 'Onayla';
 
   @override
+  String get myoroFilterButtonClearButtonText => 'Temizle';
+
+  @override
+  String get myoroFilterButtonApplyButtonText => 'Uygula';
+
+  @override
   String get myoroCurrencyEnumUsdFormalName => 'ABD Doları';
 
   @override
@@ -1138,4 +1144,10 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get myoroMonthEnumDecemberLabel => 'Aralık';
+
+  @override
+  String get myoroSearchBarInputLabel => 'Ara';
+
+  @override
+  String get myoroSearchBarInputPlaceholder => 'Bir şey yazın...';
 }

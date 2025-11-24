@@ -20,7 +20,7 @@ mixin _$MyoroFilePickerThemeExtensionMixin on ThemeExtension<MyoroFilePickerThem
   MyoroFilePickerThemeExtension copyWith({
     double? spacing,
     bool spacingProvided = true,
-    TextStyle? textStyle,
+    MyoroTextStyle? textStyle,
     bool textStyleProvided = true,
   }) {
     return MyoroFilePickerThemeExtension(

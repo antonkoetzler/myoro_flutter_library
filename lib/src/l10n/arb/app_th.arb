@@ -12,6 +12,9 @@
   "myoroDialogModalCancelButtonText": "ยกเลิก",
   "myoroDialogModalConfirmButtonText": "ยืนยัน",
 
+  "myoroFilterButtonClearButtonText": "ล้าง",
+  "myoroFilterButtonApplyButtonText": "ใช้",
+
   "myoroCurrencyEnumUsdFormalName": "ดอลลาร์สหรัฐ",
   "myoroCurrencyEnumCadFormalName": "ดอลลาร์แคนาดา",
   "myoroCurrencyEnumBrlFormalName": "เรียลบราซิล",
@@ -382,6 +385,9 @@
   "myoroMonthEnumSeptemberLabel": "กันยายน",
   "myoroMonthEnumOctoberLabel": "ตุลาคม",
   "myoroMonthEnumNovemberLabel": "พฤศจิกายน",
-  "myoroMonthEnumDecemberLabel": "ธันวาคม"
+  "myoroMonthEnumDecemberLabel": "ธันวาคม",
+
+  "myoroSearchBarInputLabel": "ค้นหา",
+  "myoroSearchBarInputPlaceholder": "พิมพ์บางอย่าง..."
 }
 

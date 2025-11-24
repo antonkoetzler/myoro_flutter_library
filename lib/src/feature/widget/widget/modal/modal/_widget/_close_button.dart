@@ -9,12 +9,15 @@ final class _CloseButton extends StatelessWidget {
     final themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
     final style = context.watch<MyoroModalStyle>();
     final closeButtonPadding = style.closeButtonPadding ?? themeExtension.closeButtonPadding ?? EdgeInsets.zero;
+    final closeButtonIcon = style.closeButtonIcon ?? themeExtension.closeButtonIcon;
+    final closeButtonIconSize = style.closeButtonIconSize ?? themeExtension.closeButtonIconSize;
 
     return Padding(
       padding: closeButtonPadding,
       child: MyoroIconTextButton(
+        style: MyoroIconTextButtonStyle(iconSize: closeButtonIconSize),
         onTapUp: (_, _) => context.navigator.pop(),
-        iconConfiguration: style.closeButtonIconConfiguration ?? themeExtension.closeButtonIconConfiguration,
+        icon: closeButtonIcon,
       ),
     );
   }

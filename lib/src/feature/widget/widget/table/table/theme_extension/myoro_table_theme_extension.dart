@@ -44,7 +44,7 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension>
   @override
   final Color? backgroundColor;
 
-  /// Default [TextStyle] of [_Column].
+  /// Default [TextStyle] of columns.
   @override
   final TextStyle? columnTextStyle;
 
@@ -52,19 +52,19 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension>
   @override
   final double? columnSpacing;
 
-  /// Default [TextStyle] of [_Row].
+  /// Default [TextStyle] of rows.
   @override
   final TextStyle? rowTextStyle;
 
-  /// [EdgeInsets] of [_Loader], [_EmptyMessage] and [_ErrorMessage].
+  /// [EdgeInsets] of the loader, empty message and error message.
   @override
   final EdgeInsets? loaderEmptyMessageErrorMessagePadding;
 
-  /// [TextStyle] of [_EmptyMessage].
+  /// [TextStyle] of the empty message.
   @override
   final TextStyle? emptyMessageTextStyle;
 
-  /// [TextStyle] of [_ErrorMessage].
+  /// [TextStyle] of the error message.
   @override
   final TextStyle? errorMessageTextStyle;
 

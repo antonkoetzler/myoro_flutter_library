@@ -18,6 +18,7 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
     this.border,
     this.borderRadius,
     this.searchBarPadding,
+    this.footerPadding,
     this.searchBarInputStyle,
     this.itemBorderRadius,
     this.dialogTextStyle,
@@ -33,6 +34,7 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
       backgroundColor = myoroNullableFake<Color>(),
       borderRadius = myoroNullableFake<BorderRadius>(),
       searchBarPadding = myoroNullableFake<EdgeInsets>(),
+      footerPadding = myoroNullableFake<EdgeInsets>(),
       searchBarInputStyle = faker.randomGenerator.boolean() ? MyoroInputStyleEnum.fake() : null,
       itemBorderRadius = myoroNullableFake<BorderRadius>(),
       dialogTextStyle = myoroNullableFake<TextStyle>(),
@@ -50,6 +52,7 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
       backgroundColor = colorScheme.primary,
       borderRadius = BorderRadius.circular(kMyoroBorderRadius),
       searchBarPadding = const EdgeInsets.all(kMyoroMultiplier * 2.5),
+      footerPadding = const EdgeInsets.all(kMyoroMultiplier * 2.5),
       searchBarInputStyle = MyoroInputStyleEnum.outlined,
       itemBorderRadius = BorderRadius.zero,
       dialogTextStyle = textTheme.bodyMedium!,
@@ -75,23 +78,27 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
   @override
   final BorderRadius? borderRadius;
 
-  /// Padding of [_SearchBar].
+  /// Padding of the search bar.
   @override
   final EdgeInsets? searchBarPadding;
 
-  /// [MyoroInputStyleEnum] of [_SearchBar].
+  /// Padding of the footer.
+  @override
+  final EdgeInsets? footerPadding;
+
+  /// [MyoroInputStyleEnum] of the search bar.
   @override
   final MyoroInputStyleEnum? searchBarInputStyle;
 
-  /// [BorderRadius] of [_Item].
+  /// [BorderRadius] of menu items.
   @override
   final BorderRadius? itemBorderRadius;
 
-  /// Text style of [_EmptyMenuDialog].
+  /// Text style of the empty menu dialog text.
   @override
   final TextStyle? dialogTextStyle;
 
-  /// [EdgeInsets] of [_DialogText] & [_Loader].
+  /// [EdgeInsets] of the dialog text and loader.
   @override
   final EdgeInsets? dialogTextLoaderPadding;
 
@@ -113,6 +120,7 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
       border: style.border,
       borderRadius: style.borderRadius,
       searchBarPadding: style.searchBarPadding,
+      footerPadding: style.footerPadding,
       searchBarInputStyle: style.searchBarInputStyle,
       itemBorderRadius: style.itemBorderRadius,
       dialogTextStyle: style.dialogTextStyle,
@@ -124,7 +132,7 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
 
   /// Used to create the [ClipRRect.borderRadius] of the items to make
   /// sure that the menu item's background color won't extension the
-  /// border of the [MyoroMenu]'s [MyoroMenuConfiguration.border].
+  /// border of the [MyoroMenu].
   Radius createMenuContentRadius(Radius radius) {
     return Radius.elliptical(
       (radius.x - kMyoroMultiplier).clamp(0, double.infinity),

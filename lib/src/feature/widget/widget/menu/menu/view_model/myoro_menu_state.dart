@@ -3,7 +3,7 @@ part of 'myoro_menu_view_model.dart';
 /// State of [MyoroMenuViewModel].
 class MyoroMenuState<T> {
   /// Default constructor.
-  MyoroMenuState(this.searchCallback, this.items, this.selectedItems, this.itemBuilder);
+  MyoroMenuState(this.searchCallback, this.items, this.selectedItems, this.itemBuilder, this.footer);
 
   /// [MyoroMenu.searchCallback].
   MyoroMenuSearchCallback<T>? searchCallback;
@@ -16,6 +16,9 @@ class MyoroMenuState<T> {
 
   /// [MyoroMenu.itemBuilder].
   MyoroMenuItemBuilder<T> itemBuilder;
+
+  /// [MyoroMenu.footer].
+  Widget? footer;
 
   /// [ScrollController] of the item listing.
   final _scrollController = ScrollController();

@@ -26,7 +26,8 @@ class MyoroIconTextButtonStyle extends MyoroButtonStyle with _$MyoroIconTextButt
       borderTapColor: Color.lerp(a?.borderTapColor, b?.borderTapColor, t),
       contentPadding: EdgeInsets.lerp(a?.contentPadding, b?.contentPadding, t),
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
-      textStyle: TextStyle.lerp(a?.textStyle, b?.textStyle, t),
+      iconSize: lerpDouble(a?.iconSize, b?.iconSize, t),
+      textStyle: MyoroTextStyle.lerp(a?.textStyle, b?.textStyle, t),
     );
   }
 
@@ -45,6 +46,7 @@ class MyoroIconTextButtonStyle extends MyoroButtonStyle with _$MyoroIconTextButt
     super.borderTapColor,
     super.contentPadding,
     this.spacing,
+    this.iconSize,
     this.textStyle,
   });
 
@@ -64,13 +66,17 @@ class MyoroIconTextButtonStyle extends MyoroButtonStyle with _$MyoroIconTextButt
       borderTapColor: myoroNullableFake<Color>(),
       contentPadding: myoroNullableFake<EdgeInsets>(),
       spacing: myoroNullableFake<double>(),
-      textStyle: myoroNullableFake<TextStyle>(),
+      iconSize: myoroNullableFake<double>(),
+      textStyle: myoroNullableFake<MyoroTextStyle>(),
     );
   }
 
   /// Spacing between the icon and text.
   final double? spacing;
 
-  /// [TextStyle] of the text.
-  final TextStyle? textStyle;
+  /// [MyoroIconStyle] of the icon.
+  final double? iconSize;
+
+  /// [MyoroTextStyle] of the text.
+  final MyoroTextStyle? textStyle;
 }

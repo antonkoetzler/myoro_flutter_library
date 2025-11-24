@@ -10,11 +10,10 @@ final class _IconConfigurationOption extends StatelessWidget {
 
     return IconWidgetShowcaseOption(
       configuration: IconWidgetShowcaseOptionConfiguration(
-        selectedIcon: viewModel.state.iconConfiguration.icon,
-        selectedIconSize: viewModel.state.iconConfiguration.size,
-        iconOnChanged: viewModel.iconConfigurationIconOnChanged,
-        iconSizeOnChanged: viewModel.iconConfigurationSizeOnChanged,
-        iconSizeCheckboxOnChanged: viewModel.iconConfigurationSizeCheckboxOnChanged,
+        selectedIcon: viewModel.state.icon,
+        iconOnChanged: viewModel.iconStyleIconOnChanged,
+        iconSizeOnChanged: viewModel.iconStyleSizeOnChanged,
+        iconSizeCheckboxOnChanged: viewModel.iconStyleSizeCheckboxOnChanged,
       ),
     );
   }

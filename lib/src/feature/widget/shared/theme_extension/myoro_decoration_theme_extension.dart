@@ -12,7 +12,7 @@ part 'myoro_decoration_theme_extension.g.dart';
 final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecorationThemeExtension>
     with _$MyoroDecorationThemeExtensionMixin {
   static const primaryBackgroundHoverColorFactor = 0.4;
-  static const primaryBackgroundTapColorFactor = 0.2;
+  static const primaryBackgroundTapColorFactor = 0.7;
   static const secondaryBackgroundHoverColorFactor = 0.2;
   static const secondaryBackgroundTapColorFactor = 0.4;
 

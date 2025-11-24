@@ -60,15 +60,15 @@ class MyoroBarGraphStyle with _$MyoroBarGraphStyleMixin {
   /// Border radius of a bar.
   final BorderRadius? barBorderRadius;
 
-  /// Text style of [_SideTitle].
+  /// Text style of the side title.
   final TextStyle? sideTitleTextStyle;
 
-  /// Interval of the [_SideTitle]s on an axis.
+  /// Interval of the side titles on an axis.
   final double? sideTitleInterval;
 
-  /// Width of a vertical (y axis) [_SideTitle].
+  /// Width of a vertical (y axis) side title.
   final double? verticalSideTitleReversedSize;
 
-  /// Height of a horizontal (x axis) [_SideTitle].
+  /// Height of a horizontal (x axis) side title.
   final double? horizontalSideTitleReversedSize;
 }

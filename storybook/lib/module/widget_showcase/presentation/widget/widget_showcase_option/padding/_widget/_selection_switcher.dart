@@ -18,7 +18,7 @@ final class _SelectionSwitcher extends StatelessWidget {
       label: localization.storybookWidgetShowcaseOptionSelectionTypeLabel,
       onChanged: (value) => state.modeEnum = value!,
       selectedItemBuilder: formattedName,
-      itemBuilder: (value, _) {
+      itemBuilder: (_, value) {
         return MyoroMenuIconTextButtonItem(text: formattedName(value));
       },
       items: PaddingWidgetShowcaseOptionEnum.values.toSet(),

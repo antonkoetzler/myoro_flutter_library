@@ -17,9 +17,10 @@ enum MyoroWidgetListEnum {
   checkboxes('Checkboxes', {myoroCheckboxTitle, myoroGroupCheckboxTitle}),
   dividers('Dividers', {myoroBasicDividerTitle, myoroResizeDividerTitle}),
   drawers('Drawers', {myoroDrawerTitle}),
-  dropdowns('Dropdowns', {myoroDropdownsTitle, myoroSelectionDropdownsTitle}),
+  dropdowns('Dropdowns', {myoroDropdownsTitle, myoroSearchDropdownTitle, myoroSelectionDropdownsTitle}),
   feedbacks('Feedbacks', {myoroFeedbackTitle}),
   fields('Fields', {myoroFieldTitle}),
+  filters('Filters', {myoroCheckboxFilterButtonTitle, myoroRadioFilterButtonTitle, myoroFilterPanelTitle}),
   forms('Forms', {myoroFormTitle}),
   graphs('Graphs', {myoroBarGraphTitle, myoroPieGraphTitle}),
   images('Images', {myoroImageTitle}),
@@ -28,7 +29,7 @@ enum MyoroWidgetListEnum {
     myoroCurrencyInputTitle,
     myoroDatePickerInputTitle,
     myoroInputTitle,
-    myoroSearchInputTitle,
+    myoroSearchBarInputTitle,
     myoroTimePickerInputTitle,
   }),
   layoutBuilders('Layout Builders', {myoroLayoutBuilderTitle}),
@@ -41,8 +42,11 @@ enum MyoroWidgetListEnum {
   scrollables('Scrollables', {myoroScrollablesTitle}),
   sliders('Sliders', {myoroSlidersTitle}),
   snackBars('Snack Bars', {myoroSnackBarTitle, myoroSnackBarContainerTitle}),
+  tags('Tags', {myoroTagTitle}),
   tabView('Tab views', {myoroTabViewTitle}),
   tables('Tables', {myoroTableTitle}),
+  texts('Texts', {myoroTextTitle}),
+  icons('Icons', {myoroIconTitle}),
   tooltips('Tooltips', {myoroTooltipTitle});
 
   const MyoroWidgetListEnum(this.categoryName, this.widgetNames);
@@ -68,6 +72,7 @@ enum MyoroWidgetListEnum {
       MyoroWidgetListEnum.dropdowns => localization.storybookWidgetListEnumDropdownsCategoryName,
       MyoroWidgetListEnum.feedbacks => localization.storybookWidgetListEnumFeedbacksCategoryName,
       MyoroWidgetListEnum.fields => localization.storybookWidgetListEnumFieldsCategoryName,
+      MyoroWidgetListEnum.filters => localization.storybookWidgetListEnumFiltersCategoryName,
       MyoroWidgetListEnum.forms => localization.storybookWidgetListEnumFormsCategoryName,
       MyoroWidgetListEnum.graphs => localization.storybookWidgetListEnumGraphsCategoryName,
       MyoroWidgetListEnum.images => localization.storybookWidgetListEnumImagesCategoryName,
@@ -83,8 +88,11 @@ enum MyoroWidgetListEnum {
       MyoroWidgetListEnum.scrollables => localization.storybookWidgetListEnumScrollablesCategoryName,
       MyoroWidgetListEnum.sliders => localization.storybookWidgetListEnumSlidersCategoryName,
       MyoroWidgetListEnum.snackBars => localization.storybookWidgetListEnumSnackBarsCategoryName,
+      MyoroWidgetListEnum.tags => localization.storybookWidgetListEnumTagsCategoryName,
       MyoroWidgetListEnum.tabView => localization.storybookWidgetListEnumTabViewCategoryName,
       MyoroWidgetListEnum.tables => localization.storybookWidgetListEnumTablesCategoryName,
+      MyoroWidgetListEnum.texts => localization.storybookWidgetListEnumTextsCategoryName,
+      MyoroWidgetListEnum.icons => localization.storybookWidgetListEnumIconsCategoryName,
       MyoroWidgetListEnum.tooltips => localization.storybookWidgetListEnumTooltipsCategoryName,
     };
   }
@@ -125,6 +133,7 @@ enum MyoroWidgetListEnum {
 
   // Dropdowns
   static const myoroDropdownsTitle = 'MyoroSingleDropdown & MyoroMultiDropdown';
+  static const myoroSearchDropdownTitle = 'MyoroSearchDropdown';
   static const myoroSelectionDropdownsTitle = 'MyoroSelectionSingleDropdown & MyoroSelectionMultiDropdown';
 
   // Feedbacks
@@ -132,6 +141,11 @@ enum MyoroWidgetListEnum {
 
   // Fields
   static const myoroFieldTitle = 'MyoroField';
+
+  // Filters
+  static const myoroCheckboxFilterButtonTitle = 'MyoroCheckboxFilterButton';
+  static const myoroRadioFilterButtonTitle = 'MyoroRadioFilterButton';
+  static const myoroFilterPanelTitle = 'MyoroFilterPanel';
 
   // Forms
   static const myoroFormTitle = 'MyoroForm';
@@ -150,7 +164,7 @@ enum MyoroWidgetListEnum {
   static const myoroCurrencyInputTitle = 'MyoroCurrencyInput';
   static const myoroDatePickerInputTitle = 'MyoroDatePickerInput';
   static const myoroInputTitle = 'MyoroInput';
-  static const myoroSearchInputTitle = 'MyoroSearchInput';
+  static const myoroSearchBarInputTitle = 'MyoroSearchBarInput';
   static const myoroTimePickerInputTitle = 'MyoroTimePickerInput';
 
   // Loaders
@@ -187,11 +201,20 @@ enum MyoroWidgetListEnum {
   static const myoroSnackBarTitle = 'MyoroSnackBar';
   static const myoroSnackBarContainerTitle = 'MyoroSnackBarContainer';
 
+  // Tags
+  static const myoroTagTitle = 'MyoroTag';
+
   // Tab views.
   static const myoroTabViewTitle = 'MyoroTabView';
 
   // Tables
   static const myoroTableTitle = 'MyoroTable';
+
+  // Texts
+  static const myoroTextTitle = 'MyoroText';
+
+  // Icons
+  static const myoroIconTitle = 'MyoroIcon';
 
   // Tooltips
   static const myoroTooltipTitle = 'MyoroTooltip';
@@ -230,6 +253,7 @@ enum MyoroWidgetListEnum {
 
       // Dropdowns
       myoroDropdownsTitle => const MyoroDropdownWidgetShowcaseScreen(),
+      myoroSearchDropdownTitle => const MyoroSearchDropdownWidgetShowcaseScreen(),
       myoroSelectionDropdownsTitle => const MyoroSelectionDropdownsWidgetShowcaseScreen(),
 
       // Feedbacks
@@ -237,6 +261,11 @@ enum MyoroWidgetListEnum {
 
       // Fields
       myoroFieldTitle => const MyoroFieldWidgetShowcaseScreen(),
+
+      // Filters
+      myoroCheckboxFilterButtonTitle => const MyoroCheckboxFilterButtonWidgetShowcaseScreen(),
+      myoroRadioFilterButtonTitle => const MyoroRadioFilterButtonWidgetShowcaseScreen(),
+      myoroFilterPanelTitle => const MyoroFilterPanelWidgetShowcaseScreen(),
 
       // Forms
       myoroFormTitle => const MyoroFormWidgetShowcaseScreen(),
@@ -255,7 +284,7 @@ enum MyoroWidgetListEnum {
       myoroCurrencyInputTitle => const MyoroCurrencyInputWidgetShowcaseScreen(),
       myoroDatePickerInputTitle => const MyoroDatePickerInputWidgetShowcaseScreen(),
       myoroInputTitle => const MyoroInputWidgetShowcaseScreen(),
-      myoroSearchInputTitle => const MyoroSearchInputWidgetShowcaseScreen(),
+      myoroSearchBarInputTitle => const MyoroSearchBarInputWidgetShowcaseScreen(),
       myoroTimePickerInputTitle => const MyoroTimePickerInputWidgetShowcaseScreen(),
 
       // Layout builders
@@ -292,11 +321,20 @@ enum MyoroWidgetListEnum {
       myoroSnackBarTitle => const MyoroSnackBarWidgetShowcaseScreen(),
       myoroSnackBarContainerTitle => const MyoroSnackBarContainerWidgetShowcaseScreen(),
 
+      // Tags
+      myoroTagTitle => const MyoroTagWidgetShowcaseScreen(),
+
       // Tab views.
       myoroTabViewTitle => const MyoroTabViewWidgetShowcaseScreen(),
 
       // Tables
       myoroTableTitle => const MyoroTableWidgetShowcaseScreen(),
+
+      // Texts
+      myoroTextTitle => const MyoroTextWidgetShowcaseScreen(),
+
+      // Icons
+      myoroIconTitle => const MyoroIconWidgetShowcaseScreen(),
 
       // Tooltips
       myoroTooltipTitle => const MyoroTooltipWidgetShowcaseScreen(),

@@ -13,7 +13,7 @@ final class _DropdownTypeOption extends StatelessWidget {
       label: 'Dropdown Type',
       items: MyoroDropdownTypeEnum.values.toSet(),
       selectedItem: state.dropdownType,
-      itemBuilder: (type, _) => MyoroMenuButtonItem(builder: (context, tapStatusEnum) => Text(type.name)),
+      itemBuilder: (_, type) => MyoroMenuButtonItem(builder: (context, tapStatusEnum) => Text(type.name)),
       selectedItemBuilder: (type) => type.name,
       onChanged: (type) => state.dropdownType = type!,
     );

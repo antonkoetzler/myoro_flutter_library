@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:faker/faker.dart' hide Color;
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -22,11 +21,8 @@ class MyoroDialogModalStyle extends MyoroModalStyle with _$MyoroDialogModalStyle
       closeButtonPadding: EdgeInsets.lerp(a?.closeButtonPadding, b?.closeButtonPadding, t),
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
       titleTextStyle: TextStyle.lerp(a?.titleTextStyle, b?.titleTextStyle, t),
-      closeButtonIconConfiguration: MyoroIconConfiguration.lerp(
-        a?.closeButtonIconConfiguration,
-        b?.closeButtonIconConfiguration,
-        t,
-      ),
+      closeButtonIcon: myoroFallbackLerp(a?.closeButtonIcon, b?.closeButtonIcon, t),
+      closeButtonIconSize: lerpDouble(a?.closeButtonIconSize, b?.closeButtonIconSize, t),
       margin: EdgeInsets.lerp(a?.margin, b?.margin, t),
       textStyle: TextStyle.lerp(a?.textStyle, b?.textStyle, t),
       footerButtonsSpacing: lerpDouble(a?.footerButtonsSpacing, b?.footerButtonsSpacing, t),
@@ -43,7 +39,8 @@ class MyoroDialogModalStyle extends MyoroModalStyle with _$MyoroDialogModalStyle
     super.closeButtonPadding,
     super.spacing,
     super.titleTextStyle,
-    super.closeButtonIconConfiguration,
+    super.closeButtonIcon,
+    super.closeButtonIconSize,
     super.margin,
     this.textStyle,
     this.footerButtonsSpacing,
@@ -60,16 +57,17 @@ class MyoroDialogModalStyle extends MyoroModalStyle with _$MyoroDialogModalStyle
       closeButtonPadding: myoroNullableFake<EdgeInsets>(),
       spacing: myoroNullableFake<double>(),
       titleTextStyle: myoroNullableFake<TextStyle>(),
-      closeButtonIconConfiguration: faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null,
+      closeButtonIcon: myoroNullableFake<IconData>(),
+      closeButtonIconSize: myoroNullableFake<double>(),
       margin: myoroNullableFake<EdgeInsets>(),
       textStyle: myoroNullableFake<TextStyle>(),
       footerButtonsSpacing: myoroNullableFake<double>(),
     );
   }
 
-  /// Text style of the simple text option in [_Message].
+  /// Text style of the simple text option in the message.
   final TextStyle? textStyle;
 
-  /// Spacing in between the buttons in [_FooterButtons].
+  /// Spacing in between the buttons in the footer.
   final double? footerButtonsSpacing;
 }

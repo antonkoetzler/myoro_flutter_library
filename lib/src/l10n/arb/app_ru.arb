@@ -12,6 +12,9 @@
   "myoroDialogModalCancelButtonText": "Отмена",
   "myoroDialogModalConfirmButtonText": "Подтвердить",
 
+  "myoroFilterButtonClearButtonText": "Очистить",
+  "myoroFilterButtonApplyButtonText": "Применить",
+
   "myoroCurrencyEnumUsdFormalName": "Доллар США",
   "myoroCurrencyEnumCadFormalName": "Канадский доллар",
   "myoroCurrencyEnumBrlFormalName": "Бразильский реал",
@@ -382,6 +385,9 @@
   "myoroMonthEnumSeptemberLabel": "Сентябрь",
   "myoroMonthEnumOctoberLabel": "Октябрь",
   "myoroMonthEnumNovemberLabel": "Ноябрь",
-  "myoroMonthEnumDecemberLabel": "Декабрь"
+  "myoroMonthEnumDecemberLabel": "Декабрь",
+
+  "myoroSearchBarInputLabel": "Поиск",
+  "myoroSearchBarInputPlaceholder": "Введите что-нибудь..."
 }
 

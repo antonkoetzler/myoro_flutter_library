@@ -26,7 +26,7 @@ class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExtension
   @override
   final TextStyle? indicatorTextStyle;
 
-  /// [TextAlign] of [_IndicatorText].
+  /// [TextAlign] of the indicator text.
   @override
   final TextAlign? indicatorTextAlignment;
 

@@ -12,6 +12,9 @@
   "myoroDialogModalCancelButtonText": "İptal",
   "myoroDialogModalConfirmButtonText": "Onayla",
 
+  "myoroFilterButtonClearButtonText": "Temizle",
+  "myoroFilterButtonApplyButtonText": "Uygula",
+
   "myoroCurrencyEnumUsdFormalName": "ABD Doları",
   "myoroCurrencyEnumCadFormalName": "Kanada Doları",
   "myoroCurrencyEnumBrlFormalName": "Brezilya Reali",
@@ -382,6 +385,9 @@
   "myoroMonthEnumSeptemberLabel": "Eylül",
   "myoroMonthEnumOctoberLabel": "Ekim",
   "myoroMonthEnumNovemberLabel": "Kasım",
-  "myoroMonthEnumDecemberLabel": "Aralık"
+  "myoroMonthEnumDecemberLabel": "Aralık",
+
+  "myoroSearchBarInputLabel": "Ara",
+  "myoroSearchBarInputPlaceholder": "Bir şey yazın..."
 }
 

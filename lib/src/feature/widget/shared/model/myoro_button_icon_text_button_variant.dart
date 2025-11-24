@@ -17,8 +17,8 @@ class MyoroButtonIconTextButtonVariant extends MyoroButtonVariant with _$MyoroBu
     super.onTapUp,
     super.isLoading = isLoadingDefaultValue,
     this.invert = invertDefaultValue,
-    this.iconConfiguration,
-    this.textConfiguration,
+    this.icon,
+    this.text,
   });
 
   /// Whether or not to invert the icon and text.
@@ -27,8 +27,8 @@ class MyoroButtonIconTextButtonVariant extends MyoroButtonVariant with _$MyoroBu
   final bool invert;
 
   /// Icon configuration of the [MyoroIconTextButton].
-  final MyoroIconConfiguration? iconConfiguration;
+  final IconData? icon;
 
   /// Text configuration of the [MyoroIconTextButton].
-  final MyoroTextConfiguration? textConfiguration;
+  final String? text;
 }

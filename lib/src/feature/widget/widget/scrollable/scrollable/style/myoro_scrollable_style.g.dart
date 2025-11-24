@@ -29,6 +29,8 @@ mixin _$MyoroScrollableStyleMixin {
     bool gradientSizeProvided = true,
     Color? gradientColor,
     bool gradientColorProvided = true,
+    double? spacing,
+    bool spacingProvided = true,
   }) {
     return MyoroScrollableStyle(
       gradientTopColor: gradientTopColorProvided ? (gradientTopColor ?? self.gradientTopColor) : null,
@@ -37,6 +39,7 @@ mixin _$MyoroScrollableStyleMixin {
       gradientRightColor: gradientRightColorProvided ? (gradientRightColor ?? self.gradientRightColor) : null,
       gradientSize: gradientSizeProvided ? (gradientSize ?? self.gradientSize) : null,
       gradientColor: gradientColorProvided ? (gradientColor ?? self.gradientColor) : null,
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
     );
   }
 
@@ -49,7 +52,8 @@ mixin _$MyoroScrollableStyleMixin {
         other.gradientLeftColor == self.gradientLeftColor &&
         other.gradientRightColor == self.gradientRightColor &&
         other.gradientSize == self.gradientSize &&
-        other.gradientColor == self.gradientColor;
+        other.gradientColor == self.gradientColor &&
+        other.spacing == self.spacing;
   }
 
   @override
@@ -61,6 +65,7 @@ mixin _$MyoroScrollableStyleMixin {
       self.gradientRightColor,
       self.gradientSize,
       self.gradientColor,
+      self.spacing,
     );
   }
 
@@ -73,5 +78,6 @@ mixin _$MyoroScrollableStyleMixin {
       '  gradientRightColor: ${self.gradientRightColor},\n'
       '  gradientSize: ${self.gradientSize},\n'
       '  gradientColor: ${self.gradientColor},\n'
+      '  spacing: ${self.spacing},\n'
       ');';
 }

@@ -14,6 +14,7 @@ class MyoroDropdownViewModel<T> {
     MyoroDropdownTypeEnum? dropdownType,
     GlobalKey? targetKey,
     MyoroMenuItemBuilder<T> itemBuilder,
+    Widget? footer,
   ) : _state = MyoroDropdownState(
         showingController,
         items,
@@ -23,6 +24,7 @@ class MyoroDropdownViewModel<T> {
             (MyoroPlatformHelper.isMobile ? MyoroDropdownTypeEnum.bottomSheet : MyoroDropdownTypeEnum.expanding),
         targetKey,
         itemBuilder,
+        footer,
       ) {
     final dropdownType = state.dropdownType;
     final isOverlay = dropdownType.isOverlay;
@@ -36,6 +38,7 @@ class MyoroDropdownViewModel<T> {
   /// Dispose function.
   void dispose() {
     state.showingController.removeListener(_showingControllerListener);
+    state.dispose();
   }
 
   /// Disables the dropdown.

@@ -48,8 +48,6 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
     bool suffixButtonMarginProvided = true,
     IconData? clearTextButtonIcon,
     bool clearTextButtonIconProvided = true,
-    double? suffixButtonIconSize,
-    bool suffixButtonIconSizeProvided = true,
     IconData? obscureTextButtonEnabledIcon,
     bool obscureTextButtonEnabledIconProvided = true,
     IconData? obscureTextButtonDisabledIcon,
@@ -77,7 +75,6 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
       labelBehavior: labelBehaviorProvided ? (labelBehavior ?? self.labelBehavior) : null,
       suffixButtonMargin: suffixButtonMarginProvided ? (suffixButtonMargin ?? self.suffixButtonMargin) : null,
       clearTextButtonIcon: clearTextButtonIconProvided ? (clearTextButtonIcon ?? self.clearTextButtonIcon) : null,
-      suffixButtonIconSize: suffixButtonIconSizeProvided ? (suffixButtonIconSize ?? self.suffixButtonIconSize) : null,
       obscureTextButtonEnabledIcon: obscureTextButtonEnabledIconProvided
           ? (obscureTextButtonEnabledIcon ?? self.obscureTextButtonEnabledIcon)
           : null,
@@ -113,7 +110,6 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
         other.labelBehavior == self.labelBehavior &&
         other.suffixButtonMargin == self.suffixButtonMargin &&
         other.clearTextButtonIcon == self.clearTextButtonIcon &&
-        other.suffixButtonIconSize == self.suffixButtonIconSize &&
         other.obscureTextButtonEnabledIcon == self.obscureTextButtonEnabledIcon &&
         other.obscureTextButtonDisabledIcon == self.obscureTextButtonDisabledIcon &&
         other.suffixIconConstraints == self.suffixIconConstraints &&
@@ -123,7 +119,7 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
 
   @override
   int get hashCode {
-    return Object.hashAll([
+    return Object.hash(
       self.border,
       self.underlinedBorder,
       self.outlinedBorder,
@@ -139,13 +135,12 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
       self.labelBehavior,
       self.suffixButtonMargin,
       self.clearTextButtonIcon,
-      self.suffixButtonIconSize,
       self.obscureTextButtonEnabledIcon,
       self.obscureTextButtonDisabledIcon,
       self.suffixIconConstraints,
       self.prefixIconConstraints,
       self.suffixButtonStyle,
-    ]);
+    );
   }
 
   @override
@@ -166,7 +161,6 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
       '  labelBehavior: ${self.labelBehavior},\n'
       '  suffixButtonMargin: ${self.suffixButtonMargin},\n'
       '  clearTextButtonIcon: ${self.clearTextButtonIcon},\n'
-      '  suffixButtonIconSize: ${self.suffixButtonIconSize},\n'
       '  obscureTextButtonEnabledIcon: ${self.obscureTextButtonEnabledIcon},\n'
       '  obscureTextButtonDisabledIcon: ${self.obscureTextButtonDisabledIcon},\n'
       '  suffixIconConstraints: ${self.suffixIconConstraints},\n'

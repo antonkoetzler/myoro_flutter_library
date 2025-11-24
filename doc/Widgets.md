@@ -45,6 +45,7 @@
 - `MyoroMultiDropdown`
 - `MyoroMultiInputDropdown`
 - `MyoroMultiSelectionDropdown`
+- `MyoroSearchDropdown`
 - `MyoroSingleDropdown`
 - `MyoroSingleInputDropdown`
 - `MyoroSingleSelectionDropdown`
@@ -52,6 +53,12 @@
 ## Feedbacks
 
 - `MyoroFeedback`
+
+## Filters
+
+- `MyoroCheckboxFilterButton`
+- `MyoroFilterPanel`
+- `MyoroRadioFilterButton`
 
 ## Forms
 
@@ -66,7 +73,7 @@
 
 - `MyoroDatePickerInput`
 - `MyoroInput`
-- `MyoroSearchInput`
+- `MyoroSearchBarInput`
 - `MyoroTimePickerInput`
 
 ## Layout builders

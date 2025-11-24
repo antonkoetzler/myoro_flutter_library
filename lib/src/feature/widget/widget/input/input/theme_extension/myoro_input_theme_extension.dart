@@ -1,4 +1,3 @@
-import 'package:faker/faker.dart' hide Color;
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -27,7 +26,6 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
     this.labelTextStyle,
     this.labelBehavior,
     this.suffixButtonMargin,
-    this.suffixButtonIconSize,
     this.clearTextButtonIcon,
     this.obscureTextButtonEnabledIcon,
     this.obscureTextButtonDisabledIcon,
@@ -52,9 +50,6 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
       labelTextStyle = myoroNullableFake<TextStyle>(),
       labelBehavior = myoroNullableFake<FloatingLabelBehavior>(),
       suffixButtonMargin = myoroNullableFake<EdgeInsets>(),
-      suffixButtonIconSize = faker.randomGenerator.boolean()
-          ? faker.randomGenerator.decimal(scale: 200, min: 20)
-          : null,
       clearTextButtonIcon = myoroNullableFake<IconData>(),
       obscureTextButtonEnabledIcon = myoroNullableFake<IconData>(),
       obscureTextButtonDisabledIcon = myoroNullableFake<IconData>(),
@@ -95,13 +90,13 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
         kMyoroMultiplier * 1.5,
         kMyoroMultiplier,
       ),
-      suffixButtonIconSize = kMyoroMultiplier * 3,
       clearTextButtonIcon = Icons.close,
       obscureTextButtonEnabledIcon = Icons.visibility,
       obscureTextButtonDisabledIcon = Icons.visibility_off,
       suffixIconConstraints = null,
       prefixIconConstraints = null,
       suffixButtonStyle = const MyoroIconTextButtonStyle(
+        iconSize: kMyoroMultiplier * 3,
         contentPadding: EdgeInsets.only(
           top: kMyoroMultiplier * 1.2,
           bottom: kMyoroMultiplier * 1.2,
@@ -154,7 +149,7 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
   @override
   final double? spacing;
 
-  /// Text style of [_Label].
+  /// Text style of the label.
   @override
   final TextStyle? labelTextStyle;
 
@@ -162,23 +157,19 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
   @override
   final FloatingLabelBehavior? labelBehavior;
 
-  /// Padding of [_ClearTextButton].
+  /// Padding of the clear text button.
   @override
   final EdgeInsets? suffixButtonMargin;
 
-  /// [IconData] of [_ClearTextButton].
+  /// [IconData] of the clear text button.
   @override
   final IconData? clearTextButtonIcon;
 
-  /// Size of the suffix button.
-  @override
-  final double? suffixButtonIconSize;
-
-  /// [IconData] of [_ToggleHiddenButton].
+  /// [IconData] of the toggle hidden button.
   @override
   final IconData? obscureTextButtonEnabledIcon;
 
-  /// [IconData] of [_ToggleHiddenButton] when it is disabled.
+  /// [IconData] of the toggle hidden button when it is disabled.
   @override
   final IconData? obscureTextButtonDisabledIcon;
 
@@ -213,7 +204,6 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
       labelTextStyle: style.labelTextStyle,
       labelBehavior: style.labelBehavior,
       suffixButtonMargin: style.suffixButtonMargin,
-      suffixButtonIconSize: style.suffixButtonIconSize,
       clearTextButtonIcon: style.clearTextButtonIcon,
       obscureTextButtonEnabledIcon: style.obscureTextButtonEnabledIcon,
       obscureTextButtonDisabledIcon: style.obscureTextButtonDisabledIcon,

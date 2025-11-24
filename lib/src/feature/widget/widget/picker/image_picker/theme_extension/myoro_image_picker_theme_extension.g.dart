@@ -30,8 +30,10 @@ mixin _$MyoroImagePickerThemeExtensionMixin on ThemeExtension<MyoroImagePickerTh
     bool overlayBackgroundHoverColorProvided = true,
     Color? overlayBackgroundTapColor,
     bool overlayBackgroundTapColorProvided = true,
-    MyoroIconConfiguration? overlayUnselectedImageStateIconConfiguration,
-    bool overlayUnselectedImageStateIconConfigurationProvided = true,
+    IconData? overlayUnselectedImageStateIcon,
+    bool overlayUnselectedImageStateIconProvided = true,
+    MyoroIconStyle? overlayUnselectedImageStateIconStyle,
+    bool overlayUnselectedImageStateIconStyleProvided = true,
     BoxConstraints? selectionTypeModalConstraints,
     bool selectionTypeModalConstraintsProvided = true,
     double? selectionTypeModalSpacing,
@@ -56,8 +58,11 @@ mixin _$MyoroImagePickerThemeExtensionMixin on ThemeExtension<MyoroImagePickerTh
       overlayBackgroundTapColor: overlayBackgroundTapColorProvided
           ? (overlayBackgroundTapColor ?? self.overlayBackgroundTapColor)
           : null,
-      overlayUnselectedImageStateIconConfiguration: overlayUnselectedImageStateIconConfigurationProvided
-          ? (overlayUnselectedImageStateIconConfiguration ?? self.overlayUnselectedImageStateIconConfiguration)
+      overlayUnselectedImageStateIcon: overlayUnselectedImageStateIconProvided
+          ? (overlayUnselectedImageStateIcon ?? self.overlayUnselectedImageStateIcon)
+          : null,
+      overlayUnselectedImageStateIconStyle: overlayUnselectedImageStateIconStyleProvided
+          ? (overlayUnselectedImageStateIconStyle ?? self.overlayUnselectedImageStateIconStyle)
           : null,
       selectionTypeModalConstraints: selectionTypeModalConstraintsProvided
           ? (selectionTypeModalConstraints ?? self.selectionTypeModalConstraints)
@@ -85,7 +90,8 @@ mixin _$MyoroImagePickerThemeExtensionMixin on ThemeExtension<MyoroImagePickerTh
         other.overlayBackgroundIdleColor == self.overlayBackgroundIdleColor &&
         other.overlayBackgroundHoverColor == self.overlayBackgroundHoverColor &&
         other.overlayBackgroundTapColor == self.overlayBackgroundTapColor &&
-        other.overlayUnselectedImageStateIconConfiguration == self.overlayUnselectedImageStateIconConfiguration &&
+        other.overlayUnselectedImageStateIcon == self.overlayUnselectedImageStateIcon &&
+        other.overlayUnselectedImageStateIconStyle == self.overlayUnselectedImageStateIconStyle &&
         other.selectionTypeModalConstraints == self.selectionTypeModalConstraints &&
         other.selectionTypeModalSpacing == self.selectionTypeModalSpacing &&
         other.selectionTypeModalButtonCameraIcon == self.selectionTypeModalButtonCameraIcon &&
@@ -102,7 +108,8 @@ mixin _$MyoroImagePickerThemeExtensionMixin on ThemeExtension<MyoroImagePickerTh
       self.overlayBackgroundIdleColor,
       self.overlayBackgroundHoverColor,
       self.overlayBackgroundTapColor,
-      self.overlayUnselectedImageStateIconConfiguration,
+      self.overlayUnselectedImageStateIcon,
+      self.overlayUnselectedImageStateIconStyle,
       self.selectionTypeModalConstraints,
       self.selectionTypeModalSpacing,
       self.selectionTypeModalButtonCameraIcon,
@@ -120,7 +127,8 @@ mixin _$MyoroImagePickerThemeExtensionMixin on ThemeExtension<MyoroImagePickerTh
       '  overlayBackgroundIdleColor: ${self.overlayBackgroundIdleColor},\n'
       '  overlayBackgroundHoverColor: ${self.overlayBackgroundHoverColor},\n'
       '  overlayBackgroundTapColor: ${self.overlayBackgroundTapColor},\n'
-      '  overlayUnselectedImageStateIconConfiguration: ${self.overlayUnselectedImageStateIconConfiguration},\n'
+      '  overlayUnselectedImageStateIcon: ${self.overlayUnselectedImageStateIcon},\n'
+      '  overlayUnselectedImageStateIconStyle: ${self.overlayUnselectedImageStateIconStyle},\n'
       '  selectionTypeModalConstraints: ${self.selectionTypeModalConstraints},\n'
       '  selectionTypeModalSpacing: ${self.selectionTypeModalSpacing},\n'
       '  selectionTypeModalButtonCameraIcon: ${self.selectionTypeModalButtonCameraIcon},\n'

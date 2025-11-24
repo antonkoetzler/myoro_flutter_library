@@ -18,6 +18,7 @@ class MyoroScrollableThemeExtension extends ThemeExtension<MyoroScrollableThemeE
     this.gradientRightColor,
     this.gradientSize,
     this.gradientColor,
+    this.spacing,
   });
 
   /// Fake constructor.
@@ -27,7 +28,8 @@ class MyoroScrollableThemeExtension extends ThemeExtension<MyoroScrollableThemeE
       gradientLeftColor = myoroNullableFake<Color>(),
       gradientRightColor = myoroNullableFake<Color>(),
       gradientSize = myoroNullableFake<double>(),
-      gradientColor = myoroNullableFake<Color>();
+      gradientColor = myoroNullableFake<Color>(),
+      spacing = myoroNullableFake<double>();
 
   MyoroScrollableThemeExtension.builder(ColorScheme colorScheme)
     : gradientTopColor = colorScheme.surface,
@@ -35,7 +37,8 @@ class MyoroScrollableThemeExtension extends ThemeExtension<MyoroScrollableThemeE
       gradientLeftColor = colorScheme.surface,
       gradientRightColor = colorScheme.surface,
       gradientSize = 20.0,
-      gradientColor = colorScheme.surface;
+      gradientColor = colorScheme.surface,
+      spacing = kMyoroMultiplier;
 
   @override
   final Color? gradientTopColor;
@@ -56,6 +59,9 @@ class MyoroScrollableThemeExtension extends ThemeExtension<MyoroScrollableThemeE
   final Color? gradientColor;
 
   @override
+  final double? spacing;
+
+  @override
   MyoroScrollableThemeExtension lerp(covariant MyoroScrollableThemeExtension? other, double t) {
     if (other is! MyoroScrollableThemeExtension) return this;
 
@@ -68,6 +74,7 @@ class MyoroScrollableThemeExtension extends ThemeExtension<MyoroScrollableThemeE
       gradientRightColor: lerpedStyle.gradientRightColor,
       gradientSize: lerpedStyle.gradientSize,
       gradientColor: lerpedStyle.gradientColor,
+      spacing: lerpedStyle.spacing,
     );
   }
 }

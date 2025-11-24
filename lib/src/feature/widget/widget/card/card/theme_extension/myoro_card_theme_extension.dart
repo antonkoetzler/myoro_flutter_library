@@ -31,8 +31,9 @@ class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension>
       titleTextStyle = myoroNullableFake<TextStyle>(),
       constraints = myoroNullableFake<BoxConstraints>();
 
+  /// Builder constructor.
   MyoroCardThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
-    : backgroundColor = colorScheme.onPrimary.withValues(alpha: 0.1),
+    : backgroundColor = colorScheme.onPrimary.withValues(alpha: 0.05),
       border = Border.all(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
       borderRadius = BorderRadius.circular(kMyoroBorderRadius),
       padding = const EdgeInsets.all(kMyoroMultiplier * 2.5),
@@ -40,27 +41,35 @@ class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension>
       titleTextStyle = textTheme.titleMedium!,
       constraints = null;
 
+  /// Background [Color] of the [MyoroCard].
   @override
   final Color? backgroundColor;
 
+  /// Border of the [MyoroCard].
   @override
   final Border? border;
 
+  /// Border radius of the [MyoroCard].
   @override
   final BorderRadius? borderRadius;
 
+  /// Padding of the [MyoroCard].
   @override
   final EdgeInsets? padding;
 
+  /// Spacing in between the title and the card.
   @override
   final double? titleCardSpacing;
 
+  /// Text style of the title.
   @override
   final TextStyle? titleTextStyle;
 
+  /// [BoxConstraints] of the [MyoroCard].
   @override
   final BoxConstraints? constraints;
 
+  /// Lerp function.
   @override
   MyoroCardThemeExtension lerp(covariant MyoroCardThemeExtension? other, double t) {
     if (other is! MyoroCardThemeExtension) return this;

@@ -78,10 +78,10 @@ mixin _$MyoroButtonIconTextButtonVariantMixin {
 
   MyoroButtonIconTextButtonVariant copyWith({
     bool? invert,
-    MyoroIconConfiguration? iconConfiguration,
-    bool iconConfigurationProvided = true,
-    MyoroTextConfiguration? textConfiguration,
-    bool textConfigurationProvided = true,
+    IconData? icon,
+    bool iconProvided = true,
+    String? text,
+    bool textProvided = true,
     MouseCursor? cursor,
     bool cursorProvided = true,
     String? tooltipText,
@@ -93,8 +93,8 @@ mixin _$MyoroButtonIconTextButtonVariantMixin {
   }) {
     return MyoroButtonIconTextButtonVariant(
       invert: invert ?? self.invert,
-      iconConfiguration: iconConfigurationProvided ? (iconConfiguration ?? self.iconConfiguration) : null,
-      textConfiguration: textConfigurationProvided ? (textConfiguration ?? self.textConfiguration) : null,
+      icon: iconProvided ? (icon ?? self.icon) : null,
+      text: textProvided ? (text ?? self.text) : null,
       cursor: cursorProvided ? (cursor ?? self.cursor) : null,
       tooltipText: tooltipText ?? self.tooltipText,
       onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
@@ -108,8 +108,8 @@ mixin _$MyoroButtonIconTextButtonVariantMixin {
     return other is MyoroButtonIconTextButtonVariant &&
         other.runtimeType == runtimeType &&
         other.invert == self.invert &&
-        other.iconConfiguration == self.iconConfiguration &&
-        other.textConfiguration == self.textConfiguration &&
+        other.icon == self.icon &&
+        other.text == self.text &&
         other.cursor == self.cursor &&
         other.tooltipText == self.tooltipText &&
         other.onTapDown == self.onTapDown &&
@@ -121,8 +121,8 @@ mixin _$MyoroButtonIconTextButtonVariantMixin {
   int get hashCode {
     return Object.hash(
       self.invert,
-      self.iconConfiguration,
-      self.textConfiguration,
+      self.icon,
+      self.text,
       self.cursor,
       self.tooltipText,
       self.onTapDown,
@@ -135,8 +135,8 @@ mixin _$MyoroButtonIconTextButtonVariantMixin {
   String toString() =>
       'MyoroButtonIconTextButtonVariant(\n'
       '  invert: ${self.invert},\n'
-      '  iconConfiguration: ${self.iconConfiguration},\n'
-      '  textConfiguration: ${self.textConfiguration},\n'
+      '  icon: ${self.icon},\n'
+      '  text: ${self.text},\n'
       '  cursor: ${self.cursor},\n'
       '  tooltipText: ${self.tooltipText},\n'
       '  onTapDown: ${self.onTapDown},\n'

@@ -19,7 +19,7 @@ mixin _$MyoroFilePickerStyleMixin {
   MyoroFilePickerStyle copyWith({
     double? spacing,
     bool spacingProvided = true,
-    TextStyle? textStyle,
+    MyoroTextStyle? textStyle,
     bool textStyleProvided = true,
   }) {
     return MyoroFilePickerStyle(

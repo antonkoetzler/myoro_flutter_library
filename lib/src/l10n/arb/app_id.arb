@@ -12,6 +12,9 @@
   "myoroDialogModalCancelButtonText": "Batal",
   "myoroDialogModalConfirmButtonText": "Konfirmasi",
 
+  "myoroFilterButtonClearButtonText": "Hapus",
+  "myoroFilterButtonApplyButtonText": "Terapkan",
+
   "myoroCurrencyEnumUsdFormalName": "Dolar Amerika Serikat",
   "myoroCurrencyEnumCadFormalName": "Dolar Kanada",
   "myoroCurrencyEnumBrlFormalName": "Real Brasil",
@@ -382,6 +385,9 @@
   "myoroMonthEnumSeptemberLabel": "September",
   "myoroMonthEnumOctoberLabel": "Oktober",
   "myoroMonthEnumNovemberLabel": "November",
-  "myoroMonthEnumDecemberLabel": "Desember"
+  "myoroMonthEnumDecemberLabel": "Desember",
+
+  "myoroSearchBarInputLabel": "Cari",
+  "myoroSearchBarInputPlaceholder": "Ketik sesuatu..."
 }
 

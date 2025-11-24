@@ -31,7 +31,7 @@ final class _IconDropdown extends StatelessWidget {
       selectedItem: configuration.selectedIcon,
       onChanged: configuration.iconOnChanged,
       selectedItemBuilder: _getIconName,
-      itemBuilder: (icon, _) {
+      itemBuilder: (_, icon) {
         return MyoroMenuIconTextButtonItem(text: _getIconName(icon));
       },
       items: kMyoroTestIcons.toSet(),

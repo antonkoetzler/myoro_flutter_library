@@ -14,7 +14,11 @@ final class _ScrollableHelpers {
     required bool shrinkWrap,
     required SliverGridDelegate gridDelegate,
     required List<Widget> children,
+    double? spacing,
   }) {
+    final effectiveChildren = spacing != null && spacing > 0
+        ? _addSpacingToChildren(children, spacing, scrollDirection)
+        : children;
     return GridView(
       scrollDirection: scrollDirection,
       reverse: reverse,
@@ -23,7 +27,7 @@ final class _ScrollableHelpers {
       physics: physics,
       shrinkWrap: shrinkWrap,
       gridDelegate: gridDelegate,
-      children: children,
+      children: effectiveChildren,
     );
   }
 
@@ -38,6 +42,7 @@ final class _ScrollableHelpers {
     required SliverGridDelegate gridDelegate,
     required IndexedWidgetBuilder itemBuilder,
     int? itemCount,
+    double? spacing,
   }) {
     return GridView.builder(
       scrollDirection: scrollDirection,
@@ -47,7 +52,14 @@ final class _ScrollableHelpers {
       physics: physics,
       shrinkWrap: shrinkWrap,
       gridDelegate: gridDelegate,
-      itemBuilder: itemBuilder,
+      itemBuilder: spacing != null && spacing > 0
+          ? (context, index) {
+              final item = itemBuilder(context, index);
+              final isLast = itemCount != null && index == itemCount - 1;
+              if (isLast) return item;
+              return _wrapWithSpacing(item, spacing, scrollDirection);
+            }
+          : itemBuilder,
       itemCount: itemCount,
     );
   }
@@ -61,7 +73,11 @@ final class _ScrollableHelpers {
     required bool? primary,
     required bool shrinkWrap,
     required List<Widget> children,
+    double? spacing,
   }) {
+    final effectiveChildren = spacing != null && spacing > 0
+        ? _addSpacingToChildren(children, spacing, scrollDirection)
+        : children;
     return ListView(
       scrollDirection: scrollDirection,
       reverse: reverse,
@@ -69,7 +85,7 @@ final class _ScrollableHelpers {
       primary: primary,
       physics: physics,
       shrinkWrap: shrinkWrap,
-      children: children,
+      children: effectiveChildren,
     );
   }
 
@@ -85,6 +101,7 @@ final class _ScrollableHelpers {
     int? itemCount,
     double? itemExtent,
     Widget? prototypeItem,
+    double? spacing,
   }) {
     return ListView.builder(
       scrollDirection: scrollDirection,
@@ -93,7 +110,14 @@ final class _ScrollableHelpers {
       primary: primary,
       physics: physics,
       shrinkWrap: shrinkWrap,
-      itemBuilder: itemBuilder,
+      itemBuilder: spacing != null && spacing > 0
+          ? (context, index) {
+              final item = itemBuilder(context, index);
+              final isLast = itemCount != null && index == itemCount - 1;
+              if (isLast) return item;
+              return _wrapWithSpacing(item, spacing, scrollDirection);
+            }
+          : itemBuilder,
       itemCount: itemCount,
       itemExtent: itemExtent,
       prototypeItem: prototypeItem,
@@ -138,5 +162,48 @@ final class _ScrollableHelpers {
       shrinkWrap: shrinkWrap,
       slivers: slivers,
     );
+  }
+
+  /// Adds spacing between children widgets.
+  static List<Widget> _addSpacingToChildren(List<Widget> children, double spacing, Axis scrollDirection) {
+    if (children.isEmpty) return children;
+    final result = <Widget>[];
+    for (var i = 0; i < children.length; i++) {
+      result.add(children[i]);
+      if (i < children.length - 1) {
+        result.add(_createSpacingWidget(spacing, scrollDirection));
+      }
+    }
+    return result;
+  }
+
+  /// Creates a spacing widget based on scroll direction.
+  static Widget _createSpacingWidget(double spacing, Axis scrollDirection) {
+    if (scrollDirection == Axis.horizontal) {
+      return SizedBox(width: spacing);
+    } else {
+      return SizedBox(height: spacing);
+    }
+  }
+
+  /// Wraps a widget with spacing based on scroll direction.
+  static Widget _wrapWithSpacing(Widget child, double spacing, Axis scrollDirection) {
+    if (scrollDirection == Axis.horizontal) {
+      return Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          child,
+          SizedBox(width: spacing),
+        ],
+      );
+    } else {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          child,
+          SizedBox(height: spacing),
+        ],
+      );
+    }
   }
 }

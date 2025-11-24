@@ -14,7 +14,7 @@ final class _MultiDropdownTypeOption extends StatelessWidget {
       onChanged: (type) => viewModel.state.multiDropdownType = type!,
       items: MyoroDropdownTypeEnum.values.toSet(),
       selectedItem: viewModel.state.multiDropdownType,
-      itemBuilder: (type, _) => MyoroMenuIconTextButtonItem(text: type.name.capitalized),
+      itemBuilder: (_, type) => MyoroMenuIconTextButtonItem(text: type.name.capitalized),
     );
   }
 }

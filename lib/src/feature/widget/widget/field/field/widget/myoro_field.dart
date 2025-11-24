@@ -19,9 +19,7 @@ class MyoroField extends StatelessWidget {
     this.style = const MyoroFieldStyle(),
     this.direction = directionDefaultValue,
     required this.label,
-    this.labelConfiguration,
     required this.data,
-    this.dataConfiguration,
   }) : assert(label.length > 0, '[MyoroField]: [label] cannot be empty.'),
        assert(data.length > 0, '[MyoroField]: [data] cannot be empty.');
 
@@ -34,22 +32,16 @@ class MyoroField extends StatelessWidget {
   /// Label.
   final String label;
 
-  /// Label of the field.
-  final MyoroTextConfiguration? labelConfiguration;
-
   /// Data.
   final String data;
-
-  /// Data of the field.
-  final MyoroTextConfiguration? dataConfiguration;
 
   /// Build function.
   @override
   Widget build(context) {
     return MultiProvider(
       providers: [
-        InheritedProvider.value(value: style),
-        Provider(create: (context) => MyoroFieldViewModel(label, labelConfiguration, data, dataConfiguration)),
+        Provider.value(value: style),
+        Provider(create: (_) => MyoroFieldViewModel(label, data)),
       ],
       child: switch (direction) {
         Axis.horizontal => const _HorizontalLayout(),

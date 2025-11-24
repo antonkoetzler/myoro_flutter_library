@@ -12,7 +12,6 @@ final class _Prefix extends StatelessWidget {
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroCurrencyInputThemeExtension>();
     final style = context.watch<MyoroCurrencyInputStyle>();
-    final currencySymbolTextStyle = style.currencySymbolTextStyle ?? themeExtension.currencySymbolTextStyle;
     final currencySymbolButtonStyle =
         style.currencySymbolButtonStyle ?? themeExtension.currencySymbolButtonStyle ?? const MyoroIconTextButtonStyle();
     final currencyPrefixPadding =
@@ -34,7 +33,6 @@ final class _Prefix extends StatelessWidget {
         child: MyoroIconTextButton(
           style: currencySymbolButtonStyle,
           text: _selectedCurrency.longSymbol,
-          textConfiguration: MyoroTextConfiguration(style: currencySymbolTextStyle),
           onTapUp: viewModel.state.canChangeCurrency ? (_, _) => toggleDropdown() : null,
         ),
       ),

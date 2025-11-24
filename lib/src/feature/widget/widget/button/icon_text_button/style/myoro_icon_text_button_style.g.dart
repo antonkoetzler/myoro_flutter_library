@@ -19,7 +19,9 @@ mixin _$MyoroIconTextButtonStyleMixin {
   MyoroIconTextButtonStyle copyWith({
     double? spacing,
     bool spacingProvided = true,
-    TextStyle? textStyle,
+    double? iconSize,
+    bool iconSizeProvided = true,
+    MyoroTextStyle? textStyle,
     bool textStyleProvided = true,
     Color? backgroundIdleColor,
     bool backgroundIdleColorProvided = true,
@@ -50,6 +52,7 @@ mixin _$MyoroIconTextButtonStyleMixin {
   }) {
     return MyoroIconTextButtonStyle(
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      iconSize: iconSizeProvided ? (iconSize ?? self.iconSize) : null,
       textStyle: textStyleProvided ? (textStyle ?? self.textStyle) : null,
       backgroundIdleColor: backgroundIdleColorProvided ? (backgroundIdleColor ?? self.backgroundIdleColor) : null,
       backgroundHoverColor: backgroundHoverColorProvided ? (backgroundHoverColor ?? self.backgroundHoverColor) : null,
@@ -71,6 +74,7 @@ mixin _$MyoroIconTextButtonStyleMixin {
     return other is MyoroIconTextButtonStyle &&
         other.runtimeType == runtimeType &&
         other.spacing == self.spacing &&
+        other.iconSize == self.iconSize &&
         other.textStyle == self.textStyle &&
         other.backgroundIdleColor == self.backgroundIdleColor &&
         other.backgroundHoverColor == self.backgroundHoverColor &&
@@ -91,6 +95,7 @@ mixin _$MyoroIconTextButtonStyleMixin {
   int get hashCode {
     return Object.hash(
       self.spacing,
+      self.iconSize,
       self.textStyle,
       self.backgroundIdleColor,
       self.backgroundHoverColor,
@@ -112,6 +117,7 @@ mixin _$MyoroIconTextButtonStyleMixin {
   String toString() =>
       'MyoroIconTextButtonStyle(\n'
       '  spacing: ${self.spacing},\n'
+      '  iconSize: ${self.iconSize},\n'
       '  textStyle: ${self.textStyle},\n'
       '  backgroundIdleColor: ${self.backgroundIdleColor},\n'
       '  backgroundHoverColor: ${self.backgroundHoverColor},\n'

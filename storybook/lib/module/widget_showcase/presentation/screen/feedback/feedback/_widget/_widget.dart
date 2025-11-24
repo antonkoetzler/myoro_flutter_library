@@ -13,19 +13,23 @@ final class _Widget extends StatelessWidget {
       child: ListenableBuilder(
         listenable: state,
         builder: (_, _) {
-          final iconConfiguration = state.iconConfiguration;
+          final icon = state.icon;
           final title = state.title;
           final subtitle = state.subtitle;
-          final titleConfiguration = state.titleConfiguration;
-          final subtitleConfiguration = state.subtitleConfiguration;
+          final iconStyle = state.iconStyle;
+          final titleTextStyle = state.titleTextStyle;
+          final subtitleTextStyle = state.subtitleTextStyle;
           final actionButtonConfigurationEnabled = state.actionButtonConfigurationEnabled;
 
           return MyoroFeedback(
-            iconConfiguration: iconConfiguration,
+            icon: icon,
             title: title,
             subtitle: subtitle,
-            titleConfiguration: titleConfiguration,
-            subtitleConfiguration: subtitleConfiguration,
+            style: MyoroFeedbackStyle(
+              iconStyle: iconStyle,
+              titleTextStyle: titleTextStyle,
+              subtitleTextStyle: subtitleTextStyle,
+            ),
             actionButtonText: localization.storybookFeedbackActionButtonText,
             actionButtonConfiguration:
                 actionButtonConfigurationEnabled ? MyoroFeedbackActionButtonConfiguration(onTapUp: (_, _) {}) : null,

@@ -14,22 +14,22 @@ class MyoroFeedbackStyle with _$MyoroFeedbackStyleMixin {
   static MyoroFeedbackStyle lerp(MyoroFeedbackStyle? a, MyoroFeedbackStyle? b, double t) {
     return MyoroFeedbackStyle(
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
-      iconSize: lerpDouble(a?.iconSize, b?.iconSize, t),
-      titleTextStyle: TextStyle.lerp(a?.titleTextStyle, b?.titleTextStyle, t),
-      subtitleTextStyle: TextStyle.lerp(a?.subtitleTextStyle, b?.subtitleTextStyle, t),
+      iconStyle: MyoroIconStyle.lerp(a?.iconStyle, b?.iconStyle, t),
+      titleTextStyle: MyoroTextStyle.lerp(a?.titleTextStyle, b?.titleTextStyle, t),
+      subtitleTextStyle: MyoroTextStyle.lerp(a?.subtitleTextStyle, b?.subtitleTextStyle, t),
     );
   }
 
   /// Default constructor.
-  const MyoroFeedbackStyle({this.spacing, this.iconSize, this.titleTextStyle, this.subtitleTextStyle});
+  const MyoroFeedbackStyle({this.spacing, this.iconStyle, this.titleTextStyle, this.subtitleTextStyle});
 
   /// Fake constructor.
   factory MyoroFeedbackStyle.fake() {
     return MyoroFeedbackStyle(
       spacing: myoroNullableFake<double>(),
-      iconSize: myoroNullableFake<double>(),
-      titleTextStyle: myoroNullableFake<TextStyle>(),
-      subtitleTextStyle: myoroNullableFake<TextStyle>(),
+      iconStyle: myoroNullableFake<MyoroIconStyle>(),
+      titleTextStyle: myoroNullableFake<MyoroTextStyle>(),
+      subtitleTextStyle: myoroNullableFake<MyoroTextStyle>(),
     );
   }
 
@@ -37,11 +37,11 @@ class MyoroFeedbackStyle with _$MyoroFeedbackStyleMixin {
   final double? spacing;
 
   /// Size of the icon.
-  final double? iconSize;
+  final MyoroIconStyle? iconStyle;
 
   /// [TextStyle] of the title.
-  final TextStyle? titleTextStyle;
+  final MyoroTextStyle? titleTextStyle;
 
   /// [TextStyle] of the subtitle.
-  final TextStyle? subtitleTextStyle;
+  final MyoroTextStyle? subtitleTextStyle;
 }

@@ -21,7 +21,9 @@ final class _Item<T> extends StatelessWidget {
 
     return switch (_menuItem) {
       MyoroMenuButtonItem() => MyoroButton(
-        style: const MyoroButtonStyle().copyWith(borderRadius: itemBorderRadius).singleBackgroundColor(selectedItemColor),
+        style: const MyoroButtonStyle()
+            .singleBackgroundColor(selectedItemColor)
+            .copyWith(borderRadius: itemBorderRadius),
         cursor: _menuItem.cursor,
         tooltipText: _menuItem.tooltipText,
         onTapDown: _menuItem.onTapDown,
@@ -29,17 +31,29 @@ final class _Item<T> extends StatelessWidget {
         isLoading: _menuItem.isLoading,
         builder: _menuItem.builder,
       ),
+      MyoroMenuCheckboxItem() => MyoroCheckbox(
+        style: _menuItem.style,
+        label: _menuItem.label,
+        value: _menuItem.value,
+        onChanged: _menuItem.onChanged,
+      ),
       MyoroMenuIconTextButtonItem() => MyoroIconTextButton(
-        style: const MyoroIconTextButtonStyle().copyWith(borderRadius: itemBorderRadius).singleBackgroundColor(selectedItemColor),
+        style: const MyoroIconTextButtonStyle()
+            .singleBackgroundColor(selectedItemColor)
+            .copyWith(borderRadius: itemBorderRadius, iconSize: _menuItem.iconSize, textStyle: _menuItem.textStyle),
         cursor: _menuItem.cursor,
         tooltipText: _menuItem.tooltipText,
         onTapDown: _menuItem.onTapDown,
         onTapUp: _menuItem.onTapUp,
         isLoading: _menuItem.isLoading,
         invert: _menuItem.invert,
-        iconConfiguration: _menuItem.iconConfiguration,
         text: _menuItem.text,
-        textConfiguration: _menuItem.textConfiguration,
+      ),
+      MyoroMenuRadioItem() => MyoroRadio(
+        style: _menuItem.style,
+        label: _menuItem.label,
+        value: _menuItem.value,
+        onChanged: _menuItem.onChanged,
       ),
     };
   }

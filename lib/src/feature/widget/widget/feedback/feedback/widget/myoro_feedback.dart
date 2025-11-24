@@ -24,11 +24,10 @@ class MyoroFeedback extends StatelessWidget {
   const MyoroFeedback({
     super.key,
     this.style = styleDefaultValue,
-    this.iconConfiguration,
+    this.icon,
     this.title = titleDefaultValue,
-    this.titleConfiguration,
     this.subtitle = subtitleDefaultValue,
-    this.subtitleConfiguration,
+    this.actionButtonIcon,
     this.actionButtonText = actionButtonTextDefaultValue,
     this.actionButtonConfiguration,
   });
@@ -37,19 +36,16 @@ class MyoroFeedback extends StatelessWidget {
   final MyoroFeedbackStyle style;
 
   /// [IconData] of the [MyoroFeedback].
-  final MyoroIconConfiguration? iconConfiguration;
+  final IconData? icon;
 
   /// Title of the [MyoroFeedback].
   final String title;
 
-  /// Title of the [MyoroFeedback].
-  final MyoroTextConfiguration? titleConfiguration;
-
   /// Subtitle of the [MyoroFeedback].
   final String subtitle;
 
-  /// Subtitle of the [MyoroFeedback].
-  final MyoroTextConfiguration? subtitleConfiguration;
+  /// Action button icon.
+  final IconData? actionButtonIcon;
 
   /// Action button text.
   final String actionButtonText;
@@ -76,13 +72,14 @@ class MyoroFeedback extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      if (iconConfiguration != null) _Icon(iconConfiguration!),
-                      _Title(title, titleConfiguration),
-                      if (subtitleConfiguration != null) _Subtitle(subtitle, subtitleConfiguration!),
+                      if (icon != null) _Icon(icon!),
+                      _Title(title),
+                      if (subtitle.isNotEmpty) _Subtitle(subtitle),
                     ],
                   ),
                 ),
-                if (actionButtonText.isNotEmpty) _ActionButton(actionButtonText, actionButtonConfiguration),
+                if (actionButtonText.isNotEmpty)
+                  _ActionButton(actionButtonIcon, actionButtonText, actionButtonConfiguration),
               ],
             ),
           ),

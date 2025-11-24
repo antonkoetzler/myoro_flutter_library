@@ -52,19 +52,19 @@ class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThemeExten
   @override
   final BorderRadius? barBorderRadius;
 
-  /// Text style of [_SideTitle].
+  /// Text style of the side title.
   @override
   final TextStyle? sideTitleTextStyle;
 
-  /// Interval of the [_SideTitle]s on an axis.
+  /// Interval of the side titles on an axis.
   @override
   final double? sideTitleInterval;
 
-  /// Width of a vertical (y axis) [_SideTitle].
+  /// Width of a vertical (y axis) side title.
   @override
   final double? verticalSideTitleReversedSize;
 
-  /// Height of a horizontal (x axis) [_SideTitle].
+  /// Height of a horizontal (x axis) side title.
   @override
   final double? horizontalSideTitleReversedSize;
 

@@ -45,8 +45,6 @@ mixin _$MyoroInputStyleMixin {
     bool labelBehaviorProvided = true,
     EdgeInsets? suffixButtonMargin,
     bool suffixButtonMarginProvided = true,
-    double? suffixButtonIconSize,
-    bool suffixButtonIconSizeProvided = true,
     IconData? clearTextButtonIcon,
     bool clearTextButtonIconProvided = true,
     IconData? obscureTextButtonEnabledIcon,
@@ -75,7 +73,6 @@ mixin _$MyoroInputStyleMixin {
       labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
       labelBehavior: labelBehaviorProvided ? (labelBehavior ?? self.labelBehavior) : null,
       suffixButtonMargin: suffixButtonMarginProvided ? (suffixButtonMargin ?? self.suffixButtonMargin) : null,
-      suffixButtonIconSize: suffixButtonIconSizeProvided ? (suffixButtonIconSize ?? self.suffixButtonIconSize) : null,
       clearTextButtonIcon: clearTextButtonIconProvided ? (clearTextButtonIcon ?? self.clearTextButtonIcon) : null,
       obscureTextButtonEnabledIcon: obscureTextButtonEnabledIconProvided
           ? (obscureTextButtonEnabledIcon ?? self.obscureTextButtonEnabledIcon)
@@ -111,7 +108,6 @@ mixin _$MyoroInputStyleMixin {
         other.labelTextStyle == self.labelTextStyle &&
         other.labelBehavior == self.labelBehavior &&
         other.suffixButtonMargin == self.suffixButtonMargin &&
-        other.suffixButtonIconSize == self.suffixButtonIconSize &&
         other.clearTextButtonIcon == self.clearTextButtonIcon &&
         other.obscureTextButtonEnabledIcon == self.obscureTextButtonEnabledIcon &&
         other.obscureTextButtonDisabledIcon == self.obscureTextButtonDisabledIcon &&
@@ -122,7 +118,7 @@ mixin _$MyoroInputStyleMixin {
 
   @override
   int get hashCode {
-    return Object.hashAll([
+    return Object.hash(
       self.border,
       self.underlinedBorder,
       self.outlinedBorder,
@@ -137,14 +133,13 @@ mixin _$MyoroInputStyleMixin {
       self.labelTextStyle,
       self.labelBehavior,
       self.suffixButtonMargin,
-      self.suffixButtonIconSize,
       self.clearTextButtonIcon,
       self.obscureTextButtonEnabledIcon,
       self.obscureTextButtonDisabledIcon,
       self.suffixIconConstraints,
       self.prefixIconConstraints,
       self.suffixButtonStyle,
-    ]);
+    );
   }
 
   @override
@@ -164,7 +159,6 @@ mixin _$MyoroInputStyleMixin {
       '  labelTextStyle: ${self.labelTextStyle},\n'
       '  labelBehavior: ${self.labelBehavior},\n'
       '  suffixButtonMargin: ${self.suffixButtonMargin},\n'
-      '  suffixButtonIconSize: ${self.suffixButtonIconSize},\n'
       '  clearTextButtonIcon: ${self.clearTextButtonIcon},\n'
       '  obscureTextButtonEnabledIcon: ${self.obscureTextButtonEnabledIcon},\n'
       '  obscureTextButtonDisabledIcon: ${self.obscureTextButtonDisabledIcon},\n'

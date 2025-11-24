@@ -34,23 +34,18 @@ final class _Widget extends StatelessWidget {
 
             return IntrinsicWidth(
               child: MyoroIconTextButton(
+                style: MyoroIconTextButtonStyle(
+                  iconSize: iconSize,
+                  textStyle: MyoroTextStyle(maxLines: maxLines, overflow: overflow, alignment: alignment, style: style),
+                ),
                 tooltipText: tooltipText,
                 cursor: cursor,
                 onTapDown: onTapDown,
                 onTapUp: onTapUp,
                 isLoading: isLoading,
                 invert: invert,
-                iconConfiguration: icon != null ? MyoroIconConfiguration(icon: icon, size: iconSize) : null,
+                icon: icon,
                 text: text,
-                textConfiguration:
-                    text.isNotEmpty
-                        ? MyoroTextConfiguration(
-                          maxLines: maxLines,
-                          overflow: overflow,
-                          alignment: alignment,
-                          style: style,
-                        )
-                        : null,
               ),
             );
           },

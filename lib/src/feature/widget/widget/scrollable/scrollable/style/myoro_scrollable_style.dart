@@ -19,6 +19,7 @@ class MyoroScrollableStyle with _$MyoroScrollableStyleMixin {
       gradientRightColor: Color.lerp(a?.gradientRightColor, b?.gradientRightColor, t),
       gradientSize: lerpDouble(a?.gradientSize, b?.gradientSize, t),
       gradientColor: Color.lerp(a?.gradientColor, b?.gradientColor, t),
+      spacing: lerpDouble(a?.spacing, b?.spacing, t),
     );
   }
 
@@ -30,6 +31,7 @@ class MyoroScrollableStyle with _$MyoroScrollableStyleMixin {
     this.gradientRightColor,
     this.gradientSize = 20.0,
     this.gradientColor = Colors.white,
+    this.spacing,
   });
 
   /// Fake constructor.
@@ -39,7 +41,8 @@ class MyoroScrollableStyle with _$MyoroScrollableStyleMixin {
       gradientLeftColor = myoroNullableFake<Color>(),
       gradientRightColor = myoroNullableFake<Color>(),
       gradientSize = myoroNullableFake<double>(),
-      gradientColor = myoroNullableFake<Color>();
+      gradientColor = myoroNullableFake<Color>(),
+      spacing = myoroNullableFake<double>();
 
   /// Color for the top gradient overlay (when scrolling vertically).
   final Color? gradientTopColor;
@@ -58,4 +61,7 @@ class MyoroScrollableStyle with _$MyoroScrollableStyleMixin {
 
   /// Default color for gradient overlays.
   final Color? gradientColor;
+
+  /// Spacing between items in the scrollable widget.
+  final double? spacing;
 }

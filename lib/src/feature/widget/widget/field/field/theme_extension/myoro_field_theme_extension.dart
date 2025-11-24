@@ -21,30 +21,22 @@ class MyoroFieldThemeExtension extends ThemeExtension<MyoroFieldThemeExtension>
 
   /// Fake constructor.
   MyoroFieldThemeExtension.fake()
-    : labelTextStyle = myoroNullableFake<TextStyle>(),
-      dataTextStyle = myoroNullableFake<TextStyle>(),
-      spacing = myoroNullableFake<double>(),
+    : spacing = myoroNullableFake<double>(),
       decoration = myoroNullableFake<BoxDecoration>(),
-      contentPadding = myoroNullableFake<EdgeInsets>();
+      contentPadding = myoroNullableFake<EdgeInsets>(),
+      labelTextStyle = myoroNullableFake<MyoroTextStyle>(),
+      dataTextStyle = myoroNullableFake<MyoroTextStyle>();
 
   /// Builder constructor.
   MyoroFieldThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
-    : labelTextStyle = textTheme.titleSmall?.copyWith(fontSize: MyoroFontSizeEnum.tiny.size),
-      dataTextStyle = textTheme.bodySmall?.copyWith(fontSize: MyoroFontSizeEnum.tiny.size),
-      spacing = kMyoroMultiplier,
+    : spacing = kMyoroMultiplier,
       decoration = BoxDecoration(
         color: colorScheme.onPrimary.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(kMyoroBorderRadius),
       ),
-      contentPadding = const EdgeInsets.all(kMyoroMultiplier * 1.3);
-
-  /// [TextStyle] of the label.
-  @override
-  final TextStyle? labelTextStyle;
-
-  /// [TextStyle] of the data.
-  @override
-  final TextStyle? dataTextStyle;
+      contentPadding = const EdgeInsets.all(kMyoroMultiplier * 1.3),
+      labelTextStyle = MyoroTextStyle(style: textTheme.titleSmall?.copyWith(fontSize: MyoroFontSizeEnum.tiny.size)),
+      dataTextStyle = MyoroTextStyle(style: textTheme.bodySmall?.copyWith(fontSize: MyoroFontSizeEnum.tiny.size));
 
   /// Spacing in between the label and the data.
   @override
@@ -57,6 +49,14 @@ class MyoroFieldThemeExtension extends ThemeExtension<MyoroFieldThemeExtension>
   /// Content padding.
   @override
   final EdgeInsets? contentPadding;
+
+  /// [MyoroTextStyle] of the label.
+  @override
+  final MyoroTextStyle? labelTextStyle;
+
+  /// [MyoroTextStyle] of the data.
+  @override
+  final MyoroTextStyle? dataTextStyle;
 
   @override
   MyoroFieldThemeExtension lerp(covariant MyoroFieldThemeExtension? other, double t) {

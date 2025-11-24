@@ -17,23 +17,23 @@ mixin _$MyoroFieldStyleMixin {
   MyoroFieldStyle get self => this as MyoroFieldStyle;
 
   MyoroFieldStyle copyWith({
-    TextStyle? labelTextStyle,
-    bool labelTextStyleProvided = true,
-    TextStyle? dataTextStyle,
-    bool dataTextStyleProvided = true,
     double? spacing,
     bool spacingProvided = true,
     BoxDecoration? decoration,
     bool decorationProvided = true,
     EdgeInsets? contentPadding,
     bool contentPaddingProvided = true,
+    MyoroTextStyle? labelTextStyle,
+    bool labelTextStyleProvided = true,
+    MyoroTextStyle? dataTextStyle,
+    bool dataTextStyleProvided = true,
   }) {
     return MyoroFieldStyle(
-      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
-      dataTextStyle: dataTextStyleProvided ? (dataTextStyle ?? self.dataTextStyle) : null,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
       decoration: decorationProvided ? (decoration ?? self.decoration) : null,
       contentPadding: contentPaddingProvided ? (contentPadding ?? self.contentPadding) : null,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
+      dataTextStyle: dataTextStyleProvided ? (dataTextStyle ?? self.dataTextStyle) : null,
     );
   }
 
@@ -41,25 +41,25 @@ mixin _$MyoroFieldStyleMixin {
   bool operator ==(Object other) {
     return other is MyoroFieldStyle &&
         other.runtimeType == runtimeType &&
-        other.labelTextStyle == self.labelTextStyle &&
-        other.dataTextStyle == self.dataTextStyle &&
         other.spacing == self.spacing &&
         other.decoration == self.decoration &&
-        other.contentPadding == self.contentPadding;
+        other.contentPadding == self.contentPadding &&
+        other.labelTextStyle == self.labelTextStyle &&
+        other.dataTextStyle == self.dataTextStyle;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.labelTextStyle, self.dataTextStyle, self.spacing, self.decoration, self.contentPadding);
+    return Object.hash(self.spacing, self.decoration, self.contentPadding, self.labelTextStyle, self.dataTextStyle);
   }
 
   @override
   String toString() =>
       'MyoroFieldStyle(\n'
-      '  labelTextStyle: ${self.labelTextStyle},\n'
-      '  dataTextStyle: ${self.dataTextStyle},\n'
       '  spacing: ${self.spacing},\n'
       '  decoration: ${self.decoration},\n'
       '  contentPadding: ${self.contentPadding},\n'
+      '  labelTextStyle: ${self.labelTextStyle},\n'
+      '  dataTextStyle: ${self.dataTextStyle},\n'
       ');';
 }

@@ -13,12 +13,8 @@ final class _Label extends StatelessWidget {
     final viewModel = context.watch<MyoroFieldViewModel>();
     final state = viewModel.state;
     final label = state.label;
-    final labelConfiguration = state.labelConfiguration;
-    final labelTextStyle = labelConfiguration?.style ?? style.labelTextStyle ?? themeExtension.labelTextStyle;
-    final maxLines = labelConfiguration?.maxLines;
-    final overflow = labelConfiguration?.overflow;
-    final alignment = labelConfiguration?.alignment;
+    final labelTextStyle = style.labelTextStyle ?? themeExtension.labelTextStyle;
 
-    return Text(label, maxLines: maxLines, overflow: overflow, textAlign: alignment, style: labelTextStyle);
+    return MyoroText(label, style: labelTextStyle);
   }
 }

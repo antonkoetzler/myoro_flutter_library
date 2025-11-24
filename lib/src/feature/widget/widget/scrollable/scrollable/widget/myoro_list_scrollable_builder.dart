@@ -5,6 +5,7 @@ class MyoroListScrollableBuilder extends StatelessWidget {
   /// Creates a new instance of [MyoroListScrollableBuilder].
   const MyoroListScrollableBuilder({
     super.key,
+    this.style = const MyoroScrollableStyle(),
     this.scrollDirection = Axis.vertical,
     this.reverse = false,
     this.physics,
@@ -14,12 +15,14 @@ class MyoroListScrollableBuilder extends StatelessWidget {
     this.gradientEnabled = true,
     this.gradientBegin,
     this.gradientEnd,
-    this.style = const MyoroScrollableStyle(),
     required this.itemBuilder,
     this.itemCount,
     this.itemExtent,
     this.prototypeItem,
   });
+
+  /// Style of the scrollable widget.
+  final MyoroScrollableStyle style;
 
   /// The axis along which the scroll view scrolls.
   final Axis scrollDirection;
@@ -49,9 +52,6 @@ class MyoroListScrollableBuilder extends StatelessWidget {
 
   /// The offset at which stop 1.0 of the gradient is placed.
   final Alignment? gradientEnd;
-
-  /// Style of the scrollable widget.
-  final MyoroScrollableStyle style;
 
   /// Called to build children for the list.
   final IndexedWidgetBuilder itemBuilder;
@@ -89,6 +89,7 @@ class MyoroListScrollableBuilder extends StatelessWidget {
         itemCount: itemCount,
         itemExtent: itemExtent,
         prototypeItem: prototypeItem,
+        spacing: style.spacing,
       ),
     );
   }

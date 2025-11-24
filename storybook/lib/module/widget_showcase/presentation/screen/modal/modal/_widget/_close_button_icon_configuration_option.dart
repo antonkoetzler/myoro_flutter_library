@@ -11,38 +11,25 @@ final class _CloseButtonIconConfigurationOption extends StatelessWidget {
     return IconWidgetShowcaseOption(
       configuration: IconWidgetShowcaseOptionConfiguration(
         label: localization.storybookWidgetShowcaseOptionCloseButtonIconLabel,
-        selectedIcon: viewModel.state.closeButtonIconConfiguration?.icon,
+        selectedIcon: viewModel.state.closeButtonIcon,
         iconOnChanged: (icon) {
-          final currentConfig = viewModel.state.closeButtonIconConfiguration;
-          viewModel.state.closeButtonIconConfiguration = MyoroIconConfiguration(
-            icon: icon ?? Icons.close,
-            size: currentConfig?.size,
-          );
+          viewModel.state.closeButtonIcon = icon ?? Icons.close;
         },
-        selectedIconSize: viewModel.state.closeButtonIconConfiguration?.size,
+        selectedIconSize: viewModel.state.closeButtonIconSize,
         iconSizeOnChanged: (size) {
-          final currentConfig = viewModel.state.closeButtonIconConfiguration;
-          viewModel.state.closeButtonIconConfiguration = MyoroIconConfiguration(
-            icon: currentConfig?.icon ?? Icons.close,
-            size: size,
-          );
+          viewModel.state.closeButtonIconSize = size;
         },
         iconSizeCheckboxOnChanged: (enabled, size) {
-          final currentConfig = viewModel.state.closeButtonIconConfiguration;
-          viewModel.state.closeButtonIconConfiguration = MyoroIconConfiguration(
-            icon: currentConfig?.icon ?? Icons.close,
-            size: enabled ? size : null,
-          );
+          viewModel.state.closeButtonIconSize = enabled ? size : null;
         },
-        enabled: viewModel.state.closeButtonIconConfiguration != null,
+        enabled: viewModel.state.closeButtonIcon != null,
         enableOptionCheckboxOnChanged: (enabled, icon, size) {
           if (enabled) {
-            viewModel.state.closeButtonIconConfiguration = MyoroIconConfiguration(
-              icon: icon ?? Icons.close,
-              size: size ?? 24.0,
-            );
+            viewModel.state.closeButtonIcon = icon ?? Icons.close;
+            viewModel.state.closeButtonIconSize = size ?? 24.0;
           } else {
-            viewModel.state.closeButtonIconConfiguration = null;
+            viewModel.state.closeButtonIcon = null;
+            viewModel.state.closeButtonIconSize = null;
           }
         },
       ),

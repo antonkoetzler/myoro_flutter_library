@@ -36,6 +36,12 @@ class AppLocalizationsFr extends AppLocalizations {
   String get myoroDialogModalConfirmButtonText => 'Confirmer';
 
   @override
+  String get myoroFilterButtonClearButtonText => 'Effacer';
+
+  @override
+  String get myoroFilterButtonApplyButtonText => 'Appliquer';
+
+  @override
   String get myoroCurrencyEnumUsdFormalName => 'Dollar américain';
 
   @override
@@ -1138,4 +1144,10 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get myoroMonthEnumDecemberLabel => 'Décembre';
+
+  @override
+  String get myoroSearchBarInputLabel => 'Rechercher';
+
+  @override
+  String get myoroSearchBarInputPlaceholder => 'Tapez quelque chose...';
 }

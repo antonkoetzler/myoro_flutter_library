@@ -16,11 +16,11 @@ final class MyoroFilePickerThemeExtension extends ThemeExtension<MyoroFilePicker
   /// Fake constructor.
   MyoroFilePickerThemeExtension.fake()
     : spacing = myoroNullableFake<double>(),
-      textStyle = myoroNullableFake<TextStyle>();
+      textStyle = myoroNullableFake<MyoroTextStyle>();
 
   MyoroFilePickerThemeExtension.builder(TextTheme textTheme)
     : spacing = kMyoroMultiplier * 2,
-      textStyle = textTheme.bodySmall!;
+      textStyle = MyoroTextStyle(style: textTheme.bodySmall!);
 
   /// Spacing between the selected file section text and the selection button.
   @override
@@ -28,7 +28,7 @@ final class MyoroFilePickerThemeExtension extends ThemeExtension<MyoroFilePicker
 
   /// [TextStyle] of the text of the [MyoroFilePicker].
   @override
-  final TextStyle? textStyle;
+  final MyoroTextStyle? textStyle;
 
   @override
   MyoroFilePickerThemeExtension lerp(covariant MyoroFilePickerThemeExtension? other, double t) {

@@ -33,7 +33,8 @@ final class MyoroModalWidgetShowcaseScreenViewModel {
       closeButtonPadding: _state.closeButtonPadding,
       spacing: _state.spacing,
       titleTextStyle: _state.titleTextStyle,
-      closeButtonIconConfiguration: _state.closeButtonIconConfiguration,
+      closeButtonIcon: _state.closeButtonIcon,
+      closeButtonIconSize: _state.closeButtonIconSize,
     );
   }
 }

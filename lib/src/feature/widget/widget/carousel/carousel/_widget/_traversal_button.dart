@@ -15,11 +15,7 @@ final class _TraversalButton extends StatelessWidget {
     return Align(
       alignment: _alignment,
       child: IntrinsicWidth(
-        child: MyoroIconTextButton(
-          onTapUp: (_, _) => _onTapUp(),
-          iconConfiguration: MyoroIconConfiguration(icon: _icon),
-          style: iconTextButtonStyle,
-        ),
+        child: MyoroIconTextButton(onTapUp: (_, _) => _onTapUp(), icon: _icon, style: iconTextButtonStyle),
       ),
     );
   }

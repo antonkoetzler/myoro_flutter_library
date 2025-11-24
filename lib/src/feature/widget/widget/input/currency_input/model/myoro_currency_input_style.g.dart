@@ -17,8 +17,6 @@ mixin _$MyoroCurrencyInputStyleMixin {
   MyoroCurrencyInputStyle get self => this as MyoroCurrencyInputStyle;
 
   MyoroCurrencyInputStyle copyWith({
-    TextStyle? currencySymbolTextStyle,
-    bool currencySymbolTextStyleProvided = true,
     MyoroIconTextButtonStyle? currencySymbolButtonStyle,
     bool currencySymbolButtonStyleProvided = true,
     EdgeInsets? currencyPrefixPadding,
@@ -51,8 +49,6 @@ mixin _$MyoroCurrencyInputStyleMixin {
     bool labelBehaviorProvided = true,
     EdgeInsets? suffixButtonMargin,
     bool suffixButtonMarginProvided = true,
-    double? suffixButtonIconSize,
-    bool suffixButtonIconSizeProvided = true,
     IconData? clearTextButtonIcon,
     bool clearTextButtonIconProvided = true,
     IconData? obscureTextButtonEnabledIcon,
@@ -67,9 +63,6 @@ mixin _$MyoroCurrencyInputStyleMixin {
     bool suffixButtonStyleProvided = true,
   }) {
     return MyoroCurrencyInputStyle(
-      currencySymbolTextStyle: currencySymbolTextStyleProvided
-          ? (currencySymbolTextStyle ?? self.currencySymbolTextStyle)
-          : null,
       currencySymbolButtonStyle: currencySymbolButtonStyleProvided
           ? (currencySymbolButtonStyle ?? self.currencySymbolButtonStyle)
           : null,
@@ -90,7 +83,6 @@ mixin _$MyoroCurrencyInputStyleMixin {
       labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
       labelBehavior: labelBehaviorProvided ? (labelBehavior ?? self.labelBehavior) : null,
       suffixButtonMargin: suffixButtonMarginProvided ? (suffixButtonMargin ?? self.suffixButtonMargin) : null,
-      suffixButtonIconSize: suffixButtonIconSizeProvided ? (suffixButtonIconSize ?? self.suffixButtonIconSize) : null,
       clearTextButtonIcon: clearTextButtonIconProvided ? (clearTextButtonIcon ?? self.clearTextButtonIcon) : null,
       obscureTextButtonEnabledIcon: obscureTextButtonEnabledIconProvided
           ? (obscureTextButtonEnabledIcon ?? self.obscureTextButtonEnabledIcon)
@@ -112,7 +104,6 @@ mixin _$MyoroCurrencyInputStyleMixin {
   bool operator ==(Object other) {
     return other is MyoroCurrencyInputStyle &&
         other.runtimeType == runtimeType &&
-        other.currencySymbolTextStyle == self.currencySymbolTextStyle &&
         other.currencySymbolButtonStyle == self.currencySymbolButtonStyle &&
         other.currencyPrefixPadding == self.currencyPrefixPadding &&
         other.border == self.border &&
@@ -129,7 +120,6 @@ mixin _$MyoroCurrencyInputStyleMixin {
         other.labelTextStyle == self.labelTextStyle &&
         other.labelBehavior == self.labelBehavior &&
         other.suffixButtonMargin == self.suffixButtonMargin &&
-        other.suffixButtonIconSize == self.suffixButtonIconSize &&
         other.clearTextButtonIcon == self.clearTextButtonIcon &&
         other.obscureTextButtonEnabledIcon == self.obscureTextButtonEnabledIcon &&
         other.obscureTextButtonDisabledIcon == self.obscureTextButtonDisabledIcon &&
@@ -141,7 +131,6 @@ mixin _$MyoroCurrencyInputStyleMixin {
   @override
   int get hashCode {
     return Object.hashAll([
-      self.currencySymbolTextStyle,
       self.currencySymbolButtonStyle,
       self.currencyPrefixPadding,
       self.border,
@@ -158,7 +147,6 @@ mixin _$MyoroCurrencyInputStyleMixin {
       self.labelTextStyle,
       self.labelBehavior,
       self.suffixButtonMargin,
-      self.suffixButtonIconSize,
       self.clearTextButtonIcon,
       self.obscureTextButtonEnabledIcon,
       self.obscureTextButtonDisabledIcon,
@@ -171,7 +159,6 @@ mixin _$MyoroCurrencyInputStyleMixin {
   @override
   String toString() =>
       'MyoroCurrencyInputStyle(\n'
-      '  currencySymbolTextStyle: ${self.currencySymbolTextStyle},\n'
       '  currencySymbolButtonStyle: ${self.currencySymbolButtonStyle},\n'
       '  currencyPrefixPadding: ${self.currencyPrefixPadding},\n'
       '  border: ${self.border},\n'
@@ -188,7 +175,6 @@ mixin _$MyoroCurrencyInputStyleMixin {
       '  labelTextStyle: ${self.labelTextStyle},\n'
       '  labelBehavior: ${self.labelBehavior},\n'
       '  suffixButtonMargin: ${self.suffixButtonMargin},\n'
-      '  suffixButtonIconSize: ${self.suffixButtonIconSize},\n'
       '  clearTextButtonIcon: ${self.clearTextButtonIcon},\n'
       '  obscureTextButtonEnabledIcon: ${self.obscureTextButtonEnabledIcon},\n'
       '  obscureTextButtonDisabledIcon: ${self.obscureTextButtonDisabledIcon},\n'

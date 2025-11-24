@@ -39,7 +39,7 @@ final class _MyoroGroupRadioState extends State<MyoroGroupRadio> {
             children: radios.entries.map<Widget>((MapEntry<String, bool> entry) {
               return MyoroRadio(
                 label: entry.key,
-                initialValue: entry.value,
+                value: entry.value,
                 onChanged: (_) {
                   controller.enable(entry.key);
                   widget.onChanged?.call(entry.key, controller.radios);

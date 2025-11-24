@@ -27,7 +27,6 @@ class MyoroCurrencyInputStyle extends MyoroInputStyle with _$MyoroCurrencyInputS
       labelTextStyle: TextStyle.lerp(a?.labelTextStyle, b?.labelTextStyle, t),
       labelBehavior: myoroFallbackLerp(a?.labelBehavior, b?.labelBehavior, t),
       suffixButtonMargin: EdgeInsets.lerp(a?.suffixButtonMargin, b?.suffixButtonMargin, t),
-      suffixButtonIconSize: lerpDouble(a?.suffixButtonIconSize, b?.suffixButtonIconSize, t),
       clearTextButtonIcon: myoroFallbackLerp(a?.clearTextButtonIcon, b?.clearTextButtonIcon, t),
       obscureTextButtonEnabledIcon: myoroFallbackLerp(
         a?.obscureTextButtonEnabledIcon,
@@ -42,7 +41,6 @@ class MyoroCurrencyInputStyle extends MyoroInputStyle with _$MyoroCurrencyInputS
       suffixIconConstraints: myoroFallbackLerp(a?.suffixIconConstraints, b?.suffixIconConstraints, t),
       prefixIconConstraints: myoroFallbackLerp(a?.prefixIconConstraints, b?.prefixIconConstraints, t),
       suffixButtonStyle: MyoroIconTextButtonStyle.lerp(a?.suffixButtonStyle, b?.suffixButtonStyle, t),
-      currencySymbolTextStyle: TextStyle.lerp(a?.currencySymbolTextStyle, b?.currencySymbolTextStyle, t),
       currencySymbolButtonStyle: MyoroIconTextButtonStyle.lerp(
         a?.currencySymbolButtonStyle,
         b?.currencySymbolButtonStyle,
@@ -68,20 +66,15 @@ class MyoroCurrencyInputStyle extends MyoroInputStyle with _$MyoroCurrencyInputS
     super.labelTextStyle,
     super.labelBehavior,
     super.suffixButtonMargin,
-    super.suffixButtonIconSize,
     super.clearTextButtonIcon,
     super.obscureTextButtonEnabledIcon,
     super.obscureTextButtonDisabledIcon,
     super.suffixIconConstraints,
     super.prefixIconConstraints,
     super.suffixButtonStyle,
-    this.currencySymbolTextStyle,
     this.currencySymbolButtonStyle,
     this.currencyPrefixPadding,
   });
-
-  /// [TextStyle] of the currency prefix [Widget].
-  final TextStyle? currencySymbolTextStyle;
 
   /// [MyoroIconTextButtonStyle] of the currency prefix [Widget].
   final MyoroIconTextButtonStyle? currencySymbolButtonStyle;
@@ -106,14 +99,12 @@ class MyoroCurrencyInputStyle extends MyoroInputStyle with _$MyoroCurrencyInputS
       labelTextStyle: myoroNullableFake<TextStyle>(),
       labelBehavior: myoroNullableFake<FloatingLabelBehavior>(),
       suffixButtonMargin: myoroNullableFake<EdgeInsets>(),
-      suffixButtonIconSize: myoroNullableFake<double>(),
       clearTextButtonIcon: myoroNullableFake<IconData>(),
       obscureTextButtonEnabledIcon: myoroNullableFake<IconData>(),
       obscureTextButtonDisabledIcon: myoroNullableFake<IconData>(),
       suffixIconConstraints: myoroNullableFake<BoxConstraints>(),
       prefixIconConstraints: myoroNullableFake<BoxConstraints>(),
       suffixButtonStyle: myoroNullableFake<MyoroIconTextButtonStyle>(),
-      currencySymbolTextStyle: myoroNullableFake<TextStyle>(),
       currencySymbolButtonStyle: myoroNullableFake<MyoroIconTextButtonStyle>(),
       currencyPrefixPadding: myoroFake<EdgeInsets>(),
     );

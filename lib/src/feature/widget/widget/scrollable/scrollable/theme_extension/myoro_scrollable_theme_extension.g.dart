@@ -30,6 +30,8 @@ mixin _$MyoroScrollableThemeExtensionMixin on ThemeExtension<MyoroScrollableThem
     bool gradientSizeProvided = true,
     Color? gradientColor,
     bool gradientColorProvided = true,
+    double? spacing,
+    bool spacingProvided = true,
   }) {
     return MyoroScrollableThemeExtension(
       gradientTopColor: gradientTopColorProvided ? (gradientTopColor ?? self.gradientTopColor) : null,
@@ -38,6 +40,7 @@ mixin _$MyoroScrollableThemeExtensionMixin on ThemeExtension<MyoroScrollableThem
       gradientRightColor: gradientRightColorProvided ? (gradientRightColor ?? self.gradientRightColor) : null,
       gradientSize: gradientSizeProvided ? (gradientSize ?? self.gradientSize) : null,
       gradientColor: gradientColorProvided ? (gradientColor ?? self.gradientColor) : null,
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
     );
   }
 
@@ -50,7 +53,8 @@ mixin _$MyoroScrollableThemeExtensionMixin on ThemeExtension<MyoroScrollableThem
         other.gradientLeftColor == self.gradientLeftColor &&
         other.gradientRightColor == self.gradientRightColor &&
         other.gradientSize == self.gradientSize &&
-        other.gradientColor == self.gradientColor;
+        other.gradientColor == self.gradientColor &&
+        other.spacing == self.spacing;
   }
 
   @override
@@ -62,6 +66,7 @@ mixin _$MyoroScrollableThemeExtensionMixin on ThemeExtension<MyoroScrollableThem
       self.gradientRightColor,
       self.gradientSize,
       self.gradientColor,
+      self.spacing,
     );
   }
 
@@ -74,5 +79,6 @@ mixin _$MyoroScrollableThemeExtensionMixin on ThemeExtension<MyoroScrollableThem
       '  gradientRightColor: ${self.gradientRightColor},\n'
       '  gradientSize: ${self.gradientSize},\n'
       '  gradientColor: ${self.gradientColor},\n'
+      '  spacing: ${self.spacing},\n'
       ');';
 }

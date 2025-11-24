@@ -3,7 +3,10 @@ part of '../widget/myoro_feedback.dart';
 /// Action button of [MyoroFeedback].
 final class _ActionButton extends StatelessWidget {
   /// Default value of [actionButtonText].
-  const _ActionButton(this._actionButtonText, this._actionButtonConfiguration);
+  const _ActionButton(this._actionButtonIcon, this._actionButtonText, this._actionButtonConfiguration);
+
+  /// Action button icon.
+  final IconData? _actionButtonIcon;
 
   /// Action button text.
   final String _actionButtonText;
@@ -20,8 +23,6 @@ final class _ActionButton extends StatelessWidget {
     final onTapUp = _actionButtonConfiguration?.onTapUp;
     final isLoading = _actionButtonConfiguration?.isLoading;
     final invert = _actionButtonConfiguration?.invert;
-    final iconConfiguration = _actionButtonConfiguration?.iconConfiguration;
-    final textConfiguration = _actionButtonConfiguration?.textConfiguration;
 
     return IntrinsicWidth(
       child: MyoroIconTextButton(
@@ -32,9 +33,8 @@ final class _ActionButton extends StatelessWidget {
         onTapUp: onTapUp,
         isLoading: isLoading ?? MyoroIconTextButton.isLoadingDefaultValue,
         invert: invert ?? MyoroIconTextButton.invertDefaultValue,
-        iconConfiguration: iconConfiguration,
+        icon: _actionButtonIcon,
         text: _actionButtonText,
-        textConfiguration: textConfiguration,
       ),
     );
   }

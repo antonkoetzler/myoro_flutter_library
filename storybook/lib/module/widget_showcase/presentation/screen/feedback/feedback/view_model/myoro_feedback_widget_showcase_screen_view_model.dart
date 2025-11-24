@@ -9,76 +9,92 @@ part 'myoro_feedback_widget_showcase_screen_state.dart';
 final class MyoroFeedbackWidgetShowcaseScreenViewModel {
   /// State.
   final _state = MyoroFeedbackWidgetShowcaseScreenState();
-  MyoroFeedbackWidgetShowcaseScreenState get state => _state;
 
   /// Dispose function.
   void dispose() {
     _state.dispose();
   }
 
-  /// [IconWidgetShowcaseOptionConfiguration.iconOnChanged]
-  /// of [MyoroFeedbackWidgetShowcaseScreenState.iconConfiguration].
-  void iconConfigurationIconOnChanged(IconData? icon) {
-    _state.iconConfiguration = _state.iconConfiguration.copyWith(icon: icon);
-  }
-
-  /// [IconWidgetShowcaseOptionConfiguration.iconSizeOnChanged]
-  /// of [MyoroFeedbackWidgetShowcaseScreenState.iconConfiguration].
-  void iconConfigurationSizeOnChanged(double? size) {
-    _state.iconConfiguration = _state.iconConfiguration.copyWith(size: size, sizeProvided: size != null);
-  }
-
-  /// [IconWidgetShowcaseOptionConfiguration.iconOnChanged]
-  /// of [MyoroFeedbackWidgetShowcaseScreenState.iconConfiguration].
-  void iconConfigurationSizeCheckboxOnChanged(bool enabled, double? size) {
-    _state.iconConfiguration = _state.iconConfiguration.copyWith(size: size, sizeProvided: enabled);
-  }
-
   /// [TextWidgetShowcaseOptionConfiguration.textOnChanged]
-  /// of [MyoroFeedbackWidgetShowcaseScreenState.titleConfiguration].
-  void titleConfigurationTextOnChanged(String text) {
+  /// of [MyoroFeedbackWidgetShowcaseScreenState.titleTextStyle].
+  void titleTextStyleTextOnChanged(String text) {
     _state.title = text;
   }
 
   /// [TextWidgetShowcaseOptionConfiguration.maxLinesOnChanged]
-  /// of [MyoroFeedbackWidgetShowcaseScreenState.titleConfiguration].
-  void titleConfigurationMaxLinesOnChanged(int? maxLines) {
-    _state.titleConfiguration = _state.titleConfiguration.copyWith(maxLines: maxLines);
+  /// of [MyoroFeedbackWidgetShowcaseScreenState.titleTextStyle].
+  void titleTextStyleMaxLinesOnChanged(int? maxLines) {
+    _state.titleTextStyle =
+        _state.titleTextStyle?.copyWith(maxLines: maxLines) ??
+        MyoroTextStyle(maxLines: maxLines ?? MyoroTextStyle.maxLinesDefaultValue);
   }
 
   /// [TextWidgetShowcaseOptionConfiguration.overflowOnChanged]
-  /// of [MyoroFeedbackWidgetShowcaseScreenState.titleConfiguration].
-  void titleConfigurationOverflowOnChanged(TextOverflow? overflow) {
-    _state.titleConfiguration = _state.titleConfiguration.copyWith(overflow: overflow);
+  /// of [MyoroFeedbackWidgetShowcaseScreenState.titleTextStyle].
+  void titleTextStyleOverflowOnChanged(TextOverflow? overflow) {
+    _state.titleTextStyle =
+        _state.titleTextStyle?.copyWith(overflow: overflow) ??
+        MyoroTextStyle(overflow: overflow ?? MyoroTextStyle.overflowDefaultValue);
   }
 
   /// [TextWidgetShowcaseOptionConfiguration.alignmentOnChanged]
-  /// of [MyoroFeedbackWidgetShowcaseScreenState.titleConfiguration].
-  void titleConfigurationAlignmentOnChanged(TextAlign? alignment) {
-    _state.titleConfiguration = _state.titleConfiguration.copyWith(alignment: alignment);
+  /// of [MyoroFeedbackWidgetShowcaseScreenState.titleTextStyle].
+  void titleTextStyleAlignmentOnChanged(TextAlign? alignment) {
+    _state.titleTextStyle =
+        _state.titleTextStyle?.copyWith(alignment: alignment) ??
+        MyoroTextStyle(alignment: alignment ?? MyoroTextStyle.alignmentDefaultValue);
   }
 
   /// [TextWidgetShowcaseOptionConfiguration.textOnChanged]
-  /// of [MyoroFeedbackWidgetShowcaseScreenState.subtitleConfiguration].
-  void subtitleConfigurationTextOnChanged(String text) {
+  /// of [MyoroFeedbackWidgetShowcaseScreenState.subtitleTextStyle].
+  void subtitleTextStyleTextOnChanged(String text) {
     _state.subtitle = text;
   }
 
   /// [TextWidgetShowcaseOptionConfiguration.maxLinesOnChanged]
-  /// of [MyoroFeedbackWidgetShowcaseScreenState.subtitleConfiguration].
-  void subtitleConfigurationMaxLinesOnChanged(int? maxLines) {
-    _state.subtitleConfiguration = _state.subtitleConfiguration?.copyWith(maxLines: maxLines);
+  /// of [MyoroFeedbackWidgetShowcaseScreenState.subtitleTextStyle].
+  void subtitleTextStyleMaxLinesOnChanged(int? maxLines) {
+    _state.subtitleTextStyle =
+        _state.subtitleTextStyle?.copyWith(maxLines: maxLines) ??
+        MyoroTextStyle(maxLines: maxLines ?? MyoroTextStyle.maxLinesDefaultValue);
   }
 
   /// [TextWidgetShowcaseOptionConfiguration.overflowOnChanged]
-  /// of [MyoroFeedbackWidgetShowcaseScreenState.subtitleConfiguration].
-  void subtitleConfigurationOverflowOnChanged(TextOverflow? overflow) {
-    _state.subtitleConfiguration = _state.subtitleConfiguration?.copyWith(overflow: overflow);
+  /// of [MyoroFeedbackWidgetShowcaseScreenState.subtitleTextStyle].
+  void subtitleTextStyleOverflowOnChanged(TextOverflow? overflow) {
+    _state.subtitleTextStyle =
+        _state.subtitleTextStyle?.copyWith(overflow: overflow) ??
+        MyoroTextStyle(overflow: overflow ?? MyoroTextStyle.overflowDefaultValue);
   }
 
   /// [TextWidgetShowcaseOptionConfiguration.alignmentOnChanged]
-  /// of [MyoroFeedbackWidgetShowcaseScreenState.subtitleConfiguration].
-  void subtitleConfigurationAlignmentOnChanged(TextAlign? alignment) {
-    _state.subtitleConfiguration = _state.subtitleConfiguration?.copyWith(alignment: alignment);
+  /// of [MyoroFeedbackWidgetShowcaseScreenState.subtitleTextStyle].
+  void subtitleTextStyleAlignmentOnChanged(TextAlign? alignment) {
+    _state.subtitleTextStyle =
+        _state.subtitleTextStyle?.copyWith(alignment: alignment) ??
+        MyoroTextStyle(alignment: alignment ?? MyoroTextStyle.alignmentDefaultValue);
+  }
+
+  /// [IconWidgetShowcaseOptionConfiguration.iconOnChanged]
+  /// of [MyoroFeedbackWidgetShowcaseScreenState.iconStyle].
+  void iconStyleIconOnChanged(IconData? icon) {
+    _state.icon = icon ?? Icons.info;
+  }
+
+  /// [IconWidgetShowcaseOptionConfiguration.iconSizeOnChanged]
+  /// of [MyoroFeedbackWidgetShowcaseScreenState.iconStyle].
+  void iconStyleSizeOnChanged(double? size) {
+    _state.iconStyle = _state.iconStyle?.copyWith(size: size) ?? MyoroIconStyle(size: size);
+  }
+
+  /// [IconWidgetShowcaseOptionConfiguration.iconSizeCheckboxOnChanged]
+  /// of [MyoroFeedbackWidgetShowcaseScreenState.iconStyle].
+  void iconStyleSizeCheckboxOnChanged(bool enabled, double? size) {
+    _state.iconStyle = enabled ? (_state.iconStyle?.copyWith(size: size) ?? MyoroIconStyle(size: size)) : null;
+  }
+
+  /// [_state] getter.
+  MyoroFeedbackWidgetShowcaseScreenState get state {
+    return _state;
   }
 }

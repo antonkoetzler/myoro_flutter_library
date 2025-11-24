@@ -54,21 +54,21 @@ class MyoroTableStyle with _$MyoroTableStyleMixin {
   /// Background color of the table.
   final Color? backgroundColor;
 
-  /// Default [TextStyle] of [_Column].
+  /// Default [TextStyle] of columns.
   final TextStyle? columnTextStyle;
 
   /// Spacing between columns.
   final double? columnSpacing;
 
-  /// Default [TextStyle] of [_Row].
+  /// Default [TextStyle] of rows.
   final TextStyle? rowTextStyle;
 
-  /// [EdgeInsets] of [_Loader], [_EmptyMessage] and [_ErrorMessage].
+  /// [EdgeInsets] of the loader, empty message and error message.
   final EdgeInsets? loaderEmptyMessageErrorMessagePadding;
 
-  /// [TextStyle] of [_EmptyMessage].
+  /// [TextStyle] of the empty message.
   final TextStyle? emptyMessageTextStyle;
 
-  /// [TextStyle] of [_ErrorMessage].
+  /// [TextStyle] of the error message.
   final TextStyle? errorMessageTextStyle;
 }

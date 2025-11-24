@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:faker/faker.dart' hide Color;
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -22,11 +21,8 @@ class MyoroModalStyle with _$MyoroModalStyleMixin {
       closeButtonPadding: EdgeInsets.lerp(a?.closeButtonPadding, b?.closeButtonPadding, t),
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
       titleTextStyle: TextStyle.lerp(a?.titleTextStyle, b?.titleTextStyle, t),
-      closeButtonIconConfiguration: MyoroIconConfiguration.lerp(
-        a?.closeButtonIconConfiguration,
-        b?.closeButtonIconConfiguration,
-        t,
-      ),
+      closeButtonIcon: myoroFallbackLerp(a?.closeButtonIcon, b?.closeButtonIcon, t),
+      closeButtonIconSize: lerpDouble(a?.closeButtonIconSize, b?.closeButtonIconSize, t),
       margin: EdgeInsets.lerp(a?.margin, b?.margin, t),
     );
   }
@@ -41,7 +37,8 @@ class MyoroModalStyle with _$MyoroModalStyleMixin {
     this.closeButtonPadding,
     this.spacing,
     this.titleTextStyle,
-    this.closeButtonIconConfiguration,
+    this.closeButtonIcon,
+    this.closeButtonIconSize,
     this.margin,
   });
 
@@ -56,7 +53,8 @@ class MyoroModalStyle with _$MyoroModalStyleMixin {
       closeButtonPadding: myoroNullableFake<EdgeInsets>(),
       spacing: myoroNullableFake<double>(),
       titleTextStyle: myoroNullableFake<TextStyle>(),
-      closeButtonIconConfiguration: faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null,
+      closeButtonIcon: myoroNullableFake<IconData>(),
+      closeButtonIconSize: myoroNullableFake<double>(),
       margin: myoroNullableFake<EdgeInsets>(),
     );
   }
@@ -79,14 +77,17 @@ class MyoroModalStyle with _$MyoroModalStyleMixin {
   /// Padding of the close button.
   final EdgeInsets? closeButtonPadding;
 
-  /// Spacing between the [_Header] and the contents of the modal.
+  /// Spacing between the header and the contents of the modal.
   final double? spacing;
 
-  /// Text style of [_Title].
+  /// Text style of the title.
   final TextStyle? titleTextStyle;
 
-  /// [MyoroIconConfiguration] of [_CloseButton].
-  final MyoroIconConfiguration? closeButtonIconConfiguration;
+  /// [IconData] of the close button.
+  final IconData? closeButtonIcon;
+
+  /// Icon size of the close button.
+  final double? closeButtonIconSize;
 
   /// Margin of the modal.
   final EdgeInsets? margin;

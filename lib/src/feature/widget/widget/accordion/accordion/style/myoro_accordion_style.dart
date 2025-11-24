@@ -82,33 +82,33 @@ class MyoroAccordionStyle with _$MyoroAccordionStyleMixin {
   /// Backgorund [Color] of an item.
   final Color? itemContentBackgroundColor;
 
-  /// [Duration] of the animation of [_ItemContent].
+  /// [Duration] of the animation of the item content.
   final Duration? itemContentAnimationDuration;
 
-  /// Animation [Curve] of the animation of [_ItemContent].
+  /// Animation [Curve] of the animation of the item content.
   final Curve? itemContentAnimationCurve;
 
-  /// [EdgeInsets] of [_ItemTitleButton].
+  /// [EdgeInsets] of the item title button.
   final EdgeInsets? itemTitleButtonContentPadding;
 
-  /// [Row.spacing] of [_ItemTitleButton].
+  /// [Row.spacing] of the item title button.
   final double? itemTitleButtonSpacing;
 
   /// Default [TextStyle] wrapped around the title [Widget].
   final TextStyle? itemTitleButtonTitleTextStyle;
 
-  /// [IconData] of [_ItemTitleButtonArrow].
+  /// [IconData] of the item title button arrow.
   final IconData? itemTitleButtonArrowIcon;
 
-  /// [Color] of [_ItemTitleButtonArrow].
+  /// [Color] of the item title button arrow.
   final Color? itemTitleButtonArrowIconColor;
 
-  /// Size of [_ItemTitleButtonArrow].
+  /// Size of the item title button arrow.
   final double? itemTitleButtonArrowIconSize;
 
-  /// [Duration] of the rotation animation of [_ItemTitleButtonArrow].
+  /// [Duration] of the rotation animation of the item title button arrow.
   final Duration? itemTitleButtonArrowAnimationDuration;
 
-  /// [Curve] of the rotation animation of [_ItemTitleButtonArrow].
+  /// [Curve] of the rotation animation of the item title button arrow.
   final Curve? itemTitleButtonArrowAnimationCurve;
 }

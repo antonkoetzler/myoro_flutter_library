@@ -21,6 +21,7 @@ class MyoroDropdown<T> extends StatefulWidget {
     this.dropdownType,
     this.targetKey,
     required this.itemBuilder,
+    this.footer,
     required this.child,
   });
 
@@ -50,10 +51,15 @@ class MyoroDropdown<T> extends StatefulWidget {
   /// Item builder.
   final MyoroMenuItemBuilder<T> itemBuilder;
 
+  /// [MyoroMenu.footer].
+  final Widget? footer;
+
   /// Child.
   final Widget child;
 
   /// Create state function.
   @override
-  State<MyoroDropdown<T>> createState() => _MyoroDropdownState<T>();
+  State<MyoroDropdown<T>> createState() {
+    return _MyoroDropdownState<T>();
+  }
 }

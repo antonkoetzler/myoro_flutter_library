@@ -27,7 +27,6 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
       labelTextStyle: TextStyle.lerp(a?.labelTextStyle, b?.labelTextStyle, t),
       labelBehavior: myoroFallbackLerp(a?.labelBehavior, b?.labelBehavior, t),
       suffixButtonMargin: EdgeInsets.lerp(a?.suffixButtonMargin, b?.suffixButtonMargin, t),
-      suffixButtonIconSize: lerpDouble(a?.suffixButtonIconSize, b?.suffixButtonIconSize, t),
       clearTextButtonIcon: myoroFallbackLerp(a?.clearTextButtonIcon, b?.clearTextButtonIcon, t),
       obscureTextButtonEnabledIcon: myoroFallbackLerp(
         a?.obscureTextButtonEnabledIcon,
@@ -61,7 +60,6 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
     this.labelTextStyle,
     this.labelBehavior,
     this.suffixButtonMargin,
-    this.suffixButtonIconSize,
     this.clearTextButtonIcon,
     this.obscureTextButtonEnabledIcon,
     this.obscureTextButtonDisabledIcon,
@@ -87,7 +85,6 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
       labelTextStyle: myoroNullableFake<TextStyle>(),
       labelBehavior: myoroNullableFake<FloatingLabelBehavior>(),
       suffixButtonMargin: myoroNullableFake<EdgeInsets>(),
-      suffixButtonIconSize: myoroNullableFake<double>(),
       clearTextButtonIcon: myoroNullableFake<IconData>(),
       obscureTextButtonEnabledIcon: myoroNullableFake<IconData>(),
       obscureTextButtonDisabledIcon: myoroNullableFake<IconData>(),
@@ -129,7 +126,7 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
   /// Spacing between the input and the prefix/suffix widgets.
   final double? spacing;
 
-  /// Text style of [_Label].
+  /// Text style of the label.
   final TextStyle? labelTextStyle;
 
   /// [TextFormField.floatingLabelBehavior]. Used so the label will stay at the top of the
@@ -137,9 +134,6 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
 
   /// Margin of the suffix button.
   final EdgeInsets? suffixButtonMargin;
-
-  /// Size of [suffixButtonIcon].
-  final double? suffixButtonIconSize;
 
   /// [IconData] of the clear text button.
   final IconData? clearTextButtonIcon;

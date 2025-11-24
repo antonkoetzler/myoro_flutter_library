@@ -17,6 +17,7 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
       widget.dropdownType,
       widget.targetKey,
       widget.itemBuilder,
+      widget.footer,
     );
     final state = _viewModel.state;
     final dropdownType = state.dropdownType;
@@ -47,13 +48,20 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
     state
       ..showingController = widget.showingController
       ..items = widget.items
-      ..selectedItems = widget.selectedItems
       ..searchCallback = widget.searchCallback
       ..dropdownType =
           widget.dropdownType ??
           (MyoroPlatformHelper.isMobile ? MyoroDropdownTypeEnum.bottomSheet : MyoroDropdownTypeEnum.expanding)
       ..targetKey = widget.targetKey
-      ..itemBuilder = widget.itemBuilder;
+      ..itemBuilder = widget.itemBuilder
+      ..footer = widget.footer;
+
+    // Update selected items.
+    if (widget.selectedItems != state.selectedItems) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        state.selectedItems = widget.selectedItems;
+      });
+    }
   }
 
   /// Dispose function.
@@ -148,18 +156,25 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
     final isBottomSheet = dropdownType.isBottomSheet;
     final showing = state.showing;
     if (!(isModal || isBottomSheet)) return;
-    showing
-        ? MyoroModal.show(
-            context,
-            isBottomSheet: isBottomSheet,
-            child: MultiProvider(
-              providers: [
-                InheritedProvider.value(value: widget.style),
-                InheritedProvider.value(value: _viewModel),
-              ],
-              child: _Menu<T>(),
-            ),
-          )
-        : context.navigator.pop();
+    if (showing) {
+      state.wasClosedNaturally = false;
+      MyoroModal.show(
+        context,
+        isBottomSheet: isBottomSheet,
+        child: MultiProvider(
+          providers: [
+            InheritedProvider.value(value: widget.style),
+            InheritedProvider.value(value: _viewModel),
+          ],
+          child: _Menu<T>(),
+        ),
+      ).then(
+        (_) => state
+          ..wasClosedNaturally = true
+          ..showing = false,
+      );
+    } else {
+      if (!state.wasClosedNaturally) context.navigator.pop();
+    }
   }
 }

@@ -18,7 +18,9 @@ List<ThemeExtension> createMyoroThemeExtensions(bool isDarkMode, ColorScheme col
     ..._createDropdownThemeExtensions(),
     ..._createFeedbackThemeExtensions(textTheme),
     ..._createFieldThemeExtensions(colorScheme, textTheme),
+    ..._createFilterThemeExtensions(textTheme),
     ..._createGraphThemeExtensions(colorScheme, textTheme),
+    ..._createIconThemeExtensions(colorScheme),
     ..._createIndexedStackThemeExtensions(colorScheme),
     ..._createInputThemeExtensions(isDarkMode, colorScheme, textTheme, decorationThemeExtension),
     ..._createLoaderThemeExtensions(colorScheme),
@@ -30,6 +32,8 @@ List<ThemeExtension> createMyoroThemeExtensions(bool isDarkMode, ColorScheme col
     ..._createSliderThemeExtensions(textTheme),
     ..._createSnackBarThemeExtensions(colorScheme, textTheme),
     ..._createTableThemeExtensions(colorScheme, textTheme),
+    ..._createTagThemeExtensions(colorScheme, textTheme),
+    ..._createTextThemeExtensions(textTheme),
     ..._createTabViewThemeExtensions(colorScheme, textTheme),
     ..._createTooltipThemeExtensions(),
   ];
@@ -81,7 +85,7 @@ List<ThemeExtension> _createDrawerThemeExtensions(ColorScheme colorScheme, TextT
 }
 
 List<ThemeExtension> _createDropdownThemeExtensions() {
-  return [MyoroDropdownThemeExtension.builder()];
+  return [MyoroDropdownThemeExtension.builder(), const MyoroSearchDropdownThemeExtension.builder()];
 }
 
 List<ThemeExtension> _createFeedbackThemeExtensions(TextTheme textTheme) {
@@ -92,11 +96,19 @@ List<ThemeExtension> _createFieldThemeExtensions(ColorScheme colorScheme, TextTh
   return [MyoroFieldThemeExtension.builder(colorScheme, textTheme)];
 }
 
+List<ThemeExtension> _createFilterThemeExtensions(TextTheme textTheme) {
+  return [MyoroFilterButtonThemeExtension.builder(textTheme), const MyoroFilterPanelThemeExtension.builder()];
+}
+
 List<ThemeExtension> _createGraphThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
     MyoroBarGraphThemeExtension.builder(colorScheme, textTheme),
     MyoroPieGraphThemeExtension.builder(colorScheme),
   ];
+}
+
+List<ThemeExtension> _createIconThemeExtensions(ColorScheme colorScheme) {
+  return [MyoroIconThemeExtension.builder(colorScheme)];
 }
 
 List<ThemeExtension> _createIndexedStackThemeExtensions(ColorScheme colorScheme) {
@@ -111,8 +123,8 @@ List<ThemeExtension> _createInputThemeExtensions(
 ) {
   return [
     MyoroCurrencyInputThemeExtension.builder(isDarkMode, colorScheme, textTheme, decorationThemeExtension),
+    MyoroSearchBarInputThemeExtension.builder(colorScheme),
     MyoroInputThemeExtension.builder(colorScheme, textTheme),
-    const MyoroSearchInputThemeExtension.builder(),
   ];
 }
 
@@ -158,6 +170,14 @@ List<ThemeExtension> _createSnackBarThemeExtensions(ColorScheme colorScheme, Tex
 
 List<ThemeExtension> _createTableThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [MyoroTableThemeExtension.builder(colorScheme, textTheme)];
+}
+
+List<ThemeExtension> _createTagThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+  return [MyoroTagThemeExtension.builder(colorScheme, textTheme)];
+}
+
+List<ThemeExtension> _createTextThemeExtensions(TextTheme textTheme) {
+  return [MyoroTextThemeExtension.builder(textTheme)];
 }
 
 List<ThemeExtension> _createTabViewThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {

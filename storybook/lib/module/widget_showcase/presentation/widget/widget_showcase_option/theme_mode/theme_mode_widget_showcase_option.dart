@@ -22,7 +22,7 @@ final class ThemeModeWidgetShowcaseOption extends StatelessWidget {
     return MyoroSingleSelectionDropdown<ThemeMode>(
       label: label,
       onChanged: onChanged,
-      itemBuilder: (themeMode, _) {
+      itemBuilder: (_, themeMode) {
         return MyoroMenuIconTextButtonItem(text: _formattedName(themeMode));
       },
       items: ThemeMode.values.toSet(),

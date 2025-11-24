@@ -84,6 +84,7 @@ class MyoroGridScrollableBuilder extends StatelessWidget {
         gridDelegate: gridDelegate,
         itemBuilder: itemBuilder,
         itemCount: itemCount,
+        spacing: style.spacing,
       ),
     );
   }

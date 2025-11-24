@@ -6,19 +6,22 @@ part '../_widget/_myoro_radio_state.dart';
 
 /// Single radio(box) [Widget].
 class MyoroRadio extends StatefulWidget {
+  /// Default value of [style].
+  static const styleDefaultValue = MyoroRadioStyle();
+
   /// Default value of [label].
   static const labelDefaultValue = kMyoroEmptyString;
 
   /// Default constructor.
   const MyoroRadio({
     super.key,
-    this.style = const MyoroRadioStyle(),
+    this.style = styleDefaultValue,
     this.controller,
-    this.initialValue,
+    this.value,
     this.label = labelDefaultValue,
     this.onChanged,
   }) : assert(
-         !(controller != null && initialValue != null),
+         !(controller != null && value != null),
          '[MyoroRadio]: If [controller] is provided, set the initial '
          'value within the [MyoroRadioController]\'s constructor.',
        );
@@ -29,12 +32,8 @@ class MyoroRadio extends StatefulWidget {
   /// [ValueNotifier] to manage state externally.
   final ValueNotifier<bool>? controller;
 
-  /// Value of the radio.
-  ///
-  /// Typically used as the initial value, but this member may also
-  /// be used to change the value of the radio externally in the
-  /// [Widget] state of the parent using [MyoroRadio] via rebuild.
-  final bool? initialValue;
+  /// Value of the radio when [controller] isn't provided.
+  final bool? value;
 
   /// Label to the right of the radio.
   final String label;

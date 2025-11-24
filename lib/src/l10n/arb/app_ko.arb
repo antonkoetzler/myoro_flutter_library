@@ -12,6 +12,9 @@
   "myoroDialogModalCancelButtonText": "취소",
   "myoroDialogModalConfirmButtonText": "확인",
 
+  "myoroFilterButtonClearButtonText": "지우기",
+  "myoroFilterButtonApplyButtonText": "적용",
+
   "myoroCurrencyEnumUsdFormalName": "미국 달러",
   "myoroCurrencyEnumCadFormalName": "캐나다 달러",
   "myoroCurrencyEnumBrlFormalName": "브라질 레알",
@@ -382,6 +385,9 @@
   "myoroMonthEnumSeptemberLabel": "9월",
   "myoroMonthEnumOctoberLabel": "10월",
   "myoroMonthEnumNovemberLabel": "11월",
-  "myoroMonthEnumDecemberLabel": "12월"
+  "myoroMonthEnumDecemberLabel": "12월",
+
+  "myoroSearchBarInputLabel": "검색",
+  "myoroSearchBarInputPlaceholder": "무언가 입력하세요..."
 }
 

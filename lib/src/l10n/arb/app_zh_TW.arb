@@ -12,6 +12,9 @@
   "myoroDialogModalCancelButtonText": "取消",
   "myoroDialogModalConfirmButtonText": "確認",
 
+  "myoroFilterButtonClearButtonText": "清除",
+  "myoroFilterButtonApplyButtonText": "套用",
+
   "myoroCurrencyEnumUsdFormalName": "美元",
   "myoroCurrencyEnumCadFormalName": "加拿大元",
   "myoroCurrencyEnumBrlFormalName": "巴西里爾",
@@ -382,6 +385,9 @@
   "myoroMonthEnumSeptemberLabel": "九月",
   "myoroMonthEnumOctoberLabel": "十月",
   "myoroMonthEnumNovemberLabel": "十一月",
-  "myoroMonthEnumDecemberLabel": "十二月"
+  "myoroMonthEnumDecemberLabel": "十二月",
+
+  "myoroSearchBarInputLabel": "搜尋",
+  "myoroSearchBarInputPlaceholder": "輸入一些內容..."
 }
 

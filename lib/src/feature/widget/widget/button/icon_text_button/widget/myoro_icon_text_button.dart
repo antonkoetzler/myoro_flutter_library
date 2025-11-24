@@ -33,10 +33,12 @@ class MyoroIconTextButton extends StatelessWidget {
     this.onTapUp,
     this.isLoading = isLoadingDefaultValue,
     this.invert = invertDefaultValue,
-    this.iconConfiguration,
+    this.icon,
     this.text = textDefaultValue,
-    this.textConfiguration,
-  }) : assert(!(iconConfiguration == null && text.length == 0), '[MyoroIconTextButton]: [iconConfiguration] and/or [text] must be provided.');
+  }) : assert(
+         !(icon == null && text.length == 0),
+         '[MyoroIconTextButton]: [iconConfiguration] and/or [text] must be provided.',
+       );
 
   /// Style.
   final MyoroIconTextButtonStyle style;
@@ -61,14 +63,11 @@ class MyoroIconTextButton extends StatelessWidget {
   /// Only effective when both [iconConfiguration] and [textConfiguration] is provided.
   final bool invert;
 
-  /// Icon configuration of the [MyoroIconTextButton].
-  final MyoroIconConfiguration? iconConfiguration;
+  /// Icon of the [MyoroIconTextButton].
+  final IconData? icon;
 
   /// Text of the [MyoroIconTextButton].
   final String text;
-
-  /// Text configuration of the [MyoroIconTextButton].
-  final MyoroTextConfiguration? textConfiguration;
 
   @override
   Widget build(_) {
@@ -81,7 +80,7 @@ class MyoroIconTextButton extends StatelessWidget {
         onTapDown: onTapDown,
         onTapUp: onTapUp,
         isLoading: isLoading,
-        builder: (_, tapStatusEnum) => _Button(tapStatusEnum, invert, iconConfiguration, text, textConfiguration),
+        builder: (_, tapStatusEnum) => _Button(tapStatusEnum, invert, icon, text),
       ),
     );
   }

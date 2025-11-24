@@ -11,20 +11,20 @@ class MyoroFeedbackThemeExtension extends ThemeExtension<MyoroFeedbackThemeExten
     with _$MyoroFeedbackThemeExtensionMixin
     implements MyoroFeedbackStyle {
   /// Default constructor.
-  const MyoroFeedbackThemeExtension({this.spacing, this.iconSize, this.titleTextStyle, this.subtitleTextStyle});
+  const MyoroFeedbackThemeExtension({this.spacing, this.iconStyle, this.titleTextStyle, this.subtitleTextStyle});
 
   /// Fake constructor.
   MyoroFeedbackThemeExtension.fake()
     : spacing = myoroNullableFake<double>(),
-      iconSize = myoroNullableFake<double>(),
-      titleTextStyle = myoroNullableFake<TextStyle>(),
-      subtitleTextStyle = myoroNullableFake<TextStyle>();
+      iconStyle = myoroNullableFake<MyoroIconStyle>(),
+      titleTextStyle = myoroNullableFake<MyoroTextStyle>(),
+      subtitleTextStyle = myoroNullableFake<MyoroTextStyle>();
 
   MyoroFeedbackThemeExtension.builder(TextTheme textTheme)
     : spacing = kMyoroMultiplier * 2,
-      iconSize = kMyoroMultiplier * 30,
-      titleTextStyle = textTheme.titleMedium,
-      subtitleTextStyle = textTheme.bodyMedium;
+      iconStyle = const MyoroIconStyle(size: kMyoroMultiplier * 30),
+      titleTextStyle = MyoroTextStyle(style: textTheme.titleMedium),
+      subtitleTextStyle = MyoroTextStyle(style: textTheme.bodyMedium, maxLines: 10);
 
   /// Spacing between the icon/title/subtitle and the action button.
   @override
@@ -32,15 +32,15 @@ class MyoroFeedbackThemeExtension extends ThemeExtension<MyoroFeedbackThemeExten
 
   /// Size of the icon.
   @override
-  final double? iconSize;
+  final MyoroIconStyle? iconStyle;
 
   /// [TextStyle] of the title.
   @override
-  final TextStyle? titleTextStyle;
+  final MyoroTextStyle? titleTextStyle;
 
   /// [TextStyle] of the subtitle.
   @override
-  final TextStyle? subtitleTextStyle;
+  final MyoroTextStyle? subtitleTextStyle;
 
   @override
   MyoroFeedbackThemeExtension lerp(covariant MyoroFeedbackThemeExtension? other, double t) {
@@ -48,9 +48,9 @@ class MyoroFeedbackThemeExtension extends ThemeExtension<MyoroFeedbackThemeExten
     final style = MyoroFeedbackStyle.lerp(this, other, t);
     return MyoroFeedbackThemeExtension(
       spacing: style.spacing,
-      iconSize: style.iconSize,
-      titleTextStyle: style.titleTextStyle,
-      subtitleTextStyle: style.subtitleTextStyle,
+      iconStyle: style.iconStyle,
+      titleTextStyle: MyoroTextStyle.lerp(style.titleTextStyle, other.titleTextStyle, t),
+      subtitleTextStyle: MyoroTextStyle.lerp(style.subtitleTextStyle, other.subtitleTextStyle, t),
     );
   }
 }

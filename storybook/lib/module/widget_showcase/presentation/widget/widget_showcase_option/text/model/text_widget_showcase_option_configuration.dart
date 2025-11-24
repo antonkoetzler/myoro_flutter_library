@@ -11,9 +11,9 @@ part 'text_widget_showcase_option_configuration.g.dart';
 final class TextWidgetShowcaseOptionConfiguration with _$TextWidgetShowcaseOptionConfigurationMixin {
   static const labelDefaultValue = 'Text';
   static const textInitialValueDefaultValue = '';
-  static const maxLinesInitialValueDefaultValue = MyoroTextConfiguration.maxLinesDefaultValue;
-  static const overflowInitialValueDefaultValue = MyoroTextConfiguration.overflowDefaultValue;
-  static const alignmentInitialValueDefaultValue = MyoroTextConfiguration.alignmentDefaultValue;
+  static const maxLinesInitialValueDefaultValue = MyoroTextStyle.maxLinesDefaultValue;
+  static const overflowInitialValueDefaultValue = MyoroTextStyle.overflowDefaultValue;
+  static const alignmentInitialValueDefaultValue = MyoroTextStyle.alignmentDefaultValue;
 
   const TextWidgetShowcaseOptionConfiguration({
     this.label = labelDefaultValue,

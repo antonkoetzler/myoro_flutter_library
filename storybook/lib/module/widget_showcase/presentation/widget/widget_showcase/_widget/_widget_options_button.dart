@@ -19,7 +19,7 @@ final class _WidgetOptionsButton extends StatelessWidget {
           viewModel.configuration.stylingOptions,
         );
       },
-      iconConfiguration: MyoroIconConfiguration(icon: themeExtension.widgetOptionsButtonIcon),
+      icon: themeExtension.widgetOptionsButtonIcon,
     );
   }
 }

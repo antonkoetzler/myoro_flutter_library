@@ -36,6 +36,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get myoroDialogModalConfirmButtonText => '确认';
 
   @override
+  String get myoroFilterButtonClearButtonText => '清除';
+
+  @override
+  String get myoroFilterButtonApplyButtonText => '应用';
+
+  @override
   String get myoroCurrencyEnumUsdFormalName => '美元';
 
   @override
@@ -1138,6 +1144,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get myoroMonthEnumDecemberLabel => '十二月';
+
+  @override
+  String get myoroSearchBarInputLabel => '搜索';
+
+  @override
+  String get myoroSearchBarInputPlaceholder => '输入一些内容...';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -1170,6 +1182,12 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get myoroDialogModalConfirmButtonText => '確認';
+
+  @override
+  String get myoroFilterButtonClearButtonText => '清除';
+
+  @override
+  String get myoroFilterButtonApplyButtonText => '套用';
 
   @override
   String get myoroCurrencyEnumUsdFormalName => '美元';
@@ -2274,4 +2292,10 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get myoroMonthEnumDecemberLabel => '十二月';
+
+  @override
+  String get myoroSearchBarInputLabel => '搜尋';
+
+  @override
+  String get myoroSearchBarInputPlaceholder => '輸入一些內容...';
 }

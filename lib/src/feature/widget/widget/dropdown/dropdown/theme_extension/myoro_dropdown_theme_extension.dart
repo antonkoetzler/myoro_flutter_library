@@ -17,6 +17,7 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
     this.border,
     this.borderRadius,
     this.searchBarPadding,
+    this.footerPadding,
     this.searchBarInputStyle,
     this.itemBorderRadius,
     this.dialogTextStyle,
@@ -35,6 +36,7 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
       border = myoroNullableFake<BoxBorder>(),
       borderRadius = myoroNullableFake<BorderRadius>(),
       searchBarPadding = myoroNullableFake<EdgeInsets>(),
+      footerPadding = myoroNullableFake<EdgeInsets>(),
       searchBarInputStyle = myoroNullableFake<MyoroInputStyleEnum>(),
       itemBorderRadius = myoroNullableFake<BorderRadius>(),
       dialogTextStyle = myoroNullableFake<TextStyle>(),
@@ -52,6 +54,7 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
       border = null,
       borderRadius = null,
       searchBarPadding = null,
+      footerPadding = null,
       searchBarInputStyle = null,
       itemBorderRadius = null,
       dialogTextStyle = null,
@@ -78,23 +81,27 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
   @override
   final BorderRadius? borderRadius;
 
-  /// Padding of [_SearchBar].
+  /// Padding of the search bar.
   @override
   final EdgeInsets? searchBarPadding;
 
-  /// [MyoroInputStyleEnum] of [_SearchBar].
+  /// Padding of the footer.
+  @override
+  final EdgeInsets? footerPadding;
+
+  /// [MyoroInputStyleEnum] of the search bar.
   @override
   final MyoroInputStyleEnum? searchBarInputStyle;
 
-  /// [BorderRadius] of [_Item].
+  /// [BorderRadius] of menu items.
   @override
   final BorderRadius? itemBorderRadius;
 
-  /// Text style of [_EmptyMenuDialog].
+  /// Text style of the empty menu dialog text.
   @override
   final TextStyle? dialogTextStyle;
 
-  /// [EdgeInsets] of [_DialogText] & [_Loader].
+  /// [EdgeInsets] of the dialog text and loader.
   @override
   final EdgeInsets? dialogTextLoaderPadding;
 
@@ -128,6 +135,7 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
     final border = style.border;
     final borderRadius = style.borderRadius;
     final searchBarPadding = style.searchBarPadding;
+    final footerPadding = style.footerPadding;
     final searchBarInputStyle = style.searchBarInputStyle;
     final itemBorderRadius = style.itemBorderRadius;
     final dialogTextStyle = style.dialogTextStyle;
@@ -144,6 +152,7 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
       border: border,
       borderRadius: borderRadius,
       searchBarPadding: searchBarPadding,
+      footerPadding: footerPadding,
       searchBarInputStyle: searchBarInputStyle,
       itemBorderRadius: itemBorderRadius,
       dialogTextStyle: dialogTextStyle,

@@ -20,22 +20,26 @@ class MyoroMenuIconTextButtonItem extends MyoroMenuItem with _$MyoroMenuIconText
     super.onTapUp,
     super.isLoading = isLoadingDefaultValue,
     this.invert = invertDefaultValue,
-    this.iconConfiguration,
+    this.icon,
+    this.iconSize,
     this.text = textDefaultValue,
-    this.textConfiguration,
+    this.textStyle,
   });
 
   /// Whether or not to invert the icon and text.
   ///
-  /// Only effective when both [iconConfiguration] and [textConfiguration] is provided.
+  /// Only effective when both [iconStyle] and [textStyle] is provided.
   final bool invert;
 
-  /// Icon configuration of the [MyoroIconTextButton].
-  final MyoroIconConfiguration? iconConfiguration;
+  /// [MyoroIconTextButton.icon].
+  final IconData? icon;
 
-  /// Text of the [MyoroIconTextButton].
+  /// [MyoroIconTextButtonStyle.iconSize].
+  final double? iconSize;
+
+  /// [MyoroIconTextButton.text].
   final String text;
 
-  /// Text configuration of the [MyoroIconTextButton].
-  final MyoroTextConfiguration? textConfiguration;
+  /// [MyoroIconTextButtonStyle.textStyle].
+  final MyoroTextStyle? textStyle;
 }

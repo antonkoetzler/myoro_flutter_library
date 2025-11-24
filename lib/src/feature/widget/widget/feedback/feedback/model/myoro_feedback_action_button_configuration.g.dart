@@ -27,10 +27,10 @@ mixin _$MyoroFeedbackActionButtonConfigurationMixin {
     bool onTapUpProvided = true,
     bool? isLoading,
     bool? invert,
-    MyoroIconConfiguration? iconConfiguration,
-    bool iconConfigurationProvided = true,
-    MyoroTextConfiguration? textConfiguration,
-    bool textConfigurationProvided = true,
+    IconData? icon,
+    bool iconProvided = true,
+    String? text,
+    bool textProvided = true,
   }) {
     return MyoroFeedbackActionButtonConfiguration(
       style: style ?? self.style,
@@ -40,8 +40,8 @@ mixin _$MyoroFeedbackActionButtonConfigurationMixin {
       onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,
       isLoading: isLoading ?? self.isLoading,
       invert: invert ?? self.invert,
-      iconConfiguration: iconConfigurationProvided ? (iconConfiguration ?? self.iconConfiguration) : null,
-      textConfiguration: textConfigurationProvided ? (textConfiguration ?? self.textConfiguration) : null,
+      icon: iconProvided ? (icon ?? self.icon) : null,
+      text: textProvided ? (text ?? self.text) : null,
     );
   }
 
@@ -56,8 +56,8 @@ mixin _$MyoroFeedbackActionButtonConfigurationMixin {
         other.onTapUp == self.onTapUp &&
         other.isLoading == self.isLoading &&
         other.invert == self.invert &&
-        other.iconConfiguration == self.iconConfiguration &&
-        other.textConfiguration == self.textConfiguration;
+        other.icon == self.icon &&
+        other.text == self.text;
   }
 
   @override
@@ -70,8 +70,8 @@ mixin _$MyoroFeedbackActionButtonConfigurationMixin {
       self.onTapUp,
       self.isLoading,
       self.invert,
-      self.iconConfiguration,
-      self.textConfiguration,
+      self.icon,
+      self.text,
     );
   }
 
@@ -85,7 +85,7 @@ mixin _$MyoroFeedbackActionButtonConfigurationMixin {
       '  onTapUp: ${self.onTapUp},\n'
       '  isLoading: ${self.isLoading},\n'
       '  invert: ${self.invert},\n'
-      '  iconConfiguration: ${self.iconConfiguration},\n'
-      '  textConfiguration: ${self.textConfiguration},\n'
+      '  icon: ${self.icon},\n'
+      '  text: ${self.text},\n'
       ');';
 }

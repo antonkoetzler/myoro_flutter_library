@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:faker/faker.dart' hide Color;
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -24,11 +23,8 @@ class MyoroSnackBarStyle with _$MyoroSnackBarStyleMixin {
       padding: EdgeInsets.lerp(a?.padding, b?.padding, t),
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
       messageTextStyle: TextStyle.lerp(a?.messageTextStyle, b?.messageTextStyle, t),
-      closeButtonIconConfiguration: MyoroIconConfiguration.lerp(
-        a?.closeButtonIconConfiguration,
-        b?.closeButtonIconConfiguration,
-        t,
-      ),
+      closeButtonIcon: myoroFallbackLerp(a?.closeButtonIcon, b?.closeButtonIcon, t),
+      closeButtonIconSize: lerpDouble(a?.closeButtonIconSize, b?.closeButtonIconSize, t),
     );
   }
 
@@ -44,7 +40,8 @@ class MyoroSnackBarStyle with _$MyoroSnackBarStyleMixin {
     this.padding,
     this.spacing,
     this.messageTextStyle,
-    this.closeButtonIconConfiguration,
+    this.closeButtonIcon,
+    this.closeButtonIconSize,
   });
 
   /// Fake constructor.
@@ -60,7 +57,8 @@ class MyoroSnackBarStyle with _$MyoroSnackBarStyleMixin {
       padding: myoroNullableFake<EdgeInsets>(),
       spacing: myoroNullableFake<double>(),
       messageTextStyle: myoroNullableFake<TextStyle>(),
-      closeButtonIconConfiguration: faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null,
+      closeButtonIcon: myoroNullableFake<IconData>(),
+      closeButtonIconSize: myoroNullableFake<double>(),
     );
   }
 
@@ -88,12 +86,15 @@ class MyoroSnackBarStyle with _$MyoroSnackBarStyleMixin {
   /// Padding of the content of the snack bar.
   final EdgeInsets? padding;
 
-  /// Spacing between [_Message]/[MyoroSnackBar.child] & [_CloseButton].
+  /// Spacing between the message/[MyoroSnackBar.child] and the close button.
   final double? spacing;
 
-  /// Text style of [_Message].
+  /// Text style of the message.
   final TextStyle? messageTextStyle;
 
-  /// [MyoroIconConfiguration] of [_CloseButton].
-  final MyoroIconConfiguration? closeButtonIconConfiguration;
+  /// [IconData] of the close button.
+  final IconData? closeButtonIcon;
+
+  /// Icon size of the close button.
+  final double? closeButtonIconSize;
 }

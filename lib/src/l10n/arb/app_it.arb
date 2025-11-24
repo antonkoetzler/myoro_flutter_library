@@ -12,6 +12,9 @@
   "myoroDialogModalCancelButtonText": "Annulla",
   "myoroDialogModalConfirmButtonText": "Conferma",
 
+  "myoroFilterButtonClearButtonText": "Cancella",
+  "myoroFilterButtonApplyButtonText": "Applica",
+
   "myoroCurrencyEnumUsdFormalName": "Dollaro statunitense",
   "myoroCurrencyEnumCadFormalName": "Dollaro canadese",
   "myoroCurrencyEnumBrlFormalName": "Real brasiliano",
@@ -382,6 +385,9 @@
   "myoroMonthEnumSeptemberLabel": "Settembre",
   "myoroMonthEnumOctoberLabel": "Ottobre",
   "myoroMonthEnumNovemberLabel": "Novembre",
-  "myoroMonthEnumDecemberLabel": "Dicembre"
+  "myoroMonthEnumDecemberLabel": "Dicembre",
+
+  "myoroSearchBarInputLabel": "Cerca",
+  "myoroSearchBarInputPlaceholder": "Digita qualcosa..."
 }
 

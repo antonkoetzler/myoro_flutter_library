@@ -73,7 +73,7 @@ class MyoroInputViewModel {
     state.dispose();
   }
 
-  /// [MyoroCheckboxConfiguration.onChanged] of [_Checkbox].
+  /// [MyoroCheckboxConfiguration.onChanged] of the checkbox.
   void checkboxOnChanged(bool value) {
     state.checkboxOnChanged!.call(value, state.controller.text);
     state.enabled = value;
@@ -81,8 +81,8 @@ class MyoroInputViewModel {
 
   /// Clears the [MyoroInput]'s text.
   ///
-  /// If [MyoroControllerState] is not null, it clears
-  /// the text to it's [MyoroInputFormatter.initialText].
+  /// If a formatter is provided, it clears
+  /// the text to its [MyoroInputFormatter.initialText].
   void clearText() {
     final controller = state.controller;
     state.formatter == null ? controller.clear() : controller.text = state.formatter!.initialText;

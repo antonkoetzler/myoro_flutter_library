@@ -12,6 +12,9 @@
   "myoroDialogModalCancelButtonText": "إلغاء",
   "myoroDialogModalConfirmButtonText": "تأكيد",
 
+  "myoroFilterButtonClearButtonText": "مسح",
+  "myoroFilterButtonApplyButtonText": "تطبيق",
+
   "myoroCurrencyEnumUsdFormalName": "الدولار الأمريكي",
   "myoroCurrencyEnumCadFormalName": "الدولار الكندي",
   "myoroCurrencyEnumBrlFormalName": "الريال البرازيلي",
@@ -382,6 +385,9 @@
   "myoroMonthEnumSeptemberLabel": "سبتمبر",
   "myoroMonthEnumOctoberLabel": "أكتوبر",
   "myoroMonthEnumNovemberLabel": "نوفمبر",
-  "myoroMonthEnumDecemberLabel": "ديسمبر"
+  "myoroMonthEnumDecemberLabel": "ديسمبر",
+
+  "myoroSearchBarInputLabel": "بحث",
+  "myoroSearchBarInputPlaceholder": "اكتب شيئاً..."
 }
 

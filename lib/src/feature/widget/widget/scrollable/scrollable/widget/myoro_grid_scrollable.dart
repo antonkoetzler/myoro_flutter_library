@@ -79,6 +79,7 @@ class MyoroGridScrollable extends StatelessWidget {
         shrinkWrap: shrinkWrap,
         gridDelegate: gridDelegate,
         children: children,
+        spacing: style.spacing,
       ),
     );
   }
