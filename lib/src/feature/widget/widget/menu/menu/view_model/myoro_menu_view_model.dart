@@ -7,12 +7,12 @@ part 'myoro_menu_state.dart';
 class MyoroMenuViewModel<T> {
   /// Default constructor.
   MyoroMenuViewModel(
-    MyoroMenuSearchCallback<T>? searchCallback,
+    bool showSearchBar,
     Set<T>? items,
     Set<T> selectedItems,
     MyoroMenuItemBuilder<T> itemBuilder,
     Widget? footer,
-  ) : _state = MyoroMenuState(searchCallback, items, selectedItems, itemBuilder, footer);
+  ) : _state = MyoroMenuState(showSearchBar, items, selectedItems, itemBuilder, footer);
 
   /// State.
   final MyoroMenuState<T> _state;
@@ -20,6 +20,11 @@ class MyoroMenuViewModel<T> {
   /// Dispose function.
   void dispose() {
     _state.dispose();
+  }
+
+  /// Search bar's on changed.
+  void searchBarOnChanged(String query) {
+    _state.query = query;
   }
 
   /// [_state] getter.

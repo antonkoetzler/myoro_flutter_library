@@ -58,6 +58,8 @@ mixin _$MyoroSearchBarInputThemeExtensionMixin on ThemeExtension<MyoroSearchBarI
     bool prefixIconConstraintsProvided = true,
     MyoroIconTextButtonStyle? suffixButtonStyle,
     bool suffixButtonStyleProvided = true,
+    TextStyle? errorTextStyle,
+    bool errorTextStyleProvided = true,
     MyoroIconStyle? searchBarIconStyle,
     bool searchBarIconStyleProvided = true,
   }) {
@@ -90,6 +92,7 @@ mixin _$MyoroSearchBarInputThemeExtensionMixin on ThemeExtension<MyoroSearchBarI
           ? (prefixIconConstraints ?? self.prefixIconConstraints)
           : null,
       suffixButtonStyle: suffixButtonStyleProvided ? (suffixButtonStyle ?? self.suffixButtonStyle) : null,
+      errorTextStyle: errorTextStyleProvided ? (errorTextStyle ?? self.errorTextStyle) : null,
       searchBarIconStyle: searchBarIconStyleProvided ? (searchBarIconStyle ?? self.searchBarIconStyle) : null,
     );
   }
@@ -118,6 +121,7 @@ mixin _$MyoroSearchBarInputThemeExtensionMixin on ThemeExtension<MyoroSearchBarI
         other.suffixIconConstraints == self.suffixIconConstraints &&
         other.prefixIconConstraints == self.prefixIconConstraints &&
         other.suffixButtonStyle == self.suffixButtonStyle &&
+        other.errorTextStyle == self.errorTextStyle &&
         other.searchBarIconStyle == self.searchBarIconStyle;
   }
 
@@ -144,6 +148,7 @@ mixin _$MyoroSearchBarInputThemeExtensionMixin on ThemeExtension<MyoroSearchBarI
       self.suffixIconConstraints,
       self.prefixIconConstraints,
       self.suffixButtonStyle,
+      self.errorTextStyle,
       self.searchBarIconStyle,
     ]);
   }
@@ -171,6 +176,7 @@ mixin _$MyoroSearchBarInputThemeExtensionMixin on ThemeExtension<MyoroSearchBarI
       '  suffixIconConstraints: ${self.suffixIconConstraints},\n'
       '  prefixIconConstraints: ${self.prefixIconConstraints},\n'
       '  suffixButtonStyle: ${self.suffixButtonStyle},\n'
+      '  errorTextStyle: ${self.errorTextStyle},\n'
       '  searchBarIconStyle: ${self.searchBarIconStyle},\n'
       ');';
 }

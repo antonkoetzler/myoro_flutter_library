@@ -34,6 +34,8 @@ mixin _$MyoroCheckboxThemeExtensionMixin on ThemeExtension<MyoroCheckboxThemeExt
     bool labelMaxLinesProvided = true,
     double? spacing,
     bool spacingProvided = true,
+    Color? disabledColor,
+    bool disabledColorProvided = true,
   }) {
     return MyoroCheckboxThemeExtension(
       checkboxActiveColor: checkboxActiveColorProvided ? (checkboxActiveColor ?? self.checkboxActiveColor) : null,
@@ -44,6 +46,7 @@ mixin _$MyoroCheckboxThemeExtensionMixin on ThemeExtension<MyoroCheckboxThemeExt
       labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
       labelMaxLines: labelMaxLinesProvided ? (labelMaxLines ?? self.labelMaxLines) : null,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      disabledColor: disabledColorProvided ? (disabledColor ?? self.disabledColor) : null,
     );
   }
 
@@ -58,7 +61,8 @@ mixin _$MyoroCheckboxThemeExtensionMixin on ThemeExtension<MyoroCheckboxThemeExt
         other.checkboxSplashRadius == self.checkboxSplashRadius &&
         other.labelTextStyle == self.labelTextStyle &&
         other.labelMaxLines == self.labelMaxLines &&
-        other.spacing == self.spacing;
+        other.spacing == self.spacing &&
+        other.disabledColor == self.disabledColor;
   }
 
   @override
@@ -72,6 +76,7 @@ mixin _$MyoroCheckboxThemeExtensionMixin on ThemeExtension<MyoroCheckboxThemeExt
       self.labelTextStyle,
       self.labelMaxLines,
       self.spacing,
+      self.disabledColor,
     );
   }
 
@@ -86,5 +91,6 @@ mixin _$MyoroCheckboxThemeExtensionMixin on ThemeExtension<MyoroCheckboxThemeExt
       '  labelTextStyle: ${self.labelTextStyle},\n'
       '  labelMaxLines: ${self.labelMaxLines},\n'
       '  spacing: ${self.spacing},\n'
+      '  disabledColor: ${self.disabledColor},\n'
       ');';
 }

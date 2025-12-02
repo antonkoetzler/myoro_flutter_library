@@ -2,17 +2,22 @@ part of '../widget/myoro_screen.dart';
 
 /// [State] of [MyoroScreen].
 final class _MyoroScreenState extends State<MyoroScreen> {
+  /// Local drawer controller.
   MyoroDrawerController? _localDrawerController;
+
+  /// Effective drawer controller.
   MyoroDrawerController get _drawerController {
     return widget.drawerController ?? (_localDrawerController ??= MyoroDrawerController());
   }
 
+  /// Dispose function.
   @override
   void dispose() {
     _localDrawerController?.dispose();
     super.dispose();
   }
 
+  /// Build function.
   @override
   Widget build(context) {
     final isEndDrawerController = _drawerController.isEndDrawerController;
@@ -47,6 +52,7 @@ final class _MyoroScreenState extends State<MyoroScreen> {
               key: _drawerController.scaffoldKey,
               appBar: widget.appBar,
               body: widget.body,
+              bottomNavigationBar: widget.bottomNavigationBar,
               drawer: drawer,
               endDrawer: drawer,
               drawerEnableOpenDragGesture: drawerEnableOpenDragGesture,

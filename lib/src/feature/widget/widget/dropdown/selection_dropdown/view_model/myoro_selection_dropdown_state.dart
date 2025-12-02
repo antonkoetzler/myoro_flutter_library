@@ -1,4 +1,8 @@
-part of 'myoro_selection_dropdown_view_model.dart';
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+part 'myoro_multi_selection_dropdown_state.dart';
+part 'myoro_single_selection_dropdown_state.dart';
 
 /// State of [MyoroSelectionDropdownViewModel].
 sealed class MyoroSelectionDropdownState<T> {
@@ -6,74 +10,48 @@ sealed class MyoroSelectionDropdownState<T> {
   MyoroSelectionDropdownState(
     this.label,
     this.enabled,
+    this.showSearchBar,
     this.dropdownType,
     this.items,
     ValueNotifier<bool>? showingController,
-    MyoroMenuItemBuilder<T> itemBuilder,
+    this.itemBuilder,
     this.selectedItemBuilder,
   ) {
     _showingController = showingController ?? (_localShowingController ??= ValueNotifier(false));
-
-    this.itemBuilder = (index, item) {
-      final menuItem = itemBuilder(index, item);
-      return menuItem.copyWith(
-        onTapUp: (context, details) {
-          menuItem.onTapUp?.call(context, details);
-
-          switch (this) {
-            case final MyoroMultiSelectionDropdownState<T> state:
-              final selectedItems = Set<T>.from(state.selectedItems);
-              state.selectedItems = selectedItems.contains(item)
-                  ? (selectedItems..remove(item))
-                  : (selectedItems..add(item));
-              break;
-            case final MyoroSingleSelectionDropdownState<T> state:
-              final selectedItem = state.selectedItem;
-              if (item == selectedItem) {
-                // Only allow deselection if allowDeselection is true
-                if (state.allowDeselection) {
-                  state.selectedItem = null;
-                }
-              } else {
-                state.selectedItem = item;
-              }
-              if (state.selectedItem != null) state.showing = false;
-              break;
-          }
-        },
-      );
-    };
   }
 
   /// Label of the dropdown.
-  final String label;
+  String label;
 
   /// If the dropdown is enabled.
-  final bool enabled;
+  bool enabled;
+
+  /// Whether or not a searchbar should be provided when the dropdown is opened.
+  bool showSearchBar;
+
+  /// Dropdown type.
+  MyoroDropdownTypeEnum? dropdownType;
+
+  /// Items.
+  Set<T>? items;
+
+  /// Local showing controller.
+  ValueNotifier<bool>? _localShowingController;
+
+  /// [ValueNotifier] of showing controller.
+  late ValueNotifier<bool> _showingController;
+
+  /// Item builder.
+  MyoroMenuItemBuilder<T> itemBuilder;
+
+  /// Selected item builder.
+  MyoroSelectionDropdownSelectedItemBuilder<T> selectedItemBuilder;
 
   /// [GlobalKey] of the selection dropdown's input.
   final _inputKey = GlobalKey();
 
   /// [TextEditingController] of the selection dropdown's input.
   final _inputController = TextEditingController();
-
-  /// Dropdown type.
-  final MyoroDropdownTypeEnum? dropdownType;
-
-  /// Items.
-  final Set<T>? items;
-
-  /// Item builder.
-  late final MyoroMenuItemBuilder<T> itemBuilder;
-
-  /// Selected item builder.
-  final MyoroSelectionDropdownSelectedItemBuilder<T> selectedItemBuilder;
-
-  /// Local showing controller.
-  ValueNotifier<bool>? _localShowingController;
-
-  /// [ValueNotifier] of showing controller.
-  late final ValueNotifier<bool> _showingController;
 
   /// Dispose function.
   @mustCallSuper
@@ -102,8 +80,24 @@ sealed class MyoroSelectionDropdownState<T> {
     return showingController.value;
   }
 
+  /// Setter of the showing controller.
+  set showingController(ValueNotifier<bool>? showingController) {
+    if (showingController == null) {
+      _showingController = _localShowingController ??= ValueNotifier(showing);
+    } else {
+      _localShowingController?.dispose();
+      _localShowingController = null;
+      _showingController = showingController;
+    }
+  }
+
   /// Setter of [showingController]'s value.
   set showing(bool value) {
     showingController.value = value;
+  }
+
+  /// [_inputController] setter.
+  set input(String value) {
+    _inputController.text = value;
   }
 }

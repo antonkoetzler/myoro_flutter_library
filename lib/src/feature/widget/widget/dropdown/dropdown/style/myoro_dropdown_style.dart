@@ -27,6 +27,7 @@ class MyoroDropdownStyle extends MyoroMenuStyle with _$MyoroDropdownStyleMixin {
       expandingAndOverlaySpacing: lerpDouble(a?.expandingAndOverlaySpacing, b?.expandingAndOverlaySpacing, t),
       textAlign: myoroFallbackLerp(a?.textAlign, b?.textAlign, t),
       inputTextStyle: TextStyle.lerp(a?.inputTextStyle, b?.inputTextStyle, t),
+      contentPadding: EdgeInsets.lerp(a?.contentPadding, b?.contentPadding, t),
     );
   }
 
@@ -46,6 +47,7 @@ class MyoroDropdownStyle extends MyoroMenuStyle with _$MyoroDropdownStyleMixin {
     this.expandingAndOverlaySpacing,
     this.textAlign,
     this.inputTextStyle,
+    this.contentPadding,
   });
 
   /// Fake constructor.
@@ -65,6 +67,7 @@ class MyoroDropdownStyle extends MyoroMenuStyle with _$MyoroDropdownStyleMixin {
       expandingAndOverlaySpacing: myoroNullableFake<double>(),
       textAlign: myoroNullableFake<TextAlign>(),
       inputTextStyle: myoroNullableFake<TextStyle>(),
+      contentPadding: myoroNullableFake<EdgeInsets>(),
     );
   }
 
@@ -76,4 +79,7 @@ class MyoroDropdownStyle extends MyoroMenuStyle with _$MyoroDropdownStyleMixin {
 
   /// [TextStyle] of the input.
   final TextStyle? inputTextStyle;
+
+  /// [EdgeInsets] of the content padding of the input.
+  final EdgeInsets? contentPadding;
 }

@@ -13,11 +13,14 @@ part '../_widget/_myoro_menu_state.dart';
 
 /// Menu [Widget].
 final class MyoroMenu<T> extends StatefulWidget {
+  /// Default value of [showSearchBar].
+  static const showSearchBarDefaultValue = false;
+
   /// Default constructor.
   const MyoroMenu({
     super.key,
     this.style = const MyoroMenuStyle(),
-    this.searchCallback,
+    this.showSearchBar = showSearchBarDefaultValue,
     this.items,
     this.selectedItems = const {},
     required this.itemBuilder,
@@ -28,7 +31,7 @@ final class MyoroMenu<T> extends StatefulWidget {
   final MyoroMenuStyle style;
 
   /// Whether or not to show the search bar.
-  final MyoroMenuSearchCallback<T>? searchCallback;
+  final bool showSearchBar;
 
   /// Items being displayed.
   ///

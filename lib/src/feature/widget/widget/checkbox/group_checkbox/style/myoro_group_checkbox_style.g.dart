@@ -35,6 +35,8 @@ mixin _$MyoroGroupCheckboxStyleMixin {
     bool labelMaxLinesProvided = true,
     double? spacing,
     bool spacingProvided = true,
+    Color? disabledColor,
+    bool disabledColorProvided = true,
   }) {
     return MyoroGroupCheckboxStyle(
       runSpacing: runSpacingProvided ? (runSpacing ?? self.runSpacing) : null,
@@ -46,6 +48,7 @@ mixin _$MyoroGroupCheckboxStyleMixin {
       labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
       labelMaxLines: labelMaxLinesProvided ? (labelMaxLines ?? self.labelMaxLines) : null,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      disabledColor: disabledColorProvided ? (disabledColor ?? self.disabledColor) : null,
     );
   }
 
@@ -61,7 +64,8 @@ mixin _$MyoroGroupCheckboxStyleMixin {
         other.checkboxSplashRadius == self.checkboxSplashRadius &&
         other.labelTextStyle == self.labelTextStyle &&
         other.labelMaxLines == self.labelMaxLines &&
-        other.spacing == self.spacing;
+        other.spacing == self.spacing &&
+        other.disabledColor == self.disabledColor;
   }
 
   @override
@@ -76,6 +80,7 @@ mixin _$MyoroGroupCheckboxStyleMixin {
       self.labelTextStyle,
       self.labelMaxLines,
       self.spacing,
+      self.disabledColor,
     );
   }
 
@@ -91,5 +96,6 @@ mixin _$MyoroGroupCheckboxStyleMixin {
       '  labelTextStyle: ${self.labelTextStyle},\n'
       '  labelMaxLines: ${self.labelMaxLines},\n'
       '  spacing: ${self.spacing},\n'
+      '  disabledColor: ${self.disabledColor},\n'
       ');';
 }

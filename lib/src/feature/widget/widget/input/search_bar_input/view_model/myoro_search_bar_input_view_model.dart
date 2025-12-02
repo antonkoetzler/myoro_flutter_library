@@ -10,11 +10,18 @@ class MyoroSearchBarInputViewModel {
     MyoroInputStyleEnum inputStyle,
     String label,
     String placeholder,
-    TextEditingController controller,
-  ) : _state = MyoroSearchBarInputState(inputStyle, label, placeholder, controller);
+    bool autofocus,
+    ValueChanged<String>? onChanged,
+    TextEditingController? controller,
+  ) : _state = MyoroSearchBarInputState(inputStyle, label, placeholder, autofocus, onChanged, controller);
 
   /// State.
   final MyoroSearchBarInputState _state;
+
+  /// Dispose function.
+  void dispose() {
+    _state.dispose();
+  }
 
   /// [_state] getter.
   MyoroSearchBarInputState get state {

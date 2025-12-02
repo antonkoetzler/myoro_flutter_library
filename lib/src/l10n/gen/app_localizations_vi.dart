@@ -1150,4 +1150,46 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get myoroSearchBarInputPlaceholder => 'Nhập gì đó...';
+
+  @override
+  String get myoroCountryDropdownLabel => 'Quốc gia';
+
+  @override
+  String myoroCountryDropdownItemText(String emoji, String name) {
+    return '$emoji $name';
+  }
+
+  @override
+  String get myoroRegionDropdownLabel => 'Vùng';
+
+  @override
+  String myoroRegionDropdownItemText(String name) {
+    return '$name';
+  }
+
+  @override
+  String get myoroCityDropdownLabel => 'Thành phố';
+
+  @override
+  String myoroCityDropdownItemText(String name) {
+    return '$name';
+  }
+
+  @override
+  String get myoroFeedbackErrorFeedbackTitle => 'Đã xảy ra lỗi!';
+
+  @override
+  String get myoroErrorFeedbackSubtitle => 'Vui lòng xác minh kết nối của bạn và thử lại!';
+
+  @override
+  String get myoroErrorFeedbackActionButtonText => 'Thử lại';
+
+  @override
+  String get myoroSuccessFeedbackSubtitle => 'Thao tác hoàn tất thành công!';
+
+  @override
+  String get myoroSuccessFeedbackActionButtonText => 'Hoàn thành';
+
+  @override
+  String get myoroEmptyFeedbackActionButtonText => 'Làm mới';
 }

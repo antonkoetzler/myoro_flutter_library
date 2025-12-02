@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
@@ -8,7 +10,9 @@ part '../_widget/_footer_buttons.dart';
 part '../_widget/_message.dart';
 
 /// A simple yes/no dialog modal.
-class MyoroDialogModal extends StatelessWidget {
+///
+/// Also serves as a modal to execute basic requests.
+class MyoroDialogModal<T> extends StatelessWidget {
   /// Default value of is bottom sheet.
   static const isBottomSheetDefaultValue = false;
 
@@ -27,7 +31,7 @@ class MyoroDialogModal extends StatelessWidget {
   /// Default value of [_showCloseButton].
   static const showCloseButtonDefaultValue = true;
 
-  static Future<void> show(
+  static Future<void> show<T>(
     BuildContext context, {
 
     MyoroDialogModalStyle style = styleDefaultValue,
@@ -40,9 +44,11 @@ class MyoroDialogModal extends StatelessWidget {
     bool invertButtons = false,
     String confirmButtonText = kMyoroEmptyString,
     String cancelButtonText = kMyoroEmptyString,
-    VoidCallback? onConfirm,
+    FutureOr<T?> Function()? onConfirm,
+    ValueChanged<T?>? onSuccess,
+    ValueChanged<String>? onError,
     VoidCallback? onCancel,
-    String text = kMyoroEmptyString,
+    String message = kMyoroEmptyString,
     Widget? child,
   }) async {
     await MyoroModal.show(
@@ -55,18 +61,31 @@ class MyoroDialogModal extends StatelessWidget {
       showCloseButton: showCloseButton,
       child: InheritedProvider.value(
         value: style,
-        child: MyoroDialogModal._(invertButtons, confirmButtonText, cancelButtonText, onConfirm, onCancel, text, child),
+        child: MyoroDialogModal._(
+          invertButtons,
+          confirmButtonText,
+          cancelButtonText,
+          onConfirm,
+          onSuccess,
+          onError,
+          onCancel,
+          message,
+          child,
+        ),
       ),
     );
   }
 
+  /// Internal constructor.
   const MyoroDialogModal._(
     this._invertButtons,
     this._confirmButtonText,
     this._cancelButtonText,
     this._onConfirm,
+    this._onSuccess,
+    this._onError,
     this._onCancel,
-    this._text,
+    this._message,
     this._child,
   );
 
@@ -80,13 +99,19 @@ class MyoroDialogModal extends StatelessWidget {
   final String _cancelButtonText;
 
   /// Function executed when [_ConfirmButton] is pressed.
-  final VoidCallback? _onConfirm;
+  final FutureOr<T?> Function()? _onConfirm;
+
+  /// Function executed when the request is successful.
+  final ValueChanged<T?>? _onSuccess;
+
+  /// Function executed when the request is error.
+  final ValueChanged<String>? _onError;
 
   /// Function executed when [_CancelButton] is pressed.
   final VoidCallback? _onCancel;
 
   /// Simple text option of the [MyoroDialogModal].
-  final String _text;
+  final String _message;
 
   /// Custom [Widget] option of the [MyoroDialogModal].
   final Widget? _child;
@@ -100,8 +125,22 @@ class MyoroDialogModal extends StatelessWidget {
     return Column(
       spacing: spacing,
       children: [
-        Expanded(child: _Message(_text, _child)),
-        _FooterButtons(_invertButtons, _confirmButtonText, _cancelButtonText, _onConfirm, _onCancel),
+        Expanded(child: _Message(_message, _child)),
+        MyoroForm<T>(
+          request: _onConfirm,
+          onSuccess: _onSuccess,
+          onError: _onError,
+          builder: (request, controller) {
+            return _FooterButtons<T>(
+              controller,
+              request,
+              _invertButtons,
+              _confirmButtonText,
+              _cancelButtonText,
+              _onCancel,
+            );
+          },
+        ),
       ],
     );
   }

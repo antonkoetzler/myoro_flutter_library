@@ -2413,6 +2413,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Type something...'**
   String get myoroSearchBarInputPlaceholder;
+
+  /// No description provided for @myoroCountryDropdownLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Country'**
+  String get myoroCountryDropdownLabel;
+
+  /// No description provided for @myoroCountryDropdownItemText.
+  ///
+  /// In en, this message translates to:
+  /// **'{emoji} {name}'**
+  String myoroCountryDropdownItemText(String emoji, String name);
+
+  /// No description provided for @myoroRegionDropdownLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Region'**
+  String get myoroRegionDropdownLabel;
+
+  /// No description provided for @myoroRegionDropdownItemText.
+  ///
+  /// In en, this message translates to:
+  /// **'{name}'**
+  String myoroRegionDropdownItemText(String name);
+
+  /// No description provided for @myoroCityDropdownLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'City'**
+  String get myoroCityDropdownLabel;
+
+  /// No description provided for @myoroCityDropdownItemText.
+  ///
+  /// In en, this message translates to:
+  /// **'{name}'**
+  String myoroCityDropdownItemText(String name);
+
+  /// No description provided for @myoroFeedbackErrorFeedbackTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong!'**
+  String get myoroFeedbackErrorFeedbackTitle;
+
+  /// No description provided for @myoroErrorFeedbackSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Please verify your connection and try again!'**
+  String get myoroErrorFeedbackSubtitle;
+
+  /// No description provided for @myoroErrorFeedbackActionButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get myoroErrorFeedbackActionButtonText;
+
+  /// No description provided for @myoroSuccessFeedbackSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Operation completed successfully!'**
+  String get myoroSuccessFeedbackSubtitle;
+
+  /// No description provided for @myoroSuccessFeedbackActionButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get myoroSuccessFeedbackActionButtonText;
+
+  /// No description provided for @myoroEmptyFeedbackActionButtonText.
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh'**
+  String get myoroEmptyFeedbackActionButtonText;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

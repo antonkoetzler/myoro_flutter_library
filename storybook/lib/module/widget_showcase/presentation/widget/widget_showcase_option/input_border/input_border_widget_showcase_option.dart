@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:storybook/src/l10n/localization.dart';
+import 'package:storybook/l10n/localization.dart';
 
 /// Widget showcase option to choose an [InputBorder] from a [MyoroSingleSelectionDropdown].
 final class InputBorderWidgetShowcaseOption extends StatelessWidget {

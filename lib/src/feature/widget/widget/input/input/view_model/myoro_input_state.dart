@@ -172,9 +172,13 @@ class MyoroInputState {
 
   /// [_controller] setter.
   set controller(TextEditingController? controller) {
-    _localInputController?.dispose();
-    _localInputController = null;
-    _controller = controller ?? (_localInputController ??= TextEditingController());
+    if (controller == null) {
+      _controller = _localInputController ??= TextEditingController();
+    } else {
+      _localInputController?.dispose();
+      _localInputController = null;
+      _controller = controller;
+    }
   }
 
   /// [_enabledController] setter.

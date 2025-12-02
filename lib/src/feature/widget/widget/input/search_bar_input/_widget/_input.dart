@@ -10,7 +10,7 @@ final class _Input extends StatelessWidget {
   Widget build(context) {
     final style = context.read<MyoroSearchBarInputStyle>();
 
-    final localization = context.localization;
+    final localization = context.mflLocalization;
     final myoroSearchBarInputLabel = localization.myoroSearchBarInputLabel;
     final myoroSearchBarInputPlaceholder = localization.myoroSearchBarInputPlaceholder;
 
@@ -20,6 +20,8 @@ final class _Input extends StatelessWidget {
     final inputStyle = state.inputStyle;
     final label = state.label.isNotEmpty ? state.label : myoroSearchBarInputLabel;
     final placeholder = state.placeholder.isNotEmpty ? state.placeholder : myoroSearchBarInputPlaceholder;
+    final autofocus = state.autofocus;
+    final onChanged = state.onChanged;
 
     return MyoroInput(
       style: style,
@@ -27,6 +29,8 @@ final class _Input extends StatelessWidget {
       label: label,
       placeholder: placeholder,
       controller: controller,
+      autofocus: autofocus,
+      onChanged: onChanged,
     );
   }
 }

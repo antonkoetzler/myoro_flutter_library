@@ -7,7 +7,7 @@ class MyoroDropdownState<T> {
     this.showingController,
     this.items,
     Set<T> selectedItems,
-    this.searchCallback,
+    this.showSearchBar,
     this.dropdownType,
     this.targetKey,
     this.itemBuilder,
@@ -19,9 +19,6 @@ class MyoroDropdownState<T> {
 
   /// [MyoroDropdown.items].
   Set<T>? items;
-
-  /// [MyoroDropdown.searchCallback].
-  MyoroMenuSearchCallback<T>? searchCallback;
 
   /// [MyoroDropdown.dropdownType].
   MyoroDropdownTypeEnum dropdownType;
@@ -37,6 +34,9 @@ class MyoroDropdownState<T> {
 
   /// Selected items controller.
   final ValueNotifier<Set<T>> _selectedItemsController;
+
+  /// [MyoroDropdown.showSearchBar].
+  bool showSearchBar;
 
   /// [OverlayPortalController] of [MyoroDropdown] when [MyoroDropdown.dropdownType] is [MyoroDropdownTypeEnum.overlay].
   OverlayPortalController? _overlayPortalController;

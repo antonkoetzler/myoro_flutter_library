@@ -21,6 +21,7 @@ class MyoroGroupCheckboxThemeExtension extends ThemeExtension<MyoroGroupCheckbox
     this.labelMaxLines,
     this.spacing,
     this.runSpacing,
+    this.disabledColor,
   });
 
   /// Fake constructor.
@@ -35,6 +36,7 @@ class MyoroGroupCheckboxThemeExtension extends ThemeExtension<MyoroGroupCheckbox
       labelMaxLines: myoroNullableFake<int>(),
       spacing: myoroNullableFake<double>(),
       runSpacing: myoroNullableFake<double>(),
+      disabledColor: myoroNullableFake<Color>(),
     );
   }
 
@@ -47,7 +49,8 @@ class MyoroGroupCheckboxThemeExtension extends ThemeExtension<MyoroGroupCheckbox
       labelTextStyle = null,
       labelMaxLines = null,
       spacing = kMyoroMultiplier,
-      runSpacing = kMyoroMultiplier;
+      runSpacing = kMyoroMultiplier,
+      disabledColor = null;
 
   @override
   final Color? checkboxActiveColor;
@@ -77,6 +80,9 @@ class MyoroGroupCheckboxThemeExtension extends ThemeExtension<MyoroGroupCheckbox
   final double? runSpacing;
 
   @override
+  final Color? disabledColor;
+
+  @override
   MyoroGroupCheckboxThemeExtension lerp(covariant MyoroGroupCheckboxThemeExtension? other, double t) {
     if (other is! MyoroGroupCheckboxThemeExtension) return this;
     final style = MyoroGroupCheckboxStyle.lerp(this, other, t);
@@ -90,6 +96,7 @@ class MyoroGroupCheckboxThemeExtension extends ThemeExtension<MyoroGroupCheckbox
       labelMaxLines: style.labelMaxLines,
       spacing: style.spacing,
       runSpacing: style.runSpacing,
+      disabledColor: style.disabledColor,
     );
   }
 }

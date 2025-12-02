@@ -22,7 +22,7 @@ class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThem
     this.titleTextStyle,
     this.closeButtonIcon,
     this.closeButtonIconSize,
-    this.textStyle,
+    this.messageTextStyle,
     this.footerButtonsSpacing,
     this.margin,
   });
@@ -39,7 +39,7 @@ class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThem
       titleTextStyle = myoroNullableFake<TextStyle>(),
       closeButtonIcon = myoroNullableFake<IconData>(),
       closeButtonIconSize = myoroNullableFake<double>(),
-      textStyle = myoroNullableFake<TextStyle>(),
+      messageTextStyle = myoroNullableFake<TextStyle>(),
       footerButtonsSpacing = myoroNullableFake<double>(),
       margin = myoroNullableFake<EdgeInsets>();
 
@@ -55,7 +55,7 @@ class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThem
       titleTextStyle = null,
       closeButtonIcon = Icons.close,
       closeButtonIconSize = null,
-      textStyle = textTheme.bodyMedium!,
+      messageTextStyle = textTheme.bodyMedium!,
       footerButtonsSpacing = 10,
       margin = const EdgeInsets.all(kMyoroMultiplier * 3);
 
@@ -101,7 +101,7 @@ class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThem
 
   /// Text style of the simple text option in the message.
   @override
-  final TextStyle? textStyle;
+  final TextStyle? messageTextStyle;
 
   /// Spacing in between the buttons in the footer.
   @override
@@ -126,7 +126,7 @@ class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThem
       titleTextStyle: style.titleTextStyle,
       closeButtonIcon: style.closeButtonIcon,
       closeButtonIconSize: style.closeButtonIconSize,
-      textStyle: style.textStyle,
+      messageTextStyle: style.messageTextStyle,
       footerButtonsSpacing: style.footerButtonsSpacing,
       margin: style.margin,
     );

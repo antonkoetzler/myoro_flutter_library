@@ -15,7 +15,7 @@ class MyoroSearchDropdownState<T> {
     this.validation,
     this.focusNode,
   ) {
-    _requestController = MyoroRequestController(requestCallback: () => requestCallback(_inputController.text));
+    _requestController = MyoroRequestController(() => requestCallback(_inputController.text));
   }
 
   /// [MyoroSearchDropdown.label].
@@ -133,7 +133,7 @@ class MyoroSearchDropdownState<T> {
 
   /// [MyoroRequestController.requestCallback] setter.
   set requestCallback(MyoroSearchDropdownRequest<T> requestCallback) {
-    _requestController.requestCallback = () => requestCallback(_inputController.text);
+    _requestController.setRequestCallback(() => requestCallback(_inputController.text));
   }
 
   /// [_selectedItemController] setter.

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kiwi/kiwi.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:storybook/src/l10n/localization.dart';
 import 'package:storybook/storybook.dart';
 
 /// Root [Widget] of the storybook.
@@ -16,7 +15,9 @@ final class App extends StatelessWidget {
       valueListenable: themeModeController,
       builder: (_, themeMode, __) {
         return MyoroApp(
-          title: localization.storybookMainScreenTitle,
+          title: 'MFL Storybook',
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
           themeMode: themeMode,
           themeExtensionsBuilder: createStorybookThemeExtensions,
           router: router,

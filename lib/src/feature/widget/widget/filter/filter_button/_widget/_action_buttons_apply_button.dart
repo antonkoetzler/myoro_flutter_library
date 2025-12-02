@@ -6,7 +6,7 @@ final class _ActionButtonsApplyButton<T> extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final localization = context.localization;
+    final localization = context.mflLocalization;
     final myoroFilterButtonApplyButtonText = localization.myoroFilterButtonApplyButtonText;
 
     final themeExtension = context.resolveThemeExtension<MyoroFilterButtonThemeExtension>();

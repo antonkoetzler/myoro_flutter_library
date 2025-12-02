@@ -26,22 +26,11 @@ final class MyoroMenuWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroMenu.searchCallback]
-  MyoroMenuSearchCallback<String>? _searchCallback = (query) {
-    // Simple search implementation
-    print('Searching for: $query');
-  };
-  MyoroMenuSearchCallback<String>? get searchCallback => _searchCallback;
-  set searchCallback(MyoroMenuSearchCallback<String>? searchCallback) {
-    _searchCallback = searchCallback;
-    notifyListeners();
-  }
-
-  /// Whether search callback is enabled
-  bool _searchCallbackEnabled = false;
-  bool get searchCallbackEnabled => _searchCallbackEnabled;
-  set searchCallbackEnabled(bool searchCallbackEnabled) {
-    _searchCallbackEnabled = searchCallbackEnabled;
+  /// [MyoroMenu.showSearchBar]
+  bool _showSearchBar = false;
+  bool get showSearchBar => _showSearchBar;
+  set showSearchBar(bool showSearchBar) {
+    _showSearchBar = showSearchBar;
     notifyListeners();
   }
 

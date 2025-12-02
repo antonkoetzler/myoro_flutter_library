@@ -21,6 +21,7 @@ class MyoroCheckboxStyle with _$MyoroCheckboxStyleMixin {
       labelTextStyle: TextStyle.lerp(a?.labelTextStyle, b?.labelTextStyle, t),
       labelMaxLines: myoroFallbackLerp(a?.labelMaxLines, b?.labelMaxLines, t),
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
+      disabledColor: Color.lerp(a?.disabledColor, b?.disabledColor, t),
     );
   }
 
@@ -34,6 +35,7 @@ class MyoroCheckboxStyle with _$MyoroCheckboxStyleMixin {
     this.labelTextStyle,
     this.labelMaxLines,
     this.spacing,
+    this.disabledColor,
   });
 
   /// Fake constructor.
@@ -45,7 +47,8 @@ class MyoroCheckboxStyle with _$MyoroCheckboxStyleMixin {
       checkboxSplashRadius = myoroNullableFake<double>(),
       labelTextStyle = myoroNullableFake<TextStyle>(),
       labelMaxLines = myoroNullableFake<int>(),
-      spacing = myoroNullableFake<double>();
+      spacing = myoroNullableFake<double>(),
+      disabledColor = myoroNullableFake<Color>();
 
   /// Background color of the checkbox when selected.
   final Color? checkboxActiveColor;
@@ -70,4 +73,7 @@ class MyoroCheckboxStyle with _$MyoroCheckboxStyleMixin {
 
   /// Spacing between the checkbox and the label.
   final double? spacing;
+
+  /// Color of the label when the checkbox is disabled.
+  final Color? disabledColor;
 }

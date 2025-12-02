@@ -1,6 +1,6 @@
 part of '../myoro_menu_widget_showcase_screen.dart';
 
-/// [MyoroMenuConfiguration.searchCallback] option of [MyoroMenuWidgetShowcaseScreen].
+/// [MyoroMenuConfiguration.showSearchBar] option of [MyoroMenuWidgetShowcaseScreen].
 final class _SearchCallbackOption extends StatelessWidget {
   const _SearchCallbackOption();
 
@@ -16,14 +16,11 @@ final class _SearchCallbackOption extends StatelessWidget {
         const SizedBox(height: 8),
         Row(
           children: [
-            Checkbox(
-              value: state.searchCallbackEnabled,
-              onChanged: (value) => state.searchCallbackEnabled = value ?? false,
-            ),
+            Checkbox(value: state.showSearchBar, onChanged: (value) => state.showSearchBar = value ?? false),
             Text(localization.storybookMenuEnableSearchCallbackCheckboxLabel),
           ],
         ),
-        if (state.searchCallbackEnabled) Text(localization.storybookMenuSearchCallbackEnabledMessage),
+        if (state.showSearchBar) Text(localization.storybookMenuSearchCallbackEnabledMessage),
       ],
     );
   }

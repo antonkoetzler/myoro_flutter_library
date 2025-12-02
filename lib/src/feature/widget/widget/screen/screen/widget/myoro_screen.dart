@@ -17,17 +17,15 @@ class MyoroScreen extends StatefulWidget {
   const MyoroScreen({
     super.key,
     this.drawerController,
-    this.appBar,
     this.drawerEnableOpenDragGesture = drawerEnableOpenDragGestureDefaultValue,
     this.endDrawerEnableOpenDragGesture = endDrawerEnableOpenDragGestureDefaultValue,
+    this.appBar,
     required this.body,
+    this.bottomNavigationBar,
   });
 
   /// [MyoroDrawerController] if it needs to be controlled externally.
   final MyoroDrawerController? drawerController;
-
-  /// App bar of the screen.
-  final PreferredSizeWidget? appBar;
 
   /// [Scaffold.drawerEnableOpenDragGesture]
   final bool drawerEnableOpenDragGesture;
@@ -35,9 +33,18 @@ class MyoroScreen extends StatefulWidget {
   /// [Scaffold.endDrawerEnableOpenDragGesture]
   final bool endDrawerEnableOpenDragGesture;
 
+  /// App bar of the screen.
+  final PreferredSizeWidget? appBar;
+
   /// Body of the screen.
   final Widget body;
 
+  /// Bottom navigation bar of the screen.
+  final Widget? bottomNavigationBar;
+
+  /// Create state function.
   @override
-  State<MyoroScreen> createState() => _MyoroScreenState();
+  State<MyoroScreen> createState() {
+    return _MyoroScreenState();
+  }
 }

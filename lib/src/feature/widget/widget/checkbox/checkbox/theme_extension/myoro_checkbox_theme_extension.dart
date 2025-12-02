@@ -20,6 +20,7 @@ class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExten
     this.labelTextStyle,
     this.labelMaxLines,
     this.spacing,
+    this.disabledColor,
   });
 
   /// Fake constructor.
@@ -31,9 +32,10 @@ class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExten
       checkboxSplashRadius = myoroNullableFake<double>(),
       labelTextStyle = myoroNullableFake<TextStyle>(),
       labelMaxLines = myoroNullableFake<int>(),
-      spacing = myoroNullableFake<double>();
+      spacing = myoroNullableFake<double>(),
+      disabledColor = myoroNullableFake<Color>();
 
-  MyoroCheckboxThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
+  MyoroCheckboxThemeExtension.builder(bool isDarkMode, ColorScheme colorScheme, TextTheme textTheme)
     : checkboxActiveColor = colorScheme.onPrimary,
       checkboxCheckColor = colorScheme.primary,
       checkboxHoverColor = MyoroColors.transparent,
@@ -41,7 +43,8 @@ class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExten
       checkboxSplashRadius = 0,
       labelTextStyle = textTheme.bodySmall!,
       labelMaxLines = 1,
-      spacing = kMyoroMultiplier;
+      spacing = kMyoroMultiplier,
+      disabledColor = isDarkMode ? colorScheme.onPrimary.darken(0.3) : colorScheme.onPrimary.brighten(0.3);
 
   @override
   final Color? checkboxActiveColor;
@@ -68,6 +71,9 @@ class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExten
   final double? spacing;
 
   @override
+  final Color? disabledColor;
+
+  @override
   MyoroCheckboxThemeExtension lerp(covariant MyoroCheckboxThemeExtension? other, double t) {
     if (other is! MyoroCheckboxThemeExtension) return this;
     final style = MyoroCheckboxStyle.lerp(this, other, t);
@@ -80,6 +86,7 @@ class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExten
       labelTextStyle: style.labelTextStyle,
       labelMaxLines: style.labelMaxLines,
       spacing: style.spacing,
+      disabledColor: style.disabledColor,
     );
   }
 }

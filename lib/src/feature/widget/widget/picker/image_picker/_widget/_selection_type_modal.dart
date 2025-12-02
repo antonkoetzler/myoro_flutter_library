@@ -9,7 +9,7 @@ final class _SelectionTypeModal extends StatelessWidget {
     MyoroModal.show(
       context,
       isBottomSheet: true,
-      title: context.localization.myoroImagePickerSelectionTypeModalText,
+      title: context.mflLocalization.myoroImagePickerSelectionTypeModalText,
       style: MyoroModalStyle(constraints: selectionTypeModalConstraints),
       child: _SelectionTypeModal(style, viewModel),
     );

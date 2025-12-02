@@ -24,7 +24,7 @@ class MyoroDialogModalStyle extends MyoroModalStyle with _$MyoroDialogModalStyle
       closeButtonIcon: myoroFallbackLerp(a?.closeButtonIcon, b?.closeButtonIcon, t),
       closeButtonIconSize: lerpDouble(a?.closeButtonIconSize, b?.closeButtonIconSize, t),
       margin: EdgeInsets.lerp(a?.margin, b?.margin, t),
-      textStyle: TextStyle.lerp(a?.textStyle, b?.textStyle, t),
+      messageTextStyle: TextStyle.lerp(a?.messageTextStyle, b?.messageTextStyle, t),
       footerButtonsSpacing: lerpDouble(a?.footerButtonsSpacing, b?.footerButtonsSpacing, t),
     );
   }
@@ -42,7 +42,7 @@ class MyoroDialogModalStyle extends MyoroModalStyle with _$MyoroDialogModalStyle
     super.closeButtonIcon,
     super.closeButtonIconSize,
     super.margin,
-    this.textStyle,
+    this.messageTextStyle,
     this.footerButtonsSpacing,
   });
 
@@ -60,13 +60,13 @@ class MyoroDialogModalStyle extends MyoroModalStyle with _$MyoroDialogModalStyle
       closeButtonIcon: myoroNullableFake<IconData>(),
       closeButtonIconSize: myoroNullableFake<double>(),
       margin: myoroNullableFake<EdgeInsets>(),
-      textStyle: myoroNullableFake<TextStyle>(),
+      messageTextStyle: myoroNullableFake<TextStyle>(),
       footerButtonsSpacing: myoroNullableFake<double>(),
     );
   }
 
   /// Text style of the simple text option in the message.
-  final TextStyle? textStyle;
+  final TextStyle? messageTextStyle;
 
   /// Spacing in between the buttons in the footer.
   final double? footerButtonsSpacing;

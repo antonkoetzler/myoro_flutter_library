@@ -32,6 +32,7 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
     this.suffixIconConstraints,
     this.prefixIconConstraints,
     this.suffixButtonStyle,
+    this.errorTextStyle,
   });
 
   /// Fake constructor.
@@ -55,7 +56,8 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
       obscureTextButtonDisabledIcon = myoroNullableFake<IconData>(),
       suffixIconConstraints = myoroNullableFake<BoxConstraints>(),
       prefixIconConstraints = myoroNullableFake<BoxConstraints>(),
-      suffixButtonStyle = myoroNullableFake<MyoroIconTextButtonStyle>();
+      suffixButtonStyle = myoroNullableFake<MyoroIconTextButtonStyle>(),
+      errorTextStyle = myoroNullableFake<TextStyle>();
 
   MyoroInputThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : border = null,
@@ -80,7 +82,7 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
       inputTextStyle = textTheme.bodyMedium!,
       labelTextStyle = WidgetStateTextStyle.resolveWith((Set<WidgetState> states) {
         final color = states.contains(WidgetState.error) ? colorScheme.error : colorScheme.onPrimary;
-        return textTheme.headlineMedium!.withColor(color);
+        return textTheme.headlineSmall!.withColor(color);
       }),
       labelBehavior = FloatingLabelBehavior.always,
       spacing = kMyoroMultiplier * 2.5,
@@ -103,7 +105,8 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
           left: kMyoroMultiplier - 2,
           right: kMyoroMultiplier * 1.2,
         ),
-      );
+      ),
+      errorTextStyle = (textTheme.bodySmall ?? const TextStyle()).withColor(colorScheme.error);
 
   /// Custom border.
   @override
@@ -185,6 +188,10 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
   @override
   final MyoroIconTextButtonStyle? suffixButtonStyle;
 
+  /// [TextStyle] of the error text ([InputDecoration.errorStyle]).
+  @override
+  final TextStyle? errorTextStyle;
+
   @override
   MyoroInputThemeExtension lerp(covariant MyoroInputThemeExtension? other, double t) {
     if (other is! MyoroInputThemeExtension) return this;
@@ -210,6 +217,7 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
       suffixIconConstraints: style.suffixIconConstraints,
       prefixIconConstraints: style.prefixIconConstraints,
       suffixButtonStyle: style.suffixButtonStyle,
+      errorTextStyle: style.errorTextStyle,
     );
   }
 }

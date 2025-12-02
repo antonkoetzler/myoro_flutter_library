@@ -35,6 +35,7 @@ class MyoroGroupCheckboxStyle extends MyoroCheckboxStyle with _$MyoroGroupCheckb
     super.labelTextStyle,
     super.labelMaxLines,
     super.spacing,
+    super.disabledColor,
     this.runSpacing,
   });
 
@@ -49,6 +50,8 @@ class MyoroGroupCheckboxStyle extends MyoroCheckboxStyle with _$MyoroGroupCheckb
       labelTextStyle: myoroNullableFake<TextStyle>(),
       labelMaxLines: myoroNullableFake<int>(),
       spacing: myoroNullableFake<double>(),
+      disabledColor: myoroNullableFake<Color>(),
+      runSpacing: myoroNullableFake<double>(),
     );
   }
 

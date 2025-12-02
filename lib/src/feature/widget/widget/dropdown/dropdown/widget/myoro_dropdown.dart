@@ -10,6 +10,9 @@ class MyoroDropdown<T> extends StatefulWidget {
   /// Default value of [style].
   static const styleDefaultValue = MyoroDropdownStyle();
 
+  /// Default value of [showSearchBar].
+  static const showSearchBarDefaultValue = MyoroMenu.showSearchBarDefaultValue;
+
   /// Default constructor.
   const MyoroDropdown({
     super.key,
@@ -17,7 +20,7 @@ class MyoroDropdown<T> extends StatefulWidget {
     required this.showingController,
     this.items,
     this.selectedItems = const {},
-    this.searchCallback,
+    this.showSearchBar = showSearchBarDefaultValue,
     this.dropdownType,
     this.targetKey,
     required this.itemBuilder,
@@ -38,7 +41,7 @@ class MyoroDropdown<T> extends StatefulWidget {
   final Set<T> selectedItems;
 
   /// Search callback.
-  final MyoroMenuSearchCallback<T>? searchCallback;
+  final bool showSearchBar;
 
   /// Dropdown type.
   ///

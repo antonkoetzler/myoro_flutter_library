@@ -10,7 +10,7 @@ final class _ActionButtonsClearButton<T> extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final localization = context.localization;
+    final localization = context.mflLocalization;
     final myoroFilterButtonClearButtonText = localization.myoroFilterButtonClearButtonText;
     final themeExtension = context.resolveThemeExtension<MyoroFilterButtonThemeExtension>();
     final style = context.watch<MyoroFilterButtonStyle>();

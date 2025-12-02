@@ -388,6 +388,51 @@
   "myoroMonthEnumDecemberLabel": "ديسمبر",
 
   "myoroSearchBarInputLabel": "بحث",
-  "myoroSearchBarInputPlaceholder": "اكتب شيئاً..."
+  "myoroSearchBarInputPlaceholder": "اكتب شيئاً...",
+
+  "myoroCountryDropdownLabel": "البلد",
+
+  "myoroCountryDropdownItemText": "{emoji} {name}",
+  "@myoroCountryDropdownItemText": {
+    "placeholders": {
+      "emoji": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroRegionDropdownLabel": "المنطقة",
+
+  "myoroRegionDropdownItemText": "{name}",
+  "@myoroRegionDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroCityDropdownLabel": "المدينة",
+
+  "myoroCityDropdownItemText": "{name}",
+  "@myoroCityDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroFeedbackErrorFeedbackTitle": "حدث خطأ ما!",
+  "myoroErrorFeedbackSubtitle": "يرجى التحقق من اتصالك والمحاولة مرة أخرى!",
+  "myoroErrorFeedbackActionButtonText": "إعادة المحاولة",
+
+  "myoroSuccessFeedbackSubtitle": "تمت العملية بنجاح!",
+  "myoroSuccessFeedbackActionButtonText": "تم",
+
+  "myoroEmptyFeedbackActionButtonText": "تحديث"
 }
 

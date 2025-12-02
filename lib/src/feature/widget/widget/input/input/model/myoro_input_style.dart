@@ -41,6 +41,7 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
       suffixIconConstraints: myoroFallbackLerp(a?.suffixIconConstraints, b?.suffixIconConstraints, t),
       prefixIconConstraints: myoroFallbackLerp(a?.prefixIconConstraints, b?.prefixIconConstraints, t),
       suffixButtonStyle: MyoroIconTextButtonStyle.lerp(a?.suffixButtonStyle, b?.suffixButtonStyle, t),
+      errorTextStyle: TextStyle.lerp(a?.errorTextStyle, b?.errorTextStyle, t),
     );
   }
 
@@ -66,6 +67,7 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
     this.suffixIconConstraints,
     this.prefixIconConstraints,
     this.suffixButtonStyle,
+    this.errorTextStyle,
   });
 
   /// Fake constructor.
@@ -90,6 +92,7 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
       obscureTextButtonDisabledIcon: myoroNullableFake<IconData>(),
       suffixIconConstraints: myoroNullableFake<BoxConstraints>(),
       suffixButtonStyle: myoroNullableFake<MyoroIconTextButtonStyle>(),
+      errorTextStyle: myoroNullableFake<TextStyle>(),
     );
   }
 
@@ -152,4 +155,7 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
 
   /// [MyoroIconTextButtonStyle] of the suffix button.
   final MyoroIconTextButtonStyle? suffixButtonStyle;
+
+  /// [TextStyle] of the error text ([InputDecoration.errorStyle]).
+  final TextStyle? errorTextStyle;
 }

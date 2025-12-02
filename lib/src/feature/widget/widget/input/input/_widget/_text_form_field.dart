@@ -23,6 +23,7 @@ final class _TextFormField extends StatelessWidget {
         themeExtension.prefixIconConstraints ??
         const BoxConstraints(minWidth: 0, minHeight: 0);
     final labelTextStyle = style.labelTextStyle ?? themeExtension.labelTextStyle;
+    final errorTextStyle = style.errorTextStyle ?? themeExtension.errorTextStyle;
 
     final viewModel = context.watch<MyoroInputViewModel>();
     final state = viewModel.state;
@@ -85,6 +86,7 @@ final class _TextFormField extends StatelessWidget {
                     decoration: InputDecoration(
                       floatingLabelBehavior: style.labelBehavior ?? themeExtension.labelBehavior,
                       labelText: label.isNotEmpty ? label : null,
+                      errorStyle: errorTextStyle,
                       floatingLabelStyle: labelTextStyle,
                       hintText: placeholder.isNotEmpty ? placeholder : null,
                       hintStyle: textStyle?.withColor(

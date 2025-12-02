@@ -14,16 +14,8 @@ final class MyoroDropdownWidgetShowcaseScreenState extends ChangeNotifier {
   /// [MyoroDropdown.selectedItems]
   final _selectedItemsController = ValueNotifier(<String>{});
 
-  /// [MyoroDropdown.searchCallback]
-  MyoroMenuSearchCallback<String>? _searchCallback = (query) {
-    // Simple search implementation
-    if (kDebugMode) {
-      print('Searching for: $query');
-    }
-  };
-
-  /// Whether search callback is enabled
-  bool _searchCallbackEnabled = false;
+  /// [MyoroDropdown.showSearchBar]
+  bool _showSearchBar = false;
 
   /// [MyoroDropdown.dropdownType]
   MyoroDropdownTypeEnum _dropdownType = MyoroDropdownTypeEnum.expanding;
@@ -78,14 +70,9 @@ final class MyoroDropdownWidgetShowcaseScreenState extends ChangeNotifier {
     return _targetKey;
   }
 
-  /// [_searchCallback] getter.
-  MyoroMenuSearchCallback<String>? get searchCallback {
-    return _searchCallback;
-  }
-
-  /// [_searchCallbackEnabled] getter.
-  bool get searchCallbackEnabled {
-    return _searchCallbackEnabled;
+  /// [_showSearchBar] getter.
+  bool get showSearchBar {
+    return _showSearchBar;
   }
 
   /// [_style] setter.
@@ -112,15 +99,9 @@ final class MyoroDropdownWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [_searchCallback] setter.
-  set searchCallback(MyoroMenuSearchCallback<String>? searchCallback) {
-    _searchCallback = searchCallback;
-    notifyListeners();
-  }
-
-  /// [_searchCallbackEnabled] setter.
-  set searchCallbackEnabled(bool searchCallbackEnabled) {
-    _searchCallbackEnabled = searchCallbackEnabled;
+  /// [_showSearchBar] setter.
+  set showSearchBar(bool showSearchBar) {
+    _showSearchBar = showSearchBar;
     notifyListeners();
   }
 

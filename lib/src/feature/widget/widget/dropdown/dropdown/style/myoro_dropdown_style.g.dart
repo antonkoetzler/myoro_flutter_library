@@ -23,6 +23,8 @@ mixin _$MyoroDropdownStyleMixin {
     bool textAlignProvided = true,
     TextStyle? inputTextStyle,
     bool inputTextStyleProvided = true,
+    EdgeInsets? contentPadding,
+    bool contentPaddingProvided = true,
     BoxConstraints? constraints,
     bool constraintsProvided = true,
     Color? backgroundColor,
@@ -54,6 +56,7 @@ mixin _$MyoroDropdownStyleMixin {
           : null,
       textAlign: textAlignProvided ? (textAlign ?? self.textAlign) : null,
       inputTextStyle: inputTextStyleProvided ? (inputTextStyle ?? self.inputTextStyle) : null,
+      contentPadding: contentPaddingProvided ? (contentPadding ?? self.contentPadding) : null,
       constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
       backgroundColor: backgroundColorProvided ? (backgroundColor ?? self.backgroundColor) : null,
       border: borderProvided ? (border ?? self.border) : null,
@@ -77,6 +80,7 @@ mixin _$MyoroDropdownStyleMixin {
         other.expandingAndOverlaySpacing == self.expandingAndOverlaySpacing &&
         other.textAlign == self.textAlign &&
         other.inputTextStyle == self.inputTextStyle &&
+        other.contentPadding == self.contentPadding &&
         other.constraints == self.constraints &&
         other.backgroundColor == self.backgroundColor &&
         other.border == self.border &&
@@ -97,6 +101,7 @@ mixin _$MyoroDropdownStyleMixin {
       self.expandingAndOverlaySpacing,
       self.textAlign,
       self.inputTextStyle,
+      self.contentPadding,
       self.constraints,
       self.backgroundColor,
       self.border,
@@ -118,6 +123,7 @@ mixin _$MyoroDropdownStyleMixin {
       '  expandingAndOverlaySpacing: ${self.expandingAndOverlaySpacing},\n'
       '  textAlign: ${self.textAlign},\n'
       '  inputTextStyle: ${self.inputTextStyle},\n'
+      '  contentPadding: ${self.contentPadding},\n'
       '  constraints: ${self.constraints},\n'
       '  backgroundColor: ${self.backgroundColor},\n'
       '  border: ${self.border},\n'

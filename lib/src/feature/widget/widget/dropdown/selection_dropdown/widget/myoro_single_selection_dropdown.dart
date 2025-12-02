@@ -11,6 +11,7 @@ class MyoroSingleSelectionDropdown<T> extends _SelectionDropdown<T> {
     super.style,
     super.label,
     super.enabled,
+    super.showSearchBar,
     super.dropdownType,
     super.items,
     super.showingController,
@@ -37,23 +38,9 @@ class MyoroSingleSelectionDropdown<T> extends _SelectionDropdown<T> {
   /// Callback executed when the selected item is changed.
   final ValueChanged<T?>? onChanged;
 
+  /// Create state function.
   @override
-  Widget build(_) {
-    return _Base(
-      style,
-      MyoroSingleSelectionDropdownState(
-        label,
-        enabled,
-        dropdownType,
-        items,
-        showingController,
-        selectedItem,
-        selectedItemController,
-        allowDeselection,
-        itemBuilder,
-        selectedItemBuilder,
-        onChanged,
-      ),
-    );
+  State<MyoroSingleSelectionDropdown<T>> createState() {
+    return _MyoroSingleSelectionDropdownState<T>();
   }
 }

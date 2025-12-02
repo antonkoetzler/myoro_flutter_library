@@ -24,7 +24,7 @@ enum MyoroMonthEnum {
 
   /// Label of the month.
   String getLabel(BuildContext context) {
-    final localization = context.localization;
+    final localization = context.mflLocalization;
     final myoroMonthEnumJanuaryLabel = localization.myoroMonthEnumJanuaryLabel;
     final myoroMonthEnumFebruaryLabel = localization.myoroMonthEnumFebruaryLabel;
     final myoroMonthEnumMarchLabel = localization.myoroMonthEnumMarchLabel;

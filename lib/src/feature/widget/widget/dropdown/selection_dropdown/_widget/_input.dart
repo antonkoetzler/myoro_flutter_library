@@ -1,7 +1,7 @@
 part of '../bundle/myoro_selection_dropdown_bundle.dart';
 
 /// [MyoroInput] of the selection dropdown.
-class _Input<T> extends StatelessWidget {
+class _Input<T, V extends _ViewModel<T>> extends StatelessWidget {
   const _Input();
 
   @override
@@ -10,8 +10,9 @@ class _Input<T> extends StatelessWidget {
     final style = context.watch<MyoroDropdownStyle>();
     final textAlign = style.textAlign ?? themeExtension.textAlign ?? MyoroInput.textAlignDefaultValue;
     final inputTextStyle = style.inputTextStyle ?? themeExtension.inputTextStyle;
+    final contentPadding = style.contentPadding ?? themeExtension.contentPadding;
 
-    final viewModel = context.read<MyoroSelectionDropdownViewModel<T>>();
+    final viewModel = context.read<V>();
     final state = viewModel.state;
     final inputKey = state.inputKey;
     final enabled = state.enabled;
@@ -23,7 +24,7 @@ class _Input<T> extends StatelessWidget {
     };
 
     return MyoroInput(
-      style: MyoroInputStyle(inputTextStyle: inputTextStyle),
+      style: MyoroInputStyle(inputTextStyle: inputTextStyle, contentPadding: contentPadding),
       label: label,
       inputKey: inputKey,
       controller: state.inputController,

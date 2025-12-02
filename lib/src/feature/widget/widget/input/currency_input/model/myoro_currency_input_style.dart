@@ -41,6 +41,7 @@ class MyoroCurrencyInputStyle extends MyoroInputStyle with _$MyoroCurrencyInputS
       suffixIconConstraints: myoroFallbackLerp(a?.suffixIconConstraints, b?.suffixIconConstraints, t),
       prefixIconConstraints: myoroFallbackLerp(a?.prefixIconConstraints, b?.prefixIconConstraints, t),
       suffixButtonStyle: MyoroIconTextButtonStyle.lerp(a?.suffixButtonStyle, b?.suffixButtonStyle, t),
+      errorTextStyle: TextStyle.lerp(a?.errorTextStyle, b?.errorTextStyle, t),
       currencySymbolButtonStyle: MyoroIconTextButtonStyle.lerp(
         a?.currencySymbolButtonStyle,
         b?.currencySymbolButtonStyle,
@@ -72,6 +73,7 @@ class MyoroCurrencyInputStyle extends MyoroInputStyle with _$MyoroCurrencyInputS
     super.suffixIconConstraints,
     super.prefixIconConstraints,
     super.suffixButtonStyle,
+    super.errorTextStyle,
     this.currencySymbolButtonStyle,
     this.currencyPrefixPadding,
   });
@@ -105,6 +107,7 @@ class MyoroCurrencyInputStyle extends MyoroInputStyle with _$MyoroCurrencyInputS
       suffixIconConstraints: myoroNullableFake<BoxConstraints>(),
       prefixIconConstraints: myoroNullableFake<BoxConstraints>(),
       suffixButtonStyle: myoroNullableFake<MyoroIconTextButtonStyle>(),
+      errorTextStyle: myoroNullableFake<TextStyle>(),
       currencySymbolButtonStyle: myoroNullableFake<MyoroIconTextButtonStyle>(),
       currencyPrefixPadding: myoroFake<EdgeInsets>(),
     );

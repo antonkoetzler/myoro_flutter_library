@@ -7,6 +7,8 @@ class MyoroMultiSelectionDropdown<T> extends _SelectionDropdown<T> {
     super.key,
     super.style,
     super.label,
+    super.enabled,
+    super.showSearchBar,
     super.dropdownType,
     super.items,
     super.showingController,
@@ -29,22 +31,9 @@ class MyoroMultiSelectionDropdown<T> extends _SelectionDropdown<T> {
   /// Callback executed when the selected items are changed.
   final ValueChanged<Set<T>>? onChanged;
 
+  /// Create state function.
   @override
-  Widget build(_) {
-    return _Base(
-      style,
-      MyoroMultiSelectionDropdownState(
-        label,
-        enabled,
-        dropdownType,
-        items,
-        showingController,
-        itemBuilder,
-        selectedItemBuilder,
-        selectedItems,
-        selectedItemsController,
-        onChanged,
-      ),
-    );
+  State<MyoroMultiSelectionDropdown<T>> createState() {
+    return _MyoroMultiSelectionDropdownState<T>();
   }
 }

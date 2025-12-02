@@ -14,12 +14,28 @@ enum MyoroRequestEnum {
   /// Request executed unsuccessfully.
   error;
 
+  /// Fake constructor.
   factory MyoroRequestEnum.fake() {
     return values[faker.randomGenerator.integer(values.length)];
   }
 
-  bool get isIdle => this == idle;
-  bool get isLoading => this == loading;
-  bool get isSuccess => this == success;
-  bool get isError => this == error;
+  /// [idle] getter.
+  bool get isIdle {
+    return this == idle;
+  }
+
+  /// [loading] getter.
+  bool get isLoading {
+    return this == loading;
+  }
+
+  /// [success] getter.
+  bool get isSuccess {
+    return this == success;
+  }
+
+  /// [error] getter.
+  bool get isError {
+    return this == error;
+  }
 }

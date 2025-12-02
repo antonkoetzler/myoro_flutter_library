@@ -61,6 +61,8 @@ mixin _$MyoroCurrencyInputStyleMixin {
     bool prefixIconConstraintsProvided = true,
     MyoroIconTextButtonStyle? suffixButtonStyle,
     bool suffixButtonStyleProvided = true,
+    TextStyle? errorTextStyle,
+    bool errorTextStyleProvided = true,
   }) {
     return MyoroCurrencyInputStyle(
       currencySymbolButtonStyle: currencySymbolButtonStyleProvided
@@ -97,6 +99,7 @@ mixin _$MyoroCurrencyInputStyleMixin {
           ? (prefixIconConstraints ?? self.prefixIconConstraints)
           : null,
       suffixButtonStyle: suffixButtonStyleProvided ? (suffixButtonStyle ?? self.suffixButtonStyle) : null,
+      errorTextStyle: errorTextStyleProvided ? (errorTextStyle ?? self.errorTextStyle) : null,
     );
   }
 
@@ -125,7 +128,8 @@ mixin _$MyoroCurrencyInputStyleMixin {
         other.obscureTextButtonDisabledIcon == self.obscureTextButtonDisabledIcon &&
         other.suffixIconConstraints == self.suffixIconConstraints &&
         other.prefixIconConstraints == self.prefixIconConstraints &&
-        other.suffixButtonStyle == self.suffixButtonStyle;
+        other.suffixButtonStyle == self.suffixButtonStyle &&
+        other.errorTextStyle == self.errorTextStyle;
   }
 
   @override
@@ -153,6 +157,7 @@ mixin _$MyoroCurrencyInputStyleMixin {
       self.suffixIconConstraints,
       self.prefixIconConstraints,
       self.suffixButtonStyle,
+      self.errorTextStyle,
     ]);
   }
 
@@ -181,5 +186,6 @@ mixin _$MyoroCurrencyInputStyleMixin {
       '  suffixIconConstraints: ${self.suffixIconConstraints},\n'
       '  prefixIconConstraints: ${self.prefixIconConstraints},\n'
       '  suffixButtonStyle: ${self.suffixButtonStyle},\n'
+      '  errorTextStyle: ${self.errorTextStyle},\n'
       ');';
 }

@@ -12,7 +12,7 @@ List<ThemeExtension> createMyoroThemeExtensions(bool isDarkMode, ColorScheme col
     ..._createButtonThemeExtensions(textTheme, decorationThemeExtension),
     ..._createCardThemeExtensions(colorScheme, textTheme),
     ..._createCarouselThemeExtensions(),
-    ..._createCheckboxThemeExtensions(colorScheme, textTheme),
+    ..._createCheckboxThemeExtensions(isDarkMode, colorScheme, textTheme),
     ..._createDividerThemeExtensions(colorScheme),
     ..._createDrawerThemeExtensions(colorScheme, textTheme),
     ..._createDropdownThemeExtensions(),
@@ -28,6 +28,7 @@ List<ThemeExtension> createMyoroThemeExtensions(bool isDarkMode, ColorScheme col
     ..._createModalThemeExtensions(colorScheme, textTheme),
     ..._createPickerThemeExtensions(colorScheme, textTheme),
     ..._createRadioThemeExtensions(colorScheme, textTheme),
+    ..._createRequestWidgetThemeExtensions(),
     ..._createScrollableThemeExtensions(colorScheme, textTheme),
     ..._createSliderThemeExtensions(textTheme),
     ..._createSnackBarThemeExtensions(colorScheme, textTheme),
@@ -65,9 +66,9 @@ List<ThemeExtension> _createCarouselThemeExtensions() {
   return [const MyoroCarouselThemeExtension.builder()];
 }
 
-List<ThemeExtension> _createCheckboxThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+List<ThemeExtension> _createCheckboxThemeExtensions(bool isDarkMode, ColorScheme colorScheme, TextTheme textTheme) {
   return [
-    MyoroCheckboxThemeExtension.builder(colorScheme, textTheme),
+    MyoroCheckboxThemeExtension.builder(isDarkMode, colorScheme, textTheme),
     const MyoroGroupCheckboxThemeExtension.builder(),
   ];
 }
@@ -85,7 +86,11 @@ List<ThemeExtension> _createDrawerThemeExtensions(ColorScheme colorScheme, TextT
 }
 
 List<ThemeExtension> _createDropdownThemeExtensions() {
-  return [MyoroDropdownThemeExtension.builder(), const MyoroSearchDropdownThemeExtension.builder()];
+  return [
+    const MyoroCountryRegionCityDropdownThemeExtension.builder(),
+    MyoroDropdownThemeExtension.builder(),
+    const MyoroSearchDropdownThemeExtension.builder(),
+  ];
 }
 
 List<ThemeExtension> _createFeedbackThemeExtensions(TextTheme textTheme) {
@@ -154,6 +159,10 @@ List<ThemeExtension> _createPickerThemeExtensions(ColorScheme colorScheme, TextT
 
 List<ThemeExtension> _createRadioThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [MyoroRadioThemeExtension.builder(colorScheme, textTheme), const MyoroGroupRadioThemeExtension.builder()];
+}
+
+List<ThemeExtension> _createRequestWidgetThemeExtensions() {
+  return const [MyoroRequestWidgetThemeExtension.builder()];
 }
 
 List<ThemeExtension> _createScrollableThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {

@@ -388,6 +388,51 @@
   "myoroMonthEnumDecemberLabel": "दिसंबर",
 
   "myoroSearchBarInputLabel": "खोजें",
-  "myoroSearchBarInputPlaceholder": "कुछ टाइप करें..."
+  "myoroSearchBarInputPlaceholder": "कुछ टाइप करें...",
+
+  "myoroCountryDropdownLabel": "देश",
+
+  "myoroCountryDropdownItemText": "{emoji} {name}",
+  "@myoroCountryDropdownItemText": {
+    "placeholders": {
+      "emoji": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroRegionDropdownLabel": "क्षेत्र",
+
+  "myoroRegionDropdownItemText": "{name}",
+  "@myoroRegionDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroCityDropdownLabel": "शहर",
+
+  "myoroCityDropdownItemText": "{name}",
+  "@myoroCityDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroFeedbackErrorFeedbackTitle": "कुछ गलत हो गया!",
+  "myoroErrorFeedbackSubtitle": "कृपया अपना कनेक्शन सत्यापित करें और पुनः प्रयास करें!",
+  "myoroErrorFeedbackActionButtonText": "पुनः प्रयास करें",
+
+  "myoroSuccessFeedbackSubtitle": "ऑपरेशन सफलतापूर्वक पूर्ण हुआ!",
+  "myoroSuccessFeedbackActionButtonText": "पूर्ण",
+
+  "myoroEmptyFeedbackActionButtonText": "ताज़ा करें"
 }
 

@@ -8,7 +8,7 @@ final class _SelectionTypeModalButton extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final localization = context.localization;
+    final localization = context.mflLocalization;
 
     final themeExtension = context.resolveThemeExtension<MyoroImagePickerThemeExtension>();
     final style = context.watch<MyoroImagePickerStyle>();

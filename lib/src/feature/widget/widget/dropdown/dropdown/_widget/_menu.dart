@@ -14,7 +14,7 @@ final class _Menu<T> extends StatelessWidget {
     final state = viewModel.state;
     final items = state.items;
     final itemBuilder = state.itemBuilder;
-    final searchCallback = state.searchCallback;
+    final showSearchBar = state.showSearchBar;
     final dropdownType = state.dropdownType;
     final isModal = dropdownType.isModal;
     final isBottomSheet = dropdownType.isBottomSheet;
@@ -32,7 +32,7 @@ final class _Menu<T> extends StatelessWidget {
           ),
           items: items,
           selectedItems: selectedItems,
-          searchCallback: searchCallback,
+          showSearchBar: showSearchBar,
           itemBuilder: itemBuilder,
           footer: footer,
         );

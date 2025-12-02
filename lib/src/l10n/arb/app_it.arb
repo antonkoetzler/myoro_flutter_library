@@ -388,6 +388,51 @@
   "myoroMonthEnumDecemberLabel": "Dicembre",
 
   "myoroSearchBarInputLabel": "Cerca",
-  "myoroSearchBarInputPlaceholder": "Digita qualcosa..."
+  "myoroSearchBarInputPlaceholder": "Digita qualcosa...",
+
+  "myoroCountryDropdownLabel": "Paese",
+
+  "myoroCountryDropdownItemText": "{emoji} {name}",
+  "@myoroCountryDropdownItemText": {
+    "placeholders": {
+      "emoji": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroRegionDropdownLabel": "Regione",
+
+  "myoroRegionDropdownItemText": "{name}",
+  "@myoroRegionDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroCityDropdownLabel": "Città",
+
+  "myoroCityDropdownItemText": "{name}",
+  "@myoroCityDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroFeedbackErrorFeedbackTitle": "Qualcosa è andato storto!",
+  "myoroErrorFeedbackSubtitle": "Verifica la tua connessione e riprova!",
+  "myoroErrorFeedbackActionButtonText": "Riprova",
+
+  "myoroSuccessFeedbackSubtitle": "Operazione completata con successo!",
+  "myoroSuccessFeedbackActionButtonText": "Fatto",
+
+  "myoroEmptyFeedbackActionButtonText": "Aggiorna"
 }
 

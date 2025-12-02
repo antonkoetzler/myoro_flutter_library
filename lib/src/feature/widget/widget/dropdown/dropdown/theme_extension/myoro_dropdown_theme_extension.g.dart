@@ -48,6 +48,8 @@ mixin _$MyoroDropdownThemeExtensionMixin on ThemeExtension<MyoroDropdownThemeExt
     bool textAlignProvided = true,
     TextStyle? inputTextStyle,
     bool inputTextStyleProvided = true,
+    EdgeInsets? contentPadding,
+    bool contentPaddingProvided = true,
   }) {
     return MyoroDropdownThemeExtension(
       constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
@@ -69,6 +71,7 @@ mixin _$MyoroDropdownThemeExtensionMixin on ThemeExtension<MyoroDropdownThemeExt
       itemsSectionSpacing: itemsSectionSpacingProvided ? (itemsSectionSpacing ?? self.itemsSectionSpacing) : null,
       textAlign: textAlignProvided ? (textAlign ?? self.textAlign) : null,
       inputTextStyle: inputTextStyleProvided ? (inputTextStyle ?? self.inputTextStyle) : null,
+      contentPadding: contentPaddingProvided ? (contentPadding ?? self.contentPadding) : null,
     );
   }
 
@@ -90,7 +93,8 @@ mixin _$MyoroDropdownThemeExtensionMixin on ThemeExtension<MyoroDropdownThemeExt
         other.expandingAndOverlaySpacing == self.expandingAndOverlaySpacing &&
         other.itemsSectionSpacing == self.itemsSectionSpacing &&
         other.textAlign == self.textAlign &&
-        other.inputTextStyle == self.inputTextStyle;
+        other.inputTextStyle == self.inputTextStyle &&
+        other.contentPadding == self.contentPadding;
   }
 
   @override
@@ -111,6 +115,7 @@ mixin _$MyoroDropdownThemeExtensionMixin on ThemeExtension<MyoroDropdownThemeExt
       self.itemsSectionSpacing,
       self.textAlign,
       self.inputTextStyle,
+      self.contentPadding,
     );
   }
 
@@ -132,5 +137,6 @@ mixin _$MyoroDropdownThemeExtensionMixin on ThemeExtension<MyoroDropdownThemeExt
       '  itemsSectionSpacing: ${self.itemsSectionSpacing},\n'
       '  textAlign: ${self.textAlign},\n'
       '  inputTextStyle: ${self.inputTextStyle},\n'
+      '  contentPadding: ${self.contentPadding},\n'
       ');';
 }

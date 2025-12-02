@@ -3,11 +3,12 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 
 part '../_widget/_input.dart';
+part '../_widget/_myoro_search_bar_input_state.dart';
 
 /// Basic search bar input.
 ///
 /// Used primarily as a basic search bar in, for example, a listing screen.
-class MyoroSearchBarInput extends StatelessWidget {
+class MyoroSearchBarInput extends StatefulWidget {
   /// Default value of [style].
   static const styleDefaultValue = MyoroSearchBarInputStyle();
 
@@ -27,7 +28,9 @@ class MyoroSearchBarInput extends StatelessWidget {
     this.inputStyle = inputStyleDefaultValue,
     this.label = labelDefaultValue,
     this.placeholder = placeholderDefaultValue,
-    required this.controller,
+    this.autofocus = false,
+    this.onChanged,
+    this.controller,
   });
 
   /// [MyoroInput.style].
@@ -42,18 +45,18 @@ class MyoroSearchBarInput extends StatelessWidget {
   /// [MyoroInput.placeholder].
   final String placeholder;
 
-  /// [TextEditingController] of the search bar.
-  final TextEditingController controller;
+  /// Autofocus.
+  final bool autofocus;
 
-  /// Build function.
+  /// On changed.
+  final ValueChanged<String>? onChanged;
+
+  /// [TextEditingController] of the search bar.
+  final TextEditingController? controller;
+
+  /// Create state function.
   @override
-  Widget build(_) {
-    return MultiProvider(
-      providers: [
-        Provider.value(value: style),
-        Provider(create: (_) => MyoroSearchBarInputViewModel(inputStyle, label, placeholder, controller)),
-      ],
-      child: const _Input(),
-    );
+  State<MyoroSearchBarInput> createState() {
+    return _MyoroSearchBarInputState();
   }
 }

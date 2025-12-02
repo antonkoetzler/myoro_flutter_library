@@ -388,6 +388,51 @@
   "myoroMonthEnumDecemberLabel": "Grudzień",
 
   "myoroSearchBarInputLabel": "Szukaj",
-  "myoroSearchBarInputPlaceholder": "Wpisz coś..."
+  "myoroSearchBarInputPlaceholder": "Wpisz coś...",
+
+  "myoroCountryDropdownLabel": "Kraj",
+
+  "myoroCountryDropdownItemText": "{emoji} {name}",
+  "@myoroCountryDropdownItemText": {
+    "placeholders": {
+      "emoji": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroRegionDropdownLabel": "Region",
+
+  "myoroRegionDropdownItemText": "{name}",
+  "@myoroRegionDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroCityDropdownLabel": "Miasto",
+
+  "myoroCityDropdownItemText": "{name}",
+  "@myoroCityDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroFeedbackErrorFeedbackTitle": "Coś poszło nie tak!",
+  "myoroErrorFeedbackSubtitle": "Sprawdź połączenie i spróbuj ponownie!",
+  "myoroErrorFeedbackActionButtonText": "Spróbuj ponownie",
+
+  "myoroSuccessFeedbackSubtitle": "Operacja zakończona pomyślnie!",
+  "myoroSuccessFeedbackActionButtonText": "Gotowe",
+
+  "myoroEmptyFeedbackActionButtonText": "Odśwież"
 }
 

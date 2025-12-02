@@ -181,5 +181,7 @@ class MyoroInput extends StatefulWidget {
 
   /// Create state function.
   @override
-  State<MyoroInput> createState() => _MyoroInputState();
+  State<MyoroInput> createState() {
+    return _MyoroInputState();
+  }
 }

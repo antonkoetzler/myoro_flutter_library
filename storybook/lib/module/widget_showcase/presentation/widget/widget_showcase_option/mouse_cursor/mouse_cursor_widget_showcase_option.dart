@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:storybook/src/l10n/localization.dart';
+import 'package:storybook/l10n/localization.dart';
 
 /// Widget showcase option for a [MyoroSingleSelectionDropdown]'s [MouseCursor].
 final class MouseCursorWidgetShowcaseOption extends StatelessWidget {

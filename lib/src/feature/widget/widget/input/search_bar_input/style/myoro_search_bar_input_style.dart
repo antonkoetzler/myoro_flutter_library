@@ -41,6 +41,7 @@ class MyoroSearchBarInputStyle extends MyoroInputStyle with _$MyoroSearchBarInpu
       suffixIconConstraints: myoroFallbackLerp(a?.suffixIconConstraints, b?.suffixIconConstraints, t),
       prefixIconConstraints: myoroFallbackLerp(a?.prefixIconConstraints, b?.prefixIconConstraints, t),
       suffixButtonStyle: MyoroIconTextButtonStyle.lerp(a?.suffixButtonStyle, b?.suffixButtonStyle, t),
+      errorTextStyle: TextStyle.lerp(a?.errorTextStyle, b?.errorTextStyle, t),
       searchBarIconStyle: MyoroIconStyle.lerp(a?.searchBarIconStyle, b?.searchBarIconStyle, t),
     );
   }
@@ -67,6 +68,7 @@ class MyoroSearchBarInputStyle extends MyoroInputStyle with _$MyoroSearchBarInpu
     super.suffixIconConstraints,
     super.prefixIconConstraints,
     super.suffixButtonStyle,
+    super.errorTextStyle,
     this.searchBarIconStyle,
   });
 
@@ -92,6 +94,7 @@ class MyoroSearchBarInputStyle extends MyoroInputStyle with _$MyoroSearchBarInpu
       obscureTextButtonDisabledIcon: myoroNullableFake<IconData>(),
       suffixIconConstraints: myoroNullableFake<BoxConstraints>(),
       suffixButtonStyle: myoroNullableFake<MyoroIconTextButtonStyle>(),
+      errorTextStyle: myoroNullableFake<TextStyle>(),
       searchBarIconStyle: myoroNullableFake<MyoroIconStyle>(),
     );
   }

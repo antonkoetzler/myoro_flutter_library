@@ -388,6 +388,51 @@
   "myoroMonthEnumDecemberLabel": "12월",
 
   "myoroSearchBarInputLabel": "검색",
-  "myoroSearchBarInputPlaceholder": "무언가 입력하세요..."
+  "myoroSearchBarInputPlaceholder": "무언가 입력하세요...",
+
+  "myoroCountryDropdownLabel": "국가",
+
+  "myoroCountryDropdownItemText": "{emoji} {name}",
+  "@myoroCountryDropdownItemText": {
+    "placeholders": {
+      "emoji": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroRegionDropdownLabel": "지역",
+
+  "myoroRegionDropdownItemText": "{name}",
+  "@myoroRegionDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroCityDropdownLabel": "도시",
+
+  "myoroCityDropdownItemText": "{name}",
+  "@myoroCityDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroFeedbackErrorFeedbackTitle": "문제가 발생했습니다!",
+  "myoroErrorFeedbackSubtitle": "연결을 확인하고 다시 시도하세요!",
+  "myoroErrorFeedbackActionButtonText": "다시 시도",
+
+  "myoroSuccessFeedbackSubtitle": "작업이 성공적으로 완료되었습니다!",
+  "myoroSuccessFeedbackActionButtonText": "완료",
+
+  "myoroEmptyFeedbackActionButtonText": "새로고침"
 }
 

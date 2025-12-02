@@ -15,7 +15,7 @@ final class _Widget extends StatelessWidget {
       decoration: BoxDecoration(border: Border.all(color: Colors.grey), borderRadius: BorderRadius.circular(8)),
       child: MyoroMenu<String>(
         style: state.menuStyle,
-        searchCallback: state.searchCallbackEnabled ? state.searchCallback : null,
+        showSearchBar: state.showSearchBar,
         items: state.items,
         selectedItems: state.selectedItems,
         itemBuilder: state.itemBuilder,

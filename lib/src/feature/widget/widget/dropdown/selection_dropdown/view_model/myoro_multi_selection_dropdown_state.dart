@@ -1,11 +1,12 @@
-part of 'myoro_selection_dropdown_view_model.dart';
+part of 'myoro_selection_dropdown_state.dart';
 
-/// Multi selection implementation of [MyoroSelectionDropdownViewModel].
+/// [State] of [MyoroMultiSelectionDropdownViewModel].
 class MyoroMultiSelectionDropdownState<T> extends MyoroSelectionDropdownState<T> {
   /// Default constructor.
   MyoroMultiSelectionDropdownState(
     super.label,
     super.enabled,
+    super.showSearchBar,
     super.dropdownType,
     super.items,
     super.itemBuilder,
@@ -24,10 +25,10 @@ class MyoroMultiSelectionDropdownState<T> extends MyoroSelectionDropdownState<T>
   ValueNotifier<Set<T>>? _localSelectedItemsController;
 
   /// [ValueNotifier] controlling the selected item(s).
-  late final ValueNotifier<Set<T>> _selectedItemsController;
+  late ValueNotifier<Set<T>> _selectedItemsController;
 
   /// Callback executed when the selected items are changed.
-  final ValueChanged<Set<T>>? onChanged;
+  ValueChanged<Set<T>>? onChanged;
 
   /// Dispose function.
   @override
@@ -44,6 +45,17 @@ class MyoroMultiSelectionDropdownState<T> extends MyoroSelectionDropdownState<T>
   /// Getter of [_selectedItemsController]'s value.
   Set<T> get selectedItems {
     return _selectedItemsController.value;
+  }
+
+  /// Setter of the selected items controller.
+  set selectedItemsController(ValueNotifier<Set<T>>? selectedItemsController) {
+    if (selectedItemsController == null) {
+      _selectedItemsController = _localSelectedItemsController ??= ValueNotifier(selectedItems);
+    } else {
+      _localSelectedItemsController?.dispose();
+      _localSelectedItemsController = null;
+      _selectedItemsController = selectedItemsController;
+    }
   }
 
   /// [_selectedItemsController] setter.

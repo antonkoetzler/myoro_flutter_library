@@ -1150,4 +1150,46 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get myoroSearchBarInputPlaceholder => '무언가 입력하세요...';
+
+  @override
+  String get myoroCountryDropdownLabel => '국가';
+
+  @override
+  String myoroCountryDropdownItemText(String emoji, String name) {
+    return '$emoji $name';
+  }
+
+  @override
+  String get myoroRegionDropdownLabel => '지역';
+
+  @override
+  String myoroRegionDropdownItemText(String name) {
+    return '$name';
+  }
+
+  @override
+  String get myoroCityDropdownLabel => '도시';
+
+  @override
+  String myoroCityDropdownItemText(String name) {
+    return '$name';
+  }
+
+  @override
+  String get myoroFeedbackErrorFeedbackTitle => '문제가 발생했습니다!';
+
+  @override
+  String get myoroErrorFeedbackSubtitle => '연결을 확인하고 다시 시도하세요!';
+
+  @override
+  String get myoroErrorFeedbackActionButtonText => '다시 시도';
+
+  @override
+  String get myoroSuccessFeedbackSubtitle => '작업이 성공적으로 완료되었습니다!';
+
+  @override
+  String get myoroSuccessFeedbackActionButtonText => '완료';
+
+  @override
+  String get myoroEmptyFeedbackActionButtonText => '새로고침';
 }

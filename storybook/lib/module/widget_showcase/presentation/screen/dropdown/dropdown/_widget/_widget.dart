@@ -11,7 +11,6 @@ final class _Widget extends StatelessWidget {
     final selectedItemsController = state.selectedItemsController;
     final showingController = state.showingController;
     final items = state.items;
-    final searchCallback = state.searchCallbackEnabled ? state.searchCallback : null;
     final dropdownType = state.dropdownType;
     final targetKey = state.targetKey;
 
@@ -23,7 +22,7 @@ final class _Widget extends StatelessWidget {
           showingController: showingController,
           items: items,
           selectedItems: selectedItems,
-          searchCallback: searchCallback,
+          showSearchBar: state.showSearchBar,
           dropdownType: dropdownType,
           targetKey: targetKey,
           itemBuilder: (_, item) {

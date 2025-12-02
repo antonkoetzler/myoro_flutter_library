@@ -13,12 +13,11 @@ final class _SearchBar<T> extends StatelessWidget {
         style.searchBarInputStyle ?? themeExtension.searchBarInputStyle ?? MyoroInput.inputStyleDefaultValue;
 
     final viewModel = context.read<MyoroMenuViewModel<T>>();
-    final state = viewModel.state;
-    final searchCallback = state.searchCallback;
+    final searchBarOnChanged = viewModel.searchBarOnChanged;
 
     return Padding(
       padding: searchBarPadding,
-      child: MyoroInput(inputStyle: searchBarInputStyle, autofocus: true, onChanged: (t) => searchCallback!(t)),
+      child: MyoroSearchBarInput(inputStyle: searchBarInputStyle, onChanged: searchBarOnChanged),
     );
   }
 }

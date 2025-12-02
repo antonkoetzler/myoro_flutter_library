@@ -388,6 +388,51 @@
   "myoroMonthEnumDecemberLabel": "Tháng Mười Hai",
 
   "myoroSearchBarInputLabel": "Tìm kiếm",
-  "myoroSearchBarInputPlaceholder": "Nhập gì đó..."
+  "myoroSearchBarInputPlaceholder": "Nhập gì đó...",
+
+  "myoroCountryDropdownLabel": "Quốc gia",
+
+  "myoroCountryDropdownItemText": "{emoji} {name}",
+  "@myoroCountryDropdownItemText": {
+    "placeholders": {
+      "emoji": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroRegionDropdownLabel": "Vùng",
+
+  "myoroRegionDropdownItemText": "{name}",
+  "@myoroRegionDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroCityDropdownLabel": "Thành phố",
+
+  "myoroCityDropdownItemText": "{name}",
+  "@myoroCityDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroFeedbackErrorFeedbackTitle": "Đã xảy ra lỗi!",
+  "myoroErrorFeedbackSubtitle": "Vui lòng xác minh kết nối của bạn và thử lại!",
+  "myoroErrorFeedbackActionButtonText": "Thử lại",
+
+  "myoroSuccessFeedbackSubtitle": "Thao tác hoàn tất thành công!",
+  "myoroSuccessFeedbackActionButtonText": "Hoàn thành",
+
+  "myoroEmptyFeedbackActionButtonText": "Làm mới"
 }
 

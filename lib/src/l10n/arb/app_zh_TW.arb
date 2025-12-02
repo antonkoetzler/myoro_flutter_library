@@ -388,6 +388,51 @@
   "myoroMonthEnumDecemberLabel": "十二月",
 
   "myoroSearchBarInputLabel": "搜尋",
-  "myoroSearchBarInputPlaceholder": "輸入一些內容..."
+  "myoroSearchBarInputPlaceholder": "輸入一些內容...",
+
+  "myoroCountryDropdownLabel": "國家",
+
+  "myoroCountryDropdownItemText": "{emoji} {name}",
+  "@myoroCountryDropdownItemText": {
+    "placeholders": {
+      "emoji": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroRegionDropdownLabel": "地區",
+
+  "myoroRegionDropdownItemText": "{name}",
+  "@myoroRegionDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroCityDropdownLabel": "城市",
+
+  "myoroCityDropdownItemText": "{name}",
+  "@myoroCityDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroFeedbackErrorFeedbackTitle": "出錯了！",
+  "myoroErrorFeedbackSubtitle": "請檢查您的連線後重試！",
+  "myoroErrorFeedbackActionButtonText": "重試",
+
+  "myoroSuccessFeedbackSubtitle": "操作成功完成！",
+  "myoroSuccessFeedbackActionButtonText": "完成",
+
+  "myoroEmptyFeedbackActionButtonText": "重新整理"
 }
 

@@ -388,6 +388,51 @@
   "myoroMonthEnumDecemberLabel": "十二月",
 
   "myoroSearchBarInputLabel": "搜索",
-  "myoroSearchBarInputPlaceholder": "输入一些内容..."
+  "myoroSearchBarInputPlaceholder": "输入一些内容...",
+
+  "myoroCountryDropdownLabel": "国家",
+
+  "myoroCountryDropdownItemText": "{emoji} {name}",
+  "@myoroCountryDropdownItemText": {
+    "placeholders": {
+      "emoji": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroRegionDropdownLabel": "地区",
+
+  "myoroRegionDropdownItemText": "{name}",
+  "@myoroRegionDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroCityDropdownLabel": "城市",
+
+  "myoroCityDropdownItemText": "{name}",
+  "@myoroCityDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroFeedbackErrorFeedbackTitle": "出错了！",
+  "myoroErrorFeedbackSubtitle": "请检查您的连接后重试！",
+  "myoroErrorFeedbackActionButtonText": "重试",
+
+  "myoroSuccessFeedbackSubtitle": "操作成功完成！",
+  "myoroSuccessFeedbackActionButtonText": "完成",
+
+  "myoroEmptyFeedbackActionButtonText": "刷新"
 }
 

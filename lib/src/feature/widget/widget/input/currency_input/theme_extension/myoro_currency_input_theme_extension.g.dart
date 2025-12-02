@@ -58,6 +58,8 @@ mixin _$MyoroCurrencyInputThemeExtensionMixin on ThemeExtension<MyoroCurrencyInp
     bool prefixIconConstraintsProvided = true,
     MyoroIconTextButtonStyle? suffixButtonStyle,
     bool suffixButtonStyleProvided = true,
+    TextStyle? errorTextStyle,
+    bool errorTextStyleProvided = true,
     MyoroIconTextButtonStyle? currencySymbolButtonStyle,
     bool currencySymbolButtonStyleProvided = true,
     EdgeInsets? currencyPrefixPadding,
@@ -92,6 +94,7 @@ mixin _$MyoroCurrencyInputThemeExtensionMixin on ThemeExtension<MyoroCurrencyInp
           ? (prefixIconConstraints ?? self.prefixIconConstraints)
           : null,
       suffixButtonStyle: suffixButtonStyleProvided ? (suffixButtonStyle ?? self.suffixButtonStyle) : null,
+      errorTextStyle: errorTextStyleProvided ? (errorTextStyle ?? self.errorTextStyle) : null,
       currencySymbolButtonStyle: currencySymbolButtonStyleProvided
           ? (currencySymbolButtonStyle ?? self.currencySymbolButtonStyle)
           : null,
@@ -125,6 +128,7 @@ mixin _$MyoroCurrencyInputThemeExtensionMixin on ThemeExtension<MyoroCurrencyInp
         other.suffixIconConstraints == self.suffixIconConstraints &&
         other.prefixIconConstraints == self.prefixIconConstraints &&
         other.suffixButtonStyle == self.suffixButtonStyle &&
+        other.errorTextStyle == self.errorTextStyle &&
         other.currencySymbolButtonStyle == self.currencySymbolButtonStyle &&
         other.currencyPrefixPadding == self.currencyPrefixPadding;
   }
@@ -152,6 +156,7 @@ mixin _$MyoroCurrencyInputThemeExtensionMixin on ThemeExtension<MyoroCurrencyInp
       self.suffixIconConstraints,
       self.prefixIconConstraints,
       self.suffixButtonStyle,
+      self.errorTextStyle,
       self.currencySymbolButtonStyle,
       self.currencyPrefixPadding,
     ]);
@@ -180,6 +185,7 @@ mixin _$MyoroCurrencyInputThemeExtensionMixin on ThemeExtension<MyoroCurrencyInp
       '  suffixIconConstraints: ${self.suffixIconConstraints},\n'
       '  prefixIconConstraints: ${self.prefixIconConstraints},\n'
       '  suffixButtonStyle: ${self.suffixButtonStyle},\n'
+      '  errorTextStyle: ${self.errorTextStyle},\n'
       '  currencySymbolButtonStyle: ${self.currencySymbolButtonStyle},\n'
       '  currencyPrefixPadding: ${self.currencyPrefixPadding},\n'
       ');';

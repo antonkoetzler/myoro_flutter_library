@@ -9,8 +9,8 @@ final class MyoroTableState<T> {
     required MyoroTableConfigurationRowBuilder<T> rowBuilder,
   }) : _request = request,
        _columns = columns,
-       _rowBuilder = rowBuilder {
-    _itemsRequestController.requestCallback = _request;
+       _rowBuilder = rowBuilder,
+       _itemsRequestController = MyoroRequestController<Set<T>>(request) {
     _createTitleColumnKeys();
   }
 
@@ -24,7 +24,7 @@ final class MyoroTableState<T> {
   MyoroTableConfigurationRowBuilder<T> _rowBuilder;
 
   /// [ValueNotifier] of the items/rows of the [MyoroTable].
-  final _itemsRequestController = MyoroRequestController<Set<T>>();
+  final MyoroRequestController<Set<T>> _itemsRequestController;
 
   /// [List] of [GlobalKey]s attributed to every [MyoroTableColumn].
   final List<GlobalKey> _titleColumnKeys = [];
@@ -57,7 +57,7 @@ final class MyoroTableState<T> {
   set request(MyoroTableConfigurationRequest<T> request) {
     if (_request == request) return;
     _request = request;
-    _itemsRequestController.requestCallback = _request;
+    _itemsRequestController.setRequestCallback(_request);
   }
 
   /// [_columns] setter.

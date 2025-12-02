@@ -35,7 +35,7 @@ enum MyoroDayEnum {
 
   /// Label.
   String getLabel(BuildContext context) {
-    final localization = context.localization;
+    final localization = context.mflLocalization;
     final myoroDayEnumMondayLabel = localization.myoroDayEnumMondayLabel;
     final myoroDayEnumTuesdayLabel = localization.myoroDayEnumTuesdayLabel;
     final myoroDayEnumWednesdayLabel = localization.myoroDayEnumWednesdayLabel;
@@ -57,7 +57,7 @@ enum MyoroDayEnum {
 
   /// First letter.
   String getFirstLetter(BuildContext context) {
-    final localization = context.localization;
+    final localization = context.mflLocalization;
     final myoroDayEnumMondayFirstLetter = localization.myoroDayEnumMondayFirstLetter;
     final myoroDayEnumTuesdayFirstLetter = localization.myoroDayEnumTuesdayFirstLetter;
     final myoroDayEnumWednesdayFirstLetter = localization.myoroDayEnumWednesdayFirstLetter;

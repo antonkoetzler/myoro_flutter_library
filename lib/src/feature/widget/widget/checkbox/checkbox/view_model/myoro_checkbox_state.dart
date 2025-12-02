@@ -3,13 +3,20 @@ part of 'myoro_checkbox_view_model.dart';
 /// State of [MyoroCheckboxViewModel].
 class MyoroCheckboxState {
   /// Creates a new instance of [MyoroCheckboxState].
-  MyoroCheckboxState(this.label, bool value, this.onChanged) : _valueController = ValueNotifier(value);
+  MyoroCheckboxState(this.label, bool value, this.enabled, this.onChanged, this.disabledOnTapUp)
+    : _valueController = ValueNotifier(value);
 
   /// [MyoroCheckbox.label].
-  final String label;
+  String label;
+
+  /// [MyoroCheckbox.enabled].
+  bool enabled;
 
   /// [MyoroCheckbox.onChanged].
-  final MyoroCheckboxOnChanged? onChanged;
+  MyoroCheckboxOnChanged? onChanged;
+
+  /// [MyoroCheckbox.disabledOnTapUp].
+  MyoroCheckboxDisabledOnTapUp? disabledOnTapUp;
 
   /// [ValueNotifier] controlling if the checkbox is value.
   final ValueNotifier<bool> _valueController;

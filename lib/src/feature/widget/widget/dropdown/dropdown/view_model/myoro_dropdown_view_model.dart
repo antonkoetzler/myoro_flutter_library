@@ -10,7 +10,7 @@ class MyoroDropdownViewModel<T> {
     ValueNotifier<bool> showingController,
     Set<T>? items,
     Set<T> selectedItems,
-    MyoroMenuSearchCallback<T>? searchCallback,
+    bool showSearchBar,
     MyoroDropdownTypeEnum? dropdownType,
     GlobalKey? targetKey,
     MyoroMenuItemBuilder<T> itemBuilder,
@@ -19,7 +19,7 @@ class MyoroDropdownViewModel<T> {
         showingController,
         items,
         selectedItems,
-        searchCallback,
+        showSearchBar,
         dropdownType ??
             (MyoroPlatformHelper.isMobile ? MyoroDropdownTypeEnum.bottomSheet : MyoroDropdownTypeEnum.expanding),
         targetKey,

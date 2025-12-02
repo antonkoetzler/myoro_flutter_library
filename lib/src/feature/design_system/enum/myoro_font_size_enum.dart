@@ -9,16 +9,16 @@ enum MyoroFontSizeEnum {
   tiny(12),
 
   /// Small font size.
-  small(16),
+  small(14),
 
   /// Medium font size.
-  medium(20),
+  medium(18),
 
   /// Large font size.
-  large(24),
+  large(22),
 
   /// Extra large font size.
-  extraLarge(28);
+  extraLarge(26);
 
   /// Font size.
   final double size;

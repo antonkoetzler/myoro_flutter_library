@@ -3,7 +3,10 @@ part of '../widget/myoro_menu.dart';
 /// [Widget] displayed when the menu request is successful.
 final class _SuccessContent<T> extends StatelessWidget {
   /// Default constructor.
-  const _SuccessContent();
+  const _SuccessContent(this._queriedItems);
+
+  /// Queried items.
+  final Set<T> _queriedItems;
 
   /// Build function.
   @override
@@ -23,14 +26,14 @@ final class _SuccessContent<T> extends StatelessWidget {
 
     final viewModel = context.read<MyoroMenuViewModel<T>>();
     final state = viewModel.state;
-    final searchCallback = state.searchCallback;
+    final showSearchBar = state.showSearchBar;
     final footer = state.footer;
 
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (searchCallback != null) _SearchBar<T>(),
-        Flexible(child: _ItemsSection<T>()),
+        if (showSearchBar) _SearchBar<T>(),
+        Flexible(child: _ItemsSection<T>(_queriedItems)),
         if (footer != null) Padding(padding: footerPadding, child: footer),
       ],
     );

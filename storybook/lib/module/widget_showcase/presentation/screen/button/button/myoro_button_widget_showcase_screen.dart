@@ -2,7 +2,6 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
-import 'package:storybook/src/l10n/localization.dart';
 import 'package:storybook/storybook.dart';
 
 part '_widget/_background_color_builder_option.dart';

@@ -32,6 +32,7 @@ class MyoroSearchBarInputThemeExtension extends ThemeExtension<MyoroSearchBarInp
     this.suffixIconConstraints,
     this.prefixIconConstraints,
     this.suffixButtonStyle,
+    this.errorTextStyle,
     this.searchBarIconStyle,
   });
 
@@ -57,6 +58,7 @@ class MyoroSearchBarInputThemeExtension extends ThemeExtension<MyoroSearchBarInp
       suffixIconConstraints = myoroNullableFake<BoxConstraints>(),
       prefixIconConstraints = myoroNullableFake<BoxConstraints>(),
       suffixButtonStyle = myoroNullableFake<MyoroIconTextButtonStyle>(),
+      errorTextStyle = myoroNullableFake<TextStyle>(),
       searchBarIconStyle = myoroNullableFake<MyoroIconStyle>();
 
   /// Builder constructor.
@@ -81,6 +83,7 @@ class MyoroSearchBarInputThemeExtension extends ThemeExtension<MyoroSearchBarInp
       suffixIconConstraints = null,
       prefixIconConstraints = null,
       suffixButtonStyle = null,
+      errorTextStyle = null,
       searchBarIconStyle = MyoroIconStyle(color: colorScheme.onPrimary, size: kMyoroMultiplier * 10);
 
   /// Custom border.
@@ -163,6 +166,10 @@ class MyoroSearchBarInputThemeExtension extends ThemeExtension<MyoroSearchBarInp
   @override
   final MyoroIconTextButtonStyle? suffixButtonStyle;
 
+  /// [TextStyle] of the error text ([InputDecoration.errorStyle]).
+  @override
+  final TextStyle? errorTextStyle;
+
   /// [MyoroIconStyle] of the search bar icon.
   @override
   final MyoroIconStyle? searchBarIconStyle;
@@ -193,6 +200,7 @@ class MyoroSearchBarInputThemeExtension extends ThemeExtension<MyoroSearchBarInp
       suffixIconConstraints: style.suffixIconConstraints,
       prefixIconConstraints: style.prefixIconConstraints,
       suffixButtonStyle: style.suffixButtonStyle,
+      errorTextStyle: style.errorTextStyle,
       searchBarIconStyle: style.searchBarIconStyle,
     );
   }

@@ -13,7 +13,7 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
       widget.showingController,
       widget.items,
       widget.selectedItems,
-      widget.searchCallback,
+      widget.showSearchBar,
       widget.dropdownType,
       widget.targetKey,
       widget.itemBuilder,
@@ -48,7 +48,7 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
     state
       ..showingController = widget.showingController
       ..items = widget.items
-      ..searchCallback = widget.searchCallback
+      ..showSearchBar = widget.showSearchBar
       ..dropdownType =
           widget.dropdownType ??
           (MyoroPlatformHelper.isMobile ? MyoroDropdownTypeEnum.bottomSheet : MyoroDropdownTypeEnum.expanding)

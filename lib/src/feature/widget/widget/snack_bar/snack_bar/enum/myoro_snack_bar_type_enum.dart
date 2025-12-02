@@ -16,6 +16,7 @@ enum MyoroSnackBarTypeEnum {
   /// Error message.
   error;
 
+  /// Fake constructor.
   factory MyoroSnackBarTypeEnum.fake() {
     return values[faker.randomGenerator.integer(values.length)];
   }
@@ -33,8 +34,23 @@ enum MyoroSnackBarTypeEnum {
         MyoroColors.transparent;
   }
 
-  bool get isStandard => this == standard;
-  bool get isAttention => this == attention;
-  bool get isSuccess => this == success;
-  bool get isError => this == error;
+  /// Is [standard] getter.
+  bool get isStandard {
+    return this == standard;
+  }
+
+  /// Is [attention] getter.
+  bool get isAttention {
+    return this == attention;
+  }
+
+  /// Is [success] getter.
+  bool get isSuccess {
+    return this == success;
+  }
+
+  /// Is [error] getter.
+  bool get isError {
+    return this == error;
+  }
 }

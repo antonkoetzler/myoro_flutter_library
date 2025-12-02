@@ -32,6 +32,7 @@ class MyoroCurrencyInputThemeExtension extends ThemeExtension<MyoroCurrencyInput
     this.suffixIconConstraints,
     this.prefixIconConstraints,
     this.suffixButtonStyle,
+    this.errorTextStyle,
     this.currencySymbolButtonStyle,
     this.currencyPrefixPadding,
   });
@@ -58,6 +59,7 @@ class MyoroCurrencyInputThemeExtension extends ThemeExtension<MyoroCurrencyInput
       suffixIconConstraints = myoroNullableFake<BoxConstraints>(),
       prefixIconConstraints = myoroNullableFake<BoxConstraints>(),
       suffixButtonStyle = myoroNullableFake<MyoroIconTextButtonStyle>(),
+      errorTextStyle = myoroNullableFake<TextStyle>(),
       currencySymbolButtonStyle = MyoroIconTextButtonStyle.fake(),
       currencyPrefixPadding = myoroFake<EdgeInsets>();
 
@@ -108,6 +110,7 @@ class MyoroCurrencyInputThemeExtension extends ThemeExtension<MyoroCurrencyInput
           right: kMyoroMultiplier * 1.2,
         ),
       ),
+      errorTextStyle = null,
       currencySymbolButtonStyle = MyoroIconTextButtonStyle(
         textStyle: MyoroTextStyle(style: textTheme.bodySmall!),
         borderRadius: BorderRadius.circular(kMyoroBorderRadius),
@@ -200,6 +203,10 @@ class MyoroCurrencyInputThemeExtension extends ThemeExtension<MyoroCurrencyInput
   @override
   final MyoroIconTextButtonStyle? suffixButtonStyle;
 
+  /// [TextStyle] of the error text ([InputDecoration.errorStyle]).
+  @override
+  final TextStyle? errorTextStyle;
+
   /// [MyoroIconTextButtonStyle] of the currency prefix [Widget].
   @override
   final MyoroIconTextButtonStyle? currencySymbolButtonStyle;
@@ -233,6 +240,7 @@ class MyoroCurrencyInputThemeExtension extends ThemeExtension<MyoroCurrencyInput
       suffixIconConstraints: style.suffixIconConstraints,
       prefixIconConstraints: style.prefixIconConstraints,
       suffixButtonStyle: style.suffixButtonStyle,
+      errorTextStyle: style.errorTextStyle,
       currencySymbolButtonStyle: style.currencySymbolButtonStyle,
       currencyPrefixPadding: style.currencyPrefixPadding,
     );

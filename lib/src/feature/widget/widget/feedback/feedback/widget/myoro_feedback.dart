@@ -12,25 +12,23 @@ class MyoroFeedback extends StatelessWidget {
   /// Default value of [style].
   static const styleDefaultValue = MyoroFeedbackStyle();
 
-  /// Default value of [title].
-  static const titleDefaultValue = kMyoroEmptyString;
-
   /// Default value of [subtitle].
   static const subtitleDefaultValue = kMyoroEmptyString;
 
   /// Default value of [actionButtonText].
   static const actionButtonTextDefaultValue = kMyoroEmptyString;
 
+  /// Default constructor.
   const MyoroFeedback({
     super.key,
     this.style = styleDefaultValue,
     this.icon,
-    this.title = titleDefaultValue,
+    required this.title,
     this.subtitle = subtitleDefaultValue,
     this.actionButtonIcon,
     this.actionButtonText = actionButtonTextDefaultValue,
     this.actionButtonConfiguration,
-  });
+  }) : assert(title.length > 0, '[MyoroFeedback]: [title] must not be empty.');
 
   /// Style.
   final MyoroFeedbackStyle style;

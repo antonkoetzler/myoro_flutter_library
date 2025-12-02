@@ -388,6 +388,51 @@
   "myoroMonthEnumDecemberLabel": "December",
 
   "myoroSearchBarInputLabel": "Zoeken",
-  "myoroSearchBarInputPlaceholder": "Typ iets..."
+  "myoroSearchBarInputPlaceholder": "Typ iets...",
+
+  "myoroCountryDropdownLabel": "Land",
+
+  "myoroCountryDropdownItemText": "{emoji} {name}",
+  "@myoroCountryDropdownItemText": {
+    "placeholders": {
+      "emoji": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroRegionDropdownLabel": "Regio",
+
+  "myoroRegionDropdownItemText": "{name}",
+  "@myoroRegionDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroCityDropdownLabel": "Stad",
+
+  "myoroCityDropdownItemText": "{name}",
+  "@myoroCityDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroFeedbackErrorFeedbackTitle": "Er is iets misgegaan!",
+  "myoroErrorFeedbackSubtitle": "Controleer uw verbinding en probeer het opnieuw!",
+  "myoroErrorFeedbackActionButtonText": "Opnieuw proberen",
+
+  "myoroSuccessFeedbackSubtitle": "Bewerking succesvol voltooid!",
+  "myoroSuccessFeedbackActionButtonText": "Klaar",
+
+  "myoroEmptyFeedbackActionButtonText": "Vernieuwen"
 }
 

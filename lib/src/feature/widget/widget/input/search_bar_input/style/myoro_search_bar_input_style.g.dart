@@ -59,6 +59,8 @@ mixin _$MyoroSearchBarInputStyleMixin {
     bool prefixIconConstraintsProvided = true,
     MyoroIconTextButtonStyle? suffixButtonStyle,
     bool suffixButtonStyleProvided = true,
+    TextStyle? errorTextStyle,
+    bool errorTextStyleProvided = true,
   }) {
     return MyoroSearchBarInputStyle(
       searchBarIconStyle: searchBarIconStyleProvided ? (searchBarIconStyle ?? self.searchBarIconStyle) : null,
@@ -90,6 +92,7 @@ mixin _$MyoroSearchBarInputStyleMixin {
           ? (prefixIconConstraints ?? self.prefixIconConstraints)
           : null,
       suffixButtonStyle: suffixButtonStyleProvided ? (suffixButtonStyle ?? self.suffixButtonStyle) : null,
+      errorTextStyle: errorTextStyleProvided ? (errorTextStyle ?? self.errorTextStyle) : null,
     );
   }
 
@@ -117,7 +120,8 @@ mixin _$MyoroSearchBarInputStyleMixin {
         other.obscureTextButtonDisabledIcon == self.obscureTextButtonDisabledIcon &&
         other.suffixIconConstraints == self.suffixIconConstraints &&
         other.prefixIconConstraints == self.prefixIconConstraints &&
-        other.suffixButtonStyle == self.suffixButtonStyle;
+        other.suffixButtonStyle == self.suffixButtonStyle &&
+        other.errorTextStyle == self.errorTextStyle;
   }
 
   @override
@@ -144,6 +148,7 @@ mixin _$MyoroSearchBarInputStyleMixin {
       self.suffixIconConstraints,
       self.prefixIconConstraints,
       self.suffixButtonStyle,
+      self.errorTextStyle,
     ]);
   }
 
@@ -171,5 +176,6 @@ mixin _$MyoroSearchBarInputStyleMixin {
       '  suffixIconConstraints: ${self.suffixIconConstraints},\n'
       '  prefixIconConstraints: ${self.prefixIconConstraints},\n'
       '  suffixButtonStyle: ${self.suffixButtonStyle},\n'
+      '  errorTextStyle: ${self.errorTextStyle},\n'
       ');';
 }

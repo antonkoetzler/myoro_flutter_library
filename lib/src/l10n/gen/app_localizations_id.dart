@@ -1150,4 +1150,46 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get myoroSearchBarInputPlaceholder => 'Ketik sesuatu...';
+
+  @override
+  String get myoroCountryDropdownLabel => 'Negara';
+
+  @override
+  String myoroCountryDropdownItemText(String emoji, String name) {
+    return '$emoji $name';
+  }
+
+  @override
+  String get myoroRegionDropdownLabel => 'Wilayah';
+
+  @override
+  String myoroRegionDropdownItemText(String name) {
+    return '$name';
+  }
+
+  @override
+  String get myoroCityDropdownLabel => 'Kota';
+
+  @override
+  String myoroCityDropdownItemText(String name) {
+    return '$name';
+  }
+
+  @override
+  String get myoroFeedbackErrorFeedbackTitle => 'Terjadi kesalahan!';
+
+  @override
+  String get myoroErrorFeedbackSubtitle => 'Harap verifikasi koneksi Anda dan coba lagi!';
+
+  @override
+  String get myoroErrorFeedbackActionButtonText => 'Coba Lagi';
+
+  @override
+  String get myoroSuccessFeedbackSubtitle => 'Operasi berhasil diselesaikan!';
+
+  @override
+  String get myoroSuccessFeedbackActionButtonText => 'Selesai';
+
+  @override
+  String get myoroEmptyFeedbackActionButtonText => 'Muat Ulang';
 }

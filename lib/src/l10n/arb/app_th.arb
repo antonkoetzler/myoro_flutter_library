@@ -388,6 +388,51 @@
   "myoroMonthEnumDecemberLabel": "ธันวาคม",
 
   "myoroSearchBarInputLabel": "ค้นหา",
-  "myoroSearchBarInputPlaceholder": "พิมพ์บางอย่าง..."
+  "myoroSearchBarInputPlaceholder": "พิมพ์บางอย่าง...",
+
+  "myoroCountryDropdownLabel": "ประเทศ",
+
+  "myoroCountryDropdownItemText": "{emoji} {name}",
+  "@myoroCountryDropdownItemText": {
+    "placeholders": {
+      "emoji": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroRegionDropdownLabel": "ภูมิภาค",
+
+  "myoroRegionDropdownItemText": "{name}",
+  "@myoroRegionDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroCityDropdownLabel": "เมือง",
+
+  "myoroCityDropdownItemText": "{name}",
+  "@myoroCityDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroFeedbackErrorFeedbackTitle": "เกิดข้อผิดพลาด!",
+  "myoroErrorFeedbackSubtitle": "โปรดตรวจสอบการเชื่อมต่อของคุณและลองอีกครั้ง!",
+  "myoroErrorFeedbackActionButtonText": "ลองอีกครั้ง",
+
+  "myoroSuccessFeedbackSubtitle": "ดำเนินการเสร็จสมบูรณ์แล้ว!",
+  "myoroSuccessFeedbackActionButtonText": "เสร็จสิ้น",
+
+  "myoroEmptyFeedbackActionButtonText": "รีเฟรช"
 }
 

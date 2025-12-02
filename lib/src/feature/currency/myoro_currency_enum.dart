@@ -453,7 +453,7 @@ enum MyoroCurrencyEnum {
 
   /// Formal name of the currency.
   String formalName(BuildContext context) {
-    final localization = context.localization;
+    final localization = context.mflLocalization;
     return switch (this) {
       usd => localization.myoroCurrencyEnumUsdFormalName,
       cad => localization.myoroCurrencyEnumCadFormalName,

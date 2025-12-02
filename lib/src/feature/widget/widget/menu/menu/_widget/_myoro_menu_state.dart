@@ -10,7 +10,7 @@ final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
   void initState() {
     super.initState();
     _viewModel = MyoroMenuViewModel<T>(
-      widget.searchCallback,
+      widget.showSearchBar,
       widget.items,
       widget.selectedItems,
       widget.itemBuilder,
@@ -24,7 +24,7 @@ final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
     super.didUpdateWidget(oldWidget);
     final state = _viewModel.state;
     state
-      ..searchCallback = widget.searchCallback
+      ..showSearchBar = widget.showSearchBar
       ..items = widget.items
       ..selectedItems = widget.selectedItems
       ..itemBuilder = widget.itemBuilder

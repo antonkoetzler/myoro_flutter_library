@@ -1,10 +1,8 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
-import 'package:storybook/src/l10n/gen/app_localizations.dart';
 import 'package:storybook/storybook.dart';
 
 // Import all widget showcase screens
-import '../../presentation/screen/exports.dart';
 
 /// Enum that stores all widgets of MFL.
 enum MyoroWidgetListEnum {
@@ -17,8 +15,21 @@ enum MyoroWidgetListEnum {
   checkboxes('Checkboxes', {myoroCheckboxTitle, myoroGroupCheckboxTitle}),
   dividers('Dividers', {myoroBasicDividerTitle, myoroResizeDividerTitle}),
   drawers('Drawers', {myoroDrawerTitle}),
-  dropdowns('Dropdowns', {myoroDropdownsTitle, myoroSearchDropdownTitle, myoroSelectionDropdownsTitle}),
-  feedbacks('Feedbacks', {myoroFeedbackTitle}),
+  dropdowns('Dropdowns', {
+    myoroCityDropdownTitle,
+    myoroCountryDropdownTitle,
+    myoroCountryRegionCityDropdownTitle,
+    myoroDropdownsTitle,
+    myoroRegionDropdownTitle,
+    myoroSearchDropdownTitle,
+    myoroSelectionDropdownsTitle,
+  }),
+  feedbacks('Feedbacks', {
+    myoroEmptyFeedbackTitle,
+    myoroErrorFeedbackTitle,
+    myoroFeedbackTitle,
+    myoroSuccessFeedbackTitle,
+  }),
   fields('Fields', {myoroFieldTitle}),
   filters('Filters', {myoroCheckboxFilterButtonTitle, myoroRadioFilterButtonTitle, myoroFilterPanelTitle}),
   forms('Forms', {myoroFormTitle}),
@@ -38,6 +49,7 @@ enum MyoroWidgetListEnum {
   modals('Modals', {myoroModalTitle, myoroDialogModalTitle}),
   pickers('Pickers', {myoroFilePickerTitle, myoroImagePickerTitle}),
   radios('Radios', {myoroRadioTitle, myoroGroupRadioTitle}),
+  requests('Requests', {myoroRequestWidgetTitle}),
   screens('Screens', {myoroScreenTitle}),
   scrollables('Scrollables', {myoroScrollablesTitle}),
   sliders('Sliders', {myoroSlidersTitle}),
@@ -84,6 +96,7 @@ enum MyoroWidgetListEnum {
       MyoroWidgetListEnum.modals => localization.storybookWidgetListEnumModalsCategoryName,
       MyoroWidgetListEnum.pickers => localization.storybookWidgetListEnumPickersCategoryName,
       MyoroWidgetListEnum.radios => localization.storybookWidgetListEnumRadiosCategoryName,
+      MyoroWidgetListEnum.requests => localization.storybookWidgetListEnumRequestsCategoryName,
       MyoroWidgetListEnum.screens => localization.storybookWidgetListEnumScreensCategoryName,
       MyoroWidgetListEnum.scrollables => localization.storybookWidgetListEnumScrollablesCategoryName,
       MyoroWidgetListEnum.sliders => localization.storybookWidgetListEnumSlidersCategoryName,
@@ -132,12 +145,19 @@ enum MyoroWidgetListEnum {
   static const myoroDrawerTitle = 'MyoroDrawer';
 
   // Dropdowns
+  static const myoroCityDropdownTitle = 'MyoroCityDropdown';
+  static const myoroCountryDropdownTitle = 'MyoroCountryDropdown';
+  static const myoroCountryRegionCityDropdownTitle = 'MyoroCountryRegionCityDropdown';
   static const myoroDropdownsTitle = 'MyoroSingleDropdown & MyoroMultiDropdown';
+  static const myoroRegionDropdownTitle = 'MyoroRegionDropdown';
   static const myoroSearchDropdownTitle = 'MyoroSearchDropdown';
   static const myoroSelectionDropdownsTitle = 'MyoroSelectionSingleDropdown & MyoroSelectionMultiDropdown';
 
   // Feedbacks
+  static const myoroEmptyFeedbackTitle = 'MyoroEmptyFeedback';
+  static const myoroErrorFeedbackTitle = 'MyoroErrorFeedback';
   static const myoroFeedbackTitle = 'MyoroFeedback';
+  static const myoroSuccessFeedbackTitle = 'MyoroSuccessFeedback';
 
   // Fields
   static const myoroFieldTitle = 'MyoroField';
@@ -187,6 +207,9 @@ enum MyoroWidgetListEnum {
   // Radios
   static const myoroGroupRadioTitle = 'MyoroGroupRadio';
   static const myoroRadioTitle = 'MyoroRadio';
+
+  // Requests
+  static const myoroRequestWidgetTitle = 'MyoroRequestWidget';
 
   // Screens
   static const myoroScreenTitle = 'MyoroScreen';
@@ -252,12 +275,19 @@ enum MyoroWidgetListEnum {
       myoroDrawerTitle => const MyoroDrawerWidgetShowcaseScreen(),
 
       // Dropdowns
+      myoroCityDropdownTitle => const MyoroCityDropdownWidgetShowcaseScreen(),
+      myoroCountryDropdownTitle => const MyoroCountryDropdownWidgetShowcaseScreen(),
+      myoroCountryRegionCityDropdownTitle => const MyoroCountryRegionCityDropdownWidgetShowcaseScreen(),
       myoroDropdownsTitle => const MyoroDropdownWidgetShowcaseScreen(),
+      myoroRegionDropdownTitle => const MyoroRegionDropdownWidgetShowcaseScreen(),
       myoroSearchDropdownTitle => const MyoroSearchDropdownWidgetShowcaseScreen(),
       myoroSelectionDropdownsTitle => const MyoroSelectionDropdownsWidgetShowcaseScreen(),
 
       // Feedbacks
+      myoroEmptyFeedbackTitle => const MyoroEmptyFeedbackWidgetShowcaseScreen(),
+      myoroErrorFeedbackTitle => const MyoroErrorFeedbackWidgetShowcaseScreen(),
       myoroFeedbackTitle => const MyoroFeedbackWidgetShowcaseScreen(),
+      myoroSuccessFeedbackTitle => const MyoroSuccessFeedbackWidgetShowcaseScreen(),
 
       // Fields
       myoroFieldTitle => const MyoroFieldWidgetShowcaseScreen(),
@@ -307,6 +337,9 @@ enum MyoroWidgetListEnum {
       // Radios
       myoroGroupRadioTitle => const MyoroGroupRadioWidgetShowcaseScreen(),
       myoroRadioTitle => const MyoroRadioWidgetShowcaseScreen(),
+
+      // Requests
+      myoroRequestWidgetTitle => const MyoroRequestWidgetShowcaseScreen(),
 
       // Screens
       myoroScreenTitle => const MyoroScreenWidgetShowcaseScreen(),

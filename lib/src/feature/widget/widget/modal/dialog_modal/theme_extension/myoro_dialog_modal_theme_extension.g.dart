@@ -38,8 +38,8 @@ mixin _$MyoroDialogModalThemeExtensionMixin on ThemeExtension<MyoroDialogModalTh
     bool closeButtonIconProvided = true,
     double? closeButtonIconSize,
     bool closeButtonIconSizeProvided = true,
-    TextStyle? textStyle,
-    bool textStyleProvided = true,
+    TextStyle? messageTextStyle,
+    bool messageTextStyleProvided = true,
     double? footerButtonsSpacing,
     bool footerButtonsSpacingProvided = true,
     EdgeInsets? margin,
@@ -56,7 +56,7 @@ mixin _$MyoroDialogModalThemeExtensionMixin on ThemeExtension<MyoroDialogModalTh
       titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
       closeButtonIcon: closeButtonIconProvided ? (closeButtonIcon ?? self.closeButtonIcon) : null,
       closeButtonIconSize: closeButtonIconSizeProvided ? (closeButtonIconSize ?? self.closeButtonIconSize) : null,
-      textStyle: textStyleProvided ? (textStyle ?? self.textStyle) : null,
+      messageTextStyle: messageTextStyleProvided ? (messageTextStyle ?? self.messageTextStyle) : null,
       footerButtonsSpacing: footerButtonsSpacingProvided ? (footerButtonsSpacing ?? self.footerButtonsSpacing) : null,
       margin: marginProvided ? (margin ?? self.margin) : null,
     );
@@ -76,7 +76,7 @@ mixin _$MyoroDialogModalThemeExtensionMixin on ThemeExtension<MyoroDialogModalTh
         other.titleTextStyle == self.titleTextStyle &&
         other.closeButtonIcon == self.closeButtonIcon &&
         other.closeButtonIconSize == self.closeButtonIconSize &&
-        other.textStyle == self.textStyle &&
+        other.messageTextStyle == self.messageTextStyle &&
         other.footerButtonsSpacing == self.footerButtonsSpacing &&
         other.margin == self.margin;
   }
@@ -94,7 +94,7 @@ mixin _$MyoroDialogModalThemeExtensionMixin on ThemeExtension<MyoroDialogModalTh
       self.titleTextStyle,
       self.closeButtonIcon,
       self.closeButtonIconSize,
-      self.textStyle,
+      self.messageTextStyle,
       self.footerButtonsSpacing,
       self.margin,
     );
@@ -113,7 +113,7 @@ mixin _$MyoroDialogModalThemeExtensionMixin on ThemeExtension<MyoroDialogModalTh
       '  titleTextStyle: ${self.titleTextStyle},\n'
       '  closeButtonIcon: ${self.closeButtonIcon},\n'
       '  closeButtonIconSize: ${self.closeButtonIconSize},\n'
-      '  textStyle: ${self.textStyle},\n'
+      '  messageTextStyle: ${self.messageTextStyle},\n'
       '  footerButtonsSpacing: ${self.footerButtonsSpacing},\n'
       '  margin: ${self.margin},\n'
       ');';

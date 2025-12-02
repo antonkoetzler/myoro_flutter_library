@@ -17,8 +17,8 @@ mixin _$MyoroDialogModalStyleMixin {
   MyoroDialogModalStyle get self => this as MyoroDialogModalStyle;
 
   MyoroDialogModalStyle copyWith({
-    TextStyle? textStyle,
-    bool textStyleProvided = true,
+    TextStyle? messageTextStyle,
+    bool messageTextStyleProvided = true,
     double? footerButtonsSpacing,
     bool footerButtonsSpacingProvided = true,
     BoxConstraints? constraints,
@@ -45,7 +45,7 @@ mixin _$MyoroDialogModalStyleMixin {
     bool marginProvided = true,
   }) {
     return MyoroDialogModalStyle(
-      textStyle: textStyleProvided ? (textStyle ?? self.textStyle) : null,
+      messageTextStyle: messageTextStyleProvided ? (messageTextStyle ?? self.messageTextStyle) : null,
       footerButtonsSpacing: footerButtonsSpacingProvided ? (footerButtonsSpacing ?? self.footerButtonsSpacing) : null,
       constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
       primaryColor: primaryColorProvided ? (primaryColor ?? self.primaryColor) : null,
@@ -65,7 +65,7 @@ mixin _$MyoroDialogModalStyleMixin {
   bool operator ==(Object other) {
     return other is MyoroDialogModalStyle &&
         other.runtimeType == runtimeType &&
-        other.textStyle == self.textStyle &&
+        other.messageTextStyle == self.messageTextStyle &&
         other.footerButtonsSpacing == self.footerButtonsSpacing &&
         other.constraints == self.constraints &&
         other.primaryColor == self.primaryColor &&
@@ -83,7 +83,7 @@ mixin _$MyoroDialogModalStyleMixin {
   @override
   int get hashCode {
     return Object.hash(
-      self.textStyle,
+      self.messageTextStyle,
       self.footerButtonsSpacing,
       self.constraints,
       self.primaryColor,
@@ -102,7 +102,7 @@ mixin _$MyoroDialogModalStyleMixin {
   @override
   String toString() =>
       'MyoroDialogModalStyle(\n'
-      '  textStyle: ${self.textStyle},\n'
+      '  messageTextStyle: ${self.messageTextStyle},\n'
       '  footerButtonsSpacing: ${self.footerButtonsSpacing},\n'
       '  constraints: ${self.constraints},\n'
       '  primaryColor: ${self.primaryColor},\n'

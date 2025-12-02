@@ -1150,4 +1150,46 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get myoroSearchBarInputPlaceholder => 'कुछ टाइप करें...';
+
+  @override
+  String get myoroCountryDropdownLabel => 'देश';
+
+  @override
+  String myoroCountryDropdownItemText(String emoji, String name) {
+    return '$emoji $name';
+  }
+
+  @override
+  String get myoroRegionDropdownLabel => 'क्षेत्र';
+
+  @override
+  String myoroRegionDropdownItemText(String name) {
+    return '$name';
+  }
+
+  @override
+  String get myoroCityDropdownLabel => 'शहर';
+
+  @override
+  String myoroCityDropdownItemText(String name) {
+    return '$name';
+  }
+
+  @override
+  String get myoroFeedbackErrorFeedbackTitle => 'कुछ गलत हो गया!';
+
+  @override
+  String get myoroErrorFeedbackSubtitle => 'कृपया अपना कनेक्शन सत्यापित करें और पुनः प्रयास करें!';
+
+  @override
+  String get myoroErrorFeedbackActionButtonText => 'पुनः प्रयास करें';
+
+  @override
+  String get myoroSuccessFeedbackSubtitle => 'ऑपरेशन सफलतापूर्वक पूर्ण हुआ!';
+
+  @override
+  String get myoroSuccessFeedbackActionButtonText => 'पूर्ण';
+
+  @override
+  String get myoroEmptyFeedbackActionButtonText => 'ताज़ा करें';
 }

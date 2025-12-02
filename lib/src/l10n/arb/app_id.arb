@@ -388,6 +388,51 @@
   "myoroMonthEnumDecemberLabel": "Desember",
 
   "myoroSearchBarInputLabel": "Cari",
-  "myoroSearchBarInputPlaceholder": "Ketik sesuatu..."
+  "myoroSearchBarInputPlaceholder": "Ketik sesuatu...",
+
+  "myoroCountryDropdownLabel": "Negara",
+
+  "myoroCountryDropdownItemText": "{emoji} {name}",
+  "@myoroCountryDropdownItemText": {
+    "placeholders": {
+      "emoji": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroRegionDropdownLabel": "Wilayah",
+
+  "myoroRegionDropdownItemText": "{name}",
+  "@myoroRegionDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroCityDropdownLabel": "Kota",
+
+  "myoroCityDropdownItemText": "{name}",
+  "@myoroCityDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroFeedbackErrorFeedbackTitle": "Terjadi kesalahan!",
+  "myoroErrorFeedbackSubtitle": "Harap verifikasi koneksi Anda dan coba lagi!",
+  "myoroErrorFeedbackActionButtonText": "Coba Lagi",
+
+  "myoroSuccessFeedbackSubtitle": "Operasi berhasil diselesaikan!",
+  "myoroSuccessFeedbackActionButtonText": "Selesai",
+
+  "myoroEmptyFeedbackActionButtonText": "Muat Ulang"
 }
 

@@ -17,12 +17,18 @@ class MyoroCheckbox extends StatefulWidget {
   /// Default value of [value].
   static const valueDefaultValue = false;
 
+  /// Default value of [enabled].
+  static const enabledDefaultValue = true;
+
+  /// Default constructor.
   const MyoroCheckbox({
     super.key,
     this.style = styleDefaultValue,
     this.label = labelDefaultValue,
     this.value = valueDefaultValue,
+    this.enabled = enabledDefaultValue,
     this.onChanged,
+    this.disabledOnTapUp,
   }) : assert(label.length > 0, '[MyoroCheckbox]: [label] must be provided.');
 
   /// Theme extension.
@@ -34,10 +40,18 @@ class MyoroCheckbox extends StatefulWidget {
   /// Value of the [MyoroCheckbox].
   final bool value;
 
+  /// If the checkbox is enabled (interactable).
+  final bool enabled;
+
   /// Function that is executed when the checkbox is changed.
   final MyoroCheckboxOnChanged? onChanged;
 
+  /// Function that is executed when the checkbox is tapped up and is disabled.
+  final MyoroCheckboxDisabledOnTapUp? disabledOnTapUp;
+
   /// Create state function.
   @override
-  State<MyoroCheckbox> createState() => _MyoroCheckboxState();
+  State<MyoroCheckbox> createState() {
+    return _MyoroCheckboxState();
+  }
 }

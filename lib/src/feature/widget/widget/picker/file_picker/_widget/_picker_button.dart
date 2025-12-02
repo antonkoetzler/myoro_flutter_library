@@ -6,7 +6,7 @@ final class _PickerButton extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final localization = context.localization;
+    final localization = context.mflLocalization;
     final myoroFilePickerPickerButtonText = localization.myoroFilePickerPickerButtonText;
 
     final filePickerThemeExtension = context.resolveThemeExtension<MyoroFilePickerThemeExtension>();

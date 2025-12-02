@@ -1150,6 +1150,48 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get myoroSearchBarInputPlaceholder => '输入一些内容...';
+
+  @override
+  String get myoroCountryDropdownLabel => '国家';
+
+  @override
+  String myoroCountryDropdownItemText(String emoji, String name) {
+    return '$emoji $name';
+  }
+
+  @override
+  String get myoroRegionDropdownLabel => '地区';
+
+  @override
+  String myoroRegionDropdownItemText(String name) {
+    return '$name';
+  }
+
+  @override
+  String get myoroCityDropdownLabel => '城市';
+
+  @override
+  String myoroCityDropdownItemText(String name) {
+    return '$name';
+  }
+
+  @override
+  String get myoroFeedbackErrorFeedbackTitle => '出错了！';
+
+  @override
+  String get myoroErrorFeedbackSubtitle => '请检查您的连接后重试！';
+
+  @override
+  String get myoroErrorFeedbackActionButtonText => '重试';
+
+  @override
+  String get myoroSuccessFeedbackSubtitle => '操作成功完成！';
+
+  @override
+  String get myoroSuccessFeedbackActionButtonText => '完成';
+
+  @override
+  String get myoroEmptyFeedbackActionButtonText => '刷新';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -2298,4 +2340,46 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get myoroSearchBarInputPlaceholder => '輸入一些內容...';
+
+  @override
+  String get myoroCountryDropdownLabel => '國家';
+
+  @override
+  String myoroCountryDropdownItemText(String emoji, String name) {
+    return '$emoji $name';
+  }
+
+  @override
+  String get myoroRegionDropdownLabel => '地區';
+
+  @override
+  String myoroRegionDropdownItemText(String name) {
+    return '$name';
+  }
+
+  @override
+  String get myoroCityDropdownLabel => '城市';
+
+  @override
+  String myoroCityDropdownItemText(String name) {
+    return '$name';
+  }
+
+  @override
+  String get myoroFeedbackErrorFeedbackTitle => '出錯了！';
+
+  @override
+  String get myoroErrorFeedbackSubtitle => '請檢查您的連線後重試！';
+
+  @override
+  String get myoroErrorFeedbackActionButtonText => '重試';
+
+  @override
+  String get myoroSuccessFeedbackSubtitle => '操作成功完成！';
+
+  @override
+  String get myoroSuccessFeedbackActionButtonText => '完成';
+
+  @override
+  String get myoroEmptyFeedbackActionButtonText => '重新整理';
 }

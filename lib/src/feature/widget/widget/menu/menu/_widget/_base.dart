@@ -7,7 +7,7 @@ class _Base<T> extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final localization = context.localization;
+    final localization = context.mflLocalization;
     final myoroMenuErrorGettingItemsText = localization.myoroMenuErrorGettingItemsText;
 
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
@@ -19,15 +19,20 @@ class _Base<T> extends StatelessWidget {
 
     final viewModel = context.read<MyoroMenuViewModel<T>>();
     final state = viewModel.state;
-    final items = state.items;
+    final queriedItemsController = state.queriedItemsController;
 
-    return Container(
-      decoration: BoxDecoration(color: backgroundColor, border: border, borderRadius: borderRadius),
-      constraints: constraints,
-      clipBehavior: Clip.antiAlias,
-      child: items == null
-          ? const _Loader()
-          : (items.isEmpty ? _DialogText(myoroMenuErrorGettingItemsText) : _SuccessContent<T>()),
+    return ValueListenableBuilder(
+      valueListenable: queriedItemsController,
+      builder: (_, queriedItems, _) {
+        return Container(
+          decoration: BoxDecoration(color: backgroundColor, border: border, borderRadius: borderRadius),
+          constraints: constraints,
+          clipBehavior: Clip.antiAlias,
+          child: queriedItems == null
+              ? const _Loader()
+              : (queriedItems.isEmpty ? _DialogText(myoroMenuErrorGettingItemsText) : _SuccessContent<T>(queriedItems)),
+        );
+      },
     );
   }
 }

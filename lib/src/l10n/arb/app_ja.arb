@@ -388,6 +388,51 @@
   "myoroMonthEnumDecemberLabel": "12月",
 
   "myoroSearchBarInputLabel": "検索",
-  "myoroSearchBarInputPlaceholder": "何か入力してください..."
+  "myoroSearchBarInputPlaceholder": "何か入力してください...",
+
+  "myoroCountryDropdownLabel": "国",
+
+  "myoroCountryDropdownItemText": "{emoji} {name}",
+  "@myoroCountryDropdownItemText": {
+    "placeholders": {
+      "emoji": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroRegionDropdownLabel": "地域",
+
+  "myoroRegionDropdownItemText": "{name}",
+  "@myoroRegionDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroCityDropdownLabel": "都市",
+
+  "myoroCityDropdownItemText": "{name}",
+  "@myoroCityDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroFeedbackErrorFeedbackTitle": "エラーが発生しました！",
+  "myoroErrorFeedbackSubtitle": "接続を確認して、もう一度お試しください！",
+  "myoroErrorFeedbackActionButtonText": "再試行",
+
+  "myoroSuccessFeedbackSubtitle": "操作が正常に完了しました！",
+  "myoroSuccessFeedbackActionButtonText": "完了",
+
+  "myoroEmptyFeedbackActionButtonText": "更新"
 }
 

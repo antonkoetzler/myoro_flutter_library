@@ -30,7 +30,7 @@ class MyoroRequest<T> with _$MyoroRequestMixin<T> {
   /// Error message when [status] is [MyoroRequestEnum.error].
   final String? errorMessage;
 
-  /// Data generated from
+  /// Data generated from the request.
   final T? data;
 
   MyoroRequest<T> createIdleState() {

@@ -388,6 +388,51 @@
   "myoroMonthEnumDecemberLabel": "Aralık",
 
   "myoroSearchBarInputLabel": "Ara",
-  "myoroSearchBarInputPlaceholder": "Bir şey yazın..."
+  "myoroSearchBarInputPlaceholder": "Bir şey yazın...",
+
+  "myoroCountryDropdownLabel": "Ülke",
+
+  "myoroCountryDropdownItemText": "{emoji} {name}",
+  "@myoroCountryDropdownItemText": {
+    "placeholders": {
+      "emoji": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroRegionDropdownLabel": "Bölge",
+
+  "myoroRegionDropdownItemText": "{name}",
+  "@myoroRegionDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroCityDropdownLabel": "Şehir",
+
+  "myoroCityDropdownItemText": "{name}",
+  "@myoroCityDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroFeedbackErrorFeedbackTitle": "Bir şeyler yanlış gitti!",
+  "myoroErrorFeedbackSubtitle": "Lütfen bağlantınızı doğrulayın ve tekrar deneyin!",
+  "myoroErrorFeedbackActionButtonText": "Yeniden Dene",
+
+  "myoroSuccessFeedbackSubtitle": "İşlem başarıyla tamamlandı!",
+  "myoroSuccessFeedbackActionButtonText": "Tamamlandı",
+
+  "myoroEmptyFeedbackActionButtonText": "Yenile"
 }
 

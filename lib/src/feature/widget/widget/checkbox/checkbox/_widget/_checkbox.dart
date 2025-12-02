@@ -16,6 +16,7 @@ final class _Checkbox extends StatelessWidget {
 
     final viewModel = context.read<MyoroCheckboxViewModel>();
     final state = viewModel.state;
+    final enabled = state.enabled;
     final valueController = state.valueController;
     final onTapUp = viewModel.onTapUp;
 
@@ -33,7 +34,7 @@ final class _Checkbox extends StatelessWidget {
             hoverColor: checkboxHoverColor,
             focusColor: checkboxFocusColor,
             splashRadius: checkboxSplashRadius,
-            onChanged: onTapUp,
+            onChanged: enabled ? onTapUp : null,
           ),
         );
       },

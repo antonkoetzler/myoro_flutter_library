@@ -4,795 +4,996 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:myoro_flutter_library/src/exports.dart';
 
 /// Enum containing all countries in the world.
+///
+/// Not recommended to edit the file by hand, use LLMs to do that instead.
 @JsonEnum()
 enum MyoroCountryEnum {
   /// Afghanistan.
-  @JsonValue('af')
+  @JsonValue(_afghanistanIsoValue)
   afghanistan('🇦🇫', MyoroCurrencyEnum.afn),
 
   /// Albania.
-  @JsonValue('al')
+  @JsonValue(_albaniaIsoValue)
   albania('🇦🇱', MyoroCurrencyEnum.all),
 
   /// Algeria.
-  @JsonValue('dz')
+  @JsonValue(_algeriaIsoValue)
   algeria('🇩🇿', MyoroCurrencyEnum.dzd),
 
   /// Andorra.
-  @JsonValue('ad')
+  @JsonValue(_andorraIsoValue)
   andorra('🇦🇩', MyoroCurrencyEnum.eur),
 
   /// Angola.
-  @JsonValue('ao')
+  @JsonValue(_angolaIsoValue)
   angola('🇦🇴', MyoroCurrencyEnum.aoa),
 
   /// Antigua and Barbuda.
-  @JsonValue('ag')
+  @JsonValue(_antiguaAndBarbudaIsoValue)
   antiguaAndBarbuda('🇦🇬', MyoroCurrencyEnum.xcd),
 
   /// Argentina.
-  @JsonValue('ar')
+  @JsonValue(_argentinaIsoValue)
   argentina('🇦🇷', MyoroCurrencyEnum.ars),
 
   /// Armenia.
-  @JsonValue('am')
+  @JsonValue(_armeniaIsoValue)
   armenia('🇦🇲', MyoroCurrencyEnum.amd),
 
   /// Australia.
-  @JsonValue('au')
+  @JsonValue(_australiaIsoValue)
   australia('🇦🇺', MyoroCurrencyEnum.aud),
 
   /// Austria.
-  @JsonValue('at')
+  @JsonValue(_austriaIsoValue)
   austria('🇦🇹', MyoroCurrencyEnum.eur),
 
   /// Azerbaijan.
-  @JsonValue('az')
+  @JsonValue(_azerbaijanIsoValue)
   azerbaijan('🇦🇿', MyoroCurrencyEnum.azn),
 
   /// Bahamas.
-  @JsonValue('bs')
+  @JsonValue(_bahamasIsoValue)
   bahamas('🇧🇸', MyoroCurrencyEnum.bsd),
 
   /// Bahrain.
-  @JsonValue('bh')
+  @JsonValue(_bahrainIsoValue)
   bahrain('🇧🇭', MyoroCurrencyEnum.bhd),
 
   /// Bangladesh.
-  @JsonValue('bd')
+  @JsonValue(_bangladeshIsoValue)
   bangladesh('🇧🇩', MyoroCurrencyEnum.bdt),
 
   /// Barbados.
-  @JsonValue('bb')
+  @JsonValue(_barbadosIsoValue)
   barbados('🇧🇧', MyoroCurrencyEnum.bbd),
 
   /// Belarus.
-  @JsonValue('by')
+  @JsonValue(_belarusIsoValue)
   belarus('🇧🇾', MyoroCurrencyEnum.byn),
 
   /// Belgium.
-  @JsonValue('be')
+  @JsonValue(_belgiumIsoValue)
   belgium('🇧🇪', MyoroCurrencyEnum.eur),
 
   /// Belize.
-  @JsonValue('bz')
+  @JsonValue(_belizeIsoValue)
   belize('🇧🇿', MyoroCurrencyEnum.bzd),
 
   /// Benin.
-  @JsonValue('bj')
+  @JsonValue(_beninIsoValue)
   benin('🇧🇯', MyoroCurrencyEnum.xof),
 
   /// Bhutan.
-  @JsonValue('bt')
+  @JsonValue(_bhutanIsoValue)
   bhutan('🇧🇹', MyoroCurrencyEnum.btn),
 
   /// Bolivia.
-  @JsonValue('bo')
+  @JsonValue(_boliviaIsoValue)
   bolivia('🇧🇴', MyoroCurrencyEnum.bob),
 
   /// Bosnia and Herzegovina.
-  @JsonValue('ba')
+  @JsonValue(_bosniaAndHerzegovinaIsoValue)
   bosniaAndHerzegovina('🇧🇦', MyoroCurrencyEnum.bam),
 
   /// Botswana.
-  @JsonValue('bw')
+  @JsonValue(_botswanaIsoValue)
   botswana('🇧🇼', MyoroCurrencyEnum.bwp),
 
   /// Brazil.
-  @JsonValue('br')
+  @JsonValue(_brazilIsoValue)
   brazil('🇧🇷', MyoroCurrencyEnum.brl),
 
   /// Brunei.
-  @JsonValue('bn')
+  @JsonValue(_bruneiIsoValue)
   brunei('🇧🇳', MyoroCurrencyEnum.bnd),
 
   /// Bulgaria.
-  @JsonValue('bg')
+  @JsonValue(_bulgariaIsoValue)
   bulgaria('🇧🇬', MyoroCurrencyEnum.bgn),
 
   /// Burkina Faso.
-  @JsonValue('bf')
+  @JsonValue(_burkinaFasoIsoValue)
   burkinaFaso('🇧🇫', MyoroCurrencyEnum.xof),
 
   /// Burundi.
-  @JsonValue('bi')
+  @JsonValue(_burundiIsoValue)
   burundi('🇧🇮', MyoroCurrencyEnum.bif),
 
   /// Cambodia.
-  @JsonValue('kh')
+  @JsonValue(_cambodiaIsoValue)
   cambodia('🇰🇭', MyoroCurrencyEnum.khr),
 
   /// Cameroon.
-  @JsonValue('cm')
+  @JsonValue(_cameroonIsoValue)
   cameroon('🇨🇲', MyoroCurrencyEnum.xaf),
 
   /// Canada.
-  @JsonValue('ca')
+  @JsonValue(_canadaIsoValue)
   canada('🇨🇦', MyoroCurrencyEnum.cad),
 
   /// CapeVerde.
-  @JsonValue('cv')
+  @JsonValue(_capeVerdeIsoValue)
   capeVerde('🇨🇻', MyoroCurrencyEnum.cve),
 
   /// Central African Republic.
-  @JsonValue('cf')
+  @JsonValue(_centralAfricanRepublicIsoValue)
   centralAfricanRepublic('🇨🇫', MyoroCurrencyEnum.xaf),
 
   /// Chad.
-  @JsonValue('td')
+  @JsonValue(_chadIsoValue)
   chad('🇹🇩', MyoroCurrencyEnum.xaf),
 
   /// Chile.
-  @JsonValue('cl')
+  @JsonValue(_chileIsoValue)
   chile('🇨🇱', MyoroCurrencyEnum.clp),
 
   /// China.
-  @JsonValue('cn')
+  @JsonValue(_chinaIsoValue)
   china('🇨🇳', MyoroCurrencyEnum.cny),
 
   /// Colombia.
-  @JsonValue('co')
+  @JsonValue(_colombiaIsoValue)
   colombia('🇨🇴', MyoroCurrencyEnum.cop),
 
   /// Comoros.
-  @JsonValue('km')
+  @JsonValue(_comorosIsoValue)
   comoros('🇰🇲', MyoroCurrencyEnum.kmf),
 
   /// Congo.
-  @JsonValue('cg')
+  @JsonValue(_congoIsoValue)
   congo('🇨🇬', MyoroCurrencyEnum.xaf),
 
   /// Costa Rica.
-  @JsonValue('cr')
+  @JsonValue(_costaRicaIsoValue)
   costaRica('🇨🇷', MyoroCurrencyEnum.crc),
 
   /// Croatia.
-  @JsonValue('hr')
+  @JsonValue(_croatiaIsoValue)
   croatia('🇭🇷', MyoroCurrencyEnum.hrk),
 
   /// Cuba.
-  @JsonValue('cu')
+  @JsonValue(_cubaIsoValue)
   cuba('🇨🇺', MyoroCurrencyEnum.usd),
 
   /// Cyprus.
-  @JsonValue('cy')
+  @JsonValue(_cyprusIsoValue)
   cyprus('🇨🇾', MyoroCurrencyEnum.eur),
 
   /// CzechRepublic.
-  @JsonValue('cz')
+  @JsonValue(_czechRepublicIsoValue)
   czechRepublic('🇨🇿', MyoroCurrencyEnum.czk),
 
   /// Denmark.
-  @JsonValue('dk')
+  @JsonValue(_denmarkIsoValue)
   denmark('🇩🇰', MyoroCurrencyEnum.dkk),
 
   /// Djibouti.
-  @JsonValue('dj')
+  @JsonValue(_djiboutiIsoValue)
   djibouti('🇩🇯', MyoroCurrencyEnum.djf),
 
   /// Dominica.
-  @JsonValue('dm')
+  @JsonValue(_dominicaIsoValue)
   dominica('🇩🇲', MyoroCurrencyEnum.xcd),
 
   /// Dominican Republic.
-  @JsonValue('do')
+  @JsonValue(_dominicanRepublicIsoValue)
   dominicanRepublic('🇩🇴', MyoroCurrencyEnum.dop),
 
   /// Dr Congo.
-  @JsonValue('cd')
+  @JsonValue(_drCongoIsoValue)
   drCongo('🇨🇩', MyoroCurrencyEnum.cdf),
 
   /// Ecuador.
-  @JsonValue('ec')
+  @JsonValue(_ecuadorIsoValue)
   ecuador('🇪🇨', MyoroCurrencyEnum.usd),
 
   /// Egypt.
-  @JsonValue('eg')
+  @JsonValue(_egyptIsoValue)
   egypt('🇪🇬', MyoroCurrencyEnum.egp),
 
   /// El Salvador.
-  @JsonValue('sv')
+  @JsonValue(_elSalvadorIsoValue)
   elSalvador('🇸🇻', MyoroCurrencyEnum.usd),
 
   /// EquatorialGuinea.
-  @JsonValue('gq')
+  @JsonValue(_equatorialGuineaIsoValue)
   equatorialGuinea('🇬🇶', MyoroCurrencyEnum.xaf),
 
   /// Eritrea.
-  @JsonValue('er')
+  @JsonValue(_eritreaIsoValue)
   eritrea('🇪🇷', MyoroCurrencyEnum.ern),
 
   /// Estonia.
-  @JsonValue('ee')
+  @JsonValue(_estoniaIsoValue)
   estonia('🇪🇪', MyoroCurrencyEnum.eur),
 
   /// Eswatini.
-  @JsonValue('sz')
+  @JsonValue(_eswatiniIsoValue)
   eswatini('🇸🇿', MyoroCurrencyEnum.szl),
 
   /// Ethiopia.
-  @JsonValue('et')
+  @JsonValue(_ethiopiaIsoValue)
   ethiopia('🇪🇹', MyoroCurrencyEnum.etb),
 
   /// Fiji.
-  @JsonValue('fj')
+  @JsonValue(_fijiIsoValue)
   fiji('🇫🇯', MyoroCurrencyEnum.fjd),
 
   /// Finland.
-  @JsonValue('fi')
+  @JsonValue(_finlandIsoValue)
   finland('🇫🇮', MyoroCurrencyEnum.eur),
 
   /// France.
-  @JsonValue('fr')
+  @JsonValue(_franceIsoValue)
   france('🇫🇷', MyoroCurrencyEnum.eur),
 
   /// Gabon.
-  @JsonValue('ga')
+  @JsonValue(_gabonIsoValue)
   gabon('🇬🇦', MyoroCurrencyEnum.xaf),
 
   /// Gambia.
-  @JsonValue('gm')
+  @JsonValue(_gambiaIsoValue)
   gambia('🇬🇲', MyoroCurrencyEnum.gmd),
 
   /// Georgia.
-  @JsonValue('ge')
+  @JsonValue(_georgiaIsoValue)
   georgia('🇬🇪', MyoroCurrencyEnum.gel),
 
   /// Germany.
-  @JsonValue('de')
+  @JsonValue(_germanyIsoValue)
   germany('🇩🇪', MyoroCurrencyEnum.eur),
 
   /// Ghana.
-  @JsonValue('gh')
+  @JsonValue(_ghanaIsoValue)
   ghana('🇬🇭', MyoroCurrencyEnum.ghs),
 
   /// Greece.
-  @JsonValue('gr')
+  @JsonValue(_greeceIsoValue)
   greece('🇬🇷', MyoroCurrencyEnum.eur),
 
   /// Grenada.
-  @JsonValue('gd')
+  @JsonValue(_grenadaIsoValue)
   grenada('🇬🇩', MyoroCurrencyEnum.xcd),
 
   /// Guatemala.
-  @JsonValue('gt')
+  @JsonValue(_guatemalaIsoValue)
   guatemala('🇬🇹', MyoroCurrencyEnum.gtq),
 
   /// Guinea.
-  @JsonValue('gn')
+  @JsonValue(_guineaIsoValue)
   guinea('🇬🇳', MyoroCurrencyEnum.gnf),
 
   /// Guinea Bissau.
-  @JsonValue('gw')
+  @JsonValue(_guineaBissauIsoValue)
   guineaBissau('🇬🇼', MyoroCurrencyEnum.xof),
 
   /// Guyana.
-  @JsonValue('gy')
+  @JsonValue(_guyanaIsoValue)
   guyana('🇬🇾', MyoroCurrencyEnum.gyd),
 
   /// Haiti.
-  @JsonValue('ht')
+  @JsonValue(_haitiIsoValue)
   haiti('🇭🇹', MyoroCurrencyEnum.htg),
 
   /// Honduras.
-  @JsonValue('hn')
+  @JsonValue(_hondurasIsoValue)
   honduras('🇭🇳', MyoroCurrencyEnum.hnl),
 
   /// Hungary.
-  @JsonValue('hu')
+  @JsonValue(_hungaryIsoValue)
   hungary('🇭🇺', MyoroCurrencyEnum.huf),
 
   /// Iceland.
-  @JsonValue('is')
+  @JsonValue(_icelandIsoValue)
   iceland('🇮🇸', MyoroCurrencyEnum.isk),
 
   /// India.
-  @JsonValue('in')
+  @JsonValue(_indiaIsoValue)
   india('🇮🇳', MyoroCurrencyEnum.inr),
 
   /// Indonesia.
-  @JsonValue('id')
+  @JsonValue(_indonesiaIsoValue)
   indonesia('🇮🇩', MyoroCurrencyEnum.idr),
 
   /// Iran.
-  @JsonValue('ir')
+  @JsonValue(_iranIsoValue)
   iran('🇮🇷', MyoroCurrencyEnum.irr),
 
   /// Iraq.
-  @JsonValue('iq')
+  @JsonValue(_iraqIsoValue)
   iraq('🇮🇶', MyoroCurrencyEnum.iqd),
 
   /// Ireland.
-  @JsonValue('ie')
+  @JsonValue(_irelandIsoValue)
   ireland('🇮🇪', MyoroCurrencyEnum.eur),
 
   /// Israel.
-  @JsonValue('il')
+  @JsonValue(_israelIsoValue)
   israel('🇮🇱', MyoroCurrencyEnum.ils),
 
   /// Italy.
-  @JsonValue('it')
+  @JsonValue(_italyIsoValue)
   italy('🇮🇹', MyoroCurrencyEnum.eur),
 
   /// Ivory Coast.
-  @JsonValue('ci')
+  @JsonValue(_ivoryCoastIsoValue)
   ivoryCoast('🇨🇮', MyoroCurrencyEnum.xof),
 
   /// Jamaica.
-  @JsonValue('jm')
+  @JsonValue(_jamaicaIsoValue)
   jamaica('🇯🇲', MyoroCurrencyEnum.jmd),
 
   /// Japan.
-  @JsonValue('jp')
+  @JsonValue(_japanIsoValue)
   japan('🇯🇵', MyoroCurrencyEnum.jpy),
 
   /// Jordan.
-  @JsonValue('jo')
+  @JsonValue(_jordanIsoValue)
   jordan('🇯🇴', MyoroCurrencyEnum.jod),
 
   /// Kazakhstan.
-  @JsonValue('kz')
+  @JsonValue(_kazakhstanIsoValue)
   kazakhstan('🇰🇿', MyoroCurrencyEnum.kzt),
 
   /// Kenya.
-  @JsonValue('ke')
+  @JsonValue(_kenyaIsoValue)
   kenya('🇰🇪', MyoroCurrencyEnum.kes),
 
   /// Kiribati.
-  @JsonValue('ki')
+  @JsonValue(_kiribatiIsoValue)
   kiribati('🇰🇮', MyoroCurrencyEnum.aud),
 
   /// Kosovo.
-  @JsonValue('xk')
+  @JsonValue(_kosovoIsoValue)
   kosovo('🇽🇰', MyoroCurrencyEnum.eur),
 
   /// Kuwait.
-  @JsonValue('kw')
+  @JsonValue(_kuwaitIsoValue)
   kuwait('🇰🇼', MyoroCurrencyEnum.kwd),
 
   /// Kyrgyzstan.
-  @JsonValue('kg')
+  @JsonValue(_kyrgyzstanIsoValue)
   kyrgyzstan('🇰🇬', MyoroCurrencyEnum.kgs),
 
   /// Laos.
-  @JsonValue('la')
+  @JsonValue(_laosIsoValue)
   laos('🇱🇦', MyoroCurrencyEnum.lak),
 
   /// Latvia.
-  @JsonValue('lv')
+  @JsonValue(_latviaIsoValue)
   latvia('🇱🇻', MyoroCurrencyEnum.eur),
 
   /// Lebanon.
-  @JsonValue('lb')
+  @JsonValue(_lebanonIsoValue)
   lebanon('🇱🇧', MyoroCurrencyEnum.lbp),
 
   /// Lesotho.
-  @JsonValue('ls')
+  @JsonValue(_lesothoIsoValue)
   lesotho('🇱🇸', MyoroCurrencyEnum.lsl),
 
   /// Liberia.
-  @JsonValue('lr')
+  @JsonValue(_liberiaIsoValue)
   liberia('🇱🇷', MyoroCurrencyEnum.lrd),
 
   /// Libya.
-  @JsonValue('ly')
+  @JsonValue(_libyaIsoValue)
   libya('🇱🇾', MyoroCurrencyEnum.lyd),
 
   /// Liechtenstein.
-  @JsonValue('li')
+  @JsonValue(_liechtensteinIsoValue)
   liechtenstein('🇱🇮', MyoroCurrencyEnum.chf),
 
   /// Lithuania.
-  @JsonValue('lt')
+  @JsonValue(_lithuaniaIsoValue)
   lithuania('🇱🇹', MyoroCurrencyEnum.eur),
 
   /// Luxembourg.
-  @JsonValue('lu')
+  @JsonValue(_luxembourgIsoValue)
   luxembourg('🇱🇺', MyoroCurrencyEnum.eur),
 
   /// Madagascar.
-  @JsonValue('mg')
+  @JsonValue(_madagascarIsoValue)
   madagascar('🇲🇬', MyoroCurrencyEnum.mga),
 
   /// Malawi.
-  @JsonValue('mw')
+  @JsonValue(_malawiIsoValue)
   malawi('🇲🇼', MyoroCurrencyEnum.mwk),
 
   /// Malaysia.
-  @JsonValue('my')
+  @JsonValue(_malaysiaIsoValue)
   malaysia('🇲🇾', MyoroCurrencyEnum.myr),
 
   /// Maldives.
-  @JsonValue('mv')
+  @JsonValue(_maldivesIsoValue)
   maldives('🇲🇻', MyoroCurrencyEnum.mvr),
 
   /// Mali.
-  @JsonValue('ml')
+  @JsonValue(_maliIsoValue)
   mali('🇲🇱', MyoroCurrencyEnum.xof),
 
   /// Malta.
-  @JsonValue('mt')
+  @JsonValue(_maltaIsoValue)
   malta('🇲🇹', MyoroCurrencyEnum.eur),
 
   /// Marshall Islands.
-  @JsonValue('mh')
+  @JsonValue(_marshallIslandsIsoValue)
   marshallIslands('🇲🇭', MyoroCurrencyEnum.usd),
 
   /// Mauritania.
-  @JsonValue('mr')
+  @JsonValue(_mauritaniaIsoValue)
   mauritania('🇲🇷', MyoroCurrencyEnum.mru),
 
   /// Mauritius.
-  @JsonValue('mu')
+  @JsonValue(_mauritiusIsoValue)
   mauritius('🇲🇺', MyoroCurrencyEnum.mur),
 
   /// Mexico.
-  @JsonValue('mx')
+  @JsonValue(_mexicoIsoValue)
   mexico('🇲🇽', MyoroCurrencyEnum.mxn),
 
   /// Micronesia.
-  @JsonValue('fm')
+  @JsonValue(_micronesiaIsoValue)
   micronesia('🇫🇲', MyoroCurrencyEnum.usd),
 
   /// Moldova.
-  @JsonValue('md')
+  @JsonValue(_moldovaIsoValue)
   moldova('🇲🇩', MyoroCurrencyEnum.mdl),
 
   /// Monaco.
-  @JsonValue('mc')
+  @JsonValue(_monacoIsoValue)
   monaco('🇲🇨', MyoroCurrencyEnum.eur),
 
   /// Mongolia.
-  @JsonValue('mn')
+  @JsonValue(_mongoliaIsoValue)
   mongolia('🇲🇳', MyoroCurrencyEnum.mnt),
 
   /// Montenegro.
-  @JsonValue('me')
+  @JsonValue(_montenegroIsoValue)
   montenegro('🇲🇪', MyoroCurrencyEnum.eur),
 
   /// Morocco.
-  @JsonValue('ma')
+  @JsonValue(_moroccoIsoValue)
   morocco('🇲🇦', MyoroCurrencyEnum.mad),
 
   /// Mozambique.
-  @JsonValue('mz')
+  @JsonValue(_mozambiqueIsoValue)
   mozambique('🇲🇿', MyoroCurrencyEnum.mzn),
 
   /// Myanmar.
-  @JsonValue('mm')
+  @JsonValue(_myanmarIsoValue)
   myanmar('🇲🇲', MyoroCurrencyEnum.mmk),
 
   /// Namibia.
-  @JsonValue('na')
+  @JsonValue(_namibiaIsoValue)
   namibia('🇳🇦', MyoroCurrencyEnum.nad),
 
   /// Nauru.
-  @JsonValue('nr')
+  @JsonValue(_nauruIsoValue)
   nauru('🇳🇷', MyoroCurrencyEnum.aud),
 
   /// Nepal.
-  @JsonValue('np')
+  @JsonValue(_nepalIsoValue)
   nepal('🇳🇵', MyoroCurrencyEnum.npr),
 
   /// Netherlands.
-  @JsonValue('nl')
+  @JsonValue(_netherlandsIsoValue)
   netherlands('🇳🇱', MyoroCurrencyEnum.eur),
 
   /// NewZealand.
-  @JsonValue('nz')
+  @JsonValue(_newZealandIsoValue)
   newZealand('🇳🇿', MyoroCurrencyEnum.nzd),
 
   /// Nicaragua.
-  @JsonValue('ni')
+  @JsonValue(_nicaraguaIsoValue)
   nicaragua('🇳🇮', MyoroCurrencyEnum.nio),
 
   /// Niger.
-  @JsonValue('ne')
+  @JsonValue(_nigerIsoValue)
   niger('🇳🇪', MyoroCurrencyEnum.xof),
 
   /// Nigeria.
-  @JsonValue('ng')
+  @JsonValue(_nigeriaIsoValue)
   nigeria('🇳🇬', MyoroCurrencyEnum.ngn),
 
   /// NorthKorea.
-  @JsonValue('kp')
+  @JsonValue(_northKoreaIsoValue)
   northKorea('🇰🇵', MyoroCurrencyEnum.kpw),
 
   /// NorthMacedonia.
-  @JsonValue('mk')
+  @JsonValue(_northMacedoniaIsoValue)
   northMacedonia('🇲🇰', MyoroCurrencyEnum.mkd),
 
   /// Norway.
-  @JsonValue('no')
+  @JsonValue(_norwayIsoValue)
   norway('🇳🇴', MyoroCurrencyEnum.nok),
 
   /// Oman.
-  @JsonValue('om')
+  @JsonValue(_omanIsoValue)
   oman('🇴🇲', MyoroCurrencyEnum.omr),
 
   /// Pakistan.
-  @JsonValue('pk')
+  @JsonValue(_pakistanIsoValue)
   pakistan('🇵🇰', MyoroCurrencyEnum.pkr),
 
   /// Palau.
-  @JsonValue('pw')
+  @JsonValue(_palauIsoValue)
   palau('🇵🇼', MyoroCurrencyEnum.usd),
 
   /// Palestine.
-  @JsonValue('ps')
+  @JsonValue(_palestineIsoValue)
   palestine('🇵🇸', MyoroCurrencyEnum.ils),
 
   /// Panama.
-  @JsonValue('pa')
+  @JsonValue(_panamaIsoValue)
   panama('🇵🇦', MyoroCurrencyEnum.pab),
 
   /// PapuaNewGuinea.
-  @JsonValue('pg')
+  @JsonValue(_papuaNewGuineaIsoValue)
   papuaNewGuinea('🇵🇬', MyoroCurrencyEnum.pgk),
 
   /// Paraguay.
-  @JsonValue('py')
+  @JsonValue(_paraguayIsoValue)
   paraguay('🇵🇾', MyoroCurrencyEnum.pyg),
 
   /// Peru.
-  @JsonValue('pe')
+  @JsonValue(_peruIsoValue)
   peru('🇵🇪', MyoroCurrencyEnum.pen),
 
   /// Philippines.
-  @JsonValue('ph')
+  @JsonValue(_philippinesIsoValue)
   philippines('🇵🇭', MyoroCurrencyEnum.php),
 
   /// Poland.
-  @JsonValue('pl')
+  @JsonValue(_polandIsoValue)
   poland('🇵🇱', MyoroCurrencyEnum.pln),
 
   /// Portugal.
-  @JsonValue('pt')
+  @JsonValue(_portugalIsoValue)
   portugal('🇵🇹', MyoroCurrencyEnum.eur),
 
   /// Qatar.
-  @JsonValue('qa')
+  @JsonValue(_qatarIsoValue)
   qatar('🇶🇦', MyoroCurrencyEnum.qar),
 
   /// Romania.
-  @JsonValue('ro')
+  @JsonValue(_romaniaIsoValue)
   romania('🇷🇴', MyoroCurrencyEnum.ron),
 
   /// Russia.
-  @JsonValue('ru')
+  @JsonValue(_russiaIsoValue)
   russia('🇷🇺', MyoroCurrencyEnum.rub),
 
   /// Rwanda.
-  @JsonValue('rw')
+  @JsonValue(_rwandaIsoValue)
   rwanda('🇷🇼', MyoroCurrencyEnum.rwf),
 
   /// SaintKitts and Nevis.
-  @JsonValue('kn')
+  @JsonValue(_saintKittsAndNevisIsoValue)
   saintKittsAndNevis('🇰🇳', MyoroCurrencyEnum.xcd),
 
   /// SaintLucia.
-  @JsonValue('lc')
+  @JsonValue(_saintLuciaIsoValue)
   saintLucia('🇱🇨', MyoroCurrencyEnum.xcd),
 
   /// SaintVincentAndTheGrenadines.
-  @JsonValue('vc')
+  @JsonValue(_saintVincentAndTheGrenadinesIsoValue)
   saintVincentAndTheGrenadines('🇻🇨', MyoroCurrencyEnum.xcd),
 
   /// Samoa.
-  @JsonValue('ws')
+  @JsonValue(_samoaIsoValue)
   samoa('🇼🇸', MyoroCurrencyEnum.wst),
 
   /// SanMarino.
-  @JsonValue('sm')
+  @JsonValue(_sanMarinoIsoValue)
   sanMarino('🇸🇲', MyoroCurrencyEnum.eur),
 
   /// Sao Tome and Principe.
-  @JsonValue('st')
+  @JsonValue(_saoTomeAndPrincipeIsoValue)
   saoTomeAndPrincipe('🇸🇹', MyoroCurrencyEnum.stn),
 
   /// Saudi Arabia.
-  @JsonValue('sa')
+  @JsonValue(_saudiArabiaIsoValue)
   saudiArabia('🇸🇦', MyoroCurrencyEnum.sar),
 
   /// Senegal.
-  @JsonValue('sn')
+  @JsonValue(_senegalIsoValue)
   senegal('🇸🇳', MyoroCurrencyEnum.xof),
 
   /// Serbia.
-  @JsonValue('rs')
+  @JsonValue(_serbiaIsoValue)
   serbia('🇷🇸', MyoroCurrencyEnum.rsd),
 
   /// Seychelles.
-  @JsonValue('sc')
+  @JsonValue(_seychellesIsoValue)
   seychelles('🇸🇨', MyoroCurrencyEnum.scr),
 
   /// SierraLeone.
-  @JsonValue('sl')
+  @JsonValue(_sierraLeoneIsoValue)
   sierraLeone('🇸🇱', MyoroCurrencyEnum.sll),
 
   /// Singapore.
-  @JsonValue('sg')
+  @JsonValue(_singaporeIsoValue)
   singapore('🇸🇬', MyoroCurrencyEnum.sgd),
 
   /// Slovakia.
-  @JsonValue('sk')
+  @JsonValue(_slovakiaIsoValue)
   slovakia('🇸🇰', MyoroCurrencyEnum.eur),
 
   /// Slovenia.
-  @JsonValue('si')
+  @JsonValue(_sloveniaIsoValue)
   slovenia('🇸🇮', MyoroCurrencyEnum.eur),
 
   /// SolomonIslands.
-  @JsonValue('sb')
+  @JsonValue(_solomonIslandsIsoValue)
   solomonIslands('🇸🇧', MyoroCurrencyEnum.sbd),
 
   /// Somalia.
-  @JsonValue('so')
+  @JsonValue(_somaliaIsoValue)
   somalia('🇸🇴', MyoroCurrencyEnum.sos),
 
   /// South Africa.
-  @JsonValue('za')
+  @JsonValue(_southAfricaIsoValue)
   southAfrica('🇿🇦', MyoroCurrencyEnum.zar),
 
   /// South Korea.
-  @JsonValue('kr')
+  @JsonValue(_southKoreaIsoValue)
   southKorea('🇰🇷', MyoroCurrencyEnum.krw),
 
   /// South Sudan.
-  @JsonValue('ss')
+  @JsonValue(_southSudanIsoValue)
   southSudan('🇸🇸', MyoroCurrencyEnum.ssp),
 
   /// Spain.
-  @JsonValue('es')
+  @JsonValue(_spainIsoValue)
   spain('🇪🇸', MyoroCurrencyEnum.eur),
 
   /// Sri Lanka.
-  @JsonValue('lk')
+  @JsonValue(_sriLankaIsoValue)
   sriLanka('🇱🇰', MyoroCurrencyEnum.lkr),
 
   /// Sudan.
-  @JsonValue('sd')
+  @JsonValue(_sudanIsoValue)
   sudan('🇸🇩', MyoroCurrencyEnum.sdp),
 
   /// Suriname.
-  @JsonValue('sr')
+  @JsonValue(_surinameIsoValue)
   suriname('🇸🇷', MyoroCurrencyEnum.srd),
 
   /// Sweden.
-  @JsonValue('se')
+  @JsonValue(_swedenIsoValue)
   sweden('🇸🇪', MyoroCurrencyEnum.sek),
 
   /// Switzerland.
-  @JsonValue('ch')
+  @JsonValue(_switzerlandIsoValue)
   switzerland('🇨🇭', MyoroCurrencyEnum.chf),
 
   /// Syria.
-  @JsonValue('sy')
+  @JsonValue(_syriaIsoValue)
   syria('🇸🇾', MyoroCurrencyEnum.syp),
 
   /// Taiwan.
-  @JsonValue('tw')
+  @JsonValue(_taiwanIsoValue)
   taiwan('🇹🇼', MyoroCurrencyEnum.twd),
 
   /// Tajikistan.
-  @JsonValue('tj')
+  @JsonValue(_tajikistanIsoValue)
   tajikistan('🇹🇯', MyoroCurrencyEnum.tjs),
 
   /// Tanzania.
-  @JsonValue('tz')
+  @JsonValue(_tanzaniaIsoValue)
   tanzania('🇹🇿', MyoroCurrencyEnum.tzs),
 
   /// Thailand.
-  @JsonValue('th')
+  @JsonValue(_thailandIsoValue)
   thailand('🇹🇭', MyoroCurrencyEnum.thb),
 
   /// TimorLeste.
-  @JsonValue('tl')
+  @JsonValue(_timorLesteIsoValue)
   timorLeste('🇹🇱', MyoroCurrencyEnum.usd),
 
   /// Togo.
-  @JsonValue('tg')
+  @JsonValue(_togoIsoValue)
   togo('🇹🇬', MyoroCurrencyEnum.xof),
 
   /// Tonga.
-  @JsonValue('to')
+  @JsonValue(_tongaIsoValue)
   tonga('🇹🇴', MyoroCurrencyEnum.top),
 
   /// Trinidad and Tobago.
-  @JsonValue('tt')
+  @JsonValue(_trinidadAndTobagoIsoValue)
   trinidadAndTobago('🇹🇹', MyoroCurrencyEnum.ttd),
 
   /// Tunisia.
-  @JsonValue('tn')
+  @JsonValue(_tunisiaIsoValue)
   tunisia('🇹🇳', MyoroCurrencyEnum.tnd),
 
   /// Turkey.
-  @JsonValue('tr')
+  @JsonValue(_turkeyIsoValue)
   turkey('🇹🇷', MyoroCurrencyEnum.try_),
 
   /// Turkmenistan.
-  @JsonValue('tm')
+  @JsonValue(_turkmenistanIsoValue)
   turkmenistan('🇹🇲', MyoroCurrencyEnum.tmt),
 
   /// Tuvalu.
-  @JsonValue('tv')
+  @JsonValue(_tuvaluIsoValue)
   tuvalu('🇹🇻', MyoroCurrencyEnum.aud),
 
   /// Uganda.
-  @JsonValue('ug')
+  @JsonValue(_ugandaIsoValue)
   uganda('🇺🇬', MyoroCurrencyEnum.ugx),
 
   /// Ukraine.
-  @JsonValue('ua')
+  @JsonValue(_ukraineIsoValue)
   ukraine('🇺🇦', MyoroCurrencyEnum.uah),
 
   /// United Arab Emirates.
-  @JsonValue('ae')
+  @JsonValue(_unitedArabEmiratesIsoValue)
   unitedArabEmirates('🇦🇪', MyoroCurrencyEnum.aed),
 
   /// UnitedKingdom.
-  @JsonValue('gb')
+  @JsonValue(_unitedKingdomIsoValue)
   unitedKingdom('🇬🇧', MyoroCurrencyEnum.gbp),
 
   /// UnitedStates.
-  @JsonValue('us')
+  @JsonValue(_unitedStatesIsoValue)
   unitedStates('🇺🇸', MyoroCurrencyEnum.usd),
 
   /// Uruguay.
-  @JsonValue('uy')
+  @JsonValue(_uruguayIsoValue)
   uruguay('🇺🇾', MyoroCurrencyEnum.uyu),
 
   /// Uzbekistan.
-  @JsonValue('uz')
+  @JsonValue(_uzbekistanIsoValue)
   uzbekistan('🇺🇿', MyoroCurrencyEnum.uzs),
 
   /// Vanuatu.
-  @JsonValue('vu')
+  @JsonValue(_vanuatuIsoValue)
   vanuatu('🇻🇺', MyoroCurrencyEnum.vuv),
 
   /// Vatican City.
-  @JsonValue('va')
+  @JsonValue(_vaticanCityIsoValue)
   vaticanCity('🇻🇦', MyoroCurrencyEnum.eur),
 
   /// Venezuela.
-  @JsonValue('ve')
+  @JsonValue(_venezuelaIsoValue)
   venezuela('🇻🇪', MyoroCurrencyEnum.ves),
 
   /// Vietnam.
-  @JsonValue('vn')
+  @JsonValue(_vietnamIsoValue)
   vietnam('🇻🇳', MyoroCurrencyEnum.vnd),
 
   /// Yemen.
-  @JsonValue('ye')
+  @JsonValue(_yemenIsoValue)
   yemen('🇾🇪', MyoroCurrencyEnum.yer),
 
   /// Zambia.
-  @JsonValue('zm')
+  @JsonValue(_zambiaIsoValue)
   zambia('🇿🇲', MyoroCurrencyEnum.zmw),
 
   /// Zimbabwe.
-  @JsonValue('zw')
+  @JsonValue(_zimbabweIsoValue)
   zimbabwe('🇿🇼', MyoroCurrencyEnum.usd);
+
+  // Country codes (ISO 3166-1 alpha-2).
+  static const _afghanistanIsoValue = 'af';
+  static const _albaniaIsoValue = 'al';
+  static const _algeriaIsoValue = 'dz';
+  static const _andorraIsoValue = 'ad';
+  static const _angolaIsoValue = 'ao';
+  static const _antiguaAndBarbudaIsoValue = 'ag';
+  static const _argentinaIsoValue = 'ar';
+  static const _armeniaIsoValue = 'am';
+  static const _australiaIsoValue = 'au';
+  static const _austriaIsoValue = 'at';
+  static const _azerbaijanIsoValue = 'az';
+  static const _bahamasIsoValue = 'bs';
+  static const _bahrainIsoValue = 'bh';
+  static const _bangladeshIsoValue = 'bd';
+  static const _barbadosIsoValue = 'bb';
+  static const _belarusIsoValue = 'by';
+  static const _belgiumIsoValue = 'be';
+  static const _belizeIsoValue = 'bz';
+  static const _beninIsoValue = 'bj';
+  static const _bhutanIsoValue = 'bt';
+  static const _boliviaIsoValue = 'bo';
+  static const _bosniaAndHerzegovinaIsoValue = 'ba';
+  static const _botswanaIsoValue = 'bw';
+  static const _brazilIsoValue = 'br';
+  static const _bruneiIsoValue = 'bn';
+  static const _bulgariaIsoValue = 'bg';
+  static const _burkinaFasoIsoValue = 'bf';
+  static const _burundiIsoValue = 'bi';
+  static const _cambodiaIsoValue = 'kh';
+  static const _cameroonIsoValue = 'cm';
+  static const _canadaIsoValue = 'ca';
+  static const _capeVerdeIsoValue = 'cv';
+  static const _centralAfricanRepublicIsoValue = 'cf';
+  static const _chadIsoValue = 'td';
+  static const _chileIsoValue = 'cl';
+  static const _chinaIsoValue = 'cn';
+  static const _colombiaIsoValue = 'co';
+  static const _comorosIsoValue = 'km';
+  static const _congoIsoValue = 'cg';
+  static const _costaRicaIsoValue = 'cr';
+  static const _croatiaIsoValue = 'hr';
+  static const _cubaIsoValue = 'cu';
+  static const _cyprusIsoValue = 'cy';
+  static const _czechRepublicIsoValue = 'cz';
+  static const _denmarkIsoValue = 'dk';
+  static const _djiboutiIsoValue = 'dj';
+  static const _dominicaIsoValue = 'dm';
+  static const _dominicanRepublicIsoValue = 'do';
+  static const _drCongoIsoValue = 'cd';
+  static const _ecuadorIsoValue = 'ec';
+  static const _egyptIsoValue = 'eg';
+  static const _elSalvadorIsoValue = 'sv';
+  static const _equatorialGuineaIsoValue = 'gq';
+  static const _eritreaIsoValue = 'er';
+  static const _estoniaIsoValue = 'ee';
+  static const _eswatiniIsoValue = 'sz';
+  static const _ethiopiaIsoValue = 'et';
+  static const _fijiIsoValue = 'fj';
+  static const _finlandIsoValue = 'fi';
+  static const _franceIsoValue = 'fr';
+  static const _gabonIsoValue = 'ga';
+  static const _gambiaIsoValue = 'gm';
+  static const _georgiaIsoValue = 'ge';
+  static const _germanyIsoValue = 'de';
+  static const _ghanaIsoValue = 'gh';
+  static const _greeceIsoValue = 'gr';
+  static const _grenadaIsoValue = 'gd';
+  static const _guatemalaIsoValue = 'gt';
+  static const _guineaIsoValue = 'gn';
+  static const _guineaBissauIsoValue = 'gw';
+  static const _guyanaIsoValue = 'gy';
+  static const _haitiIsoValue = 'ht';
+  static const _hondurasIsoValue = 'hn';
+  static const _hungaryIsoValue = 'hu';
+  static const _icelandIsoValue = 'is';
+  static const _indiaIsoValue = 'in';
+  static const _indonesiaIsoValue = 'id';
+  static const _iranIsoValue = 'ir';
+  static const _iraqIsoValue = 'iq';
+  static const _irelandIsoValue = 'ie';
+  static const _israelIsoValue = 'il';
+  static const _italyIsoValue = 'it';
+  static const _ivoryCoastIsoValue = 'ci';
+  static const _jamaicaIsoValue = 'jm';
+  static const _japanIsoValue = 'jp';
+  static const _jordanIsoValue = 'jo';
+  static const _kazakhstanIsoValue = 'kz';
+  static const _kenyaIsoValue = 'ke';
+  static const _kiribatiIsoValue = 'ki';
+  static const _kosovoIsoValue = 'xk';
+  static const _kuwaitIsoValue = 'kw';
+  static const _kyrgyzstanIsoValue = 'kg';
+  static const _laosIsoValue = 'la';
+  static const _latviaIsoValue = 'lv';
+  static const _lebanonIsoValue = 'lb';
+  static const _lesothoIsoValue = 'ls';
+  static const _liberiaIsoValue = 'lr';
+  static const _libyaIsoValue = 'ly';
+  static const _liechtensteinIsoValue = 'li';
+  static const _lithuaniaIsoValue = 'lt';
+  static const _luxembourgIsoValue = 'lu';
+  static const _madagascarIsoValue = 'mg';
+  static const _malawiIsoValue = 'mw';
+  static const _malaysiaIsoValue = 'my';
+  static const _maldivesIsoValue = 'mv';
+  static const _maliIsoValue = 'ml';
+  static const _maltaIsoValue = 'mt';
+  static const _marshallIslandsIsoValue = 'mh';
+  static const _mauritaniaIsoValue = 'mr';
+  static const _mauritiusIsoValue = 'mu';
+  static const _mexicoIsoValue = 'mx';
+  static const _micronesiaIsoValue = 'fm';
+  static const _moldovaIsoValue = 'md';
+  static const _monacoIsoValue = 'mc';
+  static const _mongoliaIsoValue = 'mn';
+  static const _montenegroIsoValue = 'me';
+  static const _moroccoIsoValue = 'ma';
+  static const _mozambiqueIsoValue = 'mz';
+  static const _myanmarIsoValue = 'mm';
+  static const _namibiaIsoValue = 'na';
+  static const _nauruIsoValue = 'nr';
+  static const _nepalIsoValue = 'np';
+  static const _netherlandsIsoValue = 'nl';
+  static const _newZealandIsoValue = 'nz';
+  static const _nicaraguaIsoValue = 'ni';
+  static const _nigerIsoValue = 'ne';
+  static const _nigeriaIsoValue = 'ng';
+  static const _northKoreaIsoValue = 'kp';
+  static const _northMacedoniaIsoValue = 'mk';
+  static const _norwayIsoValue = 'no';
+  static const _omanIsoValue = 'om';
+  static const _pakistanIsoValue = 'pk';
+  static const _palauIsoValue = 'pw';
+  static const _palestineIsoValue = 'ps';
+  static const _panamaIsoValue = 'pa';
+  static const _papuaNewGuineaIsoValue = 'pg';
+  static const _paraguayIsoValue = 'py';
+  static const _peruIsoValue = 'pe';
+  static const _philippinesIsoValue = 'ph';
+  static const _polandIsoValue = 'pl';
+  static const _portugalIsoValue = 'pt';
+  static const _qatarIsoValue = 'qa';
+  static const _romaniaIsoValue = 'ro';
+  static const _russiaIsoValue = 'ru';
+  static const _rwandaIsoValue = 'rw';
+  static const _saintKittsAndNevisIsoValue = 'kn';
+  static const _saintLuciaIsoValue = 'lc';
+  static const _saintVincentAndTheGrenadinesIsoValue = 'vc';
+  static const _samoaIsoValue = 'ws';
+  static const _sanMarinoIsoValue = 'sm';
+  static const _saoTomeAndPrincipeIsoValue = 'st';
+  static const _saudiArabiaIsoValue = 'sa';
+  static const _senegalIsoValue = 'sn';
+  static const _serbiaIsoValue = 'rs';
+  static const _seychellesIsoValue = 'sc';
+  static const _sierraLeoneIsoValue = 'sl';
+  static const _singaporeIsoValue = 'sg';
+  static const _slovakiaIsoValue = 'sk';
+  static const _sloveniaIsoValue = 'si';
+  static const _solomonIslandsIsoValue = 'sb';
+  static const _somaliaIsoValue = 'so';
+  static const _southAfricaIsoValue = 'za';
+  static const _southKoreaIsoValue = 'kr';
+  static const _southSudanIsoValue = 'ss';
+  static const _spainIsoValue = 'es';
+  static const _sriLankaIsoValue = 'lk';
+  static const _sudanIsoValue = 'sd';
+  static const _surinameIsoValue = 'sr';
+  static const _swedenIsoValue = 'se';
+  static const _switzerlandIsoValue = 'ch';
+  static const _syriaIsoValue = 'sy';
+  static const _taiwanIsoValue = 'tw';
+  static const _tajikistanIsoValue = 'tj';
+  static const _tanzaniaIsoValue = 'tz';
+  static const _thailandIsoValue = 'th';
+  static const _timorLesteIsoValue = 'tl';
+  static const _togoIsoValue = 'tg';
+  static const _tongaIsoValue = 'to';
+  static const _trinidadAndTobagoIsoValue = 'tt';
+  static const _tunisiaIsoValue = 'tn';
+  static const _turkeyIsoValue = 'tr';
+  static const _turkmenistanIsoValue = 'tm';
+  static const _tuvaluIsoValue = 'tv';
+  static const _ugandaIsoValue = 'ug';
+  static const _ukraineIsoValue = 'ua';
+  static const _unitedArabEmiratesIsoValue = 'ae';
+  static const _unitedKingdomIsoValue = 'gb';
+  static const _unitedStatesIsoValue = 'us';
+  static const _uruguayIsoValue = 'uy';
+  static const _uzbekistanIsoValue = 'uz';
+  static const _vanuatuIsoValue = 'vu';
+  static const _vaticanCityIsoValue = 'va';
+  static const _venezuelaIsoValue = 've';
+  static const _vietnamIsoValue = 'vn';
+  static const _yemenIsoValue = 'ye';
+  static const _zambiaIsoValue = 'zm';
+  static const _zimbabweIsoValue = 'zw';
 
   /// Default constructor.
   const MyoroCountryEnum(this.emoji, this.currency);
@@ -808,9 +1009,213 @@ enum MyoroCountryEnum {
   /// Currency of the country.
   final MyoroCurrencyEnum currency;
 
+  /// ISO 3166-1 alpha-2 country code (uppercase).
+  String get isoValue {
+    final code = switch (this) {
+      afghanistan => _afghanistanIsoValue,
+      albania => _albaniaIsoValue,
+      algeria => _algeriaIsoValue,
+      andorra => _andorraIsoValue,
+      angola => _angolaIsoValue,
+      antiguaAndBarbuda => _antiguaAndBarbudaIsoValue,
+      argentina => _argentinaIsoValue,
+      armenia => _armeniaIsoValue,
+      australia => _australiaIsoValue,
+      austria => _austriaIsoValue,
+      azerbaijan => _azerbaijanIsoValue,
+      bahamas => _bahamasIsoValue,
+      bahrain => _bahrainIsoValue,
+      bangladesh => _bangladeshIsoValue,
+      barbados => _barbadosIsoValue,
+      belarus => _belarusIsoValue,
+      belgium => _belgiumIsoValue,
+      belize => _belizeIsoValue,
+      benin => _beninIsoValue,
+      bhutan => _bhutanIsoValue,
+      bolivia => _boliviaIsoValue,
+      bosniaAndHerzegovina => _bosniaAndHerzegovinaIsoValue,
+      botswana => _botswanaIsoValue,
+      brazil => _brazilIsoValue,
+      brunei => _bruneiIsoValue,
+      bulgaria => _bulgariaIsoValue,
+      burkinaFaso => _burkinaFasoIsoValue,
+      burundi => _burundiIsoValue,
+      cambodia => _cambodiaIsoValue,
+      cameroon => _cameroonIsoValue,
+      canada => _canadaIsoValue,
+      capeVerde => _capeVerdeIsoValue,
+      centralAfricanRepublic => _centralAfricanRepublicIsoValue,
+      chad => _chadIsoValue,
+      chile => _chileIsoValue,
+      china => _chinaIsoValue,
+      colombia => _colombiaIsoValue,
+      comoros => _comorosIsoValue,
+      congo => _congoIsoValue,
+      costaRica => _costaRicaIsoValue,
+      croatia => _croatiaIsoValue,
+      cuba => _cubaIsoValue,
+      cyprus => _cyprusIsoValue,
+      czechRepublic => _czechRepublicIsoValue,
+      denmark => _denmarkIsoValue,
+      djibouti => _djiboutiIsoValue,
+      dominica => _dominicaIsoValue,
+      dominicanRepublic => _dominicanRepublicIsoValue,
+      drCongo => _drCongoIsoValue,
+      ecuador => _ecuadorIsoValue,
+      egypt => _egyptIsoValue,
+      elSalvador => _elSalvadorIsoValue,
+      equatorialGuinea => _equatorialGuineaIsoValue,
+      eritrea => _eritreaIsoValue,
+      estonia => _estoniaIsoValue,
+      eswatini => _eswatiniIsoValue,
+      ethiopia => _ethiopiaIsoValue,
+      fiji => _fijiIsoValue,
+      finland => _finlandIsoValue,
+      france => _franceIsoValue,
+      gabon => _gabonIsoValue,
+      gambia => _gambiaIsoValue,
+      georgia => _georgiaIsoValue,
+      germany => _germanyIsoValue,
+      ghana => _ghanaIsoValue,
+      greece => _greeceIsoValue,
+      grenada => _grenadaIsoValue,
+      guatemala => _guatemalaIsoValue,
+      guinea => _guineaIsoValue,
+      guineaBissau => _guineaBissauIsoValue,
+      guyana => _guyanaIsoValue,
+      haiti => _haitiIsoValue,
+      honduras => _hondurasIsoValue,
+      hungary => _hungaryIsoValue,
+      iceland => _icelandIsoValue,
+      india => _indiaIsoValue,
+      indonesia => _indonesiaIsoValue,
+      iran => _iranIsoValue,
+      iraq => _iraqIsoValue,
+      ireland => _irelandIsoValue,
+      israel => _israelIsoValue,
+      italy => _italyIsoValue,
+      ivoryCoast => _ivoryCoastIsoValue,
+      jamaica => _jamaicaIsoValue,
+      japan => _japanIsoValue,
+      jordan => _jordanIsoValue,
+      kazakhstan => _kazakhstanIsoValue,
+      kenya => _kenyaIsoValue,
+      kiribati => _kiribatiIsoValue,
+      kosovo => _kosovoIsoValue,
+      kuwait => _kuwaitIsoValue,
+      kyrgyzstan => _kyrgyzstanIsoValue,
+      laos => _laosIsoValue,
+      latvia => _latviaIsoValue,
+      lebanon => _lebanonIsoValue,
+      lesotho => _lesothoIsoValue,
+      liberia => _liberiaIsoValue,
+      libya => _libyaIsoValue,
+      liechtenstein => _liechtensteinIsoValue,
+      lithuania => _lithuaniaIsoValue,
+      luxembourg => _luxembourgIsoValue,
+      madagascar => _madagascarIsoValue,
+      malawi => _malawiIsoValue,
+      malaysia => _malaysiaIsoValue,
+      maldives => _maldivesIsoValue,
+      mali => _maliIsoValue,
+      malta => _maltaIsoValue,
+      marshallIslands => _marshallIslandsIsoValue,
+      mauritania => _mauritaniaIsoValue,
+      mauritius => _mauritiusIsoValue,
+      mexico => _mexicoIsoValue,
+      micronesia => _micronesiaIsoValue,
+      moldova => _moldovaIsoValue,
+      monaco => _monacoIsoValue,
+      mongolia => _mongoliaIsoValue,
+      montenegro => _montenegroIsoValue,
+      morocco => _moroccoIsoValue,
+      mozambique => _mozambiqueIsoValue,
+      myanmar => _myanmarIsoValue,
+      namibia => _namibiaIsoValue,
+      nauru => _nauruIsoValue,
+      nepal => _nepalIsoValue,
+      netherlands => _netherlandsIsoValue,
+      newZealand => _newZealandIsoValue,
+      nicaragua => _nicaraguaIsoValue,
+      niger => _nigerIsoValue,
+      nigeria => _nigeriaIsoValue,
+      northKorea => _northKoreaIsoValue,
+      northMacedonia => _northMacedoniaIsoValue,
+      norway => _norwayIsoValue,
+      oman => _omanIsoValue,
+      pakistan => _pakistanIsoValue,
+      palau => _palauIsoValue,
+      palestine => _palestineIsoValue,
+      panama => _panamaIsoValue,
+      papuaNewGuinea => _papuaNewGuineaIsoValue,
+      paraguay => _paraguayIsoValue,
+      peru => _peruIsoValue,
+      philippines => _philippinesIsoValue,
+      poland => _polandIsoValue,
+      portugal => _portugalIsoValue,
+      qatar => _qatarIsoValue,
+      romania => _romaniaIsoValue,
+      russia => _russiaIsoValue,
+      rwanda => _rwandaIsoValue,
+      saintKittsAndNevis => _saintKittsAndNevisIsoValue,
+      saintLucia => _saintLuciaIsoValue,
+      saintVincentAndTheGrenadines => _saintVincentAndTheGrenadinesIsoValue,
+      samoa => _samoaIsoValue,
+      sanMarino => _sanMarinoIsoValue,
+      saoTomeAndPrincipe => _saoTomeAndPrincipeIsoValue,
+      saudiArabia => _saudiArabiaIsoValue,
+      senegal => _senegalIsoValue,
+      serbia => _serbiaIsoValue,
+      seychelles => _seychellesIsoValue,
+      sierraLeone => _sierraLeoneIsoValue,
+      singapore => _singaporeIsoValue,
+      slovakia => _slovakiaIsoValue,
+      slovenia => _sloveniaIsoValue,
+      solomonIslands => _solomonIslandsIsoValue,
+      somalia => _somaliaIsoValue,
+      southAfrica => _southAfricaIsoValue,
+      southKorea => _southKoreaIsoValue,
+      southSudan => _southSudanIsoValue,
+      spain => _spainIsoValue,
+      sriLanka => _sriLankaIsoValue,
+      sudan => _sudanIsoValue,
+      suriname => _surinameIsoValue,
+      sweden => _swedenIsoValue,
+      switzerland => _switzerlandIsoValue,
+      syria => _syriaIsoValue,
+      taiwan => _taiwanIsoValue,
+      tajikistan => _tajikistanIsoValue,
+      tanzania => _tanzaniaIsoValue,
+      thailand => _thailandIsoValue,
+      timorLeste => _timorLesteIsoValue,
+      togo => _togoIsoValue,
+      tonga => _tongaIsoValue,
+      trinidadAndTobago => _trinidadAndTobagoIsoValue,
+      tunisia => _tunisiaIsoValue,
+      turkey => _turkeyIsoValue,
+      turkmenistan => _turkmenistanIsoValue,
+      tuvalu => _tuvaluIsoValue,
+      uganda => _ugandaIsoValue,
+      ukraine => _ukraineIsoValue,
+      unitedArabEmirates => _unitedArabEmiratesIsoValue,
+      unitedKingdom => _unitedKingdomIsoValue,
+      unitedStates => _unitedStatesIsoValue,
+      uruguay => _uruguayIsoValue,
+      uzbekistan => _uzbekistanIsoValue,
+      vanuatu => _vanuatuIsoValue,
+      vaticanCity => _vaticanCityIsoValue,
+      venezuela => _venezuelaIsoValue,
+      vietnam => _vietnamIsoValue,
+      yemen => _yemenIsoValue,
+      zambia => _zambiaIsoValue,
+      zimbabwe => _zimbabweIsoValue,
+    };
+    return code.toUpperCase();
+  }
+
   /// Name of the country.
   String name(BuildContext context) {
-    final localization = context.localization;
+    final localization = context.mflLocalization;
     return switch (this) {
       afghanistan => localization.myoroCountryEnumAfghanistanLabel,
       albania => localization.myoroCountryEnumAlbaniaLabel,

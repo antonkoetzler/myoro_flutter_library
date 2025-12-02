@@ -7,21 +7,22 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// [ValueNotifier] that executes a [FutureOr] function to retrieve data.
 class MyoroRequestController<T> extends ValueNotifier<MyoroRequest<T>> {
   /// Private method to check if the requestCallback is synchronous or asynchronous.
-  static bool _isRequestCallbackSync<T>(MyoroRequestControllerRequest<T>? requestCallback) {
-    if (requestCallback == null) return false;
+  static bool _isRequestCallbackSync<T>(MyoroRequestControllerRequest<T>? request) {
+    if (request == null) return false;
 
     // Check the function's runtime type to determine if it returns Future
-    final functionType = requestCallback.runtimeType.toString();
+    final functionType = request.runtimeType.toString();
 
     // If the function type contains 'Future', it's async
     return !functionType.contains('Future');
   }
 
-  MyoroRequestController({this.requestCallback})
+  /// Default constructor.
+  MyoroRequestController(this._request)
     : super(() {
-        if (_isRequestCallbackSync(requestCallback)) {
+        if (_isRequestCallbackSync(_request)) {
           try {
-            final result = requestCallback!();
+            final result = _request!();
             return MyoroRequest<T>(status: MyoroRequestEnum.success, data: result as T?);
           } catch (e) {
             return MyoroRequest<T>();
@@ -30,8 +31,11 @@ class MyoroRequestController<T> extends ValueNotifier<MyoroRequest<T>> {
         return MyoroRequest<T>();
       }());
 
+  /// Private variable to check if the [ValueNotifier] is disposed.
   bool _isDisposed = false;
-  MyoroRequestControllerRequest<T>? requestCallback;
+
+  /// Private variable to store the request callback.
+  MyoroRequestControllerRequest<T>? _request;
 
   /// Dispose function.
   @override
@@ -46,11 +50,11 @@ class MyoroRequestController<T> extends ValueNotifier<MyoroRequest<T>> {
 
     try {
       // Only set loading state for async functions
-      if (!_isRequestCallbackSync(requestCallback) && !_isDisposed) {
+      if (!_isRequestCallbackSync(_request) && !_isDisposed) {
         value = request.createLoadingState();
       }
 
-      final result = await requestCallback?.call();
+      final result = await _request?.call();
       // Check if disposed before setting success state
       if (!_isDisposed) value = request.createSuccessState(result);
     } on HttpException catch (httpError) {
@@ -74,8 +78,28 @@ class MyoroRequestController<T> extends ValueNotifier<MyoroRequest<T>> {
     }
   }
 
-  MyoroRequest<T> get request => value;
-  MyoroRequestEnum get status => request.status;
-  String? get errorMessage => request.errorMessage;
-  T? get data => request.data;
+  /// Getter of this [ValueNotifier]'s [value].
+  MyoroRequest<T> get request {
+    return value;
+  }
+
+  /// Getter of this [ValueNotifier]'s [value]'s [MyoroRequestEnum].
+  MyoroRequestEnum get status {
+    return request.status;
+  }
+
+  /// Getter of this [ValueNotifier]'s [value]'s [MyoroRequest.errorMessage].
+  String? get errorMessage {
+    return request.errorMessage;
+  }
+
+  /// Getter of this [ValueNotifier]'s [value]'s [MyoroRequest.data].
+  T? get data {
+    return request.data;
+  }
+
+  /// Setter of the request (function that returns the data to be retrieved).
+  void setRequestCallback(MyoroRequestControllerRequest<T> request) {
+    _request = request;
+  }
 }

@@ -27,6 +27,7 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
     this.itemsSectionSpacing,
     this.textAlign,
     this.inputTextStyle,
+    this.contentPadding,
   });
 
   /// Fake constructor.
@@ -45,7 +46,8 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
       expandingAndOverlaySpacing = myoroNullableFake<double>(),
       itemsSectionSpacing = myoroNullableFake<double>(),
       textAlign = myoroNullableFake<TextAlign>(),
-      inputTextStyle = myoroNullableFake<TextStyle>();
+      inputTextStyle = myoroNullableFake<TextStyle>(),
+      contentPadding = myoroNullableFake<EdgeInsets>();
 
   /// Builder constructor.
   MyoroDropdownThemeExtension.builder()
@@ -63,7 +65,8 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
       expandingAndOverlaySpacing = kMyoroMultiplier * 1.5,
       itemsSectionSpacing = kMyoroMultiplier,
       textAlign = null,
-      inputTextStyle = null;
+      inputTextStyle = null,
+      contentPadding = null;
 
   /// Constraints of the menu.
   @override
@@ -125,6 +128,10 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
   @override
   final TextStyle? inputTextStyle;
 
+  /// [EdgeInsets] of the content padding of the input.
+  @override
+  final EdgeInsets? contentPadding;
+
   /// Lerp function.
   @override
   MyoroDropdownThemeExtension lerp(covariant MyoroDropdownThemeExtension? other, double t) {
@@ -162,6 +169,7 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
       itemsSectionSpacing: itemsSectionSpacing,
       textAlign: textAlign,
       inputTextStyle: inputTextStyle,
+      contentPadding: contentPadding,
     );
   }
 }

@@ -9,7 +9,25 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
   @override
   void initState() {
     super.initState();
-    _viewModel = MyoroCheckboxViewModel(widget.label, widget.value, widget.onChanged);
+    _viewModel = MyoroCheckboxViewModel(
+      widget.label,
+      widget.value,
+      widget.enabled,
+      widget.onChanged,
+      widget.disabledOnTapUp,
+    );
+  }
+
+  /// Did update function.
+  @override
+  void didUpdateWidget(MyoroCheckbox oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _viewModel.state
+      ..label = widget.label
+      ..value = widget.value
+      ..enabled = widget.enabled
+      ..onChanged = widget.onChanged
+      ..disabledOnTapUp = widget.disabledOnTapUp;
   }
 
   /// Dispose function.
@@ -25,7 +43,8 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
     final themeExtension = context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
     final spacing = widget.style.spacing ?? themeExtension.spacing ?? 0;
 
-    final onTapUp = _viewModel.onTapUp;
+    final viewModel = _viewModel;
+    final onTapUp = viewModel.onTapUp;
 
     return MultiProvider(
       providers: [
@@ -37,20 +56,13 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
         child: GestureDetector(
           onTapUp: onTapUp,
           child: Row(
+            spacing: spacing,
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const _Checkbox(),
-              if (widget.label.isNotEmpty) ...[
-                GestureDetector(
-                  onTapUp: onTapUp,
-                  child: Padding(
-                    padding: EdgeInsets.only(left: spacing),
-                    child: const Flexible(child: _Label()),
-                  ),
-                ),
-              ],
+              if (widget.label.isNotEmpty) const Flexible(child: _Label()),
             ],
           ),
         ),

@@ -1,5 +1,6 @@
 # TODO
 
+- Suffix of object type for all files (i.e. all widgets must be ...Widget)
 - Documentation changes to configuration patterns and create a Notion document for documentation
   - New standards to talk about
     - All public lines must be commented

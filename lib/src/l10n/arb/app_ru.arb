@@ -388,6 +388,51 @@
   "myoroMonthEnumDecemberLabel": "Декабрь",
 
   "myoroSearchBarInputLabel": "Поиск",
-  "myoroSearchBarInputPlaceholder": "Введите что-нибудь..."
+  "myoroSearchBarInputPlaceholder": "Введите что-нибудь...",
+
+  "myoroCountryDropdownLabel": "Страна",
+
+  "myoroCountryDropdownItemText": "{emoji} {name}",
+  "@myoroCountryDropdownItemText": {
+    "placeholders": {
+      "emoji": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroRegionDropdownLabel": "Регион",
+
+  "myoroRegionDropdownItemText": "{name}",
+  "@myoroRegionDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroCityDropdownLabel": "Город",
+
+  "myoroCityDropdownItemText": "{name}",
+  "@myoroCityDropdownItemText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "myoroFeedbackErrorFeedbackTitle": "Что-то пошло не так!",
+  "myoroErrorFeedbackSubtitle": "Пожалуйста, проверьте ваше подключение и попробуйте снова!",
+  "myoroErrorFeedbackActionButtonText": "Повторить",
+
+  "myoroSuccessFeedbackSubtitle": "Операция успешно завершена!",
+  "myoroSuccessFeedbackActionButtonText": "Готово",
+
+  "myoroEmptyFeedbackActionButtonText": "Обновить"
 }
 

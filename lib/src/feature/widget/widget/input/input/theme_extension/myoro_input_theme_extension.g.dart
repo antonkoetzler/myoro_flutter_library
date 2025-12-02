@@ -58,6 +58,8 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
     bool prefixIconConstraintsProvided = true,
     MyoroIconTextButtonStyle? suffixButtonStyle,
     bool suffixButtonStyleProvided = true,
+    TextStyle? errorTextStyle,
+    bool errorTextStyleProvided = true,
   }) {
     return MyoroInputThemeExtension(
       border: borderProvided ? (border ?? self.border) : null,
@@ -88,6 +90,7 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
           ? (prefixIconConstraints ?? self.prefixIconConstraints)
           : null,
       suffixButtonStyle: suffixButtonStyleProvided ? (suffixButtonStyle ?? self.suffixButtonStyle) : null,
+      errorTextStyle: errorTextStyleProvided ? (errorTextStyle ?? self.errorTextStyle) : null,
     );
   }
 
@@ -114,12 +117,13 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
         other.obscureTextButtonDisabledIcon == self.obscureTextButtonDisabledIcon &&
         other.suffixIconConstraints == self.suffixIconConstraints &&
         other.prefixIconConstraints == self.prefixIconConstraints &&
-        other.suffixButtonStyle == self.suffixButtonStyle;
+        other.suffixButtonStyle == self.suffixButtonStyle &&
+        other.errorTextStyle == self.errorTextStyle;
   }
 
   @override
   int get hashCode {
-    return Object.hash(
+    return Object.hashAll([
       self.border,
       self.underlinedBorder,
       self.outlinedBorder,
@@ -140,7 +144,8 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
       self.suffixIconConstraints,
       self.prefixIconConstraints,
       self.suffixButtonStyle,
-    );
+      self.errorTextStyle,
+    ]);
   }
 
   @override
@@ -166,5 +171,6 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
       '  suffixIconConstraints: ${self.suffixIconConstraints},\n'
       '  prefixIconConstraints: ${self.prefixIconConstraints},\n'
       '  suffixButtonStyle: ${self.suffixButtonStyle},\n'
+      '  errorTextStyle: ${self.errorTextStyle},\n'
       ');';
 }

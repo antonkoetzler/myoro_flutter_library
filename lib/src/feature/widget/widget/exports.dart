@@ -23,6 +23,7 @@ export 'menu/exports.dart';
 export 'modal/exports.dart';
 export 'picker/exports.dart';
 export 'radio/exports.dart';
+export 'request/exports.dart';
 export 'screen/exports.dart';
 export 'scrollable/exports.dart';
 export 'slider/exports.dart';

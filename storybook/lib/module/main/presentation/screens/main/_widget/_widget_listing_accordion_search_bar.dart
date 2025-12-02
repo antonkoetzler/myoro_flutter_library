@@ -6,6 +6,9 @@ final class _WidgetListingAccordionSearchBar extends StatelessWidget {
 
   @override
   Widget build(context) {
+    final storybookWidgetListingAccordionSearchBarPlaceholder =
+        localization.storybookWidgetListingAccordionSearchBarPlaceholder;
+
     final viewModel = context.read<MainScreenViewModel>();
     final widgetListingAccordionSearchBarOnChanged = viewModel.widgetListingAccordionSearchBarOnChanged;
 
@@ -15,7 +18,7 @@ final class _WidgetListingAccordionSearchBar extends StatelessWidget {
     return Padding(
       padding: widgetListingAccordionSearchBarMargin,
       child: MyoroInput(
-        placeholder: localization.storybookWidgetListingAccordionSearchBarPlaceholder,
+        placeholder: storybookWidgetListingAccordionSearchBarPlaceholder,
         onChanged: widgetListingAccordionSearchBarOnChanged,
       ),
     );

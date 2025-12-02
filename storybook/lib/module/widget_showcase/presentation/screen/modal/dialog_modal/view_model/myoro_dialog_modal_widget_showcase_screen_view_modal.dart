@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:storybook/src/l10n/localization.dart';
 import 'package:storybook/storybook.dart';
 
 /// View model of [MyoroDialogModalWidgetShowcaseScreen].
@@ -25,7 +24,7 @@ final class MyoroDialogModalWidgetShowcaseScreenViewModel {
       cancelButtonText: state.cancelButtonText,
       onConfirm: state.onConfirmEnabled ? () => _onConfirm(context) : null,
       onCancel: state.onConfirmEnabled ? () => _onCancel(context) : null,
-      text: state.text,
+      message: state.text,
       child: state.child,
     );
   }

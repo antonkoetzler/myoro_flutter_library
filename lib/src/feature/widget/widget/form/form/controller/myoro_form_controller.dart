@@ -4,8 +4,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Controller of [MyoroForm].
 class MyoroFormController<T> extends MyoroRequestController<T> {
   /// Default constructor.
-  MyoroFormController({this.validation, MyoroFormRequest<T>? request, this.onSuccess, this.onError})
-    : super(requestCallback: request) {
+  MyoroFormController({this.validation, MyoroFormRequest<T>? request, this.onSuccess, this.onError}) : super(request) {
     addListener(_listener);
   }
 

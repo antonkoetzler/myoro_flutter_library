@@ -1150,4 +1150,46 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get myoroSearchBarInputPlaceholder => 'اكتب شيئاً...';
+
+  @override
+  String get myoroCountryDropdownLabel => 'البلد';
+
+  @override
+  String myoroCountryDropdownItemText(String emoji, String name) {
+    return '$emoji $name';
+  }
+
+  @override
+  String get myoroRegionDropdownLabel => 'المنطقة';
+
+  @override
+  String myoroRegionDropdownItemText(String name) {
+    return '$name';
+  }
+
+  @override
+  String get myoroCityDropdownLabel => 'المدينة';
+
+  @override
+  String myoroCityDropdownItemText(String name) {
+    return '$name';
+  }
+
+  @override
+  String get myoroFeedbackErrorFeedbackTitle => 'حدث خطأ ما!';
+
+  @override
+  String get myoroErrorFeedbackSubtitle => 'يرجى التحقق من اتصالك والمحاولة مرة أخرى!';
+
+  @override
+  String get myoroErrorFeedbackActionButtonText => 'إعادة المحاولة';
+
+  @override
+  String get myoroSuccessFeedbackSubtitle => 'تمت العملية بنجاح!';
+
+  @override
+  String get myoroSuccessFeedbackActionButtonText => 'تم';
+
+  @override
+  String get myoroEmptyFeedbackActionButtonText => 'تحديث';
 }
