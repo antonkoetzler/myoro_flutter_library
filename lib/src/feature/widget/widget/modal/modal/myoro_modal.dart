@@ -54,18 +54,27 @@ class MyoroModal extends StatelessWidget {
         ? await showModalBottomSheet(
             backgroundColor: MyoroColors.transparent,
             context: context,
-            builder: (_) => MyoroModal._(style, true, title, showCloseButton, child),
+            isScrollControlled: true,
+            isDismissible: barrierDismissable,
+            builder: (_) => MyoroModal._(style, true, title, showCloseButton, barrierDismissable, child),
           )
         : await showDialog(
             context: context,
             useRootNavigator: useRootNavigator,
             barrierDismissible: barrierDismissable,
-            builder: (_) => MyoroModal._(style, false, title, showCloseButton, child),
+            builder: (_) => MyoroModal._(style, false, title, showCloseButton, barrierDismissable, child),
           );
   }
 
   /// Internal constructor.
-  const MyoroModal._(this._style, this._isBottomSheet, this._title, this._showCloseButton, this._child);
+  const MyoroModal._(
+    this._style,
+    this._isBottomSheet,
+    this._title,
+    this._showCloseButton,
+    this._barrierDismissable,
+    this._child,
+  );
 
   /// If [MyoroModal.showModal] or [MyoroModal.showBottomSheet] is called.
   final bool _isBottomSheet;
@@ -78,6 +87,9 @@ class MyoroModal extends StatelessWidget {
 
   /// If [_CloseButton] will be shown.
   final bool _showCloseButton;
+
+  /// If barrier is dismissable.
+  final bool _barrierDismissable;
 
   /// Contents of the modal.
   final Widget _child;
@@ -118,10 +130,39 @@ class MyoroModal extends StatelessWidget {
       ),
     );
 
-    final wrappedContent = !_isBottomSheet
-        ? Center(child: content)
-        : SafeArea(top: false, bottom: true, child: content);
+    final viewInsets = MediaQuery.viewInsetsOf(context);
 
-    return Provider.value(value: _style, child: wrappedContent);
+    return Provider.value(
+      value: _style,
+      child: _isBottomSheet
+          ? Stack(
+              children: [
+                if (_barrierDismissable)
+                  Positioned.fill(
+                    child: GestureDetector(
+                      onTap: context.navigator.pop,
+                      behavior: HitTestBehavior.translucent,
+                      child: Container(color: Colors.transparent),
+                    ),
+                  ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: IntrinsicHeight(
+                      child: Padding(
+                        padding: EdgeInsets.only(bottom: viewInsets.bottom),
+                        child: SafeArea(top: false, bottom: true, child: content),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )
+          : Padding(
+              padding: EdgeInsets.only(bottom: viewInsets.bottom),
+              child: Center(child: content),
+            ),
+    );
   }
 }

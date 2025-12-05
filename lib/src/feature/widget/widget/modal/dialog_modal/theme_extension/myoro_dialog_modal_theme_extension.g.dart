@@ -44,6 +44,8 @@ mixin _$MyoroDialogModalThemeExtensionMixin on ThemeExtension<MyoroDialogModalTh
     bool footerButtonsSpacingProvided = true,
     EdgeInsets? margin,
     bool marginProvided = true,
+    double? messageChildSpacing,
+    bool messageChildSpacingProvided = true,
   }) {
     return MyoroDialogModalThemeExtension(
       constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
@@ -59,6 +61,7 @@ mixin _$MyoroDialogModalThemeExtensionMixin on ThemeExtension<MyoroDialogModalTh
       messageTextStyle: messageTextStyleProvided ? (messageTextStyle ?? self.messageTextStyle) : null,
       footerButtonsSpacing: footerButtonsSpacingProvided ? (footerButtonsSpacing ?? self.footerButtonsSpacing) : null,
       margin: marginProvided ? (margin ?? self.margin) : null,
+      messageChildSpacing: messageChildSpacingProvided ? (messageChildSpacing ?? self.messageChildSpacing) : null,
     );
   }
 
@@ -78,7 +81,8 @@ mixin _$MyoroDialogModalThemeExtensionMixin on ThemeExtension<MyoroDialogModalTh
         other.closeButtonIconSize == self.closeButtonIconSize &&
         other.messageTextStyle == self.messageTextStyle &&
         other.footerButtonsSpacing == self.footerButtonsSpacing &&
-        other.margin == self.margin;
+        other.margin == self.margin &&
+        other.messageChildSpacing == self.messageChildSpacing;
   }
 
   @override
@@ -97,6 +101,7 @@ mixin _$MyoroDialogModalThemeExtensionMixin on ThemeExtension<MyoroDialogModalTh
       self.messageTextStyle,
       self.footerButtonsSpacing,
       self.margin,
+      self.messageChildSpacing,
     );
   }
 
@@ -116,5 +121,6 @@ mixin _$MyoroDialogModalThemeExtensionMixin on ThemeExtension<MyoroDialogModalTh
       '  messageTextStyle: ${self.messageTextStyle},\n'
       '  footerButtonsSpacing: ${self.footerButtonsSpacing},\n'
       '  margin: ${self.margin},\n'
+      '  messageChildSpacing: ${self.messageChildSpacing},\n'
       ');';
 }

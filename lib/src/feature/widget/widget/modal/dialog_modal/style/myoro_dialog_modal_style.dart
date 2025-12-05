@@ -44,6 +44,7 @@ class MyoroDialogModalStyle extends MyoroModalStyle with _$MyoroDialogModalStyle
     super.margin,
     this.messageTextStyle,
     this.footerButtonsSpacing,
+    this.messageChildSpacing,
   });
 
   /// Fake constructor.
@@ -62,6 +63,7 @@ class MyoroDialogModalStyle extends MyoroModalStyle with _$MyoroDialogModalStyle
       margin: myoroNullableFake<EdgeInsets>(),
       messageTextStyle: myoroNullableFake<TextStyle>(),
       footerButtonsSpacing: myoroNullableFake<double>(),
+      messageChildSpacing: myoroNullableFake<double>(),
     );
   }
 
@@ -70,4 +72,7 @@ class MyoroDialogModalStyle extends MyoroModalStyle with _$MyoroDialogModalStyle
 
   /// Spacing in between the buttons in the footer.
   final double? footerButtonsSpacing;
+
+  /// Spacing in between the message and the child.
+  final double? messageChildSpacing;
 }

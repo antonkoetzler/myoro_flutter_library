@@ -25,7 +25,7 @@ final class MyoroDialogModalWidgetShowcaseScreenViewModel {
       onConfirm: state.onConfirmEnabled ? () => _onConfirm(context) : null,
       onCancel: state.onConfirmEnabled ? () => _onCancel(context) : null,
       message: state.text,
-      child: state.child,
+      builder: state.child != null ? (_, _) => state.child! : null,
     );
   }
 

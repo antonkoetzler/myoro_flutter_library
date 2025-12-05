@@ -11,6 +11,7 @@ final class _CancelButton extends StatelessWidget {
   Widget build(context) {
     final localization = context.mflLocalization;
     return MyoroIconTextButton(
+      style: const MyoroIconTextButtonStyle().secondary(context),
       onTapUp: (context, _) => _onTapUp(context),
       text: _cancelButtonText.isNotEmpty ? _cancelButtonText : localization.myoroDialogModalCancelButtonText,
     );

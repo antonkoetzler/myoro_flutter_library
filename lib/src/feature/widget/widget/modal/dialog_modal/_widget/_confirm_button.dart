@@ -12,6 +12,7 @@ final class _ConfirmButton extends StatelessWidget {
   Widget build(context) {
     final localization = context.mflLocalization;
     return MyoroIconTextButton(
+      style: const MyoroIconTextButtonStyle().secondary(context),
       onTapUp: (_, _) => _onConfirm?.call(),
       text: _confirmButtonText.isNotEmpty ? _confirmButtonText : localization.myoroDialogModalConfirmButtonText,
       isLoading: _isLoading,

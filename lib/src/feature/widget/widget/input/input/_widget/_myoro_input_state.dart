@@ -26,6 +26,7 @@ final class _MyoroInputState extends State<MyoroInput> {
       widget.showObscureTextButton,
       widget.minLines,
       widget.maxLines,
+      widget.keyboardType,
       widget.checkboxOnChanged,
       widget.validation,
       widget.onFieldSubmitted,
@@ -60,6 +61,7 @@ final class _MyoroInputState extends State<MyoroInput> {
       ..showObscureTextButton = widget.showObscureTextButton
       ..minLines = widget.minLines
       ..maxLines = widget.maxLines
+      ..keyboardType = widget.keyboardType
       ..checkboxOnChanged = widget.checkboxOnChanged
       ..validation = widget.validation
       ..onFieldSubmitted = widget.onFieldSubmitted

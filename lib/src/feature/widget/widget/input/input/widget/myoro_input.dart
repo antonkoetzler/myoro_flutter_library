@@ -55,6 +55,9 @@ class MyoroInput extends StatefulWidget {
   /// Default value for [maxLines].
   static const maxLinesDefaultValue = 1;
 
+  /// Default value for [keyboardType].
+  static const keyboardTypeDefaultValue = TextInputType.text;
+
   /// Default constructor.
   const MyoroInput({
     super.key,
@@ -85,6 +88,7 @@ class MyoroInput extends StatefulWidget {
     this.showObscureTextButton = showObscureTextButtonDefaultValue,
     this.minLines = minLinesDefaultValue,
     this.maxLines = maxLinesDefaultValue,
+    this.keyboardType = keyboardTypeDefaultValue,
   }) : assert(
          !(text.length > 0 && controller != null),
          '[MyoroInput]: [text] and [controller] cannot be provided together.',
@@ -142,6 +146,9 @@ class MyoroInput extends StatefulWidget {
 
   /// Max lines.
   final int maxLines;
+
+  /// Keyboard type.
+  final TextInputType keyboardType;
 
   /// On changed when the checkbox next to the input is changed.
   ///

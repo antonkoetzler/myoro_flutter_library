@@ -33,5 +33,6 @@
 - refactor: Scale `MyoroIconConfiguration` by making `MyoroIcon`
 - refactor: Rename `MyoroSearchInput` to `MyoroSearchDropdown`
 - refactor: `MyoroMenu.searchCallback` --> `MyoroMenu.showSearchBar`
+- refactor: Add fields to make `MyoroDialogModal` be able to be used as a form and rename `MyoroDialogModal.child` to `MyoroDialogModal.builder`
 - improvement: Add public `Widget`s in a `widget` folder
 - refactor: Massive simplification and optimization of `Widget` states

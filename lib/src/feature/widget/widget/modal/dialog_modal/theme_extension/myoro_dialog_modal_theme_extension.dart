@@ -25,6 +25,7 @@ class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThem
     this.messageTextStyle,
     this.footerButtonsSpacing,
     this.margin,
+    this.messageChildSpacing,
   });
 
   /// Fake constructor.
@@ -41,7 +42,8 @@ class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThem
       closeButtonIconSize = myoroNullableFake<double>(),
       messageTextStyle = myoroNullableFake<TextStyle>(),
       footerButtonsSpacing = myoroNullableFake<double>(),
-      margin = myoroNullableFake<EdgeInsets>();
+      margin = myoroNullableFake<EdgeInsets>(),
+      messageChildSpacing = myoroNullableFake<double>();
 
   /// Builder constructor.
   MyoroDialogModalThemeExtension.builder(TextTheme textTheme)
@@ -57,7 +59,8 @@ class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThem
       closeButtonIconSize = null,
       messageTextStyle = textTheme.bodyMedium!,
       footerButtonsSpacing = 10,
-      margin = const EdgeInsets.all(kMyoroMultiplier * 3);
+      margin = const EdgeInsets.all(kMyoroMultiplier * 3),
+      messageChildSpacing = kMyoroMultiplier * 3;
 
   /// Constraints of the modal.
   @override
@@ -110,6 +113,10 @@ class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThem
   /// Margin of the modal.
   @override
   final EdgeInsets? margin;
+
+  /// Spacing in between the message and the child.
+  @override
+  final double? messageChildSpacing;
 
   @override
   MyoroDialogModalThemeExtension lerp(covariant MyoroDialogModalThemeExtension? other, double t) {

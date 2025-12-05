@@ -29,15 +29,12 @@ final class _FooterButtons<T> extends StatelessWidget {
 
     return Align(
       alignment: Alignment.bottomRight,
-      child: IntrinsicWidth(
-        child: Row(
-          spacing: footerButtonsSpacing,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Flexible(child: !_invertButtons ? confirmButton : cancelButton),
-            Flexible(child: !_invertButtons ? cancelButton : confirmButton),
-          ],
-        ),
+      child: Row(
+        spacing: footerButtonsSpacing,
+        children: [
+          Expanded(child: !_invertButtons ? confirmButton : cancelButton),
+          Expanded(child: !_invertButtons ? cancelButton : confirmButton),
+        ],
       ),
     );
   }

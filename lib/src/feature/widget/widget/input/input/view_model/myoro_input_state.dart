@@ -20,6 +20,7 @@ class MyoroInputState {
     this.showObscureTextButton,
     this.minLines,
     this.maxLines,
+    this.keyboardType,
     this.checkboxOnChanged,
     this.validation,
     this.onFieldSubmitted,
@@ -101,6 +102,9 @@ class MyoroInputState {
 
   /// [MyoroInput.maxLines]
   int maxLines;
+
+  /// [MyoroInput.keyboardType]
+  TextInputType keyboardType;
 
   /// [MyoroInput.checkboxOnChanged]
   MyoroInputCheckboxOnChanged? checkboxOnChanged;

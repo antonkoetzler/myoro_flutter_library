@@ -21,6 +21,8 @@ mixin _$MyoroDialogModalStyleMixin {
     bool messageTextStyleProvided = true,
     double? footerButtonsSpacing,
     bool footerButtonsSpacingProvided = true,
+    double? messageChildSpacing,
+    bool messageChildSpacingProvided = true,
     BoxConstraints? constraints,
     bool constraintsProvided = true,
     Color? primaryColor,
@@ -47,6 +49,7 @@ mixin _$MyoroDialogModalStyleMixin {
     return MyoroDialogModalStyle(
       messageTextStyle: messageTextStyleProvided ? (messageTextStyle ?? self.messageTextStyle) : null,
       footerButtonsSpacing: footerButtonsSpacingProvided ? (footerButtonsSpacing ?? self.footerButtonsSpacing) : null,
+      messageChildSpacing: messageChildSpacingProvided ? (messageChildSpacing ?? self.messageChildSpacing) : null,
       constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
       primaryColor: primaryColorProvided ? (primaryColor ?? self.primaryColor) : null,
       borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
@@ -67,6 +70,7 @@ mixin _$MyoroDialogModalStyleMixin {
         other.runtimeType == runtimeType &&
         other.messageTextStyle == self.messageTextStyle &&
         other.footerButtonsSpacing == self.footerButtonsSpacing &&
+        other.messageChildSpacing == self.messageChildSpacing &&
         other.constraints == self.constraints &&
         other.primaryColor == self.primaryColor &&
         other.borderRadius == self.borderRadius &&
@@ -85,6 +89,7 @@ mixin _$MyoroDialogModalStyleMixin {
     return Object.hash(
       self.messageTextStyle,
       self.footerButtonsSpacing,
+      self.messageChildSpacing,
       self.constraints,
       self.primaryColor,
       self.borderRadius,
@@ -104,6 +109,7 @@ mixin _$MyoroDialogModalStyleMixin {
       'MyoroDialogModalStyle(\n'
       '  messageTextStyle: ${self.messageTextStyle},\n'
       '  footerButtonsSpacing: ${self.footerButtonsSpacing},\n'
+      '  messageChildSpacing: ${self.messageChildSpacing},\n'
       '  constraints: ${self.constraints},\n'
       '  primaryColor: ${self.primaryColor},\n'
       '  borderRadius: ${self.borderRadius},\n'

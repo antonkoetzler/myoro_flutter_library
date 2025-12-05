@@ -48,6 +48,7 @@ final class _TextFormField extends StatelessWidget {
     final enableInteractiveSelection = state.enableInteractiveSelection;
     final minLines = state.minLines;
     final maxLines = state.maxLines;
+    final keyboardType = state.keyboardType;
 
     final border = style.border ?? themeExtension.border ?? inputStyle.getBorder(context);
 
@@ -83,6 +84,7 @@ final class _TextFormField extends StatelessWidget {
                     ),
                     onTap: onTap,
                     mouseCursor: onTap != null ? SystemMouseCursors.click : null,
+                    keyboardType: keyboardType,
                     decoration: InputDecoration(
                       floatingLabelBehavior: style.labelBehavior ?? themeExtension.labelBehavior,
                       labelText: label.isNotEmpty ? label : null,

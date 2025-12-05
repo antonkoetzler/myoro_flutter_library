@@ -49,7 +49,7 @@ class MyoroDialogModal<T> extends StatelessWidget {
     ValueChanged<String>? onError,
     VoidCallback? onCancel,
     String message = kMyoroEmptyString,
-    Widget? child,
+    MyoroDialogModalBuilder<T>? builder,
   }) async {
     await MyoroModal.show(
       context,
@@ -70,7 +70,7 @@ class MyoroDialogModal<T> extends StatelessWidget {
           onError,
           onCancel,
           message,
-          child,
+          builder,
         ),
       ),
     );
@@ -86,7 +86,7 @@ class MyoroDialogModal<T> extends StatelessWidget {
     this._onError,
     this._onCancel,
     this._message,
-    this._child,
+    this._builder,
   );
 
   /// Whether or not to invert the buttons in [_FooterButtons].
@@ -114,7 +114,7 @@ class MyoroDialogModal<T> extends StatelessWidget {
   final String _message;
 
   /// Custom [Widget] option of the [MyoroDialogModal].
-  final Widget? _child;
+  final MyoroDialogModalBuilder<T>? _builder;
 
   @override
   Widget build(BuildContext context) {
@@ -122,26 +122,20 @@ class MyoroDialogModal<T> extends StatelessWidget {
     final style = context.watch<MyoroDialogModalStyle>();
     final spacing = style.spacing ?? modalThemeExtension.spacing ?? 0;
 
-    return Column(
-      spacing: spacing,
-      children: [
-        Expanded(child: _Message(_message, _child)),
-        MyoroForm<T>(
-          request: _onConfirm,
-          onSuccess: _onSuccess,
-          onError: _onError,
-          builder: (request, controller) {
-            return _FooterButtons<T>(
-              controller,
-              request,
-              _invertButtons,
-              _confirmButtonText,
-              _cancelButtonText,
-              _onCancel,
-            );
-          },
-        ),
-      ],
+    return MyoroForm<T>(
+      request: _onConfirm,
+      onSuccess: _onSuccess,
+      onError: _onError,
+      builder: (request, controller) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          spacing: spacing,
+          children: [
+            Flexible(child: _Message(_message, _builder, request)),
+            _FooterButtons<T>(controller, request, _invertButtons, _confirmButtonText, _cancelButtonText, _onCancel),
+          ],
+        );
+      },
     );
   }
 }

@@ -48,7 +48,7 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension>
       contentPadding = null,
       closeButtonPadding = null,
       spacing = 10,
-      titleTextStyle = textTheme.titleSmall!,
+      titleTextStyle = textTheme.titleMedium!,
       closeButtonIcon = Icons.close,
       closeButtonIconSize = kMyoroMultiplier * 5,
       margin = const EdgeInsets.all(kMyoroMultiplier * 3);

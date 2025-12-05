@@ -9,13 +9,8 @@ final class _Title extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
-
-    return Padding(
-      padding: const EdgeInsets.only(
-        // Used to align [_Title] with [_CloseButton].
-        left: 8,
-      ),
-      child: Text(_title, style: themeExtension.titleTextStyle, maxLines: 1, overflow: TextOverflow.ellipsis),
-    );
+    final style = context.watch<MyoroModalStyle>();
+    final titleTextStyle = style.titleTextStyle ?? themeExtension.titleTextStyle;
+    return Text(_title, style: titleTextStyle, maxLines: 1, overflow: TextOverflow.ellipsis);
   }
 }
