@@ -20,7 +20,6 @@
 - feature: `MyoroCheckbox.enabled`
 - feature: `MyoroCheckbox.disabledOnTapUp`
 - feature: `MyoroInputStyle.errorTextStyle`
-- (**IN PROGRESS**) feature: Full documentation of the project via Notion, not markdown
 - feature: `MyoroCountryEnum`
 - feature: Adding all languages, countries, localizations, and currencies
 - feature: Add time based tools like `MyoroDayEnum` and `MyoroMonthEnum`
