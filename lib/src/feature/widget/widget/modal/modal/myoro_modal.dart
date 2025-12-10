@@ -149,11 +149,9 @@ class MyoroModal extends StatelessWidget {
                   alignment: Alignment.bottomCenter,
                   child: GestureDetector(
                     onTap: () {},
-                    child: IntrinsicHeight(
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: viewInsets.bottom),
-                        child: SafeArea(top: false, bottom: true, child: content),
-                      ),
+                    child: Padding(
+                      padding: EdgeInsets.only(bottom: viewInsets.bottom),
+                      child: SafeArea(top: false, bottom: true, child: content),
                     ),
                   ),
                 ),

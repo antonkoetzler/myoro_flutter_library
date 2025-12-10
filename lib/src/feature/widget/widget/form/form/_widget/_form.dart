@@ -10,6 +10,11 @@ class _Form<T> extends StatelessWidget {
   Widget build(context) {
     final controller = context.read<MyoroFormController<T>>();
     final formKey = controller.formKey;
-    return Form(key: formKey, child: _builder(controller.request, controller));
+    return ValueListenableBuilder(
+      valueListenable: controller,
+      builder: (_, _, _) {
+        return Form(key: formKey, child: _builder(controller.request, controller));
+      },
+    );
   }
 }

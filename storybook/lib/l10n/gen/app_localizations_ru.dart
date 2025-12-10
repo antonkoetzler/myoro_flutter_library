@@ -9,7 +9,8 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
-  String get storybookWidgetListingAccordionSearchBarPlaceholder => 'i.e. MyoroDropdown';
+  String get storybookWidgetListingAccordionSearchBarPlaceholder =>
+      'i.e. MyoroDropdown';
 
   @override
   String get storybookWidgetListEnumAccordionsCategoryName => 'Accordions';
@@ -57,13 +58,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get storybookWidgetListEnumImagesCategoryName => 'Images';
 
   @override
-  String get storybookWidgetListEnumIndexedStacksCategoryName => 'Indexed Stacks';
+  String get storybookWidgetListEnumIndexedStacksCategoryName =>
+      'Indexed Stacks';
 
   @override
   String get storybookWidgetListEnumInputsCategoryName => 'Inputs';
 
   @override
-  String get storybookWidgetListEnumLayoutBuildersCategoryName => 'Layout Builders';
+  String get storybookWidgetListEnumLayoutBuildersCategoryName =>
+      'Layout Builders';
 
   @override
   String get storybookWidgetListEnumLoadersCategoryName => 'Loaders';
@@ -117,49 +120,63 @@ class AppLocalizationsRu extends AppLocalizations {
   String get storybookWidgetListEnumFiltersCategoryName => 'Фильтры';
 
   @override
-  String get storybookWidgetShowcaseOptionSelectionTypeLabel => 'Selection type';
+  String get storybookWidgetShowcaseOptionSelectionTypeLabel =>
+      'Selection type';
 
   @override
-  String get storybookWidgetShowcaseOptionBackgroundColorLabel => 'Background color';
+  String get storybookWidgetShowcaseOptionBackgroundColorLabel =>
+      'Background color';
 
   @override
-  String get storybookWidgetShowcaseOptionCloseButtonIconLabel => 'Close button icon';
+  String get storybookWidgetShowcaseOptionCloseButtonIconLabel =>
+      'Close button icon';
 
   @override
-  String get storybookWidgetShowcaseOptionCloseButtonContentPaddingLabel => 'Close button content padding';
+  String get storybookWidgetShowcaseOptionCloseButtonContentPaddingLabel =>
+      'Close button content padding';
 
   @override
-  String get storybookWidgetShowcaseOptionPreviousItemButtonIconLabel => 'Previous item button icon';
+  String get storybookWidgetShowcaseOptionPreviousItemButtonIconLabel =>
+      'Previous item button icon';
 
   @override
-  String get storybookWidgetShowcaseOptionNextItemButtonIconLabel => 'Next item button icon';
+  String get storybookWidgetShowcaseOptionNextItemButtonIconLabel =>
+      'Next item button icon';
 
   @override
   String get storybookWidgetShowcaseOptionNoneBorderLabel => 'None border';
 
   @override
-  String get storybookWidgetShowcaseOptionErrorBorderColorLabel => 'Error border color';
+  String get storybookWidgetShowcaseOptionErrorBorderColorLabel =>
+      'Error border color';
 
   @override
-  String get storybookWidgetShowcaseOptionLabelBehaviorLabel => 'Label behavior';
+  String get storybookWidgetShowcaseOptionLabelBehaviorLabel =>
+      'Label behavior';
 
   @override
-  String get storybookWidgetShowcaseOptionIndicatorTextAlignmentLabel => 'Indicator text alignment';
+  String get storybookWidgetShowcaseOptionIndicatorTextAlignmentLabel =>
+      'Indicator text alignment';
 
   @override
-  String get storybookWidgetShowcaseOptionSingleDropdownTypeLabel => 'Single dropdown type';
+  String get storybookWidgetShowcaseOptionSingleDropdownTypeLabel =>
+      'Single dropdown type';
 
   @override
-  String get storybookWidgetShowcaseOptionMultiDropdownTypeLabel => 'Multi dropdown type';
+  String get storybookWidgetShowcaseOptionMultiDropdownTypeLabel =>
+      'Multi dropdown type';
 
   @override
-  String get storybookWidgetShowcaseOptionCancelButtonTextLabel => 'Cancel button text.';
+  String get storybookWidgetShowcaseOptionCancelButtonTextLabel =>
+      'Cancel button text.';
 
   @override
-  String get storybookWidgetShowcaseOptionConfirmButtonTextLabel => 'Confirm button text';
+  String get storybookWidgetShowcaseOptionConfirmButtonTextLabel =>
+      'Confirm button text';
 
   @override
-  String get storybookWidgetShowcaseOptionBarrierDismissableLabel => 'Close modal when backdrop is tapped?';
+  String get storybookWidgetShowcaseOptionBarrierDismissableLabel =>
+      'Close modal when backdrop is tapped?';
 
   @override
   String get storybookWidgetShowcaseOptionIconLabel => 'Icon';
@@ -174,10 +191,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get storybookWidgetShowcaseOptionTextMaxLinesLabel => 'Max lines';
 
   @override
-  String get storybookWidgetShowcaseOptionTextOverflowLabel => 'Text overflow behavior';
+  String get storybookWidgetShowcaseOptionTextOverflowLabel =>
+      'Text overflow behavior';
 
   @override
-  String get storybookWidgetShowcaseOptionTextAlignmentLabel => 'Text alignment';
+  String get storybookWidgetShowcaseOptionTextAlignmentLabel =>
+      'Text alignment';
 
   @override
   String get storybookWidgetShowcaseOptionTextStyleLabel => 'Text style';
@@ -192,13 +211,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get storybookWidgetShowcaseOptionTagBorderLabel => 'Border';
 
   @override
-  String get storybookWidgetShowcaseOptionTagBorderRadiusLabel => 'Border radius';
+  String get storybookWidgetShowcaseOptionTagBorderRadiusLabel =>
+      'Border radius';
 
   @override
   String get storybookWidgetShowcaseOptionTagSpacingLabel => 'Spacing';
 
   @override
-  String get storybookWidgetShowcaseOptionTagContentPaddingLabel => 'Content padding';
+  String get storybookWidgetShowcaseOptionTagContentPaddingLabel =>
+      'Content padding';
 
   @override
   String get storybookWidgetShowcaseOptionMouseCursorBasicLabel => 'Basic';
@@ -222,7 +243,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get storybookWidgetShowcaseOptionInputBorderCustomLabel => 'Custom';
 
   @override
-  String get storybookWidgetShowcaseOptionIconUnknownIconLabel => 'Unknown Icon';
+  String get storybookWidgetShowcaseOptionIconUnknownIconLabel =>
+      'Unknown Icon';
 
   @override
   String get storybookIndexedStackPreviousIndexButtonText => 'Previous index';
@@ -249,7 +271,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get storybookMenuSearchCallbackLabel => 'Search Callback:';
 
   @override
-  String get storybookMenuEnableSearchCallbackCheckboxLabel => 'Enable Search Callback';
+  String get storybookMenuEnableSearchCallbackCheckboxLabel =>
+      'Enable Search Callback';
 
   @override
   String get storybookMenuSearchCallbackEnabledMessage =>
@@ -259,17 +282,20 @@ class AppLocalizationsRu extends AppLocalizations {
   String get storybookDropdownSearchCallbackLabel => 'Search Callback:';
 
   @override
-  String get storybookDropdownEnableSearchCallbackCheckboxLabel => 'Enable Search Callback';
+  String get storybookDropdownEnableSearchCallbackCheckboxLabel =>
+      'Enable Search Callback';
 
   @override
   String get storybookDropdownSearchCallbackEnabledMessage =>
       'Search callback is enabled - check console for search queries';
 
   @override
-  String get storybookDialogModalConfirmButtonTappedMessage => 'Confirm button tapped!';
+  String get storybookDialogModalConfirmButtonTappedMessage =>
+      'Confirm button tapped!';
 
   @override
-  String get storybookDialogModalCancelButtonTappedMessage => 'Cancel button tapped!';
+  String get storybookDialogModalCancelButtonTappedMessage =>
+      'Cancel button tapped!';
 
   @override
   String storybookFilePickerFileSelectedMessage(String fileName) {
@@ -313,7 +339,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get storybookRadioFilterButtonLabel => 'Радио фильтр';
 
   @override
-  String get myoroErrorFeedbackSubtitle => 'Пожалуйста, проверьте ваше подключение и попробуйте снова!';
+  String get myoroErrorFeedbackSubtitle =>
+      'Пожалуйста, проверьте ваше подключение и попробуйте снова!';
 
   @override
   String get myoroErrorFeedbackActionButtonText => 'Повторить';

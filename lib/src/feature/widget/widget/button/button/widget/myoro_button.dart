@@ -54,5 +54,7 @@ class MyoroButton extends StatefulWidget {
 
   /// Create state function.
   @override
-  State<MyoroButton> createState() => _MyoroButtonState();
+  State<MyoroButton> createState() {
+    return _MyoroButtonState();
+  }
 }

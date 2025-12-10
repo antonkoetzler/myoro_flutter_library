@@ -16,11 +16,11 @@ final class _MyoroButtonState extends State<MyoroButton> {
   @override
   void didUpdateWidget(MyoroButton oldWidget) {
     super.didUpdateWidget(oldWidget);
-    final state = _viewModel.state;
-    state.tooltipText = widget.tooltipText;
-    state.onTapDown = widget.onTapDown;
-    state.onTapUp = widget.onTapUp;
-    state.isLoading = widget.isLoading;
+    _viewModel.state
+      ..tooltipText = widget.tooltipText
+      ..onTapDown = widget.onTapDown
+      ..onTapUp = widget.onTapUp
+      ..isLoading = widget.isLoading;
   }
 
   /// Dispose function.
@@ -56,7 +56,7 @@ final class _MyoroButtonState extends State<MyoroButton> {
         child: ValueListenableBuilder(
           valueListenable: isLoadingController,
           builder: (_, isLoading, _) => isLoading
-              ? const MyoroCircularLoader()
+              ? const Center(child: MyoroCircularLoader())
               : GestureDetector(
                   onTapDown: (details) => onTapDown(context, details),
                   onTapUp: (details) => onTapUp(context, details),

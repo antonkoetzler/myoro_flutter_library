@@ -44,5 +44,7 @@ class MyoroForm<T> extends StatefulWidget {
 
   /// Create state function.
   @override
-  State<MyoroForm<T>> createState() => _MyoroFormState<T>();
+  State<MyoroForm<T>> createState() {
+    return _MyoroFormState<T>();
+  }
 }
