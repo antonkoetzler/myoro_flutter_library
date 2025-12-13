@@ -51,7 +51,7 @@ enum MyoroWidgetListEnum {
   radios('Radios', {myoroRadioTitle, myoroGroupRadioTitle}),
   requests('Requests', {myoroRequestWidgetTitle}),
   screens('Screens', {myoroScreenTitle}),
-  scrollables('Scrollables', {myoroScrollablesTitle}),
+  scrollables('Scrollables', {myoroSingleChildScrollableTitle}),
   sliders('Sliders', {myoroSlidersTitle}),
   snackBars('Snack Bars', {myoroSnackBarTitle, myoroSnackBarContainerTitle}),
   tags('Tags', {myoroTagTitle}),
@@ -98,7 +98,6 @@ enum MyoroWidgetListEnum {
       MyoroWidgetListEnum.radios => localization.storybookWidgetListEnumRadiosCategoryName,
       MyoroWidgetListEnum.requests => localization.storybookWidgetListEnumRequestsCategoryName,
       MyoroWidgetListEnum.screens => localization.storybookWidgetListEnumScreensCategoryName,
-      MyoroWidgetListEnum.scrollables => localization.storybookWidgetListEnumScrollablesCategoryName,
       MyoroWidgetListEnum.sliders => localization.storybookWidgetListEnumSlidersCategoryName,
       MyoroWidgetListEnum.snackBars => localization.storybookWidgetListEnumSnackBarsCategoryName,
       MyoroWidgetListEnum.tags => localization.storybookWidgetListEnumTagsCategoryName,
@@ -215,7 +214,7 @@ enum MyoroWidgetListEnum {
   static const myoroScreenTitle = 'MyoroScreen';
 
   // Scrollables
-  static const myoroScrollablesTitle = 'MyoroScrollables';
+  static const myoroSingleChildScrollableTitle = 'MyoroSingleChildScrollable';
 
   // Sliders
   static const myoroSlidersTitle = 'MyoroSlider & MyoroRangeSlider';
@@ -345,7 +344,7 @@ enum MyoroWidgetListEnum {
       myoroScreenTitle => const MyoroScreenWidgetShowcaseScreen(),
 
       // Scrollables
-      myoroScrollablesTitle => const MyoroScrollablesWidgetShowcaseScreen(),
+      myoroSingleChildScrollableTitle => const MyoroSingleChildScrollableWidgetShowcaseScreen(),
 
       // Sliders
       myoroSlidersTitle => const MyoroSlidersWidgetShowcaseScreen(),

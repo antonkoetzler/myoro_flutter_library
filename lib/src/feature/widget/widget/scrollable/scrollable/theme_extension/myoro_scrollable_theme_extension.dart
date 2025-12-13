@@ -4,77 +4,50 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 part 'myoro_scrollable_theme_extension.g.dart';
 
-/// Theme extension for [MyoroScrollable].
+/// Theme extension of [MyoroScrollable].
 @immutable
 @myoroThemeExtension
 class MyoroScrollableThemeExtension extends ThemeExtension<MyoroScrollableThemeExtension>
     with _$MyoroScrollableThemeExtensionMixin
     implements MyoroScrollableStyle {
   /// Default constructor.
-  const MyoroScrollableThemeExtension({
-    this.gradientTopColor,
-    this.gradientBottomColor,
-    this.gradientLeftColor,
-    this.gradientRightColor,
-    this.gradientSize,
-    this.gradientColor,
-    this.spacing,
-  });
+  const MyoroScrollableThemeExtension({this.padding, this.gradientDecoration});
 
   /// Fake constructor.
   MyoroScrollableThemeExtension.fake()
-    : gradientTopColor = myoroNullableFake<Color>(),
-      gradientBottomColor = myoroNullableFake<Color>(),
-      gradientLeftColor = myoroNullableFake<Color>(),
-      gradientRightColor = myoroNullableFake<Color>(),
-      gradientSize = myoroNullableFake<double>(),
-      gradientColor = myoroNullableFake<Color>(),
-      spacing = myoroNullableFake<double>();
+    : padding = myoroNullableFake<EdgeInsets>(),
+      gradientDecoration = myoroNullableFake<BoxDecoration>();
 
+  /// Builder constructor.
   MyoroScrollableThemeExtension.builder(ColorScheme colorScheme)
-    : gradientTopColor = colorScheme.surface,
-      gradientBottomColor = colorScheme.surface,
-      gradientLeftColor = colorScheme.surface,
-      gradientRightColor = colorScheme.surface,
-      gradientSize = 20.0,
-      gradientColor = colorScheme.surface,
-      spacing = kMyoroMultiplier;
+    : padding = const EdgeInsets.all(kMyoroMultiplier),
+      gradientDecoration = BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            colorScheme.onPrimary,
+            colorScheme.onPrimary.withValues(alpha: 0),
+            colorScheme.onPrimary.withValues(alpha: 0),
+            colorScheme.onPrimary,
+          ],
+          stops: const [0, 0.1, 0.9, 1],
+        ),
+      );
 
+  /// [SingleChildScrollView.padding].
   @override
-  final Color? gradientTopColor;
+  final EdgeInsets? padding;
 
+  /// Decoration of the gradient.
   @override
-  final Color? gradientBottomColor;
+  final BoxDecoration? gradientDecoration;
 
+  /// Lerp function.
   @override
-  final Color? gradientLeftColor;
-
-  @override
-  final Color? gradientRightColor;
-
-  @override
-  final double? gradientSize;
-
-  @override
-  final Color? gradientColor;
-
-  @override
-  final double? spacing;
-
-  @override
-  MyoroScrollableThemeExtension lerp(covariant MyoroScrollableThemeExtension? other, double t) {
+  MyoroScrollableThemeExtension lerp(MyoroScrollableThemeExtension? other, double t) {
     if (other is! MyoroScrollableThemeExtension) return this;
-
-    final lerpedStyle = MyoroScrollableStyle.lerp(this, other, t);
-
-    return MyoroScrollableThemeExtension(
-      gradientTopColor: lerpedStyle.gradientTopColor,
-      gradientBottomColor: lerpedStyle.gradientBottomColor,
-      gradientLeftColor: lerpedStyle.gradientLeftColor,
-      gradientRightColor: lerpedStyle.gradientRightColor,
-      gradientSize: lerpedStyle.gradientSize,
-      gradientColor: lerpedStyle.gradientColor,
-      spacing: lerpedStyle.spacing,
-    );
+    final style = MyoroScrollableStyle.lerp(this, other, t);
+    return MyoroScrollableThemeExtension(padding: style.padding);
   }
 }

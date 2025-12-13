@@ -18,29 +18,14 @@ mixin _$MyoroScrollableThemeExtensionMixin on ThemeExtension<MyoroScrollableThem
 
   @override
   MyoroScrollableThemeExtension copyWith({
-    Color? gradientTopColor,
-    bool gradientTopColorProvided = true,
-    Color? gradientBottomColor,
-    bool gradientBottomColorProvided = true,
-    Color? gradientLeftColor,
-    bool gradientLeftColorProvided = true,
-    Color? gradientRightColor,
-    bool gradientRightColorProvided = true,
-    double? gradientSize,
-    bool gradientSizeProvided = true,
-    Color? gradientColor,
-    bool gradientColorProvided = true,
-    double? spacing,
-    bool spacingProvided = true,
+    EdgeInsets? padding,
+    bool paddingProvided = true,
+    BoxDecoration? gradientDecoration,
+    bool gradientDecorationProvided = true,
   }) {
     return MyoroScrollableThemeExtension(
-      gradientTopColor: gradientTopColorProvided ? (gradientTopColor ?? self.gradientTopColor) : null,
-      gradientBottomColor: gradientBottomColorProvided ? (gradientBottomColor ?? self.gradientBottomColor) : null,
-      gradientLeftColor: gradientLeftColorProvided ? (gradientLeftColor ?? self.gradientLeftColor) : null,
-      gradientRightColor: gradientRightColorProvided ? (gradientRightColor ?? self.gradientRightColor) : null,
-      gradientSize: gradientSizeProvided ? (gradientSize ?? self.gradientSize) : null,
-      gradientColor: gradientColorProvided ? (gradientColor ?? self.gradientColor) : null,
-      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      padding: paddingProvided ? (padding ?? self.padding) : null,
+      gradientDecoration: gradientDecorationProvided ? (gradientDecoration ?? self.gradientDecoration) : null,
     );
   }
 
@@ -48,37 +33,19 @@ mixin _$MyoroScrollableThemeExtensionMixin on ThemeExtension<MyoroScrollableThem
   bool operator ==(Object other) {
     return other is MyoroScrollableThemeExtension &&
         other.runtimeType == runtimeType &&
-        other.gradientTopColor == self.gradientTopColor &&
-        other.gradientBottomColor == self.gradientBottomColor &&
-        other.gradientLeftColor == self.gradientLeftColor &&
-        other.gradientRightColor == self.gradientRightColor &&
-        other.gradientSize == self.gradientSize &&
-        other.gradientColor == self.gradientColor &&
-        other.spacing == self.spacing;
+        other.padding == self.padding &&
+        other.gradientDecoration == self.gradientDecoration;
   }
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.gradientTopColor,
-      self.gradientBottomColor,
-      self.gradientLeftColor,
-      self.gradientRightColor,
-      self.gradientSize,
-      self.gradientColor,
-      self.spacing,
-    );
+    return Object.hash(self.padding, self.gradientDecoration);
   }
 
   @override
   String toString() =>
       'MyoroScrollableThemeExtension(\n'
-      '  gradientTopColor: ${self.gradientTopColor},\n'
-      '  gradientBottomColor: ${self.gradientBottomColor},\n'
-      '  gradientLeftColor: ${self.gradientLeftColor},\n'
-      '  gradientRightColor: ${self.gradientRightColor},\n'
-      '  gradientSize: ${self.gradientSize},\n'
-      '  gradientColor: ${self.gradientColor},\n'
-      '  spacing: ${self.spacing},\n'
+      '  padding: ${self.padding},\n'
+      '  gradientDecoration: ${self.gradientDecoration},\n'
       ');';
 }

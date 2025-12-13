@@ -1,63 +1,88 @@
 part of '../bundle/myoro_scrollable_bundle.dart';
 
-/// Base widget that applies gradient overlays to any scrollable widget.
-final class _Base extends StatelessWidget {
+/// Base [Widget] that stores the scrollable and the gradient.
+abstract class _Base extends StatelessWidget {
+  /// Default value of [style].
+  static const styleDefaultValue = MyoroScrollableStyle();
+
+  /// Default value of [direction].
+  static const directionDefaultValue = Axis.vertical;
+
+  /// Default value of [reverse].
+  static const reverseDefaultValue = false;
+
+  /// Default value of [clipBehavior].
+  static const clipBehaviorDefaultValue = Clip.hardEdge;
+
+  /// Default value of [dragStartBehavior].
+  static const dragStartBehaviorDefaultValue = DragStartBehavior.start;
+
+  /// Default constructor.
   const _Base({
-    required this.scrollDirection,
-    required this.reverse,
-    required this.physics,
-    required this.controller,
-    required this.primary,
-    required this.shrinkWrap,
-    required this.gradientEnabled,
-    required this.gradientBegin,
-    required this.gradientEnd,
-    required this.style,
-    required this.child,
+    super.key,
+    this.style = styleDefaultValue,
+    this.controller,
+    this.direction = directionDefaultValue,
+    this.reverse = reverseDefaultValue,
+    this.clipBehavior = clipBehaviorDefaultValue,
+    this.dragStartBehavior = dragStartBehaviorDefaultValue,
+    this.physics,
   });
 
-  final Axis scrollDirection;
-  final bool reverse;
-  final ScrollPhysics? physics;
-  final ScrollController? controller;
-  final bool? primary;
-  final bool shrinkWrap;
-  final bool gradientEnabled;
-  final Alignment? gradientBegin;
-  final Alignment? gradientEnd;
+  /// Style.
   final MyoroScrollableStyle style;
-  final Widget child;
 
+  /// [ScrollController].
+  final ScrollController? controller;
+
+  /// [Axis].
+  final Axis direction;
+
+  /// Reversed.
+  final bool reverse;
+
+  /// Clip behavior.
+  final Clip clipBehavior;
+
+  /// Drag start behavior.
+  final DragStartBehavior dragStartBehavior;
+
+  /// Physics.
+  final ScrollPhysics? physics;
+
+  /// Build function.
   @override
-  Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroScrollableThemeExtension>();
-    final gradientTopColor = style.gradientTopColor ?? themeExtension.gradientTopColor;
-    final gradientBottomColor = style.gradientBottomColor ?? themeExtension.gradientBottomColor;
-    final gradientLeftColor = style.gradientLeftColor ?? themeExtension.gradientLeftColor;
-    final gradientRightColor = style.gradientRightColor ?? themeExtension.gradientRightColor;
-    final gradientSize = style.gradientSize ?? themeExtension.gradientSize;
-    final gradientColor = style.gradientColor ?? themeExtension.gradientColor;
+  Widget build(context) {
+    return MultiProvider(
+      providers: [
+        Provider.value(value: style),
+        Provider(create: (_) => MyoroScrollableViewModel(initialState)),
+      ],
+      child: Builder(
+        builder: (context) {
+          final viewModel = context.read<MyoroScrollableViewModel>();
+          final state = viewModel.state;
+          final displayGradientController = state.displayGradientController;
 
-    // Create effective style for gradient overlay
-    final effectiveStyle = MyoroScrollableStyle(
-      gradientTopColor: gradientTopColor,
-      gradientBottomColor: gradientBottomColor,
-      gradientLeftColor: gradientLeftColor,
-      gradientRightColor: gradientRightColor,
-      gradientSize: gradientSize,
-      gradientColor: gradientColor,
-    );
-
-    return InheritedProvider.value(
-      value: style,
-      child: _GradientOverlay(
-        scrollDirection: scrollDirection,
-        style: effectiveStyle,
-        gradientEnabled: gradientEnabled,
-        gradientBegin: gradientBegin,
-        gradientEnd: gradientEnd,
-        child: child,
+          return ValueListenableBuilder(
+            valueListenable: displayGradientController,
+            builder: (_, displayGradient, _) {
+              return Stack(
+                children: [
+                  build(context),
+                  if (displayGradient) const Positioned.fill(child: _Gradient()),
+                ],
+              );
+            },
+          );
+        },
       ),
     );
   }
+
+  /// Builds the scrollable.
+  Widget buildScrollable(BuildContext context);
+
+  /// Initial state getter.
+  MyoroScrollableState get initialState;
 }

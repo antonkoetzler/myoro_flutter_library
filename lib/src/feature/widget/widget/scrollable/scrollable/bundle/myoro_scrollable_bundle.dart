@@ -1,13 +1,15 @@
+// Bundle file of the scrollable widgets.
+
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 
+// Public widgets.
 part '../widget/myoro_single_child_scrollable.dart';
 part '../widget/myoro_list_scrollable.dart';
-part '../widget/myoro_list_scrollable_builder.dart';
-part '../widget/myoro_grid_scrollable.dart';
-part '../widget/myoro_grid_scrollable_builder.dart';
-part '../widget/myoro_sliver_scrollable.dart';
+
+// Private widgets.
 part '../_widget/_base.dart';
-part '../_widget/_gradient_overlay.dart';
-part '../_widget/_scrollable_helpers.dart';
+part '../_widget/_gradient.dart';

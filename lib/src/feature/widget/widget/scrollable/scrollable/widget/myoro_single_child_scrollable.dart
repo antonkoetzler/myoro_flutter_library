@@ -1,79 +1,52 @@
 part of '../bundle/myoro_scrollable_bundle.dart';
 
-/// A scrollable widget that wraps a [SingleChildScrollView] with gradient overlays.
-class MyoroSingleChildScrollable extends StatelessWidget {
-  /// Creates a new instance of [MyoroSingleChildScrollable].
+/// [SingleChildScrollView] widget.
+class MyoroSingleChildScrollable extends _Base {
+  /// Default constructor.
   const MyoroSingleChildScrollable({
     super.key,
-    this.scrollDirection = Axis.vertical,
-    this.reverse = false,
-    this.physics,
-    this.controller,
-    this.primary,
-    this.shrinkWrap = false,
-    this.gradientEnabled = true,
-    this.gradientBegin,
-    this.gradientEnd,
-    this.style = const MyoroScrollableStyle(),
+    super.style,
+    super.controller,
+    super.direction,
+    super.reverse,
+    super.clipBehavior,
+    super.dragStartBehavior,
+    super.physics,
     required this.child,
   });
 
-  /// The axis along which the scroll view scrolls.
-  final Axis scrollDirection;
-
-  /// Whether the scroll view scrolls in the reading direction.
-  final bool reverse;
-
-  /// How the scroll view should respond to user input.
-  final ScrollPhysics? physics;
-
-  /// An object that can be used to control the position to which this scroll
-  /// view is scrolled.
-  final ScrollController? controller;
-
-  /// Whether this is the primary scroll view associated with the parent.
-  final bool? primary;
-
-  /// Whether the extent of the scroll view in the [scrollDirection] should be
-  /// determined by the contents being viewed.
-  final bool shrinkWrap;
-
-  /// Whether gradient overlays are enabled.
-  final bool gradientEnabled;
-
-  /// The offset at which stop 0.0 of the gradient is placed.
-  final Alignment? gradientBegin;
-
-  /// The offset at which stop 1.0 of the gradient is placed.
-  final Alignment? gradientEnd;
-
-  /// Style of the scrollable widget.
-  final MyoroScrollableStyle style;
-
-  /// The widget to display inside the scrollable area.
+  /// [SingleChildScrollView.padding].
   final Widget child;
 
+  /// Builds the scrollable.
   @override
-  Widget build(BuildContext context) {
-    return _Base(
-      scrollDirection: scrollDirection,
-      reverse: reverse,
-      physics: physics,
+  Widget buildScrollable(context) {
+    final themeExtension = context.resolveThemeExtension<MyoroScrollableThemeExtension>();
+    final padding = style.padding ?? themeExtension.padding;
+
+    return SingleChildScrollView(
       controller: controller,
-      primary: primary,
-      shrinkWrap: shrinkWrap,
-      gradientEnabled: gradientEnabled,
-      gradientBegin: gradientBegin,
-      gradientEnd: gradientEnd,
-      style: style,
-      child: _ScrollableHelpers.singleChildScrollView(
-        scrollDirection: scrollDirection,
-        reverse: reverse,
-        physics: physics,
-        controller: controller,
-        primary: primary,
-        child: child,
-      ),
+      scrollDirection: direction,
+      reverse: reverse,
+      padding: padding,
+      clipBehavior: clipBehavior,
+      dragStartBehavior: dragStartBehavior,
+      physics: physics,
+      child: child,
+    );
+  }
+
+  /// Initial state getter.
+  @override
+  MyoroSingleChildScrollableState get initialState {
+    return MyoroSingleChildScrollableState(
+      controller,
+      direction,
+      reverse,
+      clipBehavior,
+      dragStartBehavior,
+      physics,
+      child,
     );
   }
 }

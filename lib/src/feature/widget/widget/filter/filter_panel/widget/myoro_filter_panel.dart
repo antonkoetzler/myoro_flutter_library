@@ -55,8 +55,8 @@ class MyoroFilterPanel extends StatelessWidget {
               Expanded(
                 child: filtersLength == 1
                     ? filters.first
-                    : MyoroListScrollableBuilder(
-                        scrollDirection: Axis.horizontal,
+                    : MyoroListScrollable(
+                        direction: Axis.horizontal,
                         itemCount: filtersLength,
                         itemBuilder: (_, i) => filters[i],
                       ),
