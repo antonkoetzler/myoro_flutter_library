@@ -166,7 +166,7 @@ List<ThemeExtension> _createRequestWidgetThemeExtensions() {
 }
 
 List<ThemeExtension> _createScrollableThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
-  return [const MyoroScrollableThemeExtension.builder()];
+  return [MyoroScrollableThemeExtension.builder(colorScheme)];
 }
 
 List<ThemeExtension> _createSliderThemeExtensions(TextTheme textTheme) {

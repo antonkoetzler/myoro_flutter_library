@@ -128,5 +128,53 @@
   "myoroSuccessFeedbackSubtitle": "Opération terminée avec succès !",
   "myoroSuccessFeedbackActionButtonText": "Terminé",
 
-  "myoroEmptyFeedbackActionButtonText": "Actualiser"
+  "myoroEmptyFeedbackActionButtonText": "Actualiser",
+
+  "storybookWidgetShowcaseOptionScrollablePaddingLabel": "Padding",
+  "storybookWidgetShowcaseOptionScrollableDirectionLabel": "Direction",
+  "storybookWidgetShowcaseOptionScrollableReverseLabel": "Reverse",
+  "storybookWidgetShowcaseOptionScrollableClipBehaviorLabel": "Clip behavior",
+  "storybookWidgetShowcaseOptionScrollableClipBehaviorNoneLabel": "None",
+  "storybookWidgetShowcaseOptionScrollableClipBehaviorHardEdgeLabel": "Hard edge",
+  "storybookWidgetShowcaseOptionScrollableClipBehaviorAntiAliasLabel": "Anti alias",
+  "storybookWidgetShowcaseOptionScrollableClipBehaviorAntiAliasWithSaveLayerLabel": "Anti alias with save layer",
+  "storybookWidgetShowcaseOptionScrollableDragStartBehaviorLabel": "Drag start behavior",
+  "storybookWidgetShowcaseOptionScrollableDragStartBehaviorDownLabel": "Down",
+  "storybookWidgetShowcaseOptionScrollableDragStartBehaviorStartLabel": "Start",
+  "storybookWidgetShowcaseOptionScrollablePhysicsLabel": "Physics",
+  "storybookWidgetShowcaseOptionScrollablePhysicsNoneLabel": "None",
+  "storybookWidgetShowcaseOptionScrollablePhysicsAlwaysScrollableLabel": "Always scrollable",
+  "storybookWidgetShowcaseOptionScrollablePhysicsNeverScrollableLabel": "Never scrollable",
+  "storybookWidgetShowcaseOptionScrollablePhysicsBouncingLabel": "Bouncing",
+  "storybookWidgetShowcaseOptionScrollablePhysicsClampingLabel": "Clamping",
+  "storybookWidgetShowcaseOptionScrollablePhysicsCustomLabel": "Custom",
+  "storybookWidgetShowcaseOptionScrollableItemCountLabel": "Item count",
+  "storybookWidgetShowcaseOptionScrollablePrimaryLabel": "Primary",
+  "storybookWidgetShowcaseOptionScrollableShrinkWrapLabel": "Shrink wrap",
+  "storybookWidgetShowcaseOptionScrollableAddAutomaticKeepAlivesLabel": "Add automatic keep alives",
+  "storybookWidgetShowcaseOptionScrollableAddRepaintBoundariesLabel": "Add repaint boundaries",
+  "storybookWidgetShowcaseOptionScrollableAddSemanticIndexesLabel": "Add semantic indexes",
+  "storybookWidgetShowcaseOptionScrollableKeyboardDismissBehaviorLabel": "Keyboard dismiss behavior",
+  "storybookWidgetShowcaseOptionScrollableKeyboardDismissBehaviorManualLabel": "Manual",
+  "storybookWidgetShowcaseOptionScrollableKeyboardDismissBehaviorOnDragLabel": "On drag",
+  "storybookWidgetShowcaseOptionScrollableHitTestBehaviorLabel": "Hit test behavior",
+  "storybookWidgetShowcaseOptionScrollableHitTestBehaviorDeferToChildLabel": "Defer to child",
+  "storybookWidgetShowcaseOptionScrollableHitTestBehaviorOpaqueLabel": "Opaque",
+  "storybookWidgetShowcaseOptionScrollableHitTestBehaviorTranslucentLabel": "Translucent",
+  "storybookWidgetShowcaseOptionScrollableSingleChildScrollableItemLabel": "Single child scrollable item {index}",
+  "@storybookWidgetShowcaseOptionScrollableSingleChildScrollableItemLabel": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "storybookWidgetShowcaseOptionScrollableListScrollableItemLabel": "List scrollable item {index}",
+  "@storybookWidgetShowcaseOptionScrollableListScrollableItemLabel": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  }
 }
