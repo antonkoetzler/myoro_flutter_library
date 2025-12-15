@@ -17,9 +17,7 @@ class MyoroIconThemeExtension extends ThemeExtension<MyoroIconThemeExtension>
   MyoroIconThemeExtension.fake() : color = myoroNullableFake<Color>(), size = myoroNullableFake<double>();
 
   /// Builder constructor.
-  MyoroIconThemeExtension.builder(ColorScheme colorScheme)
-    : color = colorScheme.onPrimary,
-      size = kMyoroMultiplier * 20;
+  MyoroIconThemeExtension.builder(ColorScheme colorScheme) : color = colorScheme.onPrimary, size = kMyoroMultiplier * 8;
 
   /// [MyoroIconStyle.color].
   @override

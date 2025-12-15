@@ -27,6 +27,11 @@ class MyoroScrollableViewModel {
   /// [MyoroScrollableState.scrollController] listener.
   void _handleGradientDisplay() {
     final scrollController = state.scrollController;
+
+    if (!scrollController.hasClients) {
+      return;
+    }
+
     final canScroll = scrollController.canScroll;
     final position = scrollController.position;
     final pixels = position.pixels;
