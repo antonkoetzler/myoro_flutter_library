@@ -131,6 +131,7 @@
   "myoroEmptyFeedbackActionButtonText": "Refresh",
 
   "storybookWidgetShowcaseOptionScrollablePaddingLabel": "Padding",
+  "storybookWidgetShowcaseOptionScrollableSpacingLabel": "Spacing",
   "storybookWidgetShowcaseOptionScrollableDirectionLabel": "Direction",
   "storybookWidgetShowcaseOptionScrollableReverseLabel": "Reverse",
   "storybookWidgetShowcaseOptionScrollableClipBehaviorLabel": "Clip behavior",

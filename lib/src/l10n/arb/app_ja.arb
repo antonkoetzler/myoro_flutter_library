@@ -433,6 +433,8 @@
   "myoroSuccessFeedbackSubtitle": "操作が正常に完了しました！",
   "myoroSuccessFeedbackActionButtonText": "完了",
 
-  "myoroEmptyFeedbackActionButtonText": "更新"
+  "myoroEmptyFeedbackActionButtonText": "更新",
+
+  "myoroListScrollableEmptyFeedbackTitle": "項目がありません。"
 }
 

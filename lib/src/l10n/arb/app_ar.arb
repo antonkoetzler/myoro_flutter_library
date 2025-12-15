@@ -433,6 +433,8 @@
   "myoroSuccessFeedbackSubtitle": "تمت العملية بنجاح!",
   "myoroSuccessFeedbackActionButtonText": "تم",
 
-  "myoroEmptyFeedbackActionButtonText": "تحديث"
+  "myoroEmptyFeedbackActionButtonText": "تحديث",
+
+  "myoroListScrollableEmptyFeedbackTitle": "لا توجد عناصر."
 }
 

@@ -433,6 +433,8 @@
   "myoroSuccessFeedbackSubtitle": "ऑपरेशन सफलतापूर्वक पूर्ण हुआ!",
   "myoroSuccessFeedbackActionButtonText": "पूर्ण",
 
-  "myoroEmptyFeedbackActionButtonText": "ताज़ा करें"
+  "myoroEmptyFeedbackActionButtonText": "ताज़ा करें",
+
+  "myoroListScrollableEmptyFeedbackTitle": "कोई आइटम नहीं।"
 }
 

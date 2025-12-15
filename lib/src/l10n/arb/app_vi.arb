@@ -433,6 +433,8 @@
   "myoroSuccessFeedbackSubtitle": "Thao tác hoàn tất thành công!",
   "myoroSuccessFeedbackActionButtonText": "Hoàn thành",
 
-  "myoroEmptyFeedbackActionButtonText": "Làm mới"
+  "myoroEmptyFeedbackActionButtonText": "Làm mới",
+
+  "myoroListScrollableEmptyFeedbackTitle": "Không có mục."
 }
 

@@ -1,4 +1,4 @@
-part of '../myoro_scrollables_widget_showcase_screen.dart';
+part of '../widget/myoro_scrollables_widget_showcase_screen.dart';
 
 /// [MyoroScrollable.direction] option of [MyoroScrollablesWidgetShowcaseScreen].
 final class _DirectionOption extends StatelessWidget {

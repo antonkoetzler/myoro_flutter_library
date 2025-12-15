@@ -1,1 +1,73 @@
-{}
+{
+  "ar": [
+    "storybookWidgetShowcaseOptionScrollableSpacingLabel"
+  ],
+
+  "de": [
+    "storybookWidgetShowcaseOptionScrollableSpacingLabel"
+  ],
+
+  "es": [
+    "storybookWidgetShowcaseOptionScrollableSpacingLabel"
+  ],
+
+  "fr": [
+    "storybookWidgetShowcaseOptionScrollableSpacingLabel"
+  ],
+
+  "hi": [
+    "storybookWidgetShowcaseOptionScrollableSpacingLabel"
+  ],
+
+  "id": [
+    "storybookWidgetShowcaseOptionScrollableSpacingLabel"
+  ],
+
+  "it": [
+    "storybookWidgetShowcaseOptionScrollableSpacingLabel"
+  ],
+
+  "ja": [
+    "storybookWidgetShowcaseOptionScrollableSpacingLabel"
+  ],
+
+  "ko": [
+    "storybookWidgetShowcaseOptionScrollableSpacingLabel"
+  ],
+
+  "nl": [
+    "storybookWidgetShowcaseOptionScrollableSpacingLabel"
+  ],
+
+  "pl": [
+    "storybookWidgetShowcaseOptionScrollableSpacingLabel"
+  ],
+
+  "pt": [
+    "storybookWidgetShowcaseOptionScrollableSpacingLabel"
+  ],
+
+  "ru": [
+    "storybookWidgetShowcaseOptionScrollableSpacingLabel"
+  ],
+
+  "th": [
+    "storybookWidgetShowcaseOptionScrollableSpacingLabel"
+  ],
+
+  "tr": [
+    "storybookWidgetShowcaseOptionScrollableSpacingLabel"
+  ],
+
+  "vi": [
+    "storybookWidgetShowcaseOptionScrollableSpacingLabel"
+  ],
+
+  "zh": [
+    "storybookWidgetShowcaseOptionScrollableSpacingLabel"
+  ],
+
+  "zh_TW": [
+    "storybookWidgetShowcaseOptionScrollableSpacingLabel"
+  ]
+}

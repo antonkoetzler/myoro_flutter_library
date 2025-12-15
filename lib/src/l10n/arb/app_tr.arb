@@ -433,6 +433,8 @@
   "myoroSuccessFeedbackSubtitle": "İşlem başarıyla tamamlandı!",
   "myoroSuccessFeedbackActionButtonText": "Tamamlandı",
 
-  "myoroEmptyFeedbackActionButtonText": "Yenile"
+  "myoroEmptyFeedbackActionButtonText": "Yenile",
+
+  "myoroListScrollableEmptyFeedbackTitle": "Öğe yok."
 }
 

@@ -433,6 +433,8 @@
   "myoroSuccessFeedbackSubtitle": "작업이 성공적으로 완료되었습니다!",
   "myoroSuccessFeedbackActionButtonText": "완료",
 
-  "myoroEmptyFeedbackActionButtonText": "새로고침"
+  "myoroEmptyFeedbackActionButtonText": "새로고침",
+
+  "myoroListScrollableEmptyFeedbackTitle": "항목 없음."
 }
 

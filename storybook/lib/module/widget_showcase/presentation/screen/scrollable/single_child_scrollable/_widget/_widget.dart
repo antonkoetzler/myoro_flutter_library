@@ -1,4 +1,4 @@
-part of '../myoro_scrollables_widget_showcase_screen.dart';
+part of '../widget/myoro_scrollables_widget_showcase_screen.dart';
 
 /// [WidgetShowcaseScreenConfiguration.widget] of [MyoroScrollablesWidgetShowcaseScreen].
 final class _Widget extends StatelessWidget {
@@ -17,13 +17,14 @@ final class _Widget extends StatelessWidget {
       listenable: state,
       builder: (_, __) {
         final style = viewModel.style;
+        final listScrollableStyle = viewModel.listScrollableStyle;
 
         return LayoutBuilder(
           builder: (_, BoxConstraints constraints) {
             final isWide = constraints.maxWidth > 800;
             final scrollables = [
               _SingleChildScrollableWidget(style: style, state: state),
-              _ListScrollableWidget(style: style, state: state),
+              _ListScrollableWidget(style: listScrollableStyle, state: state),
             ];
 
             return isWide

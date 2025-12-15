@@ -1,4 +1,4 @@
-part of '../myoro_scrollables_widget_showcase_screen.dart';
+part of '../widget/myoro_scrollables_widget_showcase_screen.dart';
 
 /// [MyoroSingleChildScrollable] widget.
 final class _SingleChildScrollableWidget extends StatelessWidget {
@@ -21,10 +21,9 @@ final class _SingleChildScrollableWidget extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: List.generate(
-          20,
+          state.itemCount,
           (index) => Container(
             height: themeExtension.itemHeight,
-            margin: themeExtension.itemMargin,
             color: themeExtension.singleChildScrollableItemColor,
             child: Center(
               child: Text(

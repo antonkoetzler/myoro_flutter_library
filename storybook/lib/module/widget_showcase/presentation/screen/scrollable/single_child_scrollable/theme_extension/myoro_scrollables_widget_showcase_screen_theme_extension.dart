@@ -17,7 +17,6 @@ final class MyoroScrollablesWidgetShowcaseScreenThemeExtension
   const MyoroScrollablesWidgetShowcaseScreenThemeExtension({
     required this.spacing,
     required this.itemHeight,
-    required this.itemMargin,
     required this.singleChildScrollableItemColor,
     required this.listScrollableItemColor,
   });
@@ -25,14 +24,12 @@ final class MyoroScrollablesWidgetShowcaseScreenThemeExtension
   MyoroScrollablesWidgetShowcaseScreenThemeExtension.fake()
     : spacing = faker.randomGenerator.decimal(scale: 20),
       itemHeight = faker.randomGenerator.decimal(scale: 200),
-      itemMargin = myoroFake<EdgeInsets>(),
       singleChildScrollableItemColor = myoroFake<Color>(),
       listScrollableItemColor = myoroFake<Color>();
 
   MyoroScrollablesWidgetShowcaseScreenThemeExtension.builder(ColorScheme colorScheme)
     : spacing = kMyoroMultiplier * 4,
       itemHeight = 100.0,
-      itemMargin = const EdgeInsets.all(8),
       singleChildScrollableItemColor = Colors.blue.withValues(alpha: 0.3),
       listScrollableItemColor = Colors.green.withValues(alpha: 0.3);
 
@@ -41,9 +38,6 @@ final class MyoroScrollablesWidgetShowcaseScreenThemeExtension
 
   /// Height of each item in the scrollables.
   final double itemHeight;
-
-  /// Margin of each item in the scrollables.
-  final EdgeInsets itemMargin;
 
   /// Color of items in [MyoroSingleChildScrollable].
   final Color singleChildScrollableItemColor;
@@ -60,7 +54,6 @@ final class MyoroScrollablesWidgetShowcaseScreenThemeExtension
     return copyWith(
       spacing: lerpDouble(spacing, other.spacing, t),
       itemHeight: lerpDouble(itemHeight, other.itemHeight, t),
-      itemMargin: EdgeInsets.lerp(itemMargin, other.itemMargin, t),
       singleChildScrollableItemColor: Color.lerp(
         singleChildScrollableItemColor,
         other.singleChildScrollableItemColor,

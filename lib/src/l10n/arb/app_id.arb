@@ -433,6 +433,8 @@
   "myoroSuccessFeedbackSubtitle": "Operasi berhasil diselesaikan!",
   "myoroSuccessFeedbackActionButtonText": "Selesai",
 
-  "myoroEmptyFeedbackActionButtonText": "Muat Ulang"
+  "myoroEmptyFeedbackActionButtonText": "Muat Ulang",
+
+  "myoroListScrollableEmptyFeedbackTitle": "Tidak ada item."
 }
 

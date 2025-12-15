@@ -2,26 +2,29 @@ part of 'myoro_scrollables_widget_showcase_screen_view_model.dart';
 
 /// State of [MyoroScrollablesWidgetShowcaseScreenViewModel].
 final class MyoroScrollablesWidgetShowcaseScreenState extends ChangeNotifier {
+  /// Item count.
+  final _itemCount = faker.randomGenerator.integer(100, min: 20);
+
   /// [MyoroScrollableStyle.padding]
   EdgeInsets? _padding;
 
-  /// [MyoroScrollable.direction]
+  /// [MyoroListScrollableStyle.spacing]
+  double? _spacing;
+
+  /// Direction.
   Axis _direction = Axis.vertical;
 
-  /// [MyoroScrollable.reverse]
+  /// Reverse.
   bool _reverse = false;
 
-  /// [MyoroScrollable.clipBehavior]
+  /// Clip behavior.
   Clip _clipBehavior = Clip.hardEdge;
 
-  /// [MyoroScrollable.dragStartBehavior]
+  /// Drag start behavior.
   DragStartBehavior _dragStartBehavior = DragStartBehavior.start;
 
-  /// [MyoroScrollable.physics]
+  /// Physics.
   ScrollPhysics? _physics;
-
-  /// [MyoroListScrollable.itemCount]
-  int? _itemCount;
 
   /// [MyoroListScrollable.primary]
   bool _primary = MyoroListScrollable.primaryDefaultValue;
@@ -44,128 +47,203 @@ final class MyoroScrollablesWidgetShowcaseScreenState extends ChangeNotifier {
   /// [MyoroListScrollable.hitTestBehavior]
   HitTestBehavior _hitTestBehavior = MyoroListScrollable.hitTestBehaviorDefaultValue;
 
+  /// [_itemCount] getter.
+  int get itemCount {
+    return _itemCount;
+  }
+
   /// [_padding] getter.
-  EdgeInsets? get padding => _padding;
+  EdgeInsets? get padding {
+    return _padding;
+  }
+
+  /// [_spacing] getter.
+  double? get spacing {
+    return _spacing;
+  }
 
   /// [_direction] getter.
-  Axis get direction => _direction;
+  Axis get direction {
+    return _direction;
+  }
 
   /// [_reverse] getter.
-  bool get reverse => _reverse;
+  bool get reverse {
+    return _reverse;
+  }
 
   /// [_clipBehavior] getter.
-  Clip get clipBehavior => _clipBehavior;
+  Clip get clipBehavior {
+    return _clipBehavior;
+  }
 
   /// [_dragStartBehavior] getter.
-  DragStartBehavior get dragStartBehavior => _dragStartBehavior;
+  DragStartBehavior get dragStartBehavior {
+    return _dragStartBehavior;
+  }
 
   /// [_physics] getter.
-  ScrollPhysics? get physics => _physics;
-
-  /// [_itemCount] getter.
-  int? get itemCount => _itemCount;
+  ScrollPhysics? get physics {
+    return _physics;
+  }
 
   /// [_primary] getter.
-  bool get primary => _primary;
+  bool get primary {
+    return _primary;
+  }
 
   /// [_shrinkWrap] getter.
-  bool get shrinkWrap => _shrinkWrap;
+  bool get shrinkWrap {
+    return _shrinkWrap;
+  }
 
   /// [_addAutomaticKeepAlives] getter.
-  bool get addAutomaticKeepAlives => _addAutomaticKeepAlives;
+  bool get addAutomaticKeepAlives {
+    return _addAutomaticKeepAlives;
+  }
 
   /// [_addRepaintBoundaries] getter.
-  bool get addRepaintBoundaries => _addRepaintBoundaries;
+  bool get addRepaintBoundaries {
+    return _addRepaintBoundaries;
+  }
 
   /// [_addSemanticIndexes] getter.
-  bool get addSemanticIndexes => _addSemanticIndexes;
+  bool get addSemanticIndexes {
+    return _addSemanticIndexes;
+  }
 
   /// [_keyboardDismissBehavior] getter.
-  ScrollViewKeyboardDismissBehavior get keyboardDismissBehavior => _keyboardDismissBehavior;
+  ScrollViewKeyboardDismissBehavior get keyboardDismissBehavior {
+    return _keyboardDismissBehavior;
+  }
 
   /// [_hitTestBehavior] getter.
-  HitTestBehavior get hitTestBehavior => _hitTestBehavior;
+  HitTestBehavior get hitTestBehavior {
+    return _hitTestBehavior;
+  }
 
   /// [_padding] setter.
   set padding(EdgeInsets? padding) {
+    if (_padding == padding) {
+      return;
+    }
     _padding = padding;
+    notifyListeners();
+  }
+
+  /// [_spacing] setter.
+  set spacing(double? spacing) {
+    if (_spacing == spacing) {
+      return;
+    }
+    _spacing = spacing;
     notifyListeners();
   }
 
   /// [_direction] setter.
   set direction(Axis direction) {
+    if (_direction == direction) {
+      return;
+    }
     _direction = direction;
     notifyListeners();
   }
 
   /// [_reverse] setter.
   set reverse(bool reverse) {
+    if (_reverse == reverse) {
+      return;
+    }
     _reverse = reverse;
     notifyListeners();
   }
 
   /// [_clipBehavior] setter.
   set clipBehavior(Clip clipBehavior) {
+    if (_clipBehavior == clipBehavior) {
+      return;
+    }
     _clipBehavior = clipBehavior;
     notifyListeners();
   }
 
   /// [_dragStartBehavior] setter.
   set dragStartBehavior(DragStartBehavior dragStartBehavior) {
+    if (_dragStartBehavior == dragStartBehavior) {
+      return;
+    }
     _dragStartBehavior = dragStartBehavior;
     notifyListeners();
   }
 
   /// [_physics] setter.
   set physics(ScrollPhysics? physics) {
+    if (_physics == physics) {
+      return;
+    }
     _physics = physics;
-    notifyListeners();
-  }
-
-  /// [_itemCount] setter.
-  set itemCount(int? itemCount) {
-    _itemCount = itemCount;
     notifyListeners();
   }
 
   /// [_primary] setter.
   set primary(bool primary) {
+    if (_primary == primary) {
+      return;
+    }
     _primary = primary;
     notifyListeners();
   }
 
   /// [_shrinkWrap] setter.
   set shrinkWrap(bool shrinkWrap) {
+    if (_shrinkWrap == shrinkWrap) {
+      return;
+    }
     _shrinkWrap = shrinkWrap;
     notifyListeners();
   }
 
   /// [_addAutomaticKeepAlives] setter.
   set addAutomaticKeepAlives(bool addAutomaticKeepAlives) {
+    if (_addAutomaticKeepAlives == addAutomaticKeepAlives) {
+      return;
+    }
     _addAutomaticKeepAlives = addAutomaticKeepAlives;
     notifyListeners();
   }
 
   /// [_addRepaintBoundaries] setter.
   set addRepaintBoundaries(bool addRepaintBoundaries) {
+    if (_addRepaintBoundaries == addRepaintBoundaries) {
+      return;
+    }
     _addRepaintBoundaries = addRepaintBoundaries;
     notifyListeners();
   }
 
   /// [_addSemanticIndexes] setter.
   set addSemanticIndexes(bool addSemanticIndexes) {
+    if (_addSemanticIndexes == addSemanticIndexes) {
+      return;
+    }
     _addSemanticIndexes = addSemanticIndexes;
     notifyListeners();
   }
 
   /// [_keyboardDismissBehavior] setter.
   set keyboardDismissBehavior(ScrollViewKeyboardDismissBehavior keyboardDismissBehavior) {
+    if (_keyboardDismissBehavior == keyboardDismissBehavior) {
+      return;
+    }
     _keyboardDismissBehavior = keyboardDismissBehavior;
     notifyListeners();
   }
 
   /// [_hitTestBehavior] setter.
   set hitTestBehavior(HitTestBehavior hitTestBehavior) {
+    if (_hitTestBehavior == hitTestBehavior) {
+      return;
+    }
     _hitTestBehavior = hitTestBehavior;
     notifyListeners();
   }

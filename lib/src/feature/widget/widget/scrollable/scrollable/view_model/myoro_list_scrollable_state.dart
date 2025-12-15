@@ -6,6 +6,7 @@ class MyoroListScrollableState extends MyoroScrollableState {
   MyoroListScrollableState(
     super.scrollController,
     super.direction,
+    super.thumbVisibility,
     super.reverse,
     super.clipBehavior,
     super.dragStartBehavior,
@@ -14,22 +15,18 @@ class MyoroListScrollableState extends MyoroScrollableState {
     this.itemBuilder,
     this.primary,
     this.shrinkWrap,
-    this.itemExtent,
-    this.itemExtentBuilder,
-    this.prototypeItem,
     this.findChildIndexCallback,
     this.addAutomaticKeepAlives,
     this.addRepaintBoundaries,
     this.addSemanticIndexes,
     this.cacheExtent,
-    this.semanticChildCount,
     this.keyboardDismissBehavior,
     this.restorationId,
     this.hitTestBehavior,
   );
 
   /// [MyoroListScrollable.itemCount].
-  final int? itemCount;
+  final int itemCount;
 
   /// [MyoroListScrollable.itemBuilder].
   final NullableIndexedWidgetBuilder itemBuilder;
@@ -39,15 +36,6 @@ class MyoroListScrollableState extends MyoroScrollableState {
 
   /// [MyoroListScrollable.shrinkWrap].
   final bool shrinkWrap;
-
-  /// [MyoroListScrollable.itemExtent].
-  final double? itemExtent;
-
-  /// [MyoroListScrollable.itemExtentBuilder].
-  final ItemExtentBuilder? itemExtentBuilder;
-
-  /// [MyoroListScrollable.prototypeItem].
-  final Widget? prototypeItem;
 
   /// [MyoroListScrollable.findChildIndexCallback].
   final ChildIndexGetter? findChildIndexCallback;
@@ -63,9 +51,6 @@ class MyoroListScrollableState extends MyoroScrollableState {
 
   /// [MyoroListScrollable.cacheExtent].
   final double? cacheExtent;
-
-  /// [MyoroListScrollable.semanticChildCount].
-  final int? semanticChildCount;
 
   /// [MyoroListScrollable.keyboardDismissBehavior].
   final ScrollViewKeyboardDismissBehavior keyboardDismissBehavior;

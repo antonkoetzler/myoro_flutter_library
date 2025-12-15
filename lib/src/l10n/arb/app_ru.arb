@@ -433,6 +433,8 @@
   "myoroSuccessFeedbackSubtitle": "Операция успешно завершена!",
   "myoroSuccessFeedbackActionButtonText": "Готово",
 
-  "myoroEmptyFeedbackActionButtonText": "Обновить"
+  "myoroEmptyFeedbackActionButtonText": "Обновить",
+
+  "myoroListScrollableEmptyFeedbackTitle": "Нет элементов."
 }
 

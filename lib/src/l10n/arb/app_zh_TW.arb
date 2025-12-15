@@ -433,6 +433,8 @@
   "myoroSuccessFeedbackSubtitle": "操作成功完成！",
   "myoroSuccessFeedbackActionButtonText": "完成",
 
-  "myoroEmptyFeedbackActionButtonText": "重新整理"
+  "myoroEmptyFeedbackActionButtonText": "重新整理",
+
+  "myoroListScrollableEmptyFeedbackTitle": "無項目。"
 }
 

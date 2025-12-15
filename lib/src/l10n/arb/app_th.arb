@@ -1,13 +1,13 @@
 {
   "myoroFilePickerPickerButtonText": "เรียกดู",
-  "myoroFilePickerSelectedFileUnselectedText": "ไม่ได้เลือกไฟล์",
+  "myoroFilePickerSelectedFileUnselectedText": "ไม่ได้เลือกไฟล์.",
   "myoroFilePickerDefaultDialogTitle": "เลือกไฟล์",
 
   "myoroImagePickerSelectionTypeModalText": "เลือกแหล่งภาพ",
   "myoroImagePickerSelectionTypeModalButtonCameraText": "เปิดกล้อง",
   "myoroImagePickerSelectionTypeModalButtonGalleryText": "เรียกดูแกลเลอรี",
 
-  "myoroMenuErrorGettingItemsText": "เกิดข้อผิดพลาดในการดึงรายการ",
+  "myoroMenuErrorGettingItemsText": "เกิดข้อผิดพลาดในการดึงรายการ.",
 
   "myoroDialogModalCancelButtonText": "ยกเลิก",
   "myoroDialogModalConfirmButtonText": "ยืนยัน",
@@ -433,6 +433,8 @@
   "myoroSuccessFeedbackSubtitle": "ดำเนินการเสร็จสมบูรณ์แล้ว!",
   "myoroSuccessFeedbackActionButtonText": "เสร็จสิ้น",
 
-  "myoroEmptyFeedbackActionButtonText": "รีเฟรช"
+  "myoroEmptyFeedbackActionButtonText": "รีเฟรช",
+
+  "myoroListScrollableEmptyFeedbackTitle": "ไม่มีรายการ."
 }
 

@@ -433,6 +433,8 @@
   "myoroSuccessFeedbackSubtitle": "Bewerking succesvol voltooid!",
   "myoroSuccessFeedbackActionButtonText": "Klaar",
 
-  "myoroEmptyFeedbackActionButtonText": "Vernieuwen"
+  "myoroEmptyFeedbackActionButtonText": "Vernieuwen",
+
+  "myoroListScrollableEmptyFeedbackTitle": "Geen items."
 }
 

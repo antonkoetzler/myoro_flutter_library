@@ -59,28 +59,16 @@ class MyoroFeedback extends StatelessWidget {
     return Provider.value(
       value: style,
       child: Column(
+        spacing: spacing,
         mainAxisSize: MainAxisSize.min,
         children: [
           Flexible(
             child: Column(
-              spacing: spacing,
               mainAxisSize: MainAxisSize.min,
-              children: [
-                Flexible(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      if (icon != null) _Icon(icon!),
-                      _Title(title),
-                      if (subtitle.isNotEmpty) _Subtitle(subtitle),
-                    ],
-                  ),
-                ),
-                if (actionButtonText.isNotEmpty)
-                  _ActionButton(actionButtonIcon, actionButtonText, actionButtonConfiguration),
-              ],
+              children: [if (icon != null) _Icon(icon!), _Title(title), if (subtitle.isNotEmpty) _Subtitle(subtitle)],
             ),
           ),
+          if (actionButtonText.isNotEmpty) _ActionButton(actionButtonIcon, actionButtonText, actionButtonConfiguration),
         ],
       ),
     );

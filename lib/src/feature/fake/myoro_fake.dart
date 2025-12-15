@@ -187,6 +187,10 @@ T myoroFake<T>() {
     return MyoroIconTextButtonStyle.fake() as T;
   }
 
+  if (T == MyoroListScrollableStyle) {
+    return MyoroListScrollableStyle.fake() as T;
+  }
+
   if (T == IconData) {
     return kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)] as T;
   }

@@ -1,12 +1,17 @@
-part of '../myoro_scrollables_widget_showcase_screen.dart';
+part of '../widget/myoro_scrollables_widget_showcase_screen.dart';
 
 /// [MyoroListScrollable] widget.
 final class _ListScrollableWidget extends StatelessWidget {
+  /// Default constructor.
   const _ListScrollableWidget({required this.style, required this.state});
 
-  final MyoroScrollableStyle style;
+  /// Style.
+  final MyoroListScrollableStyle style;
+
+  /// State.
   final MyoroScrollablesWidgetShowcaseScreenState state;
 
+  /// Build function.
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroScrollablesWidgetShowcaseScreenThemeExtension>();
@@ -22,7 +27,6 @@ final class _ListScrollableWidget extends StatelessWidget {
       itemBuilder: (_, index) {
         return Container(
           height: themeExtension.itemHeight,
-          margin: themeExtension.itemMargin,
           color: themeExtension.listScrollableItemColor,
           child: Center(
             child: Text(localization.storybookWidgetShowcaseOptionScrollableListScrollableItemLabel(index + 1)),

@@ -433,6 +433,8 @@
   "myoroSuccessFeedbackSubtitle": "Operacja zakończona pomyślnie!",
   "myoroSuccessFeedbackActionButtonText": "Gotowe",
 
-  "myoroEmptyFeedbackActionButtonText": "Odśwież"
+  "myoroEmptyFeedbackActionButtonText": "Odśwież",
+
+  "myoroListScrollableEmptyFeedbackTitle": "Brak elementów."
 }
 

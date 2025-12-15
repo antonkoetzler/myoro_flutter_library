@@ -433,5 +433,7 @@
   "myoroSuccessFeedbackSubtitle": "Operation completed successfully!",
   "myoroSuccessFeedbackActionButtonText": "Done",
 
-  "myoroEmptyFeedbackActionButtonText": "Refresh"
+  "myoroEmptyFeedbackActionButtonText": "Refresh",
+
+  "myoroListScrollableEmptyFeedbackTitle": "No items."
 }

@@ -76,6 +76,7 @@ linter:
     prefer_spread_collections: true
     prefer_typing_uninitialized_variables: true
     provide_deprecation_message: true
+    cascade_invocations: true
     recursive_getters: true
     sized_box_for_whitespace: true
     slash_for_doc_comments: true
