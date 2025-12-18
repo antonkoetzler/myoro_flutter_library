@@ -18,15 +18,6 @@ Bugs and imperfections may still exist in MFL. This is an active work in progres
 
 Please read the `example` folder's [`README.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/example/README.md) to get started with MFL
 
-## Resources
+## Documentation
 
-1. [`Widgets.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/doc/Widgets.md): List of all `Widget`s provided;
-1. [`Widget customization.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/doc/Widget%20customization.md): Customizing `Widget`s.
-1. [`CHANGELOG.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/CHANGELOG.md): Documentation of changes in every feature;
-1. [`STAGELOG.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/STAGELOG.md): Changes that have not been deployed yet;
-1. [`Standards.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/doc/Standards.md): Code standards;
-1. [`Tools.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/doc/Tools.md): Development tools;
-1. [`Issues.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/doc/Issues.md): About creating issues;
-1. [`Pull requests.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/doc/Pull%20requests.md): About creating pull requests.
-
-<p>&nbsp;</p>
+All documentation is available on [this Notion website](https://tough-shoemaker-cbd.notion.site/Myoro-Flutter-Library-2b5d7dcd552480c085bafd348df1a3f0?pvs=74).
