@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.7.2
+
+- fix: I forgor to update `README.md` :skull:
+
 ## 2.7.1
 
 - feature: `MyoroScrollControllerExtension.canScroll`
