@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.7.3
+
+- fix: Revert `**/*.g.dart` in `.gitignore`
+
 ## 2.7.2
 
 - fix: I forgor to update `README.md` :skull:
