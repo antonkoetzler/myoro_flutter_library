@@ -36,4 +36,4 @@ jobs:
 
       - name: Dart format check (fails if not formatted)
         run: |
-          find . -name "*.dart" ! -path "./lib/src/l10n/*" | xargs dart format --line-length 120 -o none --set-exit-if-changed
+          find . -name "*.dart" ! -path "./lib/src/l10n/*" ! -path "./storybook/lib/l10n/*" | xargs dart format --line-length 120 -o none --set-exit-if-changed
