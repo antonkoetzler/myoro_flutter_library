@@ -32,8 +32,6 @@ migrate_working_dir/
 /build/
 coverage/
 pubspec.lock
-**/*.g.dart
-lib/src/l10n/gen
 
 # Symbolication related
 app.*.symbols
