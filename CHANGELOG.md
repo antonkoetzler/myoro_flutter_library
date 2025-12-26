@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.7.4
+
+- feature: `MyoroLogger`
+- improvement: Layout properties of `MyoroIconTextButton` have now changed to match the standards of other icon text buttons
+- improvement: `MyoroIconTextButtonStyle.textConstraints`
+
 ## 2.7.3
 
 - fix: Revert `**/*.g.dart` in `.gitignore`
