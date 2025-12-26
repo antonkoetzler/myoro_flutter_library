@@ -18,19 +18,17 @@ final class _Text extends StatelessWidget {
     final style = context.watch<MyoroIconTextButtonStyle>();
     final contentColor =
         style.contentColorBuilder(_tapStatusEnum) ?? themeExtension.contentColorBuilder(_tapStatusEnum);
-    final maxLines = style.textStyle?.maxLines ?? themeExtension.textStyle?.maxLines;
-    final overflow = style.textStyle?.overflow ?? themeExtension.textStyle?.overflow;
-    final alignment = style.textStyle?.alignment ?? themeExtension.textStyle?.alignment;
-    final textStyle = style.textStyle?.style ?? themeExtension.textStyle?.style;
+    final textConstraints = style.textConstraints ?? themeExtension.textConstraints ?? const BoxConstraints();
+    var textStyle = style.textStyle ?? themeExtension.textStyle;
+    textStyle = (textStyle ?? const MyoroTextStyle()).copyWith(
+      style: contentColor != null ? (textStyle?.style ?? const TextStyle()).withColor(contentColor) : textStyle?.style,
+    );
 
-    return Expanded(
+    return Flexible(
       child: IntrinsicHeight(
-        child: Text(
-          _text,
-          maxLines: maxLines,
-          overflow: overflow,
-          textAlign: alignment,
-          style: contentColor != null ? textStyle?.withColor(contentColor) : textStyle,
+        child: ConstrainedBox(
+          constraints: textConstraints,
+          child: MyoroText(_text, style: textStyle),
         ),
       ),
     );

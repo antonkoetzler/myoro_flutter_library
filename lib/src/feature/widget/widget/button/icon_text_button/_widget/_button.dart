@@ -23,7 +23,6 @@ final class _Button extends StatelessWidget {
     final textWidget = textNotEmpty ? _Text(_text, _tapStatusEnum) : null;
 
     return Row(
-      mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       spacing: spacing,
       children: iconAndTextNotEmpty

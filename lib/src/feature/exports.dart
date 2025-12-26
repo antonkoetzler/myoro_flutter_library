@@ -10,6 +10,7 @@ export 'interaction/exports.dart';
 export 'lerp/exports.dart';
 export 'link/exports.dart';
 export 'location/exports.dart';
+export 'logger/exports.dart';
 export 'platform/exports.dart';
 export 'request/exports.dart';
 export 'throttling/exports.dart';

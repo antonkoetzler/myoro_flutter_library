@@ -28,6 +28,7 @@ class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButt
     this.spacing,
     this.iconSize,
     this.textStyle,
+    this.textConstraints,
   });
 
   /// Fake constructor.
@@ -47,7 +48,8 @@ class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButt
       contentPadding = myoroNullableFake<EdgeInsets>(),
       spacing = myoroNullableFake<double>(),
       iconSize = myoroNullableFake<double>(),
-      textStyle = myoroNullableFake<MyoroTextStyle>();
+      textStyle = myoroNullableFake<MyoroTextStyle>(),
+      textConstraints = myoroNullableFake<BoxConstraints>();
 
   /// Builder constructor.
   MyoroIconTextButtonThemeExtension.builder(TextTheme textTheme, MyoroDecorationThemeExtension decorationThemeExtension)
@@ -66,7 +68,8 @@ class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButt
       contentPadding = const EdgeInsets.all(kMyoroMultiplier * 2),
       spacing = kMyoroMultiplier,
       iconSize = kMyoroMultiplier * 5,
-      textStyle = MyoroTextStyle(style: textTheme.bodySmall);
+      textStyle = MyoroTextStyle(alignment: TextAlign.left, style: textTheme.bodySmall),
+      textConstraints = null;
 
   /// Background [Color] of the [MyoroIconTextButton] when it is idle.
   @override
@@ -132,6 +135,10 @@ class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButt
   @override
   final MyoroTextStyle? textStyle;
 
+  /// Text constraints.
+  @override
+  final BoxConstraints? textConstraints;
+
   /// Lerp function.
   @override
   MyoroIconTextButtonThemeExtension lerp(covariant MyoroIconTextButtonThemeExtension? other, double t) {
@@ -154,6 +161,7 @@ class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButt
       spacing: style.spacing,
       iconSize: style.iconSize,
       textStyle: style.textStyle,
+      textConstraints: style.textConstraints,
     );
   }
 }

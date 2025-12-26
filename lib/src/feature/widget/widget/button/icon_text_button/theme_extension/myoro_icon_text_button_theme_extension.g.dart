@@ -50,6 +50,8 @@ mixin _$MyoroIconTextButtonThemeExtensionMixin on ThemeExtension<MyoroIconTextBu
     bool iconSizeProvided = true,
     MyoroTextStyle? textStyle,
     bool textStyleProvided = true,
+    BoxConstraints? textConstraints,
+    bool textConstraintsProvided = true,
   }) {
     return MyoroIconTextButtonThemeExtension(
       backgroundIdleColor: backgroundIdleColorProvided ? (backgroundIdleColor ?? self.backgroundIdleColor) : null,
@@ -70,6 +72,7 @@ mixin _$MyoroIconTextButtonThemeExtensionMixin on ThemeExtension<MyoroIconTextBu
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
       iconSize: iconSizeProvided ? (iconSize ?? self.iconSize) : null,
       textStyle: textStyleProvided ? (textStyle ?? self.textStyle) : null,
+      textConstraints: textConstraintsProvided ? (textConstraints ?? self.textConstraints) : null,
     );
   }
 
@@ -92,7 +95,8 @@ mixin _$MyoroIconTextButtonThemeExtensionMixin on ThemeExtension<MyoroIconTextBu
         other.contentPadding == self.contentPadding &&
         other.spacing == self.spacing &&
         other.iconSize == self.iconSize &&
-        other.textStyle == self.textStyle;
+        other.textStyle == self.textStyle &&
+        other.textConstraints == self.textConstraints;
   }
 
   @override
@@ -114,6 +118,7 @@ mixin _$MyoroIconTextButtonThemeExtensionMixin on ThemeExtension<MyoroIconTextBu
       self.spacing,
       self.iconSize,
       self.textStyle,
+      self.textConstraints,
     );
   }
 
@@ -136,5 +141,6 @@ mixin _$MyoroIconTextButtonThemeExtensionMixin on ThemeExtension<MyoroIconTextBu
       '  spacing: ${self.spacing},\n'
       '  iconSize: ${self.iconSize},\n'
       '  textStyle: ${self.textStyle},\n'
+      '  textConstraints: ${self.textConstraints},\n'
       ');';
 }

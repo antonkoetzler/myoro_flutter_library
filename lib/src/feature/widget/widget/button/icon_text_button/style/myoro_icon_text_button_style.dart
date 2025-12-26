@@ -28,6 +28,7 @@ class MyoroIconTextButtonStyle extends MyoroButtonStyle with _$MyoroIconTextButt
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
       iconSize: lerpDouble(a?.iconSize, b?.iconSize, t),
       textStyle: MyoroTextStyle.lerp(a?.textStyle, b?.textStyle, t),
+      textConstraints: BoxConstraints.lerp(a?.textConstraints, b?.textConstraints, t),
     );
   }
 
@@ -48,6 +49,7 @@ class MyoroIconTextButtonStyle extends MyoroButtonStyle with _$MyoroIconTextButt
     this.spacing,
     this.iconSize,
     this.textStyle,
+    this.textConstraints,
   });
 
   /// Fake constructor.
@@ -68,6 +70,7 @@ class MyoroIconTextButtonStyle extends MyoroButtonStyle with _$MyoroIconTextButt
       spacing: myoroNullableFake<double>(),
       iconSize: myoroNullableFake<double>(),
       textStyle: myoroNullableFake<MyoroTextStyle>(),
+      textConstraints: myoroNullableFake<BoxConstraints>(),
     );
   }
 
@@ -79,4 +82,7 @@ class MyoroIconTextButtonStyle extends MyoroButtonStyle with _$MyoroIconTextButt
 
   /// [MyoroTextStyle] of the text.
   final MyoroTextStyle? textStyle;
+
+  /// [BoxConstraints] of the text.
+  final BoxConstraints? textConstraints;
 }

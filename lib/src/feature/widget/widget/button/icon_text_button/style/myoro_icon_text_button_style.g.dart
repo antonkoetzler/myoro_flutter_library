@@ -23,6 +23,8 @@ mixin _$MyoroIconTextButtonStyleMixin {
     bool iconSizeProvided = true,
     MyoroTextStyle? textStyle,
     bool textStyleProvided = true,
+    BoxConstraints? textConstraints,
+    bool textConstraintsProvided = true,
     Color? backgroundIdleColor,
     bool backgroundIdleColorProvided = true,
     Color? backgroundHoverColor,
@@ -54,6 +56,7 @@ mixin _$MyoroIconTextButtonStyleMixin {
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
       iconSize: iconSizeProvided ? (iconSize ?? self.iconSize) : null,
       textStyle: textStyleProvided ? (textStyle ?? self.textStyle) : null,
+      textConstraints: textConstraintsProvided ? (textConstraints ?? self.textConstraints) : null,
       backgroundIdleColor: backgroundIdleColorProvided ? (backgroundIdleColor ?? self.backgroundIdleColor) : null,
       backgroundHoverColor: backgroundHoverColorProvided ? (backgroundHoverColor ?? self.backgroundHoverColor) : null,
       backgroundTapColor: backgroundTapColorProvided ? (backgroundTapColor ?? self.backgroundTapColor) : null,
@@ -76,6 +79,7 @@ mixin _$MyoroIconTextButtonStyleMixin {
         other.spacing == self.spacing &&
         other.iconSize == self.iconSize &&
         other.textStyle == self.textStyle &&
+        other.textConstraints == self.textConstraints &&
         other.backgroundIdleColor == self.backgroundIdleColor &&
         other.backgroundHoverColor == self.backgroundHoverColor &&
         other.backgroundTapColor == self.backgroundTapColor &&
@@ -97,6 +101,7 @@ mixin _$MyoroIconTextButtonStyleMixin {
       self.spacing,
       self.iconSize,
       self.textStyle,
+      self.textConstraints,
       self.backgroundIdleColor,
       self.backgroundHoverColor,
       self.backgroundTapColor,
@@ -119,6 +124,7 @@ mixin _$MyoroIconTextButtonStyleMixin {
       '  spacing: ${self.spacing},\n'
       '  iconSize: ${self.iconSize},\n'
       '  textStyle: ${self.textStyle},\n'
+      '  textConstraints: ${self.textConstraints},\n'
       '  backgroundIdleColor: ${self.backgroundIdleColor},\n'
       '  backgroundHoverColor: ${self.backgroundHoverColor},\n'
       '  backgroundTapColor: ${self.backgroundTapColor},\n'
