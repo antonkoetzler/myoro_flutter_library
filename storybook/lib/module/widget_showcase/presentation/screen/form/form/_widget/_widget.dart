@@ -13,7 +13,7 @@ final class _Widget extends StatelessWidget {
       request: viewModel.request,
       validation: viewModel.validation,
       onSuccess: (result) => viewModel.onSuccess(context, result),
-      onError: (errorMessage) => viewModel.onError(context, errorMessage),
+      onError: (error) => viewModel.onError(context, error),
       builder: (request, formController) {
         return Column(
           mainAxisSize: MainAxisSize.min,

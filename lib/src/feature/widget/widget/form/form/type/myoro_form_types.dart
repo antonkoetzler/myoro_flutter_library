@@ -9,12 +9,6 @@ typedef MyoroFormValidation = String Function();
 /// Request that will be executed after the form validation process is successful.
 typedef MyoroFormRequest<T> = FutureOr<T?> Function();
 
-/// Function that is executed when the form process is completed successfully.
-typedef MyoroFormOnSuccess<T> = void Function(T? result);
-
-/// Function that is executed when the form process is completed unsuccessfully.
-typedef MyoroFormOnError = void Function(String errorMessage);
-
 /// Builder of the content within the form.
 ///
 /// Contains controller so you don't need to create one & the status of the form execution.

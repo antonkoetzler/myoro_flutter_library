@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -46,8 +45,6 @@ class MyoroRequestController<T> extends ValueNotifier<MyoroRequest<T>> {
 
   /// Executes [request].
   Future<void> fetch() async {
-    String? errorMessage;
-
     try {
       // Only set loading state for async functions
       if (!_isRequestCallbackSync(_request) && !_isDisposed) {
@@ -57,24 +54,8 @@ class MyoroRequestController<T> extends ValueNotifier<MyoroRequest<T>> {
       final result = await _request?.call();
       // Check if disposed before setting success state
       if (!_isDisposed) value = request.createSuccessState(result);
-    } on HttpException catch (httpError) {
-      errorMessage = httpError.message;
-      if (kDebugMode) {
-        print('[MyoroRequestController<$T>.fetch]: HTTP error: "$errorMessage".');
-      }
-    } catch (genericError, stackTrace) {
-      errorMessage = genericError.toString();
-      if (kDebugMode) {
-        print('[MyoroRequestController<$T>.fetch]: Generic error: "$errorMessage".');
-        print('Stack trace:\n$stackTrace');
-      }
-    }
-
-    if (errorMessage == null) return;
-
-    // Check if disposed before setting error state
-    if (!_isDisposed) {
-      value = request.createErrorState(errorMessage);
+    } catch (e) {
+      value = request.createErrorState(e);
     }
   }
 
@@ -88,9 +69,9 @@ class MyoroRequestController<T> extends ValueNotifier<MyoroRequest<T>> {
     return request.status;
   }
 
-  /// Getter of this [ValueNotifier]'s [value]'s [MyoroRequest.errorMessage].
-  String? get errorMessage {
-    return request.errorMessage;
+  /// Getter of this [ValueNotifier]'s [value]'s [MyoroRequest.error].
+  Object? get error {
+    return request.error;
   }
 
   /// Getter of this [ValueNotifier]'s [value]'s [MyoroRequest.data].

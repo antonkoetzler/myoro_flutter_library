@@ -12,10 +12,10 @@ class MyoroFormController<T> extends MyoroRequestController<T> {
   final MyoroFormValidation? validation;
 
   /// Executed when the form is completed successfully.
-  final MyoroFormOnSuccess<T>? onSuccess;
+  final ValueChanged<T?>? onSuccess;
 
   /// Executed when the form is completed unsuccessfully.
-  final MyoroFormOnError? onError;
+  final ValueChanged<Object>? onError;
 
   /// [GlobalKey] of the [Form].
   final _formKey = GlobalKey<FormState>();
@@ -33,7 +33,7 @@ class MyoroFormController<T> extends MyoroRequestController<T> {
     final bool formKeyValidation = formKey.currentState?.validate() ?? true;
 
     if (validationErrorMessage.isNotEmpty || !formKeyValidation) {
-      value = request.createErrorState(!formKeyValidation ? kMyoroEmptyString : validationErrorMessage);
+      value = request.createErrorState(Exception(!formKeyValidation ? kMyoroEmptyString : validationErrorMessage));
       return;
     }
 
@@ -46,7 +46,7 @@ class MyoroFormController<T> extends MyoroRequestController<T> {
       onSuccess?.call(data);
     }
     if (status.isError) {
-      onError?.call(errorMessage!);
+      onError?.call(error!);
     }
   }
 

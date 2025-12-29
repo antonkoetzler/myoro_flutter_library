@@ -46,7 +46,7 @@ class MyoroDialogModal<T> extends StatelessWidget {
     String cancelButtonText = kMyoroEmptyString,
     FutureOr<T?> Function()? onConfirm,
     ValueChanged<T?>? onSuccess,
-    ValueChanged<String>? onError,
+    ValueChanged<Object>? onError,
     VoidCallback? onCancel,
     String message = kMyoroEmptyString,
     MyoroDialogModalBuilder<T>? builder,
@@ -105,7 +105,7 @@ class MyoroDialogModal<T> extends StatelessWidget {
   final ValueChanged<T?>? _onSuccess;
 
   /// Function executed when the request is error.
-  final ValueChanged<String>? _onError;
+  final ValueChanged<Object>? _onError;
 
   /// Function executed when [_CancelButton] is pressed.
   final VoidCallback? _onCancel;

@@ -18,14 +18,14 @@ mixin _$MyoroRequestMixin<T> {
 
   MyoroRequest<T> copyWith({
     MyoroRequestEnum? status,
-    String? errorMessage,
-    bool errorMessageProvided = true,
+    Object? error,
+    bool errorProvided = true,
     T? data,
     bool dataProvided = true,
   }) {
     return MyoroRequest(
       status: status ?? self.status,
-      errorMessage: errorMessageProvided ? (errorMessage ?? self.errorMessage) : null,
+      error: errorProvided ? (error ?? self.error) : null,
       data: dataProvided ? (data ?? self.data) : null,
     );
   }
@@ -35,20 +35,20 @@ mixin _$MyoroRequestMixin<T> {
     return other is MyoroRequest<T> &&
         other.runtimeType == runtimeType &&
         other.status == self.status &&
-        other.errorMessage == self.errorMessage &&
+        other.error == self.error &&
         other.data == self.data;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.status, self.errorMessage, self.data);
+    return Object.hash(self.status, self.error, self.data);
   }
 
   @override
   String toString() =>
       'MyoroRequest<T>(\n'
       '  status: ${self.status},\n'
-      '  errorMessage: ${self.errorMessage},\n'
+      '  error: ${self.error},\n'
       '  data: ${self.data},\n'
       ');';
 }

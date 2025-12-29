@@ -13,13 +13,13 @@ part 'myoro_request.g.dart';
 class MyoroRequest<T> with _$MyoroRequestMixin<T> {
   static const statusDefaultValue = MyoroRequestEnum.idle;
 
-  const MyoroRequest({this.status = statusDefaultValue, this.errorMessage, this.data});
+  const MyoroRequest({this.status = statusDefaultValue, this.error, this.data});
 
   factory MyoroRequest.fake({T? data}) {
     final status = MyoroRequestEnum.fake();
     return MyoroRequest(
       status: status,
-      errorMessage: status.isError || faker.randomGenerator.boolean() ? faker.lorem.sentence() : null,
+      error: status.isError || faker.randomGenerator.boolean() ? Exception(faker.lorem.sentence()) : null,
       data: data,
     );
   }
@@ -28,24 +28,24 @@ class MyoroRequest<T> with _$MyoroRequestMixin<T> {
   final MyoroRequestEnum status;
 
   /// Error message when [status] is [MyoroRequestEnum.error].
-  final String? errorMessage;
+  final Object? error;
 
   /// Data generated from the request.
   final T? data;
 
   MyoroRequest<T> createIdleState() {
-    return MyoroRequest(status: MyoroRequestEnum.idle, errorMessage: errorMessage, data: data);
+    return MyoroRequest(status: MyoroRequestEnum.idle, error: error, data: data);
   }
 
   MyoroRequest<T> createLoadingState() {
-    return MyoroRequest(status: MyoroRequestEnum.loading, errorMessage: errorMessage, data: data);
+    return MyoroRequest(status: MyoroRequestEnum.loading, error: error, data: data);
   }
 
   MyoroRequest<T> createSuccessState(T? data) {
-    return MyoroRequest(status: MyoroRequestEnum.success, errorMessage: errorMessage, data: data);
+    return MyoroRequest(status: MyoroRequestEnum.success, error: error, data: data);
   }
 
-  MyoroRequest<T> createErrorState(String errorMessage) {
-    return MyoroRequest(status: MyoroRequestEnum.error, errorMessage: errorMessage, data: data);
+  MyoroRequest<T> createErrorState(Object? error) {
+    return MyoroRequest(status: MyoroRequestEnum.error, error: error, data: data);
   }
 }

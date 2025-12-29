@@ -34,10 +34,10 @@ class MyoroForm<T> extends StatefulWidget {
   final MyoroFormRequest<T>? request;
 
   /// Executed when the form is completed successfully.
-  final MyoroFormOnSuccess<T>? onSuccess;
+  final ValueChanged<T?>? onSuccess;
 
   /// Executed when the form is completed unsuccessfully.
-  final MyoroFormOnError? onError;
+  final ValueChanged<Object>? onError;
 
   /// Builder of the content within the form.
   final MyoroFormBuilder<T> builder;

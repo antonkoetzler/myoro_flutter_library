@@ -76,7 +76,7 @@ final class _MyoroRequestWidgetState<T> extends State<MyoroRequestWidget<T>> {
       widget.onSuccess?.call(request.data);
     }
     if (status.isError) {
-      widget.onError?.call(request.errorMessage!);
+      widget.onError?.call(request.error!);
     }
   }
 }

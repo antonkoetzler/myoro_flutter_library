@@ -35,7 +35,7 @@ final class MyoroFormWidgetShowcaseScreenViewModel {
   }
 
   /// [MyoroFormConfiguration.onError] of [_Widget].
-  void onError(BuildContext context, String errorMessage) {
-    context.showSnackBar(snackBar: MyoroSnackBar(snackBarType: MyoroSnackBarTypeEnum.error, message: errorMessage));
+  void onError(BuildContext context, Object error) {
+    context.showSnackBar(snackBar: MyoroSnackBar(snackBarType: MyoroSnackBarTypeEnum.error, message: error.toString()));
   }
 }

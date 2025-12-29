@@ -67,7 +67,7 @@ class MyoroRequestWidget<T> extends StatefulWidget {
   final ValueChanged<T?>? onSuccess;
 
   /// Executed when the request is completed unsuccessfully.
-  final ValueChanged<String>? onError;
+  final ValueChanged<Object>? onError;
 
   /// Builder of the content within the request widget.
   final Widget Function(BuildContext, T?) successBuilder;

@@ -14,7 +14,7 @@ final class MyoroRequestWidgetShowcaseScreenViewModel {
   }
 
   /// [MyoroRequestWidget.onError] of [_Widget].
-  void onError(String errorMessage) {
+  void onError(Object? errorMessage) {
     // Handle error if needed
   }
 }
