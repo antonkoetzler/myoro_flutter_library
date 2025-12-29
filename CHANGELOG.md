@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.7.5
+
+- improvement: Remove `MyoroRequest.errorMessage` in favor of `MyoroRequest.error`
+
 ## 2.7.4
 
 - feature: `MyoroLogger`
