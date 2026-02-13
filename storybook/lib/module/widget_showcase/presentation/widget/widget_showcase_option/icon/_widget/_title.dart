@@ -16,10 +16,10 @@ final class _Title extends StatelessWidget {
 
     return enableOptionCheckboxOnChanged != null
         ? MyoroCheckbox(
-          label: label,
-          value: enabledController.value,
-          onChanged: (value) => enabledController.value = value,
-        )
+            label: label,
+            value: enabledController.value,
+            onChanged: (value) => enabledController.value = value,
+          )
         : Text(label, style: checkboxThemeExtension.labelTextStyle);
   }
 }

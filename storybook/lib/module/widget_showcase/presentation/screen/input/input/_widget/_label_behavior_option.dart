@@ -16,14 +16,12 @@ final class _LabelBehaviorOption extends StatelessWidget {
 
     return MyoroSingleSelectionDropdown<FloatingLabelBehavior>(
       label: localization.storybookWidgetShowcaseOptionLabelBehaviorLabel,
-      selectedItemBuilder:
-          (behavior) =>
-              _behaviors.entries
-                  .firstWhere(
-                    (entry) => entry.value == behavior,
-                    orElse: () => const MapEntry('custom', FloatingLabelBehavior.auto),
-                  )
-                  .key,
+      selectedItemBuilder: (behavior) => _behaviors.entries
+          .firstWhere(
+            (entry) => entry.value == behavior,
+            orElse: () => const MapEntry('custom', FloatingLabelBehavior.auto),
+          )
+          .key,
       onChanged: (behavior) => viewModel.state.labelBehavior = behavior,
       items: _behaviors.values.toSet(),
       selectedItem: viewModel.state.labelBehavior,

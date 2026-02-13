@@ -19,14 +19,9 @@ final class _IndicatorTextAlignmentOption extends StatelessWidget {
 
     return MyoroSingleSelectionDropdown<TextAlign>(
       label: localization.storybookWidgetShowcaseOptionIndicatorTextAlignmentLabel,
-      selectedItemBuilder:
-          (alignment) =>
-              _alignments.entries
-                  .firstWhere(
-                    (entry) => entry.value == alignment,
-                    orElse: () => const MapEntry('custom', TextAlign.center),
-                  )
-                  .key,
+      selectedItemBuilder: (alignment) => _alignments.entries
+          .firstWhere((entry) => entry.value == alignment, orElse: () => const MapEntry('custom', TextAlign.center))
+          .key,
       onChanged: (alignment) => viewModel.state.indicatorTextAlignment = alignment,
       itemBuilder: (alignment, _) {
         final name = _alignments.entries.firstWhere((entry) => entry.value == alignment).key;

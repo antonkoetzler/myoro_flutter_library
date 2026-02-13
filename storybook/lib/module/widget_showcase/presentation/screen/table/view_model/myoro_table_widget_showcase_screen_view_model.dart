@@ -23,10 +23,9 @@ final class MyoroTableWidgetShowcaseScreenViewModel {
     return MyoroTableRow(
       onTapDown: (_) => onTapDown(context, item),
       onTapUp: (_) => onTapUp(context, item),
-      cells:
-          MyoroTableColumnWidthConfigurationEnum.values.map((value) {
-            return Text('$item\'s value.name.capitalized cell.');
-          }).toList(),
+      cells: MyoroTableColumnWidthConfigurationEnum.values.map((value) {
+        return Text('$item\'s value.name.capitalized cell.');
+      }).toList(),
     );
   }
 

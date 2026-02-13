@@ -8,10 +8,9 @@ final class MyoroFilePickerWidgetShowcaseScreenViewModel {
   void onChanged(BuildContext context, MyoroFilePickerPlatformFile? selectedFile) {
     context.showSnackBar(
       snackBar: MyoroSnackBar(
-        message:
-            selectedFile != null
-                ? localization.storybookFilePickerFileSelectedMessage(selectedFile.name)
-                : localization.storybookFilePickerNoFileSelectedMessage,
+        message: selectedFile != null
+            ? localization.storybookFilePickerFileSelectedMessage(selectedFile.name)
+            : localization.storybookFilePickerNoFileSelectedMessage,
       ),
     );
   }

@@ -10,6 +10,9 @@ final class _SectionHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<WidgetShowcaseScreenThemeExtension>();
 
-    return Align(alignment: Alignment.center, child: Text(title, style: themeExtension.sectionHeaderTextStyle));
+    return Align(
+      alignment: Alignment.center,
+      child: Text(title, style: themeExtension.sectionHeaderTextStyle),
+    );
   }
 }

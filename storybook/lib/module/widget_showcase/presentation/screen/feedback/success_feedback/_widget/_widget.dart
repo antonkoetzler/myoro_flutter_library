@@ -6,6 +6,8 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return Center(child: MyoroSuccessFeedback(title: 'Operation successful', onFinishButtonTapped: () {}));
+    return Center(
+      child: MyoroSuccessFeedback(title: 'Operation successful', onFinishButtonTapped: () {}),
+    );
   }
 }

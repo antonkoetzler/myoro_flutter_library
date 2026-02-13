@@ -6,6 +6,8 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return Center(child: MyoroErrorFeedback(title: 'Error occurred', onRetry: (_) {}));
+    return Center(
+      child: MyoroErrorFeedback(title: 'Error occurred', onRetry: (_) {}),
+    );
   }
 }

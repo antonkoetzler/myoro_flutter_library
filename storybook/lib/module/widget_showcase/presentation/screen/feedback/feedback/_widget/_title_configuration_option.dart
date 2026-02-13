@@ -22,10 +22,8 @@ final class _TitleConfigurationOption extends StatelessWidget {
         alignmentInitialValue: titleTextStyle?.alignment ?? MyoroTextStyle.alignmentDefaultValue,
         alignmentOnChanged: viewModel.titleTextStyleAlignmentOnChanged,
         styleInitialValue: titleTextStyle?.style,
-        styleOnChanged:
-            (textStyle) =>
-                state.titleTextStyle =
-                    state.titleTextStyle?.copyWith(style: textStyle) ?? MyoroTextStyle(style: textStyle),
+        styleOnChanged: (textStyle) =>
+            state.titleTextStyle = state.titleTextStyle?.copyWith(style: textStyle) ?? MyoroTextStyle(style: textStyle),
       ),
     );
   }

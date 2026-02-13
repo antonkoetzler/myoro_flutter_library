@@ -27,8 +27,9 @@ final class _Input extends StatelessWidget {
       canShowClearTextButton: state.canShowClearTextButton,
       obscureText: state.obscureText,
       showObscureTextButton: state.showObscureTextButton,
-      checkboxOnChanged:
-          state.checkboxOnChangedEnabled ? (enabled, text) => checkboxOnChanged(context, enabled, text) : null,
+      checkboxOnChanged: state.checkboxOnChangedEnabled
+          ? (enabled, text) => checkboxOnChanged(context, enabled, text)
+          : null,
       validation: state.validationEnabled ? validation : null,
       onFieldSubmitted: (text) => onFieldSubmitted(context, text),
       onChanged: state.onChangedEnabled ? (text) => onChanged(context, text) : null,

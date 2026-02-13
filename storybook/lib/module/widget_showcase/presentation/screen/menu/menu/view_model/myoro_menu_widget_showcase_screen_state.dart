@@ -35,11 +35,10 @@ final class MyoroMenuWidgetShowcaseScreenState extends ChangeNotifier {
   }
 
   /// [MyoroMenu.itemBuilder]
-  MyoroMenuItemBuilder<String> _itemBuilder =
-      (_, item) => MyoroMenuButtonItem(
-        builder: (context, tapStatusEnum) => Text(item),
-        onTapDown: (_, _) => print('Selected: $item'),
-      );
+  MyoroMenuItemBuilder<String> _itemBuilder = (_, item) => MyoroMenuButtonItem(
+    builder: (context, tapStatusEnum) => Text(item),
+    onTapDown: (_, _) => print('Selected: $item'),
+  );
   MyoroMenuItemBuilder<String> get itemBuilder => _itemBuilder;
   set itemBuilder(MyoroMenuItemBuilder<String> itemBuilder) {
     _itemBuilder = itemBuilder;

@@ -59,16 +59,15 @@ final class _SliderWidgetShowcaseOptionState extends State<SliderWidgetShowcaseO
           Text(configuration.label, style: checkboxThemeExtension.labelTextStyle),
         ValueListenableBuilder(
           valueListenable: sliderValueController,
-          builder:
-              (_, _, _) => MyoroSlider(
-                min: 0,
-                max: 50,
-                value: state.sliderValue,
-                onChanged: (v) {
-                  configuration.sliderOnChanged(v);
-                  state.sliderValue = v;
-                },
-              ),
+          builder: (_, _, _) => MyoroSlider(
+            min: 0,
+            max: 50,
+            value: state.sliderValue,
+            onChanged: (v) {
+              configuration.sliderOnChanged(v);
+              state.sliderValue = v;
+            },
+          ),
         ),
       ],
     );

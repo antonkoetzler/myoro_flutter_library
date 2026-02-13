@@ -12,7 +12,10 @@ final class _Widget extends StatelessWidget {
     return Container(
       height: 300,
       width: 200,
-      decoration: BoxDecoration(border: Border.all(color: Colors.grey), borderRadius: BorderRadius.circular(8)),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey),
+        borderRadius: BorderRadius.circular(8),
+      ),
       child: MyoroMenu<String>(
         style: state.menuStyle,
         showSearchBar: state.showSearchBar,

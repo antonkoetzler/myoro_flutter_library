@@ -22,10 +22,8 @@ final class _SubtitleConfigurationOption extends StatelessWidget {
         alignmentInitialValue: subtitleTextStyle?.alignment ?? MyoroTextStyle.alignmentDefaultValue,
         alignmentOnChanged: viewModel.subtitleTextStyleAlignmentOnChanged,
         styleInitialValue: subtitleTextStyle?.style,
-        styleOnChanged:
-            (textStyle) =>
-                state.subtitleTextStyle =
-                    state.subtitleTextStyle?.copyWith(style: textStyle) ?? MyoroTextStyle(style: textStyle),
+        styleOnChanged: (textStyle) => state.subtitleTextStyle =
+            state.subtitleTextStyle?.copyWith(style: textStyle) ?? MyoroTextStyle(style: textStyle),
       ),
     );
   }

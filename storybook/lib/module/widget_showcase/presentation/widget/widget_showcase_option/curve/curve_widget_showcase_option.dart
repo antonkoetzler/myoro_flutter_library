@@ -47,11 +47,9 @@ final class CurveWidgetShowcaseOption extends StatelessWidget {
   Widget build(context) {
     return MyoroSingleSelectionDropdown<Curve>(
       label: label,
-      selectedItemBuilder:
-          (c) =>
-              _curves.entries
-                  .firstWhere((entry) => entry.value == c, orElse: () => const MapEntry('custom', Curves.linear))
-                  .key,
+      selectedItemBuilder: (c) => _curves.entries
+          .firstWhere((entry) => entry.value == c, orElse: () => const MapEntry('custom', Curves.linear))
+          .key,
       onChanged: onChanged,
       itemBuilder: (curve, _) {
         final name = _curves.entries.firstWhere((entry) => entry.value == curve).key;

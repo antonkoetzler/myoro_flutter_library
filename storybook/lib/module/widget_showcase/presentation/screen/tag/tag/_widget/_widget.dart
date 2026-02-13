@@ -13,7 +13,9 @@ final class _Widget extends StatelessWidget {
     return ListenableBuilder(
       listenable: state,
       builder: (_, _) {
-        return Center(child: MyoroTag(style: style, invert: state.invert, icon: state.icon, text: state.text));
+        return Center(
+          child: MyoroTag(style: style, invert: state.invert, icon: state.icon, text: state.text),
+        );
       },
     );
   }

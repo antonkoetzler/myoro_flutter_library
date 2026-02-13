@@ -6,6 +6,8 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return Center(child: MyoroEmptyFeedback(title: 'No items found', onActionButtonTapped: () {}));
+    return Center(
+      child: MyoroEmptyFeedback(title: 'No items found', onActionButtonTapped: () {}),
+    );
   }
 }

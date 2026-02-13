@@ -19,16 +19,15 @@ final class _CurrencyOption extends StatelessWidget {
               viewModel.setCurrency(currency);
             }
           },
-          items:
-              MyoroCurrencyEnum.values.map((currency) {
-                return DropdownMenuItem<MyoroCurrencyEnum>(
-                  value: currency,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [Text(currency.shortSymbol), const SizedBox(width: 8), Text(currency.longSymbol)],
-                  ),
-                );
-              }).toList(),
+          items: MyoroCurrencyEnum.values.map((currency) {
+            return DropdownMenuItem<MyoroCurrencyEnum>(
+              value: currency,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [Text(currency.shortSymbol), const SizedBox(width: 8), Text(currency.longSymbol)],
+              ),
+            );
+          }).toList(),
         );
       },
     );

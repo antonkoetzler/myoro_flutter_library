@@ -29,18 +29,18 @@ final class _Widget extends StatelessWidget {
 
             return isWide
                 ? Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  spacing: spacing,
-                  children: scrollables.map((widget) => Expanded(child: widget)).toList(),
-                )
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: spacing,
+                    children: scrollables.map((widget) => Expanded(child: widget)).toList(),
+                  )
                 : Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  spacing: spacing,
-                  children: scrollables,
-                );
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    spacing: spacing,
+                    children: scrollables,
+                  );
           },
         );
       },

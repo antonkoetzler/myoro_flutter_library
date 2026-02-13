@@ -19,13 +19,13 @@ final class _Title extends StatelessWidget {
 
     return checkboxOnChanged != null
         ? MyoroCheckbox(
-          label: label,
-          value: enabled,
-          onChanged: (enabled) {
-            checkboxOnChanged(enabled, padding);
-            state.enabled = enabled;
-          },
-        )
+            label: label,
+            value: enabled,
+            onChanged: (enabled) {
+              checkboxOnChanged(enabled, padding);
+              state.enabled = enabled;
+            },
+          )
         : Text(label, style: labelTextStyle);
   }
 }

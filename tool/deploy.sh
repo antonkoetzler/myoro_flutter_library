@@ -29,42 +29,38 @@ case "$option" in
     ;;
 esac
 
-# Set new version being deployed to pubspec.lock
 new_version="${major}.${minor}.${patch}"
-sed -i.bak "s/^version: .*/version: $new_version/" pubspec.yaml
-rm pubspec.yaml.bak
 
-# Extract lines from STAGELOG.md starting from line 3
+# Extract lines from STAGELOG.md starting from line 3 (read-only check before any writes)
 stagelog=$(tail -n +3 STAGELOG.md)
-
-# No notes in STAGELOG.md case
 if [[ -z "$stagelog" ]]; then
   echo "No staging notes to add. Aborting."
   exit 1
 fi
 
+# Setup code from scratch; must succeed before we change anything
+bash tool/setup.sh
+
+# --- Writes below ---
+
+# Set new version in pubspec.yaml
+sed -i.bak "s/^version: .*/version: $new_version/" pubspec.yaml
+rm pubspec.yaml.bak
+
 # Insert into CHANGELOG.md two lines after # CHANGELOG
 {
-  # Print header and first blank line
   echo "# CHANGELOG"
   echo ""
-  # Print new version header
   echo "## ${new_version}"
   echo ""
-  # Print stagelog content
   echo "$stagelog"
   echo ""
-  # Print rest of changelog (skip header and first blank line)
   tail -n +3 CHANGELOG.md
 } > CHANGELOG.tmp && mv CHANGELOG.tmp CHANGELOG.md
 
 # Preserve first two lines of STAGELOG.md
 head -n 1 STAGELOG.md > STAGELOG.tmp && mv STAGELOG.tmp STAGELOG.md
 
-# Setup code from scratch to assure everything is at a factory state.
-bash tool/setup.sh
-
-# Feedback that the deployment was successful
 echo "Updated version to $new_version"
 
 # Push all code and publish to http://pub.dev

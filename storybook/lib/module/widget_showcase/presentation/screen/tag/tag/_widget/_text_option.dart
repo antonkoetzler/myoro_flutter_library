@@ -15,9 +15,8 @@ final class _TextOption extends StatelessWidget {
         textInitialValue: state.text,
         textOnChanged: (text) => state.text = text,
         styleInitialValue: state.textStyle?.style,
-        styleOnChanged:
-            (textStyle) =>
-                state.textStyle = state.textStyle?.copyWith(style: textStyle) ?? MyoroTextStyle(style: textStyle),
+        styleOnChanged: (textStyle) =>
+            state.textStyle = state.textStyle?.copyWith(style: textStyle) ?? MyoroTextStyle(style: textStyle),
       ),
     );
   }

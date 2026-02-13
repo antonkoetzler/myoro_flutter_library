@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.7.6
+
+- chore: Update dependencies
+
 ## 2.7.5
 
 - improvement: Remove `MyoroRequest.errorMessage` in favor of `MyoroRequest.error`
